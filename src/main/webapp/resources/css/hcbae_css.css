@@ -1,0 +1,31 @@
+.most__search__tab {
+	text-align: center;
+	border-bottom: 2px solid #e1e1e1;
+  margin-bottom: 50px;
+}
+
+/* not active */
+.nav-pills .nav-item .nav-link:not(.active) {
+  background-color: white;
+  color:black;
+}
+
+/* active (faded) */
+.nav-pills .nav-item .nav-link {
+  background-color: #2da498;
+  color: white;
+}
+
+.hcbae-nav {
+  font-size: 20px !important;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.related-products-area{
+  margin-top:100px;
+}
