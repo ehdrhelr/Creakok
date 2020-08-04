@@ -13,6 +13,8 @@ public class IndexController {
 	@RequestMapping(value="/funding", method =RequestMethod.GET)
 	public String funding() {
 		return "funding";
+		
+	
 	}
 	*/
 
