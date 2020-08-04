@@ -16,4 +16,7 @@ public class IndexController {
 	}
 	*/
 
+	public void hcbae_test() {
+		
+	}
 }
