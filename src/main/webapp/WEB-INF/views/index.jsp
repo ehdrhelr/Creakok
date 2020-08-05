@@ -21,7 +21,7 @@
     
     <!-- Wadiz Css -->
     <link rel="stylesheet" href="css/wadiz_css1.css">
-     <link rel="stylesheet" href="css/wadiz_css2.css">
+    <link rel="stylesheet" href="css/wadiz_css2.css">
     <link rel="stylesheet" href="css/wadiz_css3.css">
     <link rel="stylesheet" href="css/wadiz_css4.css">
      <style>
@@ -36,11 +36,53 @@
             max-width:63% !important;
         }
     </style>
+    
+     <style>
+                    #bar2 .fill{
+                        background: rgb(252, 82, 48);
+                        width: 153px;
+                        transition: width 1s ease-in-out 0s;
+                        }
+                </style>
+                  <style>
+                                .crowdy-btn-introduction {
+                                    display: inline-block;
+                                    border: rgba(255,255,255,.16);
+                                    background-color: rgba(255,255,255,.16);
+                                    text-align: center;
+                                    color: #fff;
+                                    padding: 0 21px;
+                                    margin-top: 18px;
+                                    height: 35px;
+                                    border-radius: 3px;
+                                    font-size: 16px;
+                                    line-height: 2.1;
+                                    letter-spacing: -.5px;
+                                }
+                             </style>
+                
+                
+                
+                
+  <!-- BOTO TEST -->
+  <meta name="description" content="Boto Photo Studio HTML Template">
+  <meta name="keywords" content="photo, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+  <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+  <link rel="stylesheet" href="css/css_boto/fresco.css"/>
+  <link rel="stylesheet" href="css/css_boto/slick.css"/>
+
+  <!-- Main Stylesheets -->
+  <link rel="stylesheet" href="css/css_boto/style.css"/>
 
 </head>
 
 <body>
-   <!-- Preloader -->
+   
+    <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
         <div class="preloader-img">
@@ -83,7 +125,7 @@
                                 </div>
                                 <!-- Login -->
                                 <div class="login">
-                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
+                                    <a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a>
                                 </div>
                                 <!-- Cart -->
                                 <div class="cart">
@@ -104,7 +146,7 @@
                     <nav class="classy-navbar justify-content-between" id="alazeaNav">
 
                         <!-- Nav Brand -->
-                        <a href="index.html" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
+                        <a href="/" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -122,7 +164,7 @@
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="funding">FUNDING</a></li>
+                                    <li><a href="funding_list.do">FUNDING</a></li>
                                     <li><a href="goods.jsp">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
@@ -416,16 +458,7 @@
                 
                 
                 
-                <style>
-                    #bar2 .fill{
-                        background: rgb(252, 82, 48);
-                        width: 153px;
-                        transition: width 1s ease-in-out 0s;
-                        }
-                </style>
-                
-                
-                
+               
                 
                <div class="col-12 col-lg-5 ranking"  style="width:70%">
                     <!-- Section Heading -->
@@ -718,21 +751,6 @@
     
 
     
-  <!-- BOTO TEST -->
-    
-    
-	<meta name="description" content="Boto Photo Studio HTML Template">
-	<meta name="keywords" content="photo, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
-	<link rel="stylesheet" href="css/css_boto/slick.css"/>
-
-	<!-- Main Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/style.css"/>
     
     
     
@@ -764,24 +782,7 @@
                 
               
                
-                     <style>
-                                .crowdy-btn-introduction {
-                                    display: inline-block;
-                                    border: rgba(255,255,255,.16);
-                                    background-color: rgba(255,255,255,.16);
-                                    text-align: center;
-                                    color: #fff;
-                                    padding: 0 21px;
-                                    margin-top: 18px;
-                                    height: 35px;
-                                    border-radius: 3px;
-                                    font-size: 16px;
-                                    line-height: 2.1;
-                                    letter-spacing: -.5px;
-                                }
-                             </style>
-                
-                
+                   
                 <!--
                     <div class="col-12 col-lg-6">
                         <div class="subscribe-form">

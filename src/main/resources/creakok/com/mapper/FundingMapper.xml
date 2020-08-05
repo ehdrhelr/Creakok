@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="creakok.com.mapper.FundingMapper">
+	<select id="selectPerPage" parameterType="FundingVo" resultType="Funding">
+        <![CDATA[select * from (select ROWNUM rnum, aa.* from 
+    (select * from FUNDING order by FUNDING_INDEX desc) aa) 
+    where rnum>${startRow} and rnum<=${endRow}]]>
+    </select>
+	<select id="selectCount" resultType="long">
+        select COUNT(FUNDING_INDEX) from FUNDING
+    </select>
+    
+    <select id="getFunding_category" resultType="Funding_category">
+        select * from FUNDING_CATEGORY
+    </select>
+</mapper>

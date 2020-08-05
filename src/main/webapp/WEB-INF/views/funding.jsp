@@ -17,15 +17,32 @@
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
 
-    <!-- Core Stylesheet -->
+     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/hcbae_css.css">
+<link rel="stylesheet" href="css/wadiz_css1.css">
+     <link rel="stylesheet" href="css/wadiz_css2.css">
+    <link rel="stylesheet" href="css/wadiz_css3.css">
+    <link rel="stylesheet" href="css/wadiz_css4.css">
+    
+      <!-- BOTO TEST -->
+  <meta name="description" content="Boto Photo Studio HTML Template">
+  <meta name="keywords" content="photo, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+  <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+  <link rel="stylesheet" href="css/css_boto/fresco.css"/>
+  <link rel="stylesheet" href="css/css_boto/slick.css"/>
 
+  <!-- Main Stylesheets -->
+  <link rel="stylesheet" href="css/css_boto/style.css"/>
+    
 </head>
 
 <body>
-    <!-- Preloader -->
+     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
         <div class="preloader-img">
@@ -49,6 +66,9 @@
 
                             <!-- Top Header Content -->
                             <div class="top-header-meta d-flex">
+                                <div >
+                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;">프로젝트 만들기</button>
+                                </div>
                                 <!-- Language Dropdown -->
                                 <div class="language-dropdown">
                                     <div class="dropdown">
@@ -104,8 +124,8 @@
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="index.html">FUNDING</a></li>
-                                    <li><a href="goods.html">GOODS</a></li>
+                                    <li><a href="funding_list.do">FUNDING</a></li>
+                                    <li><a href="goods.jsp">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html" >Home</a></li>
@@ -113,7 +133,7 @@
                                             <li><a href="shop.html">Shop</a>
                                                 <ul class="dropdown">
                                                     <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="goods-details.html">Shop Details</a></li>
+                                                    <li><a href="shop-details.html">Shop Details</a></li>
                                                     <li><a href="cart.html">Shopping Cart</a></li>
                                                     <li><a href="checkout.html">Checkout</a></li>
                                                 </ul>
@@ -121,7 +141,7 @@
                                             <li><a href="portfolio.html">Portfolio</a>
                                                 <ul class="dropdown">
                                                     <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="single-portfolio.html">Portfolio Details</a></li>
+                                                    <li><a href="`gle-portfolio.html">Portfolio Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="blog.html">Blog</a>
@@ -133,8 +153,8 @@
                                             <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </li>
-                                  <li><a href="shop.html">ABOUT</a></li>
-                                    <!--  <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="about.jsp">ABOUT</a></li>
+                                   <!--   <li><a href="portfolio.html">Portfolio</a></li>
                                     <li><a href="contact.html">Contact</a></li>  -->
                                 </ul>  
 
@@ -163,6 +183,7 @@
         </div>
     </header>
     <!-- ##### Header Area End ##### -->
+    <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
@@ -188,17 +209,28 @@
                 <div class="col-12">
                     <div class="most__search__tab">
                         <ul class="nav nav-tabs nav-pills" role="tablist">
+                        
+                        
+                        
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
                                     전체보기
                                 </a>
                             </li>
+                            
+                           
+                    
+                    
+                        <c:forEach items="${list_funding_category}" var="list_funding_category">
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    테크/가전
+                                    ${list_funding_category.funding_category_name}
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            </c:forEach>
+                         
+                          <!-- 
+                           <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-3" role="tab">
                                     패션/잡화
                                 </a>
@@ -223,6 +255,7 @@
                                     디자인소품
                                 </a>
                             </li>
+                             -->
                         </ul>
                     </div>
                 </div>
@@ -734,7 +767,7 @@
     <!-- Popper js -->
     <script src="js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
+   
     <!-- All Plugins js -->
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->

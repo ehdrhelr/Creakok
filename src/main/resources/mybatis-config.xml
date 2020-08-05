@@ -4,13 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
    <typeAliases>
-   	
-   	     <!--   <typeAlias alias="PagingVo" type="jh.md.domain.PagingVo"/>-->
+   	     <typeAlias alias="Funding" type="creakok.com.domain.Funding"/>
+   	     <typeAlias alias="FundingVo" type="creakok.com.vo.FundingVo"/>
+         <typeAlias alias="Funding_commentVo" type="creakok.com.vo.Funding_commentVo"/>
+         <typeAlias alias="Funding_qnaVo" type="creakok.com.vo.Funding_qnaVo"/>
+          <typeAlias alias="Funding_category" type="creakok.com.domain.Funding_category"/>
    	   <!-- Address라고만 쓰면 jh.md.domain.Address에 접근하게 alias를 설정해준다! -->
    </typeAliases>
    <mappers>
-   	  <!--  <mapper resource="jh/md/mapper/AddressMapper1.xml"/>-->
-
+   	  
    </mappers>
 </configuration>
 
