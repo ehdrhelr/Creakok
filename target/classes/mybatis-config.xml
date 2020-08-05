@@ -4,13 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
    <typeAliases>
-   	
-   	     <!--   <typeAlias alias="PagingVo" type="jh.md.domain.PagingVo"/>-->
-   	   <!-- Address라고만 쓰면 jh.md.domain.Address에 접근하게 alias를 설정해준다! -->
+      <typeAlias alias="Creator" type="creakok.com.domain.Creator"/>
+      <typeAlias alias="Member_category" type="creakok.com.domain.Member_category"/>
+      <typeAlias alias="Member_origin" type="creakok.com.domain.Member_origin"/>
+      <typeAlias alias="Member" type="creakok.com.domain.Member"/>
    </typeAliases>
-   <mappers>
-   	  <!--  <mapper resource="jh/md/mapper/AddressMapper1.xml"/>-->
 
-   </mappers>
 </configuration>
 

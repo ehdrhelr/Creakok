@@ -15,8 +15,4 @@ public class IndexController {
 		return "funding";
 	}
 	*/
-
-	public void hcbae_test() {
-		
-	}
 }

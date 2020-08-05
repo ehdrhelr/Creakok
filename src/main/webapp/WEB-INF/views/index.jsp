@@ -21,7 +21,7 @@
     
     <!-- Wadiz Css -->
     <link rel="stylesheet" href="css/wadiz_css1.css">
-     <link rel="stylesheet" href="css/wadiz_css2.css">
+    <link rel="stylesheet" href="css/wadiz_css2.css">
     <link rel="stylesheet" href="css/wadiz_css3.css">
     <link rel="stylesheet" href="css/wadiz_css4.css">
      <style>
@@ -36,11 +36,37 @@
             max-width:63% !important;
         }
     </style>
+  <!-- BOTO TEST -->
+  <meta name="description" content="Boto Photo Studio HTML Template">
+  <meta name="keywords" content="photo, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+  <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+  <link rel="stylesheet" href="css/css_boto/fresco.css"/>
+  <link rel="stylesheet" href="css/css_boto/slick.css"/>
+
+  <!-- Main Stylesheets -->
+  <link rel="stylesheet" href="css/css_boto/style.css"/>
 
 </head>
 
 <body>
-   <!-- Preloader -->
+    <c:if test="${empty member}">
+      <script>
+      console.log("empty member");
+      </script>
+    </c:if>
+    <c:if test="${!empty member}">
+      <script>
+      console.log("member exist");
+      console.log('email: ${member.member_email}');
+      console.log('name: ${member.member_name}');
+      console.log('pass: ${member.member_password}');
+      </script>
+    </c:if>
+    <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
         <div class="preloader-img">
@@ -81,14 +107,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Login -->
-                                <div class="login">
-                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
-                                </div>
-                                <!-- Cart -->
-                                <div class="cart">
-                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
-                                </div>
+                                    
+                                <c:if test="${empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
+                                  <!-- Sign up -->
+                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
+                                </c:if>
+                                <c:if test="${!empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
+                                  
+                                  <!-- My Page -->
+                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
+                                  
+                                  <!-- Cart -->
+                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
+                                </c:if> 
+                                
                             </div>
                         </div>
                     </div>
@@ -104,7 +140,7 @@
                     <nav class="classy-navbar justify-content-between" id="alazeaNav">
 
                         <!-- Nav Brand -->
-                        <a href="index.html" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
+                        <a href="/" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -122,7 +158,7 @@
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="funding">FUNDING</a></li>
+                                    <li><a href="funding.do">FUNDING</a></li>
                                     <li><a href="goods.jsp">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
@@ -718,21 +754,6 @@
     
 
     
-  <!-- BOTO TEST -->
-    
-    
-	<meta name="description" content="Boto Photo Studio HTML Template">
-	<meta name="keywords" content="photo, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
-	<link rel="stylesheet" href="css/css_boto/slick.css"/>
-
-	<!-- Main Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/style.css"/>
     
     
     

@@ -5,19 +5,12 @@
 <html lang="en">
 
 <head>
-  
-    
-    
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-    
       <!--텀블벅추가-->
-    
-     
       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
       <meta name="format-detection" content="telephone=no">
       <link rel="dns-prefetch" href="https://tumblbug-assets.imgix.net">
@@ -45,11 +38,6 @@
 
   <meta name="apple-mobile-web-app-title" content="tumblbug">
   <meta name="application-name" content="tumblbug">
-
-    
-    
-    
-    
      <style data-styled="etlKsY QGKgG jOcSCe iSuAdB jDMeTv MskhC fMekoE fbsOED hLwNNy cAHVaf jkgXDu gMdHoi hbKGuE iDsnca cLNJqs iJpZic fWpQcH zoWUI bgEfGq irjBzn dgBlAy hGAcLm jLeKfP uEieK grrCSr gqtUOr iWoXIb ijDFDl bKTrQD gVuNGp gUfPmS ilwNes erxKKA cDdnng bmduJF fpKouC dKBthp" data-styled-version="4.4.1">
 /* sc-component-id: SiteFooter__SROnlyLabel-sc-160ijjw-0 */
 .dKBthp{position:absolute;margin:-1px;padding:0;height:1px;width:1px;border:0;-webkit-clip:rect(0 0 0 0);clip:rect(0 0 0 0);overflow:hidden;}
@@ -120,29 +108,11 @@
 /* sc-component-id: ScrollTop__ScrollTopBtn-j9uqn7-2 */
 .QGKgG{width:0;height:0;border:0;border-radius:50%;text-indent:-100em;overflow:hidden;padding:0;outline:none;position:absolute;background:transparent;z-index:2;} .QGKgG span{position:relative;} .QGKgG:active{outline:none;}</style>
     
-    
-    
-    
-    
-    
      <!--텀블벅추가-->
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <!-- Title -->
-    <title>Alazea - Gardening &amp; Landscaping HTML Template</title>
+    <title>CREAKOK</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -152,21 +122,9 @@
     
     <!-- Wadiz Css -->
     <link rel="stylesheet" href="css/wadiz_css1.css">
-     <link rel="stylesheet" href="css/wadiz_css2.css">
+    <link rel="stylesheet" href="css/wadiz_css2.css">
     <link rel="stylesheet" href="css/wadiz_css3.css">
     <link rel="stylesheet" href="css/wadiz_css4.css">
-     <style>
-        .three {
-            flex:0 0 33%;!important;
-        }
-        .ranking{
-            flex:0 0 35%;!important;
-        }
-        .howAbout{
-            flex:0 0 70%;!important;
-            max-width:63%;!important;
-        }
-    </style>
 
 </head>
 
@@ -313,49 +271,43 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-  
+    <!--텀블벅추가-->
+    <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
+      <div style="margin-top:180px; margin-bottom:50px" class="Wrapper__MembershipBody-sc-140yq7-0 dgBlAy">
+        <div style="display: flex; color:white; flex-direction: column;">
+          <a class="SocialButton__SocialLink-sc-7k5r2h-0 hGAcLm">
+            <i class="_1uz2PaH_Pc163IQLnwFtm8 _1oJMWnMCW_Y6GmNc1mhqaW _1QY7TzdLHKX3-BKPDNNYKF"></i>
+                        페이스북 아이디로 로그인
+          </a>
+          <a class="SocialButton__SocialLink-sc-7k5r2h-0 jLeKfP">
+            <svg class="naverIcon" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18.31">
+            <path d="M20,19.15H13.33A0.34,0.34,0,0,1,13,19L7,10.22,6.84,10v9.15H0V0.85H6.68A0.32, 0.32,0,0,1,7,1l6,8.75a0.82,0.82,0,0,0,.19.22V0.86H20v18.3Z" transform="translate(0 -0.84)" fill="#fff"></path>
+            </svg>
+                        네이버 아이디로 로그인
+          </a>
+        </div>
+        <div class="Divider-sc-1wyk970-0 uEieK">
+          <span><span>또는</span></span>
+        </div>
+        <form autocomplete="on" class="SignIn__Form-sc-9xfg6a-2 grrCSr" method='post' action='member_login.do'>
+          <label for="login" class="SignIn__HiddenLabel-sc-9xfg6a-0 gqtUOr">이메일</label>
+          <input type="email" name="member_email" id="login" placeholder="이메일 주소 입력" aria-label="이메일" name="email" autocomplete="email" required="" class="Input-sc-1x48dls-0 iWoXIb" value="">
+          <label for="password" class="SignIn__HiddenLabel-sc-9xfg6a-0 gqtUOr">비밀번호</label>
+          <input type="password" name="member_password"  id="password" aria-label="비밀번호" placeholder="비밀번호 입력" autocomplete="current-password" required="" autocapitalize="off" autocorrect="off" spellcheck="off" name="password" class="Input-sc-1x48dls-0 iWoXIb" value="">
+          <button type="submit" label="로그인하기" class="Button-sc-1x93b2b-0 ijDFDl" style="margin: 20px 0px; height: 45px;">로그인</button>
+          <a class="SignIn__StyledLink-sc-9xfg6a-1 bKTrQD" style="color:#fc5230" href="/join?redirection=%2F">
+            <span style="color: rgb(117, 117, 117);">아직 계정이 없으신가요?</span>
+                        크리콕 가입하기
+          </a>
+        </form>
+        <div style="text-align: center; margin-top: 40px;">
+          <a style="color:#fc5230" href="/forgot-password">혹시 비밀번호를 잊으셨나요?</a>
+        </div>
+      </div>
+    </div>
+    <!--텀블벅추가-->
     
-   
-    
-    
-<!--텀블벅추가-->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn"><div style="margin-top:180px; margin-bottom:50px" class="Wrapper__MembershipBody-sc-140yq7-0 dgBlAy"><div style="display: flex; color:white; flex-direction: column;"><a class="SocialButton__SocialLink-sc-7k5r2h-0 hGAcLm"><i class="_1uz2PaH_Pc163IQLnwFtm8 _1oJMWnMCW_Y6GmNc1mhqaW _1QY7TzdLHKX3-BKPDNNYKF"></i>페이스북 아이디로 로그인</a><a class="SocialButton__SocialLink-sc-7k5r2h-0 jLeKfP"><svg class="naverIcon" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18.31"><title>naverIcon</title><path d="M20,19.15H13.33A0.34,0.34,0,0,1,13,19L7,10.22,6.84,10v9.15H0V0.85H6.68A0.32, 0.32,0,0,1,7,1l6,8.75a0.82,0.82,0,0,0,.19.22V0.86H20v18.3Z" transform="translate(0 -0.84)" fill="#fff"></path></svg>네이버 아이디로 로그인</a></div><div class="Divider-sc-1wyk970-0 uEieK"><span><span>또는</span></span></div><form autocomplete="on" class="SignIn__Form-sc-9xfg6a-2 grrCSr"><label for="login" class="SignIn__HiddenLabel-sc-9xfg6a-0 gqtUOr">이메일</label><input type="email" id="login" placeholder="이메일 주소 입력" aria-label="이메일" name="email" autocomplete="email" required="" class="Input-sc-1x48dls-0 iWoXIb" value=""><label for="password" class="SignIn__HiddenLabel-sc-9xfg6a-0 gqtUOr">비밀번호</label><input type="password" id="password" aria-label="비밀번호" placeholder="비밀번호 입력" autocomplete="current-password" required="" autocapitalize="off" autocorrect="off" spellcheck="off" name="password" class="Input-sc-1x48dls-0 iWoXIb" value=""><button type="submit" label="로그인하기" class="Button-sc-1x93b2b-0 ijDFDl" style="margin: 20px 0px; height: 45px;">로그인</button><a class="SignIn__StyledLink-sc-9xfg6a-1 bKTrQD" style="color:#fc5230" href="/join?redirection=%2F"><span style="color: rgb(117, 117, 117);">아직 계정이 없으신가요?</span> 크리콕 가입하기</a></form><div style="text-align: center; margin-top: 40px;"><a style="color:#fc5230" href="/forgot-password">혹시 비밀번호를 잊으셨나요?</a></div></div></div>
-    
-    
-<!--텀블벅추가-->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-  <!-- Footer Bottom Area -->
+    <!-- Footer Bottom Area -->
         <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">
             <div class="container">
                 <div class="row">
@@ -378,20 +330,7 @@
                 </div>
             </div>
         </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-<!-- Footer Bottom Area End ##### -->
+    <!-- Footer Bottom Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
