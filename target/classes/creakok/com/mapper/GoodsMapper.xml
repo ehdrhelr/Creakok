@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="creakok.com.mapper.GoodsMapper">
+	<select id="list" resultType="GoodsVo">
+		select * from GOODS order by GOODS_INDEX desc
+	</select>
+	
+	<select id="selectPerPage" resultType="Goods" parameterType="int">
+		<![CDATA[select * from (select ROWNUM rnum, aa.* from
+		(select * from GOODS order by GOODS_INDEX desc) aa)
+		where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
+	</select>
+	
+	<select id="selectGoodsCount" resultType="long">
+		select COUNT(GOODS_INDEX) from Goods
+	</select>
+	
+</mapper>
