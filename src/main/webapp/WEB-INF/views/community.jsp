@@ -5,6 +5,21 @@
 <html lang="en">
 
 <head>
+
+<!-- BOTO TEST -->
+	<meta name="description" content="Boto Photo Studio HTML Template">
+	<meta name="keywords" content="photo, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
+	<link rel="stylesheet" href="css/css_boto/slick.css"/>
+
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="css/css_boto/style.css"/>
+	
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,10 +37,9 @@
     
     <!-- Wadiz Css -->
     <link rel="stylesheet" href="css/wadiz_css1.css">
-     <link rel="stylesheet" href="css/wadiz_css2.css">
+    <link rel="stylesheet" href="css/wadiz_css2.css">
     <link rel="stylesheet" href="css/wadiz_css3.css">
     <link rel="stylesheet" href="css/wadiz_css4.css">
-    
 
 	<!-- for review -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -44,9 +58,8 @@
    <script src="js/js_board/moment.min.js"></script>
    <script src="js/js_board/moment-timezone-with-data.min.js"></script>
 
-   <script src="/js/js_board/vueComponent/vue-filter.js"></script>
-   <script src="/js/js_board/app/App.js"></script>
-	 
+   <script src="js/js_board/vueComponent/vue-filter.js"></script>
+   <script src="js/js_board/app/App.js"></script>
 
 	<link href="css/css_board/reservation_page.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css"
@@ -69,7 +82,6 @@
             max-width:63%;!important;
         }
     </style>
-
 </head>
 
 <body>
@@ -465,8 +477,6 @@
 								<input type="text" name="searchName" style='height:30px; margin-bottom:3px;'
 									title="검색" required placeholder="Search" maxlength="20">
 								<button type="submit" style='height:30px;'>검색</button></li>
-							
-							
 						</ul>
 					</form>
 				</div>
@@ -475,7 +485,7 @@
 						<col width="5%">
 						<col width="60%">
 						<col width="5%">
-						<col width="5%">
+						<col width="10%">
 						<col width="5%">
 						<col width="5%">
 					</colgroup>
@@ -491,45 +501,53 @@
 						</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td>4</td>
-	                    <td>버블티는 공차</td>
-	                    <td>철</td>
-	                    <td>2020/8/3</td>
-	                    <td>10</td>
-	                    <td>0</td>
-	                </tr>
-					<tr>
-						<td>3</td>
-	                    <td>악당중에 누가 제일 쎔?</td>
-	                    <td>현</td>
-	                    <td>2020/8/3</td>
-	                    <td>5</td>
-	                    <td>0</td>
-	                </tr>
-					<tr>
-						<td>2</td>
-	                    <td>배트맨 신작 언제 나오나요?</td>
-	                    <td>희</td>
-	                    <td>2020/8/3</td>
-	                    <td>8</td>
-	                    <td>2</td>
-	                </tr>
-					<tr>
-						<td>1</td>
-	                    <td>다크나이트 짱 머싯서요!!</td>
-	                    <td>섭</td>
-	                    <td>2020/8/3</td>
-	                    <td>3</td>
-	                    <td>0</td>
-	                </tr>
-
-
+						<c:if test="${empty list}">
+							<TR align='center' noshade>
+								<TD colspan="6"> 작성된 후기가 없습니다. </TD>
+							</TR>
+						</c:if>
+						<c:forEach var="dto" items="${list}">		
+							<tr>
+							<td>${dto.board_index}</td>
+		                    <td><a class="title" href="review.kas?m=getReview&idx=$${dto.board_index}&code=${reviewList.code}">${dto.board_subject}</a></td>
+		                    <td>${dto.member_name}</td>
+		                    <td>${dto.board_wdate}</td>
+		                    <td>${dto.board_view}</td>
+		                    <td>${dto.board_like}</td>
+		                    </tr>
+		                </c:forEach>
 					</tbody>
 				</table>
-				<button type="button" class="searchBtn" onclick="document.getElementById('reserv').style.display='block'"
-					style='background-color:black; color:white; width:70px;' >글쓰기</button>
-			</div>
+					
+	<div align="center" style='margin-top:30px; color:#666666; line-height:50%;'>
+           	<c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
+           	    <a href="review.kas?m=list&cp=${i}">
+	           	    <c:choose>
+	           	    	<c:when test="${i==listResult.currentPage}">
+	           	    		<strong>${i}</strong>
+	           	    	</c:when>
+	           	    
+	            	<c:otherwise>
+	            		<b>${i}</b>
+	            	</c:otherwise>
+	            	</c:choose>
+	             </a> 
+           	</c:forEach>
+         
+            
+
+             <a href="review.kas?method=list&cp=${i==listResult.currentPage}&ps=${i==listResult.totalPageCount}">
+			     |  이후 ▶
+			  </a>
+
+		
+			<c:choose>
+           <c:when test="${!empty loginUser}"> 	 
+				<button type="button" class="searchBtn" 
+					style='background-color:black; color:white; width:70px;'><a href="review.kas?m=writeForm">글쓰기</button>
+			</c:when>
+			</c:choose>	
+		</div>
    </div>
    <!-- 게시판 영역 end -->
 
@@ -556,19 +574,7 @@
                 </div>
             </div>
         </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
+ 
 <!-- Footer Bottom Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->

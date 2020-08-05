@@ -9,11 +9,11 @@ public class IndexController {
 	public String index() {
 		return "index";
 	}
-	/*
-	@RequestMapping(value="/funding", method =RequestMethod.GET)
-	public String funding() {
-		return "funding";
+
+	@RequestMapping(value="/community", method =RequestMethod.GET)
+	public String community() {
+		return "community";
 	}
-	*/
+
 
 }

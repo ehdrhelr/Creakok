@@ -4,6 +4,22 @@
 <html lang="en">
 
 <head>
+  <!-- BOTO TEST -->
+    
+    
+	<meta name="description" content="Boto Photo Studio HTML Template">
+	<meta name="keywords" content="photo, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
+	<link rel="stylesheet" href="css/css_boto/slick.css"/>
+
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="css/css_boto/style.css"/>
+    
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -124,7 +140,7 @@
                                 <ul>
                                     <li><a href="funding">FUNDING</a></li>
                                     <li><a href="goods.jsp">GOODS</a></li>
-                                    <li><a href="#">COMMUNITY</a>
+                                    <li><a href="board_list.do">COMMUNITY</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html" >Home</a></li>
                                             <li><a href="about.html">About</a></li>
@@ -718,22 +734,7 @@
     
 
     
-  <!-- BOTO TEST -->
-    
-    
-	<meta name="description" content="Boto Photo Studio HTML Template">
-	<meta name="keywords" content="photo, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
-	<link rel="stylesheet" href="css/css_boto/slick.css"/>
 
-	<!-- Main Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/style.css"/>
-    
     
     
     	<div id="preloder">
