@@ -8,4 +8,8 @@
     select * from MEMBER where MEMBER_EMAIL=#{member_email}
   </select>
   
+  <update id="updatePassword" parameterType="MEMBER">
+    update MEMBER set MEMBER_PASSWORD=#{member_password} where MEMBER_EMAIL=#{member_email}
+  </update>
+  
 </mapper>

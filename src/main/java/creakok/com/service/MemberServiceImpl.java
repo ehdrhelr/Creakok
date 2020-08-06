@@ -14,6 +14,15 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper memberMapper;
 	
 	@Override
+	public void changeMemberPasswordS(String member_email, String new_password) {
+		Member member = new Member();
+		member.setMember_email(member_email);
+		member.setMember_password(new_password);
+		memberMapper.updatePassword(member);
+	}
+
+	
+	@Override
 	public Member getMemberInfoS(String member_email) {
 		Member member = memberMapper.selectByEmail(member_email);
 		member.setMember_password("");
