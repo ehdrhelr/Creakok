@@ -12,35 +12,35 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GoodsVo {
    
-   private int currentPage;
+   private int cp;
    private long totalCount;
-   private int pageSize;
+   private int ps;
    private List<Goods> list;
    private long totalPageCount;
 
-   public GoodsVo(int currentPage, long totalCount, int pageSize, List<Goods> list) {
-      this.currentPage = currentPage;
+   public GoodsVo(int cp, long totalCount, int ps, List<Goods> list) {
+      this.cp = cp;
       this.totalCount = totalCount;
-      this.pageSize = pageSize;
+      this.ps = ps;
       this.list = list;
       this.totalPageCount = calTotalPageCount();
    }
    private long calTotalPageCount() {
-      long tpc = totalCount/pageSize; 
-      if(totalCount%pageSize != 0) tpc++;
+      long tpc = totalCount/ps; 
+      if(totalCount%ps != 0) tpc++;
       
       return tpc;
    }
    private int getStartRow() {
-		return (currentPage-1)*pageSize;	
+		return (cp-1)*ps;	
 	}
    private int getEndRow() {
-		return currentPage*pageSize; 
+		return cp*ps; 
 	}
    /*
-   private long totalPageCount = totalCount/pageSize;
-   private int range1 = (currentPage-1)*pageSize;
-   private int range2 = currentPage*pageSize;
+   private long totalPageCount = totalCount/ps;
+   private int range1 = (cp-1)*ps;
+   private int range2 = cp*ps;
    */
    
    

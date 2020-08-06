@@ -15,10 +15,15 @@ public class GoodsServiceImpl implements GoodsService {
 	private GoodsMapper gMapper;
 	
 	@Override
-	public List<Goods> selectPerPage(int cp, int ps) {
-		return gMapper.selectPerPage(cp, ps);
+	public GoodsVo getGoodsVo(int cp, int ps) {
+		long totalCount = gMapper.selectGoodsCount();
+		GoodsVo goodsVo = new GoodsVo(cp, totalCount, ps, null);
+		List<Goods> list = gMapper.selectPerPage(goodsVo);
+		
+		return new GoodsVo(cp, totalCount, ps, list);
 	}
 	
+
 	@Override
 	public long selectGoodsCountS() {
 		return gMapper.selectGoodsCount();

@@ -6,6 +6,6 @@ import creakok.com.domain.Goods;
 import creakok.com.vo.GoodsVo;
 
 public interface GoodsMapper {
-	List<Goods> selectPerPage(int page, int pageSize);
+	List<Goods> selectPerPage(GoodsVo goodsVo);
 	long selectGoodsCount();
 }

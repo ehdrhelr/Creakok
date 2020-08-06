@@ -73,7 +73,7 @@ public class GoodsController {
 		}
 		session.setAttribute("ps", ps);
 		
-		List<Goods> list = goodsService.selectPerPage(cp, ps);
+		GoodsVo list = goodsService.getGoodsVo(cp, ps);
 
 		
 		//굿즈 카테고리

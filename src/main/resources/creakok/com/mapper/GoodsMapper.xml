@@ -7,10 +7,11 @@
 		select * from GOODS order by GOODS_INDEX desc
 	</select>
 	
-	<select id="selectPerPage" resultType="Goods" parameterType="int">
+	<select id="selectPerPage" resultType="Goods" parameterType="GoodsVo">
 		<![CDATA[select * from (select ROWNUM rnum, aa.* from
 		(select * from GOODS order by GOODS_INDEX desc) aa)
-		where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
+		where rnum>${(cp-1)*ps} and rnum<=${cp*ps}
+		]]>
 	</select>
 	
 	<select id="selectGoodsCount" resultType="long">

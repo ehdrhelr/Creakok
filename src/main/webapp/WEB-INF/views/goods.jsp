@@ -195,13 +195,16 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">GOODS</li>
+                            <li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i> Home</li>
+                            <li class="breadcrumb-item" aria-current="page"><span style="font-weight:600; color:black;">GOODS</span></li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
+        
+        
+        <!-- 
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -246,7 +249,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  -->
+        
+        
     </div>
     <!-- ##### Breadcrumb Area End ##### -->
 
@@ -259,7 +264,7 @@
                     <div class="shop-sorting-data d-flex flex-wrap align-items-center justify-content-between">
                         <!-- Shop Page Count -->
                         <div class="shop-page-count">
-                            <p>Showing 1–9 of 72 results</p>
+                            <p>총 ${goods.totalCount}개의 상품</p>
                         </div>
                         <!-- Search by Terms -->
                         <div class="search_by_terms">
@@ -270,17 +275,43 @@
                                   <option value="2">Short by Sales</option>
                                   <option value="3">Short by Ratings</option>
                                 </select>
-                                <select class="custom-select widget-title">
-                                  <option selected>Show: 9</option>
-                                  <option value="1">12</option>
-                                  <option value="2">18</option>
-                                  <option value="3">24</option>
+                                
+                                <select id="psId" name="ps" class="custom-select widget-title" onchange="f(this)">
+                                	<c:choose>
+                                		<c:when test="${goods.ps == 3}">
+		                                    <option value="3" selected>3</option>
+		                                  	<option value="6">6</option>
+		                                  	<option value="9">9</option>                             		
+                                		</c:when>
+                                		<c:when test="${goods.ps == 6}">
+                                			<option value="3">3</option>	                                  
+		                                  	<option value="6" selected>6</option>
+		                                  	<option value="9">9</option>
+                                		</c:when>                          		                      		
+                                		<c:when test="${goods.ps == 9}">
+                                			<option value="3">3개씩 보기</option>	                                  
+		                                  	<option value="6">6개씩 보기</option>
+		                                  	<option value="9" selected>9개씩 보기</option>
+                                		</c:when>                                   		
+                                	</c:choose>
                                 </select>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+         <script language="javascript">
+				function f(select){
+					//var el = document.getElementById("psId");
+					var ps = select.value;
+					//alert("ps : " + ps);
+					location.href="goods_list.do?ps="+ps;
+				}
+		 </script>
+
+
 
             <div class="row">
                 <!-- Sidebar Area -->
@@ -289,7 +320,7 @@
 
                         <!-- Shop Widget -->
                         <div class="shop-widget price mb-50">
-                            <h4 class="widget-title">Prices</h4>
+                            <h4 class="widget-title">가격대 선택</h4>
                             <div class="widget-desc">
                                 <div class="slider-range">
                                     <div data-min="8" data-max="30" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="8" data-value-max="30" data-label-result="Price:">
@@ -304,45 +335,58 @@
 
                         <!-- Shop Widget -->
                         <div class="shop-widget catagory mb-50">
-                            <h4 class="widget-title">Categories</h4>
-                            <div class="widget-desc">
+                            <h4 class="widget-title">카테고리</h4>
+                           
                                 <!-- Single Checkbox -->
                               	
-                              	<c:forEach items="${gCategory}" var="gCategory">
-	                                <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-	                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-	                                    <label class="custom-control-label" for="customCheck1">${gCategory.goods_category_name}</label>
-	                               	</div>                            	
-                              	</c:forEach>
-                                
-                            </div>
+                              	
+                              	 <div class="widget-desc">
+	                              	 <c:forEach items="${gCategory}" var="gCategory">
+		                                <div class="custom-checkbox d-flex align-items-center mb-2" class="custom-control-input" id="customCheck">
+		                                    <input type="checkbox" value="${gCategory.goods_category_code}" name="category" onclick="doOpenCheck(this);" style="margin-right:5px;">${gCategory.goods_category_name}
+		                               	</div>    
+	                               </c:forEach>  
+	                             </div>                      	
+                              	  
                         </div>
+					                       
+                       <script language="javascript">
+	                        function doOpenCheck(chk){
+	                            var obj = document.getElementsByName("category");
+	                            for(var i=0; i<obj.length; i++){
+	                                if(obj[i] != chk){
+	                                    obj[i].checked = false;
+	                                }
+	                            }
+	                        }
+                      </script>
 
-                        <!-- Shop Widget -->
+
+                        <!-- Shop Widget
                         <div class="shop-widget sort-by mb-50">
                             <h4 class="widget-title">Sort by</h4>
                             <div class="widget-desc">
-                                <!-- Single Checkbox -->
+                                <!-- Single Checkbox 
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck7">
                                     <label class="custom-control-label" for="customCheck7">New arrivals</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                <!-- Single Checkbox 
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck8">
                                     <label class="custom-control-label" for="customCheck8">Alphabetically, A-Z</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                <!-- Single Checkbox 
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck9">
                                     <label class="custom-control-label" for="customCheck9">Alphabetically, Z-A</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                <!-- Single Checkbox 
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck10">
                                     <label class="custom-control-label" for="customCheck10">Price: low to high</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                <!-- Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center">
                                     <input type="checkbox" class="custom-control-input" id="customCheck11">
                                     <label class="custom-control-label" for="customCheck11">Price: high to low</label>
@@ -413,53 +457,74 @@
                         </div>
                     </div>
                 </div>
+                
+                
 
                 <!-- All Products Area -->
                 <div class="col-12 col-md-8 col-lg-9">
                     <div class="shop-products-area">
                         <div class="row">
-							<c:forEach var="goods" items="${goods}">		
+                        
+                      	  <c:if test="${empty goods.list}">
+                       	 	<p style="text-align:center;width:100%;"> 현재 판매중인 굿즈가 없습니다.</p>
+             			  </c:if>
+             			  
+             			  
+							<c:forEach var="goods" items="${goods.list}">		
 	                            <!-- Single Product Area -->
 	                            <div class="col-12 col-sm-6 col-lg-4">
 	                                <div class="single-product-area mb-50">
 	                                    <!-- Product Image -->
 	                                    <div class="product-img">
-	                                        <a href="goods-details.html"><img src="img/bg-img/goods_1.jpg" alt=""></a>
+	                                        <a href="goods-details.html"><img src="img/bg-img/${goods.goods_repre_pic}" alt=""></a>
 	                                    
 	                                        <!-- Product Tag
 	                                        <div class="product-tag">
 	                                            <a href="#">Hot</a>
 	                                        </div> -->
-		                                    <!-- Product Info -->
-		                                    <div class="product-info mt-15 text-center">
-		                                        <p>${goods.creator_name}</p>
-		                                        <a href="goods-details.html">
-		                                            <p>${goods.goods_name}</p>
-		                                        </a>
-		                                        <h6>${goods.goods_price}</h6>
-		                                    </div>	         
-	                                                                   
 	                                        <div class="product-meta d-flex">
 	                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
 	                                            <a href="cart.html" class="add-to-cart-btn">장바구니에 담기</a>
 	                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
 	                                        </div>
-	                                    </div>
-	                                    
-	                                    
+	                                     </div>   
+		                                    <!-- Product Info -->
+		                                    <div class="product-info mt-15">
+		                                        <p style="margin-bottom:5px;">${goods.creator_name}</p>
+		                                        <a href="goods-details.html">
+		                                            <p style="color:#545454;font-weight:500;">${goods.goods_name}</p>
+		                                        </a>
+		                                        <h6><strong>${goods.goods_price}</strong> 원</h6>
+		                                    </div>	                                    
+	                                    </div>                         
 	                                </div>
-	                            </div>
-                            </c:forEach>
 
+                            </c:forEach>
+                            
+                            
+						</div>
 
                         </div>
 
                         <!-- Pagination -->
+
                         <nav aria-label="Page navigation">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                            <ul class="pagination" >
+                            	<c:forEach begin="1" end="${goods.totalPageCount}" var="i">
+                            		 <li class="page-item">
+                            		 	<a class="page-link" href="goods_list.do?cp=${i}" style="border-radius:0;">
+                            		 		<c:choose>
+                            		 			<c:when test="${i==goods.cp}">
+                            		 				<span style="color:black">${i}</span>
+                            		 			</c:when>
+                            		 			<c:otherwise>
+                            		 				${i}
+                            		 			</c:otherwise>
+                            		 		</c:choose>
+                            			</a>
+                            		</li>       		
+                            	</c:forEach>
+                              <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>  
                             </ul>
                         </nav>
                     </div>
