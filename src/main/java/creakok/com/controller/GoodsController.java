@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Goods;
@@ -84,6 +87,66 @@ public class GoodsController {
 		mv.setViewName("goods");
 		mv.addObject("gCategory", gCategory);
 		mv.addObject("goods", list);
+		
+		return mv;
+	}
+	
+	@ResponseBody
+	@PostMapping("gCategory_Sorting")
+	public ModelAndView gCategory_Sorting(@RequestBody long gCode, HttpServletRequest request, HttpSession session){
+		String cpStr = request.getParameter("cp");
+		String psStr = request.getParameter("ps");
+	
+		//(1) cp 
+		int cp = 1;
+		if(cpStr == null) {
+			Object cpObj = session.getAttribute("cp");
+			if(cpObj != null) {
+				cp = (Integer)cpObj;
+			}
+		}else {
+			cpStr = cpStr.trim();
+			cp = Integer.parseInt(cpStr);
+		}
+		session.setAttribute("cp", cp);
+		
+		//(2) ps 
+		int ps = 3;
+		if(psStr == null) {
+			Object psObj = session.getAttribute("ps");
+			if(psObj != null) {
+				ps = (Integer)psObj;
+			}
+		}else {
+			psStr = psStr.trim();
+			int psParam = Integer.parseInt(psStr);
+			
+			Object psObj = session.getAttribute("ps");
+			if(psObj != null) {
+				int psSession = (Integer)psObj;
+				if(psSession != psParam) {
+					cp = 1;
+					session.setAttribute("cp", cp);
+				}
+			}else {
+				if(ps != psParam) {
+					cp = 1;
+					session.setAttribute("cp", cp);
+				}
+			}
+			
+			ps = psParam;
+		}
+		session.setAttribute("ps", ps);
+		log.info("####################gCategory_Sorting gCode: "+gCode);
+
+		GoodsVo goodsVo = categoryService.getGoodsVo(cp, ps, gCode);
+		
+		
+	
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("goods");
+		mv.addObject("goods", goodsVo);
 		
 		return mv;
 	}

@@ -17,13 +17,15 @@ public class GoodsVo {
    private int ps;
    private List<Goods> list;
    private long totalPageCount;
+   private long gCode;
 
-   public GoodsVo(int cp, long totalCount, int ps, List<Goods> list) {
+   public GoodsVo(int cp, long totalCount, int ps, List<Goods> list, long gCode) {
       this.cp = cp;
       this.totalCount = totalCount;
       this.ps = ps;
       this.list = list;
       this.totalPageCount = calTotalPageCount();
+      this.gCode = gCode;
    }
    private long calTotalPageCount() {
       long tpc = totalCount/ps; 

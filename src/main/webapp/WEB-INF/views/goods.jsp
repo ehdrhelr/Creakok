@@ -270,10 +270,11 @@
                         <div class="search_by_terms">
                             <form action="#" method="post" class="form-inline">
                                 <select class="custom-select widget-title">
-                                  <option selected>Short by Popularity</option>
-                                  <option value="1">Short by Newest</option>
-                                  <option value="2">Short by Sales</option>
-                                  <option value="3">Short by Ratings</option>
+                                  <option selected>판매인기순</option>
+                                  <option value="1">좋아요순</option>
+                                  <option value="2">리뷰많은순</option>
+                                  <option value="3">낮은가격순</option>
+                                  <option value="3">높은가격순</option>
                                 </select>
                                 
                                 <select id="psId" name="ps" class="custom-select widget-title" onchange="f(this)">
@@ -328,7 +329,7 @@
                                         <span class="ui-slider-handle ui-state-default ui-corner-all first-handle" tabindex="0"></span>
                                         <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                     </div>
-                                    <div class="range-price">Price: $8 - $30</div>
+                                    <div class="range-price">0원 - 30000원</div>
                                 </div>
                             </div>
                         </div>
@@ -343,7 +344,7 @@
                               	 <div class="widget-desc">
 	                              	 <c:forEach items="${gCategory}" var="gCategory">
 		                                <div class="custom-checkbox d-flex align-items-center mb-2" class="custom-control-input" id="customCheck">
-		                                    <input type="checkbox" value="${gCategory.goods_category_code}" name="category" onclick="doOpenCheck(this);" style="margin-right:5px;">${gCategory.goods_category_name}
+		                                    <input type="checkbox" value="${gCategory.goods_category_code}" id="category" name="category" onclick="doOpenCheck(this);" style="margin-right:5px;">${gCategory.goods_category_name}
 		                               	</div>    
 	                               </c:forEach>  
 	                             </div>                      	
@@ -358,8 +359,32 @@
 	                                    obj[i].checked = false;
 	                                }
 	                            }
+	                            let value = 0;
+	                            $('#category:checked').each(function() {
+	                            	value = $(this).val();
+	                            	console.log("hcbae:"+value);
+	                           	});
+
+	                            //var obj = new Object();
+								//var obj = $("#category").val();
+								var jsonData = JSON.stringify(value);
+								//alert("jsonData:"+jsonData);
+								
+								$.ajax({ //  $.ajax({ JS 객체 }); 
+									 url: "gCategory_Sorting.json", //.json : json타입으로 받겠다
+									 type: "POST",
+									 dataType: "json",
+									 contentType: "application/json", //★★ 요놈 절대 빼먹으면안됨
+									 data: jsonData, //★★
+									 success: function(responseData){
+										//alert("jsonData: "+jsonData);
+										$("#goods_area").empty();
+										//$("#goods_area").html(responseData);
+										
+									}
+								});
 	                        }
-                      </script>
+					</script>
 
 
                         <!-- Shop Widget
@@ -461,7 +486,7 @@
                 
 
                 <!-- All Products Area -->
-                <div class="col-12 col-md-8 col-lg-9">
+                <div class="col-12 col-md-8 col-lg-9"  id="goods_area">
                     <div class="shop-products-area">
                         <div class="row">
                         
