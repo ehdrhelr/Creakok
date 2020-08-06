@@ -15,4 +15,5 @@ public interface FundingMapper {
 	//void update(Funding funding);
 	//void remove(long funding_index);
 	List<Funding_category> getFunding_category();
+	String selectPerPageCategory(Funding funding);
 }

@@ -8,7 +8,7 @@ import creakok.com.vo.FundingVo;
 
 
 public interface FundingService {
-	FundingVo getFundingVo(int currentPage, int pageSize);
+	FundingVo getFundingVo(int currentPage, int pageSize, String filterBy, String categoryBy);
 	Funding getFunding(long funding_index);
 	FundingVo getFundingVoByFilter(String filter, int currentPage, int pageSize);
 	FundingVo getFundingVoByKeyword(String keyword, int currentPage, int pageSize);
@@ -16,5 +16,6 @@ public interface FundingService {
 	void edit(Funding funding);
 	void remove(long funding_index);
 	List<Funding_category> getFunding_category();
+	//List<Funding> selectPerPageCategory(Funding funding);
 	
 }

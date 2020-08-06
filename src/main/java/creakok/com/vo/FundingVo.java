@@ -10,16 +10,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FundingVo {
 	String keyword;
+	String filterBy;
+	String categoryBy;
 	private int currentPage;
 	private long totalCount;
 	private int pageSize;
 	private List<Funding> list;
 	private long totalPageCount;
 
-	public FundingVo(int currentPage, long totalCount, int pageSize, List<Funding> list) {
+	public FundingVo(int currentPage, long totalCount, int pageSize, String filterBy, String categoryBy, List<Funding> list) {
 		this.currentPage = currentPage;
 		this.totalCount = totalCount;
 		this.pageSize = pageSize;
+		this.filterBy = filterBy;
+		this.categoryBy = categoryBy;
 		this.list = list;
 		this.totalPageCount = calTotalPageCount();
 	}

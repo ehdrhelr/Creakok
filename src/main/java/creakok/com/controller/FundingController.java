@@ -34,7 +34,10 @@ public class FundingController {
 	public ModelAndView list(HttpServletRequest request, HttpSession session) {
 		String cpStr = request.getParameter("cp");
 	    String psStr = request.getParameter("ps");
-	  //(2) cp 
+	    String filterBy = request.getParameter("filterBy");
+	    String categoryBy = request.getParameter("cb");
+	  
+	    //(2) cp 
 	    int cp = 1;
 		if(cpStr == null) {
 			Object cpObj = session.getAttribute("cp");
@@ -70,17 +73,35 @@ public class FundingController {
 					cp = 1;
 					session.setAttribute("cp", cp);
 				}
-			}
-			
+			}		
 			ps = psParam;
 		}
-		session.setAttribute("ps", ps);
+		session.setAttribute("pageSize", ps);
+		log.info("###########"+ps); 
+		
+		
+			if(filterBy==null) {
+				Object filterByObj = session.getAttribute("filterBy");
+				if(filterByObj != null) {
+					filterBy = (String)filterByObj;
+				}else {
+					filterBy="FUNDING_LIKE_NUMBER";
+				}
+			}else {
+				filterBy = filterBy.trim();
+			}
+			log.info("###########"+filterBy);
+			session.setAttribute("filterBy", filterBy);
+		
+		
+		
 		//(3) ModelAndView
-		FundingVo fundingVo = service.getFundingVo(cp, ps);
+		FundingVo fundingVo = service.getFundingVo(cp, ps, filterBy, categoryBy);
+		
 		List<Funding_category> list_funding_category = service.getFunding_category();
-			session.setAttribute("list_funding_category", list_funding_category);
+		session.setAttribute("list_funding_category", list_funding_category);
 			
-		ModelAndView mv = new ModelAndView("/funding", "FundingVo", fundingVo);
+		ModelAndView mv = new ModelAndView("/funding", "fundingVo", fundingVo);
 		if(fundingVo.getList().size() ==0 ) {
 			if(cp>1) {
 				return new ModelAndView("redirect:list.do?cp="+(cp-1));
@@ -90,4 +111,6 @@ public class FundingController {
 		}
 	     return mv;
 	}
+		
 }
+	
