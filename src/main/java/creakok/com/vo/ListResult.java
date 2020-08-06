@@ -1,6 +1,7 @@
 package creakok.com.vo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import creakok.com.domain.Board;
 
@@ -8,12 +9,11 @@ public class ListResult {
 	private int currentPage;
 	private long totalCount;
 	private int pageSize;
-	private ArrayList<Board> list;
+	private List<Board> list;
 	private long totalPageCount;
 	
 	public ListResult() {}
-
-	public ListResult(int currentPage, long totalCount, int pageSize, ArrayList<Board> list, long totalPageCount) {
+	public ListResult(int currentPage, long totalCount, int pageSize, List<Board> list) {
 		this.currentPage = currentPage;
 		this.totalCount = totalCount;
 		this.pageSize = pageSize;
@@ -51,7 +51,7 @@ public class ListResult {
 		this.pageSize = pageSize;
 	}
 
-	public ArrayList<Board> getList() {
+	public List<Board> getList() {
 		return list;
 	}
 

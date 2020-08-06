@@ -5,8 +5,7 @@
 
 <head>
   <!-- BOTO TEST -->
-    
-    
+
 	<meta name="description" content="Boto Photo Studio HTML Template">
 	<meta name="keywords" content="photo, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -140,7 +139,7 @@
                                 <ul>
                                     <li><a href="funding">FUNDING</a></li>
                                     <li><a href="goods.jsp">GOODS</a></li>
-                                    <li><a href="board_list.do">COMMUNITY</a>
+                                    <li><a href="board_page?cp=1&ps=15">COMMUNITY</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html" >Home</a></li>
                                             <li><a href="about.html">About</a></li>

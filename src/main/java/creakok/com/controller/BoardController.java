@@ -3,7 +3,6 @@ package creakok.com.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,66 +10,130 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Board;
 import creakok.com.service.BoardService;
 import creakok.com.vo.ListResult;
-import creakok.com.vo.PagingBoardVo;
 
 @Controller
 public class BoardController {
 	@Autowired
 	private BoardService service;
 	
-	@RequestMapping("board_list.do")
-	public ModelAndView list(PagingBoardVo pagingBoardVo) {
-		
-		List<Board> list = service.selectPerPageS(pagingBoardVo);
-		long totalCount = service.selectCountS();
-		pagingBoardVo.setTotal(totalCount);
-		
-		ModelAndView mv = new ModelAndView("community");
-		mv.addObject("list", list);
-		mv.addObject("p", pagingBoardVo);
-		
-		return mv;
-	}
-	
-
-	private void review(HttpServletRequest request, HttpServletResponse response) 
-	         throws ServletException, IOException {
+	@RequestMapping("board_page")
+	public ModelAndView getListResult(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cpStr = request.getParameter("cp");
-		HttpSession session = request.getSession();
-		System.out.println(cpStr);
+		String psStr = request.getParameter("ps");
+		HttpSession session = request.getSession();		
+		
+		//(1) cp 
 		int cp = 1;
 		if(cpStr == null) {
 			Object cpObj = session.getAttribute("cp");
 			if(cpObj != null) {
 				cp = (Integer)cpObj;
 			}
-		} else {
+		}else {
 			cpStr = cpStr.trim();
 			cp = Integer.parseInt(cpStr);
 		}
 		session.setAttribute("cp", cp);
 		
-		int ps = 5;
+		//(2) ps 
+		int ps = 3;
+		if(psStr == null) {
+			Object psObj = session.getAttribute("ps");
+			if(psObj != null) {
+				ps = (Integer)psObj;
+			}
+		}else {
+			psStr = psStr.trim();
+			int psParam = Integer.parseInt(psStr);
+			
+			Object psObj = session.getAttribute("ps");
+			if(psObj != null) {
+				int psSession = (Integer)psObj;
+				if(psSession != psParam) {
+					cp = 1;
+					session.setAttribute("cp", cp);
+				}
+			}else {
+				if(ps != psParam) {
+					cp = 1;
+					session.setAttribute("cp", cp);
+				}
+			}
+			
+			ps = psParam;
+		}
 		session.setAttribute("ps", ps);
 		
-		ReviewService service = ReviewService.getInstance();
-		ListResult listResult = service.getListResult(cp, ps);
-		request.setAttribute("listResult", listResult);
-		int size = listResult.getList().size();
-		if(size == 0 && cp>1) {
-			response.sendRedirect("review.kas?m=review&cp="+(cp-1));
-		}else {
-			String view = "review.jsp";
-			RequestDispatcher rd = request.getRequestDispatcher(view);
-			rd.forward(request, response); 
-		}
+		
+		ListResult listResult = service.getListResultS(cp, ps);
+		ModelAndView mv  = new ModelAndView();
+		mv.setViewName("community");
+		mv.addObject("listResult", listResult);
+		return mv;
 	}
-
+	
+	@RequestMapping("board_content")
+	public ModelAndView content(@RequestParam long board_index) {
+		Board board = service.contentS(board_index);
+		
+		return new ModelAndView("community_board_content", "board", board);
+	}
+	
+	@GetMapping("board_write")
+	public String boardWrite() {
+	  return "board_write";
+	}
+	
+	@GetMapping("board_insert")
+	public String insert() {
+		
+		return "community_board_insert";
+	}
+	
+	@PostMapping("board_insert")
+	public String insert(Board board) {
+		
+		service.insertS(board);
+		return "redirect:board_page";	
+	}
+	
+	@GetMapping("board_update")
+	public ModelAndView update(long board_index) {
+		Board board = service.getBoard(board_index);
+		ModelAndView mv = new ModelAndView("community_board_update", "board", board);
+				
+		return mv;
+	}
+	
+	@PostMapping("board_update")
+	public String update(Board board) {
+		service.edit(board);
+		return "redirect:board_page";
+	}
+	
+	
+	// for Ajax °Ë»ö 
+	
+	@GetMapping("board_search01")
+	public @ResponseBody List<Board> search01(String board_subject) {
+		List<Board> list = service.selectBySubjectS(board_subject);
+		return list; // xml, json
+	}
+	
+	@PostMapping("board_search02")
+	public @ResponseBody List<Board> search02(String member_name) {
+		List<Board> list = service.selectByNameS(member_name);
+		return list; // xml, json
+	}
 
 }

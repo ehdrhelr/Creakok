@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import creakok.com.domain.Board;
 import creakok.com.mapper.DarkKnightBoardMapper;
-import creakok.com.vo.PagingBoardVo;
+import creakok.com.vo.ListResult;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
@@ -15,16 +15,43 @@ import lombok.extern.log4j.Log4j;
 public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private DarkKnightBoardMapper mapper;
+	
 	@Override
-	public List<Board> selectPerPageS(PagingBoardVo pagingBoardVo) {
-		return mapper.selectPerPage(pagingBoardVo);
+	public ListResult getListResultS(int currentPage, int pageSize) {
+		List<Board> list = (List<Board>)mapper.getListResult(currentPage, pageSize);
+		int count = mapper.count();
+		return new ListResult(currentPage, count, pageSize, list);
 	}
+	
 	@Override
-	public long selectCountS() {
-		return mapper.selectCount();
+	public Board contentS(long board_index) {
+		Board board = mapper.content(board_index);
+		return board;
 	}
+	
 	@Override
-	public Board selectBySeqS(long index) {
-		return mapper.selectBySeq(index);
+	public void insertS(Board board) {
+		mapper.insert(board);
+	}
+	
+	@Override
+	public Board getBoard(long board_index) {
+		return mapper.selectByIndex(board_index);
+	}
+	
+
+	// for Ajax
+	public List<Board> selectBySubjectS(String board_subject) {
+		return mapper.selectBySubject(board_subject);
+	}
+	
+	public List<Board> selectByNameS(String member_name) {
+		return mapper.selectByName(member_name);
+	}
+
+	@Override
+	public void edit(Board board) {
+		mapper.update(board);
+		
 	}
 }

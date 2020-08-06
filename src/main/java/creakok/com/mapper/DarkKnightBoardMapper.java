@@ -2,20 +2,20 @@ package creakok.com.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import creakok.com.domain.Board;
-import creakok.com.vo.PagingBoardVo;
 
 public interface DarkKnightBoardMapper {
-	List<Board> selectPerPage(PagingBoardVo pagingBoardVo);
-	long selectCount();
-	Board selectBySeq(long index);
+	List<Board> getListResult(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize);
+	int count();
+	Board content(long board_index);
 	void insert(Board board);
 	
-	/*
-	void insertF(Board board);
-	void insert1(Files files);
-	List<String> selectFiles(long seq);
+	Board selectByIndex(long board_index);
+	void update(Board board);
 	
-	List<Board> selectByName(String writer);
-	*/
+	// for Ajax
+	List<Board> selectBySubject(String board_subject);
+	List<Board> selectByName(String member_name);
 }

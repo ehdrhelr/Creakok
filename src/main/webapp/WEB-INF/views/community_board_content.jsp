@@ -227,340 +227,55 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-<!-- ##### Hero Area Start ##### -->
-    <section class="hero-area">     
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post bg-overlay">
-                <!-- Post Image -->
-				<div class="slide-img bg-img" style="background-image: url(img/bg-img/dark_thumb.jpeg);"></div>
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12">
-                            <!-- Post Content -->
-                            <div class="hero-slides-content text-center">
-								 <!-- ##### Testimonial Area Start ##### -->
-									<section class="testimonial-area section-padding-100">
-										<div class="container">
-											<div class="row">
-												<div class="col-12">
-														<!-- Single Testimonial Slide -->
-														<div class="single-testimonial-slide">
-															<div class="row align-items-center">
-																<div class="col-12 col-md-6">
-																	<div class="testimonial-thumb" style="margin-left:5px">
-																		<img src="img/bg-img/dark_face.jpg" alt="">
-																	</div>
-																</div>
-																<div class="col-12 col-md-6">
-																	<div class="testimonial-content">
-																		<!-- Section Heading -->
-																		<div class="section-heading">
-																			<h2>DARK KNIGHT</h2>
-																			<p> </p>
-																			<p>Why so serious?</p>
-																		</div>
-																		<p> </p>
-																		<div class="testimonial-author-info">
-																			 <div class="welcome-btn-group" style="padding:5px">
-																				 <img src="img/bg-img/youtube.png" alt="">
-																				 <img src="img/bg-img/insta.png" alt="">
-																				 
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>       
-												</div>
-											</div>
-										</div>
-									</section>
-									<!-- ##### Testimonial Area End ##### -->
-                                <div class="welcome-btn-group">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-       
-    </section>
-    <!-- ##### Hero Area End ##### -->
-
-	<!-- ##### Blog Area Start ##### -->
-    <section class="alazea-blog-area section-padding-100-0" style="align:center">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Section Heading -->
-                    <div class="section-heading text-center">
-                        <h2>다크나이트의 컨텐츠</h2>
-                        <p>다양한 컨텐츠를 확인해보세요!</p>
-                    </div>
-                </div>
-            </div>
-
-   
-            <div class="row justify-content-center">
-			
-                <!-- Single Blog Post Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-blog-post mb-100">
-						<div class="embed-responsive embed-responsive-16by9" style="width:350px; height:200px;">
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/mMXCy0eKu7Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-						</div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-blog-post mb-100">
-                         <div class="embed-responsive embed-responsive-16by9" style="width:350px; height:200px;">
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/tU5RYxK8yvA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-						</div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-blog-post mb-100">
-                         <div class="embed-responsive embed-responsive-16by9" style="width:350px; height:200px;">
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/3GqFW36Zz4w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-						</div>       
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- ##### Blog Area End ##### -->
-
-	 <!-- ##### About Area Start ##### -->
-    <section class="about-us-area">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-12 col-lg-5">
-                    <!-- Section Heading -->
-                    <div class="section-heading">
-                        <h2>이런 컨텐츠 어때요?</h2>
-                        <p>다크나이트가 만들어주었으면 하는 컨텐츠를 직접 투표해주세요!</p>
-                    </div>
-
-                    <!-- Progress Bar Content Area -->
-                    <div class="alazea-progress-bar mb-50">
-                        <!-- Single Progress Bar -->
-                        <div class="single_progress_bar">
-                            <p>어벤져스 촬영장 방문하기</p>
-                            <div id="bar1" class="barfiller">
-                                <div class="tipWrap">
-                                    <span class="tip"></span>
-                                </div>
-                                <span class="fill" data-percentage="80"></span>
-								
-                            </div>
-							
-                        </div>
-
-                        <!-- Single Progress Bar -->
-                        <div class="single_progress_bar">
-                            <p>고담 썰 풀기</p>
-                            <div id="bar2" class="barfiller">
-                                <div class="tipWrap">
-                                    <span class="tip"></span>
-                                </div>
-                                <span class="fill" data-percentage="70"></span>
-                            </div>
-                        </div>
-
-                        <!-- Single Progress Bar -->
-                        <div class="single_progress_bar">
-                            <p>조커랑 합방하기</p>
-                            <div id="bar3" class="barfiller">
-                                <div class="tipWrap">
-                                    <span class="tip"></span>
-                                </div>
-                                <span class="fill" data-percentage="85"></span>
-                            </div>
-                        </div>
-              
-                    </div>
-                </div>
-				
-				  <div class="col-12 col-lg-6">
-                    <div class="alazea-benefits-area">
-                        <div class="row">
-                            <!-- Single Benefits Area -->
-                            <div class="col-12 col-sm-6" style="margin-left:130px">
-                                <div class="single-benefits-area">
-                                    <img src="img/core-img/like.png" alt="">
-
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-          
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="border-line"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### About Area End ##### -->
-	<!--크리에이터띠 싱단 배너-->
-   <section class="subscribe-newsletter-area" style="background-image:linear-gradient(90deg,#fc5230 10%,#2da498 100%);">
-        <div class="container">
-             <!-- Section Heading -->
-			<div class="section-heading text-center">
-				<h2 style="color:white; ">소통하는 사회, 크리콕!</h2>
-				<p style="color:white">자유게시판에서 팬들과 함께 소통해요</p>
-				<p class="crowdy-btn-introduction" >
-				<a href="#"style="color:white; text-align:center">자세히 알아보기</a>
-				</p>
-			</div>
-        </div>
-               
-        <style>
-                .crowdy-btn-introduction {
-                display: inline-block;
-                border: rgba(255,255,255,.16);
-                background-color: rgba(255,255,255,.16);
-                text-align: center;
-                color: #fff;
-                padding: 0 21px;
-                margin-top: 18px;
-                height: 35px;
-                border-radius: 3px;
-                font-size: 16px;
-                line-height: 2.1;
-                letter-spacing: -.5px;
-                }
-        </style>
-        <!-- Subscribe Side Thumbnail -->
-        <div class="subscribe-side-thumb wow fadeInUp" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInUp;">
-          
-        </div>
-       
-    </section>
 	<!-- 게시판 영역 start -->
-
 	<nav class="page-nav">
 		<div class="inner">
 			<ul>
-				<li class="current"><a href="#">자유게시판</a></li>
+				<li class="current"><a href="#">글 작성하기</a></li>
 			</ul>
 		</div>
 	</nav>
-	<div class="container">
-			<div class="r_list">
-				<div class="choose">
-					<form action="board_search01" name="check_into"
-						method="post">  
-						<ul class="clearfix">
-							<li><span>분류 : </span> 
-							<select name="c_code" id="store_code" onChange="text.value=c_code[selectedIndex].value" style='height:30px; margin-bottom:3px;'>
-									<option value="NAME">작성자</option>
-									<option value="TITLE">글제목</option>
-							</select>
-
-							<li>
-								<input type="text" name="searchName" style='height:30px; margin-bottom:3px;'
-									title="검색" required placeholder="Search" maxlength="20">
-								<button type="submit" style='height:30px;'>검색</button></li>
-						</ul>
-					</form>
-				</div>
-				<table>
-					<colgroup>
-						<col width="5%">
-						<col width="60%">
-						<col width="5%">
-						<col width="10%">
-						<col width="5%">
-						<col width="5%">
-					</colgroup>
-					<thead>
-						<tr>
-							<th> </th>
-					<!--	<th>EXHIBITION</th>	-->
-							<th>제목</th>
-							<th>작성자</th>
-							<th>날짜</th>
-							<th>조회</th>
-							<th>좋아요</th>
-						</tr>
-					</thead>
-					<tbody>
-						  <c:if test="${empty listResult.list}">
-				           <TR align='center' noshade>
-				                <TD colspan="6"> 게시글이 없습니다. </TD>
-				           </TR>
-				        </c:if>
-				        <c:forEach items="${listResult.list}" var="board">
-				         <TR align='center' noshade>
-				             <TD >${board.board_index}</TD>
-				             <TD align="left">
-				                 <a href="board_content?board_index=${board.board_index}">
-				                 ${board.board_subject}
-				                 </a>
-				             </TD>
-				             <TD>${board.member_name}</TD>
-				             <TD>${board.board_wdate}</TD>
-				             <TD>${board.board_view}</TD>
-				             <TD>${board.board_like}</TD>
-				          </TR> 
-				        </c:forEach>
-
+	<div class="r_list">
+		<div class="choose">
+				<table border="1" width="600" align="center" cellpadding="3" cellspacing="1">
+	              	<tbody>
+					<tr>
+						<td width="30%" align="center">작성자</td>
+						<td align="center"><input type="text" name="writer" size="60" style='background-color:#dbdbdb' readonly value="${board.member_name}"></td>
+					</tr>
+					<tr>
+						<td align="center">날짜</td>
+						<td align="center"><input type="text" name="email" size="60" value="${board.board_wdate}"></td>
+					</tr>
+					<tr>
+						<td align="center">글제목</td>
+						<td align="center"><input type="text" name="title" size="60" value="${board.board_subject}"></td>
+					</tr>
+					<tr>
+						<td align="center">글내용</td>
+						<td align="center"><textarea name="content" rows="5" cols="53" style="width:400px; height:250px;">${board.board_content}</textarea></td>
+					</tr>
+					<tr>
+						<td align="center">조회수</td>
+						<td align="center"><input type="text" name="title" size="60" value="${board.board_view}"></td>
+					</tr>
+					<tr>
+						<td align="center">좋아요</td>
+						<td align="center"><input type="text" name="title" size="60" value="${board.board_like}"></td>
+					</tr>
+					<tr>
+						<td colspan='2' align='center'>
+							<input type='button' value='수정하기' onclick='check()' style='background-color:black; color:white; width:70px; line-height:50%; padding:3px;'>
+							<a href='board_update?board_index=${board.board_index}'>수정</a>
+							<input type='reset' value='다시입력' style='background-color:black; color:white; width:70px;  line-height:50%; padding:3px;'>
+						</td>
+					</tr>
 					</tbody>
 				</table>
-	<td colspan="6">
-            <hr width="600" color="Maroon" size="2" noshade>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3" align="center">
-             <a href="board_page?">
-                                ◀이전
-             </a>
-             |
-            <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                <a href="board_page?cp=${i}">
-                <c:choose> 
-                <c:when test="${i==listResult.currentPage}" >
-                    <strong>${i}</strong>
-                </c:when>
-                <c:otherwise>
-                    ${i}
-                </c:otherwise>
-                </c:choose>
-            </a>
-            &nbsp;
-            </c:forEach> 
-
-            |
-
-            <a href="board_page">
-            이후▶
-            </a>
-
-             &nbsp;&nbsp;&nbsp; 
-            ${listResult.currentPage}page/${listResult.totalPageCount}pages
-          </td>
-          <td colspan="2" align="center">
-            총 게시물 수 : ${listResult.totalCount}
-          </td>
-        </tr>
-        <button type="button" class="searchBtn">
-				<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' href="board_write">글쓰기</a></button>
+					<br>
 		</div>
-   </div>
+	</div>
+
    <!-- 게시판 영역 end -->
 
   <!-- Footer Bottom Area -->
@@ -603,3 +318,4 @@
 </body>
 
 </html>
+
