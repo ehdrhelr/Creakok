@@ -1,6 +1,9 @@
 package creakok.com.service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,17 +24,18 @@ public class FundingServiceImpl implements FundingService {
 	public FundingVo getFundingVo(int currentPage, int pageSize, String filterBy, String categoryBy) {
 		long totalCount = fundingMapper.selectCount();
 		
-		FundingVo fundingVo = new FundingVo(currentPage, totalCount, pageSize, filterBy, categoryBy, null);
-		
+		FundingVo fundingVo = new FundingVo(currentPage, totalCount, pageSize, filterBy, categoryBy, null, null);
+		Set<String> listCategoryUsed = new TreeSet<String>();
 		List<Funding> list = fundingMapper.selectPerPage(fundingVo);
 		for(Funding funding : list) {
 			funding.setFunding_category_name(fundingMapper.selectPerPageCategory(funding));
+			listCategoryUsed.add(fundingMapper.selectPerPageCategory(funding));
 			funding.setPercentage(100.0*funding.getFunding_amount()/funding.getFunding_goal());
 			funding.setRestdays((funding.getFunding_edate().getTime()-funding.getFunding_wdate().getTime())/(1000*60*60*24));
 		}	
 	
 		
-		return new FundingVo(currentPage, totalCount, pageSize, filterBy, categoryBy, list);
+		return new FundingVo(currentPage, totalCount, pageSize, filterBy, categoryBy, list, listCategoryUsed);
 	}
 	
 	@Override
@@ -75,6 +79,8 @@ public class FundingServiceImpl implements FundingService {
 		List<Funding_category> list = fundingMapper.getFunding_category();
 		return list;
 	}
+
+	
 
 
 

@@ -5,7 +5,7 @@
 <mapper namespace="creakok.com.mapper.FundingMapper">
 	<select id="selectPerPage" parameterType="FundingVo" resultType="Funding">
         <![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    (select * from FUNDING order by ${filterBy} desc) aa) 
+    (select * from FUNDING where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} desc) aa) 
     where rnum>${startRow} and rnum<=${endRow}]]>
     </select>
     <!--    (select * from FUNDING where #{FUNDING_CATEGORY_CODE}=${} order by #{filterBy} desc) aa)  -->

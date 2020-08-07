@@ -1,6 +1,7 @@
 package creakok.com.vo;
 
 import java.util.List;
+import java.util.Set;
 
 import creakok.com.domain.Funding;
 import lombok.Data;
@@ -17,8 +18,9 @@ public class FundingVo {
 	private int pageSize;
 	private List<Funding> list;
 	private long totalPageCount;
+	private Set<String> listCategoryUsed;
 
-	public FundingVo(int currentPage, long totalCount, int pageSize, String filterBy, String categoryBy, List<Funding> list) {
+	public FundingVo(int currentPage, long totalCount, int pageSize, String filterBy, String categoryBy, List<Funding> list, Set<String> listCategoryUsed) {
 		this.currentPage = currentPage;
 		this.totalCount = totalCount;
 		this.pageSize = pageSize;
@@ -26,6 +28,7 @@ public class FundingVo {
 		this.categoryBy = categoryBy;
 		this.list = list;
 		this.totalPageCount = calTotalPageCount();
+		this.listCategoryUsed = listCategoryUsed;
 	}
 	private long calTotalPageCount() {
 		long tpc = totalCount/pageSize; 
