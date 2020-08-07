@@ -292,6 +292,28 @@
                         <p>수정할 내용을 어떻게 수정할 지 고민해보고 추가하자.</p>
                         </div>   
                     </div>
+                    
+                    <div class="hcbae-member-modify-area">
+                        <h3>회원탈퇴</h3>
+                        <span class="hcbae-member-modify-button">
+                        <input class="btn" type="button" data-target="#secession-area" data-toggle="collapse" value="수정" onclick="changeButtonText(this)">
+                        </span>
+                        
+                        <div id="secession-area" class="collapse">
+                            <p>CREAKOK을 탈퇴하시겠습니까? (굳이? ㅠㅠ)</p>
+                        
+                            <div class="hcbae-member-modify-input">
+                              <label>현재 비밀번호를 입력해주세요.</label><br>
+                              <input type="password" id="secessionPassword" placeholder="현재 비밀번호" onKeyUp="checkSecession('${member.member_email}')">
+                              <label id="checkSecessionResult"></label>
+                            </div>
+                            
+                            <span>
+                            <input class="btn" type="button" value="탈퇴하기" onclick="secessionPassword('${member.member_email}')">
+                            </span>              
+                        </div>                           
+                    </div>
+                    
                 </div>
             </div> <!--My Page Tabs Contents-->
         </div>

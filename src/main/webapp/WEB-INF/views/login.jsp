@@ -319,7 +319,7 @@
           <label for="password" class="SignIn__HiddenLabel-sc-9xfg6a-0 gqtUOr">비밀번호</label>
           <input type="password" name="member_password"  id="password" aria-label="비밀번호" placeholder="비밀번호 입력" autocomplete="current-password" required="" autocapitalize="off" autocorrect="off" spellcheck="off" name="password" class="Input-sc-1x48dls-0 iWoXIb" value="">
           <button type="submit" label="로그인하기" class="Button-sc-1x93b2b-0 ijDFDl" style="margin: 20px 0px; height: 45px;">로그인</button>
-          <a class="SignIn__StyledLink-sc-9xfg6a-1 bKTrQD" style="color:#fc5230" href="/join?redirection=%2F">
+          <a class="SignIn__StyledLink-sc-9xfg6a-1 bKTrQD" style="color:#fc5230" href="/member_join.do">
             <span style="color: rgb(117, 117, 117);">아직 계정이 없으신가요?</span>
                         크리콕 가입하기
           </a>
