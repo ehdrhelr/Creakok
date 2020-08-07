@@ -265,9 +265,9 @@
 					</tr>
 					<tr>
 						<td colspan='2' align='center'>
-							<input type='button' value='수정하기' onclick='check()' style='background-color:black; color:white; width:70px; line-height:50%; padding:3px;'>
-							<a href='board_update?board_index=${board.board_index}'>수정</a>
-							<input type='reset' value='다시입력' style='background-color:black; color:white; width:70px;  line-height:50%; padding:3px;'>
+						
+							<a href='board_like?board_index=${board.board_index}' style='background-color:black; color:white; width:70px; line-height:50%; padding:3px;'>조하여</a>
+					
 						</td>
 					</tr>
 					</tbody>

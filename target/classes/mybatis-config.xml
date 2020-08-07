@@ -6,6 +6,7 @@
    <typeAliases>
 		<typeAlias alias="Board" type="creakok.com.domain.Board"/>
 		<typeAlias alias="PagingBoardVo" type="creakok.com.vo.PagingBoardVo"/>
+		<typeAlias alias="Creator" type="creakok.com.domain.Creator"/>
    	   <!-- Address라고만 쓰면 jh.md.domain.Address에 접근하게 alias를 설정해준다! -->
    </typeAliases>
    <mappers>

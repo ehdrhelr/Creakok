@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import creakok.com.domain.Board;
+import creakok.com.domain.Creator;
 import creakok.com.mapper.DarkKnightBoardMapper;
 import creakok.com.vo.ListResult;
 import lombok.extern.log4j.Log4j;
@@ -35,11 +36,29 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
+	public int insertBoard(Board board) {
+		return mapper.insertBoard(board);
+	}
+	
+	@Override
 	public Board getBoard(long board_index) {
 		return mapper.selectByIndex(board_index);
 	}
 	
-
+	@Override
+	public boolean plusView(long board_index) {
+		return mapper.plusView(board_index);
+	}
+	
+	@Override
+	public boolean plusLike(long board_index) {
+		return mapper.plusLike(board_index);
+	}
+	
+	@Override
+	public List<Creator> getCreatorName() {
+		return mapper.getCreatorName();
+	}
 	// for Ajax
 	public List<Board> selectBySubjectS(String board_subject) {
 		return mapper.selectBySubject(board_subject);

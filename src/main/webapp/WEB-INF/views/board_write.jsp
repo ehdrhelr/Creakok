@@ -5,38 +5,26 @@
 <html lang="en">
 
 <head>
-	<!-- include libraries(jQuery, bootstrap) -->
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-	<!-- include summernote css/js-->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
-	<!-- include summernote-ko-KR -->
-	<script src="/resources/js/summernote-ko-KR.js"></script>
+<script>
+function goWrite(frm) {
+	var board_subject = frm.board_subject.value;
+	var board_content = frm.board_content.value;
 	
-	<script>
-	$(document).ready(function() {
-		  $('#summernote').summernote({
-	 	    	placeholder: 'content',
-		        minHeight: 370,
-		        maxHeight: null,
-		        focus: true, 
-		        lang : 'ko-KR'
-		  });
-		});
-	</script>
+	if (board_subject.trim() == ''){
+		alert("제목을 입력해주세요");
+		return false;
+	}
+	if (board_content.trim() == ''){
+		alert("내용을 입력해주세요");
+		return false;
+	}
+	frm.submit();
+}
+</script>	
+	 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
-<!-- BOTO TEST -->
-	<meta name="description" content="Boto Photo Studio HTML Template">
-	<meta name="keywords" content="photo, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
-	<link rel="stylesheet" href="css/css_boto/slick.css"/>
 
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="css/css_boto/style.css"/>
@@ -55,41 +43,6 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Wadiz Css -->
-    <link rel="stylesheet" href="css/wadiz_css1.css">
-    <link rel="stylesheet" href="css/wadiz_css2.css">
-    <link rel="stylesheet" href="css/wadiz_css3.css">
-    <link rel="stylesheet" href="css/wadiz_css4.css">
-
-	<!-- for review -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
-    <link rel='stylesheet' id='content-css'  href='css/css_board/content.css' type='text/css' media='all' />
-   <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' />
-   <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-   <script src="js/js_board/jquery.form.min.js"></script>
-   <script src="js/js_board/jquery.validate.min.js"></script>
-   <script src="js/js_board/vue.min.js"></script>
-   <script src="js/js_board/jquery.cookie.js"></script>
-
-   <script src="js/js_board/moment.min.js"></script>
-   <script src="js/js_board/moment-timezone-with-data.min.js"></script>
-
-   <script src="js/js_board/vueComponent/vue-filter.js"></script>
-   <script src="js/js_board/app/App.js"></script>
-
-	<link href="css/css_board/reservation_page.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css"
-	href="timepicker/jquery.datetimepicker.css"/ >
-	<link rel="shortcut icon" href="bit_logo.png" />
-	<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="timepicker/jquery.js"></script>
-	<script src="timepicker/jquery.datetimepicker.full.min.js"></script>
-	<script src="js/js_board/login.js"></script>
 
     <style>
         .three {
@@ -106,18 +59,17 @@
     </style>
     
     <script language='javascript'>
-			   function check()
-			   {
-				   for(var i=0; i<document.input.elements.length; i++)
-				   {
-					  if(document.input.elements[i].value == '')
-					  {
-						 alert('모든 값을 입력 하셔야 합니다. ');
-						 return false;
-					  }
-				   }
-				   document.input.submit();
-			   }
+	   $(document).ready(function() {
+			//여기 아래 부분
+			$('#summernote').summernote({
+				  height: 300,                 // 에디터 높이
+				  minHeight: null,             // 최소 높이
+				  maxHeight: null,             // 최대 높이
+				  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+				  lang: "ko-KR",					// 한글 설정
+				  placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정        
+				});
+			});
 	</script>
 			
 	
@@ -263,6 +215,8 @@
                 </div>
             </div>
         </div>
+        
+   
     </header>
     <!-- ##### Header Area End ##### -->
 
@@ -277,17 +231,36 @@
 
 		<div class="r_list">
 			<div class="choose">
-                <h2 style="text-align: center;">글 작성</h2><br><br><br>
+                 <h2 style="text-align: center;">write</h2><br><br><br>
 
-				<div style="width: 60%; margin: auto;">
-					<form method="post" action="/write">
-						<input type="text" name="writer" style="width: 20%;" placeholder="작성자"/><br>
-						<input type="text" name="title" style="width: 40%;" placeholder="제목"/>
-						<br><br> 
-						<textarea id="summernote" name="content"></textarea>
-						<input id="subBtn" type="button" value="글 작성" style="float: right;" onclick="goWrite(this.form)"/>
-					</form>
-				</div>
+			<div style="width: 60%; margin: auto;">
+			 <h2 style="text-align: center;">글쓰기</h2>
+				<form method="post" action="board_write">
+					<input type="text" name="board_subject" style="width: 40%;" placeholder="제목"/>
+					<br><br> 
+					<textarea id="summernote" name="board_content"></textarea>
+					<input id="subBtn" type="button" value="글쓰기" style="float: right;" onclick="goWrite(this.form)"/>
+				</form>
+			</div>
+		    <script>
+		      $('#summernote').summernote({
+		        placeholder: '내용',
+		        tabsize: 2,
+		        height: 400,
+		        toolbar: [
+		          ['style', ['style']],
+		          ['font', ['bold', 'underline', 'clear']],
+		          ['color', ['color']],
+		          ['para', ['ul', 'ol', 'paragraph']],
+		          ['table', ['table']],
+		          ['insert', ['link', 'picture', 'video']],
+		          ['view', ['fullscreen', 'codeview', 'help']]
+		        ]
+		      }).text();
+		    </script>
+		    
+		    
+               	
 			</div>  
 		</div>
 	<!-- wrap -->
@@ -330,6 +303,9 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+    
+     
 </body>
 
 </html>

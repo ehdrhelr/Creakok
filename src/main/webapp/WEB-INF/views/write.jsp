@@ -1,38 +1,65 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>without bootstrap</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-  </head>
-  <body>
-    <div id="summernote"></div>
-    <script>
-      $('#summernote').summernote({
-        placeholder: 'Hello stand alone ui',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-          ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-      });
-      
-      $('#summernote').summernote({
-    	  height: 300,                 // set editor height
-    	  minHeight: null,             // set minimum height of editor
-    	  maxHeight: null,             // set maximum height of editor
-    	  focus: true                  // set focus to editable area after initializing summernote
-    	});
+<%@page import="java.sql.Connection"%>
+<%@page import="org.apache.catalina.connector.OutputBuffer"%>
+<%@page import="creakok.com.domain.Board"%>
 
-    </script>
-    
-    
-  </body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>    
+<!DOCTYPE html>
+<html>
+<head>
+<jsp:include page="Header.jsp"/>
+</head>
+<body>
+ 
+ 
+ 
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h2 class="text-center">게시글 쓰기</h2>
+        <form action="BoardWriterProc.jsp" method="post" \>
+          <table class="table table-striped">
+            <tr>
+                <td>작성자</td>
+                <td><input type="text"  class="form-control" name="writer"></td>
+            </tr>
+            <tr>
+                <td>제목</td>
+                <td><input type="text"  class="form-control" name="subject"></td>
+            </tr>          
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password"  class="form-control" name="password"></td>
+            </tr>
+             
+            <tr>
+                <td>글내용</td>
+                <td><textarea rows="10" cols="50" name="content" class="form-control"></textarea></td>
+            </tr>
+            <tr>
+                 
+                <td colspan="2"  class="text-center">
+                    <input type="submit" value="글쓰기" class="btn btn-success">
+                    <input type="reset" value="다시작성" class="btn btn-warning">
+                    <button type="button"  class="btn btn-primary">전체 게시글보기</button>
+                </td>
+            </tr>
+             
+          </table>
+        </form>
+    </div>
+</div>
+ 
+ 
+<script>
+//CKEDITOR 적용 
+CKEDITOR.replace('content', {
+         
+    width:'100%',
+    height:'350'
+         
+});
+ 
+</script>
+</body>
 </html>

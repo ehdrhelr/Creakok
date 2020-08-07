@@ -164,6 +164,9 @@
                                 <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                             </div>
 
+
+
+
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
@@ -171,7 +174,10 @@
                                     <li><a href="shop.html">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html" >Home</a></li>
+                                        	<c:forEach items="${creatorList}" var="creator">
+                                            <li><a href="index.html" >${creator.creator_name}</a></li>
+                                            </c:forEach>
+                                            <!--  
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="shop.html">Shop</a>
                                                 <ul class="dropdown">
@@ -181,6 +187,7 @@
                                                     <li><a href="checkout.html">Checkout</a></li>
                                                 </ul>
                                             </li>
+                                            
                                             <li><a href="portfolio.html">Portfolio</a>
                                                 <ul class="dropdown">
                                                     <li><a href="portfolio.html">Portfolio</a></li>
@@ -193,7 +200,9 @@
                                                     <li><a href="single-post.html">Blog Details</a></li>
                                                 </ul>
                                             </li>
+                                            
                                             <li><a href="contact.html">Contact</a></li>
+                                            -->
                                         </ul>
                                     </li>
                                     <li><a href="shop.html">ABOUT</a></li>
@@ -444,13 +453,14 @@
                 }
         </style>
         <!-- Subscribe Side Thumbnail -->
+        <a name="fix_point"></a>
         <div class="subscribe-side-thumb wow fadeInUp" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInUp;">
           
         </div>
        
     </section>
 	<!-- 게시판 영역 start -->
-
+	
 	<nav class="page-nav">
 		<div class="inner">
 			<ul>
@@ -459,6 +469,7 @@
 		</div>
 	</nav>
 	<div class="container">
+			
 			<div class="r_list">
 				<div class="choose">
 					<form action="board_search01" name="check_into"
@@ -521,7 +532,7 @@
 					</tbody>
 				</table>
 	<td colspan="6">
-            <hr width="600" color="Maroon" size="2" noshade>
+            <hr width="1120" color="white" size="2" noshade>
           </td>
         </tr>
         <tr>
@@ -531,7 +542,7 @@
              </a>
              |
             <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                <a href="board_page?cp=${i}">
+                <a href="board_page?cp=${i}#fix_point">
                 <c:choose> 
                 <c:when test="${i==listResult.currentPage}" >
                     <strong>${i}</strong>

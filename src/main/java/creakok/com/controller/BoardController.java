@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Board;
+import creakok.com.domain.Creator;
 import creakok.com.service.BoardService;
 import creakok.com.vo.ListResult;
 
@@ -79,19 +80,37 @@ public class BoardController {
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community");
 		mv.addObject("listResult", listResult);
+		
+		// 크리에이터 이름 얻기
+		List<Creator> creatorList = service.getCreatorName();
+		mv.addObject("creatorList", creatorList);
+		
 		return mv;
 	}
 	
 	@RequestMapping("board_content")
 	public ModelAndView content(@RequestParam long board_index) {
-		Board board = service.contentS(board_index);
+		//조회수 +1
+		service.plusView(board_index);
 		
+		Board board = service.contentS(board_index);
+	
 		return new ModelAndView("community_board_content", "board", board);
 	}
 	
+	@RequestMapping("board_like")
+	public ModelAndView like(@RequestParam long board_index) {
+		//좋아요 +1
+		service.plusLike(board_index);
+		
+		Board board = service.contentS(board_index);
+	
+		return new ModelAndView("community_board_content", "board", board);
+	}
+
 	@GetMapping("board_write")
 	public String boardWrite() {
-	  return "board_write";
+	  return "community_board_write";
 	}
 	
 	@GetMapping("board_insert")
@@ -105,6 +124,12 @@ public class BoardController {
 		
 		service.insertS(board);
 		return "redirect:board_page";	
+	}
+	
+	@PostMapping("board_write")
+	public String write(Board board) {
+		service.insertBoard(board);
+		return "redirect: /board_content?board_index="+ board.getBoard_index();
 	}
 	
 	@GetMapping("board_update")

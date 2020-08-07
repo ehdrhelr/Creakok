@@ -30,6 +30,30 @@
   	    update DARKKNIGHT_BOARD set board_subject = #{board_subject}, board_content = #{board_content} where board_index = #{board_index}
 	</update>
 	
+	<!-- 게시판 insert -->
+	<insert id="insertBoard" parameterType="creakok.com.domain.Board">
+	
+		<selectKey keyProperty="board_index" order="BEFORE" resultType="int">
+			SELECT DK_BOARD_INDEX_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+			INSERT INTO DARKKNIGHT_BOARD 
+					VALUES (#{board_index}, #{board_subject}, #{board_content}, 'a', SYSDATE, 0, 0, null)
+	</insert>
+	
+	<!-- 조회수 +1 -->
+	<update id="plusView" parameterType="long">
+		update DARKKNIGHT_BOARD set board_view = board_view + 1 where board_index = #{board_index}
+	</update>
+	
+	<!-- 좋아요 +1 -->
+	<update id="plusLike" parameterType="long">
+		update DARKKNIGHT_BOARD set board_like = board_like + 1 where board_index = #{board_index}
+	</update>
+	
+	<!-- 크리에이터 이름 조회 -->
+	<select id="getCreatorName" resultType="Creator">
+		select * from CREATOR
+	</select>
 	<!-- for Ajax -->
 	
 	<select id="selectBySubject" resultType="Board" parameterType="String">
