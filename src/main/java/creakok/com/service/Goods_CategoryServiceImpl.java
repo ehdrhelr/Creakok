@@ -25,12 +25,12 @@ public class Goods_CategoryServiceImpl implements Goods_CategoryService {
 	}
 	
 	@Override
-	public GoodsVo getGoodsVo(int cp, int ps, long gCode){
+	public GoodsVo getGoodsVo(int cp, int ps, long gCode, String filterBy){
 		long totalCount = mapper.selectGoodsCount(gCode);
-		GoodsVo goodsVo = new GoodsVo(cp, totalCount, ps, null, gCode);
+		GoodsVo goodsVo = new GoodsVo(cp, totalCount, ps, null, gCode, null);
 		List<Goods> list = mapper.selectByGcode(goodsVo);
 		
-		return new GoodsVo(cp, totalCount, ps, list, gCode);
+		return new GoodsVo(cp, totalCount, ps, list, gCode, null);
 
 	}
 }

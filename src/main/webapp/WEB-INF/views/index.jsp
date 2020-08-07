@@ -144,7 +144,7 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a href="funding">FUNDING</a></li>
-                                    <li><a href="goods_list.do">GOODS</a></li>
+                                    <li><a href="goods_list.do?cp=1">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html" >Home</a></li>

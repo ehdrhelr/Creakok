@@ -9,7 +9,7 @@
 	
 	<select id="selectPerPage" resultType="Goods" parameterType="GoodsVo">
 		<![CDATA[select * from (select ROWNUM rnum, aa.* from
-		(select * from GOODS order by GOODS_INDEX desc) aa)
+		(select * from GOODS order by ${filterBy} desc) aa)
 		where rnum>${(cp-1)*ps} and rnum<=${cp*ps}
 		]]>
 	</select>

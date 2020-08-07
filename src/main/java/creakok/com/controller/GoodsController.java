@@ -33,11 +33,13 @@ public class GoodsController {
 	public ModelAndView list(HttpServletRequest request, HttpSession session) {
 		String cpStr = request.getParameter("cp");
 		String psStr = request.getParameter("ps");
-		
+		String filterBy = request.getParameter("filterBy");
+		log.info("dddddddddddddddddddddddddddddddddddd: "+cpStr);
 		//(1) cp 
 		int cp = 1;
 		if(cpStr == null) {
 			Object cpObj = session.getAttribute("cp");
+			log.info("ffffffffffffffffffffffffffffffffffffffffff: "+cpObj.toString());
 			if(cpObj != null) {
 				cp = (Integer)cpObj;
 			}
@@ -76,12 +78,33 @@ public class GoodsController {
 		}
 		session.setAttribute("ps", ps);
 		
-		GoodsVo list = goodsService.getGoodsVo(cp, ps);
 
+		 if(filterBy==null) {
+	            Object filterByObj = session.getAttribute("filterBy");
+	            if(filterByObj != null) {
+	               filterBy = (String)filterByObj;
+	            }else {
+	               filterBy="goods_sale_number";
+	            }
+	         }else {
+	            filterBy = filterBy.trim();
+	         }
+	   log.info("###########"+filterBy);
+	   session.setAttribute("filterBy", filterBy);
+
+	   GoodsVo list = goodsService.getGoodsVo(cp, ps, filterBy);
 		
 		//굿즈 카테고리
 		List<Goods_Category> gCategory = categoryService.listS();
 		
+		
+		if(list.getList().size() ==0 ) {
+	         if(cp>1) {
+	            return new ModelAndView("redirect:goods_list.do?cp="+(cp-1));
+	         }else {
+	            return new ModelAndView("redirect:goods_list.do", "goodsVo", null);
+	         }
+	      }
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("goods");
@@ -93,7 +116,7 @@ public class GoodsController {
 	
 	@ResponseBody
 	@PostMapping("gCategory_Sorting")
-	public ModelAndView gCategory_Sorting(@RequestBody long gCode, HttpServletRequest request, HttpSession session){
+	public GoodsVo gCategory_Sorting(@RequestBody long gCode, HttpServletRequest request, HttpSession session){
 		String cpStr = request.getParameter("cp");
 		String psStr = request.getParameter("ps");
 	
@@ -140,14 +163,29 @@ public class GoodsController {
 		session.setAttribute("ps", ps);
 		log.info("####################gCategory_Sorting gCode: "+gCode);
 
-		GoodsVo goodsVo = categoryService.getGoodsVo(cp, ps, gCode);
-		
-		
+		GoodsVo goodsVo = categoryService.getGoodsVo(cp, ps, gCode, null);
+		goodsVo.setCp(1);
+		log.info("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ: "+goodsVo.getCp());
+		//ModelAndView mv = new ModelAndView();
+		//mv.setViewName("goods");
+ 		//mv.addObject("goods", goodsVo);
+ 		/*
+		if(goodsVo.getList().size() ==0 ) {
+	         if(cp>1) {
+	        	mv.setViewName("goods_list.do?cp="+(cp-1));
+	     		mv.addObject("goods", goodsVo);
+	      
+	         }else {
+	        	mv.setViewName("goods_list.do");
+		     	mv.addObject("goods", goodsVo);
+		        
+	         }
+	      }
+		*/
 	
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("goods");
-		mv.addObject("goods", goodsVo);
 		
-		return mv;
+		
+		session.setAttribute("GoodsCategory", goodsVo);
+		return goodsVo;
 	}
 }

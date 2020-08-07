@@ -140,7 +140,7 @@
                                             <li><a href="portfolio.html">Portfolio</a>
                                                 <ul class="dropdown">
                                                     <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="`gle-portfolio.html">Portfolio Details</a></li>
+                                                    <li><a href="gle-portfolio.html">Portfolio Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="blog.html">Blog</a>
@@ -269,25 +269,58 @@
                         <!-- Search by Terms -->
                         <div class="search_by_terms">
                             <form action="#" method="post" class="form-inline">
-                                <select class="custom-select widget-title">
-                                  <option selected>판매인기순</option>
+                                <!--   <select class="custom-select widget-title">
+                                  <option selected>인기순</option>
                                   <option value="1">좋아요순</option>
                                   <option value="2">리뷰많은순</option>
                                   <option value="3">낮은가격순</option>
                                   <option value="3">높은가격순</option>
-                                </select>
+                                </select> -->
                                 
+                                
+                                 <select class="custom-select widget-title" id="fbId" name="filterBy" class="custom-select widget-title" onchange="f1(this)">
+                                  <c:choose>
+                                   <c:when test="${goods.filterBy == 'goods_sale_number'}">
+                                    <option value="goods_sale_number" selected>인기순</option>
+                                    <option value="goods_price">가격순</option>
+                                    <option value="goods_review_number">리뷰순</option>
+                                    </c:when>       
+                                     <c:when test="${goods.filterBy=='goods_price'}">
+                                        <option value="goods_sale_number">인기순</option>
+                                        <option value="goods_price" selected>가격순</option>
+                                        <option value="goods_review_number">리뷰순</option>
+                                    </c:when>       
+                                    <c:when test="${goods.filterBy =='goods_review_number'}">
+                                    <option value="goods_sale_number">인기순</option>
+                                    <option value="goods_price">가격순</option>
+                                    <option value="goods_review_number" selected>리뷰순</option>
+                                    </c:when>        
+                                  </c:choose>
+                                  </select>
+                                  
+                                  
+                                <script language="javascript">
+		                              function f1(select){
+		                               
+		                                 //var el = document.getElementById("psId");
+		                                 var filterBy = select.value;
+		                                 
+		                                 location.href="goods_list.do?filterBy="+filterBy;
+		                              }  
+                          		</script>
+                          
+                            
                                 <select id="psId" name="ps" class="custom-select widget-title" onchange="f(this)">
                                 	<c:choose>
                                 		<c:when test="${goods.ps == 3}">
-		                                    <option value="3" selected>3</option>
-		                                  	<option value="6">6</option>
-		                                  	<option value="9">9</option>                             		
+		                                    <option value="3" selected>3개씩 보기</option>
+		                                  	<option value="6">6개씩 보기</option>
+		                                  	<option value="9">9개씩 보기</option>                             		
                                 		</c:when>
                                 		<c:when test="${goods.ps == 6}">
-                                			<option value="3">3</option>	                                  
-		                                  	<option value="6" selected>6</option>
-		                                  	<option value="9">9</option>
+                                			<option value="3">3개씩 보기</option>	                                  
+		                                  	<option value="6" selected>6개씩 보기</option>
+		                                  	<option value="9">9개씩 보기</option>
                                 		</c:when>                          		                      		
                                 		<c:when test="${goods.ps == 9}">
                                 			<option value="3">3개씩 보기</option>	                                  
@@ -350,7 +383,8 @@
 	                             </div>                      	
                               	  
                         </div>
-					                       
+		<script type="text/javascript" language="javascript" 
+		     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>					                       
                        <script language="javascript">
 	                        function doOpenCheck(chk){
 	                            var obj = document.getElementsByName("category");
@@ -364,7 +398,7 @@
 	                            	value = $(this).val();
 	                            	console.log("hcbae:"+value);
 	                           	});
-
+	                      
 	                            //var obj = new Object();
 								//var obj = $("#category").val();
 								var jsonData = JSON.stringify(value);
@@ -373,13 +407,105 @@
 								$.ajax({ //  $.ajax({ JS 객체 }); 
 									 url: "gCategory_Sorting.json", //.json : json타입으로 받겠다
 									 type: "POST",
-									 dataType: "json",
+								
 									 contentType: "application/json", //★★ 요놈 절대 빼먹으면안됨
 									 data: jsonData, //★★
+									 error:function(request,status,error){
+									        alert("실패"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)   	
+									 },
 									 success: function(responseData){
-										//alert("jsonData: "+jsonData);
-										$("#goods_area").empty();
-										//$("#goods_area").html(responseData);
+
+										
+										var jsonData = JSON.stringify(responseData);
+										var GoodsVo = JSON.parse(jsonData);
+										
+										var html = "";
+										
+										
+										
+									
+										html += "<div class='shop-products-area'>";
+										html += "<div class='row'>";
+		                        
+										<c:if test='${empty goods.list}'>
+											html += "<p style='text-align:center;width:100%;'>현재 판매중인 굿즈가 없습니다.</p>";
+										</c:if>
+										
+										
+										for(var i=0; i<GoodsVo.list.length; i++) {
+											//console.log(GoodsVo.list[i].creator_name);
+											
+											html += "<div class='col-12 col-sm-6 col-lg-4'>";
+											html += "<div class='single-product-area mb-50'>";
+											html += "<div class='product-img'>";
+											html += "<a href='goods-details.html'>";
+											html += "<img src='img/bg-img/"+GoodsVo.list[i].goods_repre_pic+"' alt=''>";
+											html += "</a>";
+											html += "<div class='product-meta d-flex'>";
+											html += "<a href='#' class='wishlist-btn'>";
+											html += "<i class='icon_heart_alt'></i>";
+											html += "</a>";
+											html += "<a href='cart.html' class='add-to-cart-btn'>장바구니에 담기</a>";
+											html += "<a href='#' class='compare-btn'>";
+											html += "<i class='arrow_left-right_alt'></i>";
+											html += "</a>";
+											html += "</div>";
+											html += "</div>";
+											
+											html += "<div class='product-info mt-15'>";
+											html += "<p style='margin-bottom:5px;'>"+GoodsVo.list[i].creator_name+"</p>";
+											html += "<a href='goods-details.html'>";
+											html += "<p style='color:#545454;font-weight:500;'>"+GoodsVo.list[i].goods_name+"</p>";
+											html += "</a>";
+											html += "<h6>";
+											html += "<strong>"+GoodsVo.list[i].goods_price+"</strong>원";
+											html += "</h6>"; 
+											html += "</div>";
+											
+											html += "</div>";
+											html += "</div>";
+											
+										}
+										html += "</div>";
+									
+										
+											<!-- Pagination -->
+
+											html += "<nav aria-label='Page navigation'>";
+											html += "<ul class='pagination'  style='-webkit-box-pack:center !important;justify-content:center !important;'>";
+					                            	<c:forEach begin='1' end='3' var='i'>
+					                            	html += "<li class='page-item'>";
+					                            	html += "<a class='page-link' href='goods_list.do?cp='"+${i}+"' style='border-radius:0;'>";
+					                            		 		<c:choose>
+					                            		 			<c:when test="${i == GoodsVo.cp}">	
+					                            		 			html += "<span style='color:black'>'"+${i}+"'</span>";
+					                            		 			</c:when>
+					                            		 			<c:otherwise>
+					                            		 				${i}
+					                            		 			</c:otherwise>
+					                            		 		</c:choose>
+					                            		 		html += "</a>";
+					                            		 			html += "</li>";		
+					                            	</c:forEach>
+					                            	html += "<li class='page-item'>";
+					                            	html += "<a class='page-link' href='#'>";
+					                            	html += "<i class='fa fa-angle-right'></i>";
+					                            	html += "</a>";
+					                            	html += "</li>";  
+					                            	html += " </ul>"; 
+					                            		html += "</nav>"; 
+					                            			html += "</div>"; 
+					                            				html += "</div>"; 
+					                            					html += "</div>"; 
+					                            				
+					                            	               			
+											
+										
+										//alert("jsonData: "+jsObj.list);
+										//console.log(responseData.result_msg);
+										//console.log(GoodsVo.list[0].creator_name);
+										//$("#goods_area").empty();
+										$("#goods_area").html(html);
 										
 									}
 								});
