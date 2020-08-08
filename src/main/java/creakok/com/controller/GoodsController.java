@@ -31,6 +31,7 @@ public class GoodsController {
 	
 	@RequestMapping("goods_list.do")
 	public ModelAndView list(HttpServletRequest request, HttpSession session) {
+		
 		String cpStr = request.getParameter("cp");
 		String psStr = request.getParameter("ps");
 		String filterBy = request.getParameter("filterBy");
@@ -115,7 +116,7 @@ public class GoodsController {
 	}
 	
 	@ResponseBody
-	@PostMapping("gCategory_Sorting")
+	@RequestMapping("gCategory_Sorting")
 	public GoodsVo gCategory_Sorting(@RequestBody long gCode, HttpServletRequest request, HttpSession session){
 		String cpStr = request.getParameter("cp");
 		String psStr = request.getParameter("ps");
@@ -124,6 +125,7 @@ public class GoodsController {
 		int cp = 1;
 		if(cpStr == null) {
 			Object cpObj = session.getAttribute("cp");
+			log.info("ffffffffffffffffffffffffffffffffffffffffff: "+cpObj.toString());
 			if(cpObj != null) {
 				cp = (Integer)cpObj;
 			}
@@ -161,11 +163,12 @@ public class GoodsController {
 			ps = psParam;
 		}
 		session.setAttribute("ps", ps);
+
+
 		log.info("####################gCategory_Sorting gCode: "+gCode);
 
 		GoodsVo goodsVo = categoryService.getGoodsVo(cp, ps, gCode, null);
-		goodsVo.setCp(1);
-		log.info("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ: "+goodsVo.getCp());
+
 		//ModelAndView mv = new ModelAndView();
 		//mv.setViewName("goods");
  		//mv.addObject("goods", goodsVo);

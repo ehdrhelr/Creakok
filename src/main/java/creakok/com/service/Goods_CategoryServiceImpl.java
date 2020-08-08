@@ -27,7 +27,9 @@ public class Goods_CategoryServiceImpl implements Goods_CategoryService {
 	@Override
 	public GoodsVo getGoodsVo(int cp, int ps, long gCode, String filterBy){
 		long totalCount = mapper.selectGoodsCount(gCode);
+		log.info("####:"+totalCount+"#@#@#@#@@#:"+ps);
 		GoodsVo goodsVo = new GoodsVo(cp, totalCount, ps, null, gCode, null);
+		log.info("FFFFFFFFFFFF:"+goodsVo.getTotalPageCount());
 		List<Goods> list = mapper.selectByGcode(goodsVo);
 		
 		return new GoodsVo(cp, totalCount, ps, list, gCode, null);

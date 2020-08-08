@@ -377,7 +377,7 @@
                               	 <div class="widget-desc">
 	                              	 <c:forEach items="${gCategory}" var="gCategory">
 		                                <div class="custom-checkbox d-flex align-items-center mb-2" class="custom-control-input" id="customCheck">
-		                                    <input type="checkbox" value="${gCategory.goods_category_code}" id="category" name="category" onclick="doOpenCheck(this);" style="margin-right:5px;">${gCategory.goods_category_name}
+		                                    <input type="checkbox" value="${gCategory.goods_category_code}" id="category" name="category" onclick="doOpenCheck(this)" style="margin-right:5px;">${gCategory.goods_category_name}
 		                               	</div>    
 	                               </c:forEach>  
 	                             </div>                      	
@@ -407,7 +407,7 @@
 								$.ajax({ //  $.ajax({ JS 객체 }); 
 									 url: "gCategory_Sorting.json", //.json : json타입으로 받겠다
 									 type: "POST",
-								
+									 async: true,
 									 contentType: "application/json", //★★ 요놈 절대 빼먹으면안됨
 									 data: jsonData, //★★
 									 error:function(request,status,error){
@@ -470,23 +470,26 @@
 									
 										
 											<!-- Pagination -->
-
+											console.log(GoodsVo.list.length);
+											console.log(GoodsVo.cp);
+											console.log(GoodsVo.totalPageCount);
 											html += "<nav aria-label='Page navigation'>";
 											html += "<ul class='pagination'  style='-webkit-box-pack:center !important;justify-content:center !important;'>";
-					                            	<c:forEach begin='1' end='3' var='i'>
-					                            	html += "<li class='page-item'>";
-					                            	html += "<a class='page-link' href='goods_list.do?cp='"+${i}+"' style='border-radius:0;'>";
-					                            		 		<c:choose>
-					                            		 			<c:when test="${i == GoodsVo.cp}">	
-					                            		 			html += "<span style='color:black'>'"+${i}+"'</span>";
-					                            		 			</c:when>
-					                            		 			<c:otherwise>
-					                            		 				${i}
-					                            		 			</c:otherwise>
-					                            		 		</c:choose>
-					                            		 		html += "</a>";
-					                            		 			html += "</li>";		
-					                            	</c:forEach>
+					                        
+					                            	for(var i=1; i<=GoodsVo.totalPageCount; i++) {
+						                            	html += "<li class='page-item'>";
+						                            	html += "<a class='page-link' href='gCategory_Sorting?cp='"+i+"&gCode="+value+"' 'style=border-radius:0;'>";
+						                            		 		<c:choose>
+						                            		 			<c:when test="${i == GoodsVo.cp}">	
+						                            		 			html += "<span style='color:black'>"+i+"</span>";
+						                            		 			</c:when>
+						                            		 			<c:otherwise>
+						                            		 				i
+						                            		 			</c:otherwise>
+						                            		 		</c:choose>
+						                            		 		html += "</a>";
+						                            		 			html += "</li>";		
+					                            	}
 					                            	html += "<li class='page-item'>";
 					                            	html += "<a class='page-link' href='#'>";
 					                            	html += "<i class='fa fa-angle-right'></i>";
@@ -510,6 +513,10 @@
 									}
 								});
 	                        }
+	                        
+	                   
+	                        
+	                      
 					</script>
 
 
