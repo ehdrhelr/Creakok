@@ -22,6 +22,16 @@ public class MemberController {
 	@Autowired
 	private MemberService mService;
 	
+	@RequestMapping("tokenCheck.do")
+	public void tokenCheck() {
+
+	}
+	
+	@RequestMapping("socialLogin.do")
+	public void socialLogin() {
+		log.info("### social login start");
+	}
+	
 	@ResponseBody
 	@GetMapping("member_readEmail.do")
 	public String readEmail(String member_email) {

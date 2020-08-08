@@ -124,7 +124,7 @@
     
     
     <!-- Title -->
-    <title>Alazea - Gardening &amp; Landscaping HTML Template</title>
+    <title>CREAKOK</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">

@@ -8,7 +8,7 @@ function checkJoin(){
         return false;
     }
     
-    if(document.getElementById('checkEmail_Id').outerText=="이미 존재합니다." ) {
+    if(document.getElementById('checkName_Id').outerText=="이미 존재합니다."){
         alert("이미 사용 중인 이름 입니다.");
         return false;
     }
@@ -166,18 +166,18 @@ function checkNewPassword(){
     }
 }//end of checkNewPassword
   
-  function changeButtonText(obj){
-      var value = obj.value;
-      //console.log("????:"+value);
-      if(value=="수정") {
-        obj.value="취소";
-      }
-      else {
-        obj.value="수정";
-        document.getElementById('nowPassword').value ="";
-        document.getElementById('checkPasswordResult').innerHTML ="";
-        document.getElementById('newPassword').value ="";
-        document.getElementById('newPasswordAgain').value ="";
-        document.getElementById('checkNewPasswordResult').innerHTML = "";
-      }
-    }//end of changeButtonText
+function changeButtonText(obj){
+    var value = obj.value;
+    //console.log("????:"+value);
+    if(value=="수정") {
+      obj.value="취소";
+    }
+    else {
+      obj.value="수정";
+      document.getElementById('nowPassword').value ="";
+      document.getElementById('checkPasswordResult').innerHTML ="";
+      document.getElementById('newPassword').value ="";
+      document.getElementById('newPasswordAgain').value ="";
+      document.getElementById('checkNewPasswordResult').innerHTML = "";
+    }
+  }//end of changeButtonText
