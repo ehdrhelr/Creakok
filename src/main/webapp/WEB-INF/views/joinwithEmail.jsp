@@ -6,18 +6,14 @@
 
 <head>
   
-    
-    
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    
       <!--텀블벅추가-->
     
-     
       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
       <meta name="format-detection" content="telephone=no">
       <link rel="dns-prefetch" href="https://tumblbug-assets.imgix.net">
@@ -119,30 +115,11 @@
 .etlKsY{position:fixed;width:42px;height:42px;right:16px;bottom:72px;bottom:calc(constant(safe-area-inset-bottom) + 72px);bottom:calc(env(safe-area-inset-bottom) + 72px);z-index:999;display:none;} .etlKsY.animate .ScrollTop__StyledIcon-j9uqn7-0{opacity:0.8 !important;} .etlKsY.animate .ScrollTop__StyledIcon-j9uqn7-0 svg{opacity:0.5;} .etlKsY:hover .ScrollTop__StyledIcon-j9uqn7-0 svg{opacity:1;} @media only screen and (min-width:1080px){.etlKsY{width:56px;height:56px;bottom:24px;right:24px;}}
 /* sc-component-id: ScrollTop__ScrollTopBtn-j9uqn7-2 */
 .QGKgG{width:0;height:0;border:0;border-radius:50%;text-indent:-100em;overflow:hidden;padding:0;outline:none;position:absolute;background:transparent;z-index:2;} .QGKgG span{position:relative;} .QGKgG:active{outline:none;}</style>
-    
-    
-    
-    
-    
-    
+
      <!--텀블벅추가-->
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <!-- Title -->
-    <title>Alazea - Gardening &amp; Landscaping HTML Template</title>
+    <title>CREAKOK</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -167,10 +144,87 @@
             max-width:63%;!important;
         }
     </style>
+    
+    <!-- BOTO TEST -->
+    <meta name="description" content="Boto Photo Studio HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/fresco.css"/>
+    <link rel="stylesheet" href="css/css_boto/slick.css"/>
+  
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/style.css"/>
+    
+    
+       <style>
+          .cbPtEV {
+          width: 100%;
+          margin-bottom: 5px;
+          color: inherit;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(228, 228, 228);
+          border-image: initial;
+          border-radius: 4px;
+          background: rgb(255, 255, 255);
+          padding: 0.5em;
+          outline: none;
+          font: inherit;
+      }
+       
+      .cWylwi {
+        cursor: pointer;
+        display: inline-block;
+        min-height: 1em;
+        vertical-align: baseline;
+        box-shadow: transparent 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0em 0px 0px inset;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        text-transform: none;
+        text-shadow: none;
+        font-weight: bold;
+        line-height: 1em;
+        font-style: normal;
+        text-align: center;
+        background-color: rgb(250, 100, 98);
+        color: rgb(255, 255, 255);
+        font-size: 1em;
+        width: 100%;
+        opacity: 1;
+        height: 45px;
+        outline: none;
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+        transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
+        border-radius: 0.285714rem;
+        text-decoration: none;
+        padding: 1em 1.5em;
+        margin: 0px;
+    } 
+    .hQGkMf {
+        font-size: 13px;
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 40px;
+        border-top: 1px solid rgb(239, 239, 239);
+    }
+       
+    .VpHEi {
+        margin-bottom: 20px;
+    }
+    
+    </style>
+    <link rel="stylesheet" href="css/hcbae_css.css">
 
 </head>
 
-<body>
+<body >
    <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
@@ -212,14 +266,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Login -->
-                                <div class="login">
-                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
-                                </div>
-                                <!-- Cart -->
-                                <div class="cart">
-                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
-                                </div>
+                                
+                                <c:if test="${empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
+                                  <!-- Sign up -->
+                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
+                                </c:if>
+                                <c:if test="${!empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
+                                  
+                                  <!-- My Page -->
+                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
+                                  
+                                  <!-- Cart -->
+                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
+                                </c:if> 
+                                
                             </div>
                         </div>
                     </div>
@@ -313,104 +377,45 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-  
-    
-   
-    
-    
 <!--텀블벅추가-->
     
-    
-    
-   <style>
-    
-    
-    .cbPtEV {
-    width: 100%;
-    margin-bottom: 5px;
-    color: inherit;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(228, 228, 228);
-    border-image: initial;
-    border-radius: 4px;
-    background: rgb(255, 255, 255);
-    padding: 0.5em;
-    outline: none;
-    font: inherit;
-}
-       
-      .cWylwi {
-    cursor: pointer;
-    display: inline-block;
-    min-height: 1em;
-    vertical-align: baseline;
-    box-shadow: transparent 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0em 0px 0px inset;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    text-transform: none;
-    text-shadow: none;
-    font-weight: bold;
-    line-height: 1em;
-    font-style: normal;
-    text-align: center;
-    background-color: rgb(250, 100, 98);
-    color: rgb(255, 255, 255);
-    font-size: 1em;
-    width: 100%;
-    opacity: 1;
-    height: 45px;
-    outline: none;
-    border-width: initial;
-    border-style: none;
-    border-color: initial;
-    border-image: initial;
-    transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
-    border-radius: 0.285714rem;
-    text-decoration: none;
-    padding: 1em 1.5em;
-    margin: 0px;
-} 
-    .hQGkMf {
-    font-size: 13px;
-    text-align: center;
-    margin-top: 20px;
-    padding-top: 40px;
-    border-top: 1px solid rgb(239, 239, 239);
-}
-       
-       .VpHEi {
-    margin-bottom: 20px;
-}
-       
-    </style>
-    
-    <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn"><div style="margin-top:180px; margin-bottom:50px" class="Wrapper__MembershipBody-sc-140yq7-0 dgBlAy"><div style="display:flex;color:white;flex-direction:column"><a class="SocialButton__SocialLink-sc-7k5r2h-0 hGAcLm"><i class="_1uz2PaH_Pc163IQLnwFtm8 _1oJMWnMCW_Y6GmNc1mhqaW _1QY7TzdLHKX3-BKPDNNYKF"></i>페이스북 아이디로 가입하기</a><a class="SocialButton__SocialLink-sc-7k5r2h-0 jLeKfP"><svg class="naverIcon" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18.31"><title>naverIcon</title><path d="M20,19.15H13.33A0.34,0.34,0,0,1,13,19L7,10.22,6.84,10v9.15H0V0.85H6.68A0.32, 0.32,0,0,1,7,1l6,8.75a0.82,0.82,0,0,0,.19.22V0.86H20v18.3Z" transform="translate(0 -0.84)" fill="#fff"></path></svg>네이버 아이디로 가입하기</a></div><div class="Divider-sc-1wyk970-0 uEieK"><span><span>또는</span></span></div><form style="color:#757575"  autocomplete="on"><div class="SignUp__InputDiv-k5h4n5-0 VpHEi"><label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">이름</label><input id="user_fullname" type="text" name="nickname" autocomplete="username" placeholder="사용하실 이름을 입력해주세요" required="" class="Input-sc-1x48dls-0 cbPtEV" value=""></div><div class="SignUp__InputDiv-k5h4n5-0 VpHEi"><label for="user_login" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">이메일 주소</label><input id="user_login" type="email" name="email" placeholder="이메일 주소를 입력해주세요" autocomplete="email" required="" class="Input-sc-1x48dls-0 cbPtEV" value=""><input id="user_login_confirmation" type="email" name="emailConfirm" autocomplete="email" required="" placeholder="이메일 주소를 확인합니다" class="Input-sc-1x48dls-0 cbPtEV" value=""><br><span class="SignUp__ErrorMessage-k5h4n5-3 gLiNzH"></span></div><div class="SignUp__InputDiv-k5h4n5-0 VpHEi" style="margin-bottom: 10px;"><label for="user_password" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">비밀번호</label><input id="user_password" type="password" required="" name="password" placeholder="비밀번호를 입력해주세요" autocomplete="new-password" autocapitalize="off" autocorrect="off" spellcheck="off" class="Input-sc-1x48dls-0 cbPtEV" value=""><input id="user_password_confirmation" type="password" required="" name="passwordConfirm" autocapitalize="off" autocorrect="off" autocomplete="new-password" spellcheck="off" placeholder="비밀번호를 확인합니다" class="Input-sc-1x48dls-0 cbPtEV" value=""></div><button label="다음" class="Button-sc-1x93b2b-0 SignUp__SignUpButton-k5h4n5-2 cWylwi">다음</button></form><div class="SignUp__LoginLinkWrapper-k5h4n5-4 hQGkMf"><p style="color:#757575;margin-bottom:0">이미 계정이 있으신가요?</p><a href="/login?redirection=%2F"style="color:#fc5230">기존 계정으로 로그인하기</a></div></div></div>
-    
-    
-    
-    
-    
-    
-    
-    
-<!--텀블벅추가-->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
+        <div style="margin-top:180px; margin-bottom:50px" class="Wrapper__MembershipBody-sc-140yq7-0 dgBlAy">
+            <div style="display:flex;color:white;flex-direction:column"><a class="SocialButton__SocialLink-sc-7k5r2h-0 hGAcLm"><i class="_1uz2PaH_Pc163IQLnwFtm8 _1oJMWnMCW_Y6GmNc1mhqaW _1QY7TzdLHKX3-BKPDNNYKF"></i>페이스북 아이디로 가입하기</a><a class="SocialButton__SocialLink-sc-7k5r2h-0 jLeKfP"><svg class="naverIcon" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18.31">
+                        <title>naverIcon</title>
+                        <path d="M20,19.15H13.33A0.34,0.34,0,0,1,13,19L7,10.22,6.84,10v9.15H0V0.85H6.68A0.32, 0.32,0,0,1,7,1l6,8.75a0.82,0.82,0,0,0,.19.22V0.86H20v18.3Z" transform="translate(0 -0.84)" fill="#fff"></path>
+                    </svg>네이버 아이디로 가입하기</a></div>
+            <div class="Divider-sc-1wyk970-0 uEieK"><span><span>또는</span></span></div>
+            <form id="joinData" name="joinData" style="color:#757575" autocomplete="on" method='post' action='member_serviceAgreements.do' onload='joinformClear()'>
+                <div class="SignUp__InputDiv-k5h4n5-0 VpHEi">
+                    <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">이름</label>
+                    <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq hcbae-member-joinwithEmail-check" id="checkName_Id"></label>
+                    <input id="user_fullname" type="text" name="member_name" autocomplete="username" placeholder="사용하실 이름을 입력해주세요" required="" class="Input-sc-1x48dls-0 cbPtEV" value="" onKeyUp="checkName(this)">
+                </div>
+                <div class="SignUp__InputDiv-k5h4n5-0 VpHEi">
+                    <label for="user_login" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">이메일 주소</label>
+                    <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq hcbae-member-joinwithEmail-check" id="checkEmail_Id"></label>
+                    <input id="user_login" type="email" name="email" placeholder="이메일 주소를 입력해주세요" autocomplete="email" required="" class="Input-sc-1x48dls-0 cbPtEV" value="" onKeyUp="checkEmail(this)">
+                    <input id="user_login_confirmation" type="email" name="member_email" autocomplete="email" required="" placeholder="이메일 주소를 확인합니다" class="Input-sc-1x48dls-0 cbPtEV" value=""><br>
+                    <span class="SignUp__ErrorMessage-k5h4n5-3 gLiNzH"></span>
+                </div>
+                <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" style="margin-bottom: 10px;">
+                    <label for="user_password" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">비밀번호</label>
+                    <input id="user_password" type="password" required="" name="password" placeholder="비밀번호를 입력해주세요" autocomplete="new-password" autocapitalize="off" autocorrect="off" spellcheck="off" class="Input-sc-1x48dls-0 cbPtEV" value="">
+                    <input id="user_password_confirmation" type="password" required="" name="member_password" autocapitalize="off" autocorrect="off" autocomplete="new-password" spellcheck="off" placeholder="비밀번호를 확인합니다" class="Input-sc-1x48dls-0 cbPtEV" value="">
+                </div>
+                <button type="button" class="Button-sc-1x93b2b-0 SignUp__SignUpButton-k5h4n5-2 cWylwi" onclick="checkJoin(); return false;">다음</button>
+                <!-- <input type="button" class="Button-sc-1x93b2b-0 SignUp__SignUpButton-k5h4n5-2 cWylwi" value="다음" onclick="checkJoin()"/>  -->
+                 
+            </form>
+            <div class="SignUp__LoginLinkWrapper-k5h4n5-4 hQGkMf">
+                <p style="color:#757575;margin-bottom:0">이미 계정이 있으신가요?</p><a href="/login?redirection=%2F" style="color:#fc5230">기존 계정으로 로그인하기</a>
+            </div>
+        </div>
+    </div>    
 
+<!--텀블벅추가-->
+    
   <!-- Footer Bottom Area -->
         <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">
             <div class="container">
@@ -435,18 +440,7 @@
             </div>
         </div>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
+        
 <!-- Footer Bottom Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->
@@ -460,6 +454,8 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+    <script src="js/hcbae_js.js"></script>
 </body>
 
 </html>

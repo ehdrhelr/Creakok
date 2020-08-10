@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +23,9 @@ import creakok.com.domain.Board;
 import creakok.com.domain.Creator;
 import creakok.com.service.BoardService;
 import creakok.com.vo.ListResult;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Controller
 public class BoardController {
 	@Autowired
@@ -89,41 +93,164 @@ public class BoardController {
 	}
 	
 	@RequestMapping("board_content")
-	public ModelAndView content(@RequestParam long board_index) {
-		//조회수 +1
-		service.plusView(board_index);
+	public ModelAndView content(HttpServletRequest request, HttpServletResponse response, HttpSession session, 
+			@RequestParam long board_index) {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("community_board_content");
 		
 		Board board = service.contentS(board_index);
-	
-		return new ModelAndView("community_board_content", "board", board);
+		
+		
+		Cookie[] cookies = request.getCookies();
+		// 비교하기 위해 새로운 쿠키
+        Cookie viewCookie = null;
+        
+        // 쿠키가 있을 경우 
+        if (cookies != null && cookies.length > 0) {
+            for (int i = 0; i < cookies.length; i++) {
+                // Cookie의 name이 cookie + reviewNo와 일치하는 쿠키를 viewCookie에 넣어줌 
+                if (cookies[i].getName().equals("cookie"+board_index)) { 
+                    System.out.println("처음 쿠키가 생성한 뒤 들어옴.");
+                    viewCookie = cookies[i];
+                }
+            }
+        }
+        
+        if (board != null) {
+            System.out.println("System - 해당 상세페이지로 넘어감");
+            
+            mv.addObject("board", board);
+ 
+            // 만일 viewCookie가 null일 경우 쿠키를 생성해서 조회수 증가 로직을 처리함.
+            if (viewCookie == null) {    
+                System.out.println("cookie 없음");
+                
+                // 쿠키 생성(이름, 값)
+                Cookie newCookie = new Cookie("cookie"+board_index, "|" + board_index + "|");
+                                
+                // 쿠키 추가
+                response.addCookie(newCookie);
+ 
+                // 쿠키를 추가 시키고 조회수 증가시킴
+                boolean result = service.plusView(board_index);
+                
+                if(result) {
+                    System.out.println("조회수 증가");
+                }else {
+                    System.out.println("조회수 증가 에러");
+                }
+            }
+            // viewCookie가 null이 아닐경우 쿠키가 있으므로 조회수 증가 로직을 처리하지 않음.
+            else {
+                System.out.println("cookie 있음");
+                
+                // 쿠키 값 받아옴.
+                String value = viewCookie.getValue();
+                
+                System.out.println("cookie 값 : " + value);
+        
+            }
+         // 메뉴바 크리에이터 이름 얻기
+    		List<Creator> creatorList = service.getCreatorName();
+    		mv.addObject("creatorList", creatorList);
+    		
+            return mv;
+        } 
+        else {
+        	// 메뉴바 크리에이터 이름 얻기
+    		List<Creator> creatorList = service.getCreatorName();
+    		mv.addObject("creatorList", creatorList);
+    		
+            return mv;
+        }
+
 	}
 	
 	@RequestMapping("board_like")
-	public ModelAndView like(@RequestParam long board_index) {
-		//좋아요 +1
-		service.plusLike(board_index);
+	public ModelAndView like(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+			@RequestParam long board_index) {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("community_board_content");
 		
 		Board board = service.contentS(board_index);
-	
-		return new ModelAndView("community_board_content", "board", board);
+		
+		
+		Cookie[] cookies = request.getCookies();
+		// 비교하기 위해 새로운 쿠키
+        Cookie viewCookie = null;
+        
+        // 쿠키가 있을 경우 
+        if (cookies != null && cookies.length > 0) {
+            for (int i = 0; i < cookies.length; i++) {
+                // Cookie의 name이 cookie + board_index와 일치하는 쿠키를 viewCookie에 넣어줌 
+                if (cookies[i].getName().equals("cookie"+board_index)) { 
+                    System.out.println("처음 쿠키가 생성한 뒤 들어옴.");
+                    viewCookie = cookies[i];
+                }
+            }
+        }
+        
+        if (board != null) {
+            System.out.println("System - 해당 상세페이지로 넘어감");
+            
+            mv.addObject("board", board);
+ 
+            // 만일 viewCookie가 null일 경우 쿠키를 생성해서 좋아요 증가 로직을 처리함.
+            if (viewCookie == null) {    
+                System.out.println("cookie 없음");
+                
+                // 쿠키 생성(이름, 값)
+                Cookie newCookie = new Cookie("cookie"+board_index, "|" + board_index + "|");
+                                
+                // 쿠키 추가
+                response.addCookie(newCookie);
+ 
+                // 쿠키를 추가 시키고 좋아요 증가시킴
+                boolean result = service.plusLike(board_index);
+                
+                if(result) {
+                    System.out.println("좋아요 증가");
+                }else {
+                    System.out.println("좋아요 증가 에러");
+                }
+            }
+            // viewCookie가 null이 아닐경우 쿠키가 있으므로 좋아요 증가 로직을 처리하지 않음.
+            else {
+                System.out.println("cookie 있음");
+                
+                // 쿠키 값 받아옴.
+                String value = viewCookie.getValue();
+                
+                System.out.println("cookie 값 : " + value);
+        
+            }
+            // 메뉴바 크리에이터 이름 얻기
+    		List<Creator> creatorList = service.getCreatorName();
+    		mv.addObject("creatorList", creatorList);
+    		
+            return mv;
+        } 
+        else {
+        	// 메뉴바 크리에이터 이름 얻기
+    		List<Creator> creatorList = service.getCreatorName();
+    		mv.addObject("creatorList", creatorList);
+    		
+            return mv;
+        }
 	}
 
 	@GetMapping("board_write")
-	public String boardWrite() {
-	  return "community_board_write";
-	}
-	
-	@GetMapping("board_insert")
-	public String insert() {
-		
-		return "community_board_insert";
-	}
-	
-	@PostMapping("board_insert")
-	public String insert(Board board) {
-		
-		service.insertS(board);
-		return "redirect:board_page";	
+	public ModelAndView boardWrite() {
+		ModelAndView mv  = new ModelAndView();
+		mv.setViewName("community_board_write");
+			
+		// 메뉴바 크리에이터 이름 얻기
+		List<Creator> creatorList = service.getCreatorName();
+		mv.addObject("creatorList", creatorList);
+			
+		return mv;
 	}
 	
 	@PostMapping("board_write")

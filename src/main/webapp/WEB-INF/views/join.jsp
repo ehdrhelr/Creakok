@@ -120,29 +120,11 @@
 /* sc-component-id: ScrollTop__ScrollTopBtn-j9uqn7-2 */
 .QGKgG{width:0;height:0;border:0;border-radius:50%;text-indent:-100em;overflow:hidden;padding:0;outline:none;position:absolute;background:transparent;z-index:2;} .QGKgG span{position:relative;} .QGKgG:active{outline:none;}</style>
     
-    
-    
-    
-    
-    
-     <!--텀블벅추가-->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <!--텀블벅추가-->
     
     
     <!-- Title -->
-    <title>Alazea - Gardening &amp; Landscaping HTML Template</title>
+    <title>CREAKOK</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -167,6 +149,63 @@
             max-width:63%;!important;
         }
     </style>
+    
+    <style>
+    .jQspcv {
+        cursor: pointer;
+        display: inline-block;
+        min-height: 1em;
+        vertical-align: baseline;
+        box-shadow: transparent 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0em 0px 0px inset;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        text-transform: none;
+        text-shadow: none;
+        font-weight: bold;
+        line-height: 1em;
+        font-style: normal;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.6);
+        background-color: rgb(231, 231, 231);
+        font-size: 1em;
+        width: 100%;
+        opacity: 1;
+        outline: none;
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+        transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
+        margin: 0px 0.25em 0px 0px;
+        border-radius: 0.285714rem;
+        text-decoration: none;
+        padding: 1em 1.5em;
+    }
+        
+    .hQGkMf {
+        font-size: 13px;
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 40px;
+        border-top: 1px solid rgb(239, 239, 239);
+    }
+        
+    </style>
+    
+    
+    <!-- BOTO TEST -->
+    <meta name="description" content="Boto Photo Studio HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/fresco.css"/>
+    <link rel="stylesheet" href="css/css_boto/slick.css"/>
+  
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/style.css"/>
 
 </head>
 
@@ -212,14 +251,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Login -->
-                                <div class="login">
-                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
-                                </div>
-                                <!-- Cart -->
-                                <div class="cart">
-                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
-                                </div>
+                                
+                                <c:if test="${empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
+                                  <!-- Sign up -->
+                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
+                                </c:if>
+                                <c:if test="${!empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
+                                  
+                                  <!-- My Page -->
+                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
+                                  
+                                  <!-- Cart -->
+                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
+                                </c:if> 
+                                
                             </div>
                         </div>
                     </div>
@@ -313,84 +362,29 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-  
     
-   
-    
-    
-<!--텀블벅추가-->
-    
-    <style>.jQspcv {
-    cursor: pointer;
-    display: inline-block;
-    min-height: 1em;
-    vertical-align: baseline;
-    box-shadow: transparent 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0em 0px 0px inset;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    text-transform: none;
-    text-shadow: none;
-    font-weight: bold;
-    line-height: 1em;
-    font-style: normal;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.6);
-    background-color: rgb(231, 231, 231);
-    font-size: 1em;
-    width: 100%;
-    opacity: 1;
-    outline: none;
-    border-width: initial;
-    border-style: none;
-    border-color: initial;
-    border-image: initial;
-    transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
-    margin: 0px 0.25em 0px 0px;
-    border-radius: 0.285714rem;
-    text-decoration: none;
-    padding: 1em 1.5em;
-}
-    
-    .hQGkMf {
-    font-size: 13px;
-    text-align: center;
-    margin-top: 20px;
-    padding-top: 40px;
-    border-top: 1px solid rgb(239, 239, 239);
-}
+    <!--텀블벅추가-->
+    <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
+        <div style="margin-top:180px; margin-bottom:50px"class="Wrapper__MembershipBody-sc-140yq7-0 dgBlAy">
+            <div style="display: flex;color:white; flex-direction: column;">
+                <a class="SocialButton__SocialLink-sc-7k5r2h-0 hGAcLm">
+                <i class="_1uz2PaH_Pc163IQLnwFtm8 _1oJMWnMCW_Y6GmNc1mhqaW _1QY7TzdLHKX3-BKPDNNYKF"></i>페이스북 아이디로 가입하기</a>
+                <a class="SocialButton__SocialLink-sc-7k5r2h-0 jLeKfP">
+                <svg class="naverIcon" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18.31"><title>naverIcon</title>
+                <path d="M20,19.15H13.33A0.34,0.34,0,0,1,13,19L7,10.22,6.84,10v9.15H0V0.85H6.68A0.32, 0.32,0,0,1,7,1l6,8.75a0.82,0.82,0,0,0,.19.22V0.86H20v18.3Z" transform="translate(0 -0.84)" fill="#fff"></path>
+                </svg>네이버 아이디로 가입하기</a>
+            </div>
+            <div class="Divider-sc-1wyk970-0 uEieK"><span><span>또는</span></span></div>
+            <div><button class="Button-sc-1x93b2b-0 jQspcv" style="height: 45px;" onclick="location.href='member_joinwithEmail.do'">이메일로 가입하기</button></div>
+            <div class="SignUp__LoginLinkWrapper-k5h4n5-4 hQGkMf">
+                <p style="color: rgb(117, 117, 117); margin-bottom: 0px;">이미 계정이 있으신가요?</p>
+                <a href="/login?redirection=%2F" style="color:#fc5230">기존 계정으로 로그인하기</a>
+            </div>
+        </div>
+    </div>
+    <!--텀블벅추가-->
     
     
-    
-    </style>
-    
-    
-    
-    <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn"><div style="margin-top:180px; margin-bottom:50px"class="Wrapper__MembershipBody-sc-140yq7-0 dgBlAy"><div style="display: flex;color:white; flex-direction: column;"><a class="SocialButton__SocialLink-sc-7k5r2h-0 hGAcLm"><i class="_1uz2PaH_Pc163IQLnwFtm8 _1oJMWnMCW_Y6GmNc1mhqaW _1QY7TzdLHKX3-BKPDNNYKF"></i>페이스북 아이디로 가입하기</a><a class="SocialButton__SocialLink-sc-7k5r2h-0 jLeKfP"><svg class="naverIcon" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18.31"><title>naverIcon</title><path d="M20,19.15H13.33A0.34,0.34,0,0,1,13,19L7,10.22,6.84,10v9.15H0V0.85H6.68A0.32, 0.32,0,0,1,7,1l6,8.75a0.82,0.82,0,0,0,.19.22V0.86H20v18.3Z" transform="translate(0 -0.84)" fill="#fff"></path></svg>네이버 아이디로 가입하기</a></div><div class="Divider-sc-1wyk970-0 uEieK"><span><span>또는</span></span></div><div><button class="Button-sc-1x93b2b-0 jQspcv" style="height: 45px;">이메일로 가입하기</button></div><div class="SignUp__LoginLinkWrapper-k5h4n5-4 hQGkMf"><p style="color: rgb(117, 117, 117); margin-bottom: 0px;">이미 계정이 있으신가요?</p><a href="/login?redirection=%2F" style="color:#fc5230">기존 계정으로 로그인하기</a></div></div></div>
-    
-    
-    
-    
-    
-    
-    
-    
-<!--텀블벅추가-->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
   <!-- Footer Bottom Area -->
         <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">
             <div class="container">
@@ -414,19 +408,7 @@
                 </div>
             </div>
         </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
-    
-    
 <!-- Footer Bottom Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->

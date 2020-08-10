@@ -85,6 +85,19 @@
 </head>
 
 <body>
+<c:if test="${empty member}">
+      <script>
+      console.log("empty member");
+      </script>
+    </c:if>
+    <c:if test="${!empty member}">
+      <script>
+      console.log("member exist");
+      console.log('email: ${member.member_email}');
+      console.log('name: ${member.member_name}');
+      console.log('pass: ${member.member_password}');
+      </script>
+    </c:if>
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
@@ -127,13 +140,22 @@
                                     </div>
                                 </div>
                                 <!-- Login -->
-                                <div class="login">
-                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
-                                </div>
-                                <!-- Cart -->
-                                <div class="cart">
-                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
-                                </div>
+                              <c:if test="${empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
+                                  <!-- Sign up -->
+                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
+                                </c:if>
+                                <c:if test="${!empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
+                                  
+                                  <!-- My Page -->
+                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
+                                  
+                                  <!-- Cart -->
+                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
+                                </c:if> 
                             </div>
                         </div>
                     </div>
@@ -568,8 +590,15 @@
             총 게시물 수 : ${listResult.totalCount}
           </td>
         </tr>
-        <button type="button" class="searchBtn">
-				<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' href="board_write">글쓰기</a></button>
+    <c:if test="${empty member}">
+		<div align='center'> 로그인 후 글쓰기 이용가능
+		</div>
+    </c:if>
+    <c:if test="${!empty member}">
+		 <button type="button" class="searchBtn">
+		<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' href="board_write">글쓰기</a></button>
+    </c:if>
+       
 		</div>
    </div>
    <!-- 게시판 영역 end -->

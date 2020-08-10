@@ -29,3 +29,27 @@ input[type="number"]::-webkit-inner-spin-button {
 .related-products-area{
   margin-top:100px;
 }
+
+.hcbae-member-modify-area{
+  position: relative;
+  border-bottom: 1px solid rgb(230, 230, 230);
+  margin: 32px 0px 16px;
+  padding-bottom: 16px;
+}
+
+.hcbae-member-modify-button{
+  position: absolute;
+  top: 20%;
+  right: 0%;
+}
+
+.hcbae-member-modify-input{
+  position: relative;
+  margin: 16px 0px 16px;
+  padding-bottom: 16px;
+}
+
+.hcbae-member-joinwithEmail-check{
+  float: right; 
+  color: red;
+}

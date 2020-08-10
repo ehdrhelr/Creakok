@@ -61,6 +61,19 @@
 </head>
 
 <body>
+<c:if test="${empty member}">
+      <script>
+      console.log("empty member");
+      </script>
+    </c:if>
+    <c:if test="${!empty member}">
+      <script>
+      console.log("member exist");
+      console.log('email: ${member.member_email}');
+      console.log('name: ${member.member_name}');
+      console.log('pass: ${member.member_password}');
+      </script>
+    </c:if>
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
@@ -103,13 +116,22 @@
                                     </div>
                                 </div>
                                 <!-- Login -->
-                                <div class="login">
-                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
-                                </div>
-                                <!-- Cart -->
-                                <div class="cart">
-                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
-                                </div>
+                                 <c:if test="${empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
+                                  <!-- Sign up -->
+                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
+                                </c:if>
+                                <c:if test="${!empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
+                                  
+                                  <!-- My Page -->
+                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
+                                  
+                                  <!-- Cart -->
+                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
+                                </c:if> 
                             </div>
                         </div>
                     </div>
@@ -147,29 +169,10 @@
                                     <li><a href="shop.html">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html" >Home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="shop.html">Shop</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="shop-details.html">Shop Details</a></li>
-                                                    <li><a href="cart.html">Shopping Cart</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="portfolio.html">Portfolio</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="`gle-portfolio.html">Portfolio Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="blog.html">Blog</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-post.html">Blog Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                        <c:forEach items="${creatorList}" var="creator">
+                                            <li><a href="index.html" >${creator.creator_name}</a></li>
+                                            </c:forEach>
+                                            
                                         </ul>
                                     </li>
                                     <li><a href="shop.html">ABOUT</a></li>
@@ -221,7 +224,7 @@
 					          <table class="table table-striped">
 					            <tr>
 					                <td>작성자</td>
-					                <td><input type="text"  class="form-control" name="member_name"></td>
+					                <td><input type="text"  class="form-control" name="member_name" value="${member.member_name}" readOnly></td>
 					            </tr>
 					            <tr>
 					                <td>제목</td>

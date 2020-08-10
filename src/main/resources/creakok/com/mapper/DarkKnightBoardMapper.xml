@@ -37,7 +37,7 @@
 			SELECT DK_BOARD_INDEX_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 			INSERT INTO DARKKNIGHT_BOARD 
-					VALUES (#{board_index}, #{board_subject}, #{board_content}, 'a', SYSDATE, 0, 0, null)
+					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, SYSDATE, 0, 0, null)
 	</insert>
 	
 	<!-- 조회수 +1 -->
