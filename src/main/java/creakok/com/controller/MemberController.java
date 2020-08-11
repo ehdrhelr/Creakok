@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
+import creakok.com.domain.Member_category;
+import creakok.com.domain.Member_origin;
 import creakok.com.service.MemberService;
 import lombok.extern.log4j.Log4j;
 
@@ -22,16 +24,7 @@ public class MemberController {
 	@Autowired
 	private MemberService mService;
 	
-	@RequestMapping("tokenCheck.do")
-	public void tokenCheck() {
 
-	}
-	
-	@RequestMapping("socialLogin.do")
-	public void socialLogin() {
-		log.info("### social login start");
-	}
-	
 	@ResponseBody
 	@GetMapping("member_readEmail.do")
 	public String readEmail(String member_email) {
@@ -65,10 +58,13 @@ public class MemberController {
 		//log.info("### member_email:"+member_email );
 		//log.info("### member_password:"+member_password );
 		Member member = new Member();
+		member.setMember_category_code(Member_category.MEMBER_NORMAL);
+		member.setMember_origin_code(Member_origin.SIGNUP_NORMAL);
+		
 		member.setMember_name(member_name);
 		member.setMember_email(member_email);
 		member.setMember_password(member_password);
-		
+
 		mService.signupMemberS(member);
 		
 		return "login";

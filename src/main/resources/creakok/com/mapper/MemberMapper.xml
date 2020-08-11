@@ -21,12 +21,20 @@
   </update>
   
   <insert id="insertMember" parameterType="MEMBER">
-    insert into MEMBER(member_email, member_name, member_password, member_joindate) 
-      values(#{member_email}, #{member_name}, #{member_password}, SYSDATE)
+    insert into MEMBER(member_category_code, member_origin_code, member_email, member_name, member_password, member_joindate) 
+      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, SYSDATE)
   </insert>
   
   <delete id="deleteMember" parameterType="String">
     delete from MEMBER where MEMBER_EMAIL=#{member_email}
   </delete>
+
+
+  <insert id="insertSocialMember" parameterType="MEMBER">
+    insert into MEMBER(member_category_code, member_origin_code, member_email, member_name, member_password, member_profile_pic, member_joindate) 
+      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, #{member_profile_pic}, SYSDATE)
+  </insert>
+
+
   
 </mapper>

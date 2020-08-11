@@ -202,7 +202,21 @@
     <version>2.8.2</version>
 </dependency>
 	
-	
+  <!-- Naver login -->
+  <dependency>
+    <groupId>com.github.scribejava</groupId>
+    <artifactId>scribejava-core</artifactId>
+    <version>3.3.0</version>
+  </dependency>
+  
+  <!-- json simple -->
+  <!-- https://mvnrepository.com/artifact/com.github.jsurfer/jsurfer-jsonsimple -->
+  <dependency>
+    <groupId>com.github.jsurfer</groupId>
+    <artifactId>jsurfer-jsonsimple</artifactId>
+    <version>1.4.1</version>
+  </dependency>
+  
 
 	
 	</dependencies>

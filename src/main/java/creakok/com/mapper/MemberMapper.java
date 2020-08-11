@@ -11,4 +11,7 @@ public interface MemberMapper {
 	void updatePassword(Member member);
 	void insertMember(Member member);
 	void deleteMember(String member_email);
+	
+	void insertSocialMember(Member member);
+
 }

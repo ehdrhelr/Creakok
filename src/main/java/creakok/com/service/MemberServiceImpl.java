@@ -14,6 +14,12 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper memberMapper;
 	
 	@Override
+	public void signupSocialMemberS(Member member) {
+		memberMapper.insertSocialMember(member);
+	}
+	
+	
+	@Override
 	public Member checkEmailExist(String member_email) {
 		Member member = memberMapper.selectByEmail(member_email);
 		return member;

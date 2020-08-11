@@ -46,7 +46,6 @@
 	
 	
 	<context:component-scan base-package="creakok.com" />
-	
-	
+  
 	
 </beans:beans>

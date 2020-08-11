@@ -14,4 +14,6 @@ public interface MemberService {
 	Member checkNameExist(String member_name);
 	Member checkEmailExist(String member_email);
 
+	void signupSocialMemberS(Member member);
+	
 }

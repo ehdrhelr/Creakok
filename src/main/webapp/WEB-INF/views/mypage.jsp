@@ -243,14 +243,23 @@
                     <div class="hcbae-member-modify-area">
                         <h3>프로필 사진</h3>
                         <p>${member.member_profile_pic}</p>
+                        
+                        <c:if test="${!empty member.member_profile_pic}">
+                          <img style="height:100px;" src="${member.member_profile_pic}">                                
+                        </c:if>
+                        
                         <span class="hcbae-member-modify-button">
-                        <input class="btn" type="button" data-target="#profile-pic-area" data-toggle="collapse" value="수정" onclick="changeButtonText(this)">
+                        
+                        <c:if test="${member.member_origin_code==100}">
+                          <input class="btn" type="button" data-target="#profile-pic-area" data-toggle="collapse" value="수정" onclick="changeButtonText(this)">
+                        </c:if>
+
                         </span>
                         <div id="profile-pic-area" class="collapse">
-                        <p>사진 저장 관련하여 정리 되고 프로필 사진을 표시할 수 있게 되면 추가 수정하자.</p>
+                          <p>사진 저장 관련하여 정리 되고 프로필 사진을 표시할 수 있게 되면 추가 수정하자.</p>
                         </div>
                     </div>
-                    
+                    <c:if test="${member.member_origin_code==100}">
                     <div class="hcbae-member-modify-area">
                         <h3>비밀번호</h3>
                         <span class="hcbae-member-modify-button">
@@ -280,10 +289,10 @@
                         
                         </div>
                     </div>
+                    </c:if>
                     
                     <div class="hcbae-member-modify-area">
                         <h3>수정할 정보가 뭐가 더 있을까?</h3>
-                        <p>${member.member_profile_pic}</p>
                         <span class="hcbae-member-modify-button">
                         <input class="btn" type="button" data-target="#add-modify-area" data-toggle="collapse" value="수정" onclick="changeButtonText(this)">
                         </span>
@@ -296,21 +305,27 @@
                     <div class="hcbae-member-modify-area">
                         <h3>회원탈퇴</h3>
                         <span class="hcbae-member-modify-button">
-                        <input class="btn" type="button" data-target="#secession-area" data-toggle="collapse" value="수정" onclick="changeButtonText(this)">
+                        <input class="btn" type="button" data-target="#secession-area" data-toggle="collapse" value="수정">
                         </span>
                         
                         <div id="secession-area" class="collapse">
                             <p>CREAKOK을 탈퇴하시겠습니까? (굳이? ㅠㅠ)</p>
-                        
-                            <div class="hcbae-member-modify-input">
-                              <label>현재 비밀번호를 입력해주세요.</label><br>
-                              <input type="password" id="secessionPassword" placeholder="현재 비밀번호" onKeyUp="checkSecession('${member.member_email}')">
-                              <label id="checkSecessionResult"></label>
-                            </div>
-                            
-                            <span>
-                            <input class="btn" type="button" value="탈퇴하기" onclick="secessionPassword('${member.member_email}')">
-                            </span>              
+                            <c:if test="${member.member_origin_code==100}">
+                              <div class="hcbae-member-modify-input">
+                                <label>현재 비밀번호를 입력해주세요.</label><br>
+                                <input type="password" id="secessionPassword" placeholder="현재 비밀번호" onKeyUp="checkSecession('${member.member_email}')">
+                                <label id="checkSecessionResult"></label>
+                              </div>
+                              
+                              <span>
+                              <input class="btn" type="button" value="탈퇴하기" onclick="secessionPassword('${member.member_email}')">
+                              </span>              
+                            </c:if>
+                            <c:if test="${member.member_origin_code!=100}">
+                              <span>
+                              <input class="btn" type="button" value="탈퇴하기" onclick="secessionSocial('${member.member_email}')">
+                              </span>
+                            </c:if>
                         </div>                           
                     </div>
                     

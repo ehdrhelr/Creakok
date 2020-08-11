@@ -303,7 +303,7 @@
             <i class="_1uz2PaH_Pc163IQLnwFtm8 _1oJMWnMCW_Y6GmNc1mhqaW _1QY7TzdLHKX3-BKPDNNYKF"></i>
                         페이스북 아이디로 로그인
           </a>
-          <a class="SocialButton__SocialLink-sc-7k5r2h-0 jLeKfP" href="socialLogin.do">
+          <a class="SocialButton__SocialLink-sc-7k5r2h-0 jLeKfP" href="naverLogin.do">
             <svg class="naverIcon" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18.31">
             <path d="M20,19.15H13.33A0.34,0.34,0,0,1,13,19L7,10.22,6.84,10v9.15H0V0.85H6.68A0.32, 0.32,0,0,1,7,1l6,8.75a0.82,0.82,0,0,0,.19.22V0.86H20v18.3Z" transform="translate(0 -0.84)" fill="#fff"></path>
             </svg>

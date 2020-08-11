@@ -46,6 +46,8 @@
 	<context:component-scan base-package="creakok.com"/><!-- Root Context: defines shared resources visible to all other web components -->
 	<context:component-scan base-package="creakok.com.mapper"/>
 	<mybatis-spring:scan base-package="creakok.com.mapper"/>
-	
+  
+  <bean id="naverLoginBO" class="creakok.com.naver.NaverLoginBO" />
+  
 </beans>
 
