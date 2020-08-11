@@ -1,5 +1,6 @@
 package creakok.com.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -22,19 +23,23 @@ public class FundingServiceImpl implements FundingService {
 	private FundingMapper fundingMapper;
 	@Override
 	public FundingVo getFundingVo(int currentPage, int pageSize, String filterBy, String categoryBy) {
-		long totalCount = fundingMapper.selectCount();
+		long totalCount = fundingMapper.selectCount(categoryBy);
 		
 		FundingVo fundingVo = new FundingVo(currentPage, totalCount, pageSize, filterBy, categoryBy, null, null);
-		Set<String> listCategoryUsed = new TreeSet<String>();
+		TreeSet<String> listCategoryUsed = new TreeSet<String>();
 		List<Funding> list = fundingMapper.selectPerPage(fundingVo);
+		
+		TreeSet<Integer> listCategoryCode = new TreeSet<Integer>();
+		listCategoryCode = fundingMapper.selectCategoryCode();
+		for(Integer codeUsed : listCategoryCode) {
+			listCategoryUsed.add(fundingMapper.selectCategoryName(codeUsed));
+		}
 		for(Funding funding : list) {
 			funding.setFunding_category_name(fundingMapper.selectPerPageCategory(funding));
-			listCategoryUsed.add(fundingMapper.selectPerPageCategory(funding));
-			funding.setPercentage(100.0*funding.getFunding_amount()/funding.getFunding_goal());
+			funding.setPercentage(100.0*funding.getFunding_amount()/funding.getFunding_goal());	
 			funding.setRestdays((funding.getFunding_edate().getTime()-funding.getFunding_wdate().getTime())/(1000*60*60*24));
 		}	
 	
-		
 		return new FundingVo(currentPage, totalCount, pageSize, filterBy, categoryBy, list, listCategoryUsed);
 	}
 	

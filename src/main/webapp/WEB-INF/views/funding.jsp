@@ -124,7 +124,7 @@
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="funding_list.do">FUNDING</a></li>
+                                    <li><a href="funding_list.do?categoryName=전체보기">FUNDING</a></li>
                                     <li><a href="goods.jsp">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
@@ -210,20 +210,42 @@
                     <div class="most__search__tab">
                         <ul class="nav nav-tabs nav-pills" role="tablist">
                         
+                       <li class="nav-item">
+                        <c:choose>
+                        
+                           <c:when test="${categoryName=='전체보기'}">
+                            <a class="hcbae-nav nav-link active" data-toggle="tab" href="funding_list.do?categoryBy=전체보기" role="tab">
+                                                                전체보기
+                             </a>
+                             </c:when>
+                       
+                          
+                        <c:otherwise>
                         
                         
+                        
+                       <li class="nav-item">
+                            <a class="hcbae-nav nav-link" data-toggle="tab" href="funding_list.do?categoryName=전체보기" role="tab">
+                                                                전체보기
+                             </a>
+                             </li>
+                        </c:otherwise>
+                        </c:choose> 
+                      </li>
+                         <c:forEach items="${categoryNames}" var="categoryNames" >
                             <li class="nav-item">
-                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="funding_list.do?" role="tab">
-                                    전체보기
-                                </a>
-                            </li>
-
-                        <c:forEach items="${list_funding_category}" var="list_funding_category" >
-                     
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="funding_list.do?categoryBy=${list_funding_category}" role="tab">
-                                    ${list_funding_category}
-                                </a>
+                             <c:choose>
+                                  <c:when test="${categoryNames==categoryName}">
+                                     <a class="hcbae-nav nav-link active" data-toggle="tab" href="funding_list.do?categoryName=${categoryNames}" role="tab">
+                                         ${categoryNames}
+                                         </a>
+                                   </c:when>
+                              <c:otherwise>
+                                     <a class="hcbae-nav nav-link" data-toggle="tab" href="funding_list.do?categoryName=${categoryNames}" role="tab">
+                                        ${categoryNames}
+                                     </a>
+                                 </c:otherwise>
+                                 </c:choose>
                             </li>        
                          </c:forEach>
                         </ul>
@@ -416,10 +438,23 @@
                 <div class="col-12 text-center" style="margin-bottom:100px">
                  <!--   <a href="#" class="btn alazea-btn">더보기</a>-->
                       <nav aria-label="Page navigation"class="text-center">
+                      
                             <ul class="pagination" style="margin-top:100px">
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                             <c:forEach begin="1" end="${fundingVo.totalPageCount}" var="i">
+                             
+                               <li class="page-item">
+                               <a class="page-link" href="funding_list.do?cp=${i}">
+                                <c:choose>
+                                  <c:when test="${i==fundingVo.currentPage}">
+                                  <strong>${i}</strong>
+                                  </c:when>
+                    
+                                  <c:otherwise>
+                                  <span>${i}</span>
+                                  </c:otherwise>
+                                </c:choose>
+                                 </a> 
+                                </c:forEach>
                             </ul>
                         </nav>
                 </div>

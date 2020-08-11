@@ -23,21 +23,13 @@ import lombok.extern.log4j.Log4j;
 public class FundingController {
 	
 	private FundingService service;
-	 
-	/*
-	@RequestMapping(value="/list", method =RequestMethod.GET)
-	public String funding() {
-		return "funding";
-	}
-	
-	*/
+
 	@RequestMapping("funding_list.do")
 	public ModelAndView list(HttpServletRequest request, HttpSession session) {
 		String cpStr = request.getParameter("cp");
 	    String psStr = request.getParameter("ps");
-	    String filterBy = request.getParameter("filterBy");
-	    String categoryBy = request.getParameter("categoryBy");
-	    log.info("$$$$$$$$$$$$$$$$$$$$$$"+categoryBy);
+	    String filterBy = request.getParameter("filterBy");	 
+	    String categoryName= request.getParameter("categoryName");
 	    FundingVo fundingVo = new FundingVo();
 	   
 	    //(2) cp 
@@ -56,15 +48,16 @@ public class FundingController {
 		//(2) ps 
 		int ps = 3;
 		if(psStr == null) {
-			Object psObj = session.getAttribute("ps");
+			Object psObj = session.getAttribute("pageSize");
 			if(psObj != null) {
 				ps = (Integer)psObj;
+				
 			}
 		}else {
 			psStr = psStr.trim();
 			int psParam = Integer.parseInt(psStr);
 			
-			Object psObj = session.getAttribute("ps");
+			Object psObj = session.getAttribute("pageSize");
 			if(psObj != null) {
 				int psSession = (Integer)psObj;
 				if(psSession != psParam) {
@@ -80,88 +73,110 @@ public class FundingController {
 			ps = psParam;
 		}
 		session.setAttribute("pageSize", ps);
-		log.info("###########"+ps); 
-		
-		
-			if(filterBy==null) {
-				Object filterByObj = session.getAttribute("filterBy");
-				if(filterByObj != null) {
-					filterBy = (String)filterByObj;
-				}else {
-					filterBy="FUNDING_LIKE_NUMBER";
-				}
+		if(filterBy==null) {
+			Object filterByObj = session.getAttribute("filterBy");
+			if(filterByObj != null) {
+				filterBy = (String)filterByObj;
 			}else {
-				filterBy = filterBy.trim();
+				filterBy="FUNDING_LIKE_NUMBER";
 			}
-			log.info("###########"+filterBy);
-			session.setAttribute("filterBy", filterBy);
+		}else {
+			filterBy = filterBy.trim();
+		}
+		log.info("###########"+filterBy);
+		session.setAttribute("filterBy", filterBy);
+		
+		String categoryBy="200 or funding_category_code=201 or "
+				+ "funding_category_code=202 or funding_category_code=203 or funding_category_code=204 or "
+				+ "funding_category_code=205 or funding_category_code=206 or funding_category_code=207 or "
+				+ "funding_category_code=208 or funding_category_code=209 or funding_category_code=210 or "
+				+ "funding_category_code=211 or funding_category_code=212 or funding_category_code=213 or "
+				+ "funding_category_code=214 or funding_category_code=215";	
+		if(categoryName==null) {
+			Object categoryByObj = session.getAttribute("categoryBy");
+			Object categoryNameObj = session.getAttribute("categoryName");
 			
-			if(categoryBy==null) {
-				//Object categoryByObj = session.getAttribute("categoryBy");
-				//if(categoryByObj != null) {
-				//	categoryBy = (String)categoryByObj;
-				//}else {
-					
-			
-					categoryBy="200 or funding_category_code=201 or "
-							+ "funding_category_code=202 or funding_category_code=203 or funding_category_code=204 or "
-							+ "funding_category_code=205 or funding_category_code=206 or funding_category_code=207 or "
-							+ "funding_category_code=208 or funding_category_code=209 or funding_category_code=210 or "
-							+ "funding_category_code=211 or funding_category_code=212 or funding_category_code=213 or "
-							+ "funding_category_code=214 or funding_category_code=215";
-							
-						
-					fundingVo = service.getFundingVo(cp, ps, filterBy, categoryBy);//카테고리 유즈드 리스트가 전부들어감
-					session.setAttribute("list_funding_category", fundingVo.getListCategoryUsed());
-			//	}
+			if(categoryByObj != null) {
+				categoryBy = (String)categoryByObj; 
+				categoryName = (String)categoryNameObj;
 			}else {
-				if(categoryBy.equals("테크/가전")) {
-					categoryBy="200";
-				}else if(categoryBy.equals("패션/잡화")) {
-					categoryBy="201";
-				}else if(categoryBy.equals("뷰티")) {
-					categoryBy="202";
-				}else if(categoryBy.equals("홈리빙")) {
-					categoryBy="203";
-				}else if(categoryBy.equals("디자인소품")) {
-					categoryBy="204";
-				}else if(categoryBy.equals("여행/레저")) {
-					categoryBy="205";
-				}else if(categoryBy.equals("스포츠/모빌리티")) {
-					categoryBy="206";
-				}else if(categoryBy.equals("반려동물")) {
-					categoryBy="207";
-				}else if(categoryBy.equals("모임")) {
-					categoryBy="208";
-				}else if(categoryBy.equals("공연/컬쳐")) {
-					categoryBy="209";
-				}else if(categoryBy.equals("소셜/캠페인")) {
-					categoryBy="210";
-				}else if(categoryBy.equals("교육/키즈")) {
-					categoryBy="211";
-				}else if(categoryBy.equals("게임/취미")) {
-					categoryBy="212";
-				}else if(categoryBy.equals("출판")) {
-					categoryBy="213";
-				}else if(categoryBy.equals("기부/후원")) {
-					categoryBy="214";
-				}
-				
-				fundingVo = service.getFundingVo(cp, ps, filterBy, categoryBy);//카테고리 유즈드 리스트가 전부들어감
-				//session.setAttribute("list_funding_category", fundingVo.getListCategoryUsed());
-				
+				categoryName = "전체보기";
+				session.setAttribute("categoryName", categoryName);
 			}
-			log.info("###########"+categoryBy);
-			session.setAttribute("categoryBy", categoryBy);
+		}else {
+			categoryName = categoryName.trim();
 		
+			if(categoryName.equals("테크/가전")) {
+				categoryBy="200";
+			}else if(categoryName.equals("패션/잡화")) {
+				categoryBy="201";
+			}else if(categoryName.equals("뷰티")) {
+				categoryBy="202";
+			}else if(categoryName.equals("홈리빙")) {
+				categoryBy="203";
+			}else if(categoryName.equals("디자인소품")) {
+				categoryBy="204";
+			}else if(categoryName.equals("여행/레저")) {
+				categoryBy="205";
+			}else if(categoryName.equals("스포츠/모빌리티")) {
+				categoryBy="206";
+			}else if(categoryName.equals("반려동물")) {
+				categoryBy="207";
+			}else if(categoryName.equals("모임")) {
+				categoryBy="208";
+			}else if(categoryName.equals("공연/컬쳐")) {
+				categoryBy="209";
+			}else if(categoryName.equals("소셜/캠페인")) {
+				categoryBy="210";
+			}else if(categoryName.equals("교육/키즈")) {
+				categoryBy="211";
+			}else if(categoryName.equals("게임/취미")) {
+				categoryBy="212";
+			}else if(categoryName.equals("출판")) {
+				categoryBy="213";
+			}else if(categoryName.equals("기부/후원")) {
+				categoryBy="214";
+			}else if(categoryName.equals("전체보기")) {
+				categoryBy="200 or funding_category_code=201 or "
+						+ "funding_category_code=202 or funding_category_code=203 or funding_category_code=204 or "
+						+ "funding_category_code=205 or funding_category_code=206 or funding_category_code=207 or "
+						+ "funding_category_code=208 or funding_category_code=209 or funding_category_code=210 or "
+						+ "funding_category_code=211 or funding_category_code=212 or funding_category_code=213 or "
+						+ "funding_category_code=214 or funding_category_code=215";
+			}
+		}
+		session.setAttribute("categoryBy", categoryBy);
+		session.setAttribute("categoryName", categoryName);
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("categoryName:"+categoryName);
+		log.info("categoryBy:"+categoryBy);
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
+		log.info("######################");
 		
+		fundingVo = service.getFundingVo(cp, ps, filterBy, categoryBy);//카테고리 유즈드 리스트가 전부들어감
+		session.setAttribute("categoryNames", fundingVo.getListCategoryUsed());
+		log.info(fundingVo.getListCategoryUsed());
+	
 		
 		//(3) ModelAndView
-		//FundingVo fundingVo = service.getFundingVo(cp, ps, filterBy, categoryBy);//카테고리 유즈드 리스트가 전부들어감
-		
-		//List<Funding_category> list_funding_category = service.getFunding_category();
-		//session.setAttribute("list_funding_category", fundingVo.getListCategoryUsed());
-			
 		ModelAndView mv = new ModelAndView("/funding", "fundingVo", fundingVo);
 		if(fundingVo.getList().size() ==0 ) {
 			if(cp>1) {
@@ -174,4 +189,5 @@ public class FundingController {
 	}
 		
 }
+
 	
