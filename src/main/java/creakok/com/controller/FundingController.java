@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_category;
 import creakok.com.service.FundingService;
 import creakok.com.vo.FundingVo;
@@ -30,6 +31,7 @@ public class FundingController {
 	    String psStr = request.getParameter("funding_ps");
 	    String filterBy = request.getParameter("funding_filterBy");	 
 	    String categoryName= request.getParameter("funding_categoryName");
+	    String funding_indexStr = request.getParameter("funding_index");
 	    FundingVo fundingVo = new FundingVo();
 	   
 	    //(2) cp 
@@ -156,16 +158,40 @@ public class FundingController {
 		
 		//(3) ModelAndView
 		ModelAndView mv = new ModelAndView("/funding", "fundingVo", fundingVo);
+		
 		if(fundingVo.getList().size() ==0 ) {
 			if(cp>1) {
 				return new ModelAndView("redirect:funding_list.do?funding_cp="+(cp-1));
 			}else {
-				return new ModelAndView("redirect:funding_list.do", "FundingVo", null);
+				return new ModelAndView("redirect:funding_list.do", "fundingVo", null);
 			}
+		}else if(funding_indexStr!=null) {
+			int funding_indexTogo = Integer.parseInt(funding_indexStr);
+			for(Funding funding : fundingVo.getList()) {
+				if(funding.getFunding_index()==funding_indexTogo) {
+					log.info("!!!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!");
+					
+					log.info(funding);
+					log.info("!!!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!");
+					
+					return new ModelAndView("/funding_detail", "funding_detail", funding);
+				
+				
+				}
+			}	
+			//return new ModelAndView("/funding_detail", "fundingVo", fundingVo);
 		}
 	     return mv;
+	     
+	    
 	}
-		
+	
 }
 
 	

@@ -242,12 +242,14 @@
                             <li class="nav-item">
                              <c:choose>
                                   <c:when test="${categoryNames==funding_categoryName}">
-                                     <a class="hcbae-nav nav-link active" data-toggle="tab" href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
+                                     <a class="hcbae-nav nav-link active" data-toggle="tab" 
+                                     href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
                                          ${categoryNames}
                                          </a>
                                    </c:when>
                               <c:otherwise>
-                                     <a class="hcbae-nav nav-link" data-toggle="tab" href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
+                                     <a class="hcbae-nav nav-link" data-toggle="tab" 
+                                     href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
                                         ${categoryNames}
                                      </a>
                                  </c:otherwise>
@@ -368,7 +370,7 @@
                                         <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
                                             </span></a>
                                   
-                                                 <a href="shop-details.html">
+                                                 <a href="funding_list.do?funding_index=${fundingVo.funding_index}">
                                 
                                                      <img src="${fundingVo.funding_repre_pic}" alt="">
                                                 </a>
@@ -376,7 +378,7 @@
                                     <div class="CommonCard_info__1f4kq">
                                     <div class="RewardProjectCard_info__3JFub">
                                         <div class="RewardProjectCard_infoTop__3QR5w">
-                                        <a href="#" class="CardLink_link__1k83H">
+                                        <a href="funding_list.do?funding_index=${fundingVo.funding_index}" class="CardLink_link__1k83H">
                                             <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
                                                 <strong>${fundingVo.funding_subject}</strong>
                                             </p>
