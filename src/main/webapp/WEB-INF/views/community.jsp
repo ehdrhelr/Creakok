@@ -82,6 +82,29 @@
             max-width:63%;!important;
         }
     </style>
+    
+    <!-- sweet alert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    
+    <script>
+		const Toast = Swal.mixin({
+			toast: true,
+			position: 'top-end',
+			showConfirmButton: false,
+			timer: 3000,
+			timerProgressBar: true,
+			onOpen: (toast) => {
+			toast.addEventListener('mouseenter', Swal.stopTimer)
+			toast.addEventListener('mouseleave', Swal.resumeTimer)
+			}
+		})
+		function check_login() {
+			Toast.fire({
+				icon: 'error',
+				title: '로그인 후 이용해주세요.'
+				})
+			}
+	</script>
 </head>
 
 <body>
@@ -494,6 +517,15 @@
 			
 			<div class="r_list">
 				<div class="choose">
+					
+					<ul class="clearfix">
+						<li><span>정렬 : </span> 
+						<select name="c_code" id="store_code" onChange="location.href=this.value" style='height:30px; margin-bottom:3px;'>
+							<option value="board_page#fix_point">최신순</option>
+							<option value="board_page_byView#fix_point">조회순</option>
+							<option value="board_page_byLike#fix_point">좋아요순</option>
+						</select>
+					</ul>
 					<form action="board_search01" name="check_into"
 						method="post">  
 						<ul class="clearfix">
@@ -590,14 +622,14 @@
             총 게시물 수 : ${listResult.totalCount}
           </td>
         </tr>
-    <c:if test="${empty member}">
-		<div align='center'> 로그인 후 글쓰기 이용가능
-		</div>
-    </c:if>
-    <c:if test="${!empty member}">
-		 <button type="button" class="searchBtn">
-		<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' href="board_write">글쓰기</a></button>
-    </c:if>
+        <c:if test="${empty member}">
+        	<button type="button" class="searchBtn">
+			<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' onclick="check_login()">글쓰기</a></button>
+    	</c:if>
+   		<c:if test="${!empty member}">
+			<button type="button" class="searchBtn">
+			<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' href="board_write">글쓰기</a></button>
+    	</c:if>
        
 		</div>
    </div>

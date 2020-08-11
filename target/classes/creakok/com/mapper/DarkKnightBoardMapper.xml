@@ -63,4 +63,5 @@
 	<select id="selectByName" resultType="Board" parameterType="String">
 		select * from DARKKNIGHT where MEMBER_NAME like '%'||#{member_name}||'%' order by board_index	
 	</select>
+
 </mapper>

@@ -83,7 +83,7 @@
         }
     </style>
     
-    <!-- sweet alert -->
+    <!-- sweet alert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     
     <script>
@@ -102,6 +102,12 @@
 			Toast.fire({
 				icon: 'error',
 				title: '로그인 후 이용해주세요.'
+				})
+			}
+		function no_right() {
+			Toast.fire({
+				icon: 'error',
+				title: '수정 권한이 없어요.'
 				})
 			}
 	</script>
@@ -297,7 +303,25 @@
 						<c:if test="${!empty member}">
 							<a href='#' style='width:50px; line-height:50%;'><img src=img/like/empty_heart.png></a>
 					    </c:if>
-					</td>	
+					</td>
+					</tr>
+					<tr>
+					<td colspan='2' align='center'>
+						<c:if test="${empty member}">
+							<a href='#' style='background-color:black; color:white; width:70px; line-height:50%; padding:3px;' onclick="check_login()">수정</a>
+							<a href='#' style='background-color:black; color:white; width:70px; line-height:50%; padding:3px;' onclick="check_login()">삭제</a>
+						</c:if>
+						<c:if test="${!empty member}">
+							<c:if test="${member.member_email == board.member_email}">
+								<a href='board_update?board_index=${board.board_index}' style='background-color:black; color:white; width:70px; line-height:50%; padding:3px;'>수정</a>								
+								<a href='board_delete?board_index=${board.board_index}' style='background-color:black; color:white; width:70px; line-height:50%; padding:3px;'>삭제</a>
+							</c:if>
+							<c:if test="${member.member_email ne board.member_email}">
+								<a href='#' style='background-color:black; color:white; width:70px; line-height:50%; padding:3px;' onclick="no_right()">수정</a>
+								<a href='#' style='background-color:black; color:white; width:70px; line-height:50%; padding:3px;' onclick="no_right()">삭제</a>
+							</c:if>
+						</c:if>
+					</td>
 					</tr>
 					</tbody>
 				</table>

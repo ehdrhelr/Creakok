@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import creakok.com.domain.Board;
 import creakok.com.domain.Creator;
-import creakok.com.mapper.DarkKnightBoardMapper;
+import creakok.com.mapper.SubsubBoardMapper;
 import creakok.com.vo.ListResult;
 import lombok.extern.log4j.Log4j;
 
@@ -15,7 +15,7 @@ import lombok.extern.log4j.Log4j;
 @Service
 public class BoardServiceImpl implements BoardService {
 	@Autowired
-	private DarkKnightBoardMapper mapper;
+	private SubsubBoardMapper mapper;
 	
 	@Override
 	public ListResult getListResultS(int currentPage, int pageSize) {
@@ -23,6 +23,19 @@ public class BoardServiceImpl implements BoardService {
 		int count = mapper.count();
 		return new ListResult(currentPage, count, pageSize, list);
 	}
+	@Override
+	public ListResult getListResultByViewS(int currentPage, int pageSize) {
+		List<Board> list = (List<Board>)mapper.getListResultByView(currentPage, pageSize);
+		int count = mapper.count();
+		return new ListResult(currentPage, count, pageSize, list);
+	}
+	@Override
+	public ListResult getListResultByLikeS(int currentPage, int pageSize) {
+		List<Board> list = (List<Board>)mapper.getListResultByLike(currentPage, pageSize);
+		int count = mapper.count();
+		return new ListResult(currentPage, count, pageSize, list);
+	}
+	
 	
 	@Override
 	public Board contentS(long board_index) {
@@ -59,6 +72,11 @@ public class BoardServiceImpl implements BoardService {
 	public List<Creator> getCreatorName() {
 		return mapper.getCreatorName();
 	}
+	// ªË¡¶
+	@Override
+	public void deleteBoard(long board_index) {
+		mapper.deleteBoard(board_index);
+	}
 	// for Ajax
 	public List<Board> selectBySubjectS(String board_subject) {
 		return mapper.selectBySubject(board_subject);
@@ -71,6 +89,6 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void edit(Board board) {
 		mapper.update(board);
-		
 	}
+	
 }

@@ -8,8 +8,12 @@ import creakok.com.domain.Board;
 import creakok.com.domain.Creator;
 import creakok.com.domain.Like;
 
-public interface DarkKnightBoardMapper {
+public interface SubsubBoardMapper {
 	List<Board> getListResult(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize);
+	// 조회수 정렬
+	List<Board> getListResultByView(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize);
+	// 좋아요수 정렬
+	List<Board> getListResultByLike(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize);
 	int count();
 	Board content(long board_index);
 	void insert(Board board);
@@ -22,7 +26,11 @@ public interface DarkKnightBoardMapper {
 	// 크리에이터 이름 조회
 	public List<Creator> getCreatorName();
 	
+	// 삭제
+	void deleteBoard(long board_index);
+	
 	Board selectByIndex(long board_index);
+	// update
 	void update(Board board);
 	
 	// for Ajax

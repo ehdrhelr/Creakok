@@ -14,6 +14,7 @@ public class Board {
 	private String board_subject;
 	private String board_content;
 	private String member_name;
+	private String member_email;
 	private Date board_wdate;
 	private long board_view;
 	private long board_like;

@@ -226,6 +226,10 @@
 					                <td>작성자</td>
 					                <td><input type="text"  class="form-control" name="member_name" value="${member.member_name}" readOnly></td>
 					            </tr>
+								<tr>
+					                <td>작성자</td>
+					                <td><input type="text"  class="form-control" name="member_email" value="${member.member_email}" readOnly></td>
+					            </tr>	
 					            <tr>
 					                <td>제목</td>
 					                <td><input type="text"  class="form-control" name="board_subject"></td>
@@ -245,8 +249,7 @@
 					                    <input type="reset" value="다시작성" class="btn btn-warning">
 					                    <button type="button"  class="btn btn-primary" onclick="location.href='board_page#fix_point'">전체 게시글보기</button>
 					                </td>
-					            </tr>
-					             
+					            </tr>     
 					          </table>
 					        </form>
 					    </div>

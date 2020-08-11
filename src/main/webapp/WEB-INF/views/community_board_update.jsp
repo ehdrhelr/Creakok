@@ -41,7 +41,7 @@
 <hr width='600' size='2' color='gray' noshade>
 </center>
 
-<form name='input' method='post' action='update.do'>
+<form name='input' method='post' action='board_update?board_index=${board.board_index}'>
 <input type="hidden" name="board_index" value="${board.board_index}">
 <table border='0' width='600' align='center' cellpadding='3' cellspacing='1' bordercolor='gray'>	
 <tr>
@@ -53,12 +53,12 @@
 
 <tr>
 	<td align='center'>글제목</td>
-	<td><input name='subject' value='${board.board_subject}'/></td>
+	<td><input name='board_subject' value='${board.board_subject}'/></td>
 </tr>
 			
 <tr>
 	<td align='center'>글내용</td>
-	<td><textarea id='ta' name='content' rows='15' cols='70'>${board.board_content}</textarea></td>
+	<td><textarea id='ta' name='board_content' rows='15' cols='70'>${board.board_content}</textarea></td>
 </tr>
 <tr>
 	 <td colspan='2' align='center'>
