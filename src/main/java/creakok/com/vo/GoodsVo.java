@@ -29,7 +29,7 @@ public class GoodsVo {
       this.gCode = gCode;
       this.filterBy = filterBy;
    }
-   private long calTotalPageCount() {
+   public long calTotalPageCount() {
       long tpc = totalCount/ps; 
       if(totalCount%ps != 0) tpc++;
       

@@ -8,19 +8,36 @@ import org.springframework.stereotype.Service;
 import creakok.com.domain.Goods;
 import creakok.com.mapper.GoodsMapper;
 import creakok.com.vo.GoodsVo;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Service("GoodsService")
 public class GoodsServiceImpl implements GoodsService {
 	@Autowired
 	private GoodsMapper gMapper;
 	
 	@Override
-	public GoodsVo getGoodsVo(int cp, int ps, String filterBy) {
+	public GoodsVo listS(int cp, int ps, String filterBy){
 		long totalCount = gMapper.selectGoodsCount();
 		GoodsVo goodsVo = new GoodsVo(cp, totalCount, ps, null, -1, filterBy);
+		List<Goods> origin_list = gMapper.list(goodsVo);
+		
+		return new GoodsVo(cp, totalCount, ps, origin_list, -1, filterBy);
+	};
+	
+	@Override
+	public GoodsVo getGoodsVo(int cp, int ps, long gCode, String filterBy) {
+		long totalCount = gMapper.selectGoodsCountByCode(gCode);
+		GoodsVo goodsVo = new GoodsVo(cp, totalCount, ps, null, gCode, filterBy);
 		List<Goods> list = gMapper.selectPerPage(goodsVo);
 		
-		return new GoodsVo(cp, totalCount, ps, list, -1, filterBy);
+		GoodsVo goodsVo2 = new GoodsVo(cp, totalCount, ps, list, gCode, filterBy);
+		goodsVo2.setTotalPageCount(goodsVo2.calTotalPageCount() );
+		
+		log.info("#### ttp:"+goodsVo2.getTotalCount() );
+		log.info("#### ttp:"+goodsVo2.getTotalPageCount() );
+
+		return goodsVo2;
 	}
 	
 

@@ -37,7 +37,13 @@
 	<link rel="stylesheet" href="css/css_boto/style.css"/>
 	
 	
-	
+	<style type="text/css">
+.clickable {cursor: pointer;}
+.hover {text-decoration: underline;}
+.odd{ background: #FFC;}
+.even{ background: #FF9;}
+.active{ width:10px; height:10px; background:#f60; color:white;}
+</style>
 </head>
 
 <body>
@@ -203,53 +209,7 @@
             </div>
         </div>
         
-        
-        <!-- 
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="most__search__tab">
-                        <ul class="nav nav-tabs nav-pills" role="tablist">
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                    전체보기
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    테크/가전
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    패션/잡화
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    뷰티
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-5" role="tab">
-                                    푸드
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-6" role="tab">
-                                    홈리빙
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-6" role="tab">
-                                    디자인소품
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>  -->
+
         
         
     </div>
@@ -278,7 +238,7 @@
                                 </select> -->
                                 
                                 
-                                 <select class="custom-select widget-title" id="fbId" name="filterBy" class="custom-select widget-title" onchange="f1(this)">
+                                 <select class="custom-select widget-title" id="fbId" name="filterBy" class="custom-select widget-title" onchange="getFilterBy();" >
                                   <c:choose>
                                    <c:when test="${goods.filterBy == 'goods_sale_number'}">
                                     <option value="goods_sale_number" selected>인기순</option>
@@ -298,19 +258,10 @@
                                   </c:choose>
                                   </select>
                                   
-                                  
-                                <script language="javascript">
-		                              function f1(select){
-		                               
-		                                 //var el = document.getElementById("psId");
-		                                 var filterBy = select.value;
-		                                 
-		                                 location.href="goods_list.do?filterBy="+filterBy;
-		                              }  
-                          		</script>
+                              
                           
                             
-                                <select id="psId" name="ps" class="custom-select widget-title" onchange="f(this)">
+                                <select id="psId" name="ps" class="custom-select widget-title" onchange="getPs();">
                                 	<c:choose>
                                 		<c:when test="${goods.ps == 3}">
 		                                    <option value="3" selected>3개씩 보기</option>
@@ -335,15 +286,6 @@
                 </div>
             </div>
 
-
-         <script language="javascript">
-				function f(select){
-					//var el = document.getElementById("psId");
-					var ps = select.value;
-					//alert("ps : " + ps);
-					location.href="goods_list.do?ps="+ps;
-				}
-		 </script>
 
 
 
@@ -373,185 +315,72 @@
                            
                                 <!-- Single Checkbox -->
                               	
-                              	
                               	 <div class="widget-desc">
-	                              	 <c:forEach items="${gCategory}" var="gCategory">
-		                                <div class="custom-checkbox d-flex align-items-center mb-2" class="custom-control-input" id="customCheck">
-		                                    <input type="checkbox" value="${gCategory.goods_category_code}" id="category" name="category" onclick="doOpenCheck(this)" style="margin-right:5px;">${gCategory.goods_category_name}
-		                               	</div>    
-	                               </c:forEach>  
-	                             </div>                      	
-                              	  
+ 	                              	 <c:forEach items="${gCategory}" var="gCategory">
+	                              	   <div class="custom-checkbox d-flex align-items-center mb-2" class="custom-control-input" id="customCheck">
+		                                    <input type="checkbox" value="${gCategory.goods_category_code}" id="category" name="category" onchange="getGCode();" style="margin-right:5px;">${gCategory.goods_category_name}
+	                              		</div>
+	                               	</c:forEach> 
+	                               	
+
+	                             
+                              	 </div> 
                         </div>
-		<script type="text/javascript" language="javascript" 
-		     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>					                       
-                       <script language="javascript">
-	                        function doOpenCheck(chk){
-	                            var obj = document.getElementsByName("category");
-	                            for(var i=0; i<obj.length; i++){
-	                                if(obj[i] != chk){
-	                                    obj[i].checked = false;
-	                                }
-	                            }
-	                            let value = 0;
-	                            $('#category:checked').each(function() {
-	                            	value = $(this).val();
-	                            	console.log("hcbae:"+value);
-	                           	});
-	                      
-	                            //var obj = new Object();
-								//var obj = $("#category").val();
-								var jsonData = JSON.stringify(value);
-								//alert("jsonData:"+jsonData);
-								
-								$.ajax({ //  $.ajax({ JS 객체 }); 
-									 url: "gCategory_Sorting.json", //.json : json타입으로 받겠다
-									 type: "POST",
-									 async: true,
-									 contentType: "application/json", //★★ 요놈 절대 빼먹으면안됨
-									 data: jsonData, //★★
-									 error:function(request,status,error){
-									        alert("실패"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)   	
-									 },
-									 success: function(responseData){
+	
+	<script language="javascript">
+	 function getFilterBy(){
+		   	var fbId = document.getElementById("fbId");
+		   	var filterBy = fbId.options[fbId.selectedIndex].value;		
+		   	location.href="goods_list.do?filterBy="+filterBy;
+	 }
+   	 function getPs(){
 
-										
-										var jsonData = JSON.stringify(responseData);
-										var GoodsVo = JSON.parse(jsonData);
-										
-										var html = "";
-										
-										
-										
-									
-										html += "<div class='shop-products-area'>";
-										html += "<div class='row'>";
-		                        
-										<c:if test='${empty goods.list}'>
-											html += "<p style='text-align:center;width:100%;'>현재 판매중인 굿즈가 없습니다.</p>";
-										</c:if>
-										
-										
-										for(var i=0; i<GoodsVo.list.length; i++) {
-											//console.log(GoodsVo.list[i].creator_name);
-											
-											html += "<div class='col-12 col-sm-6 col-lg-4'>";
-											html += "<div class='single-product-area mb-50'>";
-											html += "<div class='product-img'>";
-											html += "<a href='goods-details.html'>";
-											html += "<img src='img/bg-img/"+GoodsVo.list[i].goods_repre_pic+"' alt=''>";
-											html += "</a>";
-											html += "<div class='product-meta d-flex'>";
-											html += "<a href='#' class='wishlist-btn'>";
-											html += "<i class='icon_heart_alt'></i>";
-											html += "</a>";
-											html += "<a href='cart.html' class='add-to-cart-btn'>장바구니에 담기</a>";
-											html += "<a href='#' class='compare-btn'>";
-											html += "<i class='arrow_left-right_alt'></i>";
-											html += "</a>";
-											html += "</div>";
-											html += "</div>";
-											
-											html += "<div class='product-info mt-15'>";
-											html += "<p style='margin-bottom:5px;'>"+GoodsVo.list[i].creator_name+"</p>";
-											html += "<a href='goods-details.html'>";
-											html += "<p style='color:#545454;font-weight:500;'>"+GoodsVo.list[i].goods_name+"</p>";
-											html += "</a>";
-											html += "<h6>";
-											html += "<strong>"+GoodsVo.list[i].goods_price+"</strong>원";
-											html += "</h6>"; 
-											html += "</div>";
-											
-											html += "</div>";
-											html += "</div>";
-											
-										}
-										html += "</div>";
-									
-										
-											<!-- Pagination -->
-											console.log(GoodsVo.list.length);
-											console.log(GoodsVo.cp);
-											console.log(GoodsVo.totalPageCount);
-											html += "<nav aria-label='Page navigation'>";
-											html += "<ul class='pagination'  style='-webkit-box-pack:center !important;justify-content:center !important;'>";
-					                        
-					                            	for(var i=1; i<=GoodsVo.totalPageCount; i++) {
-						                            	html += "<li class='page-item'>";
-						                            	html += "<a class='page-link' href='gCategory_Sorting?cp='"+i+"&gCode="+value+"' 'style=border-radius:0;'>";
-						                            		 		<c:choose>
-						                            		 			<c:when test="${i == GoodsVo.cp}">	
-						                            		 			html += "<span style='color:black'>"+i+"</span>";
-						                            		 			</c:when>
-						                            		 			<c:otherwise>
-						                            		 				i
-						                            		 			</c:otherwise>
-						                            		 		</c:choose>
-						                            		 		html += "</a>";
-						                            		 			html += "</li>";		
-					                            	}
-					                            	html += "<li class='page-item'>";
-					                            	html += "<a class='page-link' href='#'>";
-					                            	html += "<i class='fa fa-angle-right'></i>";
-					                            	html += "</a>";
-					                            	html += "</li>";  
-					                            	html += " </ul>"; 
-					                            		html += "</nav>"; 
-					                            			html += "</div>"; 
-					                            				html += "</div>"; 
-					                            					html += "</div>"; 
-					                            				
-					                            	               			
-											
-										
-										//alert("jsonData: "+jsObj.list);
-										//console.log(responseData.result_msg);
-										//console.log(GoodsVo.list[0].creator_name);
-										//$("#goods_area").empty();
-										$("#goods_area").html(html);
-										
-									}
-								});
-	                        }
-	                        
-	                   
-	                        
-	                      
-					</script>
+ 	   	var psId = document.getElementById("psId");
+	   	var ps = psId.options[psId.selectedIndex].value;
 
-
-                        <!-- Shop Widget
-                        <div class="shop-widget sort-by mb-50">
-                            <h4 class="widget-title">Sort by</h4>
-                            <div class="widget-desc">
-                                <!-- Single Checkbox 
-                                <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck7">
-                                    <label class="custom-control-label" for="customCheck7">New arrivals</label>
-                                </div>
-                                <!-- Single Checkbox 
-                                <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck8">
-                                    <label class="custom-control-label" for="customCheck8">Alphabetically, A-Z</label>
-                                </div>
-                                <!-- Single Checkbox 
-                                <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck9">
-                                    <label class="custom-control-label" for="customCheck9">Alphabetically, Z-A</label>
-                                </div>
-                                <!-- Single Checkbox 
-                                <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck10">
-                                    <label class="custom-control-label" for="customCheck10">Price: low to high</label>
-                                </div>
-                                <!-- Single Checkbox
-                                <div class="custom-control custom-checkbox d-flex align-items-center">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck11">
-                                    <label class="custom-control-label" for="customCheck11">Price: high to low</label>
-                                </div>
-                            </div>
-                        </div>
-
+	   	//location.href="goods_list.do?ps="+ps+"&cp="+cp;
+   	 	
+   	 /*	console.log("ps: "+ps);
+   		console.log("filterBy: "+filterBy);
+   		console.log("gCode: "+gCode);
+   		console.log("cp: "+cp); */
+   		
+   		location.href="goods_list.do?ps="+ps;
+   	 	
+   	 }
+   	 function getCp(){
+ 	   	var cp  = 1;
+	   	 $("#link22 a").click(function(e) {
+	   		cp = $(this).text();
+		   	e.preventDefault();
+		}); 	
+	   	location.href="goods_list.do?cp="+cp;
+   	 }
+   	 
+   	 
+   	 
+   	 function getGCode(){
+    		$('input[type="checkbox"][name="category"]').click(function(){
+    	        //클릭 이벤트 발생한 요소가 체크 상태인 경우
+    	        if ($(this).prop('checked')) {
+    	            //체크박스 그룹의 요소 전체를 체크 해제후 클릭한 요소 체크 상태지정
+    	           
+    	            $('input[type="checkbox"][name="category"]').prop('checked', false);
+    	            $(this).prop('checked', true);
+    	        	
+    	        }
+    	    });
+    	
+    	var gCode = null;
+         $('#category:checked').each(function() {
+        	gCode = $(this).val();
+         //	alert("gCode:"+gCode);
+        	$(this).css('background-color', '#666666');
+      	 });
+         location.href="goods_list.do?gCode="+gCode;
+    	 }
+	</script>
+	
                         <!-- Shop Widget -->
                         <div class="shop-widget best-seller mb-50">
                             <h4 class="widget-title">Best Seller</h4>
@@ -666,21 +495,25 @@
 
                         <!-- Pagination -->
 
-                        <nav aria-label="Page navigation">
+                        <nav aria-label="Page navigation" id="link22">
                             <ul class="pagination" >
                             	<c:forEach begin="1" end="${goods.totalPageCount}" var="i">
-                            		 <li class="page-item">
-                            		 	<a class="page-link" href="goods_list.do?cp=${i}" style="border-radius:0;">
-                            		 		<c:choose>
-                            		 			<c:when test="${i==goods.cp}">
-                            		 				<span style="color:black">${i}</span>
-                            		 			</c:when>
-                            		 			<c:otherwise>
-                            		 				${i}
-                            		 			</c:otherwise>
-                            		 		</c:choose>
-                            			</a>
-                            		</li>       		
+                       		 		<c:choose>
+                       		 			<c:when test="${i==goods.cp}">
+                       		 			<li class="page-item">
+                       		 			<a class="page-link" href="goods_list.do?cp=${i}" style="border-radius:0;" onclick="getCp();">
+                       		 				<span style="color:black">${i}</span>
+                       		 				</a>
+                       		 				</li>
+                       		 			</c:when>
+                       		 			<c:otherwise>
+                       		 			<li class="page-item">
+                       		 			<a class="page-link" href="goods_list.do?cp=${i}" style="border-radius:0;" onclick="getCp();">
+                       		 				<span>${i}</span>
+                       		 				</a>
+                       		 				</li>
+                       		 			</c:otherwise>
+                       		 		</c:choose>
                             	</c:forEach>
                               <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>  
                             </ul>
