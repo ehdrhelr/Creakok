@@ -26,16 +26,16 @@ public class FundingController {
 
 	@RequestMapping("funding_list.do")
 	public ModelAndView list(HttpServletRequest request, HttpSession session) {
-		String cpStr = request.getParameter("cp");
-	    String psStr = request.getParameter("ps");
-	    String filterBy = request.getParameter("filterBy");	 
-	    String categoryName= request.getParameter("categoryName");
+		String cpStr = request.getParameter("funding_cp");
+	    String psStr = request.getParameter("funding_ps");
+	    String filterBy = request.getParameter("funding_filterBy");	 
+	    String categoryName= request.getParameter("funding_categoryName");
 	    FundingVo fundingVo = new FundingVo();
 	   
 	    //(2) cp 
 	    int cp = 1;
 		if(cpStr == null) {
-			Object cpObj = session.getAttribute("cp");
+			Object cpObj = session.getAttribute("funding_cp");
 			if(cpObj != null) {
 				cp = (Integer)cpObj;
 			}
@@ -43,12 +43,12 @@ public class FundingController {
 			cpStr = cpStr.trim();
 			cp = Integer.parseInt(cpStr);
 		}
-		session.setAttribute("cp", cp);
+		session.setAttribute("funding_cp", cp);
 		
 		//(2) ps 
 		int ps = 3;
 		if(psStr == null) {
-			Object psObj = session.getAttribute("pageSize");
+			Object psObj = session.getAttribute("funding_pageSize");
 			if(psObj != null) {
 				ps = (Integer)psObj;
 				
@@ -57,24 +57,24 @@ public class FundingController {
 			psStr = psStr.trim();
 			int psParam = Integer.parseInt(psStr);
 			
-			Object psObj = session.getAttribute("pageSize");
+			Object psObj = session.getAttribute("funding_pageSize");
 			if(psObj != null) {
 				int psSession = (Integer)psObj;
 				if(psSession != psParam) {
 					cp = 1;
-					session.setAttribute("cp", cp);
+					session.setAttribute("funding_cp", cp);
 				}
 			}else {
 				if(ps != psParam) {
 					cp = 1;
-					session.setAttribute("cp", cp);
+					session.setAttribute("funding_cp", cp);
 				}
 			}		
 			ps = psParam;
 		}
-		session.setAttribute("pageSize", ps);
+		session.setAttribute("funding_pageSize", ps);
 		if(filterBy==null) {
-			Object filterByObj = session.getAttribute("filterBy");
+			Object filterByObj = session.getAttribute("funding_filterBy");
 			if(filterByObj != null) {
 				filterBy = (String)filterByObj;
 			}else {
@@ -84,7 +84,7 @@ public class FundingController {
 			filterBy = filterBy.trim();
 		}
 		log.info("###########"+filterBy);
-		session.setAttribute("filterBy", filterBy);
+		session.setAttribute("funding_filterBy", filterBy);
 		
 		String categoryBy="200 or funding_category_code=201 or "
 				+ "funding_category_code=202 or funding_category_code=203 or funding_category_code=204 or "
@@ -93,15 +93,15 @@ public class FundingController {
 				+ "funding_category_code=211 or funding_category_code=212 or funding_category_code=213 or "
 				+ "funding_category_code=214 or funding_category_code=215";	
 		if(categoryName==null) {
-			Object categoryByObj = session.getAttribute("categoryBy");
-			Object categoryNameObj = session.getAttribute("categoryName");
+			Object categoryByObj = session.getAttribute("funding_categoryBy");
+			Object categoryNameObj = session.getAttribute("funding_categoryName");
 			
 			if(categoryByObj != null) {
 				categoryBy = (String)categoryByObj; 
 				categoryName = (String)categoryNameObj;
 			}else {
 				categoryName = "전체보기";
-				session.setAttribute("categoryName", categoryName);
+				session.setAttribute("funding_categoryName", categoryName);
 			}
 		}else {
 			categoryName = categoryName.trim();
@@ -145,34 +145,12 @@ public class FundingController {
 						+ "funding_category_code=214 or funding_category_code=215";
 			}
 		}
-		session.setAttribute("categoryBy", categoryBy);
-		session.setAttribute("categoryName", categoryName);
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("categoryName:"+categoryName);
-		log.info("categoryBy:"+categoryBy);
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
-		log.info("######################");
+		session.setAttribute("funding_categoryBy", categoryBy);
+		session.setAttribute("funding_categoryName", categoryName);
+
 		
 		fundingVo = service.getFundingVo(cp, ps, filterBy, categoryBy);//카테고리 유즈드 리스트가 전부들어감
-		session.setAttribute("categoryNames", fundingVo.getListCategoryUsed());
+		session.setAttribute("funding_categoryNames", fundingVo.getListCategoryUsed());
 		log.info(fundingVo.getListCategoryUsed());
 	
 		
@@ -180,7 +158,7 @@ public class FundingController {
 		ModelAndView mv = new ModelAndView("/funding", "fundingVo", fundingVo);
 		if(fundingVo.getList().size() ==0 ) {
 			if(cp>1) {
-				return new ModelAndView("redirect:funding_list.do?cp="+(cp-1));
+				return new ModelAndView("redirect:funding_list.do?funding_cp="+(cp-1));
 			}else {
 				return new ModelAndView("redirect:funding_list.do", "FundingVo", null);
 			}

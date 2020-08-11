@@ -124,7 +124,7 @@
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="funding_list.do?categoryName=전체보기">FUNDING</a></li>
+                                    <li><a href="funding_list.do?funding_categoryName=전체보기">FUNDING</a></li>
                                     <li><a href="goods.jsp">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
@@ -213,8 +213,8 @@
                        <li class="nav-item">
                         <c:choose>
                         
-                           <c:when test="${categoryName=='전체보기'}">
-                            <a class="hcbae-nav nav-link active" data-toggle="tab" href="funding_list.do?categoryBy=전체보기" role="tab">
+                           <c:when test="${funding_categoryName=='전체보기'}">
+                            <a class="hcbae-nav nav-link active" data-toggle="tab" href="funding_list.do?funding_categoryBy=전체보기" role="tab">
                                                                 전체보기
                              </a>
                              </c:when>
@@ -225,23 +225,23 @@
                         
                         
                        <li class="nav-item">
-                            <a class="hcbae-nav nav-link" data-toggle="tab" href="funding_list.do?categoryName=전체보기" role="tab">
+                            <a class="hcbae-nav nav-link" data-toggle="tab" href="funding_list.do?funding_categoryName=전체보기" role="tab">
                                                                 전체보기
                              </a>
                              </li>
                         </c:otherwise>
                         </c:choose> 
                       </li>
-                         <c:forEach items="${categoryNames}" var="categoryNames" >
+                         <c:forEach items="${funding_categoryNames}" var="categoryNames" >
                             <li class="nav-item">
                              <c:choose>
-                                  <c:when test="${categoryNames==categoryName}">
-                                     <a class="hcbae-nav nav-link active" data-toggle="tab" href="funding_list.do?categoryName=${categoryNames}" role="tab">
+                                  <c:when test="${categoryNames==funding_categoryName}">
+                                     <a class="hcbae-nav nav-link active" data-toggle="tab" href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
                                          ${categoryNames}
                                          </a>
                                    </c:when>
                               <c:otherwise>
-                                     <a class="hcbae-nav nav-link" data-toggle="tab" href="funding_list.do?categoryName=${categoryNames}" role="tab">
+                                     <a class="hcbae-nav nav-link" data-toggle="tab" href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
                                         ${categoryNames}
                                      </a>
                                  </c:otherwise>
@@ -302,7 +302,7 @@
                                       <c:when test="${fundingVo.pageSize==3}">
                                           <option value="3" selected>3개씩 보기</option>
                                           <option value="6">6개씩 보기</option>
-                                          <option value="9">12개씩 보기</option>                          
+                                          <option value="9">9개씩 보기</option>                          
                                       </c:when>
                                       <c:when test="${fundingVo.pageSize==6}">
                                          <option value="3">3개씩 보기</option>                                     
@@ -324,7 +324,7 @@
                                  //var el = document.getElementById("psId");
                                  var ps = select.value;
                                  //alert("ps : " + ps);
-                                 location.href="funding_list.do?ps="+ps;
+                                 location.href="funding_list.do?funding_ps="+ps;
                               }
                       </script>
                       <script language="javascript">
@@ -333,7 +333,7 @@
                                  //var el = document.getElementById("psId");
                                  var filterBy = select.value;
                                  
-                                 location.href="funding_list.do?filterBy="+filterBy;
+                                 location.href="funding_list.do?funding_filterBy="+filterBy;
                               }  
                           </script>
                               
@@ -443,7 +443,7 @@
                              <c:forEach begin="1" end="${fundingVo.totalPageCount}" var="i">
                              
                                <li class="page-item">
-                               <a class="page-link" href="funding_list.do?cp=${i}">
+                               <a class="page-link" href="funding_list.do?funding_cp=${i}">
                                 <c:choose>
                                   <c:when test="${i==fundingVo.currentPage}">
                                   <strong>${i}</strong>
