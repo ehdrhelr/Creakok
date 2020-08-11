@@ -14,6 +14,7 @@ import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
 import creakok.com.domain.Member_category;
 import creakok.com.domain.Member_origin;
+import creakok.com.kakao.KakaoLogin;
 import creakok.com.service.MemberService;
 import lombok.extern.log4j.Log4j;
 
@@ -126,6 +127,11 @@ public class MemberController {
 	@RequestMapping("member_logout.do")
 	public String logout(HttpSession session) {
 		session.removeAttribute("member");
+
+		String kakao_code = (String)session.getAttribute("kakao_code");
+		KakaoLogin.Logout(kakao_code);
+		session.removeAttribute("kakao_code");
+		
 		return "index";
 	}
 
