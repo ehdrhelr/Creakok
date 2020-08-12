@@ -18,24 +18,12 @@ public class BoardServiceImpl implements BoardService {
 	private SubsubBoardMapper mapper;
 	
 	@Override
-	public ListResult getListResultS(int currentPage, int pageSize) {
-		List<Board> list = (List<Board>)mapper.getListResult(currentPage, pageSize);
+	public ListResult getListResultS(int currentPage, int pageSize, String filterBy) {
+		List<Board> list = (List<Board>)mapper.getListResult(currentPage, pageSize, filterBy);
 		int count = mapper.count();
-		return new ListResult(currentPage, count, pageSize, list);
+		return new ListResult(currentPage, count, pageSize, list, filterBy);
 	}
-	@Override
-	public ListResult getListResultByViewS(int currentPage, int pageSize) {
-		List<Board> list = (List<Board>)mapper.getListResultByView(currentPage, pageSize);
-		int count = mapper.count();
-		return new ListResult(currentPage, count, pageSize, list);
-	}
-	@Override
-	public ListResult getListResultByLikeS(int currentPage, int pageSize) {
-		List<Board> list = (List<Board>)mapper.getListResultByLike(currentPage, pageSize);
-		int count = mapper.count();
-		return new ListResult(currentPage, count, pageSize, list);
-	}
-	
+
 	
 	@Override
 	public Board contentS(long board_index) {
@@ -77,18 +65,18 @@ public class BoardServiceImpl implements BoardService {
 	public void deleteBoard(long board_index) {
 		mapper.deleteBoard(board_index);
 	}
-	// for Ajax
-	public List<Board> selectBySubjectS(String board_subject) {
-		return mapper.selectBySubject(board_subject);
-	}
-	
-	public List<Board> selectByNameS(String member_name) {
-		return mapper.selectByName(member_name);
-	}
-
+	// 수정
 	@Override
 	public void edit(Board board) {
 		mapper.update(board);
 	}
-	
+	// 검색
+	@Override
+	public ListResult getListResultBySearchS(int currentPage, int pageSize, String filterBy, String c_code, String searchName) {
+		List<Board> list = (List<Board>)mapper.search(currentPage, pageSize, filterBy, c_code, searchName);
+		int count = mapper.count();
+		return new ListResult(currentPage, count, pageSize, list, filterBy);
+
+	}
+
 }

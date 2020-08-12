@@ -6,19 +6,7 @@
 
 	<select id="getListResult" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    	(select * from SUBSUB_BOARD order by BOARD_INDEX desc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
- 	</select>
- 	
- 	<select id="getListResultByView" resultType="Board">
-    	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    	(select * from SUBSUB_BOARD order by BOARD_VIEW desc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
- 	</select>
- 	
- 	<select id="getListResultByLike" resultType="Board">
-    	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    	(select * from SUBSUB_BOARD order by BOARD_LIKE desc) aa) 
+    	(select * from SUBSUB_BOARD order by ${filterBy} desc) aa) 
     	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
  	</select>
 	
@@ -71,14 +59,11 @@
 		delete from SUBSUB_BOARD where board_index = #{board_index}
 	</delete>
 	
-	<!-- for Ajax -->
-	
-	<select id="selectBySubject" resultType="Board" parameterType="String">
-		select * from SUBSUB_BOARD where board_subject like '%'||#{board_subject}||'%' order by board_index	
-	</select>
-	
-	<select id="selectByName" resultType="Board" parameterType="String">
-		select * from SUBSUB_BOARD where MEMBER_NAME like '%'||#{member_name}||'%' order by board_index	
+	<!-- 검색 -->
+	<select id="search" resultType="Board">
+    	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
+    	(select * from SUBSUB_BOARD order by ${filterBy} desc) aa) 
+    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and ${c_code}='${searchName}']]>
 	</select>
 
 </mapper>

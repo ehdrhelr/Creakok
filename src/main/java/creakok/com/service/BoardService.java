@@ -8,11 +8,7 @@ import creakok.com.domain.Like;
 import creakok.com.vo.ListResult;
 
 public interface BoardService {
-	ListResult getListResultS(int currentPage, int pageSize);
-	// 조회수 정렬
-	ListResult getListResultByViewS(int currentPage, int pageSize);
-	// 좋아요순 정렬
-	ListResult getListResultByLikeS(int currentPage, int pageSize);
+	ListResult getListResultS(int currentPage, int pageSize, String filterBy);
 	Board contentS(long board_index);
 	void insertS(Board board);
 	// 게시물 작성
@@ -25,12 +21,13 @@ public interface BoardService {
 	public List<Creator> getCreatorName();
 	// 삭제
 	void deleteBoard(long board_index);
-	
-	// 검색 서비스
+
+	// 내용
 	Board getBoard(long board_index);
+	// 검색 new
+	ListResult getListResultBySearchS(int currentPage, int pageSize, String filterBy, String c_code, String searchName);
+	// 수정
 	void edit(Board board);
-	
-	List<Board> selectBySubjectS(String board_subject);
-	List<Board> selectByNameS(String member_name);
+
 }
 

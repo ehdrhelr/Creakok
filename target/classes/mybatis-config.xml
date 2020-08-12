@@ -5,7 +5,6 @@
 <configuration>
    <typeAliases>
 		<typeAlias alias="Board" type="creakok.com.domain.Board"/>
-		<typeAlias alias="PagingBoardVo" type="creakok.com.vo.PagingBoardVo"/>
 		<typeAlias alias="Creator" type="creakok.com.domain.Creator"/>
 		
     	<typeAlias alias="Member_category" type="creakok.com.domain.Member_category"/>

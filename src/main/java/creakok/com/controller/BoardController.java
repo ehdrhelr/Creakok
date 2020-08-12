@@ -35,8 +35,9 @@ public class BoardController {
 	public ModelAndView getListResult(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cpStr = request.getParameter("cp");
 		String psStr = request.getParameter("ps");
+		String filterBy = request.getParameter("filterBy");
 
-		HttpSession session = request.getSession();		
+		HttpSession session = request.getSession();
 		
 		//(1) cp 
 		int cp = 1;
@@ -52,7 +53,8 @@ public class BoardController {
 		session.setAttribute("cp", cp);
 		
 		//(2) ps 
-		int ps = 3;
+		int ps = 15;
+		/*
 		if(psStr == null) {
 			Object psObj = session.getAttribute("ps");
 			if(psObj != null) {
@@ -78,131 +80,29 @@ public class BoardController {
 			
 			ps = psParam;
 		}
+		*/
 		session.setAttribute("ps", ps);
 		
-		ListResult listResult = service.getListResultS(cp, ps);
-		ModelAndView mv  = new ModelAndView();
-		mv.setViewName("community");
-		mv.addObject("listResult", listResult);
-		
-		// 크리에이터 이름 얻기
-		List<Creator> creatorList = service.getCreatorName();
-		mv.addObject("creatorList", creatorList);
-		
-		return mv;
-	}
-	
-	@RequestMapping("board_page_byView")
-	public ModelAndView getListResultByView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cpStr = request.getParameter("cp");
-		String psStr = request.getParameter("ps");
-		HttpSession session = request.getSession();		
-		
-		//(1) cp 
-		int cp = 1;
-		if(cpStr == null) {
-			Object cpObj = session.getAttribute("cp");
-			if(cpObj != null) {
-				cp = (Integer)cpObj;
+		if (filterBy==null) { 
+			String filterByTemp = (String) session.getAttribute("filterBy");
+			if (filterByTemp !=null) {
+				filterBy = filterByTemp;
+				log.info("@@@@@@@@@@@@"+ filterBy);
+			} else {
+				filterBy = "BOARD_INDEX";
 			}
-		}else {
-			cpStr = cpStr.trim();
-			cp = Integer.parseInt(cpStr);
 		}
-		session.setAttribute("cp", cp);
 		
-		//(2) ps 
-		int ps = 3;
-		if(psStr == null) {
-			Object psObj = session.getAttribute("ps");
-			if(psObj != null) {
-				ps = (Integer)psObj;
-			}
-		}else {
-			psStr = psStr.trim();
-			int psParam = Integer.parseInt(psStr);
-			
-			Object psObj = session.getAttribute("ps");
-			if(psObj != null) {
-				int psSession = (Integer)psObj;
-				if(psSession != psParam) {
-					cp = 1;
-					session.setAttribute("cp", cp);
-				}
-			}else {
-				if(ps != psParam) {
-					cp = 1;
-					session.setAttribute("cp", cp);
-				}
-			}
-			
-			ps = psParam;
-		}
-		session.setAttribute("ps", ps);
+		session.setAttribute("filterBy", filterBy);
 		
+		// 검색했을때 페이징하기
+		String searchName = request.getParameter("searchName");
+		String searchNameTemp = (String)session.getAttribute("searchName");
+		searchName = searchNameTemp;
+		session.setAttribute("searchName", searchName);
+		log.info("@@@@@@@@@@@@@@@@" + searchName);
 		
-		ListResult listResult = service.getListResultByViewS(cp, ps);
-		ModelAndView mv  = new ModelAndView();
-		mv.setViewName("community");
-		mv.addObject("listResult", listResult);
-		
-		// 크리에이터 이름 얻기
-		List<Creator> creatorList = service.getCreatorName();
-		mv.addObject("creatorList", creatorList);
-		
-		return mv;
-	}
-	
-	@RequestMapping("board_page_byLike")
-	public ModelAndView getListResultByLike(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cpStr = request.getParameter("cp");
-		String psStr = request.getParameter("ps");
-		HttpSession session = request.getSession();		
-		
-		//(1) cp 
-		int cp = 1;
-		if(cpStr == null) {
-			Object cpObj = session.getAttribute("cp");
-			if(cpObj != null) {
-				cp = (Integer)cpObj;
-			}
-		}else {
-			cpStr = cpStr.trim();
-			cp = Integer.parseInt(cpStr);
-		}
-		session.setAttribute("cp", cp);
-		
-		//(2) ps 
-		int ps = 3;
-		if(psStr == null) {
-			Object psObj = session.getAttribute("ps");
-			if(psObj != null) {
-				ps = (Integer)psObj;
-			}
-		}else {
-			psStr = psStr.trim();
-			int psParam = Integer.parseInt(psStr);
-			
-			Object psObj = session.getAttribute("ps");
-			if(psObj != null) {
-				int psSession = (Integer)psObj;
-				if(psSession != psParam) {
-					cp = 1;
-					session.setAttribute("cp", cp);
-				}
-			}else {
-				if(ps != psParam) {
-					cp = 1;
-					session.setAttribute("cp", cp);
-				}
-			}
-			
-			ps = psParam;
-		}
-		session.setAttribute("ps", ps);
-		
-		
-		ListResult listResult = service.getListResultByLikeS(cp, ps);
+		ListResult listResult = service.getListResultS(cp, ps, filterBy);
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community");
 		mv.addObject("listResult", listResult);
@@ -327,20 +227,107 @@ public class BoardController {
 		service.deleteBoard(board_index);
 		return "redirect:board_page";
 	}
-	
-	
-	// for Ajax 검색 
-	
-	@GetMapping("board_search01")
-	public @ResponseBody List<Board> search01(String board_subject) {
-		List<Board> list = service.selectBySubjectS(board_subject);
-		return list; // xml, json
-	}
-	
-	@PostMapping("board_search02")
-	public @ResponseBody List<Board> search02(String member_name) {
-		List<Board> list = service.selectByNameS(member_name);
-		return list; // xml, json
-	}
 
+	// 검색 
+	@RequestMapping("board_search")
+	public ModelAndView search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cpStr = request.getParameter("cp");
+		String psStr = request.getParameter("ps");
+		String filterBy = request.getParameter("filterBy");
+
+		HttpSession session = request.getSession();		
+		
+		//(1) cp 
+		int cp = 1;
+		if(cpStr == null) {
+			Object cpObj = session.getAttribute("cp");
+			if(cpObj != null) {
+				cp = (Integer)cpObj;
+			}
+		}else {
+			cpStr = cpStr.trim();
+			cp = Integer.parseInt(cpStr);
+		}
+		session.setAttribute("cp", cp);
+		
+		//(2) ps 
+		int ps = 3;
+		if(psStr == null) {
+			Object psObj = session.getAttribute("ps");
+			if(psObj != null) {
+				ps = (Integer)psObj;
+			}
+		}else {
+			psStr = psStr.trim();
+			int psParam = Integer.parseInt(psStr);
+			
+			Object psObj = session.getAttribute("ps");
+			if(psObj != null) {
+				int psSession = (Integer)psObj;
+				if(psSession != psParam) {
+					cp = 1;
+					session.setAttribute("cp", cp);
+				}
+			}else {
+				if(ps != psParam) {
+					cp = 1;
+					session.setAttribute("cp", cp);
+				}
+			}
+			
+			ps = psParam;
+		}
+		session.setAttribute("ps", ps);		
+		
+		if (filterBy==null) { 
+			String filterByTemp = (String) session.getAttribute("filterBy");
+			if (filterByTemp !=null) {
+				filterBy = filterByTemp;
+				log.info("@@@@@@@@@@@@"+ filterBy);
+			} else {
+				filterBy = "BOARD_INDEX";
+			}
+		}
+		session.setAttribute("filterBy", filterBy);
+		
+		String c_code = request.getParameter("c_code");
+		String searchName = request.getParameter("searchName");
+		
+		if (c_code==null) { 
+			String c_codeTemp = (String) session.getAttribute("c_code");
+			if (c_codeTemp !=null) {
+				c_code = c_codeTemp;
+				log.info("@@@@@@@@@@@@"+ c_code);
+			} else {
+				c_code = "#####";
+			}
+		}
+		session.setAttribute("c_code", c_code);
+		
+		if (searchName==null) { 
+			String searchNameTemp = (String) session.getAttribute("searchName");
+			if (searchNameTemp !=null) {
+				searchName = searchNameTemp;
+				log.info("@@@@@@@@@@@@"+ searchName);
+			} else {
+				searchName = "#####";
+			}
+		}
+		session.setAttribute("searchName", searchName);
+		
+		
+		System.out.println("c_code: "+c_code+", searchName: "+searchName);
+		
+		ListResult listResult = service.getListResultBySearchS(cp, ps, filterBy, c_code, searchName);
+		request.setAttribute("listResult", listResult);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("community");
+		
+		// 크리에이터 이름 얻기
+		List<Creator> creatorList = service.getCreatorName();
+		mv.addObject("creatorList", creatorList);
+		
+		return  mv;
+	}
 }

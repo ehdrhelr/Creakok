@@ -105,6 +105,13 @@
 				})
 			}
 	</script>
+	
+	 <script language="javascript">
+		function f(select){
+			var filterBy = select.value;
+			location.href="board_page?filterBy="+filterBy+"#fix_point";
+		}  
+	</script>
 </head>
 
 <body>
@@ -217,10 +224,10 @@
                                 <ul>
                                     <li><a href="index.html">FUNDING</a></li>
                                     <li><a href="shop.html">GOODS</a></li>
-                                    <li><a href="#">COMMUNITY</a>
+                                  	<li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
                                         	<c:forEach items="${creatorList}" var="creator">
-                                            <li><a href="index.html" >${creator.creator_name}</a></li>
+                                            <li><a href="board_page">${creator.creator_name}</a></li>
                                             </c:forEach>
                                             <!--  
                                             <li><a href="about.html">About</a></li>
@@ -355,7 +362,6 @@
                     </div>
                 </div>
             </div>
-
    
             <div class="row justify-content-center">
 			
@@ -517,27 +523,40 @@
 			
 			<div class="r_list">
 				<div class="choose">
-					
 					<ul class="clearfix">
-						<li><span>정렬 : </span> 
-						<select name="c_code" id="store_code" onChange="location.href=this.value" style='height:30px; margin-bottom:3px;'>
-							<option value="board_page#fix_point">최신순</option>
-							<option value="board_page_byView#fix_point">조회순</option>
-							<option value="board_page_byLike#fix_point">좋아요순</option>
+						<li><span>정렬 : </span>
+						<select name="filterBy" id="store_code" onChange="f(this)" style='height:30px; margin-bottom:3px;'>
+							<c:choose>
+								<c:when test="${listResult.filterBy == 'BOARD_INDEX'}">
+									<option value="BOARD_INDEX" selected>최신순</option>
+									<option value="BOARD_VIEW">조회순</option>
+									<option value="BOARD_LIKE">좋아요순</option>
+								</c:when>
+								<c:when test="${listResult.filterBy == 'BOARD_VIEW'}">
+									<option value="BOARD_INDEX">최신순</option>
+									<option value="BOARD_VIEW" selected>조회순</option>
+									<option value="BOARD_LIKE">좋아요순</option>
+								</c:when>
+								<c:when test="${listResult.filterBy == 'BOARD_LIKE'}">
+									<option value="BOARD_INDEX">최신순</option>
+									<option value="BOARD_VIEW">조회순</option>
+									<option value="BOARD_LIKE" selected>좋아요순</option>
+								</c:when>
+							</c:choose>
 						</select>
 					</ul>
-					<form action="board_search01" name="check_into"
+					<form action="board_search" name="check_into"
 						method="post">  
 						<ul class="clearfix">
 							<li><span>분류 : </span> 
 							<select name="c_code" id="store_code" onChange="text.value=c_code[selectedIndex].value" style='height:30px; margin-bottom:3px;'>
-									<option value="NAME">작성자</option>
-									<option value="TITLE">글제목</option>
+									<option value="MEMBER_NAME">작성자</option>
+									<option value="BOARD_SUBJECT">글제목</option>
 							</select>
 
 							<li>
 								<input type="text" name="searchName" style='height:30px; margin-bottom:3px;'
-									title="검색" required placeholder="Search" maxlength="20">
+									title="검색" required placeholder="Search" ma	xlength="20">
 								<button type="submit" style='height:30px;'>검색</button></li>
 						</ul>
 					</form>
@@ -591,14 +610,11 @@
         </tr>
         <tr>
           <td colspan="3" align="center">
-             <a href="board_page?">
-                                ◀이전
-             </a>
-             |
+          
             <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                <a href="board_page?cp=${i}#fix_point">
+                	<a href="board_search?cp=${i}#fix_point">
                 <c:choose> 
-                <c:when test="${i==listResult.currentPage}" >
+                <c:when test="${i==listResult.currentPage}">
                     <strong>${i}</strong>
                 </c:when>
                 <c:otherwise>
@@ -608,13 +624,6 @@
             </a>
             &nbsp;
             </c:forEach> 
-
-            |
-
-            <a href="board_page">
-            이후▶
-            </a>
-
              &nbsp;&nbsp;&nbsp; 
             ${listResult.currentPage}page/${listResult.totalPageCount}pages
           </td>

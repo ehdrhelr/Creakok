@@ -6,14 +6,10 @@ import org.apache.ibatis.annotations.Param;
 
 import creakok.com.domain.Board;
 import creakok.com.domain.Creator;
-import creakok.com.domain.Like;
+import creakok.com.vo.ListResult;
 
 public interface SubsubBoardMapper {
-	List<Board> getListResult(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize);
-	// 조회수 정렬
-	List<Board> getListResultByView(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize);
-	// 좋아요수 정렬
-	List<Board> getListResultByLike(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize);
+	List<Board> getListResult(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, @Param("filterBy") String filterBy);
 	int count();
 	Board content(long board_index);
 	void insert(Board board);
@@ -28,13 +24,14 @@ public interface SubsubBoardMapper {
 	
 	// 삭제
 	void deleteBoard(long board_index);
-	
+	// 내용
 	Board selectByIndex(long board_index);
 	// update
 	void update(Board board);
 	
-	// for Ajax
-	List<Board> selectBySubject(String board_subject);
-	List<Board> selectByName(String member_name);
+	// 검색
+	List<Board> search(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, 
+			@Param("filterBy") String filterBy, @Param("c_code") String c_code, 
+			@Param("searchName")String searchName);
 
 }
