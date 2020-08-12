@@ -36,6 +36,7 @@ public class GoodsServiceImpl implements GoodsService {
 		
 		log.info("#### ttp:"+goodsVo2.getTotalCount() );
 		log.info("#### ttp:"+goodsVo2.getTotalPageCount() );
+		log.info("#### getGoodsVo gCode:"+goodsVo2.getGCode() );
 
 		return goodsVo2;
 	}

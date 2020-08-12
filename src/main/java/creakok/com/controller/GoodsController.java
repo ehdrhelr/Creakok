@@ -80,6 +80,15 @@ public class GoodsController {
 		}else { 
 			psStr = psStr.trim();
 			ps = Integer.parseInt(psStr);
+			if(gCodeStr == null) {
+			//	gCodeStr = "300";
+				Object select_gCodeObj = tempGoods.getGCode();
+				if(select_gCodeObj != null) {
+					gCodeStr = select_gCodeObj.toString();
+				}else {
+					gCodeStr = "300";
+				}
+			}
 		}
 		
 	
@@ -93,30 +102,43 @@ public class GoodsController {
 	            }
 	     }else {
 	            filterBy = filterByStr.trim();
+				if(gCodeStr == null) {
+					//	gCodeStr = "300";
+						Object select_gCodeObj = tempGoods.getGCode();
+						if(select_gCodeObj != null) {
+							gCodeStr = select_gCodeObj.toString();
+						}else {
+							gCodeStr = "300";
+						}
+					} 
 	     }
 
 		
-		if( gCodeStr == null ) { //카테고리 코드 없을때
-			log.info("#######################filterBy: "+filterBy);
-			log.info("#######################cp: "+cp);
-			log.info("#######################ps: "+ps);
-		    GoodsVo goodsVo = goodsService.listS(cp, ps, filterBy);
-		    goodsVo.setCp(cp);
+		if( gCodeStr.equals("300") || gCodeStr == null ) { //카테고리 코드=300 (전체보기) 일때
+			long gCode = Long.parseLong(gCodeStr);
+			log.info("@@@@@@@@@@@@@@@@@@@@@@@@filterBy: "+filterBy);
+			log.info("@@@@@@@@@@@@@@@@@@@@@@@@cp: "+cp);
+			log.info("@@@@@@@@@@@@@@@@@@@@@@@@ps: "+ps);
+			log.info("#######################gCodeStr: "+gCodeStr);
+			log.info("#######################gCode: "+gCode);
+		    GoodsVo goodsVo = goodsService.listS(cp, ps, filterBy); //전체리스트 뽑아오고
+		    goodsVo.setCp(cp); //cp랑 이것저것 세팅해쥼
 		    goodsVo.setPs(ps);
 		    goodsVo.setFilterBy(filterBy);
-		   
+		    goodsVo.setGCode(gCode);
 		    
-		    goodsVo.setGCode(0);
 			if(goodsVo.getList().size() == 0) {
 				if(cp > 1) {	
 					int cp2 = cp-1;
 					goodsVo.setCp(cp2);
 				}
 			}
+			
+			
 			session.setAttribute("goods", goodsVo);
 
 			
-		} else if( gCodeStr != null )  { //카테고리 코드 있을때    
+		} else if( !gCodeStr.equals("300") )  { //다른 카테고리 코드일때
 			long gCode = Long.parseLong(gCodeStr);
 			
 			log.info("#######################g filterBy: "+filterBy);
@@ -129,7 +151,18 @@ public class GoodsController {
 			list.setPs(ps);
 			list.setFilterBy(filterBy);
 			list.setGCode(gCode);
-			   
+			
+			
+			
+			
+			
+			
+			if(list.getList().size() == 0) {
+				if(cp > 1) {	
+					int cp2 = cp-1;
+					list.setCp(cp2);
+				}
+			}   
 			session.setAttribute("goods", list);
 		}
 

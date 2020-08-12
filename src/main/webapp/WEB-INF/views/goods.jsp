@@ -130,7 +130,7 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a href="funding">FUNDING</a></li>
-                                    <li><a href="goods_list.do">GOODS</a></li>
+                                    <li><a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html" >Home</a></li>
@@ -317,15 +317,22 @@
                               	
                               	 <div class="widget-desc">
  	                              	 <c:forEach items="${gCategory}" var="gCategory">
-	                              	   <div class="custom-checkbox d-flex align-items-center mb-2" class="custom-control-input" id="customCheck">
-		                                    <input type="checkbox" value="${gCategory.goods_category_code}" id="category" name="category" onchange="getGCode();" style="margin-right:5px;">${gCategory.goods_category_name}
-	                              		</div>
+ 	                              	
+ 	                              	    	<c:if test="${gCategory.goods_category_code == goods.GCode}">
+ 	                              	    		<div class="custom-checkbox d-flex align-items-center mb-2" class="custom-control-input" id="customCheck">
+				                                    <input type="checkbox" value="${gCategory.goods_category_code}" id="category" name="category" onchange="getGCode(this);" style="margin-right:5px;" checked>${gCategory.goods_category_name}
+			                              		</div>
+ 	                              	    	</c:if>
+	                                		<c:if test="${gCategory.goods_category_code != goods.GCode}">
+	                                		 	<div class="custom-checkbox d-flex align-items-center mb-2" class="custom-control-input" id="customCheck">
+				                                    <input type="checkbox" value="${gCategory.goods_category_code}" id="category" name="category" onchange="getGCode(this);" style="margin-right:5px;">${gCategory.goods_category_name}
+			                              		</div>
+	                                		</c:if>
 	                               	</c:forEach> 
-	                               	
-
-	                             
                               	 </div> 
                         </div>
+	
+	
 	
 	<script language="javascript">
 	 function getFilterBy(){
@@ -334,7 +341,6 @@
 		   	location.href="goods_list.do?filterBy="+filterBy;
 	 }
    	 function getPs(){
-
  	   	var psId = document.getElementById("psId");
 	   	var ps = psId.options[psId.selectedIndex].value;
 
@@ -357,28 +363,25 @@
 	   	location.href="goods_list.do?cp="+cp;
    	 }
    	 
-   	 
-   	 
-   	 function getGCode(){
-    		$('input[type="checkbox"][name="category"]').click(function(){
-    	        //클릭 이벤트 발생한 요소가 체크 상태인 경우
-    	        if ($(this).prop('checked')) {
-    	            //체크박스 그룹의 요소 전체를 체크 해제후 클릭한 요소 체크 상태지정
-    	           
-    	            $('input[type="checkbox"][name="category"]').prop('checked', false);
-    	            $(this).prop('checked', true);
-    	        	
-    	        }
-    	    });
-    	
-    	var gCode = null;
+   	
+   	 function getGCode(chk){
+         var obj = document.getElementsByName("category");
+         for(var i=0; i<obj.length; i++){
+             if(obj[i] != chk){
+                 obj[i].checked = false;
+             }
+         }
+         var gCode;
+     
          $('#category:checked').each(function() {
-        	gCode = $(this).val();
-         //	alert("gCode:"+gCode);
-        	$(this).css('background-color', '#666666');
-      	 });
+         	gCode = $(this).val();
+         	//alert("gCode: "+gCode);
+         	console.log("hcbae:"+gCode);
+       	});
+
+         
          location.href="goods_list.do?gCode="+gCode;
-    	 }
+    }
 	</script>
 	
                         <!-- Shop Widget -->
@@ -463,7 +466,7 @@
 	                                <div class="single-product-area mb-50">
 	                                    <!-- Product Image -->
 	                                    <div class="product-img">
-	                                        <a href="goods-details.html"><img src="img/bg-img/${goods.goods_repre_pic}" alt=""></a>
+	                                        <a href="shop-details"><img src="img/bg-img/${goods.goods_repre_pic}" alt=""></a>
 	                                    
 	                                        <!-- Product Tag
 	                                        <div class="product-tag">
@@ -478,7 +481,7 @@
 		                                    <!-- Product Info -->
 		                                    <div class="product-info mt-15">
 		                                        <p style="margin-bottom:5px;">${goods.creator_name}</p>
-		                                        <a href="goods-details.html">
+		                                        <a href="/shop-details.jsp">
 		                                            <p style="color:#545454;font-weight:500;">${goods.goods_name}</p>
 		                                        </a>
 		                                        <h6><strong>${goods.goods_price}</strong> 원</h6>
@@ -501,14 +504,14 @@
                        		 		<c:choose>
                        		 			<c:when test="${i==goods.cp}">
                        		 			<li class="page-item">
-                       		 			<a class="page-link" href="goods_list.do?cp=${i}" style="border-radius:0;" onclick="getCp();">
+                       		 			<a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}" style="border-radius:0;" onclick="getCp();">
                        		 				<span style="color:black">${i}</span>
                        		 				</a>
                        		 				</li>
                        		 			</c:when>
                        		 			<c:otherwise>
                        		 			<li class="page-item">
-                       		 			<a class="page-link" href="goods_list.do?cp=${i}" style="border-radius:0;" onclick="getCp();">
+                       		 			<a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}" style="border-radius:0;" onclick="getCp();">
                        		 				<span>${i}</span>
                        		 				</a>
                        		 				</li>
