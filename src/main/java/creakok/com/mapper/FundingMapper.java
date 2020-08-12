@@ -21,5 +21,5 @@ public interface FundingMapper {
 	String selectPerPageCategory(Funding funding);
 	TreeSet<Integer> selectCategoryCode();
 	String selectCategoryName(@Param(value = "codeUsed") int codeUsed);
-	
+	List<Funding> getRelatedFunding(@Param(value = "categoryCode") long categoryCode);
 }

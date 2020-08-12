@@ -1,6 +1,7 @@
 package creakok.com.domain;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,5 +28,6 @@ public class Funding {
 	private String funding_category_name;
 	private double percentage;
 	private long restdays; 
+	private List<Funding> listrelatedFunding;
 	
 }

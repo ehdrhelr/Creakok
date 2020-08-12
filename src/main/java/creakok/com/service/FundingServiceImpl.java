@@ -85,6 +85,12 @@ public class FundingServiceImpl implements FundingService {
 		return list;
 	}
 
+	@Override
+	public List<Funding> getRelatedFunding(long categoryCode) {
+		List<Funding> list = fundingMapper.getRelatedFunding(categoryCode);
+		return list;
+	}
+
 	
 
 

@@ -16,5 +16,6 @@ public interface FundingService {
 	void edit(Funding funding);
 	void remove(long funding_index);
 	List<Funding_category> getFunding_category();
+	List<Funding> getRelatedFunding(long categoryCode);
 	
 }

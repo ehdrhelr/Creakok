@@ -1,6 +1,8 @@
 package creakok.com.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -166,29 +168,103 @@ public class FundingController {
 				return new ModelAndView("redirect:funding_list.do", "fundingVo", null);
 			}
 		}else if(funding_indexStr!=null) {
+			
 			int funding_indexTogo = Integer.parseInt(funding_indexStr);
-			for(Funding funding : fundingVo.getList()) {
-				if(funding.getFunding_index()==funding_indexTogo) {
-					log.info("!!!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!");
-					
-					log.info(funding);
-					log.info("!!!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!");
-					
-					return new ModelAndView("/funding_detail", "funding_detail", funding);
+			List<Funding> AllListrelatedFunding = new ArrayList<Funding>();
+			List<Funding> ListrelatedFunding = new ArrayList<Funding>();	
+			long categoryCode = 0L;
+			
+			for(Funding fundingSelected : fundingVo.getList()) {			
+				if(fundingSelected.getFunding_index()==funding_indexTogo) {
+					categoryCode = fundingSelected.getFunding_category_code();
 				
+			
+					AllListrelatedFunding = service.getRelatedFunding(categoryCode);	
+					Random r = new Random();
+					if(AllListrelatedFunding.size()>=4) {
+						int a[] = new int[AllListrelatedFunding.size()];
+						for(int i=0;i<AllListrelatedFunding.size();i++) {
+							a[i]=r.nextInt(AllListrelatedFunding.size());
+							for(int j=0; j<i; j++) {
+								if(a[i]==a[j]) {
+									i--;
+								}
+							}
+						}					
+						for(int k=0;k<8;k++) {
+							Funding fundingRelated = AllListrelatedFunding.get(a[k]);
+							log.info("get(a[k]):" +a[k]);
+							ListrelatedFunding.add(fundingRelated);
+							k++;
+						}
+					}
+					
+						fundingSelected.setListrelatedFunding(ListrelatedFunding);
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						
+						log.info(fundingSelected.getListrelatedFunding());
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
+						
+					
+					
+					
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info(fundingSelected);
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
+					
+					return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
 				
 				}
 			}	
 			//return new ModelAndView("/funding_detail", "fundingVo", fundingVo);
 		}
+	  
 	     return mv;
-	     
 	    
 	}
 	

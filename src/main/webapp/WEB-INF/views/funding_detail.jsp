@@ -497,7 +497,7 @@
         </div>
         <div class="ProjectPage__ProjectContentsBackground-f3cisk-0 lbhpFL">
             <div class="Container-gci8y7-0 MskhC">
-                <div class="ProjectPage__ProjectContents-f3cisk-1 ftClLq">
+                <div class="ProjectPage__ProjectContents-f3cisk-1 ftClLq">            
                     <div class="ProjectPage__ProjectContentsMainColumn-f3cisk-2 hzJfoW">
                         <div class="ProjectPage__MainColumnInner-f3cisk-4 kGPPtA">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf">
@@ -541,25 +541,57 @@
 
 
     <!-- ##### Related Product Area Start ##### -->
+    
+      <c:if test="${!empty funding_detail.listrelatedFunding}">
     <div class="related-products-area">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
-                        <h2>Related Products</h2>
+                        <h2>Related Fundings</h2>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
+<!-- 
+ <c:forEach items="${funding_categoryNames}" var="categoryNames" >
+                            <li class="nav-item">
+                             <c:choose>
+                                  <c:when test="${categoryNames==funding_categoryName}">
+                                     <a class="hcbae-nav nav-link active" data-toggle="tab" 
+                                     href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
+                                         ${categoryNames}
+                                         </a>
+                                   </c:when>
+                              <c:otherwise>
+                                     <a class="hcbae-nav nav-link" data-toggle="tab" 
+                                     href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
+                                        ${categoryNames}
+                                     </a>
+                                 </c:otherwise>
+                                 </c:choose>
+                            </li>        
+                         </c:forEach>
 
+
+
+ -->
+
+
+
+   
+
+            <div class="row">
+                 <c:forEach items="${funding_detail.listrelatedFunding}" var="funding_related">
                 <!-- Single Product Area -->
                 <div class="col-12 col-sm-6 col-lg-3">
+                
                     <div class="single-product-area mb-100">
                         <!-- Product Image -->
                         <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/40.png" alt=""></a>
+                        
+                            <a href="funding_list.do?funding_index=${funding_related.funding_index}"><img src="${funding_related.funding_repre_pic}" alt=""></a>
                             <!-- Product Tag -->
                             <div class="product-tag">
                                 <a href="#">Hot</a>
@@ -579,80 +611,12 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-100">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/41.png" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-100">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/42.png" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-100">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/43.png" alt=""></a>
-                            <!-- Product Tag -->
-                            <div class="product-tag sale-tag">
-                                <a href="#">Hot</a>
-                            </div>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
+             </c:forEach>
             </div>
+       
         </div>
     </div>
+        </c:if>
     <!-- ##### Related Product Area End ##### -->
 
     <!-- Footer Bottom Area -->
@@ -716,14 +680,8 @@
             <iframe id="ch-plugin-script-iframe" style="position:relative!important;height:100%!important;width:100%!important;border:none!important;" src="./saved_resource.html"></iframe>
         </div>
     </div>
-    <script type="text/javascript" async="" src="./js/hcbae/linkid.js"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/gtm.js"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/amplitude-5.2.2-min.gz.js"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/analytics.js"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/ch-plugin-web.js" charset="UTF-8"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/analytics.min.js"></script>
-    <script src="./js/hcbae/kakao.min.js"></script>
-    <script src="./js/hcbae/semantic.js"></script>
+   
+   
     <script type="application/javascript" src="https://d2om2e6rfn032x.cloudfront.net/wpa/bundle.app.173e0183d7bc9f5995e8.js"></script>
 
     <!--hcbae 텀블벅 가져오기 end-->

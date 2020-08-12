@@ -30,4 +30,8 @@
         select * from FUNDING_CATEGORY
     </select>
     
+     <select id="getRelatedFunding" parameterType="long" resultType="Funding">
+        select * from FUNDING where FUNDING_CATEGORY_CODE=${categoryCode}
+    </select>
+    
 </mapper>
