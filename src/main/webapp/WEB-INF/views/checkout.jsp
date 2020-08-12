@@ -23,11 +23,11 @@
 </head>
 
 <body>
-    <!-- Preloader -->
+   <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
         <div class="preloader-img">
-            <img src="img/core-img/leaf.png" alt="">
+            <img src="img/core-img/creakok.png" alt="">
         </div>
     </div>
 
@@ -36,22 +36,24 @@
 
         <!-- ***** Top Header Area ***** -->
         <div class="top-header-area">
-            <div class="container">
+            <div class="container" style="color:#666666!important;">
                 <div class="row">
                     <div class="col-12">
                         <div class="top-header-content d-flex align-items-center justify-content-between">
                             <!-- Top Header Content -->
                             <div class="top-header-meta">
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="infodeercreative@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span>Email: infodeercreative@gmail.com</span></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="+1 234 122 122"><i class="fa fa-phone" aria-hidden="true"></i> <span>Call Us: +1 234 122 122</span></a>
+  
                             </div>
 
                             <!-- Top Header Content -->
                             <div class="top-header-meta d-flex">
+                                <div >
+                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;background-color:white;">프로젝트 만들기</button>
+                                </div>
                                 <!-- Language Dropdown -->
                                 <div class="language-dropdown">
                                     <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+                                        <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#666666">Language</button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="#">USA</a>
                                             <a class="dropdown-item" href="#">UK</a>
@@ -64,11 +66,11 @@
                                 </div>
                                 <!-- Login -->
                                 <div class="login">
-                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>Login</span></a>
+                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
                                 </div>
                                 <!-- Cart -->
                                 <div class="cart">
-                                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
+                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +87,7 @@
                     <nav class="classy-navbar justify-content-between" id="alazeaNav">
 
                         <!-- Nav Brand -->
-                        <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                        <a href="/" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -93,7 +95,7 @@
                         </div>
 
                         <!-- Menu -->
-                        <div class="classy-menu">
+                        <div class="classy-menu" style="color:#666666!important;">
 
                             <!-- Close Button -->
                             <div class="classycloseIcon">
@@ -103,11 +105,11 @@
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="#">Pages</a>
+                                    <li><a href="funding">FUNDING</a></li>
+                                    <li><a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300">GOODS</a></li>
+                                    <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="index.html" >Home</a></li>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="shop.html">Shop</a>
                                                 <ul class="dropdown">
@@ -120,7 +122,7 @@
                                             <li><a href="portfolio.html">Portfolio</a>
                                                 <ul class="dropdown">
                                                     <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="single-portfolio.html">Portfolio Details</a></li>
+                                                    <li><a href="gle-portfolio.html">Portfolio Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="blog.html">Blog</a>
@@ -132,14 +134,15 @@
                                             <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
+                                    <li><a href="about.jsp">ABOUT</a></li>
+                                   <!--   <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="contact.html">Contact</a></li>  -->
+                                </ul>  
 
                                 <!-- Search Icon -->
-                                <div id="searchIcon">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                <div id="searchIcon" >
+                                    
+                                    <i aria-hidden="true"><img src="img/core-img/search.png"></i>
                                 </div>
 
                             </div>
@@ -154,7 +157,7 @@
                             <button type="submit" class="d-none"></button>
                         </form>
                         <!-- Close Icon -->
-                        <div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
+                        <div class="closeIcon"><i aria-hidden="true"><img src="img/core-img/search.png"></i></div>
                     </div>
                 </div>
             </div>
@@ -190,41 +193,39 @@
             <div class="row justify-content-between">
                 <div class="col-12 col-lg-7">
                     <div class="checkout_details_area clearfix">
-                        <h5>Billing Details</h5>
+                        <h5>주문 정보</h5>
                         <form action="#" method="post">
                             <div class="row">
                                 <div class="col-md-6 mb-4">
-                                    <label for="first_name">First Name *</label>
+                                    <label for="first_name">이름 *</label>
                                     <input type="text" class="form-control" id="first_name" value="" required>
                                 </div>
-                                <div class="col-md-6 mb-4">
-                                    <label for="last_name">Last Name *</label>
-                                    <input type="text" class="form-control" id="last_name" value="" required>
-                                </div>
                                 <div class="col-12 mb-4">
-                                    <label for="email_address">Email Address *</label>
+                                    <label for="email_address">이메일 주소</label>
                                     <input type="email" class="form-control" id="email_address" value="">
                                 </div>
                                 <div class="col-12 mb-4">
-                                    <label for="phone_number">Phone Number *</label>
-                                    <input type="number" class="form-control" id="phone_number" min="0" value="">
+                                    <label for="phone_number">연락처 *</label>
+                                    <input type="text" class="form-control" value="">
                                 </div>
-                                <div class="col-12 mb-4">
-                                    <label for="company">Company Name</label>
-                                    <input type="text" class="form-control" id="company" value="">
-                                </div>
-                                <div class="col-12 mb-4">
-                                    <label for="company">Address *</label>
-                                    <input type="text" class="form-control" id="address" value="">
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <label for="city">Town/City *</label>
-                                    <input type="text" class="form-control" id="city" value="">
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <label for="state">State/Province *</label>
-                                    <input type="text" class="form-control" id="state" value="">
-                                </div>
+                              
+                               <div class="col-12 mb-4">
+          							 <label for="city" style="width:100%">주소 *</label>
+					                 <input type="text" id="sample4_postcode" placeholder="우편번호" style="margin-bottom:15px; width:80%;display:inline">
+					                 <input type="button" onclick="sample4_execDaumPostcode()" style="margin-bottom:15px; width:19%; display:inline; background-color:#888888;color:white;" value="우편번호 찾기"><br>
+					                 <input type="text" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom:15px;">
+					                 	<input type="text" id="sample4_detailAddress" placeholder="상세주소" style="margin-bottom:15px;">
+					                 	<input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="margin-bottom:15px;">
+										<span id="guide" style="color:#999;display:none"></span>
+										<input type="text" id="sample4_extraAddress" placeholder="참고항목" >
+					            </div>     
+					
+                        
+                                
+                           
+          						 
+					           	                  
+                  <!--             
                                 <div class="col-md-6 mb-4">
                                     <label for="country">Country</label>
                                     <select class="custom-select d-block w-100" id="country">
@@ -242,10 +243,12 @@
                                     <label for="postcode">Postcode/Zip</label>
                                     <input type="text" class="form-control" id="postcode" value="">
                                 </div>
-                                <div class="col-md-12 mb-4">
-                                    <label for="order-notes">Order Notes</label>
-                                    <textarea class="form-control" id="order-notes" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
-                                </div>
+				  --> 
+
+					          
+
+
+
                                 <div class="col-12">
                                     <div class="d-flex align-items-center">
                                         <!-- Single Checkbox -->
@@ -263,11 +266,79 @@
                             </div>
                         </form>
                     </div>
+                    
+   
                 </div>
+
+
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+                
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                } else {
+                    document.getElementById("sample4_extraAddress").value = '';
+                }
+
+                var guideTextBox = document.getElementById("guide");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                    guideTextBox.style.display = 'block';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    guideTextBox.style.display = 'block';
+                } else {
+                    guideTextBox.innerHTML = '';
+                    guideTextBox.style.display = 'none';
+                }
+            }
+        }).open();
+    }
+</script>
+
+
+
+
+
 
                 <div class="col-12 col-lg-4">
                     <div class="checkout-content">
-                        <h5 class="title--">Your Order</h5>
+                        <h5 class="title--">주문 내역</h5>
                         <div class="products">
                             <div class="products-data">
                                 <h5>Products:</h5>
@@ -290,7 +361,7 @@
                             <h5>$12.99</h5>
                         </div>
                         <div class="checkout-btn mt-30">
-                            <a href="#" class="btn alazea-btn w-100">Place Order</a>
+                            <a href="goods_pay.do" class="btn alazea-btn w-100">결제하기</a>
                         </div>
                     </div>
                 </div>

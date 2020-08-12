@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Goods;
 import creakok.com.domain.Goods_Category;
+import creakok.com.service.GoodsDetailService;
 import creakok.com.service.GoodsService;
 import creakok.com.service.Goods_CategoryService;
 import creakok.com.vo.GoodsVo;
@@ -28,10 +29,13 @@ import lombok.extern.log4j.Log4j;
 @Controller
 public class GoodsController {
 	@Resource(name="Goods_CategoryService")
-	private Goods_CategoryService categoryService;
+	private Goods_CategoryService goods_categoryService;
 	
 	@Resource(name="GoodsService")
 	private GoodsService goodsService;
+	
+	@Resource(name="GoodsDetailService")
+	private GoodsDetailService goods_detailService;
 	
 	@RequestMapping("goods_list.do")
 	public String list(HttpServletRequest request, HttpSession session) {
@@ -47,7 +51,7 @@ public class GoodsController {
 
 		
 		//굿즈 카테고리 리스팅
-		List<Goods_Category> gCategory = categoryService.listS();
+		List<Goods_Category> gCategory = goods_categoryService.listS();
 		session.setAttribute("gCategory", gCategory);	
 		
 		
@@ -170,5 +174,27 @@ public class GoodsController {
 	}
 	
 	
-
+	@RequestMapping("goods_detail.do")
+	public ModelAndView goods_detail(HttpServletRequest request) {
+		String goods_indexStr = request.getParameter("goods_index");
+		long goods_index = Long.parseLong(goods_indexStr);
+		
+		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index: "+goods_index);
+		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ one_goods: "+one_goods);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("goods_details");
+		mv.addObject("one_goods", one_goods);	
+		
+		return mv;
+	}
+	@RequestMapping("goods_order.do")
+	public String goods_order(HttpServletRequest request) {
+		return "checkout";
+	}	
+	@RequestMapping("goods_pay.do")
+	public String goods_pay(HttpServletRequest request) {
+		return "import_pay";
+	}
 }
