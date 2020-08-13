@@ -11,6 +11,7 @@ public interface MemberService {
 	
 	void secessionMemberS(String member_email);
 	
+	void changeName(Member member);
 	Member checkNameExist(String member_name);
 	Member checkEmailExist(String member_email);
 

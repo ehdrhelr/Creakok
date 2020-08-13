@@ -1,11 +1,12 @@
-package creakok.com.kakao;
+package creakok.com.google;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,47 +22,49 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
-public class KakaoController {
+public class GoogleController {
+	
 	@Autowired
 	private MemberService mService;
 	
-	//kakaoLogin.do
-	@RequestMapping(value="kakaoLogin.do", method = RequestMethod.GET)
-	public ModelAndView login(HttpSession session) {
-		/* 네아로 인증 URL을 생성하기 위하여 getAuthorizationUrl을 호출 */
-		String kakaoAuthUrl = "https://kauth.kakao.com/oauth/authorize?"
-				+ "client_id=a3817011c1de6f7930c4d84eaaf6d750"
-				+ "&redirect_uri=http://127.0.0.1:8080/kakaoTokenCheck.do"
-				+ "&response_type=code";
-		return new ModelAndView("kakaoLogin", "url", kakaoAuthUrl);
+	// 로그인 첫 화면 요청 메소드
+	@RequestMapping(value="googleLogin.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView login(Model model, HttpSession session) {
+
+		String url = "https://accounts.google.com/o/oauth2/v2/auth?" 
+                + "scope=email" 
+                + "&response_type=code" 
+                + "&state=security_token%3D138r5719ru3e1%26url%3Dhttps://oauth2.example.com/token" 
+                + "&client_id=" + "484909926172-auk6elov1eqf9t12815jbq26eagfdko9.apps.googleusercontent.com"
+                + "&redirect_uri=" + "http://127.0.0.1:8080/googleTokenCheck.do"
+                + "&access_type=offline";
+
+		log.info("구글:" + url);
+
+		/* 생성한 인증 URL을 View로 전달 */
+		return new ModelAndView("googleLogin", "url", url);
 	}
 	
-	@RequestMapping(value="kakaoTokenCheck.do", produces = "application/json", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView callback(@RequestParam("code") String code , HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
-		JsonNode token = KakaoLogin.getAccessToken(code);
-		String kakao_code = token.path("access_token").toString();
-		//log.info("####:"+kakao_code);
-		session.setAttribute("kakao_code", kakao_code);
-		JsonNode profile = KakaoLogin.getKakaoUserInfo(kakao_code);
-		log.info("####:"+profile);
-
+	// 구글 Callback호출 메소드
+	@RequestMapping(value="googleTokenCheck.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView googleCallback(@RequestParam String code, HttpSession session) throws IOException {
+        JsonNode jsonToken = GoogleLogin.getAccessToken(code);
+        String accessToken = jsonToken.get("access_token").toString();
+        log.info("Access Token : " + accessToken);
+     // Access Token으로 사용자 정보 반환
+        JsonNode profile = GoogleLogin.getGoogleUserInfo(accessToken);
         String member_password = profile.path("id").asText();
-        
-        JsonNode properties = profile.path("properties");
-        String member_name = properties.path("nickname").asText();
-        String profile_image = properties.path("profile_image").asText();
+        String member_email = profile.path("email").asText();
+        String member_profile_pic = profile.path("picture").asText();
 
-        //log.info("####:"+member_password+"/"+member_name+"/"+profile_image);
-		Member member = new Member();
-        String member_email = member_name+"@kakao";
-
+        Member member = new Member();
 		member.setMember_category_code(Member_category.MEMBER_NORMAL);
-		member.setMember_origin_code(Member_origin.SIGNUP_KAKAO);
-
+		member.setMember_origin_code(Member_origin.SIGNUP_GOOGLE);
+		
 		member.setMember_name("temp_name");
 		member.setMember_email(member_email);
 		member.setMember_password(member_password);
-		member.setMember_profile_pic(profile_image);
+		member.setMember_profile_pic(member_profile_pic);
 
 		if(mService.checkEmailExist(member_email) != null) {
 			//가입 이메일이 이미 존재
@@ -81,7 +84,10 @@ public class KakaoController {
 			mService.signupSocialMemberS(member);
 			return new ModelAndView("login");
 		}
-		
+
 		return new ModelAndView("tokenCheck", "result", profile);
 	}
+
+
+
 }

@@ -54,7 +54,6 @@ public class NaverController {
 		OAuth2AccessToken oauthToken = naverLoginBO.getAccessToken(session, code, state);
 		apiResult = naverLoginBO.getUserProfile(oauthToken);
 		JSONObject jsonobj = jsonparse.stringToJson(apiResult, "response");
-		String member_name = jsonparse.JsonToString(jsonobj, "nickname");
 		String member_password = jsonparse.JsonToString(jsonobj, "id");
 		String member_email = jsonparse.JsonToString(jsonobj, "email");
 		String member_profile_pic = jsonparse.JsonToString(jsonobj, "profile_image");
@@ -63,7 +62,7 @@ public class NaverController {
 		member.setMember_category_code(Member_category.MEMBER_NORMAL);
 		member.setMember_origin_code(Member_origin.SIGNUP_NAVER);
 
-		member.setMember_name(member_name);
+		member.setMember_name("temp_name");
 		member.setMember_email(member_email);
 		member.setMember_password(member_password);
 		member.setMember_profile_pic(member_profile_pic);
@@ -78,7 +77,7 @@ public class NaverController {
 			if(result == Member.PASS_COMPARE_SAME) { //비번이 같으면 로그인을 하자.
 				//암호가 같으니 로그인을 하자.
 				session.setAttribute("member", mService.getMemberInfoS(member_email) );
-				return new ModelAndView("index");
+				return new ModelAndView("redirect:/");
 			} else { //비번이 다르면 기존 가입한 이메일이 있다.
 				
 			}
@@ -89,7 +88,7 @@ public class NaverController {
 			return new ModelAndView("login");
 		}
 
-		log.info("####:"+member_name+"/"+member_email+"/"+member_password);
+		log.info("####:"+member_email+"/"+member_password);
 		return new ModelAndView("tokenCheck", "result", jsonobj);
 	}
 }

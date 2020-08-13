@@ -35,6 +35,18 @@ public class MemberController {
 		else return "not_exist";
 	}
 	
+	@GetMapping("member_changeName.do")
+	public String changeName(String member_email, String member_name, HttpSession session) {
+		Member member = new Member();
+		member.setMember_email(member_email);
+		member.setMember_name(member_name);
+		mService.changeName(member);
+
+		session.removeAttribute("member");
+		session.setAttribute("member", mService.getMemberInfoS(member_email) );
+		return "redirect:/member_mypage.do";
+	}
+	
 	@ResponseBody
 	@GetMapping("member_readName.do")
 	public String readName(String member_name) {

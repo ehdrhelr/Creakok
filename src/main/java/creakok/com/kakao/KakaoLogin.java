@@ -21,7 +21,6 @@ public class KakaoLogin {
 	
 	public static JsonNode getAccessToken(String autorize_code) {
 		final String RequestUrl = "https://kauth.kakao.com/oauth/token";
-		System.out.println("autorize_code : " + autorize_code);
 
 		final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
 		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
@@ -73,11 +72,9 @@ public class KakaoLogin {
 
 		try {
 			final HttpResponse response = client.execute(post);
-			final int responseCode = response.getStatusLine().getStatusCode();
-
-			System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
-			System.out.println("Response Code : " + responseCode);
-
+			//final int responseCode = response.getStatusLine().getStatusCode();
+			//System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
+			//System.out.println("Response Code : " + responseCode);
 			// JSON 형태 반환값 처리
 			ObjectMapper mapper = new ObjectMapper();
 			returnNode = mapper.readTree(response.getEntity().getContent());

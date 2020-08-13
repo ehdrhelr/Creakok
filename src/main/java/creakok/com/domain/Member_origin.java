@@ -12,6 +12,8 @@ public class Member_origin {
 	private String member_origin_name;
 	
 	public static long SIGNUP_NORMAL = 100L;
-	public static long SIGNUP_FACEBOOK = 101L;
+	public static long SIGNUP_GOOGLE = 101L;
 	public static long SIGNUP_NAVER = 102L;
+	public static long SIGNUP_KAKAO = 103L;
+
 }

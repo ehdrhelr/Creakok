@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.Member_origin"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -239,6 +239,24 @@
                         <label>${member.member_email}</label> 
                         <label style="float:right;">가입일 : ${member.member_joindate}</label>
                     </div>
+                    <div class="hcbae-member-modify-area">
+                        <h3>이름</h3>
+                        <label>${member.member_name}</label>
+                        
+                        <span class="hcbae-member-modify-button">
+                        <input class="btn" type="button" data-target="#member-name-area" data-toggle="collapse" value="수정" onclick="changeButtonText(this)">
+                        </span>
+                        <div id="member-name-area" class="collapse">
+                          <div class="hcbae-member-modify-input">
+                            <label>새로운 이름을 입력해주세요.</label><br>
+                            <input type="text" id="nowName" placeholder="새로운 이름" onKeyUp="checkName(this);">
+                            <label id="checkName_Id"></label>
+                          </div>
+                          <span>
+                          <input class="btn" type="button" value="변경하기" onclick="changeName('${member.member_email}')">
+                          </span>
+                        </div>
+                    </div>
                     
                     <div class="hcbae-member-modify-area">
                         <h3>프로필 사진</h3>
@@ -250,7 +268,7 @@
                         
                         <span class="hcbae-member-modify-button">
                         
-                        <c:if test="${member.member_origin_code==100}">
+                        <c:if test="${member.member_origin_code==Member_origin.SIGNUP_NORMAL}">
                           <input class="btn" type="button" data-target="#profile-pic-area" data-toggle="collapse" value="수정" onclick="changeButtonText(this)">
                         </c:if>
 
@@ -259,19 +277,18 @@
                           <p>사진 저장 관련하여 정리 되고 프로필 사진을 표시할 수 있게 되면 추가 수정하자.</p>
                         </div>
                     </div>
-                    <c:if test="${member.member_origin_code==100}">
+                    <c:if test="${member.member_origin_code==Member_origin.SIGNUP_NORMAL}">
                     <div class="hcbae-member-modify-area">
                         <h3>비밀번호</h3>
                         <span class="hcbae-member-modify-button">
-                        <input class="btn" type="button" data-target="#password-area" data-toggle="collapse" value="수정" onclick="changeButtonText(this)">
+                        <input class="btn" type="button" data-target="#password-area" data-toggle="collapse" value="수정" onclick="changeButtonText(this); clearModifyPasswordArea();">
                         </span>
                         
                         <div id="password-area" class="collapse">
-                          <p>비번은 수정할 수 있게 바꿔야겠지만, 기존 비번을 맞춰야 바꿀 수 있게.</p>
-                          
+
                           <div class="hcbae-member-modify-input">
                             <label>현재 비밀번호를 입력해주세요.</label><br>
-                            <input type="password" id="nowPassword" placeholder="현재 비밀번호" onKeyUp="checkPassword('${member.member_email}')">
+                            <input type="password" id="nowPassword" placeholder="현재 비밀번호" onKeyUp="checkPassword('${member.member_email}');">
                             <label id="checkPasswordResult"></label>
                           </div>
                           
@@ -286,7 +303,7 @@
                           <span>
                           <input class="btn" type="button" value="변경하기" onclick="changePassword('${member.member_email}')">
                           </span>
-                        
+
                         </div>
                     </div>
                     </c:if>
@@ -310,7 +327,7 @@
                         
                         <div id="secession-area" class="collapse">
                             <p>CREAKOK을 탈퇴하시겠습니까? (굳이? ㅠㅠ)</p>
-                            <c:if test="${member.member_origin_code==100}">
+                            <c:if test="${member.member_origin_code==Member_origin.SIGNUP_NORMAL}">
                               <div class="hcbae-member-modify-input">
                                 <label>현재 비밀번호를 입력해주세요.</label><br>
                                 <input type="password" id="secessionPassword" placeholder="현재 비밀번호" onKeyUp="checkSecession('${member.member_email}')">
@@ -321,7 +338,7 @@
                               <input class="btn" type="button" value="탈퇴하기" onclick="secessionPassword('${member.member_email}')">
                               </span>              
                             </c:if>
-                            <c:if test="${member.member_origin_code!=100}">
+                            <c:if test="${member.member_origin_code!=Member_origin.SIGNUP_NORMAL}">
                               <span>
                               <input class="btn" type="button" value="탈퇴하기" onclick="secessionSocial('${member.member_email}')">
                               </span>

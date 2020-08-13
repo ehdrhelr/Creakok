@@ -20,9 +20,20 @@
     update MEMBER set MEMBER_PASSWORD=#{member_password} where MEMBER_EMAIL=#{member_email}
   </update>
   
+  <update id="updateNameByIndex" parameterType="MEMBER">
+    update MEMBER set MEMBER_NAME=#{member_name} where MEMBER_INDEX=#{member_index}
+  </update>
+  
+  <update id="updateNameByEmail" parameterType="MEMBER">
+    update MEMBER set MEMBER_NAME=#{member_name} where MEMBER_EMAIL=#{member_email}
+  </update>
+  
   <insert id="insertMember" parameterType="MEMBER">
-    insert into MEMBER(member_category_code, member_origin_code, member_email, member_name, member_password, member_joindate) 
-      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, SYSDATE)
+    <selectKey keyProperty="member_index" resultType="long" order="BEFORE">
+    SELECT MEMBER_INDEX_SEQ.nextval FROM dual
+    </selectKey>
+    insert into MEMBER(member_category_code, member_origin_code, member_email, member_name, member_password, member_joindate, member_index) 
+      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, SYSDATE, ${member_index})
   </insert>
   
   <delete id="deleteMember" parameterType="String">
@@ -31,8 +42,11 @@
 
 
   <insert id="insertSocialMember" parameterType="MEMBER">
-    insert into MEMBER(member_category_code, member_origin_code, member_email, member_name, member_password, member_profile_pic, member_joindate) 
-      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, #{member_profile_pic}, SYSDATE)
+    <selectKey keyProperty="member_index" resultType="long" order="BEFORE">
+    SELECT MEMBER_INDEX_SEQ.nextval FROM dual
+    </selectKey>
+    insert into MEMBER(member_category_code, member_origin_code, member_email, member_name, member_password, member_profile_pic, member_joindate, member_index) 
+      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, #{member_profile_pic}, SYSDATE, ${member_index})
   </insert>
 
 

@@ -9,6 +9,9 @@ public interface MemberMapper {
 	Member selectByName(String member_name);
 
 	void updatePassword(Member member);
+	void updateNameByIndex(Member member);
+	void updateNameByEmail(Member member);
+	
 	void insertMember(Member member);
 	void deleteMember(String member_email);
 	

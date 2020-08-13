@@ -27,5 +27,6 @@ public class Member {
 	
 	private String member_profile_pic;
 	private Date member_joindate;
+	private long member_index;
 	
 }

@@ -5,8 +5,11 @@ import org.springframework.stereotype.Service;
 
 import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
+import creakok.com.domain.Nickname;
 import creakok.com.mapper.MemberMapper;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -16,8 +19,15 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void signupSocialMemberS(Member member) {
 		memberMapper.insertSocialMember(member);
+		//log.info("###########"+Nickname.makeNickname(member.getMember_index()) );
+		member.setMember_name(Nickname.makeNickname(member.getMember_index()) );
+		memberMapper.updateNameByIndex(member);
 	}
-	
+
+	@Override
+	public void changeName(Member member) {
+		memberMapper.updateNameByEmail(member);
+	}
 	
 	@Override
 	public Member checkEmailExist(String member_email) {
