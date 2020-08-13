@@ -190,12 +190,12 @@ public class FundingController {
 									i--;
 								}
 							}
-						}					
-						for(int k=0;k<8;k++) {
+						}	
+						for(int k=0;k<4;k++) {
+							log.info("@@@@@@@@@@@@@@"+k);
 							Funding fundingRelated = AllListrelatedFunding.get(a[k]);
 							log.info("get(a[k]):" +a[k]);
 							ListrelatedFunding.add(fundingRelated);
-							k++;
 						}
 					}
 					
@@ -235,10 +235,7 @@ public class FundingController {
 						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
 						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
 						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						
-					
-					
-					
+									
 					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
 					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
 					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
