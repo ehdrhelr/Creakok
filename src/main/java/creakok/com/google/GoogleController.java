@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
 import creakok.com.domain.Member_category;
 import creakok.com.domain.Member_origin;
@@ -42,7 +43,7 @@ public class GoogleController {
 		log.info("구글:" + url);
 
 		/* 생성한 인증 URL을 View로 전달 */
-		return new ModelAndView("googleLogin", "url", url);
+		return new ModelAndView("socialLoginUrl", "url", url);
 	}
 	
 	// 구글 Callback호출 메소드
@@ -72,20 +73,22 @@ public class GoogleController {
 			int result = mService.compareMemberPasswordS(member_email, member_password);
 			//0 = 일치, 1 = 불일치
 			log.info("#### result:"+result);
-			if(result == Member.PASS_COMPARE_SAME) { //비번이 같으면 로그인을 하자.
+			if(result == LoginResult.PASS_COMPARE_SAME) { //비번이 같으면 로그인을 하자.
 				//암호가 같으니 로그인을 하자.
 				session.setAttribute("member", mService.getMemberInfoS(member_email) );
 				return new ModelAndView("redirect:/");
 			} else { //비번이 다르면 기존 가입한 이메일이 있다.
-				
+				return new ModelAndView("redirect:/socialLoginFail.do");
 			}
 		} else {
 			//새로운 이메일
 			mService.signupSocialMemberS(member);
-			return new ModelAndView("login");
+			session.setAttribute("member", mService.getMemberInfoS(member_email) );
+			return new ModelAndView("redirect:/");
+			//return new ModelAndView("login");
 		}
 
-		return new ModelAndView("tokenCheck", "result", profile);
+		//return new ModelAndView("tokenCheck", "result", profile);
 	}
 
 

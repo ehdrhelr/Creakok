@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Member {
-	public static int PASS_COMPARE_SAME = 0;
-	public static int PASS_COMPARE_DIFF = 1;
-	
 	private String member_email;
 	private String member_name;
 	private long member_category_code;

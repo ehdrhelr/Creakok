@@ -25,6 +25,24 @@ public class MemberController {
 	@Autowired
 	private MemberService mService;
 	
+	
+	@ResponseBody
+	@GetMapping("member_readMemberOrign.do")
+	public String readMemberOrign(String member_email) {
+		return mService.checkMemberOrigin(member_email);
+	}	
+	
+	
+	@RequestMapping("findPassword.do")
+	public String findPassword() {
+		return "findPassword";
+	}
+	
+	@RequestMapping("socialLoginFail.do")
+	public String socialLoginFail() {
+		return "socialLoginFail";
+	}
+	
 
 	@ResponseBody
 	@GetMapping("member_readEmail.do")
@@ -61,7 +79,7 @@ public class MemberController {
 		log.info("### member_email:"+member_email );
 		session.removeAttribute("member");
 		mService.secessionMemberS(member_email);
-		return "index";
+		return "redirect:/";
 	}
 	
 	
@@ -117,7 +135,7 @@ public class MemberController {
 		//log.info("### new_password:"+new_password);
 		mService.changeMemberPasswordS(member_email, new_password);
 		session.removeAttribute("member");
-		return "index";
+		return "redirect:/";
 	}
 	
 	@ResponseBody
@@ -144,7 +162,7 @@ public class MemberController {
 		KakaoLogin.Logout(kakao_code);
 		session.removeAttribute("kakao_code");
 		
-		return "index";
+		return "redirect:/";
 	}
 
 	

@@ -4,8 +4,6 @@ import java.util.Random;
 
 public class Nickname {
 	
-
-	
 	public static String[] FirstNickname = {
 		"자주 ",
 		"오늘따라 ",

@@ -17,6 +17,12 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper memberMapper;
 	
 	@Override
+	public String checkMemberOrigin(String member_email) {
+		return memberMapper.selectMemberOrigin(member_email);
+	}
+	
+	
+	@Override
 	public void signupSocialMemberS(Member member) {
 		memberMapper.insertSocialMember(member);
 		//log.info("###########"+Nickname.makeNickname(member.getMember_index()) );

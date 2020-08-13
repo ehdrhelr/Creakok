@@ -394,7 +394,7 @@
                 </div>
                 <div class="SignUp__InputDiv-k5h4n5-0 VpHEi">
                     <label for="user_login" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">이메일 주소</label>
-                    <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq hcbae-member-joinwithEmail-check" id="checkEmail_Id"></label>
+                    <label for="user_login" class="SignUp__InputLabel-k5h4n5-1 bpYHsq hcbae-member-joinwithEmail-check" id="checkEmail_Id"></label>
                     <input id="user_login" type="email" name="email" placeholder="이메일 주소를 입력해주세요" autocomplete="email" required="" class="Input-sc-1x48dls-0 cbPtEV" value="" onKeyUp="checkEmail(this)">
                     <input id="user_login_confirmation" type="email" name="member_email" autocomplete="email" required="" placeholder="이메일 주소를 확인합니다" class="Input-sc-1x48dls-0 cbPtEV" value=""><br>
                     <span class="SignUp__ErrorMessage-k5h4n5-3 gLiNzH"></span>

@@ -1259,7 +1259,7 @@
             <div><button class="Button-sc-1x93b2b-0 jQspcv" style="height: 45px;" onclick="location.href='member_joinwithEmail.do'">이메일로 가입하기</button></div>
             <div class="SignUp__LoginLinkWrapper-k5h4n5-4 hQGkMf">
                 <p style="color: rgb(117, 117, 117); margin-bottom: 0px;">이미 계정이 있으신가요?</p>
-                <a href="/login?redirection=%2F" style="color:#fc5230">기존 계정으로 로그인하기</a>
+                <a href="member_login.do" style="color:#fc5230">기존 계정으로 로그인하기</a>
             </div>
         </div>
     </div>

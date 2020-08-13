@@ -17,4 +17,6 @@ public interface MemberService {
 
 	void signupSocialMemberS(Member member);
 	
+	String checkMemberOrigin(String member_email);
+	
 }
