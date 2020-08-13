@@ -14,12 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Board;
+import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
 import creakok.com.service.BoardService;
 import creakok.com.vo.ListResult;
@@ -36,7 +35,7 @@ public class BoardController {
 		String cpStr = request.getParameter("cp");
 		String psStr = request.getParameter("ps");
 		String filterBy = request.getParameter("filterBy");
-
+		
 		HttpSession session = request.getSession();
 		
 		//(1) cp 
@@ -83,6 +82,31 @@ public class BoardController {
 		*/
 		session.setAttribute("ps", ps);
 		
+		String c_code = request.getParameter("c_code");
+		String searchName = request.getParameter("searchName");
+		
+		if (c_code==null) { 
+			String c_codeTemp = (String) session.getAttribute("c_code");
+			if (c_codeTemp !=null) {
+				c_code = c_codeTemp;
+				log.info("@@@@@@@@@@@@"+ c_code);
+			} else {
+				c_code = "#####";
+			}
+		}
+		session.setAttribute("c_code", c_code);
+		
+		if (searchName==null) { 
+			String searchNameTemp = (String) session.getAttribute("searchName");
+			if (searchNameTemp !=null) {
+				searchName = searchNameTemp;
+				log.info("@@@@@@@@@@@@"+ searchName);
+			} else {
+				searchName = "#####";
+			}
+		}
+		session.setAttribute("searchName", searchName);
+		
 		if (filterBy==null) { 
 			String filterByTemp = (String) session.getAttribute("filterBy");
 			if (filterByTemp !=null) {
@@ -94,20 +118,20 @@ public class BoardController {
 		}
 		
 		session.setAttribute("filterBy", filterBy);
-		
+		/*
 		// 검색했을때 페이징하기
 		String searchName = request.getParameter("searchName");
 		String searchNameTemp = (String)session.getAttribute("searchName");
 		searchName = searchNameTemp;
 		session.setAttribute("searchName", searchName);
 		log.info("@@@@@@@@@@@@@@@@" + searchName);
-		
+		*/
 		ListResult listResult = service.getListResultS(cp, ps, filterBy);
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community");
 		mv.addObject("listResult", listResult);
 		
-		// 크리에이터 이름 얻기
+		// 상단 메뉴바 크리에이터 이름 얻기
 		List<Creator> creatorList = service.getCreatorName();
 		mv.addObject("creatorList", creatorList);
 		
@@ -123,6 +147,9 @@ public class BoardController {
 		
 		Board board = service.contentS(board_index);
 		
+		// 댓글 가져오기
+		List<Comment> commentList = (List<Comment>) service.getComment(board_index);
+		mv.addObject("commentList", commentList);
 		
 		Cookie[] cookies = request.getCookies();
 		// 비교하기 위해 새로운 쿠키
@@ -234,7 +261,7 @@ public class BoardController {
 		String cpStr = request.getParameter("cp");
 		String psStr = request.getParameter("ps");
 		String filterBy = request.getParameter("filterBy");
-
+		
 		HttpSession session = request.getSession();		
 		
 		//(1) cp 
@@ -287,6 +314,8 @@ public class BoardController {
 			} else {
 				filterBy = "BOARD_INDEX";
 			}
+		} else {
+			log.info("@@@@@@@@@@@@"+ filterBy);
 		}
 		session.setAttribute("filterBy", filterBy);
 		
@@ -298,20 +327,29 @@ public class BoardController {
 			if (c_codeTemp !=null) {
 				c_code = c_codeTemp;
 				log.info("@@@@@@@@@@@@"+ c_code);
+				session.setAttribute("c_code", c_code);
 			} else {
 				c_code = "#####";
+				session.setAttribute("c_code", c_code);
 			}
+		} else {
+			log.info("@@@@@@@@@@@@"+ c_code);
 		}
 		session.setAttribute("c_code", c_code);
 		
 		if (searchName==null) { 
 			String searchNameTemp = (String) session.getAttribute("searchName");
+			log.info("@@@@@@@@@@@@"+ searchNameTemp);
 			if (searchNameTemp !=null) {
 				searchName = searchNameTemp;
 				log.info("@@@@@@@@@@@@"+ searchName);
+				session.setAttribute("searchName", searchName);
 			} else {
 				searchName = "#####";
+				session.setAttribute("searchName", searchName);
 			}
+		} else {
+			log.info("@@@@@@@@@@@@"+ searchName);
 		}
 		session.setAttribute("searchName", searchName);
 		
@@ -319,6 +357,8 @@ public class BoardController {
 		System.out.println("c_code: "+c_code+", searchName: "+searchName);
 		
 		ListResult listResult = service.getListResultBySearchS(cp, ps, filterBy, c_code, searchName);
+		listResult.setSearchName(searchName);
+		listResult.setC_code(c_code);
 		request.setAttribute("listResult", listResult);
 		
 		ModelAndView mv = new ModelAndView();

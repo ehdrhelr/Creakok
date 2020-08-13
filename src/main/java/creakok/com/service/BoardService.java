@@ -3,8 +3,8 @@ package creakok.com.service;
 import java.util.List;
 
 import creakok.com.domain.Board;
+import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
-import creakok.com.domain.Like;
 import creakok.com.vo.ListResult;
 
 public interface BoardService {
@@ -28,6 +28,8 @@ public interface BoardService {
 	ListResult getListResultBySearchS(int currentPage, int pageSize, String filterBy, String c_code, String searchName);
 	// 수정
 	void edit(Board board);
+	// 댓글 조회
+	List<Comment> getComment(long board_index);
 
 }
 

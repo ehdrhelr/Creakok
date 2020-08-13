@@ -408,7 +408,7 @@
                         <p>다크나이트가 만들어주었으면 하는 컨텐츠를 직접 투표해주세요!</p>
                     </div>
 
-                    <!-- Progress Bar Content Area -->
+					<!-- Progress Bar Content Area -->
                     <div class="alazea-progress-bar mb-50">
                         <!-- Single Progress Bar -->
                         <div class="single_progress_bar">
@@ -546,7 +546,7 @@
 						</select>
 					</ul>
 					<form action="board_search" name="check_into"
-						method="post">  
+						method="get">  
 						<ul class="clearfix">
 							<li><span>분류 : </span> 
 							<select name="c_code" id="store_code" onChange="text.value=c_code[selectedIndex].value" style='height:30px; margin-bottom:3px;'>
@@ -571,6 +571,7 @@
 						<col width="5%">
 					</colgroup>
 					<thead>
+
 						<tr>
 							<th> </th>
 					<!--	<th>EXHIBITION</th>	-->
@@ -610,7 +611,24 @@
         </tr>
         <tr>
           <td colspan="3" align="center">
-          
+          	
+         	<c:if test="${empty listResult.searchName}">
+            <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
+                	<a href="board_page?cp=${i}#fix_point">
+                <c:choose> 
+                <c:when test="${i==listResult.currentPage}">
+                    <strong>${i}</strong>
+                </c:when>
+                <c:otherwise>
+                    ${i}
+                </c:otherwise>
+                </c:choose>
+            </a>
+            
+            &nbsp;
+            </c:forEach>
+			</c:if>
+            <c:if test="${!empty listResult.searchName}"> 
             <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
                 	<a href="board_search?cp=${i}#fix_point">
                 <c:choose> 
@@ -622,8 +640,10 @@
                 </c:otherwise>
                 </c:choose>
             </a>
+            
             &nbsp;
-            </c:forEach> 
+            </c:forEach>
+            </c:if>
              &nbsp;&nbsp;&nbsp; 
             ${listResult.currentPage}page/${listResult.totalPageCount}pages
           </td>

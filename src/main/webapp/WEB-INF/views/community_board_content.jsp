@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -268,9 +268,10 @@
 		</div>
 	</nav>
 	<div class="r_list">
-		<div class="choose">
+		<div>
 				<table border="1" width="600" align="center" cellpadding="3" cellspacing="1">
 	              	<tbody>
+	              	<!--
 					<tr>
 						<td width="30%" align="center">작성자</td>
 						<td align="center"><input type="text" name="writer" size="60" style='background-color:#dbdbdb' readonly value="${board.member_name}"></td>
@@ -305,6 +306,65 @@
 					    </c:if>
 					</td>
 					</tr>
+					-->
+					<form role="form" method="post" autocomplete="off">
+  
+						   <div class="form-group">
+						    	<label for="bno" class="col-sm-2 control-label">글 번호</label>
+						    	<div class="col-sm-10">
+						    		<input type="text" id="bno" name="bno" class="form-control" value="${board.board_index}" readonly="readonly" />
+						   		</div>
+						   	</div>
+						   
+						   <div class="form-group">
+						    	<label for="title" class="col-sm-2 control-label">글 제목</label>
+						    	<div class="col-sm-10">
+						    		<input type="text" id="title" name="title" class="form-control" value="${board.board_subject}" readonly="readonly"  />
+						    	</div>
+						   </div>
+						   <div class="form-group">
+						    	<label for="content" class="col-sm-2 control-label">글 내용</label>
+						    	<div class="col-sm-10">
+						    		<textarea id="content" name="content" class="form-control" readonly="readonly"> ${board.board_content}</textarea>
+						   		</div>
+						   </div>
+						   <div class="form-group">
+						   	    <label for="writer" class="col-sm-2 control-label">작성자</label>
+						   	    <div class="col-sm-10">
+						   	    <input type="text" id="writer" name="writer" class="form-control" value="${board.member_name}" readonly="readonly" /><br />
+						    	</div>
+						    </div>
+						    <label>작성 날짜</label> <span><fmt:formatDate value="${board.board_wdate}" pattern="yyyy-MM-dd" /></span>
+						   </p>
+						    <p>
+						    <label for="view">조회수</label><input type="text" id="view" name="view" value="${board.board_view}" readonly="readonly"  />
+						   </p>
+						    <p>
+						    <label for="like">좋아요수</label><input type="text" id="like" name="like" value="${board.board_like}" readonly="readonly"  />
+						   </p>
+						   <p>
+						    <div class="form-group">
+						    	<button type="button" id="list_btn" class="btn btn-primary">목록</button>
+						    	<button type="button" id="modify_btn" class="btn btn-warning">수정</button>
+						    	<button type="button" id="delete_btn" class="btn btn-danger">삭제</button>
+						   </p>  
+						  </form>
+						  <!-- 게시물 끝 -->
+						<div id="reply">
+						 <ol class="replyList">
+						 <c:forEach items="${commentList}" var="repList">
+						 <li>
+						  <p>
+						   작성자 : ${repList.member_name}<br />
+						   작성 날짜 :  <fmt:formatDate value="${repList.comment_wdate}" pattern="yyyy-MM-dd" />
+						  </p>
+						  
+						  <p>${repList.comment_content}</p>
+						 </li>
+						 </c:forEach>   
+						 </ol>
+						</div>
+		<!-------------------- 경계선 --------------------->
 					<tr>
 					<td colspan='2' align='center'>
 						<c:if test="${empty member}">
@@ -328,8 +388,32 @@
 					<br>
 		</div>
 	</div>
+	<!-- 게시물 끝 -->
+	<div id="reply">
+	 <ol class="replyList">
+	 <c:forEach items="${commentList}" var="repList">
+	 <li>
+	  <p>
+	   작성자 : ${repList.member_name}<br />
+	   작성 날짜 :  <fmt:formatDate value="${repList.comment_wdate}" pattern="yyyy-MM-dd" />
+	  </p>
+	  
+	  <p>${repList.comment_content}</p>
+	 </li>
+	 </c:forEach>   
+	 </ol>
+	</div>
 
    <!-- 게시판 영역 end -->
+
+ <section id="container">
+ 
+  
+
+ </section>
+
+
+
 
   <!-- Footer Bottom Area -->
         <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">

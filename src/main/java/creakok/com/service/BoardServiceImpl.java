@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import creakok.com.domain.Board;
+import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
 import creakok.com.mapper.SubsubBoardMapper;
 import creakok.com.vo.ListResult;
@@ -76,7 +77,11 @@ public class BoardServiceImpl implements BoardService {
 		List<Board> list = (List<Board>)mapper.search(currentPage, pageSize, filterBy, c_code, searchName);
 		int count = mapper.count();
 		return new ListResult(currentPage, count, pageSize, list, filterBy);
-
+	}
+	// ¥Ò±€¡∂»∏
+	public List<Comment> getComment(long board_index) {
+		List<Comment> comments = mapper.getComment(board_index);
+		return comments;
 	}
 
 }

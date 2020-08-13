@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import creakok.com.domain.Board;
+import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
-import creakok.com.vo.ListResult;
 
 public interface SubsubBoardMapper {
 	List<Board> getListResult(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, @Param("filterBy") String filterBy);
@@ -33,5 +33,7 @@ public interface SubsubBoardMapper {
 	List<Board> search(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, 
 			@Param("filterBy") String filterBy, @Param("c_code") String c_code, 
 			@Param("searchName")String searchName);
+	// ´ñ±Û Á¶È¸
+	List<Comment> getComment(long board_index);
 
 }

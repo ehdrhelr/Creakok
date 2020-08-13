@@ -65,5 +65,10 @@
     	(select * from SUBSUB_BOARD order by ${filterBy} desc) aa) 
     	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and ${c_code}='${searchName}']]>
 	</select>
+	
+	<!-- 댓글 조회 -->
+	<select id="getComment" resultType="Comment">
+		select * from BOARD_COMMENT where BOARD_INDEX = #{BOARD_INDEX}
+	</select>
 
 </mapper>
