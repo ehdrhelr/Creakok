@@ -15,7 +15,7 @@ var IMP = window.IMP;
 IMP.init('imp94223712');
 IMP.request_pay({
     pg : 'html5_inicis',
-    pay_method : 'vbank',
+    pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
     name : '주문명:결제테스트',
     amount : 14000,

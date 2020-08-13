@@ -433,37 +433,75 @@
                     </div>
                     <div class="ProjectIntroduction__ProjectIntroductionMainColumn-sc-1o2ojgb-8 ZOwbJ">
                         <figure class="ProjectIntroduction__ProjectCoverImageFigure-sc-1o2ojgb-9 fUBtAC">
-                        <img src="https://tumblbug-pci.imgix.net/ee089eb7239a11bb68a8ec93a0cf4afc9add7c49/9fce76663a341055423e9e17e68c1aba073e892e/a808f58e4bc78cfa19317a6e9d937c7168bca353/9011ee1a-e7e0-47b4-9c04-2b3cda7d842f.jpeg?ixlib=rb-1.1.0&amp;w=1240&amp;h=930&amp;auto=format%2Ccompress&amp;lossless=true&amp;fit=crop&amp;s=299449ec4f376ca6878c96b130ccf43b" alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" /></figure>
+                        <img src="${one_goods.goods_repre_pic}" alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" /></figure>
                     </div>
                     <aside class="ProjectIntroduction__ProjectIntroductionSubColumn-sc-1o2ojgb-12 fHdIrJ">
                         <div class="ProjectIntroduction__FundingStatus-sc-1o2ojgb-13 gGVEjs">
                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
-                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV">가격</div>
-                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;">${one_goods.goods_price}
-                                <span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">원</span></div>
+                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="margin-right:20px;">가격</div>
+                                <span class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;">${one_goods.goods_price}
+                                <span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">원</span></span>
+                                
+                                
+                                
                             </div>
 
+
+
+						<!--
                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
-                      			<div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV">선택</div>
-                                 <select style="width:100%">
+                      			<span class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="margin-right:20px;" style="margin-right:20px;">선택</span>
+                                 <select style="width:50%;margin-bottom:20px">
                                 	 <option value="3" selected>${one_goods.goods_option} 보기</option>
                                 	 <option value="6">6개씩 보기</option>
 		                              <option value="9">9개씩 보기</option>
                                  </select>
-                            </div>
-                            
-                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
-                             	<div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV">수량</div>
-                                 <div class="quantity">
-                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty > 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
-                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                    </div>
-                            </div>                          
-                                                           
+                          </div>
+                       -->           
+	                              <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
+	                             	<div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV"  style="margin-right:20px;">수량</div>
+	                                 <div class="quantity">
+	                                        <span class="qty-minus" style="background-color:#8888;padding:10px;" onclick="minus()"><i class="fa fa-minus" aria-hidden="true"></i></span>
+	                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1" readonly>
+	                                        <span class="qty-plus" onclick="plus()"><i class="fa fa-plus" aria-hidden="true"></i></span>
+	                                    </div>
+	                           	 </div>  
+                     
+                       <script language="javascript">
+		                      function plus(){
+		                  		var effect = document.getElementById('qty'); 
+		                  		var qty = effect.value; 
+		                  			
+		                  		var result = document.getElementById('price_qty');
+		                  		var amount = ${one_goods.goods_price} * (Number(qty)+1);
+		                  			
+		                  		result.innerHTML= amount;
+		                  			if( !isNaN( qty )) effect.value++;
+		                      		return false;
+		                  	}
+                       		function minus(){
+                       			var effect = document.getElementById('qty'); 
+                       			var qty = effect.value; 
+                       			
+                       			var result = document.getElementById('price_qty');
+                       			var amount = ${one_goods.goods_price} * (Number(qty)-1);
+                       			
+                       			result.innerHTML= amount;
+                       				if( !isNaN( qty ) || isNaN( qty )>0) effect.value--;
+                           			return false;
+                       		}
+                       		
+                 
+                       </script>
+                       
+                       
+                        		<hr style="height:1px">
+                        		
+                        		                
                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
-                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV">TOTAL</div>
-                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;">${one_goods.goods_price}
+                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV">TOTAL    :   </div>
+                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="font-size:1.3em; font-weight:600;"><span id="price_qty">${one_goods.goods_price}</span> + <span style="font-size:1em; font-weight:100;">(배송비)</span> 3000원  =</div>
+                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;text-align:right">${one_goods.goods_price+3000}
                                 <span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">원</span></div>
                             </div>                         
                             

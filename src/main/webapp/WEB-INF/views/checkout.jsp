@@ -187,31 +187,51 @@
     </div>
     <!-- ##### Breadcrumb Area End ##### -->
 
+
+
+
     <!-- ##### Checkout Area Start ##### -->
     <div class="checkout_area mb-100">
         <div class="container">
             <div class="row justify-content-between">
-                <div class="col-12 col-lg-7">
+                <div class="col-12">
                     <div class="checkout_details_area clearfix">
-                        <h5>주문 정보</h5>
-                        <form action="#" method="post">
+                        <h5 style="margin-bottom:5px;">주문자 정보</h5>
+                        <form action="#" method="post" name="f">
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="first_name">이름 *</label>
-                                    <input type="text" class="form-control" id="first_name" value="" required>
+                                    <input type="text" name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
                                 </div>
-                                <div class="col-12 mb-4">
+                                <div class="col-6 mb-4">
                                     <label for="email_address">이메일 주소</label>
-                                    <input type="email" class="form-control" id="email_address" value="">
+                                    <input type="email" name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
                                 </div>
-                                <div class="col-12 mb-4">
+                                <div class="col-6 mb-4">
                                     <label for="phone_number">연락처 *</label>
-                                    <input type="text" class="form-control" value="">
+                                    <input type="text" class="form-control" value="" onkeydown="enterCheck(this)" required>
                                 </div>
                               
+                              
+                              
+                                
+
+						<h5 class="col-12 mb-4" style="margin-top:20px;">배송 정보</h5>
+                       
+                        
+                                <div class="col-md-6 mb-4">
+                                    <label for="first_name">이름 *</label>
+                                    <input type="text" name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
+                                </div>
+                                <div class="col-6 mb-4">
+                                    <label for="phone_number">연락처 *</label>
+                                    <input type="text" class="form-control" value="" onkeydown="enterCheck(this)" required>
+                                </div>
+                              
+                        
                                <div class="col-12 mb-4">
           							 <label for="city" style="width:100%">주소 *</label>
-					                 <input type="text" id="sample4_postcode" placeholder="우편번호" style="margin-bottom:15px; width:80%;display:inline">
+					                 <input type="text" id="sample4_postcode" placeholder="우편번호" style="margin-bottom:15px; width:80%;display:inline" onkeydown="enterCheck(this)" required>
 					                 <input type="button" onclick="sample4_execDaumPostcode()" style="margin-bottom:15px; width:19%; display:inline; background-color:#888888;color:white;" value="우편번호 찾기"><br>
 					                 <input type="text" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom:15px;">
 					                 	<input type="text" id="sample4_detailAddress" placeholder="상세주소" style="margin-bottom:15px;">
@@ -219,65 +239,157 @@
 										<span id="guide" style="color:#999;display:none"></span>
 										<input type="text" id="sample4_extraAddress" placeholder="참고항목" >
 					            </div>     
-					
-                        
-                                
-                           
-          						 
-					           	                  
-                  <!--             
-                                <div class="col-md-6 mb-4">
-                                    <label for="country">Country</label>
-                                    <select class="custom-select d-block w-100" id="country">
-                                        <option value="usa">United States</option>
-                                        <option value="uk">United Kingdom</option>
-                                        <option value="ger">Germany</option>
-                                        <option value="fra">France</option>
-                                        <option value="ind">India</option>
-                                        <option value="aus">Australia</option>
-                                        <option value="bra">Brazil</option>
-                                        <option value="cana">Canada</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <label for="postcode">Postcode/Zip</label>
-                                    <input type="text" class="form-control" id="postcode" value="">
-                                </div>
-				  --> 
-
-					          
-
-
-
+    				<!--
                                 <div class="col-12">
                                     <div class="d-flex align-items-center">
-                                        <!-- Single Checkbox -->
+                                        <!-- Single Checkbox 
                                         <div class="custom-control custom-checkbox d-flex align-items-center mr-30">
                                             <input type="checkbox" class="custom-control-input" id="customCheck1">
                                             <label class="custom-control-label" for="customCheck1">Ship to a different address?</label>
                                         </div>
-                                        <!-- Single Checkbox -->
+                                        <!-- Single Checkbox
                                         <div class="custom-control custom-checkbox d-flex align-items-center">
                                             <input type="checkbox" class="custom-control-input" id="customCheck2">
                                             <label class="custom-control-label" for="customCheck2">Create an account?</label>
                                         </div>
                                     </div>
                                 </div>
+                       -->           
+                                
+                         
+                <div class="col-12 mb-4">
+                    <div class="checkout-content">
+                        <h5 class="title--" style="margin-top:20px;">주문 내역</h5>
+                        <div class="products">
+                            <div class="products-data">
+                                <h5>Products:</h5>
+                                <div class="single-products d-flex justify-content-between align-items-center">
+                                    <p>Recuerdos Plant</p>
+                                    <h5>$9.99</h5>
+                                </div>
                             </div>
-                        </form>
+                        </div>
+                        <div class="subtotal d-flex justify-content-between align-items-center">
+                            <h5>Subtotal</h5>
+                            <h5>$9.99</h5>
+                        </div>
+                        <div class="shipping d-flex justify-content-between align-items-center">
+                            <h5>Shipping</h5>
+                            <h5>$3.00</h5>
+                        </div>
+                        <div class="order-total d-flex justify-content-between align-items-center">
+                            <h5>Order Total</h5>
+                            <h5>$12.99</h5>
+                        </div>
+			         </div>
                     </div>
                     
-   
+                    
+                    
+                    
+                     <h5 class="col-12 mb-4" style="margin-top:20px;">결제방법</h5>
+                     <div class="col-12 mb-4">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <ul class="pay-method" >    
+                                             <li style="margin-bottom:10px;">
+	               								 <input type="radio" class="chk-rdo" id="payByAcc" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important; display:inline;" value="B" onClick="deposit()"> 무통장입금 <em>
+	               								 <span class="op-bank-dc-price fc-red"></span></em>             
+		               								 <select name="pay_data" class="w280 MK_bank_select_list MK_pay_add_choice" style="width:50%;">
+			               								 <option value="">입금 계좌번호 선택(반드시 주문자 성함으로 입금)
+			               								 </option>                       
+			               								 <option value="국민은행 464401-04-096884 (예금주:(주)크리콕)">국민은행 464401-04-096884 (예금주:(주)크리콕)
+			               								 </option>            
+		               								 </select>  
+               								 </li>
+                                             <li style="margin-bottom:10px;">
+                								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()"> 신용카드    
+                								     <em><span class="op-card-dc-price fc-red"></span></em>
+                							 </li>
+                                                                                   
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div id="evidence" style="display:none;">                        
+                        	<div class="tbl-order" style="margin-top:0px;border-top:0px;">
+                            <table>
+                             <!--     <caption>증빙 신청</caption>
+                                <colgroup>
+                                    <col style="width: 110px">
+                                    <col>
+                                </colgroup>   -->
+                                <tbody>
+                                     <tr>
+                                <th scope="row"><div class="txt-l">증빙 신청</div></th>
+                                <td style="padding-left: 18px;">
+                                     <input type="radio" name="evidencecheck" form="order_form" onclick="" value="N" checked="checked" style="height:18px;vertical-align:middle;width:18px !important;"> 신청안함
+                                	 <input type="radio" name="evidencecheck" form="order_form" onclick="" value="cashbill" style="height:18px;vertical-align:middle;width:18px !important;"> 현금영수증
+                                                                                                                                    
+                               <div style="padding-top:5px;">
+                               		<div id="evidence_data"><script type="text/javascript" src="/js/check.js"></script>                                                
+	                               		<div id="evidence_cashbill_data" style="display:none;">                                                                                                                            
+		                               		<span id="cashbilltype">
+							                    <select name="evidence_banktype" class="bank-type" onchange="togglecashbilltype(this.value)">
+							                        <option value="0" selected="">핸드폰 번호
+							                        </option><option value="1">국세청 현금영수증 카드
+							                        </option><option value="2">사업자 번호
+							                    </option></select>
+							                </span>                                                                                             
+	                                    </div>
+                               		</div>                                            
+                               </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
+                        
+                         <div class="col-12 text-center" style="margin-bottom:100px;">
+	                        <div class="checkout-btn mt-30" style="width:60%;display:inline">
+	                            <a href="goods_pay.do" class="btn alazea-btn " onclick="check()" >주문하기</a>
+	                            <a href="goods_pay.do" class="btn alazea-btn " onclick="check()" style="color:#fc5230; background-color:white; border:1px solid #fc5230">주문 취소</a>
+	                        </div>
+	                     </div>
+                        </form>
+                    </div>
                 </div>
+               
+                
+            </div>
+        </div>
+       
+    </div>
+    <!-- ##### Checkout Area End ##### -->
+    
+    
+    <script language="javascript">
+		function deposit(){
+			document.getElementById("evidence").style.display="block";
+	
+		}
+		function payByCard(){
+			document.getElementById("evidence").style.display="none";
+		}
+		
+    </script>
+    
+    
 
-
-
+    
+<script src="js/pay/orderpay.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
         new daum.Postcode({
-            oncomplete: function(data) {
+            oncomplete: function(data) { 
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
                 // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
@@ -330,45 +442,55 @@
         }).open();
     }
 </script>
+<script src="js/pay/trim.js"></script>
+<script language="javascript"> 
+    function check(){
+		var emailval = f.email.value;
+		emailval = trim(emailval);
+		if(emailval.length == 0){
+			alert("아이디를 입력해주세요");
+			f.email.value = "";
+			f.email.focus();
+			return false;
+		}else{
+			pass = checkByteLen(emailval, 50);
+			if(!pass){
+				alert("아이디가 너무 길어요");
+				f.email.focus();
+				return false;
+			}
+		}
+		
+		var nameval = f.name.value;
+		nameval = trim(nameval);
+		if(pwdval.length == 0){
+			alert("이름을 입력해주세요");
+			f.name.value = "";
+			f.name.focus();
+			return false;
+		}else{
+			pass = checkByteLen(nameval, 30);
+			if(!pass){
+				alert("비번이 너무 길어요");
+				f.name.focus();
+				return false;
+			}
+		}
+
+		f.submit();
+	}
+	function enterCheck(elm){
+		if(event.keyCode == 13){
+			if(elm == f.email){
+				f.pwd.focus();
+			}else{
+				check();
+			}
+		}
+	}
+</script>
 
 
-
-
-
-
-                <div class="col-12 col-lg-4">
-                    <div class="checkout-content">
-                        <h5 class="title--">주문 내역</h5>
-                        <div class="products">
-                            <div class="products-data">
-                                <h5>Products:</h5>
-                                <div class="single-products d-flex justify-content-between align-items-center">
-                                    <p>Recuerdos Plant</p>
-                                    <h5>$9.99</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="subtotal d-flex justify-content-between align-items-center">
-                            <h5>Subtotal</h5>
-                            <h5>$9.99</h5>
-                        </div>
-                        <div class="shipping d-flex justify-content-between align-items-center">
-                            <h5>Shipping</h5>
-                            <h5>$3.00</h5>
-                        </div>
-                        <div class="order-total d-flex justify-content-between align-items-center">
-                            <h5>Order Total</h5>
-                            <h5>$12.99</h5>
-                        </div>
-                        <div class="checkout-btn mt-30">
-                            <a href="goods_pay.do" class="btn alazea-btn w-100">결제하기</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ##### Checkout Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area bg-img" style="background-image: url(img/bg-img/3.jpg);">
