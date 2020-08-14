@@ -36,6 +36,32 @@
             max-width:63% !important;
         }
     </style>
+        
+     <style>
+                    #bar2 .fill{
+                        background: rgb(252, 82, 48);
+                        width: 153px;
+                        transition: width 1s ease-in-out 0s;
+                        }
+                </style>
+                  <style>
+                                .crowdy-btn-introduction {
+                                    display: inline-block;
+                                    border: rgba(255,255,255,.16);
+                                    background-color: rgba(255,255,255,.16);
+                                    text-align: center;
+                                    color: #fff;
+                                    padding: 0 21px;
+                                    margin-top: 18px;
+                                    height: 35px;
+                                    border-radius: 3px;
+                                    font-size: 16px;
+                                    line-height: 2.1;
+                                    letter-spacing: -.5px;
+                                }
+                             </style>
+                
+                
   <!-- BOTO TEST -->
   <meta name="description" content="Boto Photo Studio HTML Template">
   <meta name="keywords" content="photo, html">
@@ -125,6 +151,15 @@
                                   <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
                                 </c:if> 
                                 
+                                
+                                 <!-- Login -->
+                                <div class="login">
+                                    <a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a>
+                                </div>
+                                <!-- Cart -->
+                                <div class="cart">
+                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -158,7 +193,9 @@
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
+                                   
                                     <li><a href="funding.do">FUNDING</a></li>
+                                    <li><a href="funding_list.do">FUNDING</a></li>
                                     <li><a href="goods.jsp">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">

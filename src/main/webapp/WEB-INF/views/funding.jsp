@@ -17,28 +17,38 @@
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
 
-    <!-- Core Stylesheet -->
+     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/hcbae_css.css">
+<link rel="stylesheet" href="css/wadiz_css1.css">
+     <link rel="stylesheet" href="css/wadiz_css2.css">
+    <link rel="stylesheet" href="css/wadiz_css3.css">
+    <link rel="stylesheet" href="css/wadiz_css4.css">
+    <style>
+    .nav-pills .nav-link.active{
+    color: #fff;
+    background-color: #2da498;
+}
+    
+    </style>
+      <!-- BOTO TEST -->
+  <meta name="description" content="Boto Photo Studio HTML Template">
+  <meta name="keywords" content="photo, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Stylesheets -->
+  <!--   <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/> -->
+  <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+  <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+  <link rel="stylesheet" href="css/css_boto/fresco.css"/>
+  <link rel="stylesheet" href="css/css_boto/slick.css"/>
 
-    <!-- BOTO TEST -->
-    <meta name="description" content="Boto Photo Studio HTML Template">
-    <meta name="keywords" content="photo, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
-    <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
-    <link rel="stylesheet" href="css/css_boto/fresco.css"/>
-    <link rel="stylesheet" href="css/css_boto/slick.css"/>
-  
-    <!-- Main Stylesheets -->
-    <link rel="stylesheet" href="css/css_boto/style.css"/>
+  <!-- Main Stylesheets -->
+  <link rel="stylesheet" href="css/css_boto/style.css"/>
+    
 </head>
 
 <body>
-    <!-- Preloader -->
+     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
         <div class="preloader-img">
@@ -62,6 +72,9 @@
 
                             <!-- Top Header Content -->
                             <div class="top-header-meta d-flex">
+                                <div >
+                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;">프로젝트 만들기</button>
+                                </div>
                                 <!-- Language Dropdown -->
                                 <div class="language-dropdown">
                                     <div class="dropdown">
@@ -117,8 +130,8 @@
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="index.html">FUNDING</a></li>
-                                    <li><a href="goods.html">GOODS</a></li>
+                                    <li><a href="funding_list.do?funding_categoryName=전체보기">FUNDING</a></li>
+                                    <li><a href="goods.jsp">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html" >Home</a></li>
@@ -126,7 +139,7 @@
                                             <li><a href="shop.html">Shop</a>
                                                 <ul class="dropdown">
                                                     <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="goods-details.html">Shop Details</a></li>
+                                                    <li><a href="shop-details.html">Shop Details</a></li>
                                                     <li><a href="cart.html">Shopping Cart</a></li>
                                                     <li><a href="checkout.html">Checkout</a></li>
                                                 </ul>
@@ -134,7 +147,7 @@
                                             <li><a href="portfolio.html">Portfolio</a>
                                                 <ul class="dropdown">
                                                     <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="single-portfolio.html">Portfolio Details</a></li>
+                                                    <li><a href="`gle-portfolio.html">Portfolio Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="blog.html">Blog</a>
@@ -146,8 +159,8 @@
                                             <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </li>
-                                  <li><a href="shop.html">ABOUT</a></li>
-                                    <!--  <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="about.jsp">ABOUT</a></li>
+                                   <!--   <li><a href="portfolio.html">Portfolio</a></li>
                                     <li><a href="contact.html">Contact</a></li>  -->
                                 </ul>  
 
@@ -176,6 +189,7 @@
         </div>
     </header>
     <!-- ##### Header Area End ##### -->
+    <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
@@ -201,41 +215,47 @@
                 <div class="col-12">
                     <div class="most__search__tab">
                         <ul class="nav nav-tabs nav-pills" role="tablist">
+                        
+                       <li class="nav-item">
+                        <c:choose>
+                        
+                           <c:when test="${funding_categoryName=='전체보기'}">
+                            <a class="hcbae-nav nav-link active" data-toggle="tab" href="funding_list.do?funding_categoryBy=전체보기" role="tab">
+                                                                전체보기
+                             </a>
+                             </c:when>
+                       
+                          
+                        <c:otherwise>
+                        
+                        
+                        
+                       <li class="nav-item">
+                            <a class="hcbae-nav nav-link" data-toggle="tab" href="funding_list.do?funding_categoryName=전체보기" role="tab">
+                                                                전체보기
+                             </a>
+                             </li>
+                        </c:otherwise>
+                        </c:choose> 
+                      </li>
+                         <c:forEach items="${funding_categoryNames}" var="categoryNames" >
                             <li class="nav-item">
-                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                    전체보기
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    테크/가전
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    패션/잡화
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    뷰티
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-5" role="tab">
-                                    푸드
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-6" role="tab">
-                                    홈리빙
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#tabs-6" role="tab">
-                                    디자인소품
-                                </a>
-                            </li>
+                             <c:choose>
+                                  <c:when test="${categoryNames==funding_categoryName}">
+                                     <a class="hcbae-nav nav-link active" data-toggle="tab" 
+                                     href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
+                                         ${categoryNames}
+                                         </a>
+                                   </c:when>
+                              <c:otherwise>
+                                     <a class="hcbae-nav nav-link" data-toggle="tab" 
+                                     href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
+                                        ${categoryNames}
+                                     </a>
+                                 </c:otherwise>
+                                 </c:choose>
+                            </li>        
+                         </c:forEach>
                         </ul>
                     </div>
                 </div>
@@ -256,21 +276,76 @@
                             <p>Showing 1–9 of 72 results</p>
                         </div>
                         <!-- Search by Terms -->
+                       
+                       
+                       
+
+                         
+                          
                         <div class="search_by_terms">
-                            <form action="#" method="post" class="form-inline">
-                                <select class="custom-select widget-title">
-                                  <option selected>Short by Popularity</option>
-                                  <option value="1">Short by Newest</option>
-                                  <option value="2">Short by Sales</option>
-                                  <option value="3">Short by Ratings</option>
+                           <form action="#" method="post" class="form-inline">
+                              <select class="custom-select widget-title" id="fbId" name="filterBy" class="custom-select widget-title" onchange="f(this)">
+                                  <c:choose>
+                                   <c:when test="${fundingVo.filterBy == 'FUNDING_LIKE_NUMBER'}">
+                                    <option value="FUNDING_LIKE_NUMBER" selected>인기순</option>
+                                    <option value="FUNDING_WDATE">최신순</option>
+                                    <option value="FUNDING_EDATE">마감일순</option>
+                                    </c:when>       
+                                     <c:when test="${fundingVo.filterBy=='FUNDING_WDATE'}">
+                                        <option value="FUNDING_LIKE_NUMBER">인기순</option>
+                                        <option value="FUNDING_WDATE" selected>최신순</option>
+                                        <option value="FUNDING_EDATE">마감일순</option>
+                                    </c:when>       
+                                    <c:when test="${fundingVo.filterBy =='FUNDING_EDATE'}">
+                                    <option value="FUNDING_LIKE_NUMBER">인기순</option>
+                                    <option value="FUNDING_WDATE">최신순</option>
+                                    <option value="FUNDING_EDATE" selected>마감일순</option>
+                                    </c:when>        
+                                  </c:choose>
+                                  </select>
+                                  
+                                  
+                                  <select class="custom-select widget-title" id="psId" name="ps" onchange="pageSize(this)">
+                                 <c:choose>
+                                      <c:when test="${fundingVo.pageSize==3}">
+                                          <option value="3" selected>3개씩 보기</option>
+                                          <option value="6">6개씩 보기</option>
+                                          <option value="9">9개씩 보기</option>                          
+                                      </c:when>
+                                      <c:when test="${fundingVo.pageSize==6}">
+                                         <option value="3">3개씩 보기</option>                                     
+                                           <option value="6" selected>6개씩 보기</option>
+                                           <option value="9">9개씩 보기</option>
+                                      </c:when>                                                            
+                                      <c:when test="${fundingVo.pageSize==9}">
+                                         <option value="3">3개씩 보기</option>                                     
+                                           <option value="6">6개씩 보기</option>
+                                           <option value="9" selected>9개씩 보기</option>
+                                      </c:when>                                         
+                                   </c:choose>
+                                 
                                 </select>
-                                <select class="custom-select widget-title">
-                                  <option selected>Show: 9</option>
-                                  <option value="1">12</option>
-                                  <option value="2">18</option>
-                                  <option value="3">24</option>
-                                </select>
-                            </form>
+                              </form>
+                              
+                          <script language="javascript">
+                              function pageSize(select){
+                                 //var el = document.getElementById("psId");
+                                 var ps = select.value;
+                                 //alert("ps : " + ps);
+                                 location.href="funding_list.do?funding_ps="+ps;
+                              }
+                      </script>
+                      <script language="javascript">
+                              function f(select){
+                            	
+                                 //var el = document.getElementById("psId");
+                                 var filterBy = select.value;
+                                 
+                                 location.href="funding_list.do?funding_filterBy="+filterBy;
+                              }  
+                          </script>
+                              
+                              
                         </div>
                     </div>
                 </div>
@@ -283,36 +358,37 @@
            
 
             <div class="row">
-
+                   <c:if test="${!empty fundingVo.list}">
                 <!-- Single Product Area -->
+              <c:forEach items="${fundingVo.list}" var="fundingVo">
+           
                 <div class="col-12 col-sm-6 col-lg-4">
-                           
-
-                                <div class="single-benefits-area">                   
+                      <div class="single-benefits-area">                   
+                          <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
+                              </a><div class="CommonCard_rect__2wpm4">
                                     <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
-                                                 </span></a><a href="shop-details.html">
-                                                     <img src="img/core-img/ex2.jpg" alt="">
+                                        <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
+                                            </span></a>
+                                  
+                                                 <a href="funding_list.do?funding_index=${fundingVo.funding_index}">
+                                
+                                                     <img src="${fundingVo.funding_repre_pic}" alt="">
                                                 </a>
-                                            
-        
-                                      
-                                    
+           
                                     <div class="CommonCard_info__1f4kq">
                                     <div class="RewardProjectCard_info__3JFub">
                                         <div class="RewardProjectCard_infoTop__3QR5w">
-                                        <a href="#" class="CardLink_link__1k83H">
+                                        <a href="funding_list.do?funding_index=${fundingVo.funding_index}" class="CardLink_link__1k83H">
                                             <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
-                                                <strong>가격과 온도를 모두 낮췄다! 10억펀딩 신소재 &lt;밸런스온 이지핏 베개&gt;</strong>
+                                                <strong>${fundingVo.funding_subject}</strong>
                                             </p>
                                         </a>
                                     <div style="margin-bottom: 10px;">
                                         <span class="RewardProjectCard_category__2muXk" style="color:#90949C; font-size:13px;">
-                                            홈리빙
+                                           ${fundingVo.funding_category_name}
                                         </span>
                                         <span class="RewardProjectCard_makerName__2q4oH" style="color:#90949C; font-size:13px;">
-                                            밸런스온 (불스원)
+                                            ${fundingVo.creator_name}
                                         </span>
                                     </div>
                                     </div>
@@ -334,384 +410,63 @@
                                         </div>
                                           
                                         <span class="RewardProjectCard_amount__2AyJF" style="color:#fc5230; font-size:18px; font-weight:bold">
-                                           80%
+                                            ${fundingVo.percentage}%
                                         </span>                                      
                                         
                                         <span class="RewardProjectCard_amount__2AyJF" style="color:#90949C; font-size:16px; margin-right:5%;font-weight:bold">
-                                            55,828,600원
+                                              ${fundingVo.funding_amount}원
                                         </span>
                                         <span class="RewardProjectCard_days__3eece RewardProjectCard_isAchieve__1LcUu">
-                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">17일</span>
-                                            <span class="RewardProjectCard_remainingDayText__2sRLV" style="color:#90949C;">남음</span>
+                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">${fundingVo.restdays}일</span>
+                                            <span class="RewardProjectCard_remainingDayText__2sRLV" style="color:#90949C;"> 남음</span>
                                             <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
                                      </div>
                                     </div>  
                                 </div>
                             </div>
                             </div>
-                <!-- Single Product Area -->
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
+                         
                            
-
-                                <div class="single-benefits-area">                   
-                                    <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
-                                                 </span></a><a href="shop-details.html">
-                                                     <img src="img/core-img/ex2.jpg" alt="">
-                                                </a>
-                                            
-        
-                                      
-                                    
-                                    <div class="CommonCard_info__1f4kq">
-                                    <div class="RewardProjectCard_info__3JFub">
-                                        <div class="RewardProjectCard_infoTop__3QR5w">
-                                        <a href="#" class="CardLink_link__1k83H">
-                                            <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
-                                                <strong>가격과 온도를 모두 낮췄다! 10억펀딩 신소재 &lt;밸런스온 이지핏 베개&gt;</strong>
-                                            </p>
-                                        </a>
-                                    <div style="margin-bottom: 10px;">
-                                        <span class="RewardProjectCard_category__2muXk" style="color:#90949C; font-size:13px;">
-                                            홈리빙
-                                        </span>
-                                        <span class="RewardProjectCard_makerName__2q4oH" style="color:#90949C; font-size:13px;">
-                                            밸런스온 (불스원)
-                                        </span>
-                                    </div>
-                                    </div>
-                                        <div class="RewardProjectCard_gauge__3p9US">
-                                            <span style="width: 100%;">
-                                            </span>
-                                        </div>
-                                        <span class="RewardProjectCard_percent__3TW4_">
-                                            
-                                        </span>
-                                        
-                                          <!-- Single Progress Bar -->
-                                        <div class="single_progress_bar">
-                                           
-                                            <div id="bar4" class="barfiller" style="border-radius: 5px;">
-                                               
-                                                <span class="fill" data-percentage="60" style="border-radius: 5px; width: 162px; transition: width 1s ease-in-out 0s; background: rgb(252, 82, 48);"></span>
-                                            </div>
-                                        </div>
-                                          
-                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#fc5230; font-size:18px; font-weight:bold">
-                                           80%
-                                        </span>                                      
-                                        
-                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#90949C; font-size:16px; margin-right:5%;font-weight:bold">
-                                            55,828,600원
-                                        </span>
-                                        <span class="RewardProjectCard_days__3eece RewardProjectCard_isAchieve__1LcUu">
-                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">17일</span>
-                                            <span class="RewardProjectCard_remainingDayText__2sRLV" style="color:#90949C;">남음</span>
-                                            <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
-                                     </div>
-                                    </div>  
-                                </div>
-                            </div>
-                            </div>
-                <!-- Single Product Area -->
-                 <!-- Single Product Area -->
+                            </c:forEach>   
+                            </c:if> 
+            </div>
+                 <c:if test="${empty fundingVo}">
+   
+         
                 <div class="col-12 col-sm-6 col-lg-4">
-                           
-
-                                <div class="single-benefits-area">                   
-                                    <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
-                                                 </span></a><a href="shop-details.html">
-                                                     <img src="img/core-img/ex2.jpg" alt="">
-                                                </a>
-                                            
-        
-                                      
-                                    
-                                    <div class="CommonCard_info__1f4kq">
-                                    <div class="RewardProjectCard_info__3JFub">
-                                        <div class="RewardProjectCard_infoTop__3QR5w">
-                                        <a href="#" class="CardLink_link__1k83H">
-                                            <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
-                                                <strong>가격과 온도를 모두 낮췄다! 10억펀딩 신소재 &lt;밸런스온 이지핏 베개&gt;</strong>
-                                            </p>
-                                        </a>
-                                    <div style="margin-bottom: 10px;">
-                                        <span class="RewardProjectCard_category__2muXk" style="color:#90949C; font-size:13px;">
-                                            홈리빙
-                                        </span>
-                                        <span class="RewardProjectCard_makerName__2q4oH" style="color:#90949C; font-size:13px;">
-                                            밸런스온 (불스원)
-                                        </span>
-                                    </div>
-                                    </div>
-                                        <div class="RewardProjectCard_gauge__3p9US">
-                                            <span style="width: 100%;">
-                                            </span>
-                                        </div>
-                                        <span class="RewardProjectCard_percent__3TW4_">
-                                            
-                                        </span>
-                                        
-                                          <!-- Single Progress Bar -->
-                                        <div class="single_progress_bar">
-                                           
-                                            <div id="bar4" class="barfiller" style="border-radius: 5px;">
-                                               
-                                                <span class="fill" data-percentage="60" style="border-radius: 5px; width: 162px; transition: width 1s ease-in-out 0s; background: rgb(252, 82, 48);"></span>
-                                            </div>
-                                        </div>
-                                          
-                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#fc5230; font-size:18px; font-weight:bold">
-                                           80%
-                                        </span>                                      
-                                        
-                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#90949C; font-size:16px; margin-right:5%;font-weight:bold">
-                                            55,828,600원
-                                        </span>
-                                        <span class="RewardProjectCard_days__3eece RewardProjectCard_isAchieve__1LcUu">
-                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">17일</span>
-                                            <span class="RewardProjectCard_remainingDayText__2sRLV" style="color:#90949C;">남음</span>
-                                            <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
-                                     </div>
-                                    </div>  
-                                </div>
+                      <div class="single-benefits-area">                   
+                            해당 카테고리 상품이 없습니다.
                             </div>
                             </div>
-
-                <!-- Single Product Area -->
-               <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                           
-
-                                <div class="single-benefits-area">                   
-                                    <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
-                                                 </span></a><a href="shop-details.html">
-                                                     <img src="img/core-img/ex2.jpg" alt="">
-                                                </a>
-                                            
-        
-                                      
-                                    
-                                    <div class="CommonCard_info__1f4kq">
-                                    <div class="RewardProjectCard_info__3JFub">
-                                        <div class="RewardProjectCard_infoTop__3QR5w">
-                                        <a href="#" class="CardLink_link__1k83H">
-                                            <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
-                                                <strong>가격과 온도를 모두 낮췄다! 10억펀딩 신소재 &lt;밸런스온 이지핏 베개&gt;</strong>
-                                            </p>
-                                        </a>
-                                    <div style="margin-bottom: 10px;">
-                                        <span class="RewardProjectCard_category__2muXk" style="color:#90949C; font-size:13px;">
-                                            홈리빙
-                                        </span>
-                                        <span class="RewardProjectCard_makerName__2q4oH" style="color:#90949C; font-size:13px;">
-                                            밸런스온 (불스원)
-                                        </span>
-                                    </div>
-                                    </div>
-                                        <div class="RewardProjectCard_gauge__3p9US">
-                                            <span style="width: 100%;">
-                                            </span>
-                                        </div>
-                                        <span class="RewardProjectCard_percent__3TW4_">
-                                            
-                                        </span>
-                                        
-                                          <!-- Single Progress Bar -->
-                                        <div class="single_progress_bar">
-                                           
-                                            <div id="bar4" class="barfiller" style="border-radius: 5px;">
-                                               
-                                                <span class="fill" data-percentage="60" style="border-radius: 5px; width: 162px; transition: width 1s ease-in-out 0s; background: rgb(252, 82, 48);"></span>
-                                            </div>
-                                        </div>
-                                          
-                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#fc5230; font-size:18px; font-weight:bold">
-                                           80%
-                                        </span>                                      
-                                        
-                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#90949C; font-size:16px; margin-right:5%;font-weight:bold">
-                                            55,828,600원
-                                        </span>
-                                        <span class="RewardProjectCard_days__3eece RewardProjectCard_isAchieve__1LcUu">
-                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">17일</span>
-                                            <span class="RewardProjectCard_remainingDayText__2sRLV" style="color:#90949C;">남음</span>
-                                            <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
-                                     </div>
-                                    </div>  
-                                </div>
-                            </div>
-                            </div>
-                 <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                           
-
-                                <div class="single-benefits-area">                   
-                                    <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
-                                                 </span></a><a href="shop-details.html">
-                                                     <img src="img/core-img/ex2.jpg" alt="">
-                                                </a>
-                                            
-        
-                                      
-                                    
-                                    <div class="CommonCard_info__1f4kq">
-                                    <div class="RewardProjectCard_info__3JFub">
-                                        <div class="RewardProjectCard_infoTop__3QR5w">
-                                        <a href="#" class="CardLink_link__1k83H">
-                                            <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
-                                                <strong>가격과 온도를 모두 낮췄다! 10억펀딩 신소재 &lt;밸런스온 이지핏 베개&gt;</strong>
-                                            </p>
-                                        </a>
-                                    <div style="margin-bottom: 10px;">
-                                        <span class="RewardProjectCard_category__2muXk" style="color:#90949C; font-size:13px;">
-                                            홈리빙
-                                        </span>
-                                        <span class="RewardProjectCard_makerName__2q4oH" style="color:#90949C; font-size:13px;">
-                                            밸런스온 (불스원)
-                                        </span>
-                                    </div>
-                                    </div>
-                                        <div class="RewardProjectCard_gauge__3p9US">
-                                            <span style="width: 100%;">
-                                            </span>
-                                        </div>
-                                        <span class="RewardProjectCard_percent__3TW4_">
-                                            
-                                        </span>
-                                        
-                                          <!-- Single Progress Bar -->
-                                        <div class="single_progress_bar">
-                                           
-                                            <div id="bar4" class="barfiller" style="border-radius: 5px;">
-                                               
-                                                <span class="fill" data-percentage="60" style="border-radius: 5px; width: 162px; transition: width 1s ease-in-out 0s; background: rgb(252, 82, 48);"></span>
-                                            </div>
-                                        </div>
-                                          
-                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#fc5230; font-size:18px; font-weight:bold">
-                                           80%
-                                        </span>                                      
-                                        
-                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#90949C; font-size:16px; margin-right:5%;font-weight:bold">
-                                            55,828,600원
-                                        </span>
-                                        <span class="RewardProjectCard_days__3eece RewardProjectCard_isAchieve__1LcUu">
-                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">17일</span>
-                                            <span class="RewardProjectCard_remainingDayText__2sRLV" style="color:#90949C;">남음</span>
-                                            <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
-                                     </div>
-                                    </div>  
-                                </div>
-                            </div>
-                            </div>
-
-                <!-- Single Product Area -->
-                 <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                           
-
-                                <div class="single-benefits-area">                   
-                                    <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
-                                                 </span></a><a href="shop-details.html">
-                                                     <img src="img/core-img/ex2.jpg" alt="">
-                                                </a>
-                                            
-        
-                                      
-                                    
-                                    <div class="CommonCard_info__1f4kq">
-                                    <div class="RewardProjectCard_info__3JFub">
-                                        <div class="RewardProjectCard_infoTop__3QR5w">
-                                        <a href="#" class="CardLink_link__1k83H">
-                                            <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
-                                                <strong>가격과 온도를 모두 낮췄다! 10억펀딩 신소재 &lt;밸런스온 이지핏 베개&gt;</strong>
-                                            </p>
-                                        </a>
-                                    <div style="margin-bottom: 10px;">
-                                        <span class="RewardProjectCard_category__2muXk" style="color:#90949C; font-size:13px;">
-                                            홈리빙
-                                        </span>
-                                        <span class="RewardProjectCard_makerName__2q4oH" style="color:#90949C; font-size:13px;">
-                                            밸런스온 (불스원)
-                                        </span>
-                                    </div>
-                                    </div>
-                                        <div class="RewardProjectCard_gauge__3p9US">
-                                            <span style="width: 100%;">
-                                            </span>
-                                        </div>
-                                        <span class="RewardProjectCard_percent__3TW4_">
-                                            
-                                        </span>
-                                        
-                                          <!-- Single Progress Bar -->
-                                        <div class="single_progress_bar">
-                                           
-                                            <div id="bar4" class="barfiller" style="border-radius: 5px;">
-                                               
-                                                <span class="fill" data-percentage="60" style="border-radius: 5px; width: 162px; transition: width 1s ease-in-out 0s; background: rgb(252, 82, 48);"></span>
-                                            </div>
-                                        </div>
-                                          
-                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#fc5230; font-size:18px; font-weight:bold">
-                                           80%
-                                        </span>                                      
-                                        
-                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#90949C; font-size:16px; margin-right:5%;font-weight:bold">
-                                            55,828,600원
-                                        </span>
-                                        <span class="RewardProjectCard_days__3eece RewardProjectCard_isAchieve__1LcUu">
-                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">17일</span>
-                                            <span class="RewardProjectCard_remainingDayText__2sRLV" style="color:#90949C;">남음</span>
-                                            <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
-                                     </div>
-                                    </div>  
-                                </div>
-                            </div>
-                            </div>
-
-                <!-- Single Product Area -->
+                          
+                            
+                            </c:if> 
+                             </div>
+            
                 <div class="col-12 text-center" style="margin-bottom:100px">
                  <!--   <a href="#" class="btn alazea-btn">더보기</a>-->
                       <nav aria-label="Page navigation"class="text-center">
+                      
                             <ul class="pagination" style="margin-top:100px">
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                             <c:forEach begin="1" end="${fundingVo.totalPageCount}" var="i">
+                             
+                               <li class="page-item">
+                               <a class="page-link" href="funding_list.do?funding_cp=${i}">
+                                <c:choose>
+                                  <c:when test="${i==fundingVo.currentPage}">
+                                  <strong>${i}</strong>
+                                  </c:when>
+                    
+                                  <c:otherwise>
+                                  <span>${i}</span>
+                                  </c:otherwise>
+                                </c:choose>
+                                 </a> 
+                                </c:forEach>
                             </ul>
                         </nav>
                 </div>
-
-       
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-                        <!-- Pagination -->
                       
-                    </div>
-                </div>
-            
       
     </section>
     <!-- ##### Shop Area End ##### -->
@@ -747,7 +502,7 @@
     <!-- Popper js -->
     <script src="js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
+   
     <!-- All Plugins js -->
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
