@@ -14,14 +14,14 @@
     <title>CREAKOK</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="../img/core-img/creakok.ico">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     
     <!-- Wadiz Css -->
     <link rel="stylesheet" href="css/wadiz_css1.css">
-    <link rel="stylesheet" href="css/wadiz_css2.css">
+     <link rel="stylesheet" href="css/wadiz_css2.css">
     <link rel="stylesheet" href="css/wadiz_css3.css">
     <link rel="stylesheet" href="css/wadiz_css4.css">
      <style>
@@ -185,10 +185,8 @@
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
-                                   
-                                   
-                                    <li><a href="funding_list.do">FUNDING</a></li>
-                                    <li><a href="goods.jsp">GOODS</a></li>
+                                   <li><a href="funding_list.do">FUNDING</a></li>
+                                   <li><a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html" >Home</a></li>
