@@ -334,14 +334,15 @@
 						   	    <input type="text" id="writer" name="writer" class="form-control" value="${board.member_name}" readonly="readonly" /><br />
 						    	</div>
 						    </div>
-						    <label>작성 날짜</label> <span><fmt:formatDate value="${board.board_wdate}" pattern="yyyy-MM-dd" /></span>
-						   </p>
-						    <p>
+						    <div class="form-group">
+						   	 	<label class="control-label">작성 날짜</label>
+						   		<span><fmt:formatDate value="${board.board_wdate}" pattern="yyyy-MM-dd" /></span>
+							</div>
+
 						    <label for="view">조회수</label><input type="text" id="view" name="view" value="${board.board_view}" readonly="readonly"  />
-						   </p>
-						    <p>
+						   
 						    <label for="like">좋아요수</label><input type="text" id="like" name="like" value="${board.board_like}" readonly="readonly"  />
-						   </p>
+						    </div>
 						   <p>
 						    <div class="form-group">
 						    	<button type="button" id="list_btn" class="btn btn-primary">목록</button>
