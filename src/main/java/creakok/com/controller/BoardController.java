@@ -32,27 +32,27 @@ public class BoardController {
 	
 	@RequestMapping("board_page")
 	public ModelAndView getListResult(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cpStr = request.getParameter("cp");
-		String psStr = request.getParameter("ps");
-		String filterBy = request.getParameter("filterBy");
+		String board_cpStr = request.getParameter("board_cp");
+		String board_psStr = request.getParameter("board_ps");
+		String board_filterBy = request.getParameter("board_filterBy");
 		
 		HttpSession session = request.getSession();
 		
 		//(1) cp 
-		int cp = 1;
-		if(cpStr == null) {
-			Object cpObj = session.getAttribute("cp");
-			if(cpObj != null) {
-				cp = (Integer)cpObj;
+		int board_cp = 1;
+		if(board_cpStr == null) {
+			Object board_cpObj = session.getAttribute("board_cp");
+			if(board_cpObj != null) {
+				board_cp = (Integer)board_cpObj;
 			}
 		}else {
-			cpStr = cpStr.trim();
-			cp = Integer.parseInt(cpStr);
+			board_cpStr = board_cpStr.trim();
+			board_cp = Integer.parseInt(board_cpStr);
 		}
-		session.setAttribute("cp", cp);
+		session.setAttribute("board_cp", board_cp);
 		
 		//(2) ps 
-		int ps = 15;
+		int board_ps = 15;
 		/*
 		if(psStr == null) {
 			Object psObj = session.getAttribute("ps");
@@ -80,44 +80,44 @@ public class BoardController {
 			ps = psParam;
 		}
 		*/
-		session.setAttribute("ps", ps);
+		session.setAttribute("board_ps", board_ps);
 		
-		String c_code = request.getParameter("c_code");
-		String searchName = request.getParameter("searchName");
+		String board_c_code = request.getParameter("board_c_code");
+		String board_searchName = request.getParameter("board_searchName");
 		
-		if (c_code==null) { 
-			String c_codeTemp = (String) session.getAttribute("c_code");
-			if (c_codeTemp !=null) {
-				c_code = c_codeTemp;
-				log.info("@@@@@@@@@@@@"+ c_code);
+		if (board_c_code==null) { 
+			String board_c_codeTemp = (String) session.getAttribute("board_c_code");
+			if (board_c_codeTemp !=null) {
+				board_c_code = board_c_codeTemp;
+				log.info("@@@@@@@@@@@@"+ board_c_code);
 			} else {
-				c_code = "#####";
+				board_c_code = "#####";
 			}
 		}
-		session.setAttribute("c_code", c_code);
+		session.setAttribute("board_c_code", board_c_code);
 		
-		if (searchName==null) { 
-			String searchNameTemp = (String) session.getAttribute("searchName");
-			if (searchNameTemp !=null) {
-				searchName = searchNameTemp;
-				log.info("@@@@@@@@@@@@"+ searchName);
+		if (board_searchName==null) { 
+			String board_searchNameTemp = (String) session.getAttribute("board_searchName");
+			if (board_searchNameTemp !=null) {
+				board_searchName = board_searchNameTemp;
+				log.info("@@@@@@@@@@@@"+ board_searchName);
 			} else {
-				searchName = "#####";
+				board_searchName = "#####";
 			}
 		}
-		session.setAttribute("searchName", searchName);
+		session.setAttribute("board_searchName", board_searchName);
 		
-		if (filterBy==null) { 
-			String filterByTemp = (String) session.getAttribute("filterBy");
-			if (filterByTemp !=null) {
-				filterBy = filterByTemp;
-				log.info("@@@@@@@@@@@@"+ filterBy);
+		if (board_filterBy==null) { 
+			String board_filterByTemp = (String) session.getAttribute("board_filterBy");
+			if (board_filterByTemp !=null) {
+				board_filterBy = board_filterByTemp;
+				log.info("@@@@@@@@@@@@"+ board_filterBy);
 			} else {
-				filterBy = "BOARD_INDEX";
+				board_filterBy = "BOARD_INDEX";
 			}
 		}
 		
-		session.setAttribute("filterBy", filterBy);
+		session.setAttribute("board_filterBy", board_filterBy);
 		/*
 		// 검색했을때 페이징하기
 		String searchName = request.getParameter("searchName");
@@ -126,7 +126,7 @@ public class BoardController {
 		session.setAttribute("searchName", searchName);
 		log.info("@@@@@@@@@@@@@@@@" + searchName);
 		*/
-		ListResult listResult = service.getListResultS(cp, ps, filterBy);
+		ListResult listResult = service.getListResultS(board_cp, board_ps, board_filterBy);
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community");
 		mv.addObject("listResult", listResult);
@@ -258,107 +258,107 @@ public class BoardController {
 	// 검색 
 	@RequestMapping("board_search")
 	public ModelAndView search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cpStr = request.getParameter("cp");
-		String psStr = request.getParameter("ps");
-		String filterBy = request.getParameter("filterBy");
+		String board_cpStr = request.getParameter("board_cp");
+		String board_psStr = request.getParameter("board_ps");
+		String board_filterBy = request.getParameter("board_filterBy");
 		
 		HttpSession session = request.getSession();		
 		
 		//(1) cp 
-		int cp = 1;
-		if(cpStr == null) {
-			Object cpObj = session.getAttribute("cp");
-			if(cpObj != null) {
-				cp = (Integer)cpObj;
+		int board_cp = 1;
+		if(board_cpStr == null) {
+			Object board_cpObj = session.getAttribute("board_cp");
+			if(board_cpObj != null) {
+				board_cp = (Integer)board_cpObj;
 			}
 		}else {
-			cpStr = cpStr.trim();
-			cp = Integer.parseInt(cpStr);
+			board_cpStr = board_cpStr.trim();
+			board_cp = Integer.parseInt(board_cpStr);
 		}
-		session.setAttribute("cp", cp);
+		session.setAttribute("board_cp", board_cp);
 		
 		//(2) ps 
-		int ps = 3;
-		if(psStr == null) {
-			Object psObj = session.getAttribute("ps");
-			if(psObj != null) {
-				ps = (Integer)psObj;
+		int board_ps = 3;
+		if(board_psStr == null) {
+			Object board_psObj = session.getAttribute("board_ps");
+			if(board_psObj != null) {
+				board_ps = (Integer)board_psObj;
 			}
 		}else {
-			psStr = psStr.trim();
-			int psParam = Integer.parseInt(psStr);
+			board_psStr = board_psStr.trim();
+			int board_psParam = Integer.parseInt(board_psStr);
 			
-			Object psObj = session.getAttribute("ps");
-			if(psObj != null) {
-				int psSession = (Integer)psObj;
-				if(psSession != psParam) {
-					cp = 1;
-					session.setAttribute("cp", cp);
+			Object board_psObj = session.getAttribute("board_ps");
+			if(board_psObj != null) {
+				int board_psSession = (Integer)board_psObj;
+				if(board_psSession != board_psParam) {
+					board_cp = 1;
+					session.setAttribute("board_cp", board_cp);
 				}
 			}else {
-				if(ps != psParam) {
-					cp = 1;
-					session.setAttribute("cp", cp);
+				if(board_ps != board_psParam) {
+					board_cp = 1;
+					session.setAttribute("board_cp", board_cp);
 				}
 			}
 			
-			ps = psParam;
+			board_ps = board_psParam;
 		}
-		session.setAttribute("ps", ps);		
+		session.setAttribute("board_ps", board_ps);		
 		
-		if (filterBy==null) { 
-			String filterByTemp = (String) session.getAttribute("filterBy");
-			if (filterByTemp !=null) {
-				filterBy = filterByTemp;
-				log.info("@@@@@@@@@@@@"+ filterBy);
+		if (board_filterBy==null) { 
+			String board_filterByTemp = (String) session.getAttribute("board_filterBy");
+			if (board_filterByTemp !=null) {
+				board_filterBy = board_filterByTemp;
+				log.info("@@@@@@@@@@@@"+ board_filterBy);
 			} else {
-				filterBy = "BOARD_INDEX";
+				board_filterBy = "BOARD_INDEX";
 			}
 		} else {
-			log.info("@@@@@@@@@@@@"+ filterBy);
+			log.info("@@@@@@@@@@@@"+ board_filterBy);
 		}
-		session.setAttribute("filterBy", filterBy);
+		session.setAttribute("filterBy", board_filterBy);
 		
-		String c_code = request.getParameter("c_code");
-		String searchName = request.getParameter("searchName");
+		String board_c_code = request.getParameter("board_c_code");
+		String board_searchName = request.getParameter("board_searchName");
 		
-		if (c_code==null) { 
-			String c_codeTemp = (String) session.getAttribute("c_code");
-			if (c_codeTemp !=null) {
-				c_code = c_codeTemp;
-				log.info("@@@@@@@@@@@@"+ c_code);
-				session.setAttribute("c_code", c_code);
+		if (board_c_code==null) { 
+			String board_c_codeTemp = (String) session.getAttribute("board_c_code");
+			if (board_c_codeTemp !=null) {
+				board_c_code = board_c_codeTemp;
+				log.info("@@@@@@@@@@@@"+ board_c_code);
+				session.setAttribute("board_c_code", board_c_code);
 			} else {
-				c_code = "#####";
-				session.setAttribute("c_code", c_code);
+				board_c_code = "#####";
+				session.setAttribute("board_c_code", board_c_code);
 			}
 		} else {
-			log.info("@@@@@@@@@@@@"+ c_code);
+			log.info("@@@@@@@@@@@@"+ board_c_code);
 		}
-		session.setAttribute("c_code", c_code);
+		session.setAttribute("board_c_code", board_c_code);
 		
-		if (searchName==null) { 
-			String searchNameTemp = (String) session.getAttribute("searchName");
-			log.info("@@@@@@@@@@@@"+ searchNameTemp);
-			if (searchNameTemp !=null) {
-				searchName = searchNameTemp;
-				log.info("@@@@@@@@@@@@"+ searchName);
-				session.setAttribute("searchName", searchName);
+		if (board_searchName==null) { 
+			String board_searchNameTemp = (String) session.getAttribute("board_searchName");
+			log.info("@@@@@@@@@@@@"+ board_searchNameTemp);
+			if (board_searchNameTemp !=null) {
+				board_searchName = board_searchNameTemp;
+				log.info("@@@@@@@@@@@@"+ board_searchName);
+				session.setAttribute("board_searchName", board_searchName);
 			} else {
-				searchName = "#####";
-				session.setAttribute("searchName", searchName);
+				board_searchName = "#####";
+				session.setAttribute("board_searchName", board_searchName);
 			}
 		} else {
-			log.info("@@@@@@@@@@@@"+ searchName);
+			log.info("@@@@@@@@@@@@"+ board_searchName);
 		}
-		session.setAttribute("searchName", searchName);
+		session.setAttribute("board_searchName", board_searchName);
 		
 		
-		System.out.println("c_code: "+c_code+", searchName: "+searchName);
+		System.out.println("board_c_code: "+board_c_code+", board_searchName: "+board_searchName);
 		
-		ListResult listResult = service.getListResultBySearchS(cp, ps, filterBy, c_code, searchName);
-		listResult.setSearchName(searchName);
-		listResult.setC_code(c_code);
+		ListResult listResult = service.getListResultBySearchS(board_cp, board_ps, board_filterBy, board_c_code, board_searchName);
+		listResult.setBoard_searchName(board_searchName);
+		listResult.setBoard_c_code(board_c_code);
 		request.setAttribute("listResult", listResult);
 		
 		ModelAndView mv = new ModelAndView();

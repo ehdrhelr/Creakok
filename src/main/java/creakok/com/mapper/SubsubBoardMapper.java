@@ -9,7 +9,7 @@ import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
 
 public interface SubsubBoardMapper {
-	List<Board> getListResult(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, @Param("filterBy") String filterBy);
+	List<Board> getListResult(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, @Param("board_filterBy") String board_filterBy);
 	int count();
 	Board content(long board_index);
 	void insert(Board board);
@@ -31,8 +31,8 @@ public interface SubsubBoardMapper {
 	
 	// 검색
 	List<Board> search(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, 
-			@Param("filterBy") String filterBy, @Param("c_code") String c_code, 
-			@Param("searchName")String searchName);
+			@Param("board_filterBy") String board_filterBy, @Param("board_c_code") String c_code, 
+			@Param("board_searchName")String board_searchName);
 	// 댓글 조회
 	List<Comment> getComment(long board_index);
 

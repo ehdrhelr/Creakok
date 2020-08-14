@@ -6,7 +6,7 @@
 
 	<select id="getListResult" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    	(select * from SUBSUB_BOARD order by ${filterBy} desc) aa) 
+    	(select * from SUBSUB_BOARD order by ${board_filterBy} desc) aa) 
     	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
  	</select>
 	
@@ -62,8 +62,8 @@
 	<!-- 검색 -->
 	<select id="search" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    	(select * from SUBSUB_BOARD order by ${filterBy} desc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and ${c_code}='${searchName}']]>
+    	(select * from SUBSUB_BOARD order by ${board_filterBy} desc) aa) 
+    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and ${board_c_code}='${board_searchName}']]>
 	</select>
 	
 	<!-- 댓글 조회 -->

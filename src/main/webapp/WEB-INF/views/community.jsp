@@ -109,7 +109,7 @@
 	 <script language="javascript">
 		function f(select){
 			var filterBy = select.value;
-			location.href="board_page?filterBy="+filterBy+"#fix_point";
+			location.href="board_page?board_filterBy="+board_filterBy+"#fix_point";
 		}  
 	</script>
 </head>
@@ -525,19 +525,19 @@
 				<div class="choose">
 					<ul class="clearfix">
 						<li><span>정렬 : </span>
-						<select name="filterBy" id="store_code" onChange="f(this)" style='height:30px; margin-bottom:3px;'>
+						<select name="board_filterBy" id="store_code" onChange="f(this)" style='height:30px; margin-bottom:3px;'>
 							<c:choose>
-								<c:when test="${listResult.filterBy == 'BOARD_INDEX'}">
+								<c:when test="${listResult.board_filterBy == 'BOARD_INDEX'}">
 									<option value="BOARD_INDEX" selected>최신순</option>
 									<option value="BOARD_VIEW">조회순</option>
 									<option value="BOARD_LIKE">좋아요순</option>
 								</c:when>
-								<c:when test="${listResult.filterBy == 'BOARD_VIEW'}">
+								<c:when test="${listResult.board_filterBy == 'BOARD_VIEW'}">
 									<option value="BOARD_INDEX">최신순</option>
 									<option value="BOARD_VIEW" selected>조회순</option>
 									<option value="BOARD_LIKE">좋아요순</option>
 								</c:when>
-								<c:when test="${listResult.filterBy == 'BOARD_LIKE'}">
+								<c:when test="${listResult.board_filterBy == 'BOARD_LIKE'}">
 									<option value="BOARD_INDEX">최신순</option>
 									<option value="BOARD_VIEW">조회순</option>
 									<option value="BOARD_LIKE" selected>좋아요순</option>
@@ -549,13 +549,13 @@
 						method="get">  
 						<ul class="clearfix">
 							<li><span>분류 : </span> 
-							<select name="c_code" id="store_code" onChange="text.value=c_code[selectedIndex].value" style='height:30px; margin-bottom:3px;'>
+							<select name="board_c_code" id="store_code" onChange="text.value=c_code[selectedIndex].value" style='height:30px; margin-bottom:3px;'>
 									<option value="MEMBER_NAME">작성자</option>
 									<option value="BOARD_SUBJECT">글제목</option>
 							</select>
 
 							<li>
-								<input type="text" name="searchName" style='height:30px; margin-bottom:3px;'
+								<input type="text" name="board_searchName" style='height:30px; margin-bottom:3px;'
 									title="검색" required placeholder="Search" ma	xlength="20">
 								<button type="submit" style='height:30px;'>검색</button></li>
 						</ul>
@@ -612,9 +612,9 @@
         <tr>
           <td colspan="3" align="center">
           	
-         	<c:if test="${empty listResult.searchName}">
+         	<c:if test="${empty listResult.board_searchName}">
             <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                	<a href="board_page?cp=${i}#fix_point">
+                	<a href="board_page?board_cp=${i}#fix_point">
                 <c:choose> 
                 <c:when test="${i==listResult.currentPage}">
                     <strong>${i}</strong>
@@ -628,9 +628,9 @@
             &nbsp;
             </c:forEach>
 			</c:if>
-            <c:if test="${!empty listResult.searchName}"> 
+            <c:if test="${!empty listResult.board_searchName}"> 
             <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                	<a href="board_search?cp=${i}#fix_point">
+                	<a href="board_search?board_cp=${i}#fix_point">
                 <c:choose> 
                 <c:when test="${i==listResult.currentPage}">
                     <strong>${i}</strong>
