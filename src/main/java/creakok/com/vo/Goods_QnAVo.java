@@ -3,9 +3,7 @@ package creakok.com.vo;
 
 import java.util.List;
 
-import creakok.com.domain.Goods;
 import creakok.com.domain.Goods_QnA;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

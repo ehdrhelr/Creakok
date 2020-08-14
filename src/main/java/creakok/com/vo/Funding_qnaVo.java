@@ -2,7 +2,6 @@ package creakok.com.vo;
 
 import java.util.List;
 
-import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_qna;
 import lombok.Data;
 import lombok.NoArgsConstructor;

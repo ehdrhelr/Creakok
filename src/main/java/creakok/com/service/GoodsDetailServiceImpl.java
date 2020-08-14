@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import creakok.com.domain.Goods;
 import creakok.com.mapper.GoodsDetailMapper;
-import creakok.com.mapper.GoodsMapper;
 import lombok.extern.log4j.Log4j;
 
 @Log4j

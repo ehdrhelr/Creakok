@@ -244,6 +244,7 @@
 
 	
 	
+
 	<!-- Append for ObjectMapper -->
   <!-- 디버깅해서엄청나게막나오던 -->
 		<dependency> 
@@ -276,10 +277,11 @@
             <version>1.2.3</version>
         </dependency>
 
-	
 	</dependencies>
 	
     <build>
+      <pluginManagement>
+    
         <plugins>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>
@@ -315,6 +317,12 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
+            
+
+            
         </plugins>
+
+
+        </pluginManagement>
     </build>
 </project>
