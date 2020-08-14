@@ -244,7 +244,7 @@
 
 	
 	
-<<<<<<< HEAD
+
 	<!-- Append for ObjectMapper -->
   <!-- 디버깅해서엄청나게막나오던 -->
 		<dependency> 
@@ -276,8 +276,6 @@
             <artifactId>logback-core</artifactId>
             <version>1.2.3</version>
         </dependency>
-=======
->>>>>>> branch 'jhseo' of https://github.com/daumhch/Creakok.git
 
 	</dependencies>
 	
