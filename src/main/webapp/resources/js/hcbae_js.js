@@ -59,15 +59,7 @@ function checkEmail(obj){
     xhttp.open("GET", "member_readEmail.do?member_email="+email, true);
     xhttp.send();
 }
-function changeName(member_email){
-    if(document.getElementById('checkName_Id').innerHTML === "사용가능합니다."){
-        alert("이름을 변경합니다.");
-        let member_name = document.getElementById('nowName').value;
-        location.href="member_changeName.do?member_email="+member_email+"&member_name="+member_name;
-    } else {
-        alert("이름을 변경할 수 없습니다.");
-    }
-}
+
 function checkName(obj){
     let name = obj.value;
     let result = document.getElementById('checkName_Id');
@@ -98,11 +90,6 @@ function secessionPassword(member_email){
     } else {
         alert("탈퇴 할 수 없습니다.");
     }
-}
-
-function secessionSocial(member_email){
-    alert("탈퇴 되었습니다. 다시 만나요.");
-    location.href="secessionMember.do?member_email="+member_email;
 }
 
 
@@ -179,13 +166,6 @@ function checkNewPassword(){
     }
 }//end of checkNewPassword
   
-function clearModifyPasswordArea(){
-    document.getElementById('nowPassword').value ="";
-    document.getElementById('checkPasswordResult').innerHTML ="";
-    document.getElementById('newPassword').value ="";
-    document.getElementById('newPasswordAgain').value ="";
-    document.getElementById('checkNewPasswordResult').innerHTML = "";
-}
 function changeButtonText(obj){
     var value = obj.value;
     //console.log("????:"+value);
@@ -194,5 +174,10 @@ function changeButtonText(obj){
     }
     else {
       obj.value="수정";
+      document.getElementById('nowPassword').value ="";
+      document.getElementById('checkPasswordResult').innerHTML ="";
+      document.getElementById('newPassword').value ="";
+      document.getElementById('newPasswordAgain').value ="";
+      document.getElementById('checkNewPasswordResult').innerHTML = "";
     }
   }//end of changeButtonText

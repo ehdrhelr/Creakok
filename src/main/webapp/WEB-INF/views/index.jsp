@@ -160,7 +160,12 @@
                                 <ul>
                                     <li><a href="funding.do">FUNDING</a></li>
                                     <li><a href="goods.jsp">GOODS</a></li>
-                                    <li><a href="#">COMMUNITY</a>
+                                     <li><a href="#">COMMUNITY</a>
+                                        <ul class="dropdown">
+                                        	<c:forEach items="${creatorList}" var="creator">
+                                            <li><a href="board_page">${creator.creator_name}</a></li>
+                                            </c:forEach>
+                                  <!--     
                                         <ul class="dropdown">
                                             <li><a href="index.html" >Home</a></li>
                                             <li><a href="about.html">About</a></li>
@@ -185,8 +190,12 @@
                                                 </ul>
                                             </li>
                                             <li><a href="contact.html">Contact</a></li>
-                                        </ul>
+                                            
+                                            
+                                            -->
+                                        </ul> 
                                     </li>
+                                    
                                     <li><a href="about.jsp">ABOUT</a></li>
                                    <!--   <li><a href="portfolio.html">Portfolio</a></li>
                                     <li><a href="contact.html">Contact</a></li>  -->
@@ -611,8 +620,6 @@
 
                     <!-- Progress Bar Content Area
                     <div class="alazea-progress-bar mb-50">
-
-
                         <!-- Single Progress Bar 
                         <div class="single_progress_bar">
                             <p>Office plants</p>
@@ -623,7 +630,6 @@
                                 <span class="fill" data-percentage="80"></span>
                             </div>
                         </div>
-
                     </div>  -->
                 </div>
                 
