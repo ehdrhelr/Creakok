@@ -12,9 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
-import creakok.com.domain.Member_category;
-import creakok.com.domain.Member_origin;
-import creakok.com.kakao.KakaoLogin;
 import creakok.com.service.MemberService;
 import lombok.extern.log4j.Log4j;
 
@@ -25,25 +22,16 @@ public class MemberController {
 	@Autowired
 	private MemberService mService;
 	
-	
-	@ResponseBody
-	@GetMapping("member_readMemberOrign.do")
-	public String readMemberOrign(String member_email) {
-		return mService.checkMemberOrigin(member_email);
-	}	
-	
-	
-	@RequestMapping("findPassword.do")
-	public String findPassword() {
-		return "findPassword";
-	}
-	
-	@RequestMapping("socialLoginFail.do")
-	public String socialLoginFail() {
-		return "socialLoginFail";
-	}
-	
+	@RequestMapping("tokenCheck.do")
+	public void tokenCheck() {
 
+	}
+	
+	@RequestMapping("socialLogin.do")
+	public void socialLogin() {
+		log.info("### social login start");
+	}
+	
 	@ResponseBody
 	@GetMapping("member_readEmail.do")
 	public String readEmail(String member_email) {
@@ -51,18 +39,6 @@ public class MemberController {
 		//log.info("###"+member);
 		if(member != null) return "exist";
 		else return "not_exist";
-	}
-	
-	@GetMapping("member_changeName.do")
-	public String changeName(String member_email, String member_name, HttpSession session) {
-		Member member = new Member();
-		member.setMember_email(member_email);
-		member.setMember_name(member_name);
-		mService.changeName(member);
-
-		session.removeAttribute("member");
-		session.setAttribute("member", mService.getMemberInfoS(member_email) );
-		return "redirect:/member_mypage.do";
 	}
 	
 	@ResponseBody
@@ -79,7 +55,7 @@ public class MemberController {
 		log.info("### member_email:"+member_email );
 		session.removeAttribute("member");
 		mService.secessionMemberS(member_email);
-		return "redirect:/";
+		return "index";
 	}
 	
 	
@@ -89,13 +65,10 @@ public class MemberController {
 		//log.info("### member_email:"+member_email );
 		//log.info("### member_password:"+member_password );
 		Member member = new Member();
-		member.setMember_category_code(Member_category.MEMBER_NORMAL);
-		member.setMember_origin_code(Member_origin.SIGNUP_NORMAL);
-		
 		member.setMember_name(member_name);
 		member.setMember_email(member_email);
 		member.setMember_password(member_password);
-
+		
 		mService.signupMemberS(member);
 		
 		return "login";
@@ -135,7 +108,7 @@ public class MemberController {
 		//log.info("### new_password:"+new_password);
 		mService.changeMemberPasswordS(member_email, new_password);
 		session.removeAttribute("member");
-		return "redirect:/";
+		return "index";
 	}
 	
 	@ResponseBody
@@ -157,11 +130,6 @@ public class MemberController {
 	@RequestMapping("member_logout.do")
 	public String logout(HttpSession session) {
 		session.removeAttribute("member");
-
-		String kakao_code = (String)session.getAttribute("kakao_code");
-		KakaoLogin.Logout(kakao_code);
-		session.removeAttribute("kakao_code");
-		
 		return "redirect:/";
 	}
 

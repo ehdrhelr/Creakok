@@ -5,35 +5,13 @@ import org.springframework.stereotype.Service;
 
 import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
-import creakok.com.domain.Nickname;
 import creakok.com.mapper.MemberMapper;
-import lombok.extern.log4j.Log4j;
 
-@Log4j
 @Service
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberMapper memberMapper;
-	
-	@Override
-	public String checkMemberOrigin(String member_email) {
-		return memberMapper.selectMemberOrigin(member_email);
-	}
-	
-	
-	@Override
-	public void signupSocialMemberS(Member member) {
-		memberMapper.insertSocialMember(member);
-		//log.info("###########"+Nickname.makeNickname(member.getMember_index()) );
-		member.setMember_name(Nickname.makeNickname(member.getMember_index()) );
-		memberMapper.updateNameByIndex(member);
-	}
-
-	@Override
-	public void changeName(Member member) {
-		memberMapper.updateNameByEmail(member);
-	}
 	
 	@Override
 	public Member checkEmailExist(String member_email) {
@@ -76,13 +54,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int compareMemberPasswordS(String member_email, String member_password) {
 		Member member = memberMapper.selectAllByEmail(member_email);
-		if(member!=null) { //ì•„ì´ë””ê°€ ìˆëŠ” ê²½ìš°
+		if(member!=null) { //¾ÆÀÌµğ°¡ ÀÖ´Â °æ¿ì
 			if(member.getMember_password().equals(member_password)) { 
-				return LoginResult.LOGIN_OK; //íŒ¨ìŠ¤ì›Œë“œ ë§ëŠ” ê²½ìš°
+				return LoginResult.LOGIN_OK; //ÆĞ½º¿öµå ¸Â´Â °æ¿ì
 			}else {
-				return LoginResult.LOGIN_PASSWORD_FAIL; //íŒ¨ìŠ¤ì›Œë“œ í‹€ë¦° ê²½ìš°
+				return LoginResult.LOGIN_PASSWORD_FAIL; //ÆĞ½º¿öµå Æ²¸° °æ¿ì
 			}
-		} else { //ì•„ì´ë””ê°€ ì—†ëŠ” ê²½ìš°
+		} else { //¾ÆÀÌµğ°¡ ¾ø´Â °æ¿ì
 			return LoginResult.LOGIN_EMAIL_NOT_EXIST;
 		}
 	}//end of compareMemberPassword

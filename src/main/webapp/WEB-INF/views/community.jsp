@@ -5,6 +5,21 @@
 <html lang="en">
 
 <head>
+
+<!-- BOTO TEST -->
+	<meta name="description" content="Boto Photo Studio HTML Template">
+	<meta name="keywords" content="photo, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
+	<link rel="stylesheet" href="css/css_boto/slick.css"/>
+
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="css/css_boto/style.css"/>
+	
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,10 +37,9 @@
     
     <!-- Wadiz Css -->
     <link rel="stylesheet" href="css/wadiz_css1.css">
-     <link rel="stylesheet" href="css/wadiz_css2.css">
+    <link rel="stylesheet" href="css/wadiz_css2.css">
     <link rel="stylesheet" href="css/wadiz_css3.css">
     <link rel="stylesheet" href="css/wadiz_css4.css">
-    
 
 	<!-- for review -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -44,9 +58,8 @@
    <script src="js/js_board/moment.min.js"></script>
    <script src="js/js_board/moment-timezone-with-data.min.js"></script>
 
-   <script src="/js/js_board/vueComponent/vue-filter.js"></script>
-   <script src="/js/js_board/app/App.js"></script>
-	 
+   <script src="js/js_board/vueComponent/vue-filter.js"></script>
+   <script src="js/js_board/app/App.js"></script>
 
 	<link href="css/css_board/reservation_page.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css"
@@ -69,10 +82,52 @@
             max-width:63%;!important;
         }
     </style>
-
+    
+    <!-- sweet alert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    
+    <script>
+		const Toast = Swal.mixin({
+			toast: true,
+			position: 'top-end',
+			showConfirmButton: false,
+			timer: 3000,
+			timerProgressBar: true,
+			onOpen: (toast) => {
+			toast.addEventListener('mouseenter', Swal.stopTimer)
+			toast.addEventListener('mouseleave', Swal.resumeTimer)
+			}
+		})
+		function check_login() {
+			Toast.fire({
+				icon: 'error',
+				title: '로그인 후 이용해주세요.'
+				})
+			}
+	</script>
+	
+	 <script language="javascript">
+		function f(select){
+			var filterBy = select.value;
+			location.href="board_page?board_filterBy="+board_filterBy+"#fix_point";
+		}  
+	</script>
 </head>
 
 <body>
+<c:if test="${empty member}">
+      <script>
+      console.log("empty member");
+      </script>
+    </c:if>
+    <c:if test="${!empty member}">
+      <script>
+      console.log("member exist");
+      console.log('email: ${member.member_email}');
+      console.log('name: ${member.member_name}');
+      console.log('pass: ${member.member_password}');
+      </script>
+    </c:if>
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
@@ -115,13 +170,22 @@
                                     </div>
                                 </div>
                                 <!-- Login -->
-                                <div class="login">
-                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
-                                </div>
-                                <!-- Cart -->
-                                <div class="cart">
-                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
-                                </div>
+                              <c:if test="${empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
+                                  <!-- Sign up -->
+                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
+                                </c:if>
+                                <c:if test="${!empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
+                                  
+                                  <!-- My Page -->
+                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
+                                  
+                                  <!-- Cart -->
+                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
+                                </c:if> 
                             </div>
                         </div>
                     </div>
@@ -152,14 +216,20 @@
                                 <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                             </div>
 
+
+
+
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
                                     <li><a href="index.html">FUNDING</a></li>
                                     <li><a href="shop.html">GOODS</a></li>
-                                    <li><a href="#">COMMUNITY</a>
+                                  	<li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html" >Home</a></li>
+                                        	<c:forEach items="${creatorList}" var="creator">
+                                            <li><a href="board_page">${creator.creator_name}</a></li>
+                                            </c:forEach>
+                                            <!--  
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="shop.html">Shop</a>
                                                 <ul class="dropdown">
@@ -169,6 +239,7 @@
                                                     <li><a href="checkout.html">Checkout</a></li>
                                                 </ul>
                                             </li>
+                                            
                                             <li><a href="portfolio.html">Portfolio</a>
                                                 <ul class="dropdown">
                                                     <li><a href="portfolio.html">Portfolio</a></li>
@@ -181,7 +252,9 @@
                                                     <li><a href="single-post.html">Blog Details</a></li>
                                                 </ul>
                                             </li>
+                                            
                                             <li><a href="contact.html">Contact</a></li>
+                                            -->
                                         </ul>
                                     </li>
                                     <li><a href="shop.html">ABOUT</a></li>
@@ -289,7 +362,6 @@
                     </div>
                 </div>
             </div>
-
    
             <div class="row justify-content-center">
 			
@@ -336,7 +408,7 @@
                         <p>다크나이트가 만들어주었으면 하는 컨텐츠를 직접 투표해주세요!</p>
                     </div>
 
-                    <!-- Progress Bar Content Area -->
+					<!-- Progress Bar Content Area -->
                     <div class="alazea-progress-bar mb-50">
                         <!-- Single Progress Bar -->
                         <div class="single_progress_bar">
@@ -431,17 +503,15 @@
                 letter-spacing: -.5px;
                 }
         </style>
-                
-                
-
         <!-- Subscribe Side Thumbnail -->
+        <a name="fix_point"></a>
         <div class="subscribe-side-thumb wow fadeInUp" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInUp;">
           
         </div>
        
     </section>
 	<!-- 게시판 영역 start -->
-
+	
 	<nav class="page-nav">
 		<div class="inner">
 			<ul>
@@ -450,23 +520,44 @@
 		</div>
 	</nav>
 	<div class="container">
+			
 			<div class="r_list">
 				<div class="choose">
-					<form action="review.kas?m=search" name="check_into"
-						method="post">  
+					<ul class="clearfix">
+						<li><span>정렬 : </span>
+						<select name="board_filterBy" id="store_code" onChange="f(this)" style='height:30px; margin-bottom:3px;'>
+							<c:choose>
+								<c:when test="${listResult.board_filterBy == 'BOARD_INDEX'}">
+									<option value="BOARD_INDEX" selected>최신순</option>
+									<option value="BOARD_VIEW">조회순</option>
+									<option value="BOARD_LIKE">좋아요순</option>
+								</c:when>
+								<c:when test="${listResult.board_filterBy == 'BOARD_VIEW'}">
+									<option value="BOARD_INDEX">최신순</option>
+									<option value="BOARD_VIEW" selected>조회순</option>
+									<option value="BOARD_LIKE">좋아요순</option>
+								</c:when>
+								<c:when test="${listResult.board_filterBy == 'BOARD_LIKE'}">
+									<option value="BOARD_INDEX">최신순</option>
+									<option value="BOARD_VIEW">조회순</option>
+									<option value="BOARD_LIKE" selected>좋아요순</option>
+								</c:when>
+							</c:choose>
+						</select>
+					</ul>
+					<form action="board_search" name="check_into"
+						method="get">  
 						<ul class="clearfix">
 							<li><span>분류 : </span> 
-							<select name="c_code" id="store_code" onChange="text.value=c_code[selectedIndex].value" style='height:30px; margin-bottom:3px;'>
-									<option value="NAME">작성자</option>
-									<option value="TITLE">글제목</option>
+							<select name="board_c_code" id="store_code" onChange="text.value=c_code[selectedIndex].value" style='height:30px; margin-bottom:3px;'>
+									<option value="MEMBER_NAME">작성자</option>
+									<option value="BOARD_SUBJECT">글제목</option>
 							</select>
 
 							<li>
-								<input type="text" name="searchName" style='height:30px; margin-bottom:3px;'
-									title="검색" required placeholder="Search" maxlength="20">
+								<input type="text" name="board_searchName" style='height:30px; margin-bottom:3px;'
+									title="검색" required placeholder="Search" ma	xlength="20">
 								<button type="submit" style='height:30px;'>검색</button></li>
-							
-							
 						</ul>
 					</form>
 				</div>
@@ -475,11 +566,12 @@
 						<col width="5%">
 						<col width="60%">
 						<col width="5%">
-						<col width="5%">
+						<col width="10%">
 						<col width="5%">
 						<col width="5%">
 					</colgroup>
 					<thead>
+
 						<tr>
 							<th> </th>
 					<!--	<th>EXHIBITION</th>	-->
@@ -491,45 +583,84 @@
 						</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td>4</td>
-	                    <td>버블티는 공차</td>
-	                    <td>철</td>
-	                    <td>2020/8/3</td>
-	                    <td>10</td>
-	                    <td>0</td>
-	                </tr>
-					<tr>
-						<td>3</td>
-	                    <td>악당중에 누가 제일 쎔?</td>
-	                    <td>현</td>
-	                    <td>2020/8/3</td>
-	                    <td>5</td>
-	                    <td>0</td>
-	                </tr>
-					<tr>
-						<td>2</td>
-	                    <td>배트맨 신작 언제 나오나요?</td>
-	                    <td>희</td>
-	                    <td>2020/8/3</td>
-	                    <td>8</td>
-	                    <td>2</td>
-	                </tr>
-					<tr>
-						<td>1</td>
-	                    <td>다크나이트 짱 머싯서요!!</td>
-	                    <td>섭</td>
-	                    <td>2020/8/3</td>
-	                    <td>3</td>
-	                    <td>0</td>
-	                </tr>
-
+						  <c:if test="${empty listResult.list}">
+				           <TR align='center' noshade>
+				                <TD colspan="6"> 게시글이 없습니다. </TD>
+				           </TR>
+				        </c:if>
+				        <c:forEach items="${listResult.list}" var="board">
+				         <TR align='center' noshade>
+				             <TD >${board.board_index}</TD>
+				             <TD align="left">
+				                 <a href="board_content?board_index=${board.board_index}">
+				                 ${board.board_subject}
+				                 </a>
+				             </TD>
+				             <TD>${board.member_name}</TD>
+				             <TD>${board.board_wdate}</TD>
+				             <TD>${board.board_view}</TD>
+				             <TD>${board.board_like}</TD>
+				          </TR> 
+				        </c:forEach>
 
 					</tbody>
 				</table>
-				<button type="button" class="searchBtn" onclick="document.getElementById('reserv').style.display='block'"
-					style='background-color:black; color:white; width:70px;' >글쓰기</button>
-			</div>
+	<td colspan="6">
+            <hr width="1120" color="white" size="2" noshade>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" align="center">
+          	
+         	<c:if test="${empty listResult.board_searchName}">
+            <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
+                	<a href="board_page?board_cp=${i}#fix_point">
+                <c:choose> 
+                <c:when test="${i==listResult.currentPage}">
+                    <strong>${i}</strong>
+                </c:when>
+                <c:otherwise>
+                    ${i}
+                </c:otherwise>
+                </c:choose>
+            </a>
+            
+            &nbsp;
+            </c:forEach>
+			</c:if>
+            <c:if test="${!empty listResult.board_searchName}"> 
+            <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
+                	<a href="board_search?board_cp=${i}#fix_point">
+                <c:choose> 
+                <c:when test="${i==listResult.currentPage}">
+                    <strong>${i}</strong>
+                </c:when>
+                <c:otherwise>
+                    ${i}
+                </c:otherwise>
+                </c:choose>
+            </a>
+            
+            &nbsp;
+            </c:forEach>
+            </c:if>
+             &nbsp;&nbsp;&nbsp; 
+            ${listResult.currentPage}page/${listResult.totalPageCount}pages
+          </td>
+          <td colspan="2" align="center">
+            총 게시물 수 : ${listResult.totalCount}
+          </td>
+        </tr>
+        <c:if test="${empty member}">
+        	<button type="button" class="searchBtn">
+			<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' onclick="check_login()">글쓰기</a></button>
+    	</c:if>
+   		<c:if test="${!empty member}">
+			<button type="button" class="searchBtn">
+			<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' href="board_write">글쓰기</a></button>
+    	</c:if>
+       
+		</div>
    </div>
    <!-- 게시판 영역 end -->
 
@@ -556,19 +687,7 @@
                 </div>
             </div>
         </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
+ 
 <!-- Footer Bottom Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->
