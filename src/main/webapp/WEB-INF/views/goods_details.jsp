@@ -461,7 +461,7 @@
 	                              <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
 	                             	<div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV"  style="margin-right:20px;">수량</div>
 	                                 <div class="quantity">
-	                                        <span class="qty-minus" style="background-color:#8888;padding:10px;" onclick="minus()"><i class="fa fa-minus" aria-hidden="true"></i></span>
+	                                        <span class="qty-minus" style="padding:10px;" onclick="minus()"><i class="fa fa-minus" aria-hidden="true"></i></span>
 	                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1" readonly>
 	                                        <span class="qty-plus" onclick="plus()"><i class="fa fa-plus" aria-hidden="true"></i></span>
 	                                    </div>
@@ -486,12 +486,13 @@
                        			var result = document.getElementById('price_qty');
                        			var amount = ${one_goods.goods_price} * (Number(qty)-1);
                        			
-                       			result.innerHTML= amount;
-                       				if( !isNaN( qty ) || isNaN( qty )>0) effect.value--;
+	                       		if(amount>0){
+	                       			result.innerHTML= amount;
+	                       		}
+                       			
+                       			if( !isNaN( qty ) & qty  > 1) effect.value--;
                            			return false;
                        		}
-                       		
-                 
                        </script>
                        
                        
