@@ -152,14 +152,6 @@
                                 </c:if> 
                                 
                                 
-                                 <!-- Login -->
-                                <div class="login">
-                                    <a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a>
-                                </div>
-                                <!-- Cart -->
-                                <div class="cart">
-                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -194,7 +186,7 @@
                             <div class="classynav">
                                 <ul>
                                    
-                                    <li><a href="funding.do">FUNDING</a></li>
+                                   
                                     <li><a href="funding_list.do">FUNDING</a></li>
                                     <li><a href="goods.jsp">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
