@@ -169,16 +169,15 @@
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
         <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>Checkout</h2>
+            <h2>CHECKOUT</h2>
         </div>
-
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                             <li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i>HOME</li>
+                            <li class="breadcrumb-item" aria-current="page"><span style="font-weight:600; color:black;">CHECKOUT</span></li>
                         </ol>
                     </nav>
                 </div>
@@ -197,19 +196,19 @@
                 <div class="col-12">
                     <div class="checkout_details_area clearfix">
                         <h5 style="margin-bottom:5px;">주문자 정보</h5>
-                        <form action="#" method="post" name="f">
+                        <form action="goods_pay.do" method="post" name="f">
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="first_name">이름 *</label>
-                                    <input type="text" name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
+                                    <input  name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="email_address">이메일 주소</label>
-                                    <input type="email" name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
+                                    <input  name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="phone_number">연락처 *</label>
-                                    <input type="text" class="form-control" value="" onkeydown="enterCheck(this)" required>
+                                    <input class="form-control" value="" onkeydown="enterCheck(this)" required>
                                 </div>
                               
                               
@@ -221,21 +220,21 @@
                         
                                 <div class="col-md-6 mb-4">
                                     <label for="first_name">이름 *</label>
-                                    <input type="text" name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
+                                    <input name="delivery_name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="phone_number">연락처 *</label>
-                                    <input type="text" class="form-control" value="" onkeydown="enterCheck(this)" required>
+                                    <input name="delivery_phone" class="form-control" value="" onkeydown="enterCheck(this)" required>
                                 </div>
                               
                         
                                <div class="col-12 mb-4">
           							 <label for="city" style="width:100%">주소 *</label>
-					                 <input type="text" id="sample4_postcode" placeholder="우편번호" style="margin-bottom:15px; width:80%;display:inline" onkeydown="enterCheck(this)" required>
+					                 <input type="text" name="address_num" id="sample4_postcode" placeholder="우편번호" style="margin-bottom:15px; width:80%;display:inline" onkeydown="enterCheck(this)" required>
 					                 <input type="button" onclick="sample4_execDaumPostcode()" style="margin-bottom:15px; width:19%; display:inline; background-color:#888888;color:white;" value="우편번호 찾기"><br>
-					                 <input type="text" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom:15px;">
-					                 	<input type="text" id="sample4_detailAddress" placeholder="상세주소" style="margin-bottom:15px;">
-					                 	<input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="margin-bottom:15px;">
+					                 <input type="text" name="address_road" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom:15px;">
+					                 	<input type="text" name="address_detail" id="sample4_detailAddress" placeholder="상세주소" style="margin-bottom:15px;">
+					                 	<input type="text" name="address_land" id="sample4_jibunAddress" placeholder="지번주소" style="margin-bottom:15px;">
 										<span id="guide" style="color:#999;display:none"></span>
 										<input type="text" id="sample4_extraAddress" placeholder="참고항목" >
 					            </div>     
@@ -262,24 +261,27 @@
                         <h5 class="title--" style="margin-top:20px;">주문 내역</h5>
                         <div class="products">
                             <div class="products-data">
-                                <h5>Products:</h5>
+                                <p style="width:40%">상품명</p>
                                 <div class="single-products d-flex justify-content-between align-items-center">
-                                    <p>Recuerdos Plant</p>
-                                    <h5>$9.99</h5>
+                                    <h5>${product_name}</h5>
+                                    <input type="hidden" name="product_name" value="${product_name}">
+                                    <h5  style="font-size:1.5em">${product_price} &nbsp;<span style="font-size:15pt;font-weight:200">원</span>
+                                    &nbsp;<span style="font-size:15pt;font-weight:400">(${product_qty} 개)</span>
+                                    <input type="hidden" name="product_qty" value="${product_qty}">
+                                    </h5>
+                               
                                 </div>
                             </div>
                         </div>
-                        <div class="subtotal d-flex justify-content-between align-items-center">
-                            <h5>Subtotal</h5>
-                            <h5>$9.99</h5>
-                        </div>
+                        
                         <div class="shipping d-flex justify-content-between align-items-center">
-                            <h5>Shipping</h5>
-                            <h5>$3.00</h5>
+                            <p>배송비</p>
+                            <h5 style="font-size:1.5em">+ 3000 &nbsp;&nbsp;&nbsp;<span style="font-size:15pt;font-weight:200">원</span></h5>
                         </div>
                         <div class="order-total d-flex justify-content-between align-items-center">
-                            <h5>Order Total</h5>
-                            <h5>$12.99</h5>
+                            <h5 style="font-size:2.3em">Total</h5>
+                            <h5 style="font-size:2.3em; color:#fc5230">${price_amount} &nbsp;&nbsp;<span style="font-size:15pt;font-weight:200;color:black">원</span></h5>
+                      		 <input type="hidden" name="price_amount" value="${price_amount}">
                         </div>
 			         </div>
                     </div>
@@ -296,7 +298,7 @@
                                              <li style="margin-bottom:10px;">
 	               								 <input type="radio" class="chk-rdo" id="payByAcc" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important; display:inline;" value="B" onClick="deposit()"> 무통장입금 <em>
 	               								 <span class="op-bank-dc-price fc-red"></span></em>             
-		               								 <select name="pay_data" class="w280 MK_bank_select_list MK_pay_add_choice" style="width:50%;">
+		               								 <select name="pay_data" class="w280 MK_bank_select_list MK_pay_add_choice" style="width:50%;margin-left:5%;">
 			               								 <option value="">입금 계좌번호 선택(반드시 주문자 성함으로 입금)
 			               								 </option>                       
 			               								 <option value="국민은행 464401-04-096884 (예금주:(주)크리콕)">국민은행 464401-04-096884 (예금주:(주)크리콕)
@@ -304,7 +306,7 @@
 		               								 </select>  
                								 </li>
                                              <li style="margin-bottom:10px;">
-                								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()"> 신용카드    
+                								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()"> 신용카드/네이버페이/카카오페이
                 								     <em><span class="op-card-dc-price fc-red"></span></em>
                 							 </li>
                                                                                    
@@ -349,10 +351,12 @@
                         </div>
                         </div>
                         
+                        
+                        
                          <div class="col-12 text-center" style="margin-bottom:100px;">
 	                        <div class="checkout-btn mt-30" style="width:60%;display:inline">
-	                            <a href="goods_pay.do" class="btn alazea-btn " onclick="check()" >주문하기</a>
-	                            <a href="goods_pay.do" class="btn alazea-btn " onclick="check()" style="color:#fc5230; background-color:white; border:1px solid #fc5230">주문 취소</a>
+	                          <input type="submit" value="주문하기" class="btn alazea-btn" style="color:white;background-color:#fc5230;border:0;display:inline-block;width:150px">
+	                          <input type="reset" value="주문 취소" class="btn alazea-btn" style="color:#fc5230; background-color:white; border:1px solid #fc5230; display:inline-block;width:150px">
 	                        </div>
 	                     </div>
                         </form>
@@ -444,41 +448,7 @@
 </script>
 <script src="js/pay/trim.js"></script>
 <script language="javascript"> 
-    function check(){
-		var emailval = f.email.value;
-		emailval = trim(emailval);
-		if(emailval.length == 0){
-			alert("아이디를 입력해주세요");
-			f.email.value = "";
-			f.email.focus();
-			return false;
-		}else{
-			pass = checkByteLen(emailval, 50);
-			if(!pass){
-				alert("아이디가 너무 길어요");
-				f.email.focus();
-				return false;
-			}
-		}
-		
-		var nameval = f.name.value;
-		nameval = trim(nameval);
-		if(pwdval.length == 0){
-			alert("이름을 입력해주세요");
-			f.name.value = "";
-			f.name.focus();
-			return false;
-		}else{
-			pass = checkByteLen(nameval, 30);
-			if(!pass){
-				alert("비번이 너무 길어요");
-				f.name.focus();
-				return false;
-			}
-		}
 
-		f.submit();
-	}
 	function enterCheck(elm){
 		if(event.keyCode == 13){
 			if(elm == f.email){
