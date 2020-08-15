@@ -197,11 +197,11 @@
                 <div class="col-12">
                     <div class="checkout_details_area clearfix">
                         <h5 style="margin-bottom:5px;">주문자 정보</h5>
-                        <form action="#" method="post" name="f">
+                        <form action="funding_pay.do?funding_index=${funding_detail.funding_index}" method="post" name="f">
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="first_name">이름 *</label>
-                                    <input type="text" name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
+                                    <input type="text" name="name" class="form-control" id="first_name" onkeydown="check(this)" value="" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="email_address">이메일 주소</label>
@@ -213,50 +213,28 @@
                                 </div>
                               
                               
-                              
+                              </div>
                                 
 
-						<h5 class="col-12 mb-4" style="margin-top:20px;">배송 정보</h5>
-                       
-                        
-                                <div class="col-md-6 mb-4">
-                                    <label for="first_name">이름 *</label>
-                                    <input type="text" name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
-                                </div>
-                                <div class="col-6 mb-4">
-                                    <label for="phone_number">연락처 *</label>
-                                    <input type="text" class="form-control" value="" onkeydown="enterCheck(this)" required>
-                                </div>
-                              
-                        
-                               <div class="col-12 mb-4">
-          							 <label for="city" style="width:100%">주소 *</label>
-					                 <input type="text" id="sample4_postcode" placeholder="우편번호" style="margin-bottom:15px; width:80%;display:inline" onkeydown="enterCheck(this)" required>
-					                 <input type="button" onclick="sample4_execDaumPostcode()" style="margin-bottom:15px; width:19%; display:inline; background-color:#888888;color:white;" value="우편번호 찾기"><br>
-					                 <input type="text" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom:15px;">
-					                 	<input type="text" id="sample4_detailAddress" placeholder="상세주소" style="margin-bottom:15px;">
-					                 	<input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="margin-bottom:15px;">
-										<span id="guide" style="color:#999;display:none"></span>
-										<input type="text" id="sample4_extraAddress" placeholder="참고항목" >
-					            </div>     
-    				<!--
-                                <div class="col-12">
-                                    <div class="d-flex align-items-center">
-                                        <!-- Single Checkbox 
-                                        <div class="custom-control custom-checkbox d-flex align-items-center mr-30">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                            <label class="custom-control-label" for="customCheck1">Ship to a different address?</label>
-                                        </div>
-                                        <!-- Single Checkbox
-                                        <div class="custom-control custom-checkbox d-flex align-items-center">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                            <label class="custom-control-label" for="customCheck2">Create an account?</label>
-                                        </div>
-                                    </div>
-                                </div>
-                       -->           
-                                
-                         
+						<h5 style="margin-top:20px;">결제 내용</h5>
+						
+						<label for="amountPay">밀어주기 금액</label>
+						
+						<select id="amountPay" name="amountPay" onChange="javascript:fn_changeSelected(this);">
+						        <option class="form-control" value="">--선택--</option>
+						        <option class="form-control" value="1">5000</option>
+						        <option class="form-control" value="2">10000</option>
+						        <option class="form-control" value="3">50000</option>
+						</select> 
+<script language="javascript">
+function fn_changeSelected(obj) {
+  var getObj = obj[obj.selectedIndex].innerHTML;
+ 
+  $("input[name='SUBJECT']").val(getObj);
+  // 혹은, document.getElementById("SUBJECT").value = getObj;   등등
+}
+
+</script>                      
                 <div class="col-12 mb-4">
                     <div class="checkout-content">
                         <h5 class="title--" style="margin-top:20px;">주문 내역</h5>
@@ -307,21 +285,16 @@
                 								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()"> 신용카드    
                 								     <em><span class="op-card-dc-price fc-red"></span></em>
                 							 </li>
-                                                                                   
+                                            </ul>                              
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            
                         </div>
                         
                         <div id="evidence" style="display:none;">                        
                         	<div class="tbl-order" style="margin-top:0px;border-top:0px;">
                             <table>
-                             <!--     <caption>증빙 신청</caption>
-                                <colgroup>
-                                    <col style="width: 110px">
-                                    <col>
-                                </colgroup>   -->
                                 <tbody>
                                      <tr>
                                 <th scope="row"><div class="txt-l">증빙 신청</div></th>
@@ -351,8 +324,8 @@
                         
                          <div class="col-12 text-center" style="margin-bottom:100px;">
 	                        <div class="checkout-btn mt-30" style="width:60%;display:inline">
-	                            <a href="goods_pay.do" class="btn alazea-btn " onclick="check()" >주문하기</a>
-	                            <a href="goods_pay.do" class="btn alazea-btn " onclick="check()" style="color:#fc5230; background-color:white; border:1px solid #fc5230">주문 취소</a>
+	                            <a class="btn alazea-btn " onclick="check()" >주문하기</a>
+	                            <a class="btn alazea-btn " onclick="check()" style="color:#fc5230; background-color:white; border:1px solid #fc5230">주문 취소</a>
 	                        </div>
 	                     </div>
                         </form>
