@@ -9,11 +9,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Funding;
-import creakok.com.domain.Funding_category;
 import creakok.com.service.FundingService;
 import creakok.com.vo.FundingVo;
 import lombok.AllArgsConstructor;

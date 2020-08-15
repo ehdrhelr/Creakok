@@ -241,7 +241,7 @@
 </head>
 
 <body>
-    <!-- Preloader -->
+   <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
         <div class="preloader-img">
@@ -265,6 +265,9 @@
 
                             <!-- Top Header Content -->
                             <div class="top-header-meta d-flex">
+                                <div >
+                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;background-color:white;">프로젝트 만들기</button>
+                                </div>
                                 <!-- Language Dropdown -->
                                 <div class="language-dropdown">
                                     <div class="dropdown">
@@ -302,7 +305,7 @@
                     <nav class="classy-navbar justify-content-between" id="alazeaNav">
 
                         <!-- Nav Brand -->
-                        <a href="index.html" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
+                        <a href="/" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -320,8 +323,8 @@
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="index.html">FUNDING</a></li>
-                                    <li><a href="goods.html">GOODS</a></li>
+                                    <li><a href="funding">FUNDING</a></li>
+                                    <li><a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html" >Home</a></li>
@@ -329,7 +332,7 @@
                                             <li><a href="shop.html">Shop</a>
                                                 <ul class="dropdown">
                                                     <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="goods-details.html">Shop Details</a></li>
+                                                    <li><a href="shop-details.html">Shop Details</a></li>
                                                     <li><a href="cart.html">Shopping Cart</a></li>
                                                     <li><a href="checkout.html">Checkout</a></li>
                                                 </ul>
@@ -337,7 +340,7 @@
                                             <li><a href="portfolio.html">Portfolio</a>
                                                 <ul class="dropdown">
                                                     <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="single-portfolio.html">Portfolio Details</a></li>
+                                                    <li><a href="gle-portfolio.html">Portfolio Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="blog.html">Blog</a>
@@ -349,8 +352,8 @@
                                             <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </li>
-                                  <!--  <li><a href="shop.html">ABOUT</a></li>
-                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="about.jsp">ABOUT</a></li>
+                                   <!--   <li><a href="portfolio.html">Portfolio</a></li>
                                     <li><a href="contact.html">Contact</a></li>  -->
                                 </ul>  
 
@@ -420,44 +423,114 @@
             <div class="Container-gci8y7-0 MskhC">
                 <div class="ProjectIntroduction__ProjectIntroductionWrapper-sc-1o2ojgb-1 bnFLKn">
                     <div class="ProjectIntroduction__ProjectOutline-sc-1o2ojgb-2 jbdzfG">
-                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="/discover?category=music"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">음악</span></a>
-                            <h1 class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">마장뮤직앤픽처스가 선물하는 LP 레시피 박스</h1>
-                            <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP"><span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gOcHWp"></span><a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="/u/mcmp">마장뮤직앤픽처스</a></div>
+                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="/discover?category=music"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">${one_goods.goods_category_code}</span></a>
+                            <h1 class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${one_goods.goods_name}</h1>
+                            <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">
+                            <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gOcHWp"></span>
+                            <a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="/u/mcmp">
+                            	${one_goods.creator_name}</a></div>
                         </div>
                     </div>
                     <div class="ProjectIntroduction__ProjectIntroductionMainColumn-sc-1o2ojgb-8 ZOwbJ">
-                        <figure class="ProjectIntroduction__ProjectCoverImageFigure-sc-1o2ojgb-9 fUBtAC"><img src="https://tumblbug-pci.imgix.net/ee089eb7239a11bb68a8ec93a0cf4afc9add7c49/9fce76663a341055423e9e17e68c1aba073e892e/a808f58e4bc78cfa19317a6e9d937c7168bca353/9011ee1a-e7e0-47b4-9c04-2b3cda7d842f.jpeg?ixlib=rb-1.1.0&amp;w=1240&amp;h=930&amp;auto=format%2Ccompress&amp;lossless=true&amp;fit=crop&amp;s=299449ec4f376ca6878c96b130ccf43b" alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" /></figure>
+                        <figure class="ProjectIntroduction__ProjectCoverImageFigure-sc-1o2ojgb-9 fUBtAC">
+                        <img src="${one_goods.goods_repre_pic}" alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" /></figure>
                     </div>
                     <aside class="ProjectIntroduction__ProjectIntroductionSubColumn-sc-1o2ojgb-12 fHdIrJ">
                         <div class="ProjectIntroduction__FundingStatus-sc-1o2ojgb-13 gGVEjs">
                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
-                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV">모인금액</div>
-                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA">10,652,000<span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">원</span><span class="ProjectIntroduction__FundingRate-sc-1o2ojgb-17 cNDicH">106
-                                        <!-- -->%</span></div>
+                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="margin-right:20px;">가격</div>
+                                <span class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;">${one_goods.goods_price}
+                                <span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">원</span></span>
+                                
+                                
+                                
                             </div>
+
+
+
+						<!--
                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
-                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV">남은시간</div>
-                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA">20<span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">일</span></div>
-                            </div>
+                      			<span class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="margin-right:20px;" style="margin-right:20px;">선택</span>
+                                 <select style="width:50%;margin-bottom:20px">
+                                	 <option value="3" selected>${one_goods.goods_option} 보기</option>
+                                	 <option value="6">6개씩 보기</option>
+		                              <option value="9">9개씩 보기</option>
+                                 </select>
+                          </div>
+                       -->           
+	                              <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
+	                             	<div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV"  style="margin-right:20px;">수량</div>
+	                                 <div class="quantity">
+	                                        <span class="qty-minus" style="padding:10px;" onclick="minus()"><i class="fa fa-minus" aria-hidden="true"></i></span>
+	                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1" readonly>
+	                                        <span class="qty-plus" onclick="plus()"><i class="fa fa-plus" aria-hidden="true"></i></span>
+	                                    </div>
+	                           	 </div>  
+                     
+                       <script language="javascript">
+		                      function plus(){
+		                  		var effect = document.getElementById('qty'); 
+		                  		var qty = effect.value; 
+		                  			
+		                  		var result = document.getElementById('price_qty');
+		                  		var amount = ${one_goods.goods_price} * (Number(qty)+1);
+		                  			
+		                  		result.innerHTML= amount;
+		                  			if( !isNaN( qty )) effect.value++;
+		                      		return false;
+		                  	}
+                       		function minus(){
+                       			var effect = document.getElementById('qty'); 
+                       			var qty = effect.value; 
+                       			
+                       			var result = document.getElementById('price_qty');
+                       			var amount = ${one_goods.goods_price} * (Number(qty)-1);
+                       			
+	                       		if(amount>0){
+	                       			result.innerHTML= amount;
+	                       		}
+                       			
+                       			if( !isNaN( qty ) & qty  > 1) effect.value--;
+                           			return false;
+                       		}
+                       </script>
+                       
+                       
+                        		<hr style="height:1px">
+                        		
+                        		                
                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
-                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV">후원자</div>
-                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA">123<span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">명</span></div>
-                            </div>
-                        </div>
-                        <div class="FundingInformation-cjd67l-0 lZmZZ">
-                            <div class="FundingInformation__FundingInformationInner-cjd67l-1 ccBEhl"><a class="move-to-helpcenter" target="_blank" href="https://help.tumblbug.com/hc/ko/categories/115001047348--%ED%9B%84%EC%9B%90%EC%9E%90-%EC%84%BC%ED%84%B0" title="후원자 센터 바로가기">후원자 센터 이동</a>
-                                <div>펀딩 진행중</div><span>목표 금액인
-                                    <!-- -->10,000,000
-                                    <!-- -->원이 모여야만 결제됩니다.<br />결제는
-                                    <!-- -->2020년 8월 24일
-                                    <!-- -->에 다함께 진행됩니다.</span>
-                            </div>
-                        </div>
-                        <div class="ProjectIntroduction__ProjectButtons-sc-1o2ojgb-19 fHOYOE">
+                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV">TOTAL    :   </div>
+                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="font-size:1.3em; font-weight:600;"><span id="price_qty">${one_goods.goods_price}</span> + <span style="font-size:1em; font-weight:100;">(배송비)</span> 3000원  =</div>
+                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;text-align:right">${one_goods.goods_price+3000}
+                                <span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">원</span></div>
+                            </div>                         
+                            
+                               
+                       </div>
+          
+                        
+                     
+                     <div class="ProjectIntroduction__ProjectButtons-sc-1o2ojgb-19 fHOYOE">
                             <div class="ProjectIntroduction__ProjectButtonsInner-sc-1o2ojgb-20 jHbICj">
                                 <div class="ProjectIntroduction__PrimaryButton-sc-1o2ojgb-21 knPvZB">
-                                    <div class="PledgeButton__Wrapper-arwur9-0 krUjgk"><button class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny">프로젝트 밀어주기</button></div>
+                                    <div class="PledgeButton__Wrapper-arwur9-0 krUjgk">
+                                    <a href="goods_order.do" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230">
+                                  <!--  	<a href="goods_pay.do" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230">  -->
+                                    		구매하기
+                                    	</a>
+                                    </div>
                                 </div>
+                            </div>
+                            
+                            <div class="ProjectIntroduction__ProjectButtonsInner-sc-1o2ojgb-20 jHbICj">
+                                <div class="ProjectIntroduction__PrimaryButton-sc-1o2ojgb-21 knPvZB">
+                                    <div class="PledgeButton__Wrapper-arwur9-0 krUjgk">
+                                    <button class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:white; color:#fc5230; border:0.05em solid #fc5230;">장바구니</button>
+                                    </div>
+                                </div>
+                                
+
                                 <div class="Tooltip__TooltipWrapper-sc-1czh1yq-0 kPQaEe ProjectIntroduction__StyledTooltip-sc-1o2ojgb-23 bUoWGM">
                                     <div class="ProjectIntroduction__SecondaryButton-sc-1o2ojgb-24 fnDZVR">
                                         <div class="LikeButton__Wrapper-whittq-0 dFOIsS ProjectIntroduction__StyledLikeButton-sc-1o2ojgb-22 jUCdsF"><button type="button" class="LikeButton__LikedBtn-whittq-1 neDEf"><span>좋아요</span></button></div>
@@ -467,12 +540,21 @@
                                         <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe"><svg viewBox="0 0 44 44">
                                                 <path d="M35.4706,40.396 C32.9362,40.396 30.877,38.51 30.877,36.192 C30.877,33.874 32.9362,31.988 35.4706,31.988 C38.0028,31.988 40.0642,33.874 40.0642,36.192 C40.0642,38.512 38.0028,40.396 35.4706,40.396 M8.5316,26.204 C5.9994,26.204 3.938,24.318 3.938,22 C3.938,19.68 5.9994,17.796 8.5316,17.796 C11.0638,17.796 13.1252,19.68 13.1252,22 C13.1252,24.32 11.0638,26.204 8.5316,26.204 M35.4706,3.604 C38.0028,3.604 40.0642,5.49 40.0642,7.808 C40.0642,10.126 38.0028,12.012 35.4706,12.012 C32.9362,12.012 30.877,10.126 30.877,7.808 C30.877,5.488 32.9362,3.604 35.4706,3.604 M35.4706,28.384 C33.022,28.384 30.8198,29.334 29.2644,30.844 L16.7024,24.228 C16.9334,23.522 17.061,22.774 17.061,22 C17.061,21.226 16.9334,20.48 16.7046,19.772 L29.2644,13.156 C30.8198,14.668 33.022,15.616 35.4684,15.616 C40.183,15.616 44,12.12 44,7.808 C44,3.496 40.1808,0 35.4706,0 C30.7582,0 26.939,3.496 26.939,7.808 C26.939,8.582 27.0666,9.328 27.2954,10.036 L14.7334,16.652 C13.1802,15.142 10.978,14.192 8.5294,14.192 C3.8236,14.192 0,17.688 0,22 C0,26.312 3.8192,29.808 8.5316,29.808 C10.978,29.808 13.1802,28.86 14.7356,27.348 L27.2954,33.964 C27.0666,34.67 26.939,35.418 26.939,36.192 C26.939,40.504 30.7582,44 35.4706,44 C40.1808,44 44,40.504 44,36.192 C44,31.88 40.1808,28.384 35.4706,28.384"></path>
                                             </svg></div>
-                                    </button></div>
+                                </button></div>
+                     
+                     
+                     
+                                
                             </div>
                         </div>
                     </aside>
+                    
                 </div>
             </div>
+            
+            
+            
+            
         </div><span style="font-size:0"></span>
         <div id="contentsNavigation">
             <nav class="ContentsNavigation__ProjectContentsNavigation-mwsx7i-1 bmUMcp">
@@ -658,315 +740,16 @@
                                     <div class="CreatorCard__CreatorContactButton-sc-1ifohey-6 jpHksr"><button class="Button-sc-1x93b2b-0 jQspcv"><i class="_3YmAkQhwzI7o-uUWz_8Mp4 _1QY7TzdLHKX3-BKPDNNYKF"></i>창작자에게 문의하기</button></div>
                                 </div>
                             </div>
-                            <div class="Sticker__Wrapper-sc-1si6lg8-0 jyrVcI">
-                                <div class="Rewards-sc-19248pz-1 cwxZdk tbb">
-                                    <div class="Rewards__RewardsLabel-sc-19248pz-2 jvEtSP">선물 선택</div>
-                                    <div class="RewardCard__RewardCardWrapper-sc-11jni8b-2 gmgNmb">
-                                        <div class="Card-sc-1vhyvl1-0 RewardCard__StyledCard-sc-11jni8b-0 NQzgn">
-                                            <div class="RewardCard__RewardCardInner-sc-11jni8b-3 ksnZzq">
-                                                <div class="RewardCard__RewardHeader-sc-11jni8b-4 fUCEdh"><span class="RewardCard__PledgeAmount-sc-11jni8b-5 bygXEH">
-                                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe RewardCard__StyledSVGIcon-sc-11jni8b-1 cYavRO"><svg viewBox="0 0 44 44">
-                                                                <path d="M39.6 6.3L16.9 29.1 4.2 17.3 0 21.8l17.1 15.9 26.9-27z"></path>
-                                                            </svg></div>1명이 선택
-                                                    </span></div>
-                                                <div class="RewardCard__RewardSelector-sc-11jni8b-12 fGziuW">
-                                                    <div class="sub-wrapper">
-                                                        <div class="RewardCard__RewardContents-sc-11jni8b-9 kPHYMn">
-                                                            <div class="RewardCard__RewardMinimumPledgeAmount-sc-11jni8b-10 kfNXH">5,000원 +</div>
-                                                            <div class="RewardCard__RewardDescription-sc-11jni8b-11 eFHsoz">아뮤즈부쉬(AMUSE-BOUCHE)</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <ul class="RewardCard__Items-sc-11jni8b-13 hjOerF">
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">리워드를 받지 않고 응원과 격려하기&nbsp;<span>( x 1 )</span></li>
-                                                </ul>
-                                                <div class="RewardCard__DeliveryDate-sc-11jni8b-15 cGoZRE"><span>예상 전달일 &nbsp;<b>2020년 8월 31일</b></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="RewardCard__RewardCardWrapper-sc-11jni8b-2 gmgNmb">
-                                        <div class="Card-sc-1vhyvl1-0 RewardCard__StyledCard-sc-11jni8b-0 NQzgn">
-                                            <div class="RewardCard__RewardCardInner-sc-11jni8b-3 ksnZzq">
-                                                <div class="RewardCard__RewardHeader-sc-11jni8b-4 fUCEdh"><span class="RewardCard__PledgeAmount-sc-11jni8b-5 bygXEH">
-                                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe RewardCard__StyledSVGIcon-sc-11jni8b-1 cYavRO"><svg viewBox="0 0 44 44">
-                                                                <path d="M39.6 6.3L16.9 29.1 4.2 17.3 0 21.8l17.1 15.9 26.9-27z"></path>
-                                                            </svg></div>77명이 선택
-                                                    </span><span class="RewardCard__RewardQuantityLimit-sc-11jni8b-6 zwxiI"><span class="RewardCard__LimitedRewardLabel-sc-11jni8b-7 jPkKEZ">123개 남음</span></span></div>
-                                                <div class="RewardCard__RewardSelector-sc-11jni8b-12 fGziuW">
-                                                    <div class="sub-wrapper">
-                                                        <div class="RewardCard__RewardContents-sc-11jni8b-9 kPHYMn">
-                                                            <div class="RewardCard__RewardMinimumPledgeAmount-sc-11jni8b-10 kfNXH">35,000원 +</div>
-                                                            <div class="RewardCard__RewardDescription-sc-11jni8b-11 eFHsoz">에피타이저(APPETIZER)</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <ul class="RewardCard__Items-sc-11jni8b-13 hjOerF">
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">MCMP Plated Vol.1 (LP)&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 제작 과정 포스터&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 공장 사진 엽서&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 디자인 스티커&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">마장뮤직앤픽처스 노트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">마장뮤직앤픽처스 볼펜&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 디자인 마스킹테이프&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 라벨 코스터&nbsp;<span>( x 1 )</span></li>
-                                                </ul>
-                                                <div class="RewardCard__DeliveryDate-sc-11jni8b-15 cGoZRE"><span>예상 전달일 &nbsp;<b>2020년 9월 11일</b></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="RewardCard__RewardCardWrapper-sc-11jni8b-2 gmgNmb">
-                                        <div class="Card-sc-1vhyvl1-0 RewardCard__StyledCard-sc-11jni8b-0 NQzgn">
-                                            <div class="RewardCard__RewardCardInner-sc-11jni8b-3 ksnZzq">
-                                                <div class="RewardCard__RewardHeader-sc-11jni8b-4 fUCEdh"><span class="RewardCard__PledgeAmount-sc-11jni8b-5 bygXEH">
-                                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe RewardCard__StyledSVGIcon-sc-11jni8b-1 cYavRO"><svg viewBox="0 0 44 44">
-                                                                <path d="M39.6 6.3L16.9 29.1 4.2 17.3 0 21.8l17.1 15.9 26.9-27z"></path>
-                                                            </svg></div>3명이 선택
-                                                    </span><span class="RewardCard__RewardQuantityLimit-sc-11jni8b-6 zwxiI"><span class="RewardCard__LimitedRewardLabel-sc-11jni8b-7 jPkKEZ">77개 남음</span></span></div>
-                                                <div class="RewardCard__RewardSelector-sc-11jni8b-12 fGziuW">
-                                                    <div class="sub-wrapper">
-                                                        <div class="RewardCard__RewardContents-sc-11jni8b-9 kPHYMn">
-                                                            <div class="RewardCard__RewardMinimumPledgeAmount-sc-11jni8b-10 kfNXH">79,000원 +</div>
-                                                            <div class="RewardCard__RewardDescription-sc-11jni8b-11 eFHsoz">런치 세트(LUNCH SET)</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <ul class="RewardCard__Items-sc-11jni8b-13 hjOerF">
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">에피타이저(APPETIZER)&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 거치대&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">마장뮤직앤픽처스 에코백&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 디자인 뱃지 3종&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">Now Playing 아크릴 무드등&nbsp;<span>( x 1 )</span></li>
-                                                </ul>
-                                                <div class="RewardCard__DeliveryDate-sc-11jni8b-15 cGoZRE"><span>예상 전달일 &nbsp;<b>2020년 9월 11일</b></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="RewardCard__RewardCardWrapper-sc-11jni8b-2 gmgNmb">
-                                        <div class="Card-sc-1vhyvl1-0 RewardCard__StyledCard-sc-11jni8b-0 NQzgn">
-                                            <div class="RewardCard__RewardCardInner-sc-11jni8b-3 ksnZzq">
-                                                <div class="RewardCard__RewardHeader-sc-11jni8b-4 fUCEdh"><span class="RewardCard__PledgeAmount-sc-11jni8b-5 bygXEH">
-                                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe RewardCard__StyledSVGIcon-sc-11jni8b-1 cYavRO"><svg viewBox="0 0 44 44">
-                                                                <path d="M39.6 6.3L16.9 29.1 4.2 17.3 0 21.8l17.1 15.9 26.9-27z"></path>
-                                                            </svg></div>0명이 선택
-                                                    </span><span class="RewardCard__RewardQuantityLimit-sc-11jni8b-6 zwxiI"><span class="RewardCard__LimitedRewardLabel-sc-11jni8b-7 jPkKEZ">20개 남음</span></span></div>
-                                                <div class="RewardCard__RewardSelector-sc-11jni8b-12 fGziuW">
-                                                    <div class="sub-wrapper">
-                                                        <div class="RewardCard__RewardContents-sc-11jni8b-9 kPHYMn">
-                                                            <div class="RewardCard__RewardMinimumPledgeAmount-sc-11jni8b-10 kfNXH">89,000원 +</div>
-                                                            <div class="RewardCard__RewardDescription-sc-11jni8b-11 eFHsoz">런치 세트(LUNCH SET) + 토핑(TOPING)</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <ul class="RewardCard__Items-sc-11jni8b-13 hjOerF">
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">에피타이저(APPETIZER)&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 거치대&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">마장뮤직앤픽처스 에코백&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 디자인 뱃지 3종&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">Now Playing 아크릴 무드등&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 레시피 페스타 vol.1 티켓&nbsp;<span>( x 1 )</span></li>
-                                                </ul>
-                                                <div class="RewardCard__DeliveryDate-sc-11jni8b-15 cGoZRE"><span>예상 전달일 &nbsp;<b>2020년 9월 11일</b></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="RewardCard__RewardCardWrapper-sc-11jni8b-2 gmgNmb">
-                                        <div class="Card-sc-1vhyvl1-0 RewardCard__StyledCard-sc-11jni8b-0 NQzgn">
-                                            <div class="RewardCard__RewardCardInner-sc-11jni8b-3 ksnZzq">
-                                                <div class="RewardCard__RewardHeader-sc-11jni8b-4 fUCEdh"><span class="RewardCard__PledgeAmount-sc-11jni8b-5 bygXEH">
-                                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe RewardCard__StyledSVGIcon-sc-11jni8b-1 cYavRO"><svg viewBox="0 0 44 44">
-                                                                <path d="M39.6 6.3L16.9 29.1 4.2 17.3 0 21.8l17.1 15.9 26.9-27z"></path>
-                                                            </svg></div>2명이 선택
-                                                    </span><span class="RewardCard__RewardQuantityLimit-sc-11jni8b-6 zwxiI"><span class="RewardCard__LimitedRewardLabel-sc-11jni8b-7 jPkKEZ">58개 남음</span></span></div>
-                                                <div class="RewardCard__RewardSelector-sc-11jni8b-12 fGziuW">
-                                                    <div class="sub-wrapper">
-                                                        <div class="RewardCard__RewardContents-sc-11jni8b-9 kPHYMn">
-                                                            <div class="RewardCard__RewardMinimumPledgeAmount-sc-11jni8b-10 kfNXH">109,000원 +</div>
-                                                            <div class="RewardCard__RewardDescription-sc-11jni8b-11 eFHsoz">디너 세트(DINNER SET)</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <ul class="RewardCard__Items-sc-11jni8b-13 hjOerF">
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">에피타이저(APPETIZER)&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">턴테이블 플래터 매트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">턴테이블 클리너 세트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">스태빌라이저&nbsp;<span>( x 1 )</span></li>
-                                                </ul>
-                                                <div class="RewardCard__DeliveryDate-sc-11jni8b-15 cGoZRE"><span>예상 전달일 &nbsp;<b>2020년 9월 11일</b></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="RewardCard__RewardCardWrapper-sc-11jni8b-2 gmgNmb">
-                                        <div class="Card-sc-1vhyvl1-0 RewardCard__StyledCard-sc-11jni8b-0 NQzgn">
-                                            <div class="RewardCard__RewardCardInner-sc-11jni8b-3 ksnZzq">
-                                                <div class="RewardCard__RewardHeader-sc-11jni8b-4 fUCEdh"><span class="RewardCard__PledgeAmount-sc-11jni8b-5 bygXEH">
-                                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe RewardCard__StyledSVGIcon-sc-11jni8b-1 cYavRO"><svg viewBox="0 0 44 44">
-                                                                <path d="M39.6 6.3L16.9 29.1 4.2 17.3 0 21.8l17.1 15.9 26.9-27z"></path>
-                                                            </svg></div>1명이 선택
-                                                    </span><span class="RewardCard__RewardQuantityLimit-sc-11jni8b-6 zwxiI"><span class="RewardCard__LimitedRewardLabel-sc-11jni8b-7 jPkKEZ">29개 남음</span></span></div>
-                                                <div class="RewardCard__RewardSelector-sc-11jni8b-12 fGziuW">
-                                                    <div class="sub-wrapper">
-                                                        <div class="RewardCard__RewardContents-sc-11jni8b-9 kPHYMn">
-                                                            <div class="RewardCard__RewardMinimumPledgeAmount-sc-11jni8b-10 kfNXH">119,000원 +</div>
-                                                            <div class="RewardCard__RewardDescription-sc-11jni8b-11 eFHsoz">디너 세트(DINNER SET) + 토핑(TOPPING)</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <ul class="RewardCard__Items-sc-11jni8b-13 hjOerF">
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">에피타이저(APPETIZER)&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">턴테이블 플래터 매트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">턴테이블 클리너 세트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">스태빌라이저&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 레시피 페스타 vol.1 티켓&nbsp;<span>( x 1 )</span></li>
-                                                </ul>
-                                                <div class="RewardCard__DeliveryDate-sc-11jni8b-15 cGoZRE"><span>예상 전달일 &nbsp;<b>2020년 9월 11일</b></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="RewardCard__RewardCardWrapper-sc-11jni8b-2 gmgNmb">
-                                        <div class="Card-sc-1vhyvl1-0 RewardCard__StyledCard-sc-11jni8b-0 NQzgn">
-                                            <div class="RewardCard__RewardCardInner-sc-11jni8b-3 ksnZzq">
-                                                <div class="RewardCard__RewardHeader-sc-11jni8b-4 fUCEdh"><span class="RewardCard__PledgeAmount-sc-11jni8b-5 bygXEH">
-                                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe RewardCard__StyledSVGIcon-sc-11jni8b-1 cYavRO"><svg viewBox="0 0 44 44">
-                                                                <path d="M39.6 6.3L16.9 29.1 4.2 17.3 0 21.8l17.1 15.9 26.9-27z"></path>
-                                                            </svg></div>2명이 선택
-                                                    </span><span class="RewardCard__RewardQuantityLimit-sc-11jni8b-6 zwxiI"><span class="RewardCard__LimitedRewardLabel-sc-11jni8b-7 jPkKEZ">38개 남음</span></span></div>
-                                                <div class="RewardCard__RewardSelector-sc-11jni8b-12 fGziuW">
-                                                    <div class="sub-wrapper">
-                                                        <div class="RewardCard__RewardContents-sc-11jni8b-9 kPHYMn">
-                                                            <div class="RewardCard__RewardMinimumPledgeAmount-sc-11jni8b-10 kfNXH">149,000원 +</div>
-                                                            <div class="RewardCard__RewardDescription-sc-11jni8b-11 eFHsoz">피날레 코스(FINALE COURSE)</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <ul class="RewardCard__Items-sc-11jni8b-13 hjOerF">
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">에피타이저(APPETIZER)&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 거치대&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">마장뮤직앤픽처스 에코백&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 디자인 뱃지 3종&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">Now Playing 아크릴 무드등&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">턴테이블 플래터 매트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">턴테이블 클리너 세트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">스태빌라이저&nbsp;<span>( x 1 )</span></li>
-                                                </ul>
-                                                <div class="RewardCard__DeliveryDate-sc-11jni8b-15 cGoZRE"><span>예상 전달일 &nbsp;<b>2020년 9월 11일</b></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="RewardCard__RewardCardWrapper-sc-11jni8b-2 gmgNmb">
-                                        <div class="Card-sc-1vhyvl1-0 RewardCard__StyledCard-sc-11jni8b-0 NQzgn">
-                                            <div class="RewardCard__RewardCardInner-sc-11jni8b-3 ksnZzq">
-                                                <div class="RewardCard__RewardHeader-sc-11jni8b-4 fUCEdh"><span class="RewardCard__PledgeAmount-sc-11jni8b-5 bygXEH">
-                                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe RewardCard__StyledSVGIcon-sc-11jni8b-1 cYavRO"><svg viewBox="0 0 44 44">
-                                                                <path d="M39.6 6.3L16.9 29.1 4.2 17.3 0 21.8l17.1 15.9 26.9-27z"></path>
-                                                            </svg></div>5명이 선택
-                                                    </span><span class="RewardCard__RewardQuantityLimit-sc-11jni8b-6 zwxiI"><span class="RewardCard__LimitedRewardLabel-sc-11jni8b-7 jPkKEZ">25개 남음</span></span></div>
-                                                <div class="RewardCard__RewardSelector-sc-11jni8b-12 fGziuW">
-                                                    <div class="sub-wrapper">
-                                                        <div class="RewardCard__RewardContents-sc-11jni8b-9 kPHYMn">
-                                                            <div class="RewardCard__RewardMinimumPledgeAmount-sc-11jni8b-10 kfNXH">169,000원 +</div>
-                                                            <div class="RewardCard__RewardDescription-sc-11jni8b-11 eFHsoz">피날레 코스(FINALE COURSE) + 토핑(TOPPING)</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <ul class="RewardCard__Items-sc-11jni8b-13 hjOerF">
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">에피타이저(APPETIZER)&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 거치대&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">마장뮤직앤픽처스 에코백&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 디자인 뱃지 3종&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">Now Playing 아크릴 무드등&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">턴테이블 플래터 매트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">턴테이블 클리너 세트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">스태빌라이저&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 레시피 페스타 vol.1 티켓 + 스플래터 LP 프레싱 체험&amp;소장&nbsp;<span>( x 1 )</span></li>
-                                                </ul>
-                                                <div class="RewardCard__DeliveryDate-sc-11jni8b-15 cGoZRE"><span>예상 전달일 &nbsp;<b>2020년 9월 11일</b></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="RewardCard__RewardCardWrapper-sc-11jni8b-2 gmgNmb">
-                                        <div class="Card-sc-1vhyvl1-0 RewardCard__StyledCard-sc-11jni8b-0 NQzgn">
-                                            <div class="RewardCard__RewardCardInner-sc-11jni8b-3 ksnZzq">
-                                                <div class="RewardCard__RewardHeader-sc-11jni8b-4 fUCEdh"><span class="RewardCard__PledgeAmount-sc-11jni8b-5 bygXEH">
-                                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe RewardCard__StyledSVGIcon-sc-11jni8b-1 cYavRO"><svg viewBox="0 0 44 44">
-                                                                <path d="M39.6 6.3L16.9 29.1 4.2 17.3 0 21.8l17.1 15.9 26.9-27z"></path>
-                                                            </svg></div>2명이 선택
-                                                    </span><span class="RewardCard__RewardQuantityLimit-sc-11jni8b-6 zwxiI"><span class="RewardCard__LimitedRewardLabel-sc-11jni8b-7 jPkKEZ">8개 남음</span></span></div>
-                                                <div class="RewardCard__RewardSelector-sc-11jni8b-12 fGziuW">
-                                                    <div class="sub-wrapper">
-                                                        <div class="RewardCard__RewardContents-sc-11jni8b-9 kPHYMn">
-                                                            <div class="RewardCard__RewardMinimumPledgeAmount-sc-11jni8b-10 kfNXH">1,000,000원 +</div>
-                                                            <div class="RewardCard__RewardDescription-sc-11jni8b-11 eFHsoz">&lt;한정&gt; 브이아이피(VIP)</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <ul class="RewardCard__Items-sc-11jni8b-13 hjOerF">
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">피날레 코스(FINALE COURSE) + 토핑(TOPPING)&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">1년치 LP 구독 서비스 + 턴테이블 (with 노웨이브 레코드)&nbsp;<span>( x 1 )</span></li>
-                                                </ul>
-                                                <div class="RewardCard__DeliveryDate-sc-11jni8b-15 cGoZRE"><span>예상 전달일 &nbsp;<b>2020년 9월 11일</b></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="RewardCard__RewardCardWrapper-sc-11jni8b-2 gmgNmb disabled">
-                                        <div class="Card-sc-1vhyvl1-0 RewardCard__StyledCard-sc-11jni8b-0 ewRFxP">
-                                            <div class="RewardCard__RewardCardInner-sc-11jni8b-3 ksnZzq">
-                                                <div class="RewardCard__RewardHeader-sc-11jni8b-4 fUCEdh"><span class="RewardCard__PledgeAmount-sc-11jni8b-5 bygXEH">
-                                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe RewardCard__StyledSVGIcon-sc-11jni8b-1 cYavRO"><svg viewBox="0 0 44 44">
-                                                                <path d="M39.6 6.3L16.9 29.1 4.2 17.3 0 21.8l17.1 15.9 26.9-27z"></path>
-                                                            </svg></div>10명이 선택
-                                                    </span><span class="RewardCard__RewardQuantityLimit-sc-11jni8b-6 zwxiI"><span class="RewardCard__SoldoutLabel-sc-11jni8b-8 jNVTjt">선착순 마감</span></span></div>
-                                                <div class="RewardCard__RewardSelector-sc-11jni8b-12 fGziuW">
-                                                    <div class="sub-wrapper">
-                                                        <div class="RewardCard__RewardContents-sc-11jni8b-9 kPHYMn">
-                                                            <div class="RewardCard__RewardMinimumPledgeAmount-sc-11jni8b-10 kfNXH">109,000원 +</div>
-                                                            <div class="RewardCard__RewardDescription-sc-11jni8b-11 eFHsoz">&lt;얼리버드&gt; 디너 세트(DINNER SET) + 토핑(TOPPING)</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <ul class="RewardCard__Items-sc-11jni8b-13 hjOerF">
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">에피타이저(APPETIZER)&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">턴테이블 플래터 매트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">턴테이블 클리너 세트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">스태빌라이저&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 레시피 페스타 vol.1 티켓&nbsp;<span>( x 1 )</span></li>
-                                                </ul>
-                                                <div class="RewardCard__DeliveryDate-sc-11jni8b-15 cGoZRE"><span>예상 전달일 &nbsp;<b>2020년 9월 11일</b></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="RewardCard__RewardCardWrapper-sc-11jni8b-2 gmgNmb disabled">
-                                        <div class="Card-sc-1vhyvl1-0 RewardCard__StyledCard-sc-11jni8b-0 ewRFxP">
-                                            <div class="RewardCard__RewardCardInner-sc-11jni8b-3 ksnZzq">
-                                                <div class="RewardCard__RewardHeader-sc-11jni8b-4 fUCEdh"><span class="RewardCard__PledgeAmount-sc-11jni8b-5 bygXEH">
-                                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe RewardCard__StyledSVGIcon-sc-11jni8b-1 cYavRO"><svg viewBox="0 0 44 44">
-                                                                <path d="M39.6 6.3L16.9 29.1 4.2 17.3 0 21.8l17.1 15.9 26.9-27z"></path>
-                                                            </svg></div>20명이 선택
-                                                    </span><span class="RewardCard__RewardQuantityLimit-sc-11jni8b-6 zwxiI"><span class="RewardCard__SoldoutLabel-sc-11jni8b-8 jNVTjt">선착순 마감</span></span></div>
-                                                <div class="RewardCard__RewardSelector-sc-11jni8b-12 fGziuW">
-                                                    <div class="sub-wrapper">
-                                                        <div class="RewardCard__RewardContents-sc-11jni8b-9 kPHYMn">
-                                                            <div class="RewardCard__RewardMinimumPledgeAmount-sc-11jni8b-10 kfNXH">149,000원 +</div>
-                                                            <div class="RewardCard__RewardDescription-sc-11jni8b-11 eFHsoz">&lt;얼리버드&gt; 피날레 코스(FINALE COURSE) + 토핑(TOPING)</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <ul class="RewardCard__Items-sc-11jni8b-13 hjOerF">
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">에피타이저(APPETIZER)&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 거치대&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">마장뮤직앤픽처스 에코백&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 디자인 뱃지 3종&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">Now Playing 아크릴 무드등&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">턴테이블 플래터 매트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">턴테이블 클리너 세트&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">스태빌라이저&nbsp;<span>( x 1 )</span></li>
-                                                    <li class="RewardCard__ItemList-sc-11jni8b-14 hRyuht">LP 레시피 페스타 vol.1 티켓 + 스플래터 LP 프레싱 체험&amp;소장&nbsp;<span>( x 1 )</span></li>
-                                                </ul>
-                                                <div class="RewardCard__DeliveryDate-sc-11jni8b-15 cGoZRE"><span>예상 전달일 &nbsp;<b>2020년 9월 11일</b></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             <div class="Sticker__Ghost-sc-1si6lg8-1 jchKaE" style="height: auto;"></div>
                         </div>
                     </div>

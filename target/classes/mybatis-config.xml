@@ -13,6 +13,12 @@
          <typeAlias alias="Funding_commentVo" type="creakok.com.vo.Funding_commentVo"/>
          <typeAlias alias="Funding_qnaVo" type="creakok.com.vo.Funding_qnaVo"/>
           <typeAlias alias="Funding_category" type="creakok.com.domain.Funding_category"/>
+          
+           <typeAlias alias="Goods_Category" type="creakok.com.domain.Goods_Category"/>  
+   	   <typeAlias alias="Goods_QnA" type="creakok.com.domain.Goods_QnA"/>  
+   	   <typeAlias alias="Goods_Review" type="creakok.com.domain.Goods_Review"/>  
+   	   <typeAlias alias="Goods" type="creakok.com.domain.Goods"/>  
+   	   <typeAlias alias="GoodsVo" type="creakok.com.vo.GoodsVo"/>  
    	   <!-- Address라고만 쓰면 jh.md.domain.Address에 접근하게 alias를 설정해준다! -->
    </typeAliases>
 
