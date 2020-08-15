@@ -169,16 +169,15 @@
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
         <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>Checkout</h2>
+            <h2>CHECKOUT</h2>
         </div>
-
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                             <li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i>HOME</li>
+                            <li class="breadcrumb-item" aria-current="page"><span style="font-weight:600; color:black;">CHECKOUT</span></li>
                         </ol>
                     </nav>
                 </div>
@@ -201,11 +200,11 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="first_name">이름 *</label>
-                                    <input name="name" class="form-control" id="first_name" onkeydown="check(this)" value="" required>
+                                    <input  name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="email_address">이메일 주소</label>
-                                    <input name="email" class="form-control" id="email_address" onkeydown="check(this)" value="" required>
+                                    <input  name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="phone_number">연락처 *</label>
@@ -213,10 +212,12 @@
                                 </div>
                               
                               
-                              </div>
+                              
                                 
 
-						<h5 style="margin-top:20px;">결제 내용</h5>
+                        
+                               </div>
+                         <h5 style="margin-top:20px;">결제 내용</h5>
 						
 						<label for="amountPay">밀어주기 금액</label>
 						
@@ -226,39 +227,33 @@
 						        <option class="form-control" value="2">10000</option>
 						        <option class="form-control" value="3">50000</option>
 						</select> 
-<script language="javascript">
-function fn_changeSelected(obj) {
-  var getObj = obj[obj.selectedIndex].innerHTML;
- 
-  $("input[name='SUBJECT']").val(getObj);
-  // 혹은, document.getElementById("SUBJECT").value = getObj;   등등
-}
-
-</script>                      
                 <div class="col-12 mb-4">
                     <div class="checkout-content">
-                        <h5 class="title--" style="margin-top:20px;">주문 내역</h5>
+                    
+                      <!--  <h5 class="title--" style="margin-top:20px;">주문 내역</h5>  --> 
                         <div class="products">
                             <div class="products-data">
-                                <h5>Products:</h5>
+                                <h5>Funding</h5>
                                 <div class="single-products d-flex justify-content-between align-items-center">
-                                    <p>Recuerdos Plant</p>
+                                    <p>${fundingCheckoutInfo.funding_subject}</p>
                                     <h5>$9.99</h5>
                                 </div>
                             </div>
                         </div>
                         <div class="subtotal d-flex justify-content-between align-items-center">
-                            <h5>Subtotal</h5>
-                            <h5>$9.99</h5>
+                            <h5>담당 크리에이터</h5>
+                            <h5>${fundingCheckoutInfo.creator_name}</h5>
                         </div>
+                        <!-- 
                         <div class="shipping d-flex justify-content-between align-items-center">
-                            <h5>Shipping</h5>
+                            <h5>펀딩 프로젝트 제목</h5>
                             <h5>$3.00</h5>
                         </div>
                         <div class="order-total d-flex justify-content-between align-items-center">
                             <h5>Order Total</h5>
                             <h5>$12.99</h5>
                         </div>
+                         -->
 			         </div>
                     </div>
                     
@@ -267,7 +262,7 @@ function fn_changeSelected(obj) {
                     
                      <h5 class="col-12 mb-4" style="margin-top:20px;">결제방법</h5>
                      <div class="col-12 mb-4">
-                               <table>
+                     <table>
                                 <tbody>
                                     <tr>
                                         <td>
@@ -283,21 +278,20 @@ function fn_changeSelected(obj) {
 		               								 </select>  
                								 </li>
                                              <li style="margin-bottom:10px;">
-                								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()"> 신용카드    
+                								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()"> 신용카드/네이버페이/카카오페이
                 								     <em><span class="op-card-dc-price fc-red"></span></em>
                 							 </li>
-                                            </ul>                                   
+                                            </ul>                                       
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                      
-                            
                         </div>
                         
                         <div id="evidence" style="display:none;">                        
                         	<div class="tbl-order" style="margin-top:0px;border-top:0px;">
                             <table>
+                       
                                 <tbody>
                                      <tr>
                                 <th scope="row"><div class="txt-l">증빙 신청</div></th>
@@ -325,10 +319,12 @@ function fn_changeSelected(obj) {
                         </div>
                         </div>
                         
+                        
+                        
                          <div class="col-12 text-center" style="margin-bottom:100px;">
 	                        <div class="checkout-btn mt-30" style="width:60%;display:inline">
-	                            <a class="btn alazea-btn " onclick="check()" >주문하기</a>
-	                            <a class="btn alazea-btn " onclick="check()" style="color:#fc5230; background-color:white; border:1px solid #fc5230">주문 취소</a>
+	                          <input type="submit" value="주문하기" class="btn alazea-btn" style="color:white;background-color:#fc5230;border:0;display:inline-block;width:150px">
+	                          <input type="reset" value="주문 취소" class="btn alazea-btn" style="color:#fc5230; background-color:white; border:1px solid #fc5230; display:inline-block;width:150px">
 	                        </div>
 	                     </div>
                         </form>
@@ -420,45 +416,7 @@ function fn_changeSelected(obj) {
 </script>
 <script src="js/pay/trim.js"></script>
 <script language="javascript"> 
-    function check(){
-    	
-    	var nameval = f.name.value;
-		nameval = trim(nameval);
-		if(pwdval.length == 0){
-			alert("이름을 입력해주세요");
-			f.name.value = "";
-			f.name.focus();
-			return false;
-		}else{
-			pass = checkByteLen(nameval, 30);
-			if(!pass){
-				alert("비번이 너무 길어요");
-				f.name.focus();
-				return false;
-			}
-		}
-		
-		
-		var emailval = f.email.value;
-		emailval = trim(emailval);
-		if(emailval.length == 0){
-			alert("아이디를 입력해주세요");
-			f.email.value = "";
-			f.email.focus();
-			return false;
-		}else{
-			pass = checkByteLen(emailval, 50);
-			if(!pass){
-				alert("아이디가 너무 길어요");
-				f.email.focus();
-				return false;
-			}
-		}
-		
-		
 
-		f.submit();
-	}
 	function enterCheck(elm){
 		if(event.keyCode == 13){
 			if(elm == f.email){
