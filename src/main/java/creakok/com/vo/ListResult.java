@@ -6,7 +6,7 @@ import java.util.List;
 import creakok.com.domain.Board;
 
 public class ListResult {
-	
+
 	private String board_filterBy;  // 최신순, 조회수순, 좋아요순으로 나누기 위해
 	private String board_c_code;    // 검색할때 작성자 or 제목
 	private String board_searchName; // 검색어
