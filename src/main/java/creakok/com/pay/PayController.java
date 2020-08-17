@@ -38,7 +38,13 @@ public class PayController {
 	@RequestMapping("funding_pay.do")
 	public ModelAndView pay(HttpServletRequest request, HttpSession session) {
 		String funding_indexStr = request.getParameter("funding_index");
-	
+		String name = request.getParameter("name");
+		//String email_address = request.getParameter("email_address");
+		//String email = request.getParameter("email");
+		String phone_number = request.getParameter("phone_number");
+		String amountPayresult = request.getParameter("amountPayResult");
+		System.out.println("@@@@@@@@@@@"+amountPayresult);
+		//log.info(funding_indexStr);
 		return new ModelAndView("/funding_detail_pay", "", null);
 	}
 	

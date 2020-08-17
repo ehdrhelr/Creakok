@@ -204,29 +204,39 @@
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="email_address">이메일 주소</label>
-                                    <input  name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
+                                    <input name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="phone_number">연락처 *</label>
                                     <input class="form-control" value="" onkeydown="enterCheck(this)" required>
-                                </div>
-                              
-                              
-                              
-                                
-
-                        
-                               </div>
+                                </div>                       
+                              </div>
                          <h5 style="margin-top:20px;">결제 내용</h5>
 						
 						<label for="amountPay">밀어주기 금액</label>
 						
-						<select id="amountPay" name="amountPay" onChange="javascript:fn_changeSelected(this);">
+						<select id="amountPay" name="amountPay" onChange="amountPay2()">
 						        <option class="form-control" value="">--선택--</option>
-						        <option class="form-control" value="1">5000</option>
-						        <option class="form-control" value="2">10000</option>
-						        <option class="form-control" value="3">50000</option>
+						        <option class="form-control" value="5,000">5,000</option>
+						        <option class="form-control" value="10,000">10,000</option>
+						        <option class="form-control" value="50,000">50,000</option>
 						</select> 
+						
+						<script language="javascript">
+						function amountPay2(){
+						
+							var a = document.getElementById("amountPay");
+							var b = a.options[a.selectedIndex].value;
+							//alert(b);
+							
+							var result = document.getElementById('amountPaygot');
+
+							result.innerHTML= b;
+							                          
+						
+						}
+						
+						</script>
                 <div class="col-12 mb-4">
                     <div class="checkout-content">
                     
@@ -236,7 +246,8 @@
                                 <h5>Funding</h5>
                                 <div class="single-products d-flex justify-content-between align-items-center">
                                     <p>${fundingCheckoutInfo.funding_subject}</p>
-                                    <h5>$9.99</h5>
+                                    <h5 id="amountPaygot"></h5>
+                                
                                 </div>
                             </div>
                         </div>
