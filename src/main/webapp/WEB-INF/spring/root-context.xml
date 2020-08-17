@@ -7,20 +7,22 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:google="http://www.springframework.org/schema/social/google"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
-		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/social/google http://www.springframework.org/schema/social/spring-social-google.xsd">
 	
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName"
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="jdbcUrl"
-			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe"></property>
+			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:JAVA"></property>
 		<property name="username" value="CREAKOK"></property>
 		<property name="password" value="JAVA"></property>
 	</bean>

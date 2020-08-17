@@ -1,0 +1,286 @@
+
+
+
+
+<!doctype html>
+<html lang="ko">
+<head>
+<style>.async-hide { opacity: 0 !important} </style>
+<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',4000,
+{'GTM-NDMQ9N4':true});</script>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="세상에 없던 반려동물, 취미, 홈리빙, 패션, 푸드 프로젝트 절찬 펀딩 중! 와디즈">
+<meta property="fb:app_id" content="190622721088710">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="와디즈">
+<meta property="og:logo" content="https://wadizcdn.net/assets/icon/logo-150x150.png" size="150x150" />
+<meta property="og:logo" content="https://wadizcdn.net/assets/icon/logo-250x250.png" size="250x250" />
+<meta property="og:logo" content="https://wadizcdn.net/assets/icon/logo-500x500.png" size="500x500" />
+<meta property="og:url" content="https://www.wadiz.kr">
+<meta property="og:title" content="와디즈">
+<meta property="og:description" content="세상에 없던 반려동물, 취미, 홈리빙, 패션, 푸드 프로젝트 절찬 펀딩 중! 와디즈">
+<meta property="og:image" content="https://wadizcdn.net/assets/og/share.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Wadiz_official">
+<meta name="twitter:url" content="https://www.wadiz.kr/">
+<meta name="twitter:title" content="와디즈">
+<meta name="twitter:description" content="세상에 없던 반려동물, 취미, 홈리빙, 패션, 푸드 프로젝트 절찬 펀딩 중! 와디즈">
+<meta name="twitter:image" content="https://wadizcdn.net/assets/og/share.jpg">
+<meta name="format-detection" content="telephone=no">
+<meta name="naver-site-verification" content="bee718c14a77c283448ac836bb76286cb6fee07d">
+<meta name="google-site-verification" content="ImxSgkeWRWd9gGjHqk2t4LI3JZbQXktlH0wH5TRRFA0" />
+<title>와디즈 - 크라우드펀딩</title>
+<link rel="preconnect" href="https://static.wadiz.kr">
+<link rel="preconnect" href="https://public-api.wadiz.kr">
+<link rel="preconnect" href="https://analytics.wadiz.kr">
+<link rel="preconnect" href="https://cdn.wadiz.kr">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com"><link rel="manifest" href="/resources/static/manifest.json">
+<link rel="shortcut icon" href="https://static.wadiz.kr/assets/icon/favicon.ico">
+<link rel="icon" href="https://static.wadiz.kr/assets/icon/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="https://static.wadiz.kr/assets/icon/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="https://static.wadiz.kr/assets/icon/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://static.wadiz.kr/assets/icon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://static.wadiz.kr/assets/icon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://static.wadiz.kr/assets/icon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://static.wadiz.kr/assets/icon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://static.wadiz.kr/assets/icon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://static.wadiz.kr/assets/icon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://static.wadiz.kr/assets/icon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="158x158" href="https://static.wadiz.kr/assets/icon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://static.wadiz.kr/assets/icon/apple-touch-icon-167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://static.wadiz.kr/assets/icon/apple-touch-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="1024x1024" href="https://static.wadiz.kr/assets/icon/apple-touch-icon-1024x1024.png">
+<link rel="apple-touch-icon-precomposed" href="https://static.wadiz.kr/assets/icon/apple-touch-icon-precomposed.png">
+<link rel="mask-icon" href="/resources/static/svg/wa.svg" color="#1d2129">
+<script>
+  wadiz = {};
+  wadiz.sessionUser = '';
+  wadiz.globals = {
+    isLogged: JSON.parse('false'),
+    userId: '',
+    encUserId: '',
+    hashedUserName: '',
+    staticHost: 'https://static.wadiz.kr',
+    publicApiHost: 'https://public-api.wadiz.kr',
+    embedApiHost: 'https://embed-api.wadiz.kr',
+    serviceApiHost: 'https://service.wadiz.kr',
+    analyticsHost: 'https://analytics.wadiz.kr'
+  };
+</script>
+<script>
+  dataLayer.push({
+    event: 'user.info',
+    'user.encUserId': '',
+    'user.hashedUserName': '',
+    'user.userId': '',
+    'user.accntType': ''
+  });
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '';f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NDMQ9N4');</script>
+<link rel="stylesheet" href="https://static.wadiz.kr/static/web/wui.css?faf3c476">
+<link rel="stylesheet" href="https://static.wadiz.kr/static/web/css/vendor.5e6f8f27.chunk.css">
+<link rel="stylesheet" href="https://static.wadiz.kr/static/web/common.css?137fb80f">
+<link rel="stylesheet" href="https://static.wadiz.kr/static/web/layout.css?4060aa35">
+<script type="text/javascript" src="https://static.wadiz.kr/static/web/polyfill.js?8c837cbc"></script>
+<script type="text/javascript" src="https://static.wadiz.kr/static/web/wui.js?04b456a4"></script>
+<script type="text/javascript" src="https://static.wadiz.kr/static/web/vendor.js?9d854234"></script>
+<script type="text/javascript" src="https://static.wadiz.kr/static/web/sentry.0b8282f2.js"></script>
+<script type="text/javascript" src="https://static.wadiz.kr/static/web/common.js?0109219d"></script>
+<script type="text/javascript" src="https://static.wadiz.kr/static/web/layout.js?9b13f3f3"></script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Organization",
+  "name": "와디즈",
+  "url": "https://www.wadiz.kr",
+  "sameAs": [
+    "https://www.facebook.com/wadiz.funding",
+    "https://www.instagram.com/wadiz_reward/",
+    "https://www.youtube.com/channel/UCRF2YAxV9vnzo2khhGCGlZg/featured",
+    "https://itunes.apple.com/kr/app/wadijeu/id1107828621",
+    "https://play.google.com/store/apps/details?id=com.markmount.wadiz"
+  ]
+}
+</script>
+
+
+<link rel="stylesheet" href="https://static.wadiz.kr/static/web/layout.css?4060aa35">
+    <link rel="stylesheet" href="https://static.wadiz.kr/main/main.f8f9beb3.css">
+    
+</head>
+<body>
+<div id="page-container">
+
+<main id="main-app">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="black-bg-wrap" style="display:none;"></div>
+
+<div id="wz-header">
+  <div class="web-header">
+    <div class="web-header-mobile">
+      <header class="header-wrapper">
+        <div class="header-container">
+          <h1 class="wadiz-logo">
+            <span class="label">와디즈</span>
+            <a href="/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="85" height="24" viewBox="0 0 85 24">
+                <path fill="#1D2129" fillRule="nonzero" d="M21.703 7H26l-4.984 16h-4.157L13.5 12.53 10.11 23H5.952L1 7h4.219l3 9.966 2.594-8.487c.264-.882 1.028-1.48 1.89-1.479h2.953l3.031 9.966L21.703 7zM84 7v2.307l-7.614 9.881H84V23H70v-2.29l7.68-9.915h-7.182V9.123c0-.566.224-1.108.623-1.507.398-.399.938-.62 1.5-.616H84zM37.912 9.136c0-1.025.798-1.856 1.783-1.856H42v15.232h-2.705c-.764 0-1.383-.645-1.383-1.44v-.208c-3.056 2.953-7.817 2.83-10.728-.278-2.912-3.107-2.912-8.065 0-11.172 2.911-3.107 7.672-3.23 10.728-.278zm-4.365 10.592c2.405-.104 4.276-2.216 4.18-4.72a4.659 4.659 0 0 0-1.124-3.312 4.296 4.296 0 0 0-3.056-1.488 4.295 4.295 0 0 0-3.066 1.483 4.658 4.658 0 0 0-1.13 3.317 4.654 4.654 0 0 0 1.158 3.266 4.294 4.294 0 0 0 3.038 1.454zM64 7h4v16h-4V7zm2.5-1a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm-9.588-3.033A1.96 1.96 0 0 1 58.864 1H61v21.528h-2.705a1.389 1.389 0 0 1-1.383-1.394v-.202a7.643 7.643 0 0 1-10.728-.269c-2.912-3.007-2.912-7.806 0-10.814a7.643 7.643 0 0 1 10.728-.269V2.967zm-4.365 16.866c2.405-.1 4.276-2.145 4.18-4.569a4.237 4.237 0 0 0-2.017-3.874 4.168 4.168 0 0 0-4.341 0 4.237 4.237 0 0 0-2.018 3.874 4.418 4.418 0 0 0 1.158 3.161 4.35 4.35 0 0 0 3.038 1.408z"/>
+              </svg>
+            </a>
+          </h1>
+        </div>
+      </header>
+    </div>
+    <div class="web-header-large">
+      <header class="header-wrapper">
+        <div class="header-container">
+          <h1 class="wadiz-logo">
+            <span class="label">와디즈</span>
+            <a href="/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="85" height="24" viewBox="0 0 85 24">
+                <path fill="#1D2129" fillRule="nonzero" d="M21.703 7H26l-4.984 16h-4.157L13.5 12.53 10.11 23H5.952L1 7h4.219l3 9.966 2.594-8.487c.264-.882 1.028-1.48 1.89-1.479h2.953l3.031 9.966L21.703 7zM84 7v2.307l-7.614 9.881H84V23H70v-2.29l7.68-9.915h-7.182V9.123c0-.566.224-1.108.623-1.507.398-.399.938-.62 1.5-.616H84zM37.912 9.136c0-1.025.798-1.856 1.783-1.856H42v15.232h-2.705c-.764 0-1.383-.645-1.383-1.44v-.208c-3.056 2.953-7.817 2.83-10.728-.278-2.912-3.107-2.912-8.065 0-11.172 2.911-3.107 7.672-3.23 10.728-.278zm-4.365 10.592c2.405-.104 4.276-2.216 4.18-4.72a4.659 4.659 0 0 0-1.124-3.312 4.296 4.296 0 0 0-3.056-1.488 4.295 4.295 0 0 0-3.066 1.483 4.658 4.658 0 0 0-1.13 3.317 4.654 4.654 0 0 0 1.158 3.266 4.294 4.294 0 0 0 3.038 1.454zM64 7h4v16h-4V7zm2.5-1a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm-9.588-3.033A1.96 1.96 0 0 1 58.864 1H61v21.528h-2.705a1.389 1.389 0 0 1-1.383-1.394v-.202a7.643 7.643 0 0 1-10.728-.269c-2.912-3.007-2.912-7.806 0-10.814a7.643 7.643 0 0 1 10.728-.269V2.967zm-4.365 16.866c2.405-.1 4.276-2.145 4.18-4.569a4.237 4.237 0 0 0-2.017-3.874 4.168 4.168 0 0 0-4.341 0 4.237 4.237 0 0 0-2.018 3.874 4.418 4.418 0 0 0 1.158 3.161 4.35 4.35 0 0 0 3.038 1.408z"/>
+              </svg>
+            </a>
+          </h1>
+          <ul class="gnb-large">
+            <li>
+              <a href="/web/winvest/main" class="item"><span>투자</span></a>
+            </li>
+            <li>
+              <a href="/web/wreward/main" class="item"><span>리워드</span></a>
+            </li>
+          </ul>
+          <div class="web-header-utils">
+            <div class="web-header-funding-open funding-open">
+              <button class="wz button funding-open-button dense primary-outline">펀딩오픈 신청하기</button>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+</div>
+
+
+<form id="forwardForm" method="get">
+  <input type="hidden" id="returnURL" name="returnURL" />
+</form>
+
+<input type="hidden" id="authEmail" value=""/>
+<div id="authInfoLypop" class="lypop-fixed" style="display: none;">
+  <div class="popup-mint-basic">
+    <a href="javascript:closeLyPop('authInfo');" class="btn-close">
+      <em></em>
+    </a>
+    <p class="popup-mint-text">
+      이메일 인증하기가 추가되었습니다<br/>기본 회원 정보를 확인해 주세요.
+    </p>
+    <div class="btn-wrap">
+      <a class="btn-pd-mint" href="#" onclick="isAuthEmail();">기본 회원정보 변경</a>
+    </div>
+  </div>
+</div>
+<input type="hidden" id="sessionLoginCheck" value="false"/>
+
+<div style="height: 100vh"></div>
+      
+
+<footer id="footer">
+  <div class="footer-wrap">
+    <p class="copyright"><strong>시대를 만듭니다<br />라이프스타일 투자플랫폼 와디즈</strong><br>&copy; WADIZ Platform Co., Ltd.</p>
+    <div class="app">
+      <ul>
+        <li><a href="https://itunes.apple.com/kr/app/wadijeu/id1107828621?l=enmt=8" target="_blank" class="icon-apple">iOS 앱</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.markmount.wadiz" target="_blank" class="icon-google-play">안드로이드 앱</a></li>
+        
+      </ul>
+    </div>
+    <div class="platform-info">
+      <p>와디즈플랫폼 (주) <span class="sep">|</span> 대표이사 최동철 <span class="sep">|</span> 사업자등록번호 220-88-37661</p>
+      <p>경기도 성남시 분당구 판교로 242 (삼평동) 판교디지털센터 A동 4층 402호</p>
+      <p class="contact"><strong>와디즈 대표 고객센터</strong> 1661-9056 <span class="sep">|</span> <a href="mailto:info@wadiz.kr">info@wadiz.kr</a></p>
+      <p class="contact"><strong>W9 멤버십 고객센터</strong> 1811-9090</p>
+      <p class="partner"><strong>광고문의</strong> <a href="mailto:ad@wadiz.kr">ad@wadiz.kr</a> <span class="sep">|</span> <a href="https://sites.google.com/a/wadiz.kr/ad/" target="_blank">광고상품보기</a></p>
+      <p class="partner"><strong>파트너 제휴문의</strong> </span> <a href="mailto:partner@wadiz.kr">partner@wadiz.kr</a> <span class="sep">|</span> <a href="/web/wpartner/main">파트너페이지</a></p>
+      <p class="partner"><strong>마케팅 제휴/PR 문의</strong> <a href="mailto:mktpr@wadiz.kr">mktpr@wadiz.kr</a></p>
+      <p class="yellowid"><a href="https://pf.kakao.com/_pEeEl" target="_blank">Yellow ID @와디즈</a></p>
+      <p><a href="/web/wterms/signup">이용약관</a> <span class="sep">|</span> <a href="/web/wterms/privacy_reward">개인정보처리방침</a> <span class="sep">|</span> <a href="http://bit.ly/2y5IUe0">수수료 항목</a></p>
+    </div>
+    <blockquote class="equity-warn">
+      <p>투자위험고지</p>
+      <p>비상장기업 투자는 원금 손실의 가능성이 크니 <button type="button" id="open-equity-warning">투자 위험 안내</button>를 꼭 확인하세요.</p>
+      <p class="equity-notice">와디즈플랫폼(주)은 크라우드 펀딩 플랫폼을 제공하는 중개자로 자금을 모집하는 당사자가 아니며, 투자손실의 위험을 보전하거나 보상품 제공을 보장해 드리지 못합니다.</p>
+    </blockquote>
+    <div class="externals">
+      <div class="externals-wrap">
+        <ul>
+          <li>
+            <span title="카카오톡 옐로아이디"><i class="icon-kakao" aria-hidden="true"></i></span>
+            <ul>
+              <li><a href="http://pf.kakao.com/_MGxgmxl" target="_blank">투자</a></li>
+              <li><a href="http://pf.kakao.com/_pEeEl" target="_blank">리워드</a></li>
+            </ul>
+          </li>
+          <li>
+            <span title="페이스북"><i class="icon-facebook" aria-hidden="true"></i></span>
+            <ul>
+              <li><a href="https://www.wadiz.kr/link/fb_invest" target="_blank">투자</a></li>
+              <li><a href="https://www.wadiz.kr/link/fb_reward" target="_blank">리워드</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul>
+          <li><a href="https://brunch.co.kr/@wadiz" target="_blank" title="브런치"><i class="icon-brunch" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.instagram.com/wadiz_reward/" target="_blank" title="인스타그램"><i class="icon-instagram" aria-hidden="true"></i></a></li>
+          <li><a href="http://blog.naver.com/wadiz_crowdfunding" target="_blank" title="네이버 블로그"><i class="icon-naver-blog" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UCF1_fHSt6Efemgy5wToafNw/featured" target="_blank" title="유튜브"><i class="icon-youtube-play" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div role="button" id="intercom-launcher" class="question" title="문의하기"><em id="intercom-launcher-badge"></em></div>
+  <button type="button" id="footer-page-refresh" class="page-refresh" title="새로고침"><i class="icon refresh"></i></button>
+  <button type="button" id="footer-page-top" class="page-top" title="위로 이동"></button>
+</footer>
+
+</main>
+    <script type="text/javascript" src="https://static.wadiz.kr/static/web/vendor.js?9d854234"></script>
+    <script type="text/javascript" src="https://static.wadiz.kr/static/web/layout.js?9b13f3f3"></script>
+    <script type="text/javascript" async src="https://static.wadiz.kr/main/main.a464a31f.js"></script>
+    
+
+</div>
+<div id="wadiz-app-banner"></div>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDMQ9N4&gtm_auth=C2VmrmxFIPyWp-zH3Xj9Ew&gtm_preview=env-50&gtm_cookies_win=x" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+</body>
+</html>

@@ -22,26 +22,23 @@ public class IndexController {
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("index");
 		
-		// Å©¸®¿¡ÀÌÅÍ ÀÌ¸§ ¾ò±â
+		// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½
 		List<Creator> creatorList = boardService.getCreatorName();
 		mv.addObject("creatorList", creatorList);
 		
 		return mv;
 	}
-<<<<<<< HEAD
 
 	@RequestMapping(value="/community", method =RequestMethod.GET)
 	public String community() {
 		return "community";
-=======
+	}
 	/*
 	@RequestMapping(value="/funding", method =RequestMethod.GET)
 	public String funding() {
 		return "funding";
-		
-	
->>>>>>> refs/remotes/origin/jhann_temp_master
-	}
 
+	}
+	 */
 
 }
