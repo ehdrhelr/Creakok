@@ -108,9 +108,9 @@
 	
 	 <script language="javascript">
 		function f(select){
-			var filterBy = select.value;
+			var board_filterBy = select.value;
 			location.href="board_page?board_filterBy="+board_filterBy+"#fix_point";
-		}  
+		} 
 	</script>
 </head>
 
