@@ -68,7 +68,7 @@
 	
 	<!-- 댓글 조회 -->
 	<select id="getComment" resultType="Comment">
-		select * from CREATOR_COMMENT where BOARD_INDEX = #{BOARD_INDEX}
+		select * from BOARD_COMMENT where BOARD_INDEX = #{BOARD_INDEX}
 	</select>
 
 </mapper>
