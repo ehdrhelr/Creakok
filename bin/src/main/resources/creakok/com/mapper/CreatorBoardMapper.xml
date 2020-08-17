@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="creakok.com.mapper.CreatorBoardMapper">
+
+	<select id="getListResult" resultType="Board">
+    	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
+    	(select * from CREATOR_BOARD order by ${board_filterBy} desc) aa) 
+    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
+ 	</select>
+	
+	<select id="count" resultType="int">
+		select COUNT(BOARD_INDEX) from CREATOR_BOARD
+	</select>
+	
+	<select id="content" parameterType="long" resultType="Board">
+		select * from CREATOR_BOARD where board_index = #{board_index}
+	</select>
+	
+	<insert id="insert" parameterType="Board">
+		insert into CREATOR_BOARD values(BOARD_INDEX_SEQ.nextval, #{board_subject}, #{board_content}, 'a', SYSDATE, 0, 0, null)
+	</insert>
+	
+	<select id="selectByIndex" resultType="Board" parameterType="long">
+		select * from CREATOR_BOARD where board_index = #{board_index}
+	</select>
+	
+	<update id="update" parameterType="Board">
+  	    update CREATOR_BOARD set board_subject = #{board_subject}, board_content = #{board_content} where board_index = #{board_index}
+	</update>
+	
+	<!-- 게시판 insert -->
+	<insert id="insertBoard" parameterType="creakok.com.domain.Board">
+	
+		<selectKey keyProperty="board_index" order="BEFORE" resultType="int">
+			SELECT BOARD_INDEX_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+			INSERT INTO CREATOR_BOARD 
+					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, #{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null)
+	</insert>
+	
+	<!-- 조회수 +1 -->
+	<update id="plusView" parameterType="long">
+		update CREATOR_BOARD set board_view = board_view + 1 where board_index = #{board_index}
+	</update>
+	
+	<!-- 좋아요 +1 -->
+	<update id="plusLike" parameterType="long">
+		update CREATOR_BOARD set board_like = board_like + 1 where board_index = #{board_index}
+	</update>
+	
+	<!-- 크리에이터 이름 조회 -->
+	<select id="getCreatorName" resultType="Creator">
+		select * from CREATOR
+	</select>
+	
+	<delete id="deleteBoard" parameterType="long">
+		delete from CREATOR_BOARD where board_index = #{board_index}
+	</delete>
+	
+	<!-- 검색 -->
+	<select id="search" resultType="Board">
+    	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
+    	(select * from CREATOR_BOARD order by ${board_filterBy} desc) aa) 
+    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and ${board_c_code}='${board_searchName}']]>
+	</select>
+	
+	<!-- 댓글 조회 -->
+	<select id="getComment" resultType="Comment">
+		select * from CREATOR_COMMENT where BOARD_INDEX = #{BOARD_INDEX}
+	</select>
+
+</mapper>

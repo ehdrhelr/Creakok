@@ -93,7 +93,7 @@ const CREA_COLOR = '#fc5230';
 
     // :: 6.0 magnificPopup Active Code
     if ($.fn.magnificPopup) {
-        $('.portfolio-img, .product-img').magnificPopup({
+        $('.portfolio-img').magnificPopup({
             gallery: {
                 enabled: true
             },

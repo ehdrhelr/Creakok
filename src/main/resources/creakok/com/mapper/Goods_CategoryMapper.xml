@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="creakok.com.mapper.Goods_CategoryMapper">
+
+	<select id="selectGoodsCategory" resultType="GOODS_CATEGORY">
+	    select * from GOODS_CATEGORY
+	</select>
+
+	<select id="selectByGcode" resultType="Goods" parameterType="GoodsVo">
+	    <![CDATA[
+		select * from 
+		(select ROWNUM rnum, aa.* from (select * from GOODS where GOODS_CATEGORY_CODE=${gCode} order by GOODS_INDEX desc) aa) 
+		where rnum>${(cp-1)*ps} and rnum<=${cp*ps}
+		]]>
+	</select>	
+	
+	<select id="selectGoodsCount" resultType="long" parameterType="long">
+		select COUNT(GOODS_INDEX) from Goods where GOODS_CATEGORY_CODE=#{gCode}
+	</select>
+	
+</mapper>

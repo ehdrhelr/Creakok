@@ -28,10 +28,19 @@ public class IndexController {
 		
 		return mv;
 	}
+<<<<<<< HEAD
 
 	@RequestMapping(value="/community", method =RequestMethod.GET)
 	public String community() {
 		return "community";
+=======
+	/*
+	@RequestMapping(value="/funding", method =RequestMethod.GET)
+	public String funding() {
+		return "funding";
+		
+	
+>>>>>>> refs/remotes/origin/jhann_temp_master
 	}
 
 
