@@ -40,5 +40,10 @@ public class IndexController {
 
 	}
 	 */
+	
+	@RequestMapping("about.do")
+	public String about() {
+		return "about";
+	}
 
 }

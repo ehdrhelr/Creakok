@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,63 +19,28 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Wadiz Css -->
-    <link rel="stylesheet" href="css/wadiz_css1.css">
-     <link rel="stylesheet" href="css/wadiz_css2.css">
-    <link rel="stylesheet" href="css/wadiz_css3.css">
-    <link rel="stylesheet" href="css/wadiz_css4.css">
-     <style>
-        .three {
-            flex:0 0 33% !important;
-        }
-        .ranking{
-            flex:0 0 35% !important;
-        }
-        .howAbout{
-            flex:0 0 70% !important;
-            max-width:63% !important;
-        }
-    </style>
-        
-     <style>
-                    #bar2 .fill{
-                        background: rgb(252, 82, 48);
-                        width: 153px;
-                        transition: width 1s ease-in-out 0s;
-                        }
-                </style>
-                  <style>
-                                .crowdy-btn-introduction {
-                                    display: inline-block;
-                                    border: rgba(255,255,255,.16);
-                                    background-color: rgba(255,255,255,.16);
-                                    text-align: center;
-                                    color: #fff;
-                                    padding: 0 21px;
-                                    margin-top: 18px;
-                                    height: 35px;
-                                    border-radius: 3px;
-                                    font-size: 16px;
-                                    line-height: 2.1;
-                                    letter-spacing: -.5px;
-                                }
-                             </style>
-                
-                
-  <!-- BOTO TEST -->
-  <meta name="description" content="Boto Photo Studio HTML Template">
-  <meta name="keywords" content="photo, html">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
-  <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
-  <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
-  <link rel="stylesheet" href="css/css_boto/fresco.css"/>
-  <link rel="stylesheet" href="css/css_boto/slick.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!-- Main Stylesheets -->
-  <link rel="stylesheet" href="css/css_boto/style.css"/>
+    
+    <!-- BOTO TEST -->
+    <meta name="description" content="Boto Photo Studio HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/fresco.css"/>
+    <link rel="stylesheet" href="css/css_boto/slick.css"/>
+    
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/style.css"/>
+
+    <!-- hcbae Stylesheets -->
+    <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
+    <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
+    <link rel="stylesheet" href="css/hcbae_css.css">
+        
 
 </head>
 
@@ -221,7 +187,7 @@
                                             -->
                                         </ul> 
                                     </li>
-                                                                        <li><a href="about.jsp">ABOUT</a></li>
+                                    <li><a href="about.do">ABOUT</a></li>
                                    <!--   <li><a href="portfolio.html">Portfolio</a></li>
                                     <li><a href="contact.html">Contact</a></li>  -->
                                 </ul>  
@@ -817,25 +783,6 @@
                     </div>
                 </div>
                 
-              
-               
-                     <style>
-                                .crowdy-btn-introduction {
-                                    display: inline-block;
-                                    border: rgba(255,255,255,.16);
-                                    background-color: rgba(255,255,255,.16);
-                                    text-align: center;
-                                    color: #fff;
-                                    padding: 0 21px;
-                                    margin-top: 18px;
-                                    height: 35px;
-                                    border-radius: 3px;
-                                    font-size: 16px;
-                                    line-height: 2.1;
-                                    letter-spacing: -.5px;
-                                }
-                             </style>
-                
                 
                 <!--
                     <div class="col-12 col-lg-6">
@@ -1186,43 +1133,30 @@
     </section>
     <!-- ##### Contact Area End ##### -->
 
-  <!-- Footer Bottom Area -->
-        <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="border-line"></div>
-                    </div>
-                    <!-- Copywrite Text -->
-                    <div class="col-12 col-md-6" >
-                        <div class="copywrite-text"style="background-color: whitesmoke !important; ">
-                            <img src="img/core-img/creakok.png" alt=""><br/>
-                            <p>creakok@gmail.com  |  02.707.1480<br/>
-                                평일 10:00~17:00 (점심시간 12:00~13:00)<br/>
-                                토/일/공휴일 휴무</p>
-                            <p>(주)크리콕 | 소속 : 비트캠프 신촌센터  | 호스팅 제공자 : (주)CJ ENM<br/>
-                                서울 마포구 백범로 23 구프라자 3층</p>
-                            <p>ⓒ CREAKOK All rights reserved.</p>
-                        </div>
-                    </div>
-                    <!-- Footer Nav -->
+    <!-- Footer Bottom Area -->
+    <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="border-line"></div>
                 </div>
+                <!-- Copywrite Text -->
+                <div class="col-12 col-md-6" >
+                    <div class="copywrite-text"style="background-color: whitesmoke !important; ">
+                        <img src="img/core-img/creakok.png" alt=""><br/>
+                        <p>creakok@gmail.com  |  02.707.1480<br/>
+                            평일 10:00~17:00 (점심시간 12:00~13:00)<br/>
+                            토/일/공휴일 휴무</p>
+                        <p>(주)크리콕 | 소속 : 비트캠프 신촌센터  | 호스팅 제공자 : (주)CJ ENM<br/>
+                            서울 마포구 백범로 23 구프라자 3층</p>
+                        <p>ⓒ CREAKOK All rights reserved.</p>
+                    </div>
+                </div>
+                <!-- Footer Nav -->
             </div>
         </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-<!-- Footer Bottom Area End ##### -->
+    </div>
+    <!-- Footer Bottom Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
