@@ -1,5 +1,4 @@
 <%@page import="java.sql.Connection"%>
-<%@page import="org.apache.catalina.connector.OutputBuffer"%>
 <%@page import="creakok.com.domain.Board"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"

@@ -200,33 +200,48 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="first_name">이름 *</label>
-                                    <input  name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
+                                    <input  name="Payinfo_name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="email_address">이메일 주소</label>
-                                    <input  name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
+                                    <input name="Payinfo_email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
                                 </div>
                                 <div class="col-6 mb-4">
-                                    <label for="phone_number">연락처 *</label>
-                                    <input class="form-control" value="" onkeydown="enterCheck(this)" required>
-                                </div>
-                              
-                              
-                              
-                                
-
-                        
-                               </div>
+                                    <label for="phonenumber">연락처 *</label>
+                                    <input name ="Payinfo_phonenumber"class="form-control" value="" onkeydown="enterCheck(this)" required>
+                                </div>                       
+                              </div>
                          <h5 style="margin-top:20px;">결제 내용</h5>
 						
 						<label for="amountPay">밀어주기 금액</label>
 						
-						<select id="amountPay" name="amountPay" onChange="javascript:fn_changeSelected(this);">
+						<select id="amountPay" name="amountPay" onChange="amountPay2()">
 						        <option class="form-control" value="">--선택--</option>
-						        <option class="form-control" value="1">5000</option>
-						        <option class="form-control" value="2">10000</option>
-						        <option class="form-control" value="3">50000</option>
+						        <option class="form-control" value="5000">5,000</option>
+						        <option class="form-control" value="10000">10,000</option>
+						        <option class="form-control" value="50000">50,000</option>
 						</select> 
+						
+						<script language="javascript">
+						function amountPay2(){
+						
+							var a = document.getElementById("amountPay");
+							var b = a.options[a.selectedIndex].value;
+							//alert(b);
+							
+							var resultToshow = document.getElementById('amountToshow');
+							resultToshow.innerHTML=b;
+							var result = document.getElementById('amountPaygot');
+							
+							result.value=b;
+							alert(b);
+							alert(c);
+							                          
+						
+						}
+						
+						
+						</script>
                 <div class="col-12 mb-4">
                     <div class="checkout-content">
                     
@@ -236,7 +251,10 @@
                                 <h5>Funding</h5>
                                 <div class="single-products d-flex justify-content-between align-items-center">
                                     <p>${fundingCheckoutInfo.funding_subject}</p>
-                                    <h5>$9.99</h5>
+                                      <input type="hidden" name = "fundingName" id="fundingName" value="${fundingCheckoutInfo.funding_subject}">
+                                    <h5 id="amountToshow"></h5>
+                                    <input type="hidden" name = "amountPaygot" id="amountPaygot" value="0">
+                                
                                 </div>
                             </div>
                         </div>
@@ -244,16 +262,7 @@
                             <h5>담당 크리에이터</h5>
                             <h5>${fundingCheckoutInfo.creator_name}</h5>
                         </div>
-                        <!-- 
-                        <div class="shipping d-flex justify-content-between align-items-center">
-                            <h5>펀딩 프로젝트 제목</h5>
-                            <h5>$3.00</h5>
-                        </div>
-                        <div class="order-total d-flex justify-content-between align-items-center">
-                            <h5>Order Total</h5>
-                            <h5>$12.99</h5>
-                        </div>
-                         -->
+                    
 			         </div>
                     </div>
                     

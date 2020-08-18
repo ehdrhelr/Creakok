@@ -7,14 +7,18 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Goods;
 import creakok.com.domain.Goods_Category;
+import creakok.com.domain.Goods_Review;
 import creakok.com.service.GoodsDetailService;
+import creakok.com.service.GoodsReviewService;
 import creakok.com.service.GoodsService;
 import creakok.com.service.Goods_CategoryService;
 import creakok.com.vo.GoodsVo;
+import creakok.com.vo.PayInfoVo;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
@@ -28,6 +32,9 @@ public class GoodsController {
 	
 	@Resource(name="GoodsDetailService")
 	private GoodsDetailService goods_detailService;
+
+	@Resource(name="GoodsReviewService")
+	private GoodsReviewService goods_reviewservice;
 	
 	@RequestMapping("goods_list.do")
 	public String list(HttpServletRequest request, HttpSession session) {
@@ -173,7 +180,7 @@ public class GoodsController {
 		
 		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
 		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index: "+goods_index);
-		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ one_goods: "+one_goods);
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ one_goods: "+one_goods);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("goods_details");
@@ -182,11 +189,84 @@ public class GoodsController {
 		return mv;
 	}
 	@RequestMapping("goods_order.do")
-	public String goods_order(HttpServletRequest request) {
-		return "checkout";
+	public ModelAndView goods_order(@RequestParam(name="price_amount") long price_amount, @RequestParam(name="product_name") String product_name, @RequestParam(name="product_price") long product_price, @RequestParam(name="qty") long qty) {
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&price_amount: "+price_amount);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_price: "+product_price);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&qty: "+qty);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("checkout");
+		mv.addObject("price_amount", price_amount);
+		mv.addObject("product_name", product_name);
+		mv.addObject("product_price", product_price);
+		mv.addObject("product_qty", qty);
+		
+		return mv;		
 	}	
 	@RequestMapping("goods_pay.do")
-	public String goods_pay(HttpServletRequest request) {
-		return "import_pay";
+	public ModelAndView goods_pay(HttpServletRequest request) {
+		String delivery_name = request.getParameter("delivery_name");
+		String delivery_phone = request.getParameter("delivery_phone");
+		String address_num = request.getParameter("address_num");
+		String address_road = request.getParameter("address_road");
+		String address_detail = request.getParameter("address_detail");
+		String address_land = request.getParameter("address_land");
+		
+		String price_amount = request.getParameter("price_amount");
+		String product_qty = request.getParameter("product_qty");
+		String product_name = request.getParameter("product_name");
+		String email =  request.getParameter("email");
+		     
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&name: "+delivery_name);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&delivery_phone: "+delivery_phone);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_num: "+address_num);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_road: "+address_road);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_detail: "+address_detail);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_land: "+address_land);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&price_amount: "+price_amount);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_qty: "+product_qty);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
+		
+		PayInfoVo payInfo = new PayInfoVo();
+		payInfo.setDelivery_name(delivery_name);
+		payInfo.setDelivery_phone(delivery_phone);
+		payInfo.setAddress_num(address_num);
+		payInfo.setAddress_road(address_road);
+		payInfo.setAddress_detail(address_detail);
+		payInfo.setAddress_land(address_land);
+		payInfo.setPrice_amount(price_amount);
+		payInfo.setProduct_qty(product_qty);
+		payInfo.setProduct_name(product_name);
+		payInfo.setEmail(email);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("import_pay");
+		mv.addObject("payInfo", payInfo);	
+		
+		return mv;
 	}
+	@RequestMapping("goods_review.do")
+	public ModelAndView goods_review(HttpServletRequest request) {
+		String goods_indexStr = request.getParameter("goods_index");
+		long goods_index = Long.parseLong(goods_indexStr);
+		
+		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
+		List<Goods_Review> review_list = goods_reviewservice.goodsReview_list(goods_index);
+		long review_size = review_list.size();
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index: "+goods_index);
+		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ review_list: "+review_list);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("goods_review_board");
+		mv.addObject("one_goods", one_goods);	
+		mv.addObject("review_list", review_list);	
+		mv.addObject("review_size", review_size);
+		
+		return mv;
+	}
+	@RequestMapping("goods_review_write.do")
+	public String goods_review_write() {
+		return "goods_review_write";
+	}	
 }

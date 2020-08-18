@@ -395,9 +395,9 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="goods.html">GOODS</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">GOODS Details</li>
+                        	<li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i>HOME</li>
+                            <li class="breadcrumb-item" style="font-weight:300; color:#757575;">GOODS</li>
+                         	<li class="breadcrumb-item active" aria-current="page"><span style="font-weight:600; color:black;">GOODS DETAILS</span></li>
                         </ol>
                     </nav>
                 </div>
@@ -424,7 +424,7 @@
                 <div class="ProjectIntroduction__ProjectIntroductionWrapper-sc-1o2ojgb-1 bnFLKn">
                     <div class="ProjectIntroduction__ProjectOutline-sc-1o2ojgb-2 jbdzfG">
                         <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="/discover?category=music"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">${one_goods.goods_category_code}</span></a>
-                            <h1 class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${one_goods.goods_name}</h1>
+                            <h1 id="product_name" class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${one_goods.goods_name}</h1>
                             <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">
                             <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gOcHWp"></span>
                             <a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="/u/mcmp">
@@ -439,8 +439,8 @@
                         <div class="ProjectIntroduction__FundingStatus-sc-1o2ojgb-13 gGVEjs">
                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
                                 <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="margin-right:20px;">가격</div>
-                                <span class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;">${one_goods.goods_price}
-                                <span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">원</span></span>
+                                <span id="product_price" class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;">${one_goods.goods_price}</span>
+                                <span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">원</span>
                                 
                                 
                                 
@@ -474,7 +474,12 @@
 		                  			
 		                  		var result = document.getElementById('price_qty');
 		                  		var amount = ${one_goods.goods_price} * (Number(qty)+1);
-		                  			
+		                  		
+		                  		
+		                  		var result2 = document.getElementById('price_qty2');
+		                  		var amount2 = (${one_goods.goods_price} * (Number(qty)+1))+3000; 
+		                  		result2.innerHTML= amount2;
+		                  		
 		                  		result.innerHTML= amount;
 		                  			if( !isNaN( qty )) effect.value++;
 		                      		return false;
@@ -486,8 +491,14 @@
                        			var result = document.getElementById('price_qty');
                        			var amount = ${one_goods.goods_price} * (Number(qty)-1);
                        			
+		                  		var result2 = document.getElementById('price_qty2');
+		                  		var amount2 = (${one_goods.goods_price} * (Number(qty)-1))+3000; 
+		                  		
+		                  		result2.innerHTML= amount2;
+		                  		
 	                       		if(amount>0){
 	                       			result.innerHTML= amount;
+	                       			
 	                       		}
                        			
                        			if( !isNaN( qty ) & qty  > 1) effect.value--;
@@ -502,7 +513,7 @@
                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
                                 <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV">TOTAL    :   </div>
                                 <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="font-size:1.3em; font-weight:600;"><span id="price_qty">${one_goods.goods_price}</span> + <span style="font-size:1em; font-weight:100;">(배송비)</span> 3000원  =</div>
-                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;text-align:right">${one_goods.goods_price+3000}
+                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;text-align:right"><span id="price_qty2">${one_goods.goods_price+3000}</span>
                                 <span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">원</span></div>
                             </div>                         
                             
@@ -515,10 +526,10 @@
                             <div class="ProjectIntroduction__ProjectButtonsInner-sc-1o2ojgb-20 jHbICj">
                                 <div class="ProjectIntroduction__PrimaryButton-sc-1o2ojgb-21 knPvZB">
                                     <div class="PledgeButton__Wrapper-arwur9-0 krUjgk">
-                                    <a href="goods_order.do" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230">
-                                  <!--  	<a href="goods_pay.do" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230">  -->
+                                  		<a href="#" onclick="goodsOrder()" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230">
+                                	<!--  	 <input value="" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230"> -->
                                     		구매하기
-                                    	</a>
+                                   	 	</a>
                                     </div>
                                 </div>
                             </div>
@@ -541,10 +552,9 @@
                                                 <path d="M35.4706,40.396 C32.9362,40.396 30.877,38.51 30.877,36.192 C30.877,33.874 32.9362,31.988 35.4706,31.988 C38.0028,31.988 40.0642,33.874 40.0642,36.192 C40.0642,38.512 38.0028,40.396 35.4706,40.396 M8.5316,26.204 C5.9994,26.204 3.938,24.318 3.938,22 C3.938,19.68 5.9994,17.796 8.5316,17.796 C11.0638,17.796 13.1252,19.68 13.1252,22 C13.1252,24.32 11.0638,26.204 8.5316,26.204 M35.4706,3.604 C38.0028,3.604 40.0642,5.49 40.0642,7.808 C40.0642,10.126 38.0028,12.012 35.4706,12.012 C32.9362,12.012 30.877,10.126 30.877,7.808 C30.877,5.488 32.9362,3.604 35.4706,3.604 M35.4706,28.384 C33.022,28.384 30.8198,29.334 29.2644,30.844 L16.7024,24.228 C16.9334,23.522 17.061,22.774 17.061,22 C17.061,21.226 16.9334,20.48 16.7046,19.772 L29.2644,13.156 C30.8198,14.668 33.022,15.616 35.4684,15.616 C40.183,15.616 44,12.12 44,7.808 C44,3.496 40.1808,0 35.4706,0 C30.7582,0 26.939,3.496 26.939,7.808 C26.939,8.582 27.0666,9.328 27.2954,10.036 L14.7334,16.652 C13.1802,15.142 10.978,14.192 8.5294,14.192 C3.8236,14.192 0,17.688 0,22 C0,26.312 3.8192,29.808 8.5316,29.808 C10.978,29.808 13.1802,28.86 14.7356,27.348 L27.2954,33.964 C27.0666,34.67 26.939,35.418 26.939,36.192 C26.939,40.504 30.7582,44 35.4706,44 C40.1808,44 44,40.504 44,36.192 C44,31.88 40.1808,28.384 35.4706,28.384"></path>
                                             </svg></div>
                                 </button></div>
-                     
-                     
-                     
                                 
+                                 <a name="fix_point"></a>
+                     
                             </div>
                         </div>
                     </aside>
@@ -552,14 +562,31 @@
                 </div>
             </div>
             
-            
+                          <script language="javascript">
+		                      function goodsOrder(){
+			                  	var p_amount = document.getElementById('price_qty').innerHTML; 
+			                  	var price_amount = Number(Number(p_amount)+3000);
+			                  	//alert(price_amount);
+			                  	
+			                  	var product_name = document.getElementById('product_name').innerHTML;
+			                  	//alert(product_name);
+			                  	var product_price = document.getElementById('product_price').innerHTML;
+			                  	
+			                  	var effect = document.getElementById('qty'); 
+		                  		var qty = effect.value; 
+			                  	location.href="goods_order.do?price_amount="+price_amount+"&product_name="+product_name+"&product_price="+product_price+"&qty="+qty;
+		                  	}
+                       </script>         
             
             
         </div><span style="font-size:0"></span>
         <div id="contentsNavigation">
             <nav class="ContentsNavigation__ProjectContentsNavigation-mwsx7i-1 bmUMcp">
                 <div class="ContentsNavigation__ProjectContentsNavigationInner-mwsx7i-2 OvVKa">
-                    <div class="ContentsNavigation__NavLeft-mwsx7i-3 buZwam"><a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="/mcmp_project1/story?ref=%EB%A9%94%EC%9D%B8%2F%EC%A3%BC%EB%AA%A9%ED%95%A0%EB%A7%8C%ED%95%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8">스토리</a><a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="/mcmp_project1/community?ref=%EB%A9%94%EC%9D%B8%2F%EC%A3%BC%EB%AA%A9%ED%95%A0%EB%A7%8C%ED%95%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8">커뮤니티<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">2</span></a><a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="/mcmp_project1/policy?ref=%EB%A9%94%EC%9D%B8%2F%EC%A3%BC%EB%AA%A9%ED%95%A0%EB%A7%8C%ED%95%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8">펀딩 안내</a></div>
+                    <div class="ContentsNavigation__NavLeft-mwsx7i-3 buZwam">
+                    <a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="/mcmp_project1/story?ref=%EB%A9%94%EC%9D%B8%2F%EC%A3%BC%EB%AA%A9%ED%95%A0%EB%A7%8C%ED%95%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8">상품상세정보</a>
+                    <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="goods_review.do?goods_index=${one_goods.goods_index}#fix_point">리뷰<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(2)</span></a>
+                    <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="#">Q&A</a></div>
                 </div>
             </nav>
         </div>
@@ -571,156 +598,7 @@
                             <div class="Card-sc-1sgtmvk-0 iZjgMf">
                                 <div class="StoryCard__StoryCardInner-sc-6cra5i-0 giOSQG">
                                     <div class="storyContent">
-                                        <blockquote><u>* 런치세트, 디너세트, 피날레코스, 고액리워드에 포함된 티켓 포함의 경우 티켓을 추가하시려면 티켓 금액(런치, 디너 각 10,000원 / 피날레, 고액 각 20,000원) 만큼 추가하여 후원해주신 후 메세지를 꼭 보내주시면 감사하겠습니다♡</u><br><u>(1인 2매까지 가능)</u></blockquote>
-                                        <p>&nbsp;</p>
-                                        <p><img src="./img/hcbae/1ff62474-fa87-44b7-9406-d27483afed76.jpg"></p>
-                                        <h3><strong>안녕하세요, 대한민국 대표 바이닐(LP) 기획/제작 브랜드</strong></h3>
-                                        <h3><strong>‘마장뮤직앤픽처스’ 입니다!</strong></h3>
-                                        <p>&nbsp;</p>
-                                        <p>마장뮤직앤픽처스가 공식적으로 LP 공장을 런칭하면서 첫 발을 내딛은 지 벌써 3년이라는 시간이 흘렀습니다. 짧은 시간이었지만, 그동안 대한민국의 음반 시장에는 큰 변화가 생겨난 것을 지켜볼 수 있었는데요.</p>
-                                        <p>바로 <u><strong>LP를 찾는 리스너</strong></u>들이 이전보다 훨씬 많아졌다는 것입니다.</p>
-                                        <p><img src="./img/hcbae/a45b9df6-e9e4-4596-82c2-d7567c7d92b4.jpg"></p>
-                                        <p><img src="./img/hcbae/c2d7b2ca-a535-42bc-a8b9-afd19fa45d06.jpg"><sub>　　　　　　　　　　　　　　　　　　　제9회 서울레코드페어 전경</sub></p>
-                                        <p>지금 LP가 주목받고 있는 이유는 무엇일까요?</p>
-                                        <p><strong><u>LP라는 매체는</u></strong></p>
-                                        <p><img src="./img/hcbae/ac42721f-51c9-4cd1-bb2a-1749b14715ab.png"></p>
-                                        <ul>
-                                            <li>과거에는 흔했지만, 지금은 흔치 않은 매체입니다.</li>
-                                            <li>그렇기 때문에 신세대에게 신기하고 매력적인 매체입니다.</li>
-                                            <li>하지만 CD나 디지털 음원 보다 접근성이 어려운 매체입니다.</li>
-                                        </ul>
-                                        <p><br>그렇다면, 지금 누가 LP를 좋아하기 시작하고, 더 찾고 있을까요?</p>
-                                        <p><strong><u>LP를 주목하는 사람들</u></strong></p>
-                                        <p><img src="./img/hcbae/390de4fa-e080-4119-8bea-3c24cf4910b7.png"></p>
-                                        <ul>
-                                            <li>뉴트로 현상으로 LP에 관심은 있지만, 쉽게 접근하기 어려웠던 ‘LP 입문자’</li>
-                                            <li>어린 시절부터 LP로 음악을 접해왔으며, 음향기기에 관심이 많은 ‘헤비 리스너’</li>
-                                            <li>LP 시장문화를 주목하기 시작한 ‘국내 기획사, 아티스트 및 다양한 산업군의 마케터’</li>
-                                        </ul>
-                                        <p>&nbsp;</p>
-                                        <p>이런 분들을 위해 LP를 가장 잘 아는 마장뮤직앤픽처스가 입맛과 취향대로 LP를 요리하는 방법을 알려드리고자 특별한 프로젝트를 기획했습니다!</p>
-                                        <p>이번 프로젝트를 통해 마장뮤직앤픽처스는 <strong><u>대한민국 LP 문화의 저변을 확대</u></strong>하는 발돋움을 시작하려고 합니다.</p>
-                                        <p>&nbsp;</p>
-                                        <h2>LP 레시피 박스</h2>
-                                        <p><img src="./img/hcbae/03ca7540-80bb-4034-a977-b18e193e11e5.jpeg"></p>
-                                        <p>LP 레시피 박스는 LP를 처음 접하는 입문자부터, 본격적으로 LP 문화를 즐기시는 분까지 모두 포괄할 수 있게 여러 형태로 나눠진 특별한 선물 박스입니다:)</p>
-                                        <p>LP와 친숙해지기 위한 첫 단계로, LP를 소장할 수 있는 코스인 '에피타이저(APPITIZER)'<br>구입한 LP를 SNS에 공유하고, LP 문화를 알릴 수 있게 가볍게 구성한 '런치 세트(LUNCH SET)'<br>본격적으로 LP를 듣고, LP 문화를 향유하고 계신 분을 위한 '디너 세트(DINNER SET)'<br>이 모든 것이 함께 구성된 '피날레 코스(FINALE COURSE)'까지.<br>그리고 마장뮤직앤픽처스가 처음으로 준비한 오프라인 행사 'LP 레시피 페스타' 티켓이 포함된 특별한 '토핑'까지 페어링해서 받으실 수 있도록 구성했습니다.</p>
-                                        <p><img src="./img/hcbae/c21a5ebc-84e7-4571-a3be-c60b81919d83.jpeg"></p>
-                                        <ul>
-                                            <li>국내 유일 전 공정을 수행하는 마장뮤직앤픽처스에서 LP를 제작한 아티스트 10팀의 음악과 이야기가 담긴 컴필레이션 LP</li>
-                                            <li>LP 수집의 취미를 돋보이게 해줄 작은 선물</li>
-                                            <li>LP 뿐만 아니라 턴테이블까지 관리할 수 있는 엄선된 키트</li>
-                                        </ul>
-                                        <p>이 모든 것을 한 박스에 담아, 어디서도 만나보지 못한 특별한 LP 박스를 선물해 드립니다.</p>
-                                        <p>&nbsp;</p>
-                                        <h3><strong>첫번째 마장뮤직앤픽처스 컴필레이션 LP, 'MCMP PLATED Vol.1'</strong></h3>
-                                        <p><img src="./img/hcbae/9c34f7c1-a675-4a5e-ab45-a93a2f52123d.jpeg"></p>
-                                        <p>지난 3년간, 수많은 아티스트와 기획사에서 마장뮤직앤픽처스를 통해 LP 제작을 진행해주셨습니다. 모든 분들의 음악을 다 담지는 못하였지만, LP 문화 저변 확대의 취지에 공감해주신 10분의 아티스트와 그 음악을 첫번째 컴필레이션 LP 'MCMP PLATED Vol.1'에서 함께 만나보세요~!</p>
-                                        <p>LP 색상은 마장 옐로우를 꼭 닮은 <strong><u>투명 옐로우</u></strong> 컬러로 제작될 예정입니다:)</p>
-                                        <p><img src="./img/hcbae/d590c015-7bf9-42ca-b694-55a7a96746a8.jpeg"><img src="./img/hcbae/5ef9c076-1dc4-44a2-a9c8-092e2ed28b74.jpeg"></p>
-                                        <h4>트랙리스트<br><br></h4>
-                                        <blockquote>- Side A -<br>유앤미 블루 (U&amp;Me Blue) / Nothing's Good Enough<br>조동진 / 제비꽃<br>말로 / 벚꽃 지다<br>어떤날 / 초생달<br>장필순 / 나의 외로움이 널 부를 때 (full ver.)</blockquote>
-                                        <blockquote>- Side B -<br>전제덕 / 우리 젊은 날<br>선우정아 / 인터뷰<br>사뮈 / 빈 역<br>서사무엘 (Samuel Seo) / YI YU<br>이날치 / 약일레라 (Hidden Track)</blockquote>
-                                        <h2>&nbsp;</h2>
-                                        <p>그럼 각 단계별로 리워드를 소개해 드릴게요!</p>
-                                        <h2><br>리워드 소개<br><br></h2>
-                                        <h4><u>1. 에피타이저(APPETIZER)</u></h4>
-                                        <p>LP와 친숙해지기 위한 첫 단계로, LP를 소장할 수 있는 코스!<br>LP에 입문하시는 분들에게 선사하는 식전 메뉴로써 입맛을 돋우는 재료들로 엄선했습니다:)</p>
-                                        <ul>
-                                            <li>마장뮤직앤픽처스 컴필레이션 LP 'MCMP PLATED Vol.1'</li>
-                                            <li>LP 제작과정 포스터 (디자인 추후 공개 예정)</li>
-                                            <li>LP 공장 사진 엽서 (디자인 추후 공개 예정)</li>
-                                            <li>LP 디자인 스티커 (디자인 추후 공개 예정)</li>
-                                            <li>마장뮤직앤픽처스 펜 (디자인 추후 공개 예정)</li>
-                                            <li>마장뮤직앤픽처스 노트 (디자인 추후 공개 예정)</li>
-                                            <li>LP 디자인 마스킹테이프 (디자인 추후 공개 예정)</li>
-                                            <li>LP 라벨 코스터 (랜덤 증정)</li>
-                                        </ul>
-                                        <p><img src="./img/hcbae/7e27b32a-b178-4329-a108-7c1505d89e2b.jpg"></p>
-                                        <h4><br><u>2. 런치 세트(LUNCH SET)</u></h4>
-                                        <p>LP를 좋아해 구입만 하셨던 분들, 어떻게 자랑하면 좋을지 고민 많으셨다면?<br>LP 문화를 알릴 수 있도록 가볍게 구성한 런치 세트(LUNCH SET)로 SNS에 뽐내보세요!</p>
-                                        <ul>
-                                            <li>에피타이저(APPETIZER) 박스 세트</li>
-                                            <li>LP 거치대</li>
-                                            <li>마장뮤직앤픽처스 에코백</li>
-                                            <li>LP 디자인 뱃지 3종 (디자인 추후 공개 예정)</li>
-                                            <li>Now Playing 아크릴 무드등 (디자인 추후 공개 예정)</li>
-                                        </ul>
-                                        <p><img src="./img/hcbae/8586094d-5572-48ff-a87c-cea45e4a9984.jpg"></p>
-                                        <p>런치 세트(LUNCH SET)에 토핑(TOPPING)을 추가해보세요! 특별한 티켓이 박스 안에 함께 배송 됩니다.</p>
-                                        <p><u><img src="./img/hcbae/8a2dc706-3254-4e69-b996-4a7c7f32b498.jpg"></u></p>
-                                        <p>&nbsp;</p>
-                                        <h4><u>3. 디너 세트(DINNER SET)</u></h4>
-                                        <p>본격적으로 LP를 즐겨 듣고, LP 문화를 향유하고 계신 분들을 위해 엄선한 키트 세트!<br>이제 LP 뿐만 아니라 턴테이블 까지 관리해보세요!</p>
-                                        <ul>
-                                            <li>에피타이저(APPETIZER) 박스 세트</li>
-                                            <li>스태빌라이저</li>
-                                            <li>턴테이블 및 LP 클리너세트</li>
-                                            <li>플래터매트</li>
-                                        </ul>
-                                        <p><img src="./img/hcbae/a2925a20-3b03-48af-b5a5-c080be4fe511.jpg"></p>
-                                        <p>디너 세트(DINNER SET)에 토핑(TOPPING)을 추가해보세요! 특별한 티켓이 박스 안에 함께 배송 됩니다.</p>
-                                        <blockquote>★얼리버드 특전★ 토핑(TOPPING)을 무료로 추가해드립니다:)</blockquote>
-                                        <p><img src="./img/hcbae/7c9b19cb-3840-4b08-a00f-92ca113713d7.jpg"></p>
-                                        <p>&nbsp;</p>
-                                        <h4><u>4. 피날레 코스(FINALE COURSE)</u></h4>
-                                        <p>에피타이저(APPETIZER)와 런치 세트(LUNCH SET) 그리고 디너 세트(DINNER SET)까지.<br>이 모든 것이 함께 구성된 피날레 코스(FINALE COURSE)!</p>
-                                        <ul>
-                                            <li>에피타이저(APPETIZER)</li>
-                                            <li>런치 세트(LUNCH SET)</li>
-                                            <li>디너 세트(DINNER SET)</li>
-                                        </ul>
-                                        <p><img src="./img/hcbae/f1093ba4-e64a-445f-8706-3aa5cc3f4397.jpg"></p>
-                                        <p>피날레 코스(FINALE COURSE)에 토핑(TOPPING)을 추가해보세요! 특별한 티켓이 박스 안에 함께 배송 됩니다.</p>
-                                        <blockquote>★얼리버드 특전★ 토핑(TOPPING)을 무료로 추가해드립니다:)</blockquote>
-                                        <p><img src="./img/hcbae/ca7b00d8-51a3-4ed8-8a1c-7c647cd363ad.jpg"></p>
-                                        <p>&nbsp;</p>
-                                        <h4><strong><u>5. 브이아이피(VIP)</u></strong></h4>
-                                        <p>단 10분만 한정으로 모시는 고액 펀딩 리워드, 명예의 전당!<br>모든 박스 세트 구성 및 티켓과 함께 1년간 매월 1장씩 총 12장의 LP를 받으실 수 있는 구독 서비스를 제공해드립니다! (턴테이블도 함께 드려요:-D)</p>
-                                        <ul>
-                                            <li>피날레 코스(FINALE COURSE) (LP 1장 포함)</li>
-                                            <li>제1회 LP 레시피 페스타 티켓</li>
-                                            <li>LP 구독 서비스 1년 with 노웨이브 레코드 (LP 11장, 턴테이블 포함)</li>
-                                        </ul>
-                                        <p><img src="./img/hcbae/e58f981a-607f-4bdc-be95-dac86b1d5361.jpg"></p>
-                                        <p>&nbsp;</p>
-                                        <p>리워드 중 토핑(TOPPING)이 무엇인지 궁금하셨죠?<br>마장뮤직앤픽처스가 준비한 레시피에 <u><strong>오프라인 행사</strong></u>라는 특별한 토핑을 추가해 드립니다😊</p>
-                                        <h2>LP 레시피 페스타</h2>
-                                        <p><img src="./img/hcbae/e266d9cd-e165-4fc5-8e5f-1750451c5a20.jpg"><br><br>청명한 가을 주말, LP를 좋아하는 사람들과 함께 도심 속 <u><strong>뉴트로 음악 소풍</strong></u>을 떠나 보는 건 어떠세요?<br>마장뮤직앤픽처스가 LP 공장 프리 투어, LP 음감회, 토크와 라이브 공연 그리고 플리마켓 등 LP를 즐길 수 있는 다양한 방법(레시피)을 제공해 드립니다.</p>
-                                        <p><img src="./img/hcbae/a4623a9a-782a-40b9-b6b8-a54a3bd1ca54.png"></p>
-                                        <p><strong><u>제1회 LP 레시피 페스타 “소풍”</u></strong><br>- 일시 : 2020년 9월 19일 (토) 15:00~19:00 (총 4시간)<br>- 장소 : 성수동 마장뮤직앤픽처스 LP 공장 일대<br>- 간략 프로그램 일정</p>
-                                        <p><img src="./img/hcbae/743a875c-ff19-4c76-94fe-d51222f6de8a.png"></p>
-                                        <p>LP 레시피 페스타는 향후 정기적으로 꾸준히 진행될 예정입니다.<br>제1회 “소풍”은 도심 속 오래된 공장들 사이에 위치한 LP 공장으로 떠나는 뉴트로 음악 소풍이며, 첫 회인 만큼 다채로운 구성으로 재미있는 행사로 기억될 수 있도록 준비할 예정이니 많은 기대 부탁드립니다♥<br>(제1회 LP 레시피 페스타 티켓은 <u><strong>100명 한정</strong></u>으로 선택하실 수 있습니다. 늦기 전에 서두르세요!)</p>
-                                        <blockquote>* 본 행사는 코로나19의 확산 추이에 따라 연기되거나 변경 될 수 있습니다.<br>더불어 가장 안전한 행사 진행을 위해서 정부 및 관할구청의 방역지침과 수칙에 따라 <br>운영될 예정이오니, 관람객 분들의 협조를 미리 부탁드립니다. <br>세부 안내는 추후 커뮤니티를 통해 공유 드리겠습니다.</blockquote>
-                                        <p>&nbsp;</p>
-                                        <h2>회사 소개</h2>
-                                        <h3><br><strong><u>마장뮤직앤픽처스는</u></strong></h3>
-                                        <p><img src="./img/hcbae/b8566fca-a9c3-4861-8acf-269be894fe4f.jpg"><img src="./img/hcbae/ec4cae3d-ee76-4321-97da-58f327d3b4f6.jpg"><br><br>40여 년 역사의 아날로그 레코딩 전문 스튜디오인 유니버샬 레코드를 기반으로한 ‘마장뮤직앤픽처스 스튜디오’에서 LP 제작 핵심 기술인 래커 커팅으로 음악의 소리골을 새기고, 성수동에 위치한 ‘마장뮤직앤픽처스 LP 공장’에서 도금 및 성형 기술로 LP를 생산해내고 있습니다.<br>국내 LP 제작 기술을 세계적인 수준으로 끌어올린 아날로그 장인 정신으로, 마장뮤직앤픽처스는 이제 국내 대표를 넘어 아시아 No.1 LP 기획/제작 브랜드로써 LP 시장 문화를 선도해 나갈 것입니다.</p>
-                                        <h3><strong><u>마장뮤직앤픽처스가 걸어온 길<br><br></u></strong></h3>
-                                        <p><img src="./img/hcbae/1c9a9a5e-d72b-41cf-9cdf-6d8dcfa7fb08.png"></p>
-                                        <p>&nbsp;</p>
-                                        <h2>본 프로젝트를 함께하는 브랜드</h2>
-                                        <h3>브랜딩 디자인 콜라보레이션<br><u>노웨이브 레코드는</u></h3>
-                                        <p><img src="./img/hcbae/db64bc99-0550-4613-ac7f-2ab0269eafb1.png"><img src="./img/hcbae/fecc4f1b-bb8f-4a1e-a960-0d6cf3275f03.png"></p>
-                                        <p>다양한 플레이리스트를 제안하는 레코드샵입니다. 주류 음악 플랫폼에 대안적인 시도로서 오프라인 매장과 온라인 구독서비스를 통해 선별된 레코드를 소개하고 있습니다. 또한 공식 웹사이트를 통해 우리에게 영감을 주는 크리에이터들의 플레이리스트를 소개해 드리고 있습니다. 우리의 선곡이 많은 분들에게 이어져 차트 랭킹이나 트렌드를 넘어 오랜 시간 사랑받을 수 있는 음악이 이 도시에 울려퍼지면 좋겠습니다.</p>
-                                        <p>&nbsp;</p>
-                                        <h2>여러분의 소중한 투자금은</h2>
-                                        <ul>
-                                            <li>'MCMP Plated Vol.1' LP 음원 수급</li>
-                                            <li>'MCMP Plated Vol.1' LP 제작</li>
-                                            <li>'MCMP Plated Vol.1' LP 인쇄물 제작</li>
-                                            <li>각종 굿즈 및 턴테이블 키트 제작</li>
-                                            <li>브랜드 콜라보레이션</li>
-                                            <li>배송</li>
-                                            <li>'제 1회 LP 레시피 페스타 "소풍"' 운영</li>
-                                        </ul>
-                                        <p>에 사용될 예정입니다. 아직 공개되지 않은 선물의 구체적인 디자인 시안 및 페스타 관련 소식은 커뮤니티를 통해 지속적으로 공유드리겠습니다:)</p>
-                                        <p>&nbsp;</p>
-                                        <h2>앞으로의 진행 일정은<br><br></h2>
-                                        <p><img src="./img/hcbae/ea1d50c2-a91d-431c-ac1c-8461e075dd30.png"></p>
-                                        <p>펀딩 성공 후 9월 11일까지 순차 배송을 진행할 예정입니다.</p>
-                                        <p><br>그 외 궁금한 점이나 물어볼 것이 있으시다면 '창작자에게 문의하기'로 연락해주세요!</p>
-                                        <p><br><a href="http://mcmp.co.kr/" target="_blank" rel="noopener">마장뮤직앤픽처스 홈페이지 바로가기</a><br><a href="https://www.facebook.com/machangmusic/" target="_blank" rel="noopener">마장뮤직앤픽처스 페이스북 바로가기</a><br><a href="https://www.instagram.com/machang_music_pictures/" target="_blank" rel="noopener">마장뮤직앤픽처스 인스타그램 바로가기</a></p>
+                                       <img src="${one_goods.goods_detail_pic}">
                                     </div>
                                 </div>
                             </div>

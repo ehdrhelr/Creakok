@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 public class Member {
 	private String member_email;
 	private String member_name;
-	private long member_category;
-	private long member_origin;
+	private long member_category_code;
+	private long member_origin_code;
 	private String member_password;
 	
 	private String member_mylike;
@@ -24,5 +24,6 @@ public class Member {
 	
 	private String member_profile_pic;
 	private Date member_joindate;
+	private long member_index;
 	
 }

@@ -53,6 +53,8 @@
 
 	<context:component-scan base-package="creakok.com.mapper"/>
 	<mybatis-spring:scan base-package="creakok.com.mapper"/>
-	
+  
+  <bean id="naverLoginBO" class="creakok.com.naver.NaverLoginBO" />
+  
 </beans>
 

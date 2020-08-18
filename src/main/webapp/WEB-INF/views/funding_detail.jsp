@@ -584,9 +584,9 @@
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
                             <a href="shop-details.html">
-                                <p>Cactus Flower</p>
+                                <p>${funding_related.funding_subject}</p>
                             </a>
-                            <h6>$10.99</h6>
+                            <h6>${funding_related.creator_name}</h6>
                         </div>
                     </div>
                 </div>
