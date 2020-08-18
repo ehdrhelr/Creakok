@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Funding;
+import creakok.com.domain.Funding_Payinfo;
 import creakok.com.service.PayService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -38,14 +39,15 @@ public class PayController {
 	@RequestMapping("funding_pay.do")
 	public ModelAndView pay(HttpServletRequest request, HttpSession session) {
 		String funding_indexStr = request.getParameter("funding_index");
-		String name = request.getParameter("name");
-		//String email_address = request.getParameter("email_address");
-		//String email = request.getParameter("email");
-		String phone_number = request.getParameter("phone_number");
-		String amountPayresult = request.getParameter("amountPayResult");
-		System.out.println("@@@@@@@@@@@"+amountPayresult);
-		//log.info(funding_indexStr);
-		return new ModelAndView("/funding_detail_pay", "", null);
+		String payinfo_name = request.getParameter("Payinfo_name");
+		String payinfo_email = request.getParameter("Payinfo_email");
+		String payinfo_phonenumber = request.getParameter("Payinfo_phonenumber");
+		String payinfo_amountPayresult = request.getParameter("amountPaygot");
+		String fundingname = request.getParameter("fundingName");
+		
+		Funding_Payinfo funding_payinfo = new Funding_Payinfo(funding_indexStr, payinfo_name, payinfo_email, payinfo_phonenumber, payinfo_amountPayresult, fundingname);
+		log.info("!!!!!!!!!!!!!!!!!!!"+funding_payinfo);
+		return new ModelAndView("funding_detail_pay", "funding_payinfo", funding_payinfo);
 	}
 	
 }
