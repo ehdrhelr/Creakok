@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+    
     <!-- Title -->
     <title>CREAKOK</title>
 
@@ -19,9 +19,13 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/hcbae_css.css">
-
+    
+    <!-- Wadiz Css -->
+    <link rel="stylesheet" href="css/wadiz_css1.css">
+    <link rel="stylesheet" href="css/wadiz_css2.css">
+    <link rel="stylesheet" href="css/wadiz_css3.css">
+    <link rel="stylesheet" href="css/wadiz_css4.css">
+    
     <!-- BOTO TEST -->
     <meta name="description" content="Boto Photo Studio HTML Template">
     <meta name="keywords" content="photo, html">
@@ -35,6 +39,12 @@
   
     <!-- Main Stylesheets -->
     <link rel="stylesheet" href="css/css_boto/style.css"/>
+
+    <!-- hcbae tumblbug_part Stylesheets -->
+    <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
+
+    <!-- hcbae Stylesheets -->
+    <link rel="stylesheet" href="css/hcbae_css.css">
 
 </head>
 
@@ -249,7 +259,7 @@
                         <div id="member-name-area" class="collapse">
                           <div class="hcbae-member-modify-input">
                             <label>새로운 이름을 입력해주세요.</label><br>
-                            <input type="text" id="nowName" placeholder="새로운 이름" onKeyUp="checkName(this);">
+                            <input type="text" class="hcbae-mypage-input-box-border" id="nowName" placeholder="새로운 이름" onKeyUp="checkName(this);">
                             <label id="checkName_Id"></label>
                           </div>
                           <span>
@@ -288,15 +298,15 @@
 
                           <div class="hcbae-member-modify-input">
                             <label>현재 비밀번호를 입력해주세요.</label><br>
-                            <input type="password" id="nowPassword" placeholder="현재 비밀번호" onKeyUp="checkPassword('${member.member_email}');">
+                            <input type="password" class="hcbae-mypage-input-box-border" id="nowPassword" placeholder="현재 비밀번호" onKeyUp="checkPassword('${member.member_email}');">
                             <label id="checkPasswordResult"></label>
                           </div>
                           
                           <div class="hcbae-member-modify-input">
                             <label>새로운 비밀번호를 입력해주세요.</label><br>
-                            <input type="password" id="newPassword" placeholder="새로운 비밀번호" >
+                            <input type="password" class="hcbae-mypage-input-box-border" id="newPassword" placeholder="새로운 비밀번호" >
                             <br><br>
-                            <input type="password" id="newPasswordAgain" placeholder="새로운 비밀번호 확인" onKeyUp="checkNewPassword()">
+                            <input type="password" class="hcbae-mypage-input-box-border" id="newPasswordAgain" placeholder="새로운 비밀번호 확인" onKeyUp="checkNewPassword()">
                             <label id="checkNewPasswordResult"></label>
                           </div>
                           
@@ -330,7 +340,7 @@
                             <c:if test="${member.member_origin_code==Member_origin.SIGNUP_NORMAL}">
                               <div class="hcbae-member-modify-input">
                                 <label>현재 비밀번호를 입력해주세요.</label><br>
-                                <input type="password" id="secessionPassword" placeholder="현재 비밀번호" onKeyUp="checkSecession('${member.member_email}')">
+                                <input type="password" class="hcbae-mypage-input-box-border" id="secessionPassword" placeholder="현재 비밀번호" onKeyUp="checkSecession('${member.member_email}')">
                                 <label id="checkSecessionResult"></label>
                               </div>
                               
