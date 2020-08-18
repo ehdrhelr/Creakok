@@ -15,35 +15,33 @@
     <title>CREAKOK GOODS</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/creakok.ico">
+    <link rel="icon" href="img/core-img/favicon.ico">
 
-    <!-- Core Stylesheet -->
+     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/hcbae_css.css">
+    
 
     <!-- BOTO TEST -->
     <meta name="description" content="Boto Photo Studio HTML Template">
     <meta name="keywords" content="photo, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+    <!--   <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/> -->
     <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
     <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
     <link rel="stylesheet" href="css/css_boto/fresco.css"/>
     <link rel="stylesheet" href="css/css_boto/slick.css"/>
-
+    
     <!-- Main Stylesheets -->
     <link rel="stylesheet" href="css/css_boto/style.css"/>
     
-    
-    <style type="text/css">
-.clickable {cursor: pointer;}
-.hover {text-decoration: underline;}
-.odd{ background: #FFC;}
-.even{ background: #FF9;}
-.active{ width:10px; height:10px; background:#f60; color:white;}
-</style>
+    <!-- hcbae Stylesheets -->
+    <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
+    <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
+    <link rel="stylesheet" href="css/hcbae_css.css">
+
+    <link rel="stylesheet" href="css/only_goods_jsp_css.css">
 </head>
 
 <body>
@@ -72,7 +70,7 @@
                             <!-- Top Header Content -->
                             <div class="top-header-meta d-flex">
                                 <div >
-                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;background-color:white;">프로젝트 만들기</button>
+                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;">프로젝트 만들기</button>
                                 </div>
                                 <!-- Language Dropdown -->
                                 <div class="language-dropdown">
@@ -88,14 +86,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Login -->
-                                <div class="login">
-                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
-                                </div>
-                                <!-- Cart -->
-                                <div class="cart">
-                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
-                                </div>
+                                    
+                                <c:if test="${empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
+                                  <!-- Sign up -->
+                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
+                                </c:if>
+                                <c:if test="${!empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
+                                  
+                                  <!-- My Page -->
+                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
+                                  
+                                  <!-- Cart -->
+                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
+                                </c:if> 
+                                
+                                
                             </div>
                         </div>
                     </div>

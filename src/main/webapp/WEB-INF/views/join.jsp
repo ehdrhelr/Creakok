@@ -19,12 +19,8 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <!-- Wadiz Css -->
-    <link rel="stylesheet" href="css/wadiz_css1.css">
-    <link rel="stylesheet" href="css/wadiz_css2.css">
-    <link rel="stylesheet" href="css/wadiz_css3.css">
-    <link rel="stylesheet" href="css/wadiz_css4.css">
     
     <!-- BOTO TEST -->
     <meta name="description" content="Boto Photo Studio HTML Template">
@@ -40,11 +36,11 @@
     <!-- Main Stylesheets -->
     <link rel="stylesheet" href="css/css_boto/style.css"/>
 
-    <!-- hcbae tumblbug_part Stylesheets -->
-    <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
-
     <!-- hcbae Stylesheets -->
+    <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
+    <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
+  
 
 </head>
 

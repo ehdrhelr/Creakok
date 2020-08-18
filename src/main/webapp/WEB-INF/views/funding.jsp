@@ -20,17 +20,8 @@
      <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/wadiz_css1.css">
-     <link rel="stylesheet" href="css/wadiz_css2.css">
-    <link rel="stylesheet" href="css/wadiz_css3.css">
-    <link rel="stylesheet" href="css/wadiz_css4.css">
-    <style>
-    .nav-pills .nav-link.active{
-    color: #fff;
-    background-color: #2da498;
-}
     
-    </style>
+
       <!-- BOTO TEST -->
   <meta name="description" content="Boto Photo Studio HTML Template">
   <meta name="keywords" content="photo, html">
@@ -45,6 +36,12 @@
   <!-- Main Stylesheets -->
   <link rel="stylesheet" href="css/css_boto/style.css"/>
     
+    <!-- hcbae Stylesheets -->
+    <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
+    <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
+    <link rel="stylesheet" href="css/hcbae_css.css">
+
+
 </head>
 
 <body>
@@ -89,14 +86,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Login -->
-                                <div class="login">
-                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
-                                </div>
-                                <!-- Cart -->
-                                <div class="cart">
-                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
-                                </div>
+                                    
+                                <c:if test="${empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
+                                  <!-- Sign up -->
+                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
+                                </c:if>
+                                <c:if test="${!empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
+                                  
+                                  <!-- My Page -->
+                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
+                                  
+                                  <!-- Cart -->
+                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
+                                </c:if> 
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -502,7 +510,7 @@
     <!-- Popper js -->
     <script src="js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap js -->
-   
+    <script src="js/bootstrap/bootstrap.min.js"></script>
     <!-- All Plugins js -->
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->

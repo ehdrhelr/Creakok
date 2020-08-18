@@ -1,0 +1,29 @@
+@charset "UTF-8";
+body {
+    overflow-y: scroll;
+    line-height: 1.5em;
+    letter-spacing: -.02em !important;
+    color: rgba(0, 0, 0, .84);
+    font-size: 15px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+button {
+    background: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+a{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
+}
