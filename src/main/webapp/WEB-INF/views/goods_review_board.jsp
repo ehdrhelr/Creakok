@@ -587,7 +587,7 @@
             <nav class="ContentsNavigation__ProjectContentsNavigation-mwsx7i-1 bmUMcp">
                 <div class="ContentsNavigation__ProjectContentsNavigationInner-mwsx7i-2 OvVKa">
                     <div class="ContentsNavigation__NavLeft-mwsx7i-3 buZwam">
-                    <a class="NavItem-mwsx7i-0 cjInbB"  href="goods_detail.do?goods_index=${one_goods.goods_index}#fix_point">상품상세정보</a>
+                    <a class="NavItem-mwsx7i-0 cjInbB"  href="goods_detail.do?goods_index=${review.goods_index}#fix_point">상품상세정보</a>
                     <a aria-current="page" class="ContentsNavigation__ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="goods_review.do">리뷰<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(${review_size})</span></a>
                     <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="#">Q&A</a></div>
                 </div>
@@ -614,20 +614,22 @@
     <div class="container">
      
             <div class="r_list" style="width:600px;font-size:10pt;">
-                <h3>REVIEW(${review_size})</h3>
+                <h3>REVIEW(${review.review_list.size()})</h3>
                  <p style="font-size:12pt;color:#666666;margin-bottom:10px;">THANK YOU FOR POSTING REVIEW.</p>
                 <table style="">
                     <colgroup>
                         <col width="7%">
-                        <col width="50%">
+                        <col width="5%">
+                        <col width="40%">
                         <col width="20%">
                         <col width="13%">
-                        <col width="10%">
+                        <col width="7%">
                     </colgroup>
                     <thead>
                         <tr>
                             <th style="padding:1.5px !important;">No</th>
                     <!--    <th>EXHIBITION</th> -->
+                            <th style="padding:1.5px !important;">별점</th>
                             <th style="padding:1.5px !important;">제목</th>
                             <th style="padding:1.5px !important;">작성자</th>
                             <th style="padding:1.5px !important;">날짜</th>
@@ -637,9 +639,10 @@
                     <tbody>
      
                  
-                         <c:forEach items="${review_list}" var="review_list2">
+                         <c:forEach items="${review.review_list}" var="review_list2">
                              <tr>
                                   <td style="padding:1.5px !important;">${review_list2.goods_review_index}</td>
+                                  <td style="padding:1.5px !important;">${review_list2.goods_review_rating}</td>
                                   <td style="padding:1.5px !important;"><a href="#" style="color:black;">${review_list2.goods_review_subject}</a></td>
                                   <td style="padding:1.5px !important;">${review_list2.member_name}</td>
                                   <td style="padding:1.5px !important;">${review_list2.goods_review_date}</td>
@@ -690,11 +693,11 @@
         <tr>
           <td colspan="3" align="center">
             
-            <c:if test="${empty listResult.board_searchName}">
-            <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                    <a href="board_page?board_cp=${i}#fix_point">
+
+            <c:forEach begin="1" end="${review.review_totalPageCount}" var="i">
+                    <a href="goods_review.do?review_cp=${i}&goods_index=${review.goods_index}#fix_point" style="color:black">
                 <c:choose> 
-                <c:when test="${i==listResult.currentPage}">
+                <c:when test="${i==review.review_cp}">
                     <strong>${i}</strong>
                 </c:when>
                 <c:otherwise>
@@ -705,23 +708,8 @@
             
             &nbsp;
             </c:forEach>
-            </c:if>
-            <c:if test="${!empty listResult.board_searchName}"> 
-              <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                      <a href="board_search?board_cp=${i}#fix_point">
-                  <c:choose> 
-                  <c:when test="${i==listResult.currentPage}">
-                      <strong>${i}</strong>
-                  </c:when>
-                  <c:otherwise>
-                      ${i}
-                  </c:otherwise>
-                  </c:choose>
-              </a>
-              
-              &nbsp;
-              </c:forEach>
-            </c:if>
+     
+            
           
           </td>
          

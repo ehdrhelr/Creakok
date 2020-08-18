@@ -18,6 +18,7 @@ import creakok.com.service.GoodsReviewService;
 import creakok.com.service.GoodsService;
 import creakok.com.service.Goods_CategoryService;
 import creakok.com.vo.GoodsVo;
+import creakok.com.vo.Goods_ReviewVo;
 import creakok.com.vo.PayInfoVo;
 import lombok.extern.log4j.Log4j;
 
@@ -247,23 +248,66 @@ public class GoodsController {
 		return mv;
 	}
 	@RequestMapping("goods_review.do")
-	public ModelAndView goods_review(HttpServletRequest request) {
+	public String goods_review(HttpServletRequest request, HttpSession session) {
+		String review_cp = request.getParameter("review_cp");
+		String review_ps = request.getParameter("review_ps");
 		String goods_indexStr = request.getParameter("goods_index");
+		
+		//log.info("#######################review_cp: "+review_cp);
+		//log.info("#######################review_ps: "+review_ps);
+		//log.info("#######################goods_indexStr: "+goods_indexStr);
+		
 		long goods_index = Long.parseLong(goods_indexStr);
 		
-		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
-		List<Goods_Review> review_list = goods_reviewservice.goodsReview_list(goods_index);
-		long review_size = review_list.size();
+
+		Goods_ReviewVo goods_review_vo = (Goods_ReviewVo)session.getAttribute("goods_review");
+		//(1) cp 
+		int cp = 1;
+		if(review_cp == null) {
+			Object cpObj = goods_review_vo.getReview_cp();
+			if(cpObj != null) {
+				cp = (Integer)cpObj;
+			} else {
+				cp = 1;
+			}
+		}else {
+			review_cp = review_cp.trim();
+			cp = Integer.parseInt(review_cp);
+		}
+	//	session.setAttribute("cp", cp);
+		
+		//(2) ps 
+		int ps = 5;		
+		
+		//Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
+		//List<Goods_Review> review_list = goods_reviewservice.goodsReview_list(goods_index);
+		//long review_size = review_list.size();
 		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index: "+goods_index);
-		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ review_list: "+review_list);
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ review_list: "+review_list);
+
+		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index: "+goods_index);
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ one_goods: "+one_goods);
 		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("goods_review_board");
-		mv.addObject("one_goods", one_goods);	
-		mv.addObject("review_list", review_list);	
-		mv.addObject("review_size", review_size);
+		session.setAttribute("one_goods", one_goods);
 		
-		return mv;
+		
+		Goods_ReviewVo review_list = goods_reviewservice.selectPerPageReview(cp, ps, goods_index);
+		review_list.setReview_cp(cp);
+		review_list.setReview_ps(ps);
+		review_list.setGoods_index(goods_index);
+		
+		if(review_list.getReview_list().size() == 0) {
+			if(cp > 1) {	
+				int cp2 = cp-1;
+				review_list.setReview_cp(cp2);
+			}
+		}   
+		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ controller review_list: "+review_list);
+		session.setAttribute("review", review_list);
+		
+		
+		return "goods_review_board";
 	}
 	@RequestMapping("goods_review_write.do")
 	public String goods_review_write() {
