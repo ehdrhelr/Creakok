@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
+    <script src="js/hcbae_js.js"></script>
 
 </head>
 
@@ -394,9 +395,8 @@
     <!-- Active js -->
     <script src="js/active.js"></script>
     
-    <script src="js/hcbae_js.js"></script>
     
-    <script type="text/javascript"> <!--hcbae javascript function-->
+    <script type="text/javascript">
     </script>
 </body>
 
