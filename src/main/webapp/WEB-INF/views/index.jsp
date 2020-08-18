@@ -117,7 +117,7 @@
                             <!-- Top Header Content -->
                             <div class="top-header-meta d-flex">
                                 <div >
-                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;">프로젝트 만들기</button>
+                                    <a href="project.do" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:5px 5px;margin-right:15px;">프로젝트 만들기</a>
                                 </div>
                                 <!-- Language Dropdown -->
                                 <div class="language-dropdown">

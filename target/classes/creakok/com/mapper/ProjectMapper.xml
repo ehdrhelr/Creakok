@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="creakok.com.mapper.ProjectMapper">
+	<insert id="writeFundingProject" parameterType="Funding" >
+      insert into FUNDING values(
+     FUNDING_INDEX.nextval, #{creator_name},
+     #{funding_subject},
+     ${funding_category_code},
+     #{funding_repre_pic},
+    #{funding_detail_pic},
+     ${funding_goal},
+     0,
+     SYSDATE,
+   	 SYSDATE,
+     0,
+     0,
+     null,
+     null)
+    </insert>
+   
+</mapper>
