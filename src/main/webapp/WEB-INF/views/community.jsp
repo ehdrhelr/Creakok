@@ -108,9 +108,9 @@
 	
 	 <script language="javascript">
 		function f(select){
-			var filterBy = select.value;
+			var board_filterBy = select.value;
 			location.href="board_page?board_filterBy="+board_filterBy+"#fix_point";
-		}  
+		} 
 	</script>
 </head>
 
@@ -545,7 +545,7 @@
 							</c:choose>
 						</select>
 					</ul>
-					<form action="board_search" name="check_into"
+					<form action="board_search#fix_point" name="check_into"
 						method="get">  
 						<ul class="clearfix">
 							<li><span>분류 : </span> 

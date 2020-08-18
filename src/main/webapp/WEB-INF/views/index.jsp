@@ -187,8 +187,12 @@
                                 <ul>
                                    <li><a href="funding_list.do">FUNDING</a></li>
                                    <li><a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300">GOODS</a></li>
-                                    <li><a href="#">COMMUNITY</a>
+                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
+                                        	<c:forEach items="${creatorList}" var="creator">
+                                            <li><a href="board_page">${creator.creator_name}</a></li>
+                                            </c:forEach>
+                                  <!--                                             <ul class="dropdown">
                                             <li><a href="index.html" >Home</a></li>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="shop.html">Shop</a>
@@ -212,9 +216,12 @@
                                                 </ul>
                                             </li>
                                             <li><a href="contact.html">Contact</a></li>
-                                        </ul>
+                                            
+                                            
+                                            -->
+                                        </ul> 
                                     </li>
-                                    <li><a href="about.jsp">ABOUT</a></li>
+                                                                        <li><a href="about.jsp">ABOUT</a></li>
                                    <!--   <li><a href="portfolio.html">Portfolio</a></li>
                                     <li><a href="contact.html">Contact</a></li>  -->
                                 </ul>  

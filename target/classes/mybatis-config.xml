@@ -25,7 +25,8 @@
    	   <typeAlias alias="Goods_Review" type="creakok.com.domain.Goods_Review"/>  
    	   <typeAlias alias="Goods" type="creakok.com.domain.Goods"/>  
    	   <typeAlias alias="GoodsVo" type="creakok.com.vo.GoodsVo"/>  
-   	   <typeAlias alias="Funding_Payinfo" type="creakok.com.domain.Funding_Payinfo"/>  
+   	   
+   	   <typeAlias alias="PayInfoVo" type="creakok.com.vo.PayInfoVo"/>  
    	   <!-- Address라고만 쓰면 jh.md.domain.Address에 접근하게 alias를 설정해준다! -->
    </typeAliases>
    <mappers>
