@@ -12,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Goods;
 import creakok.com.domain.Goods_Category;
+import creakok.com.domain.Goods_Review;
 import creakok.com.service.GoodsDetailService;
+import creakok.com.service.GoodsReviewService;
 import creakok.com.service.GoodsService;
 import creakok.com.service.Goods_CategoryService;
 import creakok.com.vo.GoodsVo;
@@ -30,6 +32,9 @@ public class GoodsController {
 	
 	@Resource(name="GoodsDetailService")
 	private GoodsDetailService goods_detailService;
+
+	@Resource(name="GoodsReviewService")
+	private GoodsReviewService goods_reviewservice;
 	
 	@RequestMapping("goods_list.do")
 	public String list(HttpServletRequest request, HttpSession session) {
@@ -241,4 +246,27 @@ public class GoodsController {
 		
 		return mv;
 	}
+	@RequestMapping("goods_review.do")
+	public ModelAndView goods_review(HttpServletRequest request) {
+		String goods_indexStr = request.getParameter("goods_index");
+		long goods_index = Long.parseLong(goods_indexStr);
+		
+		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
+		List<Goods_Review> review_list = goods_reviewservice.goodsReview_list(goods_index);
+		long review_size = review_list.size();
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index: "+goods_index);
+		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ review_list: "+review_list);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("goods_review_board");
+		mv.addObject("one_goods", one_goods);	
+		mv.addObject("review_list", review_list);	
+		mv.addObject("review_size", review_size);
+		
+		return mv;
+	}
+	@RequestMapping("goods_review_write.do")
+	public String goods_review_write() {
+		return "goods_review_write";
+	}	
 }

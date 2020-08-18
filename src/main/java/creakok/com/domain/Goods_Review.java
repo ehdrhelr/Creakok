@@ -18,4 +18,7 @@ public class Goods_Review {
 	private String goods_review_pic;
 	private String goods_review_content;
 	private String member_profile_pic;
+	private String goods_review_subject;
+	private long goods_review_view;
 }
+

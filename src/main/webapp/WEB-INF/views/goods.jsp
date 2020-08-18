@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="css/hcbae_css.css">
 
     <!-- BOTO TEST -->
-	<meta name="description" content="Boto Photo Studio HTML Template">
-	<meta name="keywords" content="photo, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
-	<link rel="stylesheet" href="css/css_boto/slick.css"/>
+    <meta name="description" content="Boto Photo Studio HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/fresco.css"/>
+    <link rel="stylesheet" href="css/css_boto/slick.css"/>
 
-	<!-- Main Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/style.css"/>
-	
-	
-	<style type="text/css">
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/style.css"/>
+    
+    
+    <style type="text/css">
 .clickable {cursor: pointer;}
 .hover {text-decoration: underline;}
 .odd{ background: #FFC;}
@@ -129,8 +129,8 @@
                             <!-- Navbar Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="funding_list.do">FUNDING</a></li>
-                                   <li><a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300">GOODS</a></li>
+                                    <li><a href="funding">FUNDING</a></li>
+                                    <li><a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html" >Home</a></li>
@@ -201,7 +201,7 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i>HOME</li>
+                            <li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i> Home</li>
                             <li class="breadcrumb-item" aria-current="page"><span style="font-weight:600; color:black;">GOODS</span></li>
                         </ol>
                     </nav>
@@ -262,23 +262,23 @@
                           
                             
                                 <select id="psId" name="ps" class="custom-select widget-title" onchange="getPs();">
-                                	<c:choose>
-                                		<c:when test="${goods.ps == 3}">
-		                                    <option value="3" selected>3개씩 보기</option>
-		                                  	<option value="6">6개씩 보기</option>
-		                                  	<option value="9">9개씩 보기</option>                             		
-                                		</c:when>
-                                		<c:when test="${goods.ps == 6}">
-                                			<option value="3">3개씩 보기</option>	                                  
-		                                  	<option value="6" selected>6개씩 보기</option>
-		                                  	<option value="9">9개씩 보기</option>
-                                		</c:when>                          		                      		
-                                		<c:when test="${goods.ps == 9}">
-                                			<option value="3">3개씩 보기</option>	                                  
-		                                  	<option value="6">6개씩 보기</option>
-		                                  	<option value="9" selected>9개씩 보기</option>
-                                		</c:when>                                   		
-                                	</c:choose>
+                                    <c:choose>
+                                        <c:when test="${goods.ps == 3}">
+                                            <option value="3" selected>3개씩 보기</option>
+                                            <option value="6">6개씩 보기</option>
+                                            <option value="9">9개씩 보기</option>                                   
+                                        </c:when>
+                                        <c:when test="${goods.ps == 6}">
+                                            <option value="3">3개씩 보기</option>                                     
+                                            <option value="6" selected>6개씩 보기</option>
+                                            <option value="9">9개씩 보기</option>
+                                        </c:when>                                                           
+                                        <c:when test="${goods.ps == 9}">
+                                            <option value="3">3개씩 보기</option>                                     
+                                            <option value="6">6개씩 보기</option>
+                                            <option value="9" selected>9개씩 보기</option>
+                                        </c:when>                                           
+                                    </c:choose>
                                 </select>
                             </form>
                         </div>
@@ -314,71 +314,76 @@
                             <h4 class="widget-title">카테고리</h4>
                            
                                 <!-- Single Checkbox -->
-                              	
-                              	 <div class="widget-desc">
- 	                              	 <c:forEach items="${gCategory}" var="gCategory">
-	                              	   <div class="custom-checkbox d-flex align-items-center mb-2" class="custom-control-input" id="customCheck">
-		                                    <input type="checkbox" value="${gCategory.goods_category_code}" id="category" name="category" onchange="getGCode();" style="margin-right:5px;">${gCategory.goods_category_name}
-	                              		</div>
-	                               	</c:forEach> 
-	                               	
-
-	                             
-                              	 </div> 
+                                
+                                 <div class="widget-desc">
+                                     <c:forEach items="${gCategory}" var="gCategory">
+                                    
+                                            <c:if test="${gCategory.goods_category_code == goods.GCode}">
+                                                <div class="custom-checkbox d-flex align-items-center mb-2" class="custom-control-input" id="customCheck">
+                                                    <input type="checkbox" value="${gCategory.goods_category_code}" id="category" name="category" onchange="getGCode(this);" style="margin-right:5px;" checked>${gCategory.goods_category_name}
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${gCategory.goods_category_code != goods.GCode}">
+                                                <div class="custom-checkbox d-flex align-items-center mb-2" class="custom-control-input" id="customCheck">
+                                                    <input type="checkbox" value="${gCategory.goods_category_code}" id="category" name="category" onchange="getGCode(this);" style="margin-right:5px;">${gCategory.goods_category_name}
+                                                </div>
+                                            </c:if>
+                                    </c:forEach> 
+                                 </div> 
                         </div>
-	
-	<script language="javascript">
-	 function getFilterBy(){
-		   	var fbId = document.getElementById("fbId");
-		   	var filterBy = fbId.options[fbId.selectedIndex].value;		
-		   	location.href="goods_list.do?filterBy="+filterBy;
-	 }
-   	 function getPs(){
- 	   	var psId = document.getElementById("psId");
-	   	var ps = psId.options[psId.selectedIndex].value;
-	   	//location.href="goods_list.do?ps="+ps+"&cp="+cp;
-   	 	
-   	 /*	console.log("ps: "+ps);
-   		console.log("filterBy: "+filterBy);
-   		console.log("gCode: "+gCode);
-   		console.log("cp: "+cp); */
-   		
-   		location.href="goods_list.do?ps="+ps;
-   	 	
-   	 }
-   	 function getCp(){
- 	   	var cp  = 1;
-	   	 $("#link22 a").click(function(e) {
-	   		cp = $(this).text();
-		   	e.preventDefault();
-		}); 	
-	   	location.href="goods_list.do?cp="+cp;
-   	 }
-   	 
-   	 
-   	 
-   	 function getGCode(){
-    		$('input[type="checkbox"][name="category"]').click(function(){
-    	        //클릭 이벤트 발생한 요소가 체크 상태인 경우
-    	        if ($(this).prop('checked')) {
-    	            //체크박스 그룹의 요소 전체를 체크 해제후 클릭한 요소 체크 상태지정
-    	           
-    	            $('input[type="checkbox"][name="category"]').prop('checked', false);
-    	            $(this).prop('checked', true);
-    	        	
-    	        }
-    	    });
-    	
-    	var gCode = null;
+    
+    
+    
+    <script language="javascript">
+     function getFilterBy(){
+            var fbId = document.getElementById("fbId");
+            var filterBy = fbId.options[fbId.selectedIndex].value;      
+            location.href="goods_list.do?filterBy="+filterBy;
+     }
+     function getPs(){
+        var psId = document.getElementById("psId");
+        var ps = psId.options[psId.selectedIndex].value;
+
+        //location.href="goods_list.do?ps="+ps+"&cp="+cp;
+        
+     /* console.log("ps: "+ps);
+        console.log("filterBy: "+filterBy);
+        console.log("gCode: "+gCode);
+        console.log("cp: "+cp); */
+        
+        location.href="goods_list.do?ps="+ps;
+        
+     }
+     function getCp(){
+        var cp  = 1;
+         $("#link22 a").click(function(e) {
+            cp = $(this).text();
+            e.preventDefault();
+        });     
+        location.href="goods_list.do?cp="+cp;
+     }
+     
+    
+     function getGCode(chk){
+         var obj = document.getElementsByName("category");
+         for(var i=0; i<obj.length; i++){
+             if(obj[i] != chk){
+                 obj[i].checked = false;
+             }
+         }
+         var gCode;
+     
          $('#category:checked').each(function() {
-        	gCode = $(this).val();
-         //	alert("gCode:"+gCode);
-        	$(this).css('background-color', '#666666');
-      	 });
+            gCode = $(this).val();
+            //alert("gCode: "+gCode);
+            console.log("hcbae:"+gCode);
+        });
+
+         
          location.href="goods_list.do?gCode="+gCode;
-    	 }
-	</script>
-	
+    }
+    </script>
+    
                         <!-- Shop Widget -->
                         <div class="shop-widget best-seller mb-50">
                             <h4 class="widget-title">Best Seller</h4>
@@ -450,44 +455,44 @@
                     <div class="shop-products-area">
                         <div class="row">
                         
-                      	  <c:if test="${empty goods.list}">
-                       	 	<p style="text-align:center;width:100%;"> 현재 판매중인 굿즈가 없습니다.</p>
-             			  </c:if>
-             			  
-             			  
-							<c:forEach var="goods" items="${goods.list}">		
-	                            <!-- Single Product Area -->
-	                            <div class="col-12 col-sm-6 col-lg-4">
-	                                <div class="single-product-area mb-50">
-	                                    <!-- Product Image -->
-	                                    <div class="product-img">
-	                                        <a href="goods_detail.do?goods_index=${goods.goods_index}"><img src="${goods.goods_repre_pic}" alt=""></a>
-	                                    
-	                                        <!-- Product Tag
-	                                        <div class="product-tag">
-	                                            <a href="#">Hot</a>
-	                                        </div> -->
-	                                        <div class="product-meta d-flex">
-	                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-	                                            <a href="cart.html" class="add-to-cart-btn">장바구니에 담기</a>
-	                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-	                                        </div>
-	                                     </div>   
-		                                    <!-- Product Info -->
-		                                    <div class="product-info mt-15">
-		                                        <p style="margin-bottom:5px;">${goods.creator_name}</p>
-		                                        <a href="goods_detail.do?goods_index=${goods.goods_index}">
-		                                            <p style="color:#545454;font-weight:500;">${goods.goods_name}</p>
-		                                        </a>
-		                                        <h6><strong>${goods.goods_price}</strong> 원</h6>
-		                                    </div>	                                    
-	                                    </div>                         
-	                                </div>
+                          <c:if test="${empty goods.list}">
+                            <p style="text-align:center;width:100%;"> 현재 판매중인 굿즈가 없습니다.</p>
+                          </c:if>
+                          
+                          
+                            <c:forEach var="goods" items="${goods.list}" >      
+                                <!-- Single Product Area -->
+                                <div class="col-12 col-sm-6 col-lg-4">
+                                    <div class="single-product-area mb-50">
+                                        <!-- Product Image -->
+                                        <div class="product-img">
+                                            <a href="goods_detail.do?goods_index=${goods.goods_index}"><img src="${goods.goods_repre_pic}" alt=""></a>
+                                        
+                                            <!-- Product Tag
+                                            <div class="product-tag">
+                                                <a href="#">Hot</a>
+                                            </div> -->
+                                            <div class="product-meta d-flex">
+                                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+                                                <a href="cart.html" class="add-to-cart-btn">장바구니에 담기</a>
+                                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                                            </div>
+                                         </div>   
+                                            <!-- Product Info -->
+                                            <div class="product-info mt-15">
+                                                <p style="margin-bottom:5px;">${goods.creator_name}</p>
+                                                <a href="goods_detail.do?goods_index=${goods.goods_index}">
+                                                    <p style="color:#545454;font-weight:500;">${goods.goods_name}</p>
+                                                </a>
+                                                <h6><strong>${goods.goods_price}</strong> 원</h6>
+                                            </div>                                      
+                                        </div>                         
+                                    </div>
 
                             </c:forEach>
                             
                             
-						</div>
+                        </div>
 
                         </div>
 
@@ -495,24 +500,24 @@
 
                         <nav aria-label="Page navigation" id="link22">
                             <ul class="pagination" >
-                            	<c:forEach begin="1" end="${goods.totalPageCount}" var="i">
-                       		 		<c:choose>
-                       		 			<c:when test="${i==goods.cp}">
-                       		 			<li class="page-item">
-                       		 			<a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}" style="border-radius:0;" onclick="getCp();">
-                       		 				<span style="color:black">${i}</span>
-                       		 				</a>
-                       		 				</li>
-                       		 			</c:when>
-                       		 			<c:otherwise>
-                       		 			<li class="page-item">
-                       		 			<a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}" style="border-radius:0;" onclick="getCp();">
-                       		 				<span>${i}</span>
-                       		 				</a>
-                       		 				</li>
-                       		 			</c:otherwise>
-                       		 		</c:choose>
-                            	</c:forEach>
+                                <c:forEach begin="1" end="${goods.totalPageCount}" var="i">
+                                    <c:choose>
+                                        <c:when test="${i==goods.cp}">
+                                        <li class="page-item">
+                                        <a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}" style="border-radius:0;" onclick="getCp();">
+                                            <span style="color:black">${i}</span>
+                                            </a>
+                                            </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                        <li class="page-item">
+                                        <a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}" style="border-radius:0;" onclick="getCp();">
+                                            <span>${i}</span>
+                                            </a>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
                               <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>  
                             </ul>
                         </nav>
