@@ -33,7 +33,10 @@ public interface CreatorBoardMapper {
 	List<Board> search(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, 
 			@Param("board_filterBy") String board_filterBy, @Param("board_c_code") String c_code, 
 			@Param("board_searchName")String board_searchName);
+	int countBySearch(@Param("board_c_code") String c_code, 
+			@Param("board_searchName")String board_searchName);
 	// ��� ��ȸ
 	List<Comment> getComment(long board_index);
+	void writeComment(Comment comment);
 
 }

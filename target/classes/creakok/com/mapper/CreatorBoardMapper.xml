@@ -62,13 +62,24 @@
 	<!-- 검색 -->
 	<select id="search" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    	(select * from CREATOR_BOARD order by ${board_filterBy} desc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and ${board_c_code}='${board_searchName}']]>
-	</select>
+    	(select * from CREATOR_BOARD where ${board_c_code} like '%'||#{board_searchName}||'%' order by ${board_filterBy} desc) aa) 
+    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
+	</select> 
+	
+	<!-- 검색했을 때 count -->
+	<select id="countBySearch" resultType="int">
+		select COUNT(case when ${board_c_code} like '%'||#{board_searchName}||'%' then 1 end) from CREATOR_BOARD
+	</select> 
 	
 	<!-- 댓글 조회 -->
 	<select id="getComment" resultType="Comment">
-		select * from CREATOR_COMMENT where BOARD_INDEX = #{BOARD_INDEX}
+		select * from BOARD_COMMENT where BOARD_INDEX = #{BOARD_INDEX}
 	</select>
+	
+	<!-- 댓글 작성 -->
+	<insert id="writeComment">
+	 	insert into BOARD_COMMENT values(COMMENT_INDEX_SEQ.nextval, #{BOARD_INDEX} #{MEMBER_NAME}, 
+	 	#{MEMBER_EMAIL}, #{COMMENT_CONTENT}, SYSDATE, null)
+	</insert>
 
 </mapper>

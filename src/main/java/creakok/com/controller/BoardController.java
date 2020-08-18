@@ -370,4 +370,19 @@ public class BoardController {
 		
 		return  mv;
 	}
+	
+	// 댓글 작성
+	@RequestMapping("comment_write")
+	public ModelAndView writeComment(Comment comment) {
+		ModelAndView mv  = new ModelAndView();
+		mv.setViewName("board_content?board_index="+comment.getBoard_index());
+		
+		service.writeComment(comment);
+		
+		// 메뉴바 크리에이터 이름 얻기
+		List<Creator> creatorList = service.getCreatorName();
+		mv.addObject("creatorList", creatorList);
+		
+		return mv;
+	}
 }

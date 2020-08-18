@@ -30,6 +30,8 @@ public interface BoardService {
 	void edit(Board board);
 	// ¥Ò±€ ¡∂»∏
 	List<Comment> getComment(long board_index);
+	// ¥Ò±€ ¿€º∫
+	void writeComment(Comment comment);
 
 }
 
