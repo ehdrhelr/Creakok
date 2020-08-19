@@ -238,6 +238,8 @@
     <link rel="dns-prefetch" href="https://stats.g.doubleclick.net/">
    <!--hcbae 텀블벅 가져오기 end-->
 
+   <link rel='stylesheet' id='content-css'  href='css/css_board/content.css' type='text/css' media='all' />
+    <link href="css/css_board/reservation_page.css" rel="stylesheet">
 </head>
 
 <body>
@@ -551,10 +553,11 @@
                                         <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe"><svg viewBox="0 0 44 44">
                                                 <path d="M35.4706,40.396 C32.9362,40.396 30.877,38.51 30.877,36.192 C30.877,33.874 32.9362,31.988 35.4706,31.988 C38.0028,31.988 40.0642,33.874 40.0642,36.192 C40.0642,38.512 38.0028,40.396 35.4706,40.396 M8.5316,26.204 C5.9994,26.204 3.938,24.318 3.938,22 C3.938,19.68 5.9994,17.796 8.5316,17.796 C11.0638,17.796 13.1252,19.68 13.1252,22 C13.1252,24.32 11.0638,26.204 8.5316,26.204 M35.4706,3.604 C38.0028,3.604 40.0642,5.49 40.0642,7.808 C40.0642,10.126 38.0028,12.012 35.4706,12.012 C32.9362,12.012 30.877,10.126 30.877,7.808 C30.877,5.488 32.9362,3.604 35.4706,3.604 M35.4706,28.384 C33.022,28.384 30.8198,29.334 29.2644,30.844 L16.7024,24.228 C16.9334,23.522 17.061,22.774 17.061,22 C17.061,21.226 16.9334,20.48 16.7046,19.772 L29.2644,13.156 C30.8198,14.668 33.022,15.616 35.4684,15.616 C40.183,15.616 44,12.12 44,7.808 C44,3.496 40.1808,0 35.4706,0 C30.7582,0 26.939,3.496 26.939,7.808 C26.939,8.582 27.0666,9.328 27.2954,10.036 L14.7334,16.652 C13.1802,15.142 10.978,14.192 8.5294,14.192 C3.8236,14.192 0,17.688 0,22 C0,26.312 3.8192,29.808 8.5316,29.808 C10.978,29.808 13.1802,28.86 14.7356,27.348 L27.2954,33.964 C27.0666,34.67 26.939,35.418 26.939,36.192 C26.939,40.504 30.7582,44 35.4706,44 C40.1808,44 44,40.504 44,36.192 C44,31.88 40.1808,28.384 35.4706,28.384"></path>
                                             </svg></div>
-                                </button></div>
+                                </button>
+                                </div>
                                 
-                                 <a name="fix_point"></a>
-                     
+                                <a name="fix_point"></a>
+                                
                             </div>
                         </div>
                     </aside>
@@ -584,8 +587,8 @@
             <nav class="ContentsNavigation__ProjectContentsNavigation-mwsx7i-1 bmUMcp">
                 <div class="ContentsNavigation__ProjectContentsNavigationInner-mwsx7i-2 OvVKa">
                     <div class="ContentsNavigation__NavLeft-mwsx7i-3 buZwam">
-                    <a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="/mcmp_project1/story?ref=%EB%A9%94%EC%9D%B8%2F%EC%A3%BC%EB%AA%A9%ED%95%A0%EB%A7%8C%ED%95%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8">상품상세정보</a>
-                    <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="goods_review.do?review_cp=1&review_ps=5&goods_index=${one_goods.goods_index}#fix_point">리뷰<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(${review_size})</span></a>
+                    <a class="NavItem-mwsx7i-0 cjInbB"  href="goods_detail.do?goods_index=${review.goods_index}#fix_point">상품상세정보</a>
+                    <a aria-current="page" class="ContentsNavigation__ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="goods_review.do">리뷰<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(${review_size})</span></a>
                     <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="#">Q&A</a></div>
                 </div>
             </nav>
@@ -593,17 +596,190 @@
         <div class="ProjectPage__ProjectContentsBackground-f3cisk-0 lbhpFL">
             <div class="Container-gci8y7-0 MskhC">
                 <div class="ProjectPage__ProjectContents-f3cisk-1 ftClLq">
+                
+                
+                
                     <div class="ProjectPage__ProjectContentsMainColumn-f3cisk-2 hzJfoW">
                         <div class="ProjectPage__MainColumnInner-f3cisk-4 kGPPtA">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf">
                                 <div class="StoryCard__StoryCardInner-sc-6cra5i-0 giOSQG">
-                                    <div class="storyContent">
-                                       <img src="${one_goods.goods_detail_pic}">
+                                    <div class="storyContent" style="padding:0">
+                                      <!-- <img src="${one_goods.goods_detail_pic}">  -->
+                                      
+                                      
+                                      
+                                        <!-- 게시판 영역 start -->
+
+
+    <div class="container">
+     
+            <div class="r_list" style="width:600px;font-size:10pt;">
+                <h3>REVIEW(${review_size})</h3>
+                 <p style="font-size:12pt;color:#666666;margin-bottom:10px;">THANK YOU FOR POSTING REVIEW.</p>
+                <table style="">
+                    <colgroup>
+                        <col width="7%">
+                        <col width="10%">
+                        <col width="30%">
+                        <col width="20%">
+                        <col width="13%">
+                        <col width="5%">
+                    </colgroup>
+                     <thead>
+                        <tr>
+                            <th style="padding:1.5px !important;">No</th>
+                            <th style="padding:1.5px !important;">별점</th>
+                            <th style="padding:1.5px !important;">제목</th>
+                            <th style="padding:1.5px !important;">작성자</th>
+                            <th style="padding:1.5px !important;">날짜</th>
+                            <th style="padding:1.5px !important;">조회</th>
+                        </tr>
+                    </thead>  
+                    <tbody>
+                            
+                    
+                   <!--  
+                         <tr>
+                                  <td style="padding:1.5px !important;">${one_review.goods_review_index}</td>
+                                  <td style="padding:1.5px !important;">
+                                      <c:if test="${one_review.goods_review_rating == 1}">
+                                                                                                    ★
+                                      </c:if>
+                                      <c:if test="${one_review.goods_review_rating == 2}">
+                                                                                                    ★★
+                                      </c:if>
+                                      <c:if test="${one_review.goods_review_rating == 3}">
+                                                                                                    ★★★
+                                      </c:if>
+                                      <c:if test="${one_review.goods_review_rating == 4}">
+                                                                                                    ★★★★
+                                      </c:if>
+                                      <c:if test="${one_review.goods_review_rating == 5}">
+                                                                                                    ★★★★★
+                                      </c:if>
+                                  </td>
+                                  <td style="padding:1.5px !important;"><a href="goods_one_review.do?goods_review_index=${one_review.goods_review_index}" style="color:black;">${one_review.goods_review_subject}</a></td>
+                                  <td style="padding:1.5px !important;">${one_review.member_name}</td>
+                                  <td style="padding:1.5px !important;">${one_review.goods_review_date}</td>
+                                  <td style="padding:1.5px !important;">${one_review.goods_review_view}</td>
+                        </tr>
+                     -->
+                     
+                     
+                         
+                      <!--     <div class="view">
+                                <h3>제품명: ${goods_name}</h3>
+                                <h3>제목: ${one_review.goods_review_subject}</h3>
+                                <p>${one_review.goods_review_content}</p>
+                                <p>
+                                 <img src="${one_review.goods_review_pic}" border="0" alt="" width="300px"><br>
+                                </p>
+                                <p class="ec-base-button">
+                                    <span class="gLeft">
+                                        <a href="/board/product/modify.html?board_act=edit&amp;no=103&amp;board_no=4&amp;link_product_no=1">
+                                            <img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_board_modify.gif" alt="게시글 수정하기">
+                                        </a>
+                                     </span>
+                                 </p>
+                           </div>
+                     -->  
+                                        <td style="padding:1.5px !important;">${one_review.goods_review_index}</td>
+                                      
+                                        <td style="padding:1.5px !important;">
+                                        <c:if test="${one_review.goods_review_rating == 1}">
+                                                                                                      ★
+                                        </c:if>
+                                        <c:if test="${one_review.goods_review_rating == 2}">
+                                                                                                      ★★
+                                        </c:if>
+                                        <c:if test="${one_review.goods_review_rating == 3}">
+                                                                                                      ★★★
+                                        </c:if>
+                                        <c:if test="${one_review.goods_review_rating == 4}">
+                                                                                                      ★★★★
+                                        </c:if>
+                                        <c:if test="${one_review.goods_review_rating == 5}">
+                                                                                                      ★★★★★
+                                        </c:if>
+                                        </td>
+                                        <td style="padding:1.5px !important;"><a href="goods_one_review.do?goods_review_index=${one_review.goods_review_index}&goods_index=${review_list2.goods_index}" style="color:black;">${one_review.goods_review_subject}</a></td>
+                                        <td style="padding:1.5px !important;">${one_review.member_name}</td>
+                                        <td style="padding:1.5px !important;">${one_review.goods_review_date}</td>
+                                        <td id="review_view" style="padding:1.5px !important;">${one_review.goods_review_view}</td>
+                                        
+                                        
+                                      
+                                    </tr>
+                                    <tr>
+                                       <td colspan="6">
+                                          <p style="text-align:center"><img src="${one_review.goods_review_pic}" style="width:250px"></p>
+                                          <p style="text-align:left;font-size:10pt">${one_review.goods_review_content}</p> 
+                                          
+                                                                               
+                                       </td>
+                                    </tr>
+                    </tbody>
+                </table>
+                
+                
+              <script src="js/jquery-1.12.4.js"></script>
+              <script>
+                  // 1. 모든 dd를 닫아버리고 첫번째 dd만 열어라
+                  //    -> 첫번째 dd를 제외한 나머지를 닫아라(표시하지 마라)
+                  //    -> :not() - ~를 제외한
+                  // 2. 클릭한 dt 다음에 있는 dd만 열고 나머지를 닫아라
+                  // 3. dd가 움직이지 않을 때에만 slideUp을 실행시켜라
+                  //    = dd가 움직이고 있을 때에는 slideUp을 실행시키지 마
+                  //    = 움직이는 dd를 제외한 나머지만 slideUp을 실행시켜라
+                  $(function(){
+                      // $('.acodi dd').hide()
+                      // $('.acodi dd:first').show()
+                      $('.acodi dd:not(:first)').hide()
+                      
+                      $('.acodi dt').click(function(){
+                          $('.acodi dd:not(:animated)').slideUp()
+                          $('+dd',this).slideDown()
+                      })
+                  })
+              </script>
+                
+                
+                     
+               
+                
+                <p style="width:100%;text-align:center;margin-top:10px">
+                     <a href="goods_review.do?review_cp=1&review_ps=5&goods_index=${one_review.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>목록</a>
+                     <a href="#" style='background-color:black; color:white; width:130px; padding:3px'>수정</a>
+                     <a href="#" style='background-color:black; color:white; width:130px; padding:3px'>삭제</a>
+                </p>
+                <!--
+                <button type="button" class="" 
+                    style='background-color:black; color:white; width:70px;'><a href="goods_review_write.do" style="color:white;">목록</a></button>
+                <button type="button" class="" onclick="document.getElementById('reserv').style.display='block'"
+                    style='background-color:black; color:white; width:70px;'><a href="goods_review_write.do" style="color:white;">게시글 수정</a></button>    
+                <button type="button" class="" onclick="document.getElementById('reserv').style.display='block'"
+                    style='background-color:black; color:white; width:70px;'><a href="goods_review_write.do" style="color:white;">게시글 삭제</a></button>    
+                  -->    
+                    
+        
+                    
+                    
+            </div>
+   </div>
+   <!-- 게시판 영역 end -->
+                                      
+                                      
+                                      
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    
+                    
+                    
+                    
                     <div class="ProjectPage__ProjectContentsSubColumn-f3cisk-3 egbEFv">
                         <div class="ProjectPage__SubColumnInner-f3cisk-6 qujmm">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf ProjectPage__StyledCreatorCard-f3cisk-5 lfTmkG">

@@ -9,7 +9,7 @@
     
     <select id="selectPerPageReview" resultType="Goods_Review" parameterType="Goods_ReviewVo">
         <![CDATA[select * from (select ROWNUM rnum, aa.* from
-        (select * from GOODS_REVIEW where GOODS_INDEX=${goods_index} order by GOODS_REVIEW_INDEX desc) aa)
+        (select * from GOODS_REVIEW where GOODS_INDEX=${goods_index} order by GOODS_REVIEW_VIEW desc) aa)
         where rnum>${(review_cp-1)*review_ps} and rnum<=${review_cp*review_ps}
         ]]>
     </select>
@@ -17,5 +17,13 @@
     <select id="selectGoodsReviewCountByGoodsIndex" resultType="long" parameterType="long">
         select COUNT(GOODS_REVIEW_INDEX) from GOODS_REVIEW where GOODS_INDEX=#{goods_index}
     </select>   
+    
+    <update id="updateReviewViews" parameterType="long">
+        UPDATE GOODS_REVIEW SET GOODS_REVIEW_VIEW = GOODS_REVIEW_VIEW+1 WHERE GOODS_REVIEW_INDEX=${goods_review_index}
+    </update>
+    
+     <select id="selectOneReview" resultType="Goods_Review" parameterType="long">
+        select * from GOODS_REVIEW where GOODS_REVIEW_INDEX=#{goods_review_index}
+    </select>     
 </mapper>
 

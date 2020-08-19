@@ -588,7 +588,7 @@
                 <div class="ContentsNavigation__ProjectContentsNavigationInner-mwsx7i-2 OvVKa">
                     <div class="ContentsNavigation__NavLeft-mwsx7i-3 buZwam">
                     <a class="NavItem-mwsx7i-0 cjInbB"  href="goods_detail.do?goods_index=${review.goods_index}#fix_point">상품상세정보</a>
-                    <a aria-current="page" class="ContentsNavigation__ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="goods_review.do">리뷰<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(${review_size})</span></a>
+                    <a aria-current="page" class="ContentsNavigation__ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="goods_review.do#fix_point">리뷰<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(${review_size})</span></a>
                     <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="#">Q&A</a></div>
                 </div>
             </nav>
@@ -614,13 +614,13 @@
     <div class="container">
      
             <div class="r_list" style="width:600px;font-size:10pt;">
-                <h3>REVIEW(${review.review_list.size()})</h3>
+                <h3>REVIEW(${review_size})</h3>
                  <p style="font-size:12pt;color:#666666;margin-bottom:10px;">THANK YOU FOR POSTING REVIEW.</p>
                 <table style="">
                     <colgroup>
                         <col width="7%">
-                        <col width="5%">
-                        <col width="40%">
+                        <col width="13%">
+                        <col width="30%">
                         <col width="20%">
                         <col width="13%">
                         <col width="7%">
@@ -642,14 +642,30 @@
                          <c:forEach items="${review.review_list}" var="review_list2">
                              <tr>
                                   <td style="padding:1.5px !important;">${review_list2.goods_review_index}</td>
-                                  <td style="padding:1.5px !important;">${review_list2.goods_review_rating}</td>
-                                  <td style="padding:1.5px !important;"><a href="#" style="color:black;">${review_list2.goods_review_subject}</a></td>
+                                  <td style="padding:1.5px !important;">
+                                  <c:if test="${review_list2.goods_review_rating == 1}">
+                                                                                                ★
+                                  </c:if>
+                                  <c:if test="${review_list2.goods_review_rating == 2}">
+                                                                                                ★★
+                                  </c:if>
+                                  <c:if test="${review_list2.goods_review_rating == 3}">
+                                                                                                ★★★
+                                  </c:if>
+                                  <c:if test="${review_list2.goods_review_rating == 4}">
+                                                                                                ★★★★
+                                  </c:if>
+                                  <c:if test="${review_list2.goods_review_rating == 5}">
+                                                                                                ★★★★★
+                                  </c:if>
+                                  </td>
+                                  <td style="padding:1.5px !important;"><a href="goods_one_review.do?goods_review_index=${review_list2.goods_review_index}&goods_index=${review_list2.goods_index}#fix_point" style="color:black;">${review_list2.goods_review_subject}</a></td>
                                   <td style="padding:1.5px !important;">${review_list2.member_name}</td>
                                   <td style="padding:1.5px !important;">${review_list2.goods_review_date}</td>
-                                  <td style="padding:1.5px !important;">${review_list2.goods_review_view}</td>
+                                  <td id="review_view" style="padding:1.5px !important;">${review_list2.goods_review_view}</td>
                               </tr>
                          </c:forEach>
-                         
+           
                                     
                             <!--
 
@@ -677,7 +693,7 @@
                             -->
                     </tbody>
                 </table>
-                
+                 
                
                 
                 

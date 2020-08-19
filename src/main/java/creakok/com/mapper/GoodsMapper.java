@@ -12,4 +12,5 @@ public interface GoodsMapper {
 	List<Goods> selectPerPage(GoodsVo goodsVo);
 	long selectGoodsCount();
 	long selectGoodsCountByCode(@Param("gCode") long gCode);
+	String selectGoodsName(long goods_index);
 }

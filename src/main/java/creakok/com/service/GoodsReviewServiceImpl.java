@@ -37,8 +37,21 @@ public class GoodsReviewServiceImpl implements GoodsReviewService {
 		return goods_review_vo2;
 	}
 	
-	public @Override
-	long selectGoodsReviewCountByGoodsIndex(long goods_index) {
+	@Override
+	public long selectGoodsReviewCountByGoodsIndex(long goods_index) {
 		return goodsservicemapper.selectGoodsReviewCountByGoodsIndex(goods_index);
+	}
+	@Override
+	public boolean updateReviewViews(long goods_review_index) {
+		int a = goodsservicemapper.updateReviewViews(goods_review_index);
+		if(a>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	@Override
+	public Goods_Review selectOneReview(long goods_review_index) {
+		return goodsservicemapper.selectOneReview(goods_review_index);
 	}
 }	

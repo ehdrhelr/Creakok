@@ -13,4 +13,7 @@ public interface GoodsReviewMapper {
 	List<Goods_Review> review_list(@Param(value = "goods_index") long goods_index);
 	List<Goods_Review> selectPerPageReview(Goods_ReviewVo goods_review_vo);
 	long selectGoodsReviewCountByGoodsIndex(long goods_index);
+	int updateReviewViews(@Param(value = "goods_review_index") long goods_review_index);
+	Goods_Review selectOneReview(long goods_review_index);
 }
+  

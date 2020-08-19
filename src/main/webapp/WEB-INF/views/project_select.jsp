@@ -1,16 +1,18 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<jsp:include page="Header.jsp"/>
-
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>COMMUNITY - CREAKOK</title>
+    <title>Alazea - Gardening &amp; Landscaping HTML Template</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -20,56 +22,24 @@
     
     <!-- Wadiz Css -->
     <link rel="stylesheet" href="css/wadiz_css1.css">
-    <link rel="stylesheet" href="css/wadiz_css2.css">
+     <link rel="stylesheet" href="css/wadiz_css2.css">
     <link rel="stylesheet" href="css/wadiz_css3.css">
     <link rel="stylesheet" href="css/wadiz_css4.css">
-
-
-    <style>
-        .three {
-            flex:0 0 33%;!important;
-        }
-        .ranking{
-            flex:0 0 35%;!important;
-        }
-        .howAbout{
-            flex:0 0 70%;!important;
-            max-width:63%;!important;
-        }
-        
-        
-    </style>
     
-    <script language='javascript'>
-			   function check()
-			   {
-				   for(var i=0; i<document.input.elements.length; i++)
-				   {
-					  if(document.input.elements[i].value == '')
-					  {
-						 alert('모든 값을 입력 하셔야 합니다. ');
-						 return false;
-					  }
-				   }
-				   document.input.submit();
-			   }
-			</script>
+<style>
+    @font-face {
+  font-family: 'Jalnan';
+  src: url('fonts/Jalnan.ttf');
+}  
+    .wideImg{
+        max-width: 135%;!important;
+    }
+ </style>    
+ 
+
 </head>
 
 <body>
-<c:if test="${empty member}">
-      <script>
-      console.log("empty member");
-      </script>
-    </c:if>
-    <c:if test="${!empty member}">
-      <script>
-      console.log("member exist");
-      console.log('email: ${member.member_email}');
-      console.log('name: ${member.member_name}');
-      console.log('pass: ${member.member_password}');
-      </script>
-    </c:if>
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
@@ -94,9 +64,6 @@
 
                             <!-- Top Header Content -->
                             <div class="top-header-meta d-flex">
-                                <div >
-                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;">프로젝트 만들기</button>
-                                </div>
                                 <!-- Language Dropdown -->
                                 <div class="language-dropdown">
                                     <div class="dropdown">
@@ -112,22 +79,13 @@
                                     </div>
                                 </div>
                                 <!-- Login -->
-                                 <c:if test="${empty member}">
-                                  <!-- Login -->
-                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
-                                  <!-- Sign up -->
-                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
-                                </c:if>
-                                <c:if test="${!empty member}">
-                                  <!-- Login -->
-                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
-                                  
-                                  <!-- My Page -->
-                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
-                                  
-                                  <!-- Cart -->
-                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
-                                </c:if> 
+                                <div class="login">
+                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
+                                </div>
+                                <!-- Cart -->
+                                <div class="cart">
+                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -165,10 +123,29 @@
                                     <li><a href="shop.html">GOODS</a></li>
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
-                                        <c:forEach items="${creatorList}" var="creator">
-                                            <li><a href="index.html" >${creator.creator_name}</a></li>
-                                            </c:forEach>
-                                            
+                                            <li><a href="index.html" >Home</a></li>
+                                            <li><a href="about.html">About</a></li>
+                                            <li><a href="shop.html">Shop</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="shop.html">Shop</a></li>
+                                                    <li><a href="shop-details.html">Shop Details</a></li>
+                                                    <li><a href="cart.html">Shopping Cart</a></li>
+                                                    <li><a href="checkout.html">Checkout</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="portfolio.html">Portfolio</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                                    <li><a href="`gle-portfolio.html">Portfolio Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="blog.html">Blog</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="single-post.html">Blog Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="shop.html">ABOUT</a></li>
@@ -202,53 +179,86 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-	<!-- 게시판 영역 start -->
-			<nav class="page-nav">
-	<div class="inner">
-		<ul>
-			<li class="current"><a href="#">Review</a></li>
-		</ul>
-	</div>
-	</nav>
-		<div class="r_list">
-				<div class="choose">
-	
-  
-                <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                    <h2 class="text-center" style="margin-top: 150px; margin-bottom:30px">리뷰 작성하기</h2>
-                    <div class="text-center" style="margin-bottom:70px">
-                        <table class="table" style="width:70%;margin:0 auto;width:70%;margin:0 auto;margin-bottom:10px;">
-                              <tbody><tr><td>작성자</td><td>
-                                <input type="text"  ="" class="form-control" name="member_name" value="" readonly=""></td></tr>
-                                  <tr><td>작성자</td><td>
-                                    <input type="text"  ="" class="form-control" name="member_email" value="" readonly=""></td></tr>
-                                    <tr>
-                                    <td>제목</td><td>
-                                        <input type="text"  ="" class="form-control" name="board_subject"></td></tr><!--   <tr>
-                                     <td>비밀번호</td>
-                                     <td><input type="password"  class="form-control" name="password"></td>
-                                     </tr>
-                                --><tr><td>글내용</td><td><textarea rows="10" cols="50" name="board_content" class="form-control"></textarea></td></tr>
-                              </tbody>
-                         </table>
-                         <input type="submit" value="글쓰기" class="btn" style="background-color:black !important; color:white">
-                         <input type="reset" value="다시작성" class="btn" style="background-color:black !important; color:white">
-                         <button type="button"  ="" class="btn" style="background-color:black !important; color:white" onclick="location.href='board_page#fix_point'">전체 게시글보기</button>
-                       </form>
-                  </div>
-                  </div>
+   
+
+    
+    
+
+    
+    
+    
+        <!-- ##### Team Area Start ##### -->
+    <section class="team-area section-padding-100-0">
+        <div class="container">
+        
+            <div class="row" style="margin-bottom:100px">
+                <div class="col-12">
+                    <!-- Section Heading -->
+                    <div class="section-heading text-center" style="margin-top:10%">
+                         <h2 style="font-family:Jalnan;line-height: 1.3; margin-bottom: 20px;"><span style="color:#2da498">CREA</span><span style="color:#cccccc">TOR</span> <span style="color:#fc5230">KOK!</span></h2>
+                        <p>크리콕은 내가 관심있는 크리에이터를 고르고<br/>
+                            펀딩, 커뮤니티 등 다양한 방법으로 <br/>
+                            크리에이터와 함께 소통할 수 있는 공간입니다.</p>
+                            
+                      <a href=""><img src="img/project/funding_project.png" alt="project_make" style="margin-top:30px"></a>
+                      <a href=""><img src="img/project/goods_project.png" alt="project_make" style="margin-top:30px"></a>
+                    </div>
                 </div>
-  
-				</div>  
-			</div>
+            </div>
+            
+            
+ <!--
+            <div class="row">
+                <img src="img/plus/funding.png" alt="">
+                <img src="img/plus/funding.png" alt="">
+                
+                Single Team Member Area 
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member text-center mb-100">
+                        <!-- Team Member Thumb
+                        <div class="team-member-thumb">
+                             <img src="img/plus/funding.png" alt="">
+                        </div>
+                        <!-- Team Member Info
+                        <div class="team-member-info mt-30">
+                            <h5 style="font-size:13pt;font-weight:500;">컨텐츠 펀딩</h5>
+                            <p>크리에이터의 '이런 컨텐츠 어때요?'</p>
+                        </div> 
+                    </div>
+                </div>
+
+                Single Team Member Area
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member text-center mb-100">
+                        <!-- Team Member Thumb
+                        <div class="team-member-thumb">
+                             <img src="img/plus/goods.png" alt="">
+                        </div>
+                        <!-- Team Member Info
+                      
+                        <div class="team-member-info mt-30">
+                            <h5 style="font-size:13pt;font-weight:500;">굿즈 판매</h5>
+                            <p>크리에이터의 특별한 굿즈를 만나보세요</p>
+                        </div>
+                    </div>
+                </div>  -->
 
 
-	<!-- wrap -->
-   <!-- 게시판 영역 end -->
 
-  <!-- Footer Bottom Area -->
+            </div>
+        </div>
+    </section>
+    <!-- ##### Team Area End ##### -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- Footer Bottom Area -->
         <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">
             <div class="container">
                 <div class="row">
@@ -271,7 +281,19 @@
                 </div>
             </div>
         </div>
- 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
 <!-- Footer Bottom Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->
@@ -285,12 +307,6 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-    
-    <script>
-	//CKEDITOR 적용 
-
- 
-	</script>
 </body>
 
 </html>

@@ -35,4 +35,5 @@ public class Goods_CategoryServiceImpl implements Goods_CategoryService {
 		return new GoodsVo(cp, totalCount, ps, list, gCode, null);
 
 	}
+
 }

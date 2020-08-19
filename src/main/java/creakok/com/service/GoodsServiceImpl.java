@@ -46,4 +46,9 @@ public class GoodsServiceImpl implements GoodsService {
 	public long selectGoodsCountS() {
 		return gMapper.selectGoodsCount();
 	}
+	
+	@Override
+	public String selectGoodsName(long goods_index) {
+		return gMapper.selectGoodsName(goods_index);
+	}
 }
