@@ -2,6 +2,7 @@ package creakok.com.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,14 +22,14 @@ public class IndexController {
 	private BoardService boardService;
 	
 	@RequestMapping(value="/", method =RequestMethod.GET)
-	public ModelAndView index() {
+	public ModelAndView index(HttpSession session) {
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("index");
 		
 		// ũ�������� �̸� ���
 		List<Creator> creatorList = boardService.getCreatorName();
 		mv.addObject("creatorList", creatorList);
-		
+		session.setAttribute("creatorList", creatorList);
 		return mv;
 	}
 
