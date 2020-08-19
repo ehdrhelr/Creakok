@@ -1,5 +1,7 @@
 package creakok.com.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -26,23 +28,50 @@ public class ProjectController {
 	@RequestMapping(value="/project.do", method =RequestMethod.GET)
 	public String funding() {
 		//return "summernote";
-		return "makeProject";
+		return "project_select";
 	
 	}
 	
 	
 	
-	@RequestMapping("/projectwrite.do")
-	public ModelAndView fundingwrite(HttpServletRequest request, HttpSession session) {
-		/*
-		String fundingWriter = request.getParameter("fundingWriter");
-	    String psStr = request.getParameter("funding_ps");
-	    String filterBy = request.getParameter("funding_filterBy");	 
-	    String categoryName= request.getParameter("funding_categoryName");
-	    String funding_indexStr = request.getParameter("funding_index");
-	    */
-		
+	@RequestMapping("/fundingwrite_form.do")
+	public String fundingwrite_page() {
+		return "fundingwrite";
+	}
 	
+	
+	@RequestMapping("/fundingwrite.do")
+	public ModelAndView fundingwrite(HttpServletRequest request, HttpSession session) {
+		
+		String write_creator = request.getParameter("write_creator");
+	    String write_funding_goal = request.getParameter("write_funding_goal");
+	    String write_funding_wdate = request.getParameter("write_funding_wdate");	 
+	    String write_funding_edate= request.getParameter("write_funding_edate");
+	    String write_funding_subject = request.getParameter("write_funding_subject");
+	    String funding_category_code = request.getParameter("funding_category_code");
+	    String content = request.getParameter("content");
+	   
+	   
+		System.out.println("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
+		System.out.println("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
+		System.out.println("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
+	    System.out.println("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
+	    
+	    System.out.println(funding_category_code);
+	    System.out.println(write_creator);
+	    System.out.println(write_funding_edate);
+	    System.out.println(content);
+	    
+
+		System.out.println("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
+		System.out.println("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
+		System.out.println("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
+	    System.out.println("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
+	    
+	    
+	    
+	    /*
+	    long funding_index;
 		String creator_name="subsub";
 		String funding_subject="펀딩프로젝트제";
 		long funding_category_code=200;
@@ -54,21 +83,31 @@ public class ProjectController {
 		Date funding_edate;
 		long funding_people=0;
 		long funding_like_number=0;
-		String funding_keyword=null;
-		String funding_option=null;
-		String funding_category_name=null;
+		String funding_keyword="";
+		String funding_option="";
+		String funding_category_name="";
 		double percentage=0;
 		long restdays=0; 
 		List<Funding> listrelatedFunding=null;
 		
-		Funding funding = new Funding(-1, creator_name, funding_subject, funding_category_code, funding_repre_pic,
-				funding_detail_pic, funding_goal, funding_amount, null, null, funding_people,funding_like_number, funding_keyword, 
-				funding_option, null, -1, -1, null);
+		
+		Funding funding = new Funding(-1,creator_name,funding_subject,funding_category_code,funding_repre_pic,
+				 funding_detail_pic,funding_goal,funding_amount,null,null,funding_people,funding_like_number,
+	   funding_keyword,funding_option,funding_category_name,percentage,restdays,listrelatedFunding);
+				
+				
 		
 		service.writeFundingProject(-1, creator_name, funding_subject, funding_category_code, 
 				funding_repre_pic, funding_detail_pic, funding_goal, funding_amount, null, null, 
 				funding_people, funding_like_number, funding_keyword, funding_option);
-		
+		*/
 		return new ModelAndView("/index", "", null);
 	}
+	
+	@RequestMapping("/goodswrite_form.do")
+	public String goodswrite() {
+		
+		return "goodswrite";
+	}
+	
 }
