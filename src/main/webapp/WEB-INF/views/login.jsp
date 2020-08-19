@@ -5,12 +5,17 @@
 <html lang="en">
 
 <head>
-    <script src="js/hcbae_js.js"></script>
-
     <script type="text/javascript">
-    loadHeader();
+    var xmlHttpHeader = new XMLHttpRequest();
+    xmlHttpHeader.open("GET", "creakok_header.do", true); // true for asynchronous
+    xmlHttpHeader.send();
+    
+    xmlHttpHeader.onreadystatechange = function() {
+         if (xmlHttpHeader.readyState == 4 && xmlHttpHeader.status == 200) {
+             document.getElementById("header_div").innerHTML= xmlHttpHeader.responseText;
+         }
+    };
     </script>
-
 
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -125,32 +130,20 @@
     <!--텀블벅추가-->
     
     <!-- Footer Bottom Area -->
-        <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="border-line"></div>
-                    </div>
-                    <!-- Copywrite Text -->
-                    <div class="col-12 col-md-6" >
-                        <div class="copywrite-text"style="background-color: whitesmoke !important; ">
-                            <img src="img/core-img/creakok.png" alt=""><br/>
-                            <p>creakok@gmail.com  |  02.707.1480<br/>
-                                평일 10:00~17:00 (점심시간 12:00~13:00)<br/>
-                                토/일/공휴일 휴무</p>
-                            <p>(주)크리콕 | 소속 : 비트캠프 신촌센터  | 호스팅 제공자 : (주)CJ ENM<br/>
-                                서울 마포구 백범로 23 구프라자 3층</p>
-                            <p>ⓒ CREAKOK All rights reserved.</p>
-                        </div>
-                    </div>
-                    <!-- Footer Nav -->
-                </div>
-            </div>
-        </div>
+    <script type="text/javascript">
+    var xmlHttpFooter = new XMLHttpRequest();
+    xmlHttpFooter.open("GET", "creakok_footer.do", true); // true for asynchronous
+    xmlHttpFooter.send();
+    
+    xmlHttpFooter.onreadystatechange = function() {
+         if (xmlHttpFooter.readyState == 4 && xmlHttpFooter.status == 200) {
+             document.getElementById("footer_div").innerHTML= xmlHttpFooter.responseText;
+         }
+    };
+    </script>
+    <div id="footer_div">
+    </div>
     <!-- Footer Bottom Area End ##### -->
-
-
-
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
@@ -163,8 +156,6 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-
-
 </body>
 
 </html>

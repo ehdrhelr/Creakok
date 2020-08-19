@@ -54,4 +54,10 @@ public class IndexController {
 		//log.info("### creakok_header do");
 		return "creakok_header";
 	}
+	
+	@GetMapping("creakok_footer.do")
+	public String creakok_footer() {
+		//log.info("### creakok_header do");
+		return "creakok_footer";
+	}
 }

@@ -89,36 +89,16 @@
                     <!-- Navbar Start -->
                     <div class="classynav">
                         <ul>
-                            <li><a href="index.html">FUNDING</a></li>
-                            <li><a href="shop.html">GOODS</a></li>
+                            <li><a href="funding_list.do">FUNDING</a></li>
+                            <li><a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300">GOODS</a></li>
                             <li><a href="#">COMMUNITY</a>
                                 <ul class="dropdown">
-                                    <li><a href="index.html" >Home</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="shop.html">Shop</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop.html">Shop</a></li>
-                                            <li><a href="shop-details.html">Shop Details</a></li>
-                                            <li><a href="cart.html">Shopping Cart</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="portfolio.html">Portfolio</a>
-                                        <ul class="dropdown">
-                                            <li><a href="portfolio.html">Portfolio</a></li>
-                                            <li><a href="`gle-portfolio.html">Portfolio Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog.html">Blog</a>
-                                        <ul class="dropdown">
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="single-post.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <c:forEach items="${creatorList}" var="creator">
+                                    <li><a href="board_page">${creator.creator_name}</a></li>
+                                    </c:forEach>
                                 </ul>
                             </li>
-                            <li><a href="shop.html">ABOUT</a></li>
+                            <li><a href="about.do">ABOUT</a></li>
                            <!--   <li><a href="portfolio.html">Portfolio</a></li>
                             <li><a href="contact.html">Contact</a></li>  -->
                         </ul>  

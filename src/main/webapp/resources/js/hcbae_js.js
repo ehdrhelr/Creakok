@@ -1,15 +1,3 @@
-function loadHeader(){
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "creakok_header.do", true); // true for asynchronous
-    xmlHttp.send();
-    
-    xmlHttp.onreadystatechange = function() {
-         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-             document.getElementById("header_div").innerHTML= xmlHttp.responseText;
-         }
-    };
-}
-
 function joinformClear() {
     document.getElementById('joinData').reset();
 }
