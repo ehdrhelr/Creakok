@@ -274,7 +274,11 @@
                 <div class="ContentsNavigation__ProjectContentsNavigationInner-mwsx7i-2 OvVKa">
                     <div class="ContentsNavigation__NavLeft-mwsx7i-3 buZwam">
                     <a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="/mcmp_project1/story?ref=%EB%A9%94%EC%9D%B8%2F%EC%A3%BC%EB%AA%A9%ED%95%A0%EB%A7%8C%ED%95%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8">상품상세정보</a>
+<<<<<<< HEAD
                     <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="goods_review.do?goods_index=${one_goods.goods_index}#fix_point">리뷰<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(2)</span></a>
+=======
+                    <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="goods_review.do?review_cp=1&review_ps=5&goods_index=${one_goods.goods_index}#fix_point">리뷰<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(2)</span></a>
+>>>>>>> refs/heads/jhseo_goods
                     <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="#">Q&A</a></div>
                 </div>
             </nav>

@@ -212,6 +212,7 @@
 	</nav>
 		<div class="r_list">
 				<div class="choose">
+<<<<<<< HEAD
 					<div class="row">
 					    <div class="col-md-2"></div>
 					    <div class="col-md-8">
@@ -258,6 +259,39 @@
 			</div>
  <script src="js/jquery/jquery-2.2.4.min.js"></script>     
 
+=======
+	
+  
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                    <h2 class="text-center" style="margin-top: 150px; margin-bottom:30px">게시글 쓰기</h2>
+                    <div class="text-center" style="margin-bottom:70px">
+                        <table class="table" style="width:70%;margin:0 auto;width:70%;margin:0 auto;margin-bottom:10px;">
+                              <tbody><tr><td>작성자</td><td>
+                                <input type="text"  ="" class="form-control" name="member_name" value="" readonly=""></td></tr>
+                                  <tr><td>작성자</td><td>
+                                    <input type="text"  ="" class="form-control" name="member_email" value="" readonly=""></td></tr>
+                                    <tr>
+                                    <td>제목</td><td>
+                                        <input type="text"  ="" class="form-control" name="board_subject"></td></tr><!--   <tr>
+                                     <td>비밀번호</td>
+                                     <td><input type="password"  class="form-control" name="password"></td>
+                                     </tr>
+                                --><tr><td>글내용</td><td><textarea rows="10" cols="50" name="board_content" class="form-control"></textarea></td></tr>
+                              </tbody>
+                         </table>
+                         <input type="submit" value="글쓰기" class="btn" style="background-color:black !important; color:white">
+                         <input type="reset" value="다시작성" class="btn" style="background-color:black !important; color:white">
+                         <button type="button"  ="" class="btn" style="background-color:black !important; color:white" onclick="location.href='board_page#fix_point'">전체 게시글보기</button>
+                       </form>
+                  </div>
+                  </div>
+                </div>
+  
+				</div>  
+			</div>
+>>>>>>> refs/heads/jhseo_goods
 
 
 	<!-- wrap -->
