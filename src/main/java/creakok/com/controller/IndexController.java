@@ -4,13 +4,16 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Creator;
 import creakok.com.service.BoardService;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Controller
 public class IndexController {
 	
@@ -46,4 +49,15 @@ public class IndexController {
 		return "about";
 	}
 
+	@GetMapping("creakok_header.do")
+	public String creakok_header() {
+		//log.info("### creakok_header do");
+		return "creakok_header";
+	}
+	
+	@GetMapping("creakok_footer.do")
+	public String creakok_footer() {
+		//log.info("### creakok_header do");
+		return "creakok_footer";
+	}
 }
