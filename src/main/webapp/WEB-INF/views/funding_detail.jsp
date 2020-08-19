@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.LikeType"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -164,7 +164,47 @@
                                 <div class="Tooltip__TooltipWrapper-sc-1czh1yq-0 kPQaEe ProjectIntroduction__StyledTooltip-sc-1o2ojgb-23 bUoWGM">
                                    <a name="fix_point"></a>
                                     <div class="ProjectIntroduction__SecondaryButton-sc-1o2ojgb-24 fnDZVR">
-                                        <div class="LikeButton__Wrapper-whittq-0 dFOIsS ProjectIntroduction__StyledLikeButton-sc-1o2ojgb-22 jUCdsF"><button type="button" class="LikeButton__LikedBtn-whittq-1 neDEf"><span>좋아요</span></button></div>
+                                        <div class="LikeButton__Wrapper-whittq-0 dFOIsS ProjectIntroduction__StyledLikeButton-sc-1o2ojgb-22 jUCdsF">
+                                            <button type="button" class="LikeButton__LikedBtn-whittq-1 neDEf" onclick="clickLike(this);">
+                                                <span>좋아요</span>
+                                            </button>
+                                            <script type="text/javascript">
+                                            function clickLike(obj){
+                                            	let like_content_index = '${funding_detail.funding_index}';
+                                            	let like_type_code = '${LikeType.FUNDING_LIKE}';
+                                            	let like_member_email = '${member.member_email}'; 
+                                                if(like_member_email == '') {
+                                                    alert('로그인해주세요.');
+                                                    return;
+                                                }
+                                            	//console.log('좋아요를 클릭했습니다.');
+                                            	//console.log('index:'+like_content_index);
+                                            	//console.log('type:'+like_type_code);
+                                            	//console.log('email:'+like_member_email);
+                                            	
+                                                let formData = new FormData();
+                                                formData.append('like_content_index','${funding_detail.funding_index}');
+                                                formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
+                                                formData.append('like_member_email','${member.member_email}');
+
+                                            	var xmlHttpLike = new XMLHttpRequest();
+                                                xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
+                                                xmlHttpLike.send(formData);
+                                                xmlHttpLike.onreadystatechange = function() {
+                                                    if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                                                        console.log("####1:"+xmlHttpLike.responseText);
+                                                        if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
+                                                            //obj.style.backgroundImage = "url(/img/like/like_on.png)";
+                                                        	obj.classList.add('isLiked');
+                                                        } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
+                                                        	//obj.style.backgroundImage = "url(/img/like/like_off.png)";
+                                                            obj.classList.remove('isLiked');
+                                                        }
+                                                    }
+                                               };
+                                            }
+                                            </script>
+                                        </div>
                                     </div>
                                 </div> 
                                 <div class="ProjectIntroduction__TertiaryButton-sc-1o2ojgb-26 fGephg"><button type="button" class="Button-sc-1x93b2b-0 ProjectIntroduction__ShareSNSButton-sc-1o2ojgb-25 llyixJ">
