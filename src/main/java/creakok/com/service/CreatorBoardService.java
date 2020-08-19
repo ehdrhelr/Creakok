@@ -7,7 +7,7 @@ import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
 import creakok.com.vo.ListResult;
 
-public interface BoardService {
+public interface CreatorBoardService {
 	ListResult getListResultS(int currentPage, int pageSize, String filterBy);
 	Board contentS(long board_index);
 	void insertS(Board board);
@@ -28,10 +28,11 @@ public interface BoardService {
 	ListResult getListResultBySearchS(int currentPage, int pageSize, String filterBy, String c_code, String searchName);
 	// ¼öÁ¤
 	void edit(Board board);
+	/*
 	// ´ñ±Û Á¶È¸
 	List<Comment> getComment(long board_index);
 	// ´ñ±Û ÀÛ¼º
 	void writeComment(Comment comment);
-
+	*/
 }
 

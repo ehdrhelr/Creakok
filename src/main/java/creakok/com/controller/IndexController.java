@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Creator;
-import creakok.com.service.BoardService;
+import creakok.com.service.CreatorBoardService;
 
 @Controller
 public class IndexController {
 	
 	@Resource
-	private BoardService boardService;
+	private CreatorBoardService boardService;
 	
 	@RequestMapping(value="/", method =RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("index");
 		
-		// Å©¸®¿¡ÀÌÅÍ ÀÌ¸§ ¾ò±â
+		// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½
 		List<Creator> creatorList = boardService.getCreatorName();
 		mv.addObject("creatorList", creatorList);
 		

@@ -14,7 +14,7 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Service
-public class BoardServiceImpl implements BoardService {
+public class CreatorBoardServiceImpl implements CreatorBoardService {
 	@Autowired
 	private CreatorBoardMapper mapper;
 	
@@ -60,17 +60,17 @@ public class BoardServiceImpl implements BoardService {
 	public List<Creator> getCreatorName() {
 		return mapper.getCreatorName();
 	}
-	// �뜝�룞�삕�뜝�룞�삕
+	// 글삭제
 	@Override
 	public void deleteBoard(long board_index) {
 		mapper.deleteBoard(board_index);
 	}
-	// �뜝�룞�삕�뜝�룞�삕
+	// 글수정
 	@Override
 	public void edit(Board board) {
 		mapper.update(board);
 	}
-	// �뜝�떙�궪�삕
+	// 글검색조회
 	@Override
 	public ListResult getListResultBySearchS(int currentPage, int pageSize, String filterBy, String c_code, String searchName) {
 		List<Board> list = (List<Board>)mapper.search(currentPage, pageSize, filterBy, c_code, searchName);
@@ -78,7 +78,9 @@ public class BoardServiceImpl implements BoardService {
 		log.info("@@@@@@@@@@@@@@@@@@@@"+countBySearch+"@@@@@@@@@@@");
 		return new ListResult(currentPage, countBySearch, pageSize, list, filterBy);
 	}
-	// �뜝�룞�삕�뜝�룞�삕�뜝�떕占�
+	
+	/*
+	// 댓글조회
 	public List<Comment> getComment(long board_index) {
 		List<Comment> comments = mapper.getComment(board_index);
 		return comments;
@@ -88,4 +90,5 @@ public class BoardServiceImpl implements BoardService {
 	public void writeComment(Comment comment) {
 		mapper.writeComment(comment);
 	}
+	*/
 }

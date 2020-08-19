@@ -102,14 +102,49 @@
 			Toast.fire({
 				icon: 'error',
 				title: '로그인 후 이용해주세요.'
-				})
-			}
+			})
+		}
 		function no_right() {
 			Toast.fire({
 				icon: 'error',
 				title: '수정 권한이 없어요.'
-				})
-			}
+			})
+		}
+			
+		function deleteComment(comment_index) {
+			Swal.fire({
+				title: '정말 삭제하시겠어요?',
+				text: "삭제하면 되돌릴 수 없어요",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#2da498',
+				cancelButtonColor: '#fc5230',
+				confirmButtonText: '지워주세요!',
+				cancelButtonText: '아니요'			
+			}).then((result) => {
+				if (result.value) {
+					Swal.fire({
+						icon: 'success',
+						title: '댓글이 삭제되었어요!',
+						showConfirmButton: false,
+						timer: 1500		
+					}).then($(".commentDelBtn").ready(function(){
+						location.href = "comment_delete?board_index=${board.board_index}&comment_index="+comment_index;
+						})
+					)
+				}
+			})			
+		}
+		
+		function check() {
+			for(var i=0; i<document.form.elements.length; i++) {
+				if(document.form.elements[i].value == "") {
+				     alert("모든 값을 입력 하셔야 합니다. ");
+					 return false;
+				}
+		    }
+			document.form.submit();
+	    }
 	</script>
 </head>
 
@@ -270,177 +305,137 @@
 	<div class="r_list">
 		<div class="text-center">
 				<table border="1" width="600" align="center" cellpadding="3" cellspacing="1">
-	              	<tbody>
-	              	<!--
-					<tr>
-						<td width="30%" align="center">작성자</td>
-						<td align="center"><input type="text" name="writer" size="60" style='background-color:#dbdbdb' readonly value="${board.member_name}"></td>
-					</tr>
-					<tr>
-						<td align="center">날짜</td>
-						<td align="center"><input type="text" name="email" size="60" value="${board.board_wdate}"></td>
-					</tr>
-					<tr>
-						<td align="center">글제목</td>
-						<td align="center"><input type="text" name="title" size="60" value="${board.board_subject}"></td>
-					</tr>
-					<tr>
-						<td align="center">글내용</td>
-						<td align="center"><textarea name="content" rows="5" cols="53" style="width:400px; height:250px;">${board.board_content}</textarea></td>
-					</tr>
-					<tr>
-						<td align="center">조회수</td>
-						<td align="center"><input type="text" name="title" size="60" value="${board.board_view}"></td>
-					</tr>
-					<tr>
-						<td align="center">좋아요</td>
-						<td align="center"><input type="text" name="title" size="60" value="${board.board_like}"></td>
-					</tr>
-					<tr>
-					<td colspan='2' align='center'>
-						<c:if test="${empty member}">
-							<a href='#' style='width:50px; line-height:50%;' onclick="check_login()" ><img src=img/like/empty_heart.png></a>
-						</c:if>
-						<c:if test="${!empty member}">
-							<a href='#' style='width:50px; line-height:50%;'><img src=img/like/empty_heart.png></a>
-					    </c:if>
-					</td>
-					</tr>
-					-->
-					<form role="form" method="post" autocomplete="off">
-  
-						   <div class="form-group col-sm-12">
+	              	<tbody>					
+						<div class="form-group col-sm-12">
+							<div class="row">
+
+                    <div class="col-md-8">
+    
+                    <div class>
+                    	<div>
+                             	<label class="control-label">작성 날짜</label>
+						   			<span style="margin-right:30px"><fmt:formatDate value="${board.board_wdate}" pattern="yyyy-MM-dd" /></span>
+						   	 	<label for="view">조회</label>
+						   	 	<span style="margin-right:30px">${board.board_view}</span>
+						    	<label for="like">좋아요</label>
+						    	<span >${board.board_like}</span>
 						    	
-						    	<div class="">
-						    	<label for="bno" class="col-sm-2 control-label" style="display:block">글 번호</label>
-						    		<input type="text" id="bno" name="bno" class="form-control" value="${board.board_index}" readonly="readonly" style="width:50%;display:inline-block"/>
-						   		</div>
-						  
-						   
-			
-						    	<label for="title" class="col-sm-2 control-label">글 제목</label>
-						    	<div class="">
-						    		<input type="text" id="title" name="title" class="form-control" value="${board.board_subject}" readonly="readonly"  style="width:50%;display:inline-block"/>
-						    	</div>
-					
-					
-						    	<label for="content" class="col-sm-2 control-label">글 내용</label>
-						    	<div class="">
-						    		<textarea id="content" name="content" class="form-control" readonly="readonly"> ${board.board_content}</textarea>
-						   		</div>
-						
-						
-						   	    <label for="writer" class="col-sm-2 control-label">작성자</label>
-						   	    <div class="col-sm-12">
-						   	    <input type="text" id="writer" name="writer" class="form-control" value="${board.member_name}" readonly="readonly" /><br />
-						    	</div>
-						 
-					
-						   	 	<label class="control-label">작성 날짜</label>
-						   		<span><fmt:formatDate value="${board.board_wdate}" pattern="yyyy-MM-dd" /></span>
-						
-
-						    <label for="view">조회수</label><input type="text" id="view" name="view" value="${board.board_view}" readonly="readonly"  />
-						   
-						    <label for="like">좋아요수</label><input type="text" id="like" name="like" value="${board.board_like}" readonly="readonly"  />
-						    </div>
-
-						  </form>
-						  <!-- 게시물 끝 -->
-						  <tr>
-						  <td colspan='2' align='center'>
-						   	<p>
-						   	 <div class="form-group">
-						   	 	<c:if test="${empty member}">
-						    		<button type="button" id="modify_btn" class="replyUpdate btn-warning btn-xs" 
-						    		style="display:inline-block;height:30px;width: 50px !important;"
-						    		 onclick="check_login()">수정</button>
-						    		<button type="button" id="delete_btn" class="replyUpdate btn-danger btn-xs" 
-						    		style="display:inline-block;height:30px;width: 50px !important;"
-						    		 onclick="check_login()">삭제</button>
-						   		</c:if>
-						   		<c:if test="${!empty member}">
-						   			<c:if test="${member.member_email == board.member_email}">
-							   			<button type="button" id="modify_btn" class="replyUpdate btn-warning btn-xs" 
-							    		style="display:inline-block;height:30px;width: 50px !important;"
-							    		 onclick="location.href='board_update?board_index=${board.board_index}';">수정</button>
-							    		<button type="button" id="delete_btn" class="replyUpdate btn-danger btn-xs" 
-							    		style="display:inline-block;height:30px;width: 50px !important;"
-							    		 onclick="location.href='board_delete?board_index=${board.board_index}';">삭제</button>
-						   			</c:if>
-						   			<c:if test="${member.member_email ne board.member_email}">
-						   				<button type="button" id="modify_btn" class="replyUpdate btn-warning btn-xs" 
-							    		style="display:inline-block;height:30px;width: 50px !important;"
-							    		 onclick="no_right()">수정</button>
-							    		<button type="button" id="delete_btn" class="replyUpdate btn-danger btn-xs" 
-							    		style="display:inline-block;height:30px;width: 50px !important;"
-							    		 onclick="no_right()">삭제</button>
-						   			</c:if>
-						   		</c:if>
-						   	</p>
-						   </td>
-						   <tr>
-					</tbody>
-				</table>
-					<br>
-					
-					<div id="reply">
-						 <ol class="replyList">
-						 <c:forEach items="${commentList}" var="repList">
-						 <li>
-						  <p>
-						  <span class="glyphicon glyphicon-user"></span>
-						  	${repList.member_name}
-						  	(<fmt:formatDate value="${repList.comment_wdate}" pattern="yyyy-MM-dd" />)
-						  </p>
-						  
-						  <p class="bg-info" style="width:50%; background-color:white !important;">${repList.comment_content}</p>
-						  
-						  <div class="form-group text-center" >
-						  	<button type="button" class="replyUpdate btn-warning btn-xs" data-rno="${repList.comment_index}" style="display:inline-block;height:30px;width: 50px !important;">수정</button>
-						  	<button type="button" class="replyUpdate btn-danger btn-xs" data-rno="${repList.comment_index}" style="display:inline-block;height:30px;width: 50px !important;">삭제</button>
-						  </div>
-						 </li>
-						 </c:forEach>   
-						 </ol>
-					</div>
-					<section class="replyForm">
-						<form role="form" method="post" autocomplete="off" class="form-horizontal">
-						
-						 <input type="hidden" id="bno" name="bno" value="${read.bno}" readonly="readonly" />
-						 <input type="hidden" id="page" name="page" value="${scri.page}" readonly="readonly" />
-						 <input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}" readonly="readonly" />
-						 <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}" readonly="readonly" />
-						 <input type="hidden" id="keyword" name="keyword" value="${scri.keyword}" readonly="readonly" />
-						
-						 <div class="form-group">
-						 	<label for="comment_writer" class="col-sm-2 control-label">작성자</label>
-						 	<div class="col-sm-10">
-						 		<input type="text" id="comment_writer" name="comment_writer" />
-						 	</div>
-						 </div>
-						 
-						 <div class="form-group">
-						 	<label for="comment_content" class="col-sm-2 control-labe">댓글 내용</label>
-						 	<div class="col-sm-10">
-						 		<textarea id="content" name="comment_content" class="form-control"></textarea>
-						 	</div>
-						 </div>
-						 
-						 <div class="form-group">
-						 	<div class="col-sm-offset-2 col-sm-10">
-						  		<button type="button" class="repSubmit btn-success" style="display:inline-block;height:30px;width: 50px !important;">작성</button>
-						  <script>
-						  var formObj = $(".replyForm form[role='form']");
-						        
-						  $(".repSubmit").click(function(){
-						   formObj.attr("action", "replyWrite");
-						   formObj.submit();
-						  });
-						  </script>
-						 </p>
-						</form>
-					</section>
+                        	</div>   
+                    
+                        <table class="table" style="width:70%;margin:0 auto;width:70%;margin:0 auto;margin-bottom:10px;">
+						   <tbody><tr><td>작성자</td><td>
+                                <input type="text" class="form-control" name="member_name" value="${board.member_name}" readonly=""></td></tr>
+                                  <tr><td>Email</td><td>
+                                    <input type="text" class="form-control" name="member_email" value="${board.member_email}" readonly=""></td></tr>
+                                    <tr>
+                                    <td>제목</td><td>
+                                        <input type="text" class="form-control" name="board_subject" value="${board.board_subject}" readonly></td></tr>
+                                        <tr>
+                                        	<td>글내용</td>
+                                       			<td>
+                                        			<textarea rows="10" cols="50" name="board_content" class="form-control" readonly>${board.board_content}</textarea>
+                                       			</td>
+                                        </tr>
+                              </tbody>
+                         </table>
+                         <c:if test="${empty member}">
+                        	 <input type="reset" value="수정" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="check_login()">
+                        	 <input type="reset" value="삭제" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="check_login()">
+                         </c:if>
+                         <c:if test="${!empty member}">
+                         	<c:if test="${member.member_email == board.member_email}">
+                         		<input type="reset" value="수정" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="location.href='board_update?board_index=${board.board_index}';">
+                        	 	<input type="reset" value="삭제" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="location.href='board_delete?board_index=${board.board_index}';">
+                         	</c:if>
+                         	<c:if test="${member.member_email ne board.member_email}">
+                         		<input type="reset" value="수정" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="no_right()">
+                        	 	<input type="reset" value="삭제" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="no_right()">
+                         	</c:if>
+                         </c:if>
+                         <button type="button" class="" style="background-color:black !important; color:white;width:133px;height:38px;border-radius:.25rem;display:inline-block" onclick="location.href='board_page#fix_point'">전체 게시글보기</button>
+                       </form>
+<!----------------------- 댓글 조회 부분 --------------------->
+			<div class="form-group col-sm-12">
+				<div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+       		 
+                    <div class="text-center" style="margin-bottom:300px">
+                        <table class="table" style="width:70%;margin:0 auto;width:70%;margin:0 auto;margin-bottom:10px;">        	
+							<c:forEach items="${commentList}" var="repList">
+							<div style="position:relative;margin-bottom:70px;text-align:left;">
+								<p style="text-align:left; margin-bottom:10px"><img src="img/user_20.png" style="margin-right:5px">${repList.member_name}
+								(<fmt:formatDate value="${repList.comment_wdate}" pattern="yyyy-MM-dd" />)</p> 
+								<input type="text" class="form-control" name="comment_content" value="${repList.comment_content}" readonly="" style="height:28px;width:746px" readonly>
+								<c:if test="${empty member}">
+									<input type="reset" value="수정" class="" style="background-color:black !important; color:white;width:70px;font-size:1em;height:30px;border-radius:.25rem;position:absolute;top:70px;left:15px;" onclick="check_login()">
+	                         		<input type="reset" value="삭제" class="" style="background-color:black !important; color:white;width:80px;font-size:1em;height:30px;border-radius:.25rem;position:absolute;top:70px;left:90px;" onclick="check_login()">
+								</c:if>
+								<c:if test="${!empty member}">
+									<c:if test="${member.member_email == repList.member_email}">
+										<input type="reset" value="수정" class="replyDeleteBtn" style="background-color:black !important; 
+										color:white;width:70px;font-size:1em;height:30px;border-radius:.25rem;position:absolute;top:70px;left:15px;" 
+										onclick="deleteComment('${repList.comment_index}')" data-cno="${repList.comment_index}">
+	                         			<input type="reset" value="삭제" class="commentDelBtn" style="background-color:black !important; 
+	                         			color:white;width:80px;font-size:1em;height:30px;border-radius:.25rem;position:absolute;top:70px;left:90px;" 
+	                         			onclick="deleteComment('${repList.comment_index}')" data-cno="${repList.comment_index}">
+									</c:if>
+									<c:if test="${member.member_email ne repList.member_email}">
+										<input type="reset" value="수정" class="" style="background-color:black !important; color:white;width:70px;font-size:1em;height:30px;border-radius:.25rem;position:absolute;top:70px;left:15px;" onclick="no_right()">
+	                         			<input type="reset" value="삭제" class="" style="background-color:black !important; color:white;width:80px;font-size:1em;height:30px;border-radius:.25rem;position:absolute;top:70px;left:90px;" onclick="no_right()">
+									</c:if>
+								</c:if>
+							</div>
+                       		</c:forEach> 
+	                     		<div style="position:relative;margin-bottom:70px;text-align:left;">
+		                     		<c:if test="${empty member}">                     		
+			                       		<span style="position:absolute;top:120px;left:15px;">작성자</span>
+			                       		<input type="text" class="form-control" id="member_name" name="member_name" value="로그인 후 이용해주세요." style="position:absolute;top:150px;left:15px;height:28px" readonly>
+			                       		<span style="position:absolute;top:200px;left:15px;">댓글 내용</span>
+			                       		<input type="text" class="form-control" id="comment_content" name="comment_content" value="로그인 후 이용해주세요." style="position:absolute;top:230px;left:15px;height:40px" readonly>                      		 
+                          		 	</c:if>
+                          		 	
+                          			<c:if test="${!empty member}">
+                          			   	<section class="replyForm">
+											<form role="form" method="post" autocomplete="off" class="form-horizontal">
+												<input type="hidden" id="board_index" name="board_index" value="${board.board_index}" readonly="readonly" />
+												<input type="hidden" id="member_email" name="member_email" value="${member.member_email}" readonly="readonly" />
+												
+												<div class="form-group">
+					                       			<label style="position:absolute;top:120px;left:15px;">작성자</label>
+					                       			<div class="col-sm-10">
+					                       				<input type="text" class="form-control" name="member_name" value="${member.member_name}" style="position:absolute;top:150px;left:15px;height:28px" readonly>
+					                       			</div>
+					                       		</div>
+					                       		
+					                       		<div class="form-group">
+					                       			<label style="position:absolute;top:200px;left:15px;">댓글 내용</label>
+					                       			<div class="col-sm-10">
+					                       				<input type="text" class="form-control" name="comment_content" value="" style="position:absolute;top:230px;left:15px;height:40px">                     		 
+		                          					</div>
+		                          				</div>
+		                          				
+				                          		 <div class="form-group">
+											 		<div class="col-sm-offset-2 col-sm-10">
+											  			<button type="button" class="repSubmit btn-success" style="background-color:black !important; color:white;width:70px;font-size:1em;height:30px;border-radius:.25rem;position:absolute;top:250px;left:15px;" onclick="check()">작성</button>
+											 			<script>
+														  var formObj = $(".replyForm form[role='form']");
+														        
+														  $(".repSubmit").click(function(){
+														   formObj.attr("action", "comment_write");													   
+														   formObj.submit();
+														  });
+														 </script>
+											  		</div>
+										  		</div>
+								  	  		</form>
+						  				</c:if>
+						  			</div>							
+							</section>
+                          </table>      
+                  	</div>
+                  </div>
+                </div>		
 		</div>
 	</div>
 	
@@ -450,6 +445,30 @@
  <section id="container">
 
  </section>
+
+  <!-- Footer Bottom Area -->
+        <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="border-line"></div>
+                    </div>
+                    <!-- Copywrite Text -->
+                    <div class="col-12 col-md-6" >
+                        <div class="copywrite-text"style="background-color: whitesmoke !important; ">
+                            <img src="img/core-img/creakok.png" alt=""><br/>
+                            <p>creakok@gmail.com  |  02.707.1480<br/>
+                                평일 10:00~17:00 (점심시간 12:00~13:00)<br/>
+                                토/일/공휴일 휴무</p>
+                            <p>(주)크리콕 | 소속 : 비트캠프 신촌센터  | 호스팅 제공자 : (주)CJ ENM<br/>
+                                서울 마포구 백범로 23 구프라자 3층</p>
+                            <p>ⓒ CREAKOK All rights reserved.</p>
+                        </div>
+                    </div>
+                    <!-- Footer Nav -->
+                </div>
+            </div>
+        </div>
  
 <!-- Footer Bottom Area End ##### -->
 

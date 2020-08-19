@@ -602,7 +602,6 @@
 				             <TD>${board.board_like}</TD>
 				          </TR> 
 				        </c:forEach>
-
 					</tbody>
 				</table>
 	<td colspan="6">
