@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.LikeType"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -357,7 +357,31 @@
                                                 <a href="#">Hot</a>
                                             </div> -->
                                             <div class="product-meta d-flex">
-                                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+                                                <script>
+                                                function testhcbae(index){
+                                                    if('${member.member_email}' == '') {
+                                                        alert('로그인해주세요.');
+                                                        return;
+                                                    }
+                                                    
+                                                    let formData = new FormData();
+                                                    formData.append('like_content_index',index);
+                                                    formData.append('like_type_code','${LikeType.GOODS_LIKE}');
+                                                    formData.append('like_member_email','${member.member_email}');
+
+                                                    let xmlHttpLike = new XMLHttpRequest();
+                                                    xmlHttpLike.onreadystatechange = function() {
+                                                    	if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                                                        	makeGoodsLikeList();
+                                                        }
+                                                   };
+                                                   xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
+                                                   xmlHttpLike.send(formData);
+                                                }
+                                                </script>
+                                                <a href="#" class="wishlist-btn" onclick="testhcbae('${goods.goods_index}')">
+                                                    <i class="goods_list_like icon_heart_alt"></i>
+                                                </a>
                                                 <a href="cart.html" class="add-to-cart-btn">장바구니에 담기</a>
                                                 <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
                                             </div>
@@ -372,7 +396,6 @@
                                             </div>                                      
                                         </div>                         
                                     </div>
-
                             </c:forEach>
                             
                             
@@ -439,6 +462,45 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+    
+    <script type="text/javascript">
+    function makeGoodsLikeList(){
+        if('${member.member_email}' == '') {
+            return;
+        }
+        let likeList = document.querySelectorAll('.goods_list_like');
+        let tmep_count=0;
+        let formData = new FormData();
+        let xmlHttpLike = new XMLHttpRequest();
+
+        <c:forEach var="goods" items="${goods.list}" >
+        formData = new FormData();
+        formData.append('like_content_index','${goods.goods_index}');
+        formData.append('like_type_code','${LikeType.GOODS_LIKE}');
+        formData.append('like_member_email','${member.member_email}');
+        
+        xmlHttpLike = new XMLHttpRequest();
+        xmlHttpLike.onreadystatechange = function() {
+            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
+                    likeList[tmep_count].classList.remove('icon_heart');
+                    likeList[tmep_count].classList.add('icon_heart_alt');
+                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
+                    likeList[tmep_count].classList.remove('icon_heart_alt');
+                    likeList[tmep_count].classList.add('icon_heart');
+                }                
+            }
+       };
+       xmlHttpLike.open("POST", "readLike.do", false); // true for asynchronous
+       xmlHttpLike.send(formData);
+       tmep_count++;
+       </c:forEach>
+    }
+    makeGoodsLikeList();
+</script>
+                                                    
+                                                    
 </body>
 
 </html>

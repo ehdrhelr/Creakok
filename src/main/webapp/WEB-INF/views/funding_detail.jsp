@@ -56,7 +56,7 @@
 
 </head>
 
-<body>
+<body onload="readFundingLike();">
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
@@ -165,45 +165,9 @@
                                    <a name="fix_point"></a>
                                     <div class="ProjectIntroduction__SecondaryButton-sc-1o2ojgb-24 fnDZVR">
                                         <div class="LikeButton__Wrapper-whittq-0 dFOIsS ProjectIntroduction__StyledLikeButton-sc-1o2ojgb-22 jUCdsF">
-                                            <button type="button" class="LikeButton__LikedBtn-whittq-1 neDEf" onclick="clickLike(this);">
+                                            <button type="button" class="LikeButton__LikedBtn-whittq-1 neDEf" onclick="clickFundingLike();">
                                                 <span>좋아요</span>
                                             </button>
-                                            <script type="text/javascript">
-                                            function clickLike(obj){
-                                            	let like_content_index = '${funding_detail.funding_index}';
-                                            	let like_type_code = '${LikeType.FUNDING_LIKE}';
-                                            	let like_member_email = '${member.member_email}'; 
-                                                if(like_member_email == '') {
-                                                    alert('로그인해주세요.');
-                                                    return;
-                                                }
-                                            	//console.log('좋아요를 클릭했습니다.');
-                                            	//console.log('index:'+like_content_index);
-                                            	//console.log('type:'+like_type_code);
-                                            	//console.log('email:'+like_member_email);
-                                            	
-                                                let formData = new FormData();
-                                                formData.append('like_content_index','${funding_detail.funding_index}');
-                                                formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
-                                                formData.append('like_member_email','${member.member_email}');
-
-                                            	var xmlHttpLike = new XMLHttpRequest();
-                                                xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
-                                                xmlHttpLike.send(formData);
-                                                xmlHttpLike.onreadystatechange = function() {
-                                                    if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
-                                                        console.log("####1:"+xmlHttpLike.responseText);
-                                                        if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
-                                                            //obj.style.backgroundImage = "url(/img/like/like_on.png)";
-                                                        	obj.classList.add('isLiked');
-                                                        } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
-                                                        	//obj.style.backgroundImage = "url(/img/like/like_off.png)";
-                                                            obj.classList.remove('isLiked');
-                                                        }
-                                                    }
-                                               };
-                                            }
-                                            </script>
                                         </div>
                                     </div>
                                 </div> 
@@ -386,6 +350,60 @@
     <script type="application/javascript" src="https://d2om2e6rfn032x.cloudfront.net/wpa/bundle.app.173e0183d7bc9f5995e8.js"></script>
 
     <!--hcbae 텀블벅 가져오기 end-->
+    
+    <script type="text/javascript">
+    function readFundingLike(){
+        if('${member.member_email}' == '') {
+            return;
+        }
+        
+        let formData = new FormData();
+        formData.append('like_content_index','${funding_detail.funding_index}');
+        formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
+        formData.append('like_member_email','${member.member_email}');
+        
+        let xmlHttpLike = new XMLHttpRequest();
+        xmlHttpLike.open("POST", "readLike.do", true); // true for asynchronous
+        xmlHttpLike.send(formData);
+        xmlHttpLike.onreadystatechange = function() {
+            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                let obj = document.querySelector(".neDEf");
+                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
+                    obj.classList.remove('isLiked');
+                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
+                    obj.classList.add('isLiked');
+                }
+            }
+       };
+    }
+
+    function clickFundingLike(){
+        if('${member.member_email}' == '') {
+            alert('로그인해주세요.');
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append('like_content_index','${funding_detail.funding_index}');
+        formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
+        formData.append('like_member_email','${member.member_email}');
+
+        let xmlHttpLike = new XMLHttpRequest();
+        xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
+        xmlHttpLike.send(formData);
+        xmlHttpLike.onreadystatechange = function() {
+            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                let obj = document.querySelector(".neDEf");
+                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
+                    obj.classList.add('isLiked');
+                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
+                    obj.classList.remove('isLiked');
+                }
+            }
+       };
+    }
+    </script>
+
 </body>
 
 </html>
