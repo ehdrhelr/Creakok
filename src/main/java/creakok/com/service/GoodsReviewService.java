@@ -11,4 +11,6 @@ public interface GoodsReviewService {
 	long selectGoodsReviewCountByGoodsIndex(long goods_index);
 	boolean updateReviewViews(long goods_review_index);
 	Goods_Review selectOneReview(long goods_review_index);
+	void deleteOneReview(long goods_review_index);
+	void insertOneReview(Goods_Review goods_review);
 }

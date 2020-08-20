@@ -460,13 +460,13 @@
                           </c:if>
                           
                           
-                            <c:forEach var="goods" items="${goods.list}" >      
+                            <c:forEach var="goods2" items="${goods.list}" >      
                                 <!-- Single Product Area -->
                                 <div class="col-12 col-sm-6 col-lg-4">
                                     <div class="single-product-area mb-50">
                                         <!-- Product Image -->
                                         <div class="product-img">
-                                            <a href="goods_detail.do?goods_index=${goods.goods_index}"><img src="${goods.goods_repre_pic}" alt=""></a>
+                                            <a href="goods_detail.do?goods_index=${goods2.goods_index}"><img src="${goods2.goods_repre_pic}" alt=""></a>
                                         
                                             <!-- Product Tag
                                             <div class="product-tag">
@@ -480,11 +480,11 @@
                                          </div>   
                                             <!-- Product Info -->
                                             <div class="product-info mt-15">
-                                                <p style="margin-bottom:5px;">${goods.creator_name}</p>
-                                                <a href="goods_detail.do?goods_index=${goods.goods_index}">
-                                                    <p style="color:#545454;font-weight:500;">${goods.goods_name}</p>
+                                                <p style="margin-bottom:5px;">${goods2.creator_name}</p>
+                                                <a href="goods_detail.do?goods_index=${goods2.goods_index}">
+                                                    <p style="color:#545454;font-weight:500;">${goods2.goods_name}</p>
                                                 </a>
-                                                <h6><strong>${goods.goods_price}</strong> 원</h6>
+                                                <h6><strong>${goods2.goods_price}</strong> 원</h6>
                                             </div>                                      
                                         </div>                         
                                     </div>
@@ -504,7 +504,7 @@
                                     <c:choose>
                                         <c:when test="${i==goods.cp}">
                                         <li class="page-item">
-                                        <a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}" style="border-radius:0;" onclick="getCp();">
+                                        <a class="page-link" href="goods_list.do?cp=${i}" style="border-radius:0;" onclick="getCp();">
                                             <span style="color:black">${i}</span>
                                             </a>
                                             </li>

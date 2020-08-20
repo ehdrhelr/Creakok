@@ -25,5 +25,13 @@
      <select id="selectOneReview" resultType="Goods_Review" parameterType="long">
         select * from GOODS_REVIEW where GOODS_REVIEW_INDEX=#{goods_review_index}
     </select>     
+    
+    <insert id="insertOneReview" parameterType="Goods_Review">
+        <![CDATA[insert into GOODS_REVIEW values(GOODS_REVIEW_INDEX_SEQ.nextval, #{member_name}, ${goods_index}, SYSDATE, ${goods_review_rating}, null, #{goods_review_content}, null, #{goods_review_subject}, 0) ]]>
+    </insert>
+
+    <delete id="deleteOneReview"  parameterType="long">
+        delete from GOODS_REVIEW where GOODS_REVIEW_INDEX=#{goods_review_index}
+    </delete>     
 </mapper>
 

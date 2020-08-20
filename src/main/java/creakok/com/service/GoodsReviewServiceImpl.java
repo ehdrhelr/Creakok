@@ -54,4 +54,12 @@ public class GoodsReviewServiceImpl implements GoodsReviewService {
 	public Goods_Review selectOneReview(long goods_review_index) {
 		return goodsservicemapper.selectOneReview(goods_review_index);
 	}
+	@Override
+	public void deleteOneReview(long goods_review_index) {
+		goodsservicemapper.deleteOneReview(goods_review_index);
+	}
+	@Override
+	public void insertOneReview(Goods_Review goods_review) {
+		goodsservicemapper.insertOneReview(goods_review);
+	}
 }	

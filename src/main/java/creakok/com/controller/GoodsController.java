@@ -1,5 +1,6 @@
 package creakok.com.controller;
 
+import java.sql.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -178,19 +179,26 @@ public class GoodsController {
 	public ModelAndView goods_detail(HttpServletRequest request, HttpSession session) {
 		String goods_indexStr = request.getParameter("goods_index");
 		long goods_index = Long.parseLong(goods_indexStr);
+		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
+		//String gCodeStr = request.getParameter("gCode");
+		//long gCode = Long.parseLong(gCodeStr);
 		
 		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
 		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index: "+goods_index);
 		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ one_goods: "+one_goods);
 		
+		
+		long category_code = one_goods.getGoods_category_code();
+		String category_name = goods_categoryService.selectGoodsCategoryName(category_code);
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ category_name: "+category_name);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("goods_details");
-		mv.addObject("one_goods", one_goods);	
+		mv.addObject("one_goods", one_goods);
+		mv.addObject("review_size", review_size);
+		mv.addObject("category_name", category_name);
+		
 
-		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
-		session.setAttribute("review_size", review_size);
-
-				
 		return mv;
 	}
 	@RequestMapping("goods_order.do")
@@ -256,9 +264,12 @@ public class GoodsController {
 		String review_cp = request.getParameter("review_cp");
 		String review_ps = request.getParameter("review_ps");
 		String goods_indexStr = request.getParameter("goods_index");
+		String category_name = request.getParameter("category_name");
 		
 		long goods_index = Long.parseLong(goods_indexStr);
 		
+		
+		session.setAttribute("category_name", category_name);
 
 		Goods_ReviewVo goods_review_vo = (Goods_ReviewVo)session.getAttribute("goods_review");
 		//(1) cp 
@@ -307,8 +318,19 @@ public class GoodsController {
 		return "goods_review_board";
 	}
 	@RequestMapping("goods_review_write.do")
-	public String goods_review_write() {
-		return "goods_review_write";
+	public ModelAndView goods_review_write(HttpServletRequest request) {
+		String goods_indexStr = request.getParameter("goods_index");
+		String category_name = request.getParameter("category_name");
+		long goods_index = Long.parseLong(goods_indexStr);
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index(): "+goods_index);
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index(): "+category_name);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("goodswrite");
+		mv.addObject("goods_index", goods_index);
+		mv.addObject("category_name", category_name);
+		
+		return mv;
 	}	
 	@RequestMapping("goods_one_review.do")
 	public ModelAndView goods_one_review(HttpServletRequest request) {
@@ -319,6 +341,8 @@ public class GoodsController {
 		String gName = goodsService.selectGoodsName(goods_index);
 		boolean flag = goods_reviewservice.updateReviewViews(goods_review_index);
 		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
+		String category_name = request.getParameter("category_name");
+		
 		//log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@: "+goods_review_index);
 		//log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@: "+gName);
 		Goods_ReviewVo review = goods_reviewservice.selectPerPageReview(1, 5, goods_index);
@@ -333,8 +357,56 @@ public class GoodsController {
 		mv.addObject("goods_name", gName);
 		mv.addObject("review", review);
 		mv.addObject("one_review", one_review);
-		
+		mv.addObject("category_name", category_name);
 		
 		return mv;
+	}
+	@RequestMapping("goods_review_delete.do")
+	public String goods_review_delete(HttpServletRequest request) {
+		String goods_review_indexStr = request.getParameter("goods_review_index");
+		long goods_review_index = Long.parseLong(goods_review_indexStr);
+		goods_reviewservice.deleteOneReview(goods_review_index);
+		
+		return "goods_review_board";
+	}
+	@RequestMapping("goods_review_insert.do")
+	public String goods_review_insert(HttpServletRequest request) {
+		String review_ratingStr = request.getParameter("review_rating");
+		long review_rating = Long.parseLong(review_ratingStr);
+		String review_writer  = request.getParameter("review_writer"); 
+		String review_subject = request.getParameter("review_subject");
+		String goods_name = request.getParameter("goods_name");
+		String review_content = request.getParameter("review_content");
+
+		Goods_Review goods_review = new Goods_Review(-1, review_writer, 28, null, review_rating, null, review_content, null, review_subject, 0);
+
+		goods_reviewservice.insertOneReview(goods_review);
+	  
+		return "goods_review_board";
+	}
+	@RequestMapping("goods_review_update_form.do")
+	public ModelAndView goods_review_update_form(HttpServletRequest request) {
+		String goods_review_indexStr = request.getParameter("goods_review_index");
+		String goods_indexStr = request.getParameter("goods_index");
+		long goods_review_index = Long.parseLong(goods_review_indexStr);
+		long goods_index = Long.parseLong(goods_indexStr);
+		String gName = goodsService.selectGoodsName(goods_index);
+		
+		Goods_Review one_review = goods_reviewservice.selectOneReview(goods_review_index);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("goodsupdate");
+		mv.addObject("one_review", one_review);
+		mv.addObject("goods_name", gName);
+		
+		return mv;
+	}
+	@RequestMapping("goods_review_update.do")
+	public String goods_review_update(HttpServletRequest request) {
+		String goods_review_indexStr = request.getParameter("goods_review_index");
+		long goods_review_index = Long.parseLong(goods_review_indexStr);
+		goods_reviewservice.deleteOneReview(goods_review_index);
+			
+		return "goods_review_board";
 	}
 }

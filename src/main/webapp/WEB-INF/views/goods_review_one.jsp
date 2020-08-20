@@ -425,7 +425,7 @@
             <div class="Container-gci8y7-0 MskhC">
                 <div class="ProjectIntroduction__ProjectIntroductionWrapper-sc-1o2ojgb-1 bnFLKn">
                     <div class="ProjectIntroduction__ProjectOutline-sc-1o2ojgb-2 jbdzfG">
-                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="/discover?category=music"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">${one_goods.goods_category_code}</span></a>
+                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="/discover?category=music"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">${category_name}</span></a>
                             <h1 id="product_name" class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${one_goods.goods_name}</h1>
                             <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">
                             <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gOcHWp"></span>
@@ -638,51 +638,7 @@
                     <tbody>
                             
                     
-                   <!--  
-                         <tr>
-                                  <td style="padding:1.5px !important;">${one_review.goods_review_index}</td>
-                                  <td style="padding:1.5px !important;">
-                                      <c:if test="${one_review.goods_review_rating == 1}">
-                                                                                                    ★
-                                      </c:if>
-                                      <c:if test="${one_review.goods_review_rating == 2}">
-                                                                                                    ★★
-                                      </c:if>
-                                      <c:if test="${one_review.goods_review_rating == 3}">
-                                                                                                    ★★★
-                                      </c:if>
-                                      <c:if test="${one_review.goods_review_rating == 4}">
-                                                                                                    ★★★★
-                                      </c:if>
-                                      <c:if test="${one_review.goods_review_rating == 5}">
-                                                                                                    ★★★★★
-                                      </c:if>
-                                  </td>
-                                  <td style="padding:1.5px !important;"><a href="goods_one_review.do?goods_review_index=${one_review.goods_review_index}" style="color:black;">${one_review.goods_review_subject}</a></td>
-                                  <td style="padding:1.5px !important;">${one_review.member_name}</td>
-                                  <td style="padding:1.5px !important;">${one_review.goods_review_date}</td>
-                                  <td style="padding:1.5px !important;">${one_review.goods_review_view}</td>
-                        </tr>
-                     -->
-                     
-                     
-                         
-                      <!--     <div class="view">
-                                <h3>제품명: ${goods_name}</h3>
-                                <h3>제목: ${one_review.goods_review_subject}</h3>
-                                <p>${one_review.goods_review_content}</p>
-                                <p>
-                                 <img src="${one_review.goods_review_pic}" border="0" alt="" width="300px"><br>
-                                </p>
-                                <p class="ec-base-button">
-                                    <span class="gLeft">
-                                        <a href="/board/product/modify.html?board_act=edit&amp;no=103&amp;board_no=4&amp;link_product_no=1">
-                                            <img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_board_modify.gif" alt="게시글 수정하기">
-                                        </a>
-                                     </span>
-                                 </p>
-                           </div>
-                     -->  
+                 
                                         <td style="padding:1.5px !important;">${one_review.goods_review_index}</td>
                                       
                                         <td style="padding:1.5px !important;">
@@ -749,8 +705,8 @@
                 
                 <p style="width:100%;text-align:center;margin-top:10px">
                      <a href="goods_review.do?review_cp=1&review_ps=5&goods_index=${one_review.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>목록</a>
-                     <a href="#" style='background-color:black; color:white; width:130px; padding:3px'>수정</a>
-                     <a href="#" style='background-color:black; color:white; width:130px; padding:3px'>삭제</a>
+                     <a href="goods_review_update_form.do?goods_review_index=${one_review.goods_review_index}&goods_index=${one_review.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>수정</a>
+                     <a href="goods_review_delete.do?goods_review_index=${one_review.goods_review_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>삭제</a>
                 </p>
                 <!--
                 <button type="button" class="" 

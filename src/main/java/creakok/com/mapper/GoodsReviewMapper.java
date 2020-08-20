@@ -15,5 +15,6 @@ public interface GoodsReviewMapper {
 	long selectGoodsReviewCountByGoodsIndex(long goods_index);
 	int updateReviewViews(@Param(value = "goods_review_index") long goods_review_index);
 	Goods_Review selectOneReview(long goods_review_index);
+	void deleteOneReview(long goods_review_index);
+	void insertOneReview(Goods_Review goods_review);
 }
-  
