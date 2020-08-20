@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.LikeType"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -56,7 +56,7 @@
 
 </head>
 
-<body>
+<body onload="readFundingLike();">
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
@@ -164,7 +164,11 @@
                                 <div class="Tooltip__TooltipWrapper-sc-1czh1yq-0 kPQaEe ProjectIntroduction__StyledTooltip-sc-1o2ojgb-23 bUoWGM">
                                    <a name="fix_point"></a>
                                     <div class="ProjectIntroduction__SecondaryButton-sc-1o2ojgb-24 fnDZVR">
-                                        <div class="LikeButton__Wrapper-whittq-0 dFOIsS ProjectIntroduction__StyledLikeButton-sc-1o2ojgb-22 jUCdsF"><button type="button" class="LikeButton__LikedBtn-whittq-1 neDEf"><span>좋아요</span></button></div>
+                                        <div class="LikeButton__Wrapper-whittq-0 dFOIsS ProjectIntroduction__StyledLikeButton-sc-1o2ojgb-22 jUCdsF">
+                                            <button type="button" class="LikeButton__LikedBtn-whittq-1 neDEf" onclick="clickFundingLike();">
+                                                <span>좋아요</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div> 
                                 <div class="ProjectIntroduction__TertiaryButton-sc-1o2ojgb-26 fGephg"><button type="button" class="Button-sc-1x93b2b-0 ProjectIntroduction__ShareSNSButton-sc-1o2ojgb-25 llyixJ">
@@ -346,6 +350,60 @@
     <script type="application/javascript" src="https://d2om2e6rfn032x.cloudfront.net/wpa/bundle.app.173e0183d7bc9f5995e8.js"></script>
 
     <!--hcbae 텀블벅 가져오기 end-->
+    
+    <script type="text/javascript">
+    function readFundingLike(){
+        if('${member.member_email}' == '') {
+            return;
+        }
+        
+        let formData = new FormData();
+        formData.append('like_content_index','${funding_detail.funding_index}');
+        formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
+        formData.append('like_member_email','${member.member_email}');
+        
+        let xmlHttpLike = new XMLHttpRequest();
+        xmlHttpLike.open("POST", "readLike.do", true); // true for asynchronous
+        xmlHttpLike.send(formData);
+        xmlHttpLike.onreadystatechange = function() {
+            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                let obj = document.querySelector(".neDEf");
+                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
+                    obj.classList.remove('isLiked');
+                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
+                    obj.classList.add('isLiked');
+                }
+            }
+       };
+    }
+
+    function clickFundingLike(){
+        if('${member.member_email}' == '') {
+            alert('로그인해주세요.');
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append('like_content_index','${funding_detail.funding_index}');
+        formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
+        formData.append('like_member_email','${member.member_email}');
+
+        let xmlHttpLike = new XMLHttpRequest();
+        xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
+        xmlHttpLike.send(formData);
+        xmlHttpLike.onreadystatechange = function() {
+            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                let obj = document.querySelector(".neDEf");
+                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
+                    obj.classList.add('isLiked');
+                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
+                    obj.classList.remove('isLiked');
+                }
+            }
+       };
+    }
+    </script>
+
 </body>
 
 </html>
