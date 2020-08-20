@@ -5,18 +5,15 @@
 <mapper namespace="creakok.com.mapper.LikeTableMapper">
 
   <select id="selectByTypeAndContentIndex" parameterType="LikeTable" resultType="long">
-    select COUNT(LIKE_INDEX) from LIKE_TABLE 
+    select COUNT(LIKE_MEMBER_EMAIL) from LIKE_TABLE 
     where LIKE_TYPE_CODE=#{like_type_code} 
     and LIKE_CONTENT_INDEX=#{like_content_index}
     and LIKE_MEMBER_EMAIL=#{like_member_email}
   </select>
 
   <insert id="insertLikeTable" parameterType="LikeTable">
-  <selectKey keyProperty="like_index" resultType="long" order="BEFORE">
-    SELECT LIKE_INDEX_SEQ.nextval FROM dual
-    </selectKey>
-    insert into LIKE_TABLE(LIKE_INDEX, LIKE_TYPE_CODE, LIKE_CONTENT_INDEX, LIKE_MEMBER_EMAIL) 
-      values(#{like_index}, #{like_type_code}, #{like_content_index}, #{like_member_email})
+    insert into LIKE_TABLE(LIKE_TYPE_CODE, LIKE_CONTENT_INDEX, LIKE_MEMBER_EMAIL) 
+      values(#{like_type_code}, #{like_content_index}, #{like_member_email})
   </insert>
   
   <delete id="deleteLike" parameterType="LikeTable">
