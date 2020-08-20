@@ -1232,7 +1232,7 @@
     <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
  					<h3 style="text-align:center;margin-bottom:40px;font-size:18pt"> 펀딩 프로젝트 만들기</h3>
 	    <div style="width: 60%; margin: auto;" >
-	    	<form method="post" action="/fundingwrite.do">
+	    	<form method="post" action="/fundingwrite.do" enctype="multipart/form-data">
 		    				 <div >
                                     <input name="write_creator" style="display:block;"class="form-control" id="first_name" 
                                     placeholder="크리에이터" value="" required>
@@ -1273,24 +1273,44 @@
     <script>
    // $(document).ready(function(){
       $('#summernote').summernote({
-        placeholder: 'Hello stand alone ui',
+        placeholder: '펀딩받고 싶은 컨텐츠의 기획내용을 입력해주세요.',
         tabsize: 2,
-      minHeight: 370,
-      maxHeight: null,
-      focus: true,
-        toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-          ['view', ['fullscreen', 'codeview', 'help']]
-        ]
+	    minHeight: 370,
+	    maxHeight: null,
+	    callbacks: {	//여기 부분이 이미지를 첨부하는 부분
+			onImageUpload : function(files) {
+				uploadSummernoteImageFile(files[0],this);
+			}
+		},
+	    focus: true,
+	    toolbar: [
+	          ['style', ['style']],
+	          ['font', ['bold', 'underline', 'clear']],
+	          ['color', ['color']],
+	          ['para', ['ul', 'ol', 'paragraph']],
+	          ['table', ['table']],
+	          ['insert', ['link', 'picture', 'video']],
+	          ['view', ['fullscreen', 'codeview', 'help']]
+	        ]
       });
+      
+      function uploadSummernoteImageFile(file, editor){
+    	  data = new FormData();
+    	  data.append("file_detail_pic", file);
+    	  $.ajax({
+    			data : data,
+    			type : "POST",
+    			url : "/uploadSummernoteImageFile",
+    			contentType : false,
+    			processData : false,
+    			success : function(data){
+    				$(editor).summernote('insertImage', data.url);
+    			}
+    	  });
+      }
  //   });
     </script>
-      
+     
       <script>
 function goWrite(frm) {
 	var write_creator = frm.write_creator.value;

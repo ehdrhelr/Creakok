@@ -506,7 +506,7 @@
                         <div class="ProjectPage__MainColumnInner-f3cisk-4 kGPPtA">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf">
                                 <div class="StoryCard__StoryCardInner-sc-6cra5i-0 giOSQG">
-                                    
+                                    ${funding_detail.funding_detail_pic}
                                 </div>
                             </div>
                         </div>

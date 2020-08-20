@@ -1,5 +1,6 @@
 package creakok.com.filesetting;
 
 public class Path {
-	public static final String FILE_STORE="C:/JAVA/Spring/upload/tmp3/"; // / ÇÑ°³ \\ ¿ª½½·¡½¬´Â µÎ°³!
+	public static final String FILE_STORE="/Users/joohyunann/git/Creakok/src/main/webapp/resources/img/funding/"; // / ï¿½Ñ°ï¿½ \\ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î°ï¿½!
+	public static final String FILE_STORE_SHORT="/img/funding/";
 }
