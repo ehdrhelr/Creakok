@@ -11,7 +11,7 @@
 	
 	<!-- 댓글 조회 -->
 	<select id="getComment" resultType="Comment">
-		select * from BOARD_COMMENT where BOARD_INDEX = #{board_index}
+		select * from BOARD_COMMENT where BOARD_INDEX = #{board_index} order by COMMENT_INDEX desc
 	</select>
 	
 	<!-- 댓글 작성 -->
@@ -26,8 +26,8 @@
 	</select>
 	
 	<!-- 댓글 수정 -->
-	<update id="updateComment" parameterType="Comment">
-		update BOARD_COMMENT set COMMENT_CONTENT = #{comment_content} where COMMENT_INDEX = #{comment_index}
+	<update id="updateComment">
+		update BOARD_COMMENT set comment_content = #{comment_content} where comment_index = ${comment_index}
 	</update>
 	
 	<!-- 댓글 삭제 -->

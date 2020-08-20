@@ -46,29 +46,16 @@
     <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
     <link rel='stylesheet' id='content-css'  href='css/css_board/content.css' type='text/css' media='all' />
-   <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' />
-   <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-   <script src="js/js_board/jquery.form.min.js"></script>
-   <script src="js/js_board/jquery.validate.min.js"></script>
-   <script src="js/js_board/vue.min.js"></script>
-   <script src="js/js_board/jquery.cookie.js"></script>
-
-   <script src="js/js_board/moment.min.js"></script>
-   <script src="js/js_board/moment-timezone-with-data.min.js"></script>
-
-   <script src="js/js_board/vueComponent/vue-filter.js"></script>
-   <script src="js/js_board/app/App.js"></script>
+    <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' />
+  
 
 	<link href="css/css_board/reservation_page.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css"
 	href="timepicker/jquery.datetimepicker.css"/ >
 	<link rel="shortcut icon" href="bit_logo.png" />
-	<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="timepicker/jquery.js"></script>
-	<script src="timepicker/jquery.datetimepicker.full.min.js"></script>
-	<script src="js/js_board/login.js"></script>
+	
 
     <style>
         .three {
@@ -112,6 +99,23 @@
 			location.href="board_page?board_filterBy="+board_filterBy+"#fix_point";
 		} 
 	</script>
+	
+	  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+   	<script src="js/js_board/jquery.form.min.js"></script>
+   	<script src="js/js_board/jquery.validate.min.js"></script>
+   	<script src="js/js_board/vue.min.js"></script>
+   	<script src="js/js_board/jquery.cookie.js"></script>
+
+   	<script src="js/js_board/moment.min.js"></script>
+   	<script src="js/js_board/moment-timezone-with-data.min.js"></script>
+
+   	<script src="js/js_board/vueComponent/vue-filter.js"></script>
+   	<script src="js/js_board/app/App.js"></script>
+   	
+   	<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="timepicker/jquery.js"></script>
+	<script src="timepicker/jquery.datetimepicker.full.min.js"></script>
+	<script src="js/js_board/login.js"></script>
 </head>
 
 <body>
@@ -700,6 +704,8 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+  
 </body>
 
 </html>

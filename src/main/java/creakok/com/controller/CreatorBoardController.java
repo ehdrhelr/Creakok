@@ -39,7 +39,6 @@ public class CreatorBoardController {
 		String board_cpStr = request.getParameter("board_cp");
 		String board_psStr = request.getParameter("board_ps");
 		String board_filterBy = request.getParameter("board_filterBy");
-		
 		HttpSession session = request.getSession();
 		
 		//(1) cp 
@@ -248,8 +247,11 @@ public class CreatorBoardController {
 	
 	@PostMapping("board_update")
 	public String update(Board board) {
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@ board.getBoard_subject : " + board.getBoard_subject());
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@ board.getBoard_content : " + board.getBoard_content());
 		creatorBoardService.edit(board);
-		return "redirect:board_page";
+		return "redirect:board_content?board_index="+board.getBoard_index();
 	}
 	
 	// 삭제
@@ -391,11 +393,17 @@ public class CreatorBoardController {
 	
 	// 댓글 수정
 	@RequestMapping("comment_update")
-	public ModelAndView updateComment(Comment comment) {
-		ModelAndView mv = new ModelAndView();
-		//mv.setViewName("board_content?board_index="+board_index);
+	public ModelAndView updateComment(HttpServletRequest request) {
+		String comment_indexStr = request.getParameter("comment_index");
+		String comment_content = request.getParameter("comment_content");
+		String board_indexStr = request.getParameter("board_index");
 		
-		//boardCommentService.updateComment(board_index);
+		long comment_index = Long.valueOf(comment_indexStr); 
+		long board_index = Long.valueOf(board_indexStr);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:board_content?board_index="+board_index);
+		boardCommentService.updateComment(comment_index, comment_content);
 		
 		// 메뉴바 크리에이터 이름 얻기
 		List<Creator> creatorList = creatorBoardService.getCreatorName();
@@ -406,15 +414,6 @@ public class CreatorBoardController {
 	// 댓글 삭제
 	@RequestMapping("comment_delete")
 	public String deleteComment(long board_index, long comment_index) {
-		log.info("###################################");
-		log.info("###################################");
-		log.info("###################################");
-		log.info("###################################");
-		log.info("###################################");
-		log.info("###################################");
-		log.info("###################################");
-		log.info("###################################");
-		log.info("###################################");
 		log.info("###########" + board_index);
 		log.info("###########" + comment_index);
 		

@@ -36,8 +36,8 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 	
 	// 댓글 수정
 	@Override
-	public void updateComment(Comment comment) {
-		mapper.updateComment(comment);
+	public void updateComment(long comment_index, String comment_content) {
+		mapper.updateComment(comment_index, comment_content);
 	}
 	
 	// 댓글 삭제

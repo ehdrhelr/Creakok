@@ -18,6 +18,7 @@
 		select * from CREATOR_BOARD where board_index = #{board_index}
 	</select>
 	
+	<!-- 안사용 삭제 예정 -->
 	<insert id="insert" parameterType="Board">
 		insert into CREATOR_BOARD values(BOARD_INDEX_SEQ.nextval, #{board_subject}, #{board_content}, 'a', SYSDATE, 0, 0, null)
 	</insert>
@@ -71,16 +72,4 @@
 		select COUNT(case when ${board_c_code} like '%'||#{board_searchName}||'%' then 1 end) from CREATOR_BOARD
 	</select> 
 	
-	<!-- 
-	 댓글 조회 
-	<select id="getComment" resultType="Comment">
-		select * from BOARD_COMMENT where BOARD_INDEX = #{BOARD_INDEX}
-	</select>
-	
-	 댓글 작성 
-	<insert id="writeComment">
-	 	insert into BOARD_COMMENT values(COMMENT_INDEX_SEQ.nextval, #{BOARD_INDEX} #{MEMBER_NAME}, 
-	 	#{MEMBER_EMAIL}, #{COMMENT_CONTENT}, SYSDATE, null)
-	</insert>
-	-->
 </mapper>

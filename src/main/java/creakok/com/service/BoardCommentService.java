@@ -12,7 +12,7 @@ public interface BoardCommentService {
 	// 특정 댓글 조회
 	Comment getSelectedComment(long comment_index);
 	// 댓글 수정
-	void updateComment(Comment comment);
+	void updateComment(long comment_index, String comment_content);
 	// 댓글 삭제
 	void deleteComment(long comment_index);
 }
