@@ -10,6 +10,12 @@
     and LIKE_CONTENT_INDEX=#{like_content_index}
     and LIKE_MEMBER_EMAIL=#{like_member_email}
   </select>
+  
+  <select id="selectByTypeCodeAndEmail" parameterType="LikeTable" resultType="LikeTable">
+    select * from LIKE_TABLE 
+    where LIKE_TYPE_CODE=#{like_type_code} 
+    and LIKE_MEMBER_EMAIL=#{like_member_email}
+  </select>
 
   <insert id="insertLikeTable" parameterType="LikeTable">
     insert into LIKE_TABLE(LIKE_TYPE_CODE, LIKE_CONTENT_INDEX, LIKE_MEMBER_EMAIL) 
@@ -22,5 +28,16 @@
 	    and LIKE_CONTENT_INDEX=#{like_content_index}
 	    and LIKE_MEMBER_EMAIL=#{like_member_email}
   </delete>
+  
+  
+  
+	<select id="selectByFundingIndex" parameterType="long" resultType="Funding">
+	    select * from FUNDING where FUNDING_INDEX=${funding_index}
+	</select>
+
+    <select id="selectByGoodsIndex" parameterType="long" resultType="Goods">
+        select * from Goods where GOODS_INDEX=${goods_index}
+    </select>
+    
   
 </mapper>
