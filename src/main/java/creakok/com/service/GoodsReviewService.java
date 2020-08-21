@@ -13,4 +13,5 @@ public interface GoodsReviewService {
 	Goods_Review selectOneReview(long goods_review_index);
 	void deleteOneReview(long goods_review_index);
 	void insertOneReview(Goods_Review goods_review);
+	void updateOneReview(Goods_Review goods_review);
 }

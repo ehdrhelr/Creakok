@@ -1241,7 +1241,7 @@
           
           
 	    <div class="submit_a_review_area mt-50" style="width: 60%; margin: auto;" >
-	    	<form method="post" action="goods_review_insert.do">
+	    	<form method="post" action="goods_review_insert.do" onsubmit="return goWrite()">
                                    <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group d-flex align-items-center">
@@ -1277,13 +1277,14 @@
                                     <label for="review_subject" style="margin-right:2%">제목</label>
                                     <input name="review_subject" style="display:inline-block;width:90%" class="form-control" id="review_subject" 
                                    placeholder="제목" required>
-                                    		
+                                   <input type="hidden" name="goods_index" value="${goods_index}"/>
                                 </div>
+                                
 				<br>
 				<textarea id="summernote" name="review_content"></textarea>
 				
 				<p style="width:100%;text-align:center; margin-top:20px;">
-    				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" onclick="goWrite(this.form)"/>
+    				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" />
     				<a href="goods_review.do?review_cp=1&goods_index=${goods_index}#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px" value="목록으로"/></a>
 				
                 </p>			 		
@@ -1313,47 +1314,27 @@
     	  var star_result = $("#star_result").val(star);
     	  //var num = Number(result);
     	  //console.log(typeof(num));
-          //alert(typeof(num));
+          //alert(star);
       }
-      function goList(){
-    	  location.href="goods_review.do?review_cp=1&goods_index="+${goods_index}+"&category_name="+${category_name}#fix_point;
-      }
-      
-function goWrite(frm) {
-	var write_creator = frm.write_creator.value;
-	var write_funding_goal = frm.write_funding_goal.value;
-	var write_funding_wdate = frm.write_funding_wdate.value;
-	var write_funding_edate = frm.write_funding_edate.value;
-	var write_funding_subject = frm.write_funding_subject.value;
-	var write_funding_repre_pic = frm.write_funding_repre_pic.value;
-	
-	if (write_creator.trim() == ''){
-		alert("크리에이터명을 입력해주세요");
+function goWrite() {
+	var star = $("input[name='star']:checked").val();
+	var summernote = $("#summernote").val();
+	if (star == null){
+		alert("별점을 체크해주세요");
 		return false;
 	}
-	if(write_funding_goal.trim() == ''){
-		alert("목표금액을 입력해주세요");
-		return false;
-	}
-	if(write_funding_wdate.trim() == ''){
-		alert("펀딩 시작날짜를 입력해주세요");
-		return false;
-	}
-	if(write_funding_edate.trim() == ''){
-		alert("펀딩 종료날짜를 입력해주세요");
-		return false;
-	}
-	if(write_funding_subject.trim() == ''){
-		alert("펀딩받을 프로젝트명을 입력해주세요");
-		return false;
-	}
-	if(write_funding_repre_pic.trim() == ''){
-		alert("펀딩 대표사진을 입력해주세요");
+
+	if(summernote == ''){
+		alert("내용을 입력해주세요");
 		return false;
 	}
 	
+	if(summernote != null && star != null){
+			frm.submit();
+		    location.href="goods_review.do?review_cp=1&goods_index="+${goods_index}+"&category_name="+${category_name};
+		    return true;
+	}
 	
-	frm.submit();
 }
 </script>
   

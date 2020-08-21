@@ -1241,23 +1241,73 @@
           
           
 	    <div class="submit_a_review_area mt-50" style="width: 60%; margin: auto;" >
-	    	<form method="post" action="goods_review_insert.do">
+	    	<form method="post" action="goods_review_update.do"  onsubmit="return goWrite()">
                                    <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group d-flex align-items-center">
                                                     <span class="mr-15">별점 :</span>
                                                     <div class="stars">
-                                                        <input type="radio" name="star" class="star-1" id="star-1" onclick="starcheck()" value="1">
-                                                        <label class="star-1" for="star-1">1</label>
-                                                        <input type="radio" name="star" class="star-2" id="star-2" onclick="starcheck()" value="2">
-                                                        <label class="star-2" for="star-2">2</label>
-                                                        <input type="radio" name="star" class="star-3" id="star-3" onclick="starcheck()" value="3">
-                                                        <label class="star-3" for="star-3">3</label>
-                                                        <input type="radio" name="star" class="star-4" id="star-4" onclick="starcheck()" value="4">
-                                                        <label class="star-4" for="star-4">4</label>
-                                                        <input type="radio" name="star" class="star-5" id="star-5" onclick="starcheck()" value="5">
-                                                        <label class="star-5" for="star-5">5</label>
-                                                        <input type="hidden" value="1" id="star_result" name="review_rating">
+                                                        <c:if test="${one_review.goods_review_rating == 1}">
+                                                            <input type="radio" name="star" class="star-1" id="star-1" onclick="starcheck()" value="1" disabled="true" checked>
+                                                            <label class="star-1" for="star-1">1</label>
+                                                            <input type="radio" name="star" class="star-2" id="star-2" onclick="starcheck()" value="2" disabled="true">
+                                                            <label class="star-2" for="star-2">2</label>
+                                                            <input type="radio" name="star" class="star-3" id="star-3" onclick="starcheck()" value="3" disabled="true">
+                                                            <label class="star-3" for="star-3">3</label>
+                                                            <input type="radio" name="star" class="star-4" id="star-4" onclick="starcheck()" value="4" disabled="true">
+                                                            <label class="star-4" for="star-4">4</label>
+                                                            <input type="radio" name="star" class="star-5" id="star-5" onclick="starcheck()" value="5" disabled="true">
+                                                            <label class="star-5" for="star-5">5</label>
+                                                        </c:if>
+                                                        <c:if test="${one_review.goods_review_rating == 2}">
+                                                            <input type="radio" name="star" class="star-1" id="star-1" onclick="starcheck()" value="1" disabled="true">
+                                                            <label class="star-1" for="star-1">1</label>
+                                                            <input type="radio" name="star" class="star-2" id="star-2" onclick="starcheck()" value="2" disabled="true" checked>
+                                                            <label class="star-2" for="star-2">2</label>
+                                                            <input type="radio" name="star" class="star-3" id="star-3" onclick="starcheck()" value="3" disabled="true">
+                                                            <label class="star-3" for="star-3">3</label>
+                                                            <input type="radio" name="star" class="star-4" id="star-4" onclick="starcheck()" value="4" disabled="true">
+                                                            <label class="star-4" for="star-4">4</label>
+                                                            <input type="radio" name="star" class="star-5" id="star-5" onclick="starcheck()" value="5" disabled="true">
+                                                            <label class="star-5" for="star-5">5</label>
+                                                        </c:if>
+                                                        <c:if test="${one_review.goods_review_rating == 3}">
+                                                            <input type="radio" name="star" class="star-1" id="star-1" onclick="starcheck()" value="1" disabled="true">
+                                                            <label class="star-1" for="star-1">1</label>
+                                                            <input type="radio" name="star" class="star-2" id="star-2" onclick="starcheck()" value="2" disabled="true">
+                                                            <label class="star-2" for="star-2">2</label>
+                                                            <input type="radio" name="star" class="star-3" id="star-3" onclick="starcheck()" value="3" disabled="true" checked>
+                                                            <label class="star-3" for="star-3">3</label>
+                                                            <input type="radio" name="star" class="star-4" id="star-4" onclick="starcheck()" value="4" disabled="true">
+                                                            <label class="star-4" for="star-4">4</label>
+                                                            <input type="radio" name="star" class="star-5" id="star-5" onclick="starcheck()" value="5" disabled="true">
+                                                            <label class="star-5" for="star-5">5</label>
+                                                        </c:if>
+                                                        <c:if test="${one_review.goods_review_rating == 4}">
+                                                            <input type="radio" name="star" class="star-1" id="star-1" onclick="starcheck()" value="1" disabled="true">
+                                                            <label class="star-1" for="star-1">1</label>
+                                                            <input type="radio" name="star" class="star-2" id="star-2" onclick="starcheck()" value="2" disabled="true">
+                                                            <label class="star-2" for="star-2">2</label>
+                                                            <input type="radio" name="star" class="star-3" id="star-3" onclick="starcheck()" value="3" disabled="true">
+                                                            <label class="star-3" for="star-3">3</label>
+                                                            <input type="radio" name="star" class="star-4" id="star-4" onclick="starcheck()" value="4" disabled="true" checked>
+                                                            <label class="star-4" for="star-4">4</label>
+                                                            <input type="radio" name="star" class="star-5" id="star-5" onclick="starcheck()" value="5" disabled="true">
+                                                            <label class="star-5" for="star-5">5</label>
+                                                        </c:if>
+                                                        <c:if test="${one_review.goods_review_rating == 5}">
+                                                            <input type="radio" name="star" class="star-1" id="star-1" onclick="starcheck()" value="1" disabled="true">
+                                                            <label class="star-1" for="star-1">1</label>
+                                                            <input type="radio" name="star" class="star-2" id="star-2" onclick="starcheck()" value="2" disabled="true">
+                                                            <label class="star-2" for="star-2">2</label>
+                                                            <input type="radio" name="star" class="star-3" id="star-3" onclick="starcheck()" value="3" disabled="true">
+                                                            <label class="star-3" for="star-3">3</label>
+                                                            <input type="radio" name="star" class="star-4" id="star-4" onclick="starcheck()" value="4" disabled="true">
+                                                            <label class="star-4" for="star-4">4</label>
+                                                            <input type="radio" name="star" class="star-5" id="star-5" onclick="starcheck()" value="5" disabled="true" checked>
+                                                            <label class="star-5" for="star-5">5</label>
+                                                        </c:if>                                                                                                                                                                                                                                
+                                                             <input type="hidden" value="1" id="star_result" name="review_rating">
                                                         <span></span>
                                                     </div>
                                                 </div>
@@ -1267,24 +1317,25 @@
 		    				      <div>
                                      <label for="reviewer_name">작성자</label>&nbsp;&nbsp;
                                     <input name="review_writer" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="reviewer_name" 
-                                    placeholder="작성자" value="${one_review.member_name}" required>
+                                    placeholder="작성자" value="${one_review.member_name}" readonly>
                                     <label for="goods_name">제품명</label>&nbsp;&nbsp;
                                     <input name="goods_name" style="display:inline-block;width:30%" class="form-control" id="goods_name" 
-                                    placeholder="제품명" value="${goods_name}" required>
+                                    placeholder="제품명" value="${goods_name}" readonly>
                                 </div>
                                 
                                  <div style="margin-top:10px">
                                     <label for="review_subject" style="margin-right:2%">제목</label>
                                     <input name="review_subject" style="display:inline-block;width:90%" class="form-control" id="review_subject" value="${one_review.goods_review_subject}" 
                                    placeholder="제목" required>
-                                    		
+                                    <input type="hidden" name="goods_index" value="${one_review.goods_index}"/>
+                                    <input type="hidden" name="goods_review_index" value="${one_review.goods_review_index}"/>
                                 </div>
 				<br>
 				<textarea id="summernote" name="review_content">${one_review.goods_review_content}</textarea>
 				
 				<p style="width:100%;text-align:center; margin-top:20px;">
-				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" onclick="goWrite(this.form)"/>
-				<input id="subBtn2" type="reset"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px"value="목록으로" onclick="goWrite(this.form)"/>
+    				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기"/>
+    				<a href="goods_review.do?review_cp=1&goods_index=${goods_index}#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px" value="목록으로"/></a>
 				</p>			 		
 			</form>
 		</div>
@@ -1314,43 +1365,26 @@
     	  //console.log(typeof(num));
           //alert(typeof(num));
       }
-      
-function goWrite(frm) {
-	var write_creator = frm.write_creator.value;
-	var write_funding_goal = frm.write_funding_goal.value;
-	var write_funding_wdate = frm.write_funding_wdate.value;
-	var write_funding_edate = frm.write_funding_edate.value;
-	var write_funding_subject = frm.write_funding_subject.value;
-	var write_funding_repre_pic = frm.write_funding_repre_pic.value;
-	
-	if (write_creator.trim() == ''){
-		alert("크리에이터명을 입력해주세요");
-		return false;
-	}
-	if(write_funding_goal.trim() == ''){
-		alert("목표금액을 입력해주세요");
-		return false;
-	}
-	if(write_funding_wdate.trim() == ''){
-		alert("펀딩 시작날짜를 입력해주세요");
-		return false;
-	}
-	if(write_funding_edate.trim() == ''){
-		alert("펀딩 종료날짜를 입력해주세요");
-		return false;
-	}
-	if(write_funding_subject.trim() == ''){
-		alert("펀딩받을 프로젝트명을 입력해주세요");
-		return false;
-	}
-	if(write_funding_repre_pic.trim() == ''){
-		alert("펀딩 대표사진을 입력해주세요");
-		return false;
-	}
-	
-	
-	frm.submit();
-}
+      function goWrite() {
+    	    var star = $("input[name='star']:checked").val();
+    	    var summernote = $("#summernote").val();
+    	    if (star == null){
+    	        alert("별점을 체크해주세요");
+    	        return false;
+    	    }
+
+    	    if(summernote == ''){
+    	        alert("내용을 입력해주세요");
+    	        return false;
+    	    }
+    	    
+    	    if(summernote != null && star != null){
+    	            frm.submit();
+    	            location.href="goods_review.do?review_cp=1&goods_index="+${goods_index}+"&category_name="+${category_name};
+    	            return true;
+    	    }
+    	    
+    	}
 </script>
   
       

@@ -27,11 +27,14 @@
     </select>     
     
     <insert id="insertOneReview" parameterType="Goods_Review">
-        <![CDATA[insert into GOODS_REVIEW values(GOODS_REVIEW_INDEX_SEQ.nextval, #{member_name}, ${goods_index}, SYSDATE, ${goods_review_rating}, null, #{goods_review_content}, null, #{goods_review_subject}, 0) ]]>
+        <![CDATA[insert into GOODS_REVIEW values(GOODS_REVIEW_INDEX_SEQ.nextval, #{member_name}, ${goods_index}, SYSDATE, ${goods_review_rating}, null, #{goods_review_subject}, #{goods_review_content}, null, 0) ]]>
     </insert>
 
     <delete id="deleteOneReview"  parameterType="long">
         delete from GOODS_REVIEW where GOODS_REVIEW_INDEX=#{goods_review_index}
-    </delete>     
+    </delete>    
+    <update id="updateOneReview" parameterType="Goods_Review">
+       update GOODS_REVIEW set GOODS_REVIEW_SUBJECT=#{goods_review_subject}, GOODS_REVIEW_CONTENT=#{goods_review_content} where GOODS_REVIEW_INDEX=${goods_review_index}
+    </update>     
 </mapper>
 

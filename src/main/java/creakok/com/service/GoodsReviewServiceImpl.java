@@ -62,4 +62,8 @@ public class GoodsReviewServiceImpl implements GoodsReviewService {
 	public void insertOneReview(Goods_Review goods_review) {
 		goodsservicemapper.insertOneReview(goods_review);
 	}
+	@Override
+	public void updateOneReview(Goods_Review goods_review) {
+		goodsservicemapper.updateOneReview(goods_review);
+	}
 }	
