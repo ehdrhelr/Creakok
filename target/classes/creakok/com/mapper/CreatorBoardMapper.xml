@@ -35,7 +35,7 @@
 	<insert id="insertBoard" parameterType="creakok.com.domain.Board">
 	
 		<selectKey keyProperty="board_index" order="BEFORE" resultType="int">
-			SELECT BOARD_INDEX_SEQ.NEXTVAL FROM DUAL
+			SELECT CREATOR_BOARD_INDEX_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 			INSERT INTO CREATOR_BOARD 
 					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, #{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null, 'subsub')
