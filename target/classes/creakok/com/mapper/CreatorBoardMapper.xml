@@ -20,7 +20,7 @@
 	
 	<!-- 안사용 삭제 예정 -->
 	<insert id="insert" parameterType="Board">
-		insert into CREATOR_BOARD values(BOARD_INDEX_SEQ.nextval, #{board_subject}, #{board_content}, 'a', SYSDATE, 0, 0, null)
+		insert into CREATOR_BOARD values(BOARD_INDEX_SEQ.nextval, #{board_subject}, #{board_content}, 'a', SYSDATE, 0, 0, nulls)
 	</insert>
 	
 	<select id="selectByIndex" resultType="Board" parameterType="long">
@@ -38,7 +38,7 @@
 			SELECT BOARD_INDEX_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 			INSERT INTO CREATOR_BOARD 
-					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, #{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null)
+					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, #{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null, 'subsub')
 	</insert>
 	
 	<!-- 조회수 +1 -->
