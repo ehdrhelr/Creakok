@@ -113,7 +113,7 @@
             <div class="Container-gci8y7-0 MskhC">
                 <div class="ProjectIntroduction__ProjectIntroductionWrapper-sc-1o2ojgb-1 bnFLKn">
                     <div class="ProjectIntroduction__ProjectOutline-sc-1o2ojgb-2 jbdzfG">
-                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="/discover?category=music"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">${one_goods.goods_category_code}</span></a>
+                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="/discover?category=music"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">${category_name}</span></a>
                             <h1 id="product_name" class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${one_goods.goods_name}</h1>
                             <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">
                             <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gOcHWp"></span>
@@ -276,7 +276,7 @@
                 <div class="ContentsNavigation__ProjectContentsNavigationInner-mwsx7i-2 OvVKa">
                     <div class="ContentsNavigation__NavLeft-mwsx7i-3 buZwam">
                     <a class="NavItem-mwsx7i-0 cjInbB"  href="goods_detail.do?goods_index=${review.goods_index}#fix_point">상품상세정보</a>
-                    <a aria-current="page" class="ContentsNavigation__ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="goods_review.do">리뷰<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(${review_size})</span></a>
+                    <a aria-current="page" class="ContentsNavigation__ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="goods_review.do?category_name=${category_name}#fix_point">리뷰<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(${review_size})</span></a>
                     <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="#">Q&A</a></div>
                 </div>
             </nav>
@@ -302,13 +302,13 @@
     <div class="container">
      
             <div class="r_list" style="width:600px;font-size:10pt;">
-                <h3>REVIEW(${review.review_list.size()})</h3>
+                <h3>REVIEW(${review_size})</h3>
                  <p style="font-size:12pt;color:#666666;margin-bottom:10px;">THANK YOU FOR POSTING REVIEW.</p>
                 <table style="">
                     <colgroup>
                         <col width="7%">
-                        <col width="5%">
-                        <col width="40%">
+                        <col width="13%">
+                        <col width="30%">
                         <col width="20%">
                         <col width="13%">
                         <col width="7%">
@@ -330,47 +330,40 @@
                          <c:forEach items="${review.review_list}" var="review_list2">
                              <tr>
                                   <td style="padding:1.5px !important;">${review_list2.goods_review_index}</td>
-                                  <td style="padding:1.5px !important;">${review_list2.goods_review_rating}</td>
-                                  <td style="padding:1.5px !important;"><a href="#" style="color:black;">${review_list2.goods_review_subject}</a></td>
+                                  <td style="padding:1.5px !important;">
+                                  <c:if test="${review_list2.goods_review_rating == 1}">
+                                                                                                ★
+                                  </c:if>
+                                  <c:if test="${review_list2.goods_review_rating == 2}">
+                                                                                                ★★
+                                  </c:if>
+                                  <c:if test="${review_list2.goods_review_rating == 3}">
+                                                                                                ★★★
+                                  </c:if>
+                                  <c:if test="${review_list2.goods_review_rating == 4}">
+                                                                                                ★★★★
+                                  </c:if>
+                                  <c:if test="${review_list2.goods_review_rating == 5}">
+                                                                                                ★★★★★
+                                  </c:if>
+                                  </td>
+                                  <td style="padding:1.5px !important;"><a href="goods_one_review.do?goods_review_index=${review_list2.goods_review_index}&goods_index=${review_list2.goods_index}#fix_point" color:black;overflow:hidden;width:200px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap>${review_list2.goods_review_subject}</a></td>
                                   <td style="padding:1.5px !important;">${review_list2.member_name}</td>
                                   <td style="padding:1.5px !important;">${review_list2.goods_review_date}</td>
-                                  <td style="padding:1.5px !important;">${review_list2.goods_review_view}</td>
+                                  <td id="review_view" style="padding:1.5px !important;">${review_list2.goods_review_view}</td>
                               </tr>
                          </c:forEach>
-                         
+           
                                     
-                            <!--
-
-                              <tr>
-                                  <td style="padding:1.5px !important;">3</td>
-                                  <td style="padding:1.5px !important;"><a href="#" style="color:black;">악당중에 누가 제일 쎔?</a></td>
-                                  <td style="padding:1.5px !important;"><a href="#" style="color:black;">현</a></td>
-                                  <td style="padding:1.5px !important;">2020/8/3</td>
-                                  <td style="padding:1.5px !important;">5</td>
-                              </tr>
-                              <tr>
-                                  <td style="padding:1.5px !important;">2</td>
-                                  <td style="padding:1.5px !important;"><a href="#" style="color:black;">배트맨 신작 언제 나오나요?</a></td>
-                                  <td style="padding:1.5px !important;"><a href="#" style="color:black;">희</a></td>
-                                  <td style="padding:1.5px !important;">2020/8/3</td>
-                                  <td style="padding:1.5px !important;">8</td>
-                              </tr>
-                              <tr>
-                                  <td style="padding:1.5px !important;">1</td>
-                                  <td style="padding:1.5px !important;"><a href="#" style="color:black;">다크나이트 짱 머싯서요!!</a></td>
-                                  <td style="padding:1.5px !important;"><a href="#" style="color:black;">섭</a></td>
-                                  <td style="padding:1.5px !important;">2020/8/3</td>
-                                  <td style="padding:1.5px !important;">3</td>
-                              </tr>
-                            -->
+                        
                     </tbody>
                 </table>
-                
+                 
                
                 
                 
                 <button type="button" class="" onclick="document.getElementById('reserv').style.display='block'"
-                    style='background-color:black; color:white; width:70px;'><a href="goods_review_write.do" style="color:white;">글쓰기</a></button>
+                    style='background-color:black; color:white; width:70px;'><a href="goods_review_write.do?goods_index=${review.goods_index}&category_name=${category_name}#fix_point" style="color:white;">글쓰기</a></button>
                     
                     
                     

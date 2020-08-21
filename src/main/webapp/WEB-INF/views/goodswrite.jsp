@@ -995,6 +995,7 @@
             flex:0 0 70%;!important;
             max-width:63%;!important;
         }
+<<<<<<< HEAD
     </style>
     
     <style>
@@ -1325,6 +1326,348 @@ function goWrite(frm) {
 	
 	
 	frm.submit();
+=======
+        
+        .stars{
+            background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAABaCAYAAACv+ebYAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDcvMDMvMTNJ3Rb7AAACnklEQVRoge2XwW3bMBSGPxa9NxtIGzTAW8DdRL7o3A0qb+BrdNIm9QAm0G7gbJBMwB5MoVJNUSRFIXGqHwhkmXr68hOPNH9ljOEt9OlNqBs4RlrrSmtdpdZ/Ti0EGnvtUoqTHFunBVCkuk6d6mbi83rggdteSa5THDeB3+UDO9z2inatXFum1roESuAReAB29vp15n2/gRfgZK+/gIuIXLxgrfUO+Bnzn0fom4ic+pvRVNuB/QrQ/RB6A7bwLjN8b985krO5MsKd0ElwJvgk1AteCPdCYWI5/SutddQxRUTU3DOzG4hd01EKqQnZuaLBITUh4F0CeLYm5CDw6PjuFTjaz9+BLwE1I8VO9StwAEoRaUSkseMHO+aqcWq2qwcdfQCOIvIy8dwDV/c/YL6zvWDbnQ3QuH5hltQEreM1dH/n6g28gT8eWLVUqqVKrb+vtGidFkCR6vp+0uLAba8k1/eRFh1ue0W7dv4sqpaSjGnR1Fy8YNWyY8W0aGpO/c1oqu3AKmlxCL0BW3iXGb637xzJ2VwZ4U7oJDgTfBLqBS+Ee6EQeMpULVFHUVOzPC3aNR2lkJotLbr0vtKiqWlMTcNaaXHQ0QfgaGqcaVG1jNLibGcbYyb/eDIlT6bjyZS+51JqtrS4gTfw/wzWqkKrKrU8fQPR6gKAmDKlPM3x1WkBFKmu0xxf3fZR5jnFdbzjv257JbmOdzx22yvadZzjW7e9ol27HWtVkjEtIubiB2u1Y8W0iJhTfzOe6uvAKmlxCL0FX+FdZvjevnMkd3Plgzuh0+A88EmoH7wM7oVC6AaiVdwuI2Z5WrRrOk4BNVtadOl9pUXENIhpWCstDjr6ABwR40yLaDVKi7Od7U1/Z0pzpjNngtNiaM2WFj8++A+motm0NTqjmwAAAABJRU5ErkJggg==") repeat-x 0 0;
+            width:150px;
+        }
+    </style>
+    
+    <style>
+    .jQspcv {
+        cursor: pointer;
+        display: inline-block;
+        min-height: 1em;
+        vertical-align: baseline;
+        box-shadow: transparent 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0em 0px 0px inset;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        text-transform: none;
+        text-shadow: none;
+        font-weight: bold;
+        line-height: 1em;
+        font-style: normal;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.6);
+        background-color: rgb(231, 231, 231);
+        font-size: 1em;
+        width: 100%;
+        opacity: 1;
+        outline: none;
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+        transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
+        margin: 0px 0.25em 0px 0px;
+        border-radius: 0.285714rem;
+        text-decoration: none;
+        padding: 1em 1.5em;
+    }
+        
+    .hQGkMf {
+        font-size: 13px;
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 40px;
+        border-top: 1px solid rgb(239, 239, 239);
+    }
+        
+    </style>
+    
+    
+    <!-- BOTO TEST -->
+    <meta name="description" content="Boto Photo Studio HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
+ 
+  
+    <!-- Main Stylesheets -->
+
+
+
+<script src="/js/summernote/summernote-lite.js"></script>
+<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+
+<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+   <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-circle"></div>
+        <div class="preloader-img">
+            <img src="img/core-img/creakok.png" alt="">
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+
+        <!-- ***** Top Header Area ***** -->
+        <div class="top-header-area">
+            <div class="container" style="color:#666666!important;">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="top-header-content d-flex align-items-center justify-content-between">
+                            <!-- Top Header Content -->
+                            <div class="top-header-meta">
+  
+                            </div>
+
+                            <!-- Top Header Content -->
+                            <div class="top-header-meta d-flex">
+                                <div >
+                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;">프로젝트 만들기</button>
+                                </div>
+                                <!-- Language Dropdown -->
+                                <div class="language-dropdown">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#666666">Language</button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">USA</a>
+                                            <a class="dropdown-item" href="#">UK</a>
+                                            <a class="dropdown-item" href="#">Bangla</a>
+                                            <a class="dropdown-item" href="#">Hindi</a>
+                                            <a class="dropdown-item" href="#">Spanish</a>
+                                            <a class="dropdown-item" href="#">Latin</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <c:if test="${empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
+                                  <!-- Sign up -->
+                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
+                                </c:if>
+                                <c:if test="${!empty member}">
+                                  <!-- Login -->
+                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
+                                  
+                                  <!-- My Page -->
+                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
+                                  
+                                  <!-- Cart -->
+                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
+                                </c:if> 
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ***** Navbar Area ***** -->
+        <div class="alazea-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="alazeaNav">
+
+                        <!-- Nav Brand -->
+                        <a href="index.html" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu" style="color:#666666!important;">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Navbar Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="index.html">FUNDING</a></li>
+                                    <li><a href="shop.html">GOODS</a></li>
+                                    <li><a href="#">COMMUNITY</a>
+                                        <ul class="dropdown">
+                                            <li><a href="index.html" >Home</a></li>
+                                            <li><a href="about.html">About</a></li>
+                                            <li><a href="shop.html">Shop</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="shop.html">Shop</a></li>
+                                                    <li><a href="shop-details.html">Shop Details</a></li>
+                                                    <li><a href="cart.html">Shopping Cart</a></li>
+                                                    <li><a href="checkout.html">Checkout</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="portfolio.html">Portfolio</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                                    <li><a href="`gle-portfolio.html">Portfolio Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="blog.html">Blog</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="single-post.html">Blog Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="shop.html">ABOUT</a></li>
+                                  
+                                </ul>  
+
+                                <!-- Search Icon -->
+                                <div id="searchIcon" >
+                                    
+                                    <i aria-hidden="true"><img src="img/core-img/search.png"></i>
+                                </div>
+
+                            </div>
+                            <!-- Navbar End -->
+                        </div>
+                    </nav>
+
+                    <!-- Search Form -->
+                    <div class="search-form">
+                        <form action="#" method="get">
+                            <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
+                            <button type="submit" class="d-none"></button>
+                        </form>
+                        <!-- Close Icon -->
+                        <div class="closeIcon"><i aria-hidden="true"><img src="img/core-img/search.png"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    
+    <!--텀블벅추가-->
+    <br/>
+    <br/><br/><br/><br/><br/><br/><br/>
+    
+        
+    
+    <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
+ 					<h3 style="text-align:center;margin-bottom:40px;font-size:18pt"> 리뷰 작성하기</h3>
+   
+          
+          
+          
+	    <div class="submit_a_review_area mt-50" style="width: 60%; margin: auto;" >
+	    	<form method="post" action="goods_review_insert.do" onsubmit="return goWrite()">
+                                   <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group d-flex align-items-center">
+                                                    <span class="mr-15">별점 :</span>
+                                                    <div class="stars">
+                                                        <input type="radio" name="star" class="star-1" id="star-1" onclick="starcheck()" value="1">
+                                                        <label class="star-1" for="star-1">1</label>
+                                                        <input type="radio" name="star" class="star-2" id="star-2" onclick="starcheck()" value="2">
+                                                        <label class="star-2" for="star-2">2</label>
+                                                        <input type="radio" name="star" class="star-3" id="star-3" onclick="starcheck()" value="3">
+                                                        <label class="star-3" for="star-3">3</label>
+                                                        <input type="radio" name="star" class="star-4" id="star-4" onclick="starcheck()" value="4">
+                                                        <label class="star-4" for="star-4">4</label>
+                                                        <input type="radio" name="star" class="star-5" id="star-5" onclick="starcheck()" value="5">
+                                                        <label class="star-5" for="star-5">5</label>
+                                                        <input type="hidden" value="1" id="star_result" name="review_rating">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                        </div>  
+		    				      <div>
+                                     <label for="reviewer_name">작성자</label>&nbsp;&nbsp;
+                                    <input name="review_writer" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="reviewer_name" 
+                                    placeholder="작성자" value="" required>
+                                    <label for="goods_name">제품명</label>&nbsp;&nbsp;
+                                    <input name="goods_name" style="display:inline-block;width:30%" class="form-control" id="goods_name" 
+                                    placeholder="제품명" value="" required>
+                                </div>
+                                
+                                 <div style="margin-top:10px">
+                                    <label for="review_subject" style="margin-right:2%">제목</label>
+                                    <input name="review_subject" style="display:inline-block;width:90%" class="form-control" id="review_subject" 
+                                   placeholder="제목" required>
+                                   <input type="hidden" name="goods_index" value="${goods_index}"/>
+                                </div>
+                                
+				<br>
+				<textarea id="summernote" name="review_content"></textarea>
+				
+				<p style="width:100%;text-align:center; margin-top:20px;">
+    				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" />
+    				<a href="goods_review.do?review_cp=1&goods_index=${goods_index}#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px" value="목록으로"/></a>
+				
+                </p>			 		
+			</form>
+		</div>
+    </div>
+    
+                 
+    
+    <script>
+      $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+      minHeight: 370,
+      maxHeight: null,
+      focus: true,
+        toolbar: [
+          ['font', ['bold', 'underline', 'clear']],
+          ['insert', ['picture']]
+        ]
+      });
+    </script>
+      
+      <script>
+      function starcheck(){
+    	  var star = $("input[name='star']:checked").val();
+    	  var star_result = $("#star_result").val(star);
+    	  //var num = Number(result);
+    	  //console.log(typeof(num));
+          //alert(star);
+      }
+function goWrite() {
+	var star = $("input[name='star']:checked").val();
+	var summernote = $("#summernote").val();
+	if (star == null){
+		alert("별점을 체크해주세요");
+		return false;
+	}
+
+	if(summernote == ''){
+		alert("내용을 입력해주세요");
+		return false;
+	}
+	
+	if(summernote != null && star != null){
+			frm.submit();
+		    location.href="goods_review.do?review_cp=1&goods_index="+${goods_index}+"&category_name="+${category_name};
+		    return true;
+	}
+	
+>>>>>>> refs/heads/jhseo_goods
 }
 </script>
   

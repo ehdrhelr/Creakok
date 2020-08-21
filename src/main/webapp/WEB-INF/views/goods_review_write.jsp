@@ -216,7 +216,7 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
-                    <h2 class="text-center" style="margin-top: 150px; margin-bottom:30px">게시글 쓰기</h2>
+                    <h2 class="text-center" style="margin-top: 150px; margin-bottom:30px">리뷰 작성하기</h2>
                     <div class="text-center" style="margin-bottom:70px">
                         <table class="table" style="width:70%;margin:0 auto;width:70%;margin:0 auto;margin-bottom:10px;">
                               <tbody><tr><td>작성자</td><td>
