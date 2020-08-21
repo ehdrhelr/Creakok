@@ -195,13 +195,14 @@
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading text-center" style="margin-top:10%">
-                         <h2 style="font-family:Jalnan;line-height: 1.3; margin-bottom: 20px;"><span style="color:#2da498">CREA</span><span style="color:#cccccc">TOR</span> <span style="color:#fc5230">KOK!</span></h2>
-                        <p>크리콕은 내가 관심있는 크리에이터를 고르고<br/>
-                            펀딩, 커뮤니티 등 다양한 방법으로 <br/>
-                            크리에이터와 함께 소통할 수 있는 공간입니다.</p>
+                         <h2 style="font-family:Jalnan;line-height: 1.3; margin-bottom: 20px;">
+                         <span style="color:#2da498">프로젝트</span> <span style="color:#fc5230">만들기!</span></h2>
+                        <p>크라우드펀딩으로 컨텐츠 제작을 위한 자금도 모으고, 다양한 굿즈도 판매하여,<br/>
+                          
+                            대중과 크리에이터간에 든든한 네트워크를 확보할 수 있습니다.</p>
                             
-                      <a href=""><img src="img/project/funding_project.png" alt="project_make" style="margin-top:30px"></a>
-                      <a href=""><img src="img/project/goods_project.png" alt="project_make" style="margin-top:30px"></a>
+                      <a href="/fundingwrite_form.do"><img src="img/project/funding_project.png" alt="project_make" style="margin-top:30px"></a>
+                      <a href="/goodswrite_form.do"><img src="img/project/goods_project.png" alt="project_make" style="margin-top:30px"></a>
                     </div>
                 </div>
             </div>
@@ -247,6 +248,7 @@
 
             </div>
         </div>
+        
     </section>
     <!-- ##### Team Area End ##### -->
 

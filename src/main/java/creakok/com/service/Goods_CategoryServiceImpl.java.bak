@@ -20,6 +20,7 @@ public class Goods_CategoryServiceImpl implements Goods_CategoryService {
 	
 	@Override
 	public List<Goods_Category> listS() {
+		
 		return mapper.selectGoodsCategory();
 	}
 	
@@ -33,9 +34,5 @@ public class Goods_CategoryServiceImpl implements Goods_CategoryService {
 		
 		return new GoodsVo(cp, totalCount, ps, list, gCode, null);
 
-	}
-	@Override
-	public String selectGoodsCategoryName(long category_code) {
-		return mapper.selectGoodsCategoryName(category_code);
 	}
 }

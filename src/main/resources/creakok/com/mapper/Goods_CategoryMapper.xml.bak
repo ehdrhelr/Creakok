@@ -7,11 +7,7 @@
 	<select id="selectGoodsCategory" resultType="GOODS_CATEGORY">
 	    select * from GOODS_CATEGORY
 	</select>
-	
-    <select id="selectGoodsCategoryName" resultType="String">
-        select GOODS_CATEGORY_NAME from GOODS_CATEGORY where GOODS_CATEGORY_CODE=${category_code}
-    </select>
-    
+
 	<select id="selectByGcode" resultType="Goods" parameterType="GoodsVo">
 	    <![CDATA[
 		select * from 
@@ -23,4 +19,5 @@
 	<select id="selectGoodsCount" resultType="long" parameterType="long">
 		select COUNT(GOODS_INDEX) from Goods where GOODS_CATEGORY_CODE=#{gCode}
 	</select>
+	
 </mapper>

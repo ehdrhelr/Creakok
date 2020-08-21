@@ -212,7 +212,8 @@
 	</nav>
 		<div class="r_list">
 				<div class="choose">
- 
+	
+  
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -242,6 +243,7 @@
   
 				</div>  
 			</div>
+
 
 	<!-- wrap -->
    <!-- 게시판 영역 end -->

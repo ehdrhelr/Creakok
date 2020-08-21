@@ -11,22 +11,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Goods_ReviewVo {
    
-   private int currentPage;
-   private long totalCount;
-   private int pageSize;
-   private List<Goods_Review> list;
-   private long totalPageCount;
+   private int review_cp;
+   private long review_totalCount;
+   private int review_ps;
+   private List<Goods_Review> review_list;
+   private long goods_index;
+   private long review_totalPageCount;
 
-   public Goods_ReviewVo(int currentPage, long totalCount, int pageSize, List<Goods_Review> list) {
-      this.currentPage = currentPage;
-      this.totalCount = totalCount;
-      this.pageSize = pageSize;
-      this.list = list;
-      this.totalPageCount = calTotalPageCount();
+   public Goods_ReviewVo(int review_cp, long review_totalCount, int review_ps, long goods_index, List<Goods_Review> review_list) {
+      this.review_cp = review_cp;
+      this.review_totalCount = review_totalCount;
+      this.review_ps = review_ps;
+      this.review_list = review_list;
+      this.goods_index = goods_index;
+      this.review_totalPageCount = calTotalPageCount();
    }
    private long calTotalPageCount() {
-      long tpc = totalCount/pageSize; 
-      if(totalCount%pageSize != 0) tpc++;
+      long tpc = review_totalCount/review_ps; 
+      if(review_totalCount%review_ps != 0) tpc++;
       
       return tpc;
    }

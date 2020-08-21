@@ -25,4 +25,8 @@
 	<select id="selectGoodsCountByCode" resultType="long" parameterType="long">
 		select COUNT(GOODS_INDEX) from Goods where GOODS_CATEGORY_CODE=${gCode}
 	</select>	
+	
+	<select id="selectGoodsName" resultType="String" parameterType="long">
+        select GOODS_NAME from GOODS where GOODS_INDEX=#{goods_index}
+    </select>
 </mapper>

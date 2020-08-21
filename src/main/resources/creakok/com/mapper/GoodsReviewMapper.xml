@@ -4,7 +4,37 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="creakok.com.mapper.GoodsReviewMapper">
     <select id="review_list" resultType="Goods_Review" parameterType="long">
-       select * from GOODS_REVIEW where GOODS_INDEX=${goods_index}
+       select * from GOODS_REVIEW where GOODS_INDEX=#{goods_index}
     </select>
- 
+    
+    <select id="selectPerPageReview" resultType="Goods_Review" parameterType="Goods_ReviewVo">
+        <![CDATA[select * from (select ROWNUM rnum, aa.* from
+        (select * from GOODS_REVIEW where GOODS_INDEX=${goods_index} order by GOODS_REVIEW_VIEW desc) aa)
+        where rnum>${(review_cp-1)*review_ps} and rnum<=${review_cp*review_ps}
+        ]]>
+    </select>
+    
+    <select id="selectGoodsReviewCountByGoodsIndex" resultType="long" parameterType="long">
+        select COUNT(GOODS_REVIEW_INDEX) from GOODS_REVIEW where GOODS_INDEX=#{goods_index}
+    </select>   
+    
+    <update id="updateReviewViews" parameterType="long">
+        UPDATE GOODS_REVIEW SET GOODS_REVIEW_VIEW = GOODS_REVIEW_VIEW+1 WHERE GOODS_REVIEW_INDEX=${goods_review_index}
+    </update>
+    
+     <select id="selectOneReview" resultType="Goods_Review" parameterType="long">
+        select * from GOODS_REVIEW where GOODS_REVIEW_INDEX=#{goods_review_index}
+    </select>     
+    
+    <insert id="insertOneReview" parameterType="Goods_Review">
+        <![CDATA[insert into GOODS_REVIEW values(GOODS_REVIEW_INDEX_SEQ.nextval, #{member_name}, ${goods_index}, SYSDATE, ${goods_review_rating}, null, #{goods_review_subject}, #{goods_review_content}, null, 0) ]]>
+    </insert>
+
+    <delete id="deleteOneReview"  parameterType="long">
+        delete from GOODS_REVIEW where GOODS_REVIEW_INDEX=#{goods_review_index}
+    </delete>    
+    <update id="updateOneReview" parameterType="Goods_Review">
+       update GOODS_REVIEW set GOODS_REVIEW_SUBJECT=#{goods_review_subject}, GOODS_REVIEW_CONTENT=#{goods_review_content} where GOODS_REVIEW_INDEX=${goods_review_index}
+    </update>     
 </mapper>
+
