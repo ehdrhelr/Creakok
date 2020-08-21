@@ -3,6 +3,7 @@ package creakok.com.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -20,21 +21,25 @@ import org.springframework.web.servlet.ModelAndView;
 import creakok.com.domain.Board;
 import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
-import creakok.com.service.BoardService;
+import creakok.com.service.BoardCommentService;
+import creakok.com.service.CreatorBoardService;
 import creakok.com.vo.ListResult;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
-public class BoardController {
+public class CreatorBoardController {
 	@Autowired
-	private BoardService service;
+	private CreatorBoardService creatorBoardService;
+	@Autowired
+	private BoardCommentService boardCommentService;
 	
 	@RequestMapping("board_page")
 	public ModelAndView getListResult(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String board_cpStr = request.getParameter("board_cp");
 		String board_psStr = request.getParameter("board_ps");
 		String board_filterBy = request.getParameter("board_filterBy");
+		String creator_name = request.getParameter("creator_name");		
 		
 		HttpSession session = request.getSession();
 		
@@ -126,13 +131,16 @@ public class BoardController {
 		session.setAttribute("searchName", searchName);
 		log.info("@@@@@@@@@@@@@@@@" + searchName);
 		*/
-		ListResult listResult = service.getListResultS(board_cp, board_ps, board_filterBy);
+		ListResult listResult = creatorBoardService.getListResultS(board_cp, board_ps, board_filterBy, creator_name);
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community");
 		mv.addObject("listResult", listResult);
 		
 		// 상단 메뉴바 크리에이터 이름 얻기
-		List<Creator> creatorList = service.getCreatorName();
+		List<Creator> creatorList = creatorBoardService.getCreatorName();
+		for (int i=0; i<creatorList.size(); i++) {
+			
+		}
 		mv.addObject("creatorList", creatorList);
 		
 		return mv;
@@ -145,10 +153,10 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("community_board_content");
 		
-		Board board = service.contentS(board_index);
+		Board board = creatorBoardService.contentS(board_index);
 		
 		// 댓글 가져오기
-		List<Comment> commentList = (List<Comment>) service.getComment(board_index);
+		List<Comment> commentList = (List<Comment>) boardCommentService.getComment(board_index);
 		mv.addObject("commentList", commentList);
 		
 		Cookie[] cookies = request.getCookies();
@@ -182,7 +190,7 @@ public class BoardController {
                 response.addCookie(newCookie);
  
                 // 쿠키를 추가 시키고 조회수 증가시킴
-                boolean result = service.plusView(board_index);
+                boolean result = creatorBoardService.plusView(board_index);
                 
                 if(result) {
                     System.out.println("조회수 증가");
@@ -201,14 +209,14 @@ public class BoardController {
         
             }
          // 메뉴바 크리에이터 이름 얻기
-    		List<Creator> creatorList = service.getCreatorName();
+    		List<Creator> creatorList = creatorBoardService.getCreatorName();
     		mv.addObject("creatorList", creatorList);
     		
             return mv;
         } 
         else {
         	// 메뉴바 크리에이터 이름 얻기
-    		List<Creator> creatorList = service.getCreatorName();
+    		List<Creator> creatorList = creatorBoardService.getCreatorName();
     		mv.addObject("creatorList", creatorList);
     		
             return mv;
@@ -222,7 +230,7 @@ public class BoardController {
 		mv.setViewName("community_board_write");
 			
 		// 메뉴바 크리에이터 이름 얻기
-		List<Creator> creatorList = service.getCreatorName();
+		List<Creator> creatorList = creatorBoardService.getCreatorName();
 		mv.addObject("creatorList", creatorList);
 			
 		return mv;
@@ -230,13 +238,13 @@ public class BoardController {
 	
 	@PostMapping("board_write")
 	public String write(Board board) {
-		service.insertBoard(board);
+		creatorBoardService.insertBoard(board);
 		return "redirect: /board_content?board_index="+ board.getBoard_index();
 	}
 	
 	@GetMapping("board_update")
 	public ModelAndView update(long board_index) {
-		Board board = service.getBoard(board_index);
+		Board board = creatorBoardService.getBoard(board_index);
 		ModelAndView mv = new ModelAndView("community_board_update", "board", board);
 				
 		return mv;
@@ -244,14 +252,17 @@ public class BoardController {
 	
 	@PostMapping("board_update")
 	public String update(Board board) {
-		service.edit(board);
-		return "redirect:board_page";
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@ board.getBoard_subject : " + board.getBoard_subject());
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@ board.getBoard_content : " + board.getBoard_content());
+		creatorBoardService.edit(board);
+		return "redirect:board_content?board_index="+board.getBoard_index();
 	}
 	
 	// 삭제
 	@RequestMapping("board_delete")
 	public String deleteBoard(@RequestParam long board_index) {
-		service.deleteBoard(board_index);
+		creatorBoardService.deleteBoard(board_index);
 		return "redirect:board_page";
 	}
 
@@ -356,7 +367,7 @@ public class BoardController {
 		
 		System.out.println("board_c_code: "+board_c_code+", board_searchName: "+board_searchName);
 		
-		ListResult listResult = service.getListResultBySearchS(board_cp, board_ps, board_filterBy, board_c_code, board_searchName);
+		ListResult listResult = creatorBoardService.getListResultBySearchS(board_cp, board_ps, board_filterBy, board_c_code, board_searchName);
 		listResult.setBoard_searchName(board_searchName);
 		listResult.setBoard_c_code(board_c_code);
 		request.setAttribute("listResult", listResult);
@@ -365,9 +376,55 @@ public class BoardController {
 		mv.setViewName("community");
 		
 		// 크리에이터 이름 얻기
-		List<Creator> creatorList = service.getCreatorName();
+		List<Creator> creatorList = creatorBoardService.getCreatorName();
 		mv.addObject("creatorList", creatorList);
 		
 		return  mv;
 	}
+	
+	// 댓글 작성
+	@RequestMapping("comment_write")
+	public String writeComment(Comment comment) {
+		log.info("@@@@@@@@@@@ comment.getBoard_index() :" + comment.getBoard_index());
+		log.info("@@@@@@@@@@@ comment.getComment_content() :" + comment.getComment_content());
+		log.info("@@@@@@@@@@@ comment.getComment_index() :" + comment.getComment_index());
+		log.info("@@@@@@@@@@@ comment.getMember_email() :" + comment.getMember_email());
+		log.info("@@@@@@@@@@@ comment.getMember_name() :" + comment.getMember_name());
+		
+		boardCommentService.writeComment(comment);
+
+		return "redirect:board_content?board_index="+comment.getBoard_index();
+	}
+	
+	// 댓글 수정
+	@RequestMapping("comment_update")
+	public ModelAndView updateComment(HttpServletRequest request) {
+		String comment_indexStr = request.getParameter("comment_index");
+		String comment_content = request.getParameter("comment_content");
+		String board_indexStr = request.getParameter("board_index");
+		
+		long comment_index = Long.valueOf(comment_indexStr); 
+		long board_index = Long.valueOf(board_indexStr);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:board_content?board_index="+board_index);
+		boardCommentService.updateComment(comment_index, comment_content);
+		
+		// 메뉴바 크리에이터 이름 얻기
+		List<Creator> creatorList = creatorBoardService.getCreatorName();
+		mv.addObject("creatorList", creatorList);
+		
+		return mv;
+	}
+	// 댓글 삭제
+	@RequestMapping("comment_delete")
+	public String deleteComment(long board_index, long comment_index) {
+		log.info("###########" + board_index);
+		log.info("###########" + comment_index);
+		
+		boardCommentService.deleteComment(comment_index);
+		
+		return "redirect:board_content?board_index="+board_index;
+	}
+	 
 }

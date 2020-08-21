@@ -42,21 +42,6 @@
         
         
     </style>
-    
-    <script language='javascript'>
-			   function check()
-			   {
-				   for(var i=0; i<document.input.elements.length; i++)
-				   {
-					  if(document.input.elements[i].value == '')
-					  {
-						 alert('모든 값을 입력 하셔야 합니다. ');
-						 return false;
-					  }
-				   }
-				   document.input.submit();
-			   }
-			</script>
 </head>
 
 <body>
@@ -169,7 +154,7 @@
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
                                         <c:forEach items="${creatorList}" var="creator">
-                                            <li><a href="index.html" >${creator.creator_name}</a></li>
+                                            <li><a href="board_page?creator_name=${creator.creator_name}">${creator.creator_name}</a></li>
                                             </c:forEach>
                                             
                                         </ul>
@@ -215,6 +200,34 @@
 	</nav>
 		<div class="r_list">
 				<div class="choose">
+				
+				<div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                    <h2 class="text-center" style="margin-top: 150px; margin-bottom:30px">게시글 쓰기</h2>
+                    <form name="input" action="board_write" method="post"/>
+                    <div class="text-center" style="margin-bottom:70px">
+                        <table class="table" style="width:70%;margin:0 auto;width:70%;margin:0 auto;margin-bottom:10px;">
+                              <tbody><tr><td>작성자</td><td>
+                                <input type="text" class="form-control" name="member_name" value="${member.member_name}" readonly=""></td></tr>
+                                  <tr><td>Email</td><td>
+                                    <input type="text" class="form-control" name="member_email" value="${member.member_email}" readonly=""></td></tr>
+                                    <tr>
+                                    <td>제목</td><td>
+                                        <input type="text" class="form-control" name="board_subject"></td></tr>
+                                        <tr><td>글내용</td><td><textarea rows="10" cols="50" name="board_content" class="form-control"></textarea></td></tr>
+                              </tbody>
+                         </table>
+                         <input type="submit" value="글쓰기" class="btn" style="background-color:black !important; color:white">
+                         <input type="reset" value="다시작성" class="btn" style="background-color:black !important; color:white">
+                         <button type="button" class="btn" style="background-color:black !important; color:white" onclick="location.href='board_page#fix_point'">전체 게시글보기</button>
+                       </form>
+                  </div>
+                  </div>
+                </div>
+                
+				
+				<!-- 
 					<div class="row">
 					    <div class="col-md-2"></div>
 					    <div class="col-md-8">
@@ -233,18 +246,18 @@
 					                <td>제목</td>
 					                <td><input type="text"  class="form-control" name="board_subject"></td>
 					            </tr>          
-					     <!--   <tr>
+					        <tr>
 					                <td>비밀번호</td>
 					                <td><input type="password"  class="form-control" name="password"></td>
 					            </tr>
-					      -->       
+					            
 					            <tr>
 					                <td>글내용</td>
 					                <td><textarea rows="10" cols="50" name="board_content" class="form-control"></textarea></td>
 					            </tr>
 					            <tr>
 					                <td colspan="2"  class="text-center">
-					                    <input type="submit" value="글쓰기" class="btn btn-success">
+					                    <input type="submit" value="글쓰기" class="btn" style="back-ground:black" !important>
 					                    <input type="reset" value="다시작성" class="btn btn-warning">
 					                    <button type="button"  class="btn btn-primary" onclick="location.href='board_page#fix_point'">전체 게시글보기</button>
 					                </td>
@@ -253,6 +266,9 @@
 					        </form>
 					    </div>
 					</div>
+				-->
+					
+					
 				</div>  
 			</div>
 

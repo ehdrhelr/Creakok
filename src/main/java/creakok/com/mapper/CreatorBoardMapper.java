@@ -9,31 +9,36 @@ import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
 
 public interface CreatorBoardMapper {
-	List<Board> getListResult(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, @Param("board_filterBy") String board_filterBy);
+	List<Board> getListResult(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, 
+			@Param("board_filterBy") String board_filterBy, @Param("creator_name") String creator_name);
 	int count();
 	Board content(long board_index);
 	void insert(Board board);
-	// �Խù� �ۼ�
+	// 글 작성
 	public int insertBoard(Board board);
-	// ��ȸ�� +1
+	// 조회수 +1
 	public boolean plusView(long board_index);
-	// ���ƿ� +1
+	// 좋아요 +1
 	public boolean plusLike(long board_index);
-	// ũ�������� �̸� ��ȸ
+	// 크리에이터 이름 얻기
 	public List<Creator> getCreatorName();
 	
-	// ����
+	// 글삭제
 	void deleteBoard(long board_index);
-	// ����
+	// 글 검색 by index(안쓰나)
 	Board selectByIndex(long board_index);
 	// update
 	void update(Board board);
 	
-	// �˻�
+	// 글 검색
 	List<Board> search(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, 
 			@Param("board_filterBy") String board_filterBy, @Param("board_c_code") String c_code, 
 			@Param("board_searchName")String board_searchName);
-	// ��� ��ȸ
+	int countBySearch(@Param("board_c_code") String c_code, 
+			@Param("board_searchName")String board_searchName);
+	/*
+	// 댓글관련
 	List<Comment> getComment(long board_index);
-
+	void writeComment(Comment comment);
+	*/
 }

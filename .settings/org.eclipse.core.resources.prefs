@@ -1,5 +1,11 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//src/main/webapp/WEB-INF/views/creakok_header.jsp=UTF-8
+=======
+encoding//src/main/java/creakok/com/controller/CreatorBoardController.java=ms949
+encoding//src/main/java/creakok/com/service/CreatorBoardService.java=ms949
+encoding//src/main/java/creakok/com/service/CreatorBoardServiceImpl.java=UTF-8
+>>>>>>> refs/heads/hskim
 encoding//src/main/webapp/WEB-INF/views/funding.jsp=UTF-8
 encoding//src/main/webapp/resources/css/hcbae/app.b122416550774f4f5b1b.css=UTF-8
 encoding//src/main/webapp/resources/css/wadiz_css3.css=UTF-8

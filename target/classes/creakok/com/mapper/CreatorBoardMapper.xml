@@ -7,7 +7,7 @@
 	<select id="getListResult" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
     	(select * from CREATOR_BOARD order by ${board_filterBy} desc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
+    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name}]]>
  	</select>
 	
 	<select id="count" resultType="int">
@@ -18,8 +18,9 @@
 		select * from CREATOR_BOARD where board_index = #{board_index}
 	</select>
 	
+	<!-- 안사용 삭제 예정 -->
 	<insert id="insert" parameterType="Board">
-		insert into CREATOR_BOARD values(BOARD_INDEX_SEQ.nextval, #{board_subject}, #{board_content}, 'a', SYSDATE, 0, 0, null)
+		insert into CREATOR_BOARD values(BOARD_INDEX_SEQ.nextval, #{board_subject}, #{board_content}, 'a', SYSDATE, 0, 0, nulls)
 	</insert>
 	
 	<select id="selectByIndex" resultType="Board" parameterType="long">
@@ -34,10 +35,10 @@
 	<insert id="insertBoard" parameterType="creakok.com.domain.Board">
 	
 		<selectKey keyProperty="board_index" order="BEFORE" resultType="int">
-			SELECT BOARD_INDEX_SEQ.NEXTVAL FROM DUAL
+			SELECT CREATOR_BOARD_INDEX_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 			INSERT INTO CREATOR_BOARD 
-					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, #{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null)
+					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, #{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null, 'subsub')
 	</insert>
 	
 	<!-- 조회수 +1 -->
@@ -50,7 +51,7 @@
 		update CREATOR_BOARD set board_like = board_like + 1 where board_index = #{board_index}
 	</update>
 	
-	<!-- 크리에이터 이름 조회 -->
+	<!-- 크리에이터 정보 조회 -->
 	<select id="getCreatorName" resultType="Creator">
 		select * from CREATOR
 	</select>
@@ -62,9 +63,14 @@
 	<!-- 검색 -->
 	<select id="search" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    	(select * from CREATOR_BOARD order by ${board_filterBy} desc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and ${board_c_code}='${board_searchName}']]>
-	</select>
+    	(select * from CREATOR_BOARD where ${board_c_code} like '%'||#{board_searchName}||'%' order by ${board_filterBy} desc) aa) 
+    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
+	</select> 
+	
+	<!-- 검색했을 때 count -->
+	<select id="countBySearch" resultType="int">
+		select COUNT(case when ${board_c_code} like '%'||#{board_searchName}||'%' then 1 end) from CREATOR_BOARD
+	</select> 
 	
 	<!-- 댓글 조회 -->
 	<select id="getComment" resultType="Comment">

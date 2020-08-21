@@ -12,17 +12,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Creator;
+<<<<<<< HEAD
 import creakok.com.domain.LikeTable;
 import creakok.com.service.BoardService;
 import creakok.com.service.LikeTableService;
 import lombok.extern.log4j.Log4j;
+=======
+import creakok.com.service.CreatorBoardService;
+>>>>>>> refs/heads/hskim
 
 @Log4j
 @Controller
 public class IndexController {
 	
 	@Resource
-	private BoardService boardService;
+	private CreatorBoardService boardService;
 	
 	@Autowired
 	LikeTableService lts;
