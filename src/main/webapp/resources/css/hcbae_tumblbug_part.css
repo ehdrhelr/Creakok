@@ -238,6 +238,7 @@
     background-color: #f2f2f2;
 }
 
+
 .neDEf::before {
     content: '';
     display: block;
@@ -249,12 +250,12 @@
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    background: url(/wpa/f3a4eacaa8d02982fa511cc08290ab6c.png) 0 0 no-repeat;
+    background: url(/img/like/like_off.png) 0 0 no-repeat;
     background-size: cover;
 }
 
 .neDEf.isLiked::before {
-    background: url(/wpa/78a0723f80e514e470cda540f80e09e8.png) 0 0 no-repeat;
+    background: url(/img/like/like_on.png) 0 0 no-repeat;
     -webkit-animation: jPJrHq ease 0.5s;
     animation: jPJrHq ease 0.5s;
     -webkit-animation-iteration-count: 1;

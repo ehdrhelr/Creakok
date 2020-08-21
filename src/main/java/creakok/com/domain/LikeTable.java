@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Member_category {
-	private long member_category;
-	private String member_category_name;
+public class LikeTable {
+	private long like_type_code;
+	private long like_content_index;
+	private String like_member_email;
 }
