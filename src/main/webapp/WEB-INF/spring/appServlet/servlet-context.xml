@@ -27,7 +27,7 @@
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/scss/**" location="/resources/scss/" />
 	<resources mapping="/img/**" location="/resources/img/" />
-
+<resources mapping="/summernoteImage/**" location="file:///Users/joohyunann/git/Creakok/src/main/webapp/resources/img/funding/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

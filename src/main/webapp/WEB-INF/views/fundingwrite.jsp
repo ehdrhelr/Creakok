@@ -1051,14 +1051,10 @@
 
 
 
-<script src="/js/summernote/summernote-lite.js"></script>
-<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+
 
 <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
+  
 
 
 
@@ -1270,46 +1266,7 @@
 			</form>
 		</div>
     </div>
-    <script>
-   // $(document).ready(function(){
-      $('#summernote').summernote({
-        placeholder: '펀딩받고 싶은 컨텐츠의 기획내용을 입력해주세요.',
-        tabsize: 2,
-	    minHeight: 370,
-	    maxHeight: null,
-	    callbacks: {	//여기 부분이 이미지를 첨부하는 부분
-			onImageUpload : function(files) {
-				uploadSummernoteImageFile(files[0],this);
-			}
-		},
-	    focus: true,
-	    toolbar: [
-	          ['style', ['style']],
-	          ['font', ['bold', 'underline', 'clear']],
-	          ['color', ['color']],
-	          ['para', ['ul', 'ol', 'paragraph']],
-	          ['table', ['table']],
-	          ['insert', ['link', 'picture', 'video']],
-	          ['view', ['fullscreen', 'codeview', 'help']]
-	        ]
-      });
-      
-      function uploadSummernoteImageFile(file, editor){
-    	  data = new FormData();
-    	  data.append("file_detail_pic", file);
-    	  $.ajax({
-    			data : data,
-    			type : "POST",
-    			url : "/uploadSummernoteImageFile",
-    			contentType : false,
-    			processData : false,
-    			success : function(data){
-    				$(editor).summernote('insertImage', data.url);
-    			}
-    	  });
-      }
- //   });
-    </script>
+
      
       <script>
 function goWrite(frm) {
@@ -1379,7 +1336,9 @@ function goWrite(frm) {
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
+   
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    
     <!-- Popper js -->
     <script src="js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap js -->
@@ -1388,6 +1347,48 @@ function goWrite(frm) {
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    <script src="/js/summernote/summernote-lite.js"></script>
+<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+    <script>
+   // $(document).ready(function(){
+      $('#summernote').summernote({
+        placeholder: '펀딩받고 싶은 컨텐츠의 기획내용을 입력해주세요.',
+        tabsize: 2,
+	    minHeight: 370,
+	    maxHeight: null,
+	    callbacks: {	//여기 부분이 이미지를 첨부하는 부분
+			onImageUpload : function(files) {
+				uploadSummernoteImageFile(files[0],this);
+			}
+		},
+	    focus: true,
+	    toolbar: [
+	          ['style', ['style']],
+	          ['font', ['bold', 'underline', 'clear']],
+	          ['color', ['color']],
+	          ['para', ['ul', 'ol', 'paragraph']],
+	          ['table', ['table']],
+	          ['insert', ['link', 'picture', 'video']],
+	          ['view', ['fullscreen', 'codeview', 'help']]
+	        ]
+      });
+      
+      function uploadSummernoteImageFile(file, editor){
+    	  data = new FormData();
+    	  data.append("file_detail_pic", file);
+    	  $.ajax({
+    			data : data,
+    			type : "POST",
+    			url : "/uploadSummernoteImageFile",
+    			contentType : false,
+    			processData : false,
+    			success : function(url){
+    				$(editor).summernote('insertImage', url);
+    			}
+    	  });
+      }
+ //   });
+    </script>
 </body>
 
 </html>

@@ -44,8 +44,6 @@ public class ProjectController {
 		return "project_select";
 	
 	}
-	
-	
 
 	@RequestMapping("/fundingwrite_form.do")
 	public String fundingwrite_page() {
@@ -77,55 +75,8 @@ public class ProjectController {
 			   url, content, write_funding_goal, 0, write_funding_wdate, write_funding_edate, 0, 0,
 			   null, null, null, -1, -1, null);
 
-			
-
-		log.info("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
-		log.info("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
-		
-		log.info(url);
-		log.info("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
-		log.info("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
-	    
-		log.info(funding);
-	    
-
-		log.info("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
-		log.info("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
-		log.info("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어");
-		log.info("!!!!!!!!!!!!!!!!!!!fundingwrite.do넘어"); 
-	    
 	    
 	    service.writeFundingProject(funding);
-	    /*
-	    long funding_index;
-		String creator_name="subsub";
-		String funding_subject="펀딩프로젝트제";
-		long funding_category_code=200;
-		String funding_repre_pic="/img/funding/a.png";
-		String funding_detail_pic="디테일";
-		long funding_goal=10000;
-		long funding_amount=0;
-		Date funding_wdate;
-		Date funding_edate;
-		long funding_people=0;
-		long funding_like_number=0;
-		String funding_keyword="";
-		String funding_option="";
-		String funding_category_name="";
-		double percentage=0;
-		long restdays=0; 
-		List<Funding> listrelatedFunding=null;
-		
-		
-		Funding funding = new Funding(-1,creator_name,funding_subject,funding_category_code,funding_repre_pic,
-				 funding_detail_pic,funding_goal,funding_amount,null,null,funding_people,funding_like_number,
-	   funding_keyword,funding_option,funding_category_name,percentage,restdays,listrelatedFunding);
-
-		
-		service.writeFundingProject(-1, creator_name, funding_subject, funding_category_code, 
-				funding_repre_pic, funding_detail_pic, funding_goal, funding_amount, null, null, 
-				funding_people, funding_like_number, funding_keyword, funding_option);
-		*/
 		return new ModelAndView("/index", "", null);
 	}
 	
@@ -135,28 +86,12 @@ public class ProjectController {
 		return "goodswrite";
 	}
 	
-	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
+	@PostMapping(value="/uploadSummernoteImageFile")
 	@ResponseBody
-	public JsonObject uploadSummernoteImageFile(@RequestParam("file_detail_pic") MultipartFile multipartFile) {
-		
-		JsonObject jsonObject = new JsonObject();
-		//Gson gson = new Gson();
-		//String url = "url";
-		
-		//String responseCode = "responseCode";
-		//jsonObject = gson.fromJson(url, JsonObject.class);
-		//jsonObject = gson.fromJson(responseCode, JsonObject.class);
-		
+	public String uploadSummernoteImageFile(@RequestParam("file_detail_pic") MultipartFile multipartFile) {
 		String fileRoot = Path.FILE_STORE;	//저장될 외부 파일 경로
 		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
-		log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		log.info(originalFileName);
-		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
-				
+		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자			
 		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
 		
 		File targetFile = new File(fileRoot + savedFileName);	
@@ -164,22 +99,15 @@ public class ProjectController {
 		try {
 			InputStream fileStream = multipartFile.getInputStream();
 			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
-			jsonObject.addProperty("url", "/img/funding/"+savedFileName);
-			jsonObject.addProperty("responseCode", "success");
-			log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%");
-			log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%");
-			log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%");
-			log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%");
-			log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%");
-			log.info(jsonObject);
-				
+	
 		} catch (IOException e) {
 			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
-			jsonObject.addProperty("responseCode", "error");
+		
 			e.printStackTrace();
 		}
-		
-		return jsonObject;
+	
+		String str = "/summernoteImage/"+savedFileName;
+		return str;
 	}
 	
 }
