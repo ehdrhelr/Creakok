@@ -66,140 +66,8 @@
 
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
-
-        <!-- ***** Top Header Area ***** -->
-        <div class="top-header-area">
-            <div class="container" style="color:#666666!important;">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="top-header-content d-flex align-items-center justify-content-between">
-                            <!-- Top Header Content -->
-                            <div class="top-header-meta">
-  
-                            </div>
-
-                            <!-- Top Header Content -->
-                            <div class="top-header-meta d-flex">
-                                <!-- Language Dropdown -->
-                                <div class="language-dropdown">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#666666">Language</button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">USA</a>
-                                            <a class="dropdown-item" href="#">UK</a>
-                                            <a class="dropdown-item" href="#">Bangla</a>
-                                            <a class="dropdown-item" href="#">Hindi</a>
-                                            <a class="dropdown-item" href="#">Spanish</a>
-                                            <a class="dropdown-item" href="#">Latin</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <c:if test="${empty member}">
-                                  <!-- Login -->
-                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
-                                  <!-- Sign up -->
-                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
-                                </c:if>
-                                <c:if test="${!empty member}">
-                                  <!-- Login -->
-                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
-                                  
-                                  <!-- My Page -->
-                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
-                                  
-                                  <!-- Cart -->
-                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
-                                </c:if> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ***** Navbar Area ***** -->
-        <div class="alazea-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="alazeaNav">
-
-                        <!-- Nav Brand -->
-                        <a href="index.html" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu" style="color:#666666!important;">
-
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Navbar Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a href="index.html">FUNDING</a></li>
-                                    <li><a href="goods.html">GOODS</a></li>
-                                    <li><a href="#">COMMUNITY</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html" >Home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="shop.html">Shop</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="goods-details.html">Shop Details</a></li>
-                                                    <li><a href="cart.html">Shopping Cart</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="portfolio.html">Portfolio</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="single-portfolio.html">Portfolio Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="blog.html">Blog</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-post.html">Blog Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                        </ul>
-                                    </li>
-                                  <!--  <li><a href="shop.html">ABOUT</a></li>
-                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                    <li><a href="contact.html">Contact</a></li>  -->
-                                </ul>  
-
-                                <!-- Search Icon -->
-                                <div id="searchIcon" >
-                                    
-                                    <i aria-hidden="true"><img src="img/core-img/search.png"></i>
-                                </div>
-
-                            </div>
-                            <!-- Navbar End -->
-                        </div>
-                    </nav>
-
-                    <!-- Search Form -->
-                    <div class="search-form">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
-                            <button type="submit" class="d-none"></button>
-                        </form>
-                        <!-- Close Icon -->
-                        <div class="closeIcon"><i aria-hidden="true"><img src="img/core-img/search.png"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="header_div">
+    </div>
     </header>
     <!-- ##### Header Area End ##### -->
 
@@ -231,7 +99,7 @@
                     <div class="most__search__tab">
                         <ul class="nav nav-tabs nav-pills" role="tablist">
                             <li class="nav-item">
-                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="#jjim-list" role="tab">찜리스트</a>
+                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
                             </li>
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#member-modify" role="tab">회원정보수정</a>
@@ -245,8 +113,51 @@
             <!-- Tab panes -->
             <div class="tab-content"> <!--My Page Tabs Contents-->
                 <div id="jjim-list" class="container tab-pane active">
-                    <h3>찜리스트</h3>
-                    <p>찜리스트 어떻게 표시할까?</p>
+                    <h3>좋아요 리스트</h3>
+                    <p>리스트를 어떻게 표시할까?</p>
+                    
+                    <div id="mypage_funding_area"></div>
+                    
+                    <div id="mypage_goods_area"></div>
+                    
+                    <script type="text/javascript">
+                    function readFundingLikeList(){
+                    	if('${member.member_email}' == '') {
+                            return;
+                        }
+                        
+                        var xmlHttpFundingLikeList = new XMLHttpRequest();
+                        xmlHttpFundingLikeList.onreadystatechange = function() {
+                             if (xmlHttpFundingLikeList.readyState == 4 && xmlHttpFundingLikeList.status == 200) {
+                            	 //var returnV = xmlHttpFundingLikeList.responseText; 
+                                 //console.log(returnV);
+                                 document.getElementById("mypage_funding_area").innerHTML= xmlHttpFundingLikeList.responseText;
+                             }
+                        };
+                        xmlHttpFundingLikeList.open("GET", "readFundingLikeList.do?member_email=${member.member_email}", true); // true for asynchronous
+                        xmlHttpFundingLikeList.send();
+                    }
+                    readFundingLikeList();
+                    
+                    function readGoodsLikeList(){
+                        if('${member.member_email}' == '') {
+                            return;
+                        }
+                        
+                        var xmlHttpGoodsLikeList = new XMLHttpRequest();
+                        xmlHttpGoodsLikeList.onreadystatechange = function() {
+                             if (xmlHttpGoodsLikeList.readyState == 4 && xmlHttpGoodsLikeList.status == 200) {
+                                 //var returnV = xmlHttpGoodsLikeList.responseText; 
+                                 //console.log(returnV);
+                                 document.getElementById("mypage_goods_area").innerHTML= xmlHttpGoodsLikeList.responseText;
+                             }
+                        };
+                        xmlHttpGoodsLikeList.open("GET", "readGoodsLikeList.do?member_email=${member.member_email}", true); // true for asynchronous
+                        xmlHttpGoodsLikeList.send();
+                    }
+                    readGoodsLikeList();
+                    </script>
+                    
                 </div>
               
                 <div id="member-modify" class="container tab-pane fade">
