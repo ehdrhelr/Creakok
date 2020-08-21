@@ -7,7 +7,7 @@
 	<select id="getListResult" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
     	(select * from CREATOR_BOARD order by ${board_filterBy} desc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
+    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name}]]>
  	</select>
 	
 	<select id="count" resultType="int">
@@ -51,7 +51,7 @@
 		update CREATOR_BOARD set board_like = board_like + 1 where board_index = #{board_index}
 	</update>
 	
-	<!-- 크리에이터 이름 조회 -->
+	<!-- 크리에이터 정보 조회 -->
 	<select id="getCreatorName" resultType="Creator">
 		select * from CREATOR
 	</select>

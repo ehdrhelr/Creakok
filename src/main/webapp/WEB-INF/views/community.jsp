@@ -231,7 +231,7 @@
                                   	<li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
                                         	<c:forEach items="${creatorList}" var="creator">
-                                            <li><a href="board_page">${creator.creator_name}</a></li>
+                                            <li><a href="board_page?creator_name=${creator.creator_name}">${creator.creator_name}</a></li>
                                             </c:forEach>
                                             <!--  
                                             <li><a href="about.html">About</a></li>
@@ -321,9 +321,9 @@
 																	<div class="testimonial-content">
 																		<!-- Section Heading -->
 																		<div class="section-heading">
-																			<h2>DARK KNIGHT</h2>
+																			<h2>${creator.creator_name}</h2>
 																			<p> </p>
-																			<p>Why so serious?</p>
+																			<p>${creator.creator_profile_content}</p>
 																		</div>
 																		<p> </p>
 																		<div class="testimonial-author-info">

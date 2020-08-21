@@ -163,7 +163,7 @@
                                      <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
                                         	<c:forEach items="${creatorList}" var="creator">
-                                            <li><a href="board_page">${creator.creator_name}</a></li>
+                                            <li><a href="board_page?creator_name=${creator.creator_name}">${creator.creator_name}</a></li>
                                             </c:forEach>
                                   <!--     
                                         <ul class="dropdown">

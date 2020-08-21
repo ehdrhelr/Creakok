@@ -8,7 +8,7 @@ import creakok.com.domain.Creator;
 import creakok.com.vo.ListResult;
 
 public interface CreatorBoardService {
-	ListResult getListResultS(int currentPage, int pageSize, String filterBy);
+	ListResult getListResultS(int currentPage, int pageSize, String filterBy, String creator_name);
 	Board contentS(long board_index);
 	void insertS(Board board);
 	// 게시물 작성

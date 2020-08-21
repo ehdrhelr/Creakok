@@ -9,7 +9,8 @@ import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
 
 public interface CreatorBoardMapper {
-	List<Board> getListResult(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, @Param("board_filterBy") String board_filterBy);
+	List<Board> getListResult(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, 
+			@Param("board_filterBy") String board_filterBy, @Param("creator_name") String creator_name);
 	int count();
 	Board content(long board_index);
 	void insert(Board board);

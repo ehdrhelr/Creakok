@@ -39,6 +39,8 @@ public class CreatorBoardController {
 		String board_cpStr = request.getParameter("board_cp");
 		String board_psStr = request.getParameter("board_ps");
 		String board_filterBy = request.getParameter("board_filterBy");
+		String creator_name = request.getParameter("creator_name");		
+		
 		HttpSession session = request.getSession();
 		
 		//(1) cp 
@@ -129,13 +131,16 @@ public class CreatorBoardController {
 		session.setAttribute("searchName", searchName);
 		log.info("@@@@@@@@@@@@@@@@" + searchName);
 		*/
-		ListResult listResult = creatorBoardService.getListResultS(board_cp, board_ps, board_filterBy);
+		ListResult listResult = creatorBoardService.getListResultS(board_cp, board_ps, board_filterBy, creator_name);
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community");
 		mv.addObject("listResult", listResult);
 		
 		// 상단 메뉴바 크리에이터 이름 얻기
 		List<Creator> creatorList = creatorBoardService.getCreatorName();
+		for (int i=0; i<creatorList.size(); i++) {
+			
+		}
 		mv.addObject("creatorList", creatorList);
 		
 		return mv;

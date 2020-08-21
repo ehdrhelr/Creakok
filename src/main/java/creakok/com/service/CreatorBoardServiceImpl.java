@@ -19,8 +19,8 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	private CreatorBoardMapper mapper;
 	
 	@Override
-	public ListResult getListResultS(int currentPage, int pageSize, String filterBy) {
-		List<Board> list = (List<Board>)mapper.getListResult(currentPage, pageSize, filterBy);
+	public ListResult getListResultS(int currentPage, int pageSize, String filterBy, String creator_name) {
+		List<Board> list = (List<Board>)mapper.getListResult(currentPage, pageSize, filterBy, creator_name);
 		int count = mapper.count();
 		return new ListResult(currentPage, count, pageSize, list, filterBy);
 	}
@@ -55,7 +55,7 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	public boolean plusLike(long board_index) {
 		return mapper.plusLike(board_index);
 	}
-	
+	// 모든 크리에이터 정보 조회 
 	@Override
 	public List<Creator> getCreatorName() {
 		return mapper.getCreatorName();
@@ -79,16 +79,4 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 		return new ListResult(currentPage, countBySearch, pageSize, list, filterBy);
 	}
 	
-	/*
-	// 댓글조회
-	public List<Comment> getComment(long board_index) {
-		List<Comment> comments = mapper.getComment(board_index);
-		return comments;
-	}
-	
-	//댓글 작성
-	public void writeComment(Comment comment) {
-		mapper.writeComment(comment);
-	}
-	*/
 }
