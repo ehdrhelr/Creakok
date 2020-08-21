@@ -32,7 +32,7 @@ public class KakaoController {
 		/* 네아로 인증 URL을 생성하기 위하여 getAuthorizationUrl을 호출 */
 		String kakaoAuthUrl = "https://kauth.kakao.com/oauth/authorize?"
 				+ "client_id=a3817011c1de6f7930c4d84eaaf6d750"
-				+ "&redirect_uri=http://127.0.0.1:8080/kakaoTokenCheck.do"
+				+ "&redirect_uri=http://127.0.0.1:8090/kakaoTokenCheck.do"
 				+ "&response_type=code";
 		return new ModelAndView("socialLoginUrl", "url", kakaoAuthUrl);
 	}
