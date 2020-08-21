@@ -1,7 +1,6 @@
 package creakok.com.controller;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,20 +11,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Creator;
-<<<<<<< HEAD
-import creakok.com.domain.LikeTable;
-import creakok.com.service.BoardService;
+import creakok.com.service.CreatorBoardService;
 import creakok.com.service.LikeTableService;
 import lombok.extern.log4j.Log4j;
-=======
-import creakok.com.service.CreatorBoardService;
->>>>>>> refs/heads/hskim
+
 
 @Log4j
 @Controller
 public class IndexController {
 	
-	@Resource
+	@Autowired
 	private CreatorBoardService boardService;
 	
 	@Autowired

@@ -3,7 +3,6 @@ package creakok.com.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -124,7 +123,7 @@ public class CreatorBoardController {
 		
 		session.setAttribute("board_filterBy", board_filterBy);
 		/*
-		// °Ë»öÇßÀ»¶§ ÆäÀÌÂ¡ÇÏ±â
+		// ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â¡ï¿½Ï±ï¿½
 		String searchName = request.getParameter("searchName");
 		String searchNameTemp = (String)session.getAttribute("searchName");
 		searchName = searchNameTemp;
@@ -136,7 +135,7 @@ public class CreatorBoardController {
 		mv.setViewName("community");
 		mv.addObject("listResult", listResult);
 		
-		// »ó´Ü ¸Þ´º¹Ù Å©¸®¿¡ÀÌÅÍ ÀÌ¸§ ¾ò±â
+		// ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½
 		List<Creator> creatorList = creatorBoardService.getCreatorName();
 		for (int i=0; i<creatorList.size(); i++) {
 			
@@ -155,67 +154,67 @@ public class CreatorBoardController {
 		
 		Board board = creatorBoardService.contentS(board_index);
 		
-		// ´ñ±Û °¡Á®¿À±â
+		// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		List<Comment> commentList = (List<Comment>) boardCommentService.getComment(board_index);
 		mv.addObject("commentList", commentList);
 		
 		Cookie[] cookies = request.getCookies();
-		// ºñ±³ÇÏ±â À§ÇØ »õ·Î¿î ÄíÅ°
+		// ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½Å°
         Cookie viewCookie = null;
         
-        // ÄíÅ°°¡ ÀÖÀ» °æ¿ì 
+        // ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 
         if (cookies != null && cookies.length > 0) {
             for (int i = 0; i < cookies.length; i++) {
-                // CookieÀÇ nameÀÌ cookie + reviewNo¿Í ÀÏÄ¡ÇÏ´Â ÄíÅ°¸¦ viewCookie¿¡ ³Ö¾îÁÜ 
+                // Cookieï¿½ï¿½ nameï¿½ï¿½ cookie + reviewNoï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ viewCookieï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ 
                 if (cookies[i].getName().equals("cookie"+board_index)) { 
-                    System.out.println("Ã³À½ ÄíÅ°°¡ »ý¼ºÇÑ µÚ µé¾î¿È.");
+                    System.out.println("Ã³ï¿½ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.");
                     viewCookie = cookies[i];
                 }
             }
         }
         
         if (board != null) {
-            System.out.println("System - ÇØ´ç »ó¼¼ÆäÀÌÁö·Î ³Ñ¾î°¨");
+            System.out.println("System - ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¨");
             
             mv.addObject("board", board);
  
-            // ¸¸ÀÏ viewCookie°¡ nullÀÏ °æ¿ì ÄíÅ°¸¦ »ý¼ºÇØ¼­ Á¶È¸¼ö Áõ°¡ ·ÎÁ÷À» Ã³¸®ÇÔ.
+            // ï¿½ï¿½ï¿½ï¿½ viewCookieï¿½ï¿½ nullï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½.
             if (viewCookie == null) {    
-                System.out.println("cookie ¾øÀ½");
+                System.out.println("cookie ï¿½ï¿½ï¿½ï¿½");
                 
-                // ÄíÅ° »ý¼º(ÀÌ¸§, °ª)
+                // ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½(ï¿½Ì¸ï¿½, ï¿½ï¿½)
                 Cookie newCookie = new Cookie("cookie"+board_index, "|" + board_index + "|");
                                 
-                // ÄíÅ° Ãß°¡
+                // ï¿½ï¿½Å° ï¿½ß°ï¿½
                 response.addCookie(newCookie);
  
-                // ÄíÅ°¸¦ Ãß°¡ ½ÃÅ°°í Á¶È¸¼ö Áõ°¡½ÃÅ´
+                // ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å´
                 boolean result = creatorBoardService.plusView(board_index);
                 
                 if(result) {
-                    System.out.println("Á¶È¸¼ö Áõ°¡");
+                    System.out.println("ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                 }else {
-                    System.out.println("Á¶È¸¼ö Áõ°¡ ¿¡·¯");
+                    System.out.println("ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                 }
             }
-            // viewCookie°¡ nullÀÌ ¾Æ´Ò°æ¿ì ÄíÅ°°¡ ÀÖÀ¸¹Ç·Î Á¶È¸¼ö Áõ°¡ ·ÎÁ÷À» Ã³¸®ÇÏÁö ¾ÊÀ½.
+            // viewCookieï¿½ï¿½ nullï¿½ï¿½ ï¿½Æ´Ò°ï¿½ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
             else {
-                System.out.println("cookie ÀÖÀ½");
+                System.out.println("cookie ï¿½ï¿½ï¿½ï¿½");
                 
-                // ÄíÅ° °ª ¹Þ¾Æ¿È.
+                // ï¿½ï¿½Å° ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½.
                 String value = viewCookie.getValue();
                 
-                System.out.println("cookie °ª : " + value);
+                System.out.println("cookie ï¿½ï¿½ : " + value);
         
             }
-         // ¸Þ´º¹Ù Å©¸®¿¡ÀÌÅÍ ÀÌ¸§ ¾ò±â
+         // ï¿½Þ´ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½
     		List<Creator> creatorList = creatorBoardService.getCreatorName();
     		mv.addObject("creatorList", creatorList);
     		
             return mv;
         } 
         else {
-        	// ¸Þ´º¹Ù Å©¸®¿¡ÀÌÅÍ ÀÌ¸§ ¾ò±â
+        	// ï¿½Þ´ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½
     		List<Creator> creatorList = creatorBoardService.getCreatorName();
     		mv.addObject("creatorList", creatorList);
     		
@@ -229,7 +228,7 @@ public class CreatorBoardController {
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community_board_write");
 			
-		// ¸Þ´º¹Ù Å©¸®¿¡ÀÌÅÍ ÀÌ¸§ ¾ò±â
+		// ï¿½Þ´ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½
 		List<Creator> creatorList = creatorBoardService.getCreatorName();
 		mv.addObject("creatorList", creatorList);
 			
@@ -259,14 +258,14 @@ public class CreatorBoardController {
 		return "redirect:board_content?board_index="+board.getBoard_index();
 	}
 	
-	// »èÁ¦
+	// ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("board_delete")
 	public String deleteBoard(@RequestParam long board_index) {
 		creatorBoardService.deleteBoard(board_index);
 		return "redirect:board_page";
 	}
 
-	// °Ë»ö 
+	// ï¿½Ë»ï¿½ 
 	@RequestMapping("board_search")
 	public ModelAndView search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String board_cpStr = request.getParameter("board_cp");
@@ -375,14 +374,14 @@ public class CreatorBoardController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("community");
 		
-		// Å©¸®¿¡ÀÌÅÍ ÀÌ¸§ ¾ò±â
+		// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½
 		List<Creator> creatorList = creatorBoardService.getCreatorName();
 		mv.addObject("creatorList", creatorList);
 		
 		return  mv;
 	}
 	
-	// ´ñ±Û ÀÛ¼º
+	// ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½
 	@RequestMapping("comment_write")
 	public String writeComment(Comment comment) {
 		log.info("@@@@@@@@@@@ comment.getBoard_index() :" + comment.getBoard_index());
@@ -396,7 +395,7 @@ public class CreatorBoardController {
 		return "redirect:board_content?board_index="+comment.getBoard_index();
 	}
 	
-	// ´ñ±Û ¼öÁ¤
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("comment_update")
 	public ModelAndView updateComment(HttpServletRequest request) {
 		String comment_indexStr = request.getParameter("comment_index");
@@ -410,13 +409,13 @@ public class CreatorBoardController {
 		mv.setViewName("redirect:board_content?board_index="+board_index);
 		boardCommentService.updateComment(comment_index, comment_content);
 		
-		// ¸Þ´º¹Ù Å©¸®¿¡ÀÌÅÍ ÀÌ¸§ ¾ò±â
+		// ï¿½Þ´ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½
 		List<Creator> creatorList = creatorBoardService.getCreatorName();
 		mv.addObject("creatorList", creatorList);
 		
 		return mv;
 	}
-	// ´ñ±Û »èÁ¦
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("comment_delete")
 	public String deleteComment(long board_index, long comment_index) {
 		log.info("###########" + board_index);
