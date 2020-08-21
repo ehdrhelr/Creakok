@@ -7,6 +7,7 @@ import creakok.com.domain.Funding;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
 public class FundingVo {
@@ -30,6 +31,7 @@ public class FundingVo {
 		this.totalPageCount = calTotalPageCount();
 		this.listCategoryUsed = listCategoryUsed;
 	}
+	
 	private long calTotalPageCount() {
 		long tpc = totalCount/pageSize; 
 		if(totalCount%pageSize != 0) tpc++;

@@ -12,12 +12,11 @@
     #{funding_detail_pic},
      ${funding_goal},
      0,
-     SYSDATE,
-   	 SYSDATE,
+     #{funding_wdate},
+   	  #{funding_edate},
      0,
      0,
-     null,
-     null)
+     null,  null)
     </insert>
    
 </mapper>

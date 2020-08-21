@@ -148,14 +148,10 @@ public class FundingController {
 			}
 		}
 		session.setAttribute("funding_categoryBy", categoryBy);
-		session.setAttribute("funding_categoryName", categoryName);
-
-		
+		session.setAttribute("funding_categoryName", categoryName);	
 		fundingVo = service.getFundingVo(cp, ps, filterBy, categoryBy);//카테고리 유즈드 리스트가 전부들어감
 		session.setAttribute("funding_categoryNames", fundingVo.getListCategoryUsed());
-		log.info(fundingVo.getListCategoryUsed());
 	
-		
 		//(3) ModelAndView
 		ModelAndView mv = new ModelAndView("/funding", "fundingVo", fundingVo);
 		
@@ -190,70 +186,12 @@ public class FundingController {
 							}
 						}	
 						for(int k=0;k<4;k++) {
-							log.info("@@@@@@@@@@@@@@"+k);
 							Funding fundingRelated = AllListrelatedFunding.get(a[k]);
-							log.info("get(a[k]):" +a[k]);
 							ListrelatedFunding.add(fundingRelated);
 						}
 					}
-					
-						fundingSelected.setListrelatedFunding(ListrelatedFunding);
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						
-						log.info(fundingSelected.getListrelatedFunding());
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-						log.info("!!!!!!!!!!!!!!!!!!!!FundingRElated!!!!!!!!!!!!!!!!!!");
-									
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info(fundingSelected);
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					log.info("!!!!!!!!!!!!!!!!!!!!FundingSet!!!!!!!!!!!!!!!!!!");
-					
+						fundingSelected.setListrelatedFunding(ListrelatedFunding);				
 					return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
-				
 				}
 			}	
 			//return new ModelAndView("/funding_detail", "fundingVo", fundingVo);

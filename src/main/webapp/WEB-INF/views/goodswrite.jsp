@@ -1193,8 +1193,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="shop.html">ABOUT</a></li>
-                                   <!--   <li><a href="portfolio.html">Portfolio</a></li>
-                                    <li><a href="contact.html">Contact</a></li>  -->
+                                  
                                 </ul>  
 
                                 <!-- Search Icon -->
@@ -1231,31 +1230,41 @@
     
     
     <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
- 
-	    <div style="width: 60%; margin: auto;">
-	    	<form method="post" action="/projectwrite.do">
-		    	 <div class="col-md-6 mb-4">
-                                    <label for="first_name" style="display:inline-block;">이름 *</label>
-                                    <input  name="Payinfo_name" style="display:inline-block; width:70% !important;"class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
+ 					<h3 style="text-align:center;margin-bottom:40px;font-size:18pt">굿즈 판매하기</h3>
+	    <div style="width: 60%; margin: auto;" >
+	    	<form method="post" action="/fundingwrite.do">
+		    				 <div >
+                                    <input name="write_creator" style="display:block;"class="form-control" id="first_name" 
+                                    placeholder="크리에이터" value="" required>
                                 </div>
-		    	<input type="text" name="writer" style="width: 20%;" placeholder="크리에이터"/><br>
-				<input type="text" name="title" style="width: 40%;" placeholder="프로젝트명"/>
-				<input type="text" name="" style="width: 40%;" placeholder="달성금액"/>
-				<input type="text" name="" style="width: 40%;" placeholder="펀딩기한"/>
-				
-				<select>
-				<option value="">테크/가전</option>
-				<option value="">패션/잡화</option>	
-				</select>
-				
-				<select>
-				<option value="">펀딩</option>
-				<option value="">굿즈</option>	
-				</select>
-				
-				<br><br> 
+                                
+                                 <div >
+                                    <input  name="write_funding_goal"  style="display:inline-block;width:50%;margin-top:10px;" class="form-control" id="first_name" 
+                                     placeholder="가격" required>
+                                    <input type="text"  name="write_funding_wdate"  style="display:inline-block;width:23.3%;margin-top:10px;margin-left:5px;" class="form-control" id="first_name" 
+                                     placeholder="재고량" required>
+                                 
+                                </div>
+                                
+                                 <div >
+                                    <input name="write_funding_subject" style="display:inline-block;width:74.5%"class="form-control" id="first_name" 
+                                   placeholder="판매할 제품명" required>
+                                    <select name="funding_category_code"style="display:inline-block; width:24%; margin-left:5px;margin-top:10px; padding:5px"
+                                    onChange="text.value=funding_category_code[selectedIndex].value">
+										<option value="">카테고리</option>
+										<option value="200">테크/가전</option>
+										<option value="201">패션/잡화</option>	
+									</select>			
+                                </div>
+				<br>
 				<textarea id="summernote" name="content"></textarea>
-				<input id="subBtn" type="button" value="글 작성" style="float: right;" onclick="goWrite(this.form)"/>
+				<label for="phonenumber"style="display:inline-block;">대표 이미지 첨부 :  </label>
+				<input type="file" name="write_funding_repre_pic" style="display:inline-block;margin-top:10px; width:85%;padding:2px;"class="form-control" id="first_name" 
+                                    onkeydown="goWrite(this.form)" required>	
+				<p style="width:100%;text-align:center; margin-top:20px;">
+				<input id="subBtn" type="button" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px" value="프로젝트 만들기" onclick="goWrite(this.form)"/>
+				<input id="subBtn" type="reset"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px"value="취소하기" onclick="goWrite(this.form)"/>
+				</p>			 		
 			</form>
 		</div>
     </div>
@@ -1282,22 +1291,39 @@
       
       <script>
 function goWrite(frm) {
-	var title = frm.title.value;
-	var writer = frm.writer.value;
-	var content = frm.content.value;
+	var write_creator = frm.write_creator.value;
+	var write_funding_goal = frm.write_funding_goal.value;
+	var write_funding_wdate = frm.write_funding_wdate.value;
+	var write_funding_edate = frm.write_funding_edate.value;
+	var write_funding_subject = frm.write_funding_subject.value;
+	var write_funding_repre_pic = frm.write_funding_repre_pic.value;
 	
-	if (title.trim() == ''){
-		alert("제목을 입력해주세요");
+	if (write_creator.trim() == ''){
+		alert("크리에이터명을 입력해주세요");
 		return false;
 	}
-	if (writer.trim() == ''){
-		alert("작성자를 입력해주세요");
+	if(write_funding_goal.trim() == ''){
+		alert("목표금액을 입력해주세요");
 		return false;
 	}
-	if (content.trim() == ''){
-		alert("내용을 입력해주세요");
+	if(write_funding_wdate.trim() == ''){
+		alert("펀딩 시작날짜를 입력해주세요");
 		return false;
 	}
+	if(write_funding_edate.trim() == ''){
+		alert("펀딩 종료날짜를 입력해주세요");
+		return false;
+	}
+	if(write_funding_subject.trim() == ''){
+		alert("펀딩받을 프로젝트명을 입력해주세요");
+		return false;
+	}
+	if(write_funding_repre_pic.trim() == ''){
+		alert("펀딩 대표사진을 입력해주세요");
+		return false;
+	}
+	
+	
 	frm.submit();
 }
 </script>
