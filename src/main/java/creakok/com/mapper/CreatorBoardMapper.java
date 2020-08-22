@@ -41,4 +41,7 @@ public interface CreatorBoardMapper {
 	List<Comment> getComment(long board_index);
 	void writeComment(Comment comment);
 	*/
+	
+	// 크리에이터 정보 조회(굿즈에서 사용)
+	Creator getContentByCreator (@Param("creator_name") String creator_name);
 }

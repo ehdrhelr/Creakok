@@ -37,4 +37,3 @@
        update GOODS_REVIEW set GOODS_REVIEW_SUBJECT=#{goods_review_subject}, GOODS_REVIEW_CONTENT=#{goods_review_content} where GOODS_REVIEW_INDEX=${goods_review_index}
     </update>     
 </mapper>
-

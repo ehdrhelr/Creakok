@@ -77,4 +77,8 @@
 		select * from BOARD_COMMENT where BOARD_INDEX = #{BOARD_INDEX}
 	</select>
 
+	<!-- 크리에이터 조회(굿즈에서 사용) -->
+	<select id="getContentByCreator" resultType="Creator" parameterType="String">
+		select * from CREATOR where CREATOR_NAME=#{creator_name}
+	</select>
 </mapper>

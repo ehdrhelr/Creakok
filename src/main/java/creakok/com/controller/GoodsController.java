@@ -6,14 +6,17 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import creakok.com.domain.Creator;
 import creakok.com.domain.Goods;
 import creakok.com.domain.Goods_Category;
 import creakok.com.domain.Goods_Review;
+import creakok.com.service.CreatorBoardService;
 import creakok.com.service.GoodsDetailService;
 import creakok.com.service.GoodsReviewService;
 import creakok.com.service.GoodsService;
@@ -37,6 +40,9 @@ public class GoodsController {
 
 	@Resource(name="GoodsReviewService")
 	private GoodsReviewService goods_reviewservice;
+	
+	@Autowired
+	private CreatorBoardService creatorBoardService;
 	
 	@RequestMapping("goods_list.do")
 	public String list(HttpServletRequest request, HttpSession session) {
@@ -180,23 +186,22 @@ public class GoodsController {
 		String goods_indexStr = request.getParameter("goods_index");
 		long goods_index = Long.parseLong(goods_indexStr);
 		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
-		//String gCodeStr = request.getParameter("gCode");
-		//long gCode = Long.parseLong(gCodeStr);
+		
 		
 		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
-		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index: "+goods_index);
-		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$ one_goods: "+one_goods);
+		String creator_name = one_goods.getCreator_name();
+		Creator goods_creator = creatorBoardService.getContentByCreator(creator_name);
 		
 		long category_code = one_goods.getGoods_category_code();
 		String category_name = goods_categoryService.selectGoodsCategoryName(category_code);
-		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ category_name: "+category_name);
+	
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("goods_details");
 		mv.addObject("one_goods", one_goods);
 		mv.addObject("review_size", review_size);
 		mv.addObject("category_name", category_name);
-		
+		mv.addObject("creator", goods_creator);
 
 		return mv;
 	}
