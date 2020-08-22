@@ -122,10 +122,11 @@
                     </div>
                     <div class="ProjectIntroduction__ProjectIntroductionMainColumn-sc-1o2ojgb-8 ZOwbJ">
                         <figure class="ProjectIntroduction__ProjectCoverImageFigure-sc-1o2ojgb-9 fUBtAC">
-                        <img src="${one_goods.goods_repre_pic}" alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" /></figure>
+                        <!-- <img src="img/goods/${one_goods.goods_repre_pic}" alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" /></figure>  -->
+                        <p alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" style="background:url(img/goods/goods_2.jpg);background-repeat:no-repeat;background-size:cover;background-position:-0px -50px"></p>
                     </div>
                     <aside class="ProjectIntroduction__ProjectIntroductionSubColumn-sc-1o2ojgb-12 fHdIrJ">
-                        <div class="ProjectIntroduction__FundingStatus-sc-1o2ojgb-13 gGVEjs">
+                        <div class="ProjectIntroduction__FundingStatus-sc-1o2ojgb-13 gGVEjs" style="margin-bottom:50px">
                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
                                 <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="margin-right:20px;">가격</div>
                                 <span id="product_price" class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;">${one_goods.goods_price}</span>
@@ -291,7 +292,7 @@
                             <div class="Card-sc-1sgtmvk-0 iZjgMf">
                                 <div class="StoryCard__StoryCardInner-sc-6cra5i-0 giOSQG">
                                     <div class="storyContent">
-                                       <img src="${one_goods.goods_detail_pic}">
+                                       <img src="img/goods/${one_goods.goods_detail_pic}">
                                     </div>
                                 </div>
                             </div>
@@ -301,25 +302,19 @@
                         <div class="ProjectPage__SubColumnInner-f3cisk-6 qujmm">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf ProjectPage__StyledCreatorCard-f3cisk-5 lfTmkG">
                                 <div class="CreatorCard__CreatorCardInner-sc-1ifohey-0 iubrbI">
-                                    <div class="CreatorCard__CreatorCardLabel-sc-1ifohey-1 erXxPv">창작자 소개</div>
-                                    <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO"><span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"></span><a target="_blank" href="https://tumblbug.com/u/mcmp"><span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx">마장뮤직앤픽처스</span></a></div>
-                                    <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">40여 년 역사의 아날로그 레코딩 전문 스튜디오인 유니버샬 레코드를 기반으로한 ‘마장뮤직앤픽처스 스튜디오’에서 LP 제작 핵심 기술인 래커 커팅으로 음악의 소리골을 새기고, 성수동에 위치한 ‘마장뮤직앤픽처스 LP 공장’에서 도금 및 성형 기술으로 LP를 생산해내고 있습니다. 국내 LP 제작 기술을 세계적인 수준으로 끌어올린 아날로그 장인 정신으로, 마장뮤직앤픽처스는 이제 국내 대표를 넘어 아시아 No.1 LP 기획/제작 브랜드로써 LP 시장 문화를 선도해 나갈 것입니다.</div>
+                                    <div class="CreatorCard__CreatorCardLabel-sc-1ifohey-1 erXxPv">크리에이터 소개</div>
+                                    <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO">
+                                    <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"></span>
+                                    <a target="_blank" href="img/funding/${goods_creator.creator_profile_photo}"><span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx">${creator.creator_name}</span></a></div>
+                                    <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">
+                                    	${goods_creator.creator_profile_content}</div>
                                     <div class="Divider-sc-17hnup0-0 eUqLBU"></div>
-                                    <div class="CreatorCard__CreatorStats-sc-1ifohey-5 dhVdtT">
-                                        <div>마지막 로그인&nbsp;&nbsp;<b>한 시간 전</b></div>진행한 프로젝트&nbsp;&nbsp;<b>1</b>&nbsp;&nbsp;&nbsp;&nbsp; 밀어준 프로젝트&nbsp;&nbsp;<b>0</b>
-                                    </div>
+                             		  <div class="CreatorCard__CreatorStats-sc-1ifohey-5 dhVdtT">
+                                        <div>=&nbsp;&nbsp;</div>
+                                    </div>  
                                     <div class="CreatorCard__CreatorContactButton-sc-1ifohey-6 jpHksr"><button class="Button-sc-1x93b2b-0 jQspcv"><i class="_3YmAkQhwzI7o-uUWz_8Mp4 _1QY7TzdLHKX3-BKPDNNYKF"></i>창작자에게 문의하기</button></div>
                                 </div>
                             </div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
                             
                             <div class="Sticker__Ghost-sc-1si6lg8-1 jchKaE" style="height: auto;"></div>
                         </div>

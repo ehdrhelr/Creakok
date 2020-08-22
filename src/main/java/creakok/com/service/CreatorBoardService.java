@@ -11,28 +11,31 @@ public interface CreatorBoardService {
 	ListResult getListResultS(int currentPage, int pageSize, String filterBy, String creator_name);
 	Board contentS(long board_index);
 	void insertS(Board board);
-	// °Ô½Ã¹° ÀÛ¼º
+	// ï¿½Ô½Ã¹ï¿½ ï¿½Û¼ï¿½
 	public int insertBoard(Board board);
-	// Á¶È¸¼ö +1
+	// ï¿½ï¿½È¸ï¿½ï¿½ +1
 	public boolean plusView(long board_index);
-	// ÁÁ¾Æ¿ä +1
+	// ï¿½ï¿½ï¿½Æ¿ï¿½ +1
 	public boolean plusLike(long board_index);
-	// Å©¸®¿¡ÀÌÅÍ ÀÌ¸§ Á¶È¸
+	// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½È¸
 	public List<Creator> getCreatorName();
-	// »èÁ¦
+	// ï¿½ï¿½ï¿½ï¿½
 	void deleteBoard(long board_index);
 
-	// ³»¿ë
+	// ï¿½ï¿½ï¿½ï¿½
 	Board getBoard(long board_index);
-	// °Ë»ö new
+	// ï¿½Ë»ï¿½ new
 	ListResult getListResultBySearchS(int currentPage, int pageSize, String filterBy, String c_code, String searchName);
-	// ¼öÁ¤
+	// ï¿½ï¿½ï¿½ï¿½
 	void edit(Board board);
 	/*
-	// ´ñ±Û Á¶È¸
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	List<Comment> getComment(long board_index);
-	// ´ñ±Û ÀÛ¼º
+	// ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½
 	void writeComment(Comment comment);
 	*/
+	
+	//í¬ë¦¬ì—ì´í„° ì •ë³´ ì¡°íšŒ(êµ¿ì¦ˆì—ì„œ ì‚¬ìš©)
+	public Creator getContentByCreator(String creator_name);
 }
 

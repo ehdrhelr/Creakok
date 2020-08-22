@@ -78,5 +78,9 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 		log.info("@@@@@@@@@@@@@@@@@@@@"+countBySearch+"@@@@@@@@@@@");
 		return new ListResult(currentPage, countBySearch, pageSize, list, filterBy);
 	}
-	
+	//크리에이터 정보 조회(굿즈에서 사용)
+	@Override
+	public Creator getContentByCreator(String creator_name) {
+		return mapper.getContentByCreator(creator_name);
+	}
 }
