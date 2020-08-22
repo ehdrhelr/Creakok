@@ -298,7 +298,7 @@
             <!-- Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
-				<div class="slide-img bg-img" style="background-image: url(img/bg-img/dark_thumb.jpeg);"></div>
+				<div class="slide-img bg-img" style="background-image: url(img/community/${theCreator.creator_banner_photo});"></div>
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
@@ -314,23 +314,26 @@
 															<div class="row align-items-center">
 																<div class="col-12 col-md-6">
 																	<div class="testimonial-thumb" style="margin-left:5px">
-																		<img src="img/bg-img/dark_face.jpg" alt="">
+																		<img src="img/community/${theCreator.creator_profile_photo}" alt="">
 																	</div>
 																</div>
 																<div class="col-12 col-md-6">
 																	<div class="testimonial-content">
 																		<!-- Section Heading -->
 																		<div class="section-heading">
-																			<h2>${creator.creator_name}</h2>
+																			<h2>${theCreator.creator_name}</h2>
 																			<p> </p>
-																			<p>${creator.creator_profile_content}</p>
+																			<p>${theCreator.creator_profile_content}</p>
 																		</div>
 																		<p> </p>
 																		<div class="testimonial-author-info">
 																			 <div class="welcome-btn-group" style="padding:5px">
-																				 <img src="img/bg-img/youtube.png" alt="">
-																				 <img src="img/bg-img/insta.png" alt="">
-																				 
+																			 <c:if test="${!empty theCreator.creator_link_youtube}">
+																				 <a href="${theCreator.creator_link_youtube}"><img src="img/bg-img/youtube.png" alt=""></a>
+																			 </c:if>
+																			 <c:if test="${!empty theCreator.creator_link_instagram}">	 
+																				 <a href="${theCreator.creator_link_instagram}"><img src="img/bg-img/insta.png" alt=""></a>
+																			</c:if>
 																			</div>
 																		</div>
 																	</div>
@@ -361,7 +364,7 @@
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
-                        <h2>다크나이트의 컨텐츠</h2>
+                        <h2>${theCreator.creator_name}의 컨텐츠</h2>
                         <p>다양한 컨텐츠를 확인해보세요!</p>
                     </div>
                 </div>
@@ -650,9 +653,12 @@
              &nbsp;&nbsp;&nbsp; 
             ${listResult.currentPage}page/${listResult.totalPageCount}pages
           </td>
+          <!-- 없는게 나을 것 같다.
           <td colspan="2" align="center">
             총 게시물 수 : ${listResult.totalCount}
           </td>
+        	-->  
+        
         </tr>
         <c:if test="${empty member}">
         	<button type="button" class="searchBtn">

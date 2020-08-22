@@ -17,8 +17,10 @@ public interface CreatorBoardService {
 	public boolean plusView(long board_index);
 	// 좋아요 +1
 	public boolean plusLike(long board_index);
-	// 크리에이터 이름 조회
+	// 모든 크리에이터 정보 조회
 	public List<Creator> getCreatorName();
+	// 특정 크리에이터 정보 조회
+	public Creator getCreator(String creator_name);
 	// 삭제
 	void deleteBoard(long board_index);
 

@@ -307,7 +307,7 @@
                                     <li><a href="#">COMMUNITY</a>
                                         <ul class="dropdown">
                                         	<c:forEach items="${creatorList}" var="creator">
-                                            <li><a href="board_page?creator_name?+${creator.creator_name}">${creator.creator_name}</a></li>
+                                            <li><a href="board_page?creator_name=${creator.creator_name}">${creator.creator_name}</a></li>
                                             </c:forEach>
                                             
                                         </ul>
@@ -397,7 +397,7 @@
                          	</c:if>
 
                          </c:if>
-                         <button type="button" class="" style="background-color:black !important; color:white;width:133px;height:38px;border-radius:.25rem;display:inline-block" onclick="location.href='board_page#fix_point'">전체 게시글보기</button>
+                         <button type="button" class="" style="background-color:black !important; color:white;width:133px;height:38px;border-radius:.25rem;display:inline-block" onclick="location.href='board_page?creator_name=${board.creator_name}#fix_point'">전체 게시글보기</button>
 
 <!----------------------- 댓글 조회 부분 --------------------->
 			<div class="form-group col-sm-12">

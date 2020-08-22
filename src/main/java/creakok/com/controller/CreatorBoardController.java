@@ -138,11 +138,13 @@ public class CreatorBoardController {
 		
 		// 상단 메뉴바 크리에이터 이름 얻기
 		List<Creator> creatorList = creatorBoardService.getCreatorName();
-		for (int i=0; i<creatorList.size(); i++) {
-			
-		}
 		mv.addObject("creatorList", creatorList);
 		
+		// 현재 페이지 크리에이터 정보 조회 
+		Creator theCreator = creatorBoardService.getCreator(creator_name);
+		//mv.addObject("theCreator", theCreator);		
+		session.setAttribute("theCreator", theCreator);
+		log.info("@@@@@@@@@@@@@@@@@@@@@@ theCreator.getCreator_banner_photo() : " + theCreator.getCreator_banner_photo());
 		return mv;
 	}
 	
