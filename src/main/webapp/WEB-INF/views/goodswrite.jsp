@@ -1323,7 +1323,6 @@ function goWrite() {
 		alert("별점을 체크해주세요");
 		return false;
 	}
-
 	if(summernote == ''){
 		alert("내용을 입력해주세요");
 		return false;

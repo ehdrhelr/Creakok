@@ -1241,25 +1241,11 @@
           
           
 	    <div class="submit_a_review_area mt-50" style="width: 60%; margin: auto;" >
-	    	<form method="post" action="goods_review_insert.do" onsubmit="return goWrite()">
+	    	<form method="post" action="funding_qna.edit" onsubmit="return goWrite()">
                                    <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group d-flex align-items-center">
-                                                    <span class="mr-15">별점 :</span>
-                                                    <div class="stars">
-                                                        <input type="radio" name="star" class="star-1" id="star-1" onclick="starcheck()" value="1">
-                                                        <label class="star-1" for="star-1">1</label>
-                                                        <input type="radio" name="star" class="star-2" id="star-2" onclick="starcheck()" value="2">
-                                                        <label class="star-2" for="star-2">2</label>
-                                                        <input type="radio" name="star" class="star-3" id="star-3" onclick="starcheck()" value="3">
-                                                        <label class="star-3" for="star-3">3</label>
-                                                        <input type="radio" name="star" class="star-4" id="star-4" onclick="starcheck()" value="4">
-                                                        <label class="star-4" for="star-4">4</label>
-                                                        <input type="radio" name="star" class="star-5" id="star-5" onclick="starcheck()" value="5">
-                                                        <label class="star-5" for="star-5">5</label>
-                                                        <input type="hidden" value="1" id="star_result" name="review_rating">
-                                                        <span></span>
-                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                         
@@ -1267,25 +1253,24 @@
 		    				      <div>
                                      <label for="reviewer_name">작성자</label>&nbsp;&nbsp;
                                     <input name="review_writer" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="reviewer_name" 
-                                    placeholder="작성자" value="" required>
-                                    <label for="goods_name">제품명</label>&nbsp;&nbsp;
-                                    <input name="goods_name" style="display:inline-block;width:30%" class="form-control" id="goods_name" 
-                                    placeholder="제품명" value="" required>
+                                   value="${funding_qna_detail.member_name}" readonly>
+                                  
                                 </div>
                                 
                                  <div style="margin-top:10px">
                                     <label for="review_subject" style="margin-right:2%">제목</label>
                                     <input name="review_subject" style="display:inline-block;width:90%" class="form-control" id="review_subject" 
-                                   placeholder="제목" required>
-                                   <input type="hidden" name="goods_index" value="${goods_index}"/>
+                                   value="${funding_qna_detail.funding_qna_subject}">
+                                   <input type="hidden" name="funding_qna_index" value="${funding_qna_detail.funding_qna_index}"/>
+                                   <input type="hidden" name="funding_index" value="${funding_qna_detail.funding_index}"/>
                                 </div>
                                 
 				<br>
-				<textarea id="summernote" name="review_content"></textarea>
+				<textarea id="summernote" name="review_content">${funding_qna_detail.funding_qna_content}</textarea>
 				
 				<p style="width:100%;text-align:center; margin-top:20px;">
     				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" />
-    				<a href="goods_review.do?review_cp=1&goods_index=${goods_index}#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px" value="목록으로"/></a>
+    				<a href="funding_qna.write?funding_index=${funding_qna_detail.funding_index}&qna=1#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px" value="목록으로"/></a>
 				
                 </p>			 		
 			</form>

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.LikeType"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -52,12 +52,13 @@
     <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
-  
+    <link rel="stylesheet" href="css/only_goods_review_board_jsp.css">
+
 
 </head>
 
-<body onload="readFundingLike();">
-    <!-- Preloader -->
+<body>
+   <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
         <div class="preloader-img">
@@ -76,7 +77,7 @@
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
         <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>FUNDING DETAILS</h2>
+            <h2>GOODS DETAILS</h2>
         </div>
 
         <div class="container">
@@ -84,7 +85,7 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/" ><i class="fa fa-home"></i> Home</a></li>
+                          <li class="breadcrumb-item"><a href="/" ><i class="fa fa-home"></i> Home</a></li>
                             <li class="breadcrumb-item"><a href="funding_list.do">FUNDING</a></li>
                             <li class="breadcrumb-item active" aria-current="funding_detail.do">Funding Details</li>
                         </ol>
@@ -96,6 +97,7 @@
     <!-- ##### Breadcrumb Area End ##### -->
 
 
+    
     <div id="react-view" class="tbb-only-ff">
         <div class="ScrollTop__ScrollTopBtnWrapper-j9uqn7-1 etlKsY"><button class="ScrollTop__ScrollTopBtn-j9uqn7-2 QGKgG"><span>최상위로</span></button>
             <div class="ScrollTop__StyledIcon-j9uqn7-0 jOcSCe"><svg width="22px" height="18px" viewBox="0 0 22 18" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -182,34 +184,144 @@
                 </div>
             </div>
         </div><span style="font-size:0"></span>
-    
         <div id="contentsNavigation">
             <nav class="ContentsNavigation__ProjectContentsNavigation-mwsx7i-1 bmUMcp">
-           
                 <div class="ContentsNavigation__ProjectContentsNavigationInner-mwsx7i-2 OvVKa">
                     <div class="ContentsNavigation__NavLeft-mwsx7i-3 buZwam">
-                    <a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" 
-                    href="funding_detail.do?funding_index=${funding_detail.funding_index}#fix_point">스토리</a>
-                     
-                    <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" 
-                   href="funding_qna.do?funding_index=${funding_detail.funding_index}#fix_point">Q&A(${funding_detail.funding_qna_totalCount})</a>
-                    <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="/mcmp_project1/policy?ref=%EB%A9%94%EC%9D%B8%2F%EC%A3%BC%EB%AA%A9%ED%95%A0%EB%A7%8C%ED%95%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8">펀딩 안내</a></div>
+                     <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" 
+                   href="funding_detail.do?funding_index=${funding_detail.funding_index}#fix_point">스토리</a>
+                     <a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB active"
+                   href="funding_list.do?funding_index=${funding_detail.funding_index}&qna=1#fix_point" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)">Q&A(${funding_detail.funding_qna_totalCount})</a>
+                   <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="/mcmp_project1/policy?ref=%EB%A9%94%EC%9D%B8%2F%EC%A3%BC%EB%AA%A9%ED%95%A0%EB%A7%8C%ED%95%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8">펀딩 안내</a></div>
                 </div>
+                  
             </nav>
         </div>
         <div class="ProjectPage__ProjectContentsBackground-f3cisk-0 lbhpFL">
             <div class="Container-gci8y7-0 MskhC">
-                <div class="ProjectPage__ProjectContents-f3cisk-1 ftClLq">            
+                <div class="ProjectPage__ProjectContents-f3cisk-1 ftClLq">
+                
+                
+                
                     <div class="ProjectPage__ProjectContentsMainColumn-f3cisk-2 hzJfoW">
                         <div class="ProjectPage__MainColumnInner-f3cisk-4 kGPPtA">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf">
                                 <div class="StoryCard__StoryCardInner-sc-6cra5i-0 giOSQG">
-                                    ${funding_detail.funding_detail_pic}
+                                    <div class="storyContent" style="padding:0">
+                                      <!-- <img src="${one_goods.goods_detail_pic}">  -->
+                                      
+                                      
+                                      
+                                        <!-- 게시판 영역 start -->
+
+
+    <div class="container">
+     
+            <div  style="font-size:10pt;">
+                <h3>Q&A(${funding_detail.funding_qna_totalCount})</h3>
+                 <p style="font-size:12pt;color:#666666;margin-bottom:10px;">문의 글 남겨주시면 답변 드리겠습니다.</p>
+                <table style="">
+                    <colgroup>
+                        <col width="7%">
+                       
+                        <col width="40%">
+                        <col width="20%">
+                        <col width="13%">
+                        <col width="7%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th style="padding:1.5px !important;">No</th>             
+                            <th style="padding:1.5px !important;">제목</th>
+                            <th style="padding:1.5px !important;">작성자</th>
+                            <th style="padding:1.5px !important;">날짜</th>
+                            <th style="padding:1.5px !important;">답변</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+     
+                 		
+                         <c:forEach items="${funding_detail.funding_qnaVo.list}" var="funding_qna">
+                             <tr>
+                             <td style="padding:1.5px !important;">${funding_qna.funding_qna_index}</td>
+                                  <td style="padding:1.5px !important;"><a href="funding_qna.detail?funding_qna_index=${funding_qna.funding_qna_index}&funding_index=${funding_qna.funding_index}#fix_point">${funding_qna.funding_qna_subject}</a></td>
+                                  
+                              
+                                  <td style="padding:1.5px !important;">${funding_qna.member_name}</td>
+                                  <td style="padding:1.5px !important;">${funding_qna.funding_qna_wdate}</td>
+                                  <c:if test="${!empty funding_qna.funding_qna_answer}">
+                                  <td id="review_view" style="padding:1.5px !important;">답변완료</td>
+                                  </c:if>
+                                  <c:if test="${empty funding_qna.funding_qna_answer}">
+                                    <td id="review_view" style="padding:1.5px !important;">답변대기</td>
+                                  </c:if>
+                              </tr>
+                         </c:forEach>
+                      
+           
+                                    
+                        
+                    </tbody>
+                </table>
+                 
+               
+                
+                
+                <p style="width:100%;text-align:center;margin-top:3%">
+                  <button type="button" class="" onclick="document.getElementById('reserv').style.display='block'"
+                      style='background-color:black; color:white; width:100px;'>
+                      <a href="funding_qna.writeForm?funding_index=${funding_detail.funding_index}#fix_point" style="color:white;">
+                      문의하기</a></button>
+                </p>
+                    
+                    
+                    
+                    
+                    <td colspan="6">
+          </td>
+       
+        <tr>
+          <td colspan="3" align="center">
+            
+
+            <c:forEach begin="1" end="${funding_detail.funding_qnaVo.totalPageCount}" var="i">
+                    <a href="funding_qna.do?funding_index=1&qna=1&qna_cp=${i}#fix_point" style="color:black">
+                <c:choose> 
+                <c:when test="${i==funding_detail.funding_qnaVo.currentPage}">
+                    <strong>${i}</strong>
+                </c:when>
+                <c:otherwise>
+                    ${i}
+                </c:otherwise>
+                </c:choose>
+            </a>
+            
+            &nbsp;
+            </c:forEach>
+     
+          
+          </td>
+         
+        </tr>  
+                    
+                    
+                    
+                    
+            </div>
+   </div>
+   <!-- 게시판 영역 end -->
+                                      
+                                      
+                                      
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ProjectPage__ProjectContentsSubColumn-f3cisk-3 egbEFv">
+              
+                            
+                            
+                     <div class="ProjectPage__ProjectContentsSubColumn-f3cisk-3 egbEFv">
                         <div class="ProjectPage__SubColumnInner-f3cisk-6 qujmm">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf ProjectPage__StyledCreatorCard-f3cisk-5 lfTmkG">
                                 <div class="CreatorCard__CreatorCardInner-sc-1ifohey-0 iubrbI">
@@ -240,10 +352,14 @@
     </div>
 
 
+     <script>
+      function goCreator(){
+          location.href="board_page?creator_name=${creator.creator_name}";
+      }
+    </script>   
 
 
-    <!-- ##### Related Product Area Start ##### -->
-    
+   
       <c:if test="${!empty funding_detail.listrelatedFunding}">
     <div class="related-products-area">
         <div class="container">
@@ -296,21 +412,31 @@
         </c:if>
     <!-- ##### Related Product Area End ##### -->
 
+
     <!-- Footer Bottom Area -->
-    <script type="text/javascript">
-    var xmlHttpFooter = new XMLHttpRequest();
-    xmlHttpFooter.open("GET", "creakok_footer.do", true); // true for asynchronous
-    xmlHttpFooter.send();
-    
-    xmlHttpFooter.onreadystatechange = function() {
-         if (xmlHttpFooter.readyState == 4 && xmlHttpFooter.status == 200) {
-             document.getElementById("footer_div").innerHTML= xmlHttpFooter.responseText;
-         }
-    };
-    </script>
-    <div id="footer_div">
+    <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="border-line"></div>
+                </div>
+                <!-- Copywrite Text -->
+                <div class="col-12 col-md-6" >
+                    <div class="copywrite-text"style="background-color: whitesmoke !important; ">
+                        <img src="img/core-img/creakok.png" alt=""><br/>
+                        <p>creakok@gmail.com  |  02.707.1480<br/>
+                            평일 10:00~17:00 (점심시간 12:00~13:00)<br/>
+                            토/일/공휴일 휴무</p>
+                        <p>(주)크리콕 | 소속 : 비트캠프 신촌센터  | 호스팅 제공자 : (주)CJ ENM<br/>
+                            서울 마포구 백범로 23 구프라자 3층</p>
+                        <p>ⓒ CREAKOK All rights reserved.</p>
+                    </div>
+                </div>
+                <!-- Footer Nav -->
+            </div>
+        </div>
     </div>
-    <!-- Footer Bottom Area End ##### -->
+    <!-- ##### Footer Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
@@ -323,6 +449,7 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+
     <!--hcbae 텀블벅 가져오기 start-->
     <div id="ch-plugin">
         <div id="ch-plugin-core">
@@ -347,65 +474,17 @@
             <iframe id="ch-plugin-script-iframe" style="position:relative!important;height:100%!important;width:100%!important;border:none!important;" src="./saved_resource.html"></iframe>
         </div>
     </div>
-   
-   
+    <script type="text/javascript" async="" src="./js/hcbae/linkid.js"></script>
+    <script type="text/javascript" async="" src="./js/hcbae/gtm.js"></script>
+    <script type="text/javascript" async="" src="./js/hcbae/amplitude-5.2.2-min.gz.js"></script>
+    <script type="text/javascript" async="" src="./js/hcbae/analytics.js"></script>
+    <script type="text/javascript" async="" src="./js/hcbae/ch-plugin-web.js" charset="UTF-8"></script>
+    <script type="text/javascript" async="" src="./js/hcbae/analytics.min.js"></script>
+    <script src="./js/hcbae/kakao.min.js"></script>
+    <script src="./js/hcbae/semantic.js"></script>
     <script type="application/javascript" src="https://d2om2e6rfn032x.cloudfront.net/wpa/bundle.app.173e0183d7bc9f5995e8.js"></script>
 
     <!--hcbae 텀블벅 가져오기 end-->
-    
-    <script type="text/javascript">
-    function readFundingLike(){
-        if('${member.member_email}' == '') {
-            return;
-        }
-        
-        let formData = new FormData();
-        formData.append('like_content_index','${funding_detail.funding_index}');
-        formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
-        formData.append('like_member_email','${member.member_email}');
-        
-        let xmlHttpLike = new XMLHttpRequest();
-        xmlHttpLike.open("POST", "readLike.do", true); // true for asynchronous
-        xmlHttpLike.send(formData);
-        xmlHttpLike.onreadystatechange = function() {
-            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
-                let obj = document.querySelector(".neDEf");
-                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
-                    obj.classList.remove('isLiked');
-                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
-                    obj.classList.add('isLiked');
-                }
-            }
-       };
-    }
-
-    function clickFundingLike(){
-        if('${member.member_email}' == '') {
-            alert('로그인해주세요.');
-            return;
-        }
-
-        let formData = new FormData();
-        formData.append('like_content_index','${funding_detail.funding_index}');
-        formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
-        formData.append('like_member_email','${member.member_email}');
-
-        let xmlHttpLike = new XMLHttpRequest();
-        xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
-        xmlHttpLike.send(formData);
-        xmlHttpLike.onreadystatechange = function() {
-            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
-                let obj = document.querySelector(".neDEf");
-                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
-                    obj.classList.add('isLiked');
-                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
-                    obj.classList.remove('isLiked');
-                }
-            }
-       };
-    }
-    </script>
-
 </body>
 
 </html>

@@ -7,7 +7,9 @@ import org.apache.ibatis.annotations.Param;
 
 import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_category;
+import creakok.com.domain.Funding_qna;
 import creakok.com.vo.FundingVo;
+import creakok.com.vo.Funding_qnaVo;
 
 public interface FundingMapper {
 	List<Funding> selectPerPage(FundingVo fundingVo);
@@ -22,4 +24,12 @@ public interface FundingMapper {
 	TreeSet<Integer> selectCategoryCode();
 	String selectCategoryName(@Param(value = "codeUsed") int codeUsed);
 	List<Funding> getRelatedFunding(@Param(value = "categoryCode") long categoryCode);
+	List<Funding_qna> getFunding_qna(Funding_qnaVo funding_qnaVo);
+	long getTotalCount_qna(@Param(value = "funding_index")long funding_index);
+	void write_qna(Funding_qna funding_qna);
+	Funding_qna getFunding_qna_detail(@Param(value = "funding_qna_index")long funding_qna_index);
+	void editQna(Funding_qna funding_qna);
+	void answerQna(Funding_qna funding_qna);
+	void answerEditQna(Funding_qna funding_qna);
+	void answerDelete(@Param(value = "funding_qna_index")long funding_qna_index);
 }

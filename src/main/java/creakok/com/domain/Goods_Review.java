@@ -21,4 +21,3 @@ public class Goods_Review {
 	private String member_profile_pic;
 	private long goods_review_view;
 }
-

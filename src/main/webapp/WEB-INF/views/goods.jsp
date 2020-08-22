@@ -350,7 +350,7 @@
                                     <div class="single-product-area mb-50">
                                         <!-- Product Image -->
                                         <div class="product-img">
-                                            <a href="goods_detail.do?goods_index=${goods.goods_index}"><img src="${goods.goods_repre_pic}" alt=""></a>
+                                            <a href="goods_detail.do?goods_index=${goods.goods_index}"><img src="img/goods/${goods.goods_repre_pic}" alt=""></a>
                                         
                                             <!-- Product Tag
                                             <div class="product-tag">

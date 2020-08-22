@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_category;
+import creakok.com.domain.Funding_qna;
 import creakok.com.mapper.FundingMapper;
 import creakok.com.vo.FundingVo;
+import creakok.com.vo.Funding_qnaVo;
 import lombok.extern.log4j.Log4j;
 
 
@@ -86,6 +88,53 @@ public class FundingServiceImpl implements FundingService {
 	public List<Funding> getRelatedFunding(long categoryCode) {
 		List<Funding> list = fundingMapper.getRelatedFunding(categoryCode);
 		return list;
+	}
+
+	@Override
+	public List<Funding_qna> getFunding_qna(Funding_qnaVo funding_qnaVo) {
+		List<Funding_qna> list = fundingMapper.getFunding_qna(funding_qnaVo);
+		return list;
+	}
+
+	@Override
+	public long getTotalCount_qna(long funding_index) {
+		long totalCount = fundingMapper.getTotalCount_qna(funding_index);
+		return totalCount;
+	}
+
+	@Override
+	public void write_qna(Funding_qna funding_qna) {
+		fundingMapper.write_qna(funding_qna);
+	
+	}
+
+	@Override
+	public Funding_qna getFunding_qna_detail(long funding_qna_index) {
+		Funding_qna funding_qna = fundingMapper.getFunding_qna_detail(funding_qna_index);
+		return funding_qna;
+	}
+
+	@Override
+	public void editQna(Funding_qna funding_qna) {
+		fundingMapper.editQna(funding_qna);
+	}
+
+	@Override
+	public void answerQna(Funding_qna funding_qna) {
+		fundingMapper.answerQna(funding_qna);
+		
+	}
+
+	@Override
+	public void answerEditQna(Funding_qna funding_qna) {
+		fundingMapper.answerEditQna(funding_qna);
+		
+	}
+
+	@Override
+	public void answerDelete(long funding_qna_index) {
+		fundingMapper.answerDelete(funding_qna_index);
+		
 	}
 
 	

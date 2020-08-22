@@ -50,7 +50,6 @@ public class ProjectController {
 		return "fundingwrite";
 	}
 	
-	
 	@RequestMapping("/fundingwrite.do")
 	public ModelAndView fundingwrite(HttpServletRequest request, HttpSession session, @RequestParam MultipartFile write_funding_repre_pic) {
 		
@@ -73,7 +72,7 @@ public class ProjectController {
 	   
 	   Funding funding = new Funding(-1, write_creator, write_funding_subject, funding_category_code,
 			   url, content, write_funding_goal, 0, write_funding_wdate, write_funding_edate, 0, 0,
-			   null, null, null, -1, -1, null);
+			   null, null, null, -1, -1, null, null, write_funding_goal);
 
 	    
 	    service.writeFundingProject(funding);
