@@ -465,8 +465,8 @@
 	                             	<div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV"  style="margin-right:20px;">수량</div>
 	                                 <div class="quantity">
 	                                        <span class="qty-minus" style="padding:10px;" onclick="minus()"><i class="fa fa-minus" aria-hidden="true"></i></span>
-	                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1" readonly>
-	                                        <span class="qty-plus" onclick="plus()"><i class="fa fa-plus" aria-hidden="true"></i></span>
+	                                        <input type="number" class="qty-text" style="width:40px" id="qty" step="1" min="1" max="12" name="quantity" value="1" readonly>
+	                                        <span class="qty-plus" onclick="plus()" style="padding:10px"><i class="fa fa-plus" aria-hidden="true"></i></span>
 	                                    </div>
 	                           	 </div>  
                      
@@ -487,26 +487,29 @@
 		                  			if( !isNaN( qty )) effect.value++;
 		                      		return false;
 		                  	}
-                       		function minus(){
-                       			var effect = document.getElementById('qty'); 
-                       			var qty = effect.value; 
-                       			
-                       			var result = document.getElementById('price_qty');
-                       			var amount = ${one_goods.goods_price} * (Number(qty)-1);
-                       			
-		                  		var result2 = document.getElementById('price_qty2');
-		                  		var amount2 = (${one_goods.goods_price} * (Number(qty)-1))+3000; 
-		                  		
-		                  		result2.innerHTML= amount2;
-		                  		
-	                       		if(amount>0){
-	                       			result.innerHTML= amount;
-	                       			
-	                       		}
-                       			
-                       			if( !isNaN( qty ) & qty  > 1) effect.value--;
-                           			return false;
-                       		}
+	                        function minus(){
+	                                var effect = document.getElementById('qty'); 
+	                                var qty = effect.value; 
+	                                
+	                                if(qty>1){
+	                                    var result = document.getElementById('price_qty');
+	                                    var amount = ${one_goods.goods_price} * (Number(qty)-1);
+	                                    
+	                                    var result2 = document.getElementById('price_qty2');
+	                                    var amount2 = (${one_goods.goods_price} * (Number(qty)-1))+3000; 
+	                                    
+	                                    result2.innerHTML= amount2;
+	                                }
+	                                
+	                                if(amount>0){
+	                                    result.innerHTML= amount;
+	                                }
+	                                if(amount2>0){
+	                                    result2.innerHTML= amount2;
+	                                }
+	                                if( !isNaN( qty ) && qty  >1) effect.value--;
+	                                    return false; 
+	                       }
                        </script>
                        
                        
@@ -590,7 +593,7 @@
                     <div class="ContentsNavigation__NavLeft-mwsx7i-3 buZwam">
                     <a class="NavItem-mwsx7i-0 cjInbB"  href="goods_detail.do?goods_index=${review.goods_index}#fix_point">상품상세정보</a>
                     <a aria-current="page" class="ContentsNavigation__ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="goods_review.do">리뷰<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(${review_size})</span></a>
-                    <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="#">Q&A</a></div>
+                    <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="goods_qna.do?qna_cp=1&goods_index=${review.goods_index}&category_name=${category_name}#fix_point">Q&A<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(${qna_list_size})</span></a></div>
                 </div>
             </nav>
         </div>
@@ -614,13 +617,13 @@
 
     <div class="container">
      
-            <div class="r_list" style="width:600px;font-size:10pt;">
+            <div class="" style="font-size:10pt;">
                 <h3>REVIEW(${review_size})</h3>
                  <p style="font-size:12pt;color:#666666;margin-bottom:10px;">THANK YOU FOR POSTING REVIEW.</p>
                 <table style="">
                     <colgroup>
                         <col width="7%">
-                        <col width="10%">
+                        <col width="15%">
                         <col width="30%">
                         <col width="20%">
                         <col width="13%">
@@ -736,6 +739,7 @@
                     
                     
                     
+                      <!--
                     
                     <div class="ProjectPage__ProjectContentsSubColumn-f3cisk-3 egbEFv">
                         <div class="ProjectPage__SubColumnInner-f3cisk-6 qujmm">
@@ -751,16 +755,35 @@
                                     <div class="CreatorCard__CreatorContactButton-sc-1ifohey-6 jpHksr"><button class="Button-sc-1x93b2b-0 jQspcv"><i class="_3YmAkQhwzI7o-uUWz_8Mp4 _1QY7TzdLHKX3-BKPDNNYKF"></i>창작자에게 문의하기</button></div>
                                 </div>
                             </div>
+                    -->           
                             
                             
+                     <div class="ProjectPage__ProjectContentsSubColumn-f3cisk-3 egbEFv">
+                        <div class="ProjectPage__SubColumnInner-f3cisk-6 qujmm">
+                            <div class="Card-sc-1sgtmvk-0 iZjgMf ProjectPage__StyledCreatorCard-f3cisk-5 lfTmkG">
+                                <div class="CreatorCard__CreatorCardInner-sc-1ifohey-0 iubrbI">
+                                    <div class="CreatorCard__CreatorCardLabel-sc-1ifohey-1 erXxPv">크리에이터 소개</div>
+                                    <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO">
+                                    <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"></span>
+                                    <a target="_blank" href="img/funding/${goods_creator.creator_profile_photo}"><span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx">${creator.creator_name}</span></a></div>
+                                    <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">
+                                        </div>
+                                    <div class="Divider-sc-17hnup0-0 eUqLBU"></div>
+                                      <div class="CreatorCard__CreatorStats-sc-1ifohey-5 dhVdtT">
+                                        <p>${creator.creator_profile_content}</p>
+                                    </div>  
+                                    <div class="CreatorCard__CreatorContactButton-sc-1ifohey-6 jpHksr">
+                                        <button class="Button-sc-1x93b2b-0 jQspcv" onclick="goCreator()">
+                                            <i class="_3YmAkQhwzI7o-uUWz_8Mp4 _1QY7TzdLHKX3-BKPDNNYKF">
+                                                                                                커뮤니티 놀러가기
+                                            </i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                             
-                            
-                            
-                            
-                            
-                            
-                            
-                            
+                        </div>
+                    </div>
                             <div class="Sticker__Ghost-sc-1si6lg8-1 jchKaE" style="height: auto;"></div>
                         </div>
                     </div>
@@ -768,8 +791,13 @@
             </div>
         </div>
     </div>
+                           
 
-
+     <script>
+      function goCreator(){
+          location.href="board_page?creator_name=${creator.creator_name}";
+      }
+    </script>   
 
 
     <!-- ##### Related Product Area Start ##### -->
@@ -779,19 +807,25 @@
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
-                        <h2>Related Products</h2>
+                        <h2>관련 상품</h2>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-
+                         <div class="row">
+                
+                
+                <c:if test="${empty four_goods}">
+                       <p style="text-align:center;width:100%;"> 관련 굿즈가 없습니다.</p>
+                </c:if>
+                
+                <c:forEach items="${four_goods}" var="goods_related">
                 <!-- Single Product Area -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-product-area mb-100">
                         <!-- Product Image -->
                         <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/40.png" alt=""></a>
+                            <a href="goods_detail.do?goods_index=${goods_related.goods_index}"><img src="img/goods/${goods_related.goods_repre_pic}" alt=""></a>
                             <!-- Product Tag -->
                             <div class="product-tag">
                                 <a href="#">Hot</a>
@@ -804,85 +838,16 @@
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
+                            <a href="goods_detail.do?goods_index=${goods_related.goods_index}">
+                                <p>${goods_related.goods_name}</p>
                             </a>
-                            <h6>$10.99</h6>
+                            <h6>${goods_related.goods_price}&nbsp;<span style="font-weight:200">원</span></h6>
                         </div>
                     </div>
                 </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-100">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/41.png" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-100">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/42.png" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-100">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/43.png" alt=""></a>
-                            <!-- Product Tag -->
-                            <div class="product-tag sale-tag">
-                                <a href="#">Hot</a>
-                            </div>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
+             </c:forEach>
             </div>
+            
         </div>
     </div>
     <!-- ##### Related Product Area End ##### -->

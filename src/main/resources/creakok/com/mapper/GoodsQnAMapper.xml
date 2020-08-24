@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="creakok.com.mapper.GoodsQnAMapper">
+
+    <select id="selectPerPageQnA" resultType="Goods_QnA" parameterType="Goods_QnAVo">
+        <![CDATA[select * from (select ROWNUM rnum, aa.* from
+        (select * from GOODS_QNA where GOODS_INDEX=#{goods_index} order by GOODS_QNA_WDATE desc) aa)
+        where rnum>${(qna_cp-1)*qna_ps} and rnum<=${qna_cp*qna_ps}
+        ]]>
+    </select>
+    
+    <select id="selectGoodsQnACountByGoodsIndex" resultType="long" parameterType="long">
+        select COUNT(GOODS_QNA_INDEX) from GOODS_QNA where GOODS_INDEX=${goods_index}
+    </select>          
+</mapper>

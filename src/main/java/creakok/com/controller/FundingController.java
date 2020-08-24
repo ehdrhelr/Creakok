@@ -33,7 +33,8 @@ public class FundingController {
 	    String categoryName= request.getParameter("funding_categoryName");
 	    String funding_indexStr = request.getParameter("funding_index");
 	    FundingVo fundingVo = new FundingVo();
-	   
+	    
+	    log.info("#############################categoryName: "+categoryName);
 	    //(2) cp 
 	    int cp = 1;
 		if(cpStr == null) {

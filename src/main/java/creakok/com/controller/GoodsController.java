@@ -1,27 +1,35 @@
 package creakok.com.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Creator;
+import creakok.com.domain.Funding;
 import creakok.com.domain.Goods;
 import creakok.com.domain.Goods_Category;
+import creakok.com.domain.Goods_QnA;
 import creakok.com.domain.Goods_Review;
 import creakok.com.service.CreatorBoardService;
 import creakok.com.service.GoodsDetailService;
+import creakok.com.service.GoodsQnAService;
 import creakok.com.service.GoodsReviewService;
 import creakok.com.service.GoodsService;
 import creakok.com.service.Goods_CategoryService;
 import creakok.com.vo.GoodsVo;
+import creakok.com.vo.Goods_QnAVo;
 import creakok.com.vo.Goods_ReviewVo;
 import creakok.com.vo.PayInfoVo;
 import lombok.extern.log4j.Log4j;
@@ -41,8 +49,12 @@ public class GoodsController {
 	@Resource(name="GoodsReviewService")
 	private GoodsReviewService goods_reviewservice;
 	
+	@Resource(name="GoodsQnAService")
+	private GoodsQnAService goods_qnaservice;
+	
 	@Autowired
 	private CreatorBoardService creatorBoardService;
+
 	
 	@RequestMapping("goods_list.do")
 	public String list(HttpServletRequest request, HttpSession session) {
@@ -152,10 +164,10 @@ public class GoodsController {
 		} else if( !gCodeStr.equals("300") )  { //다른 카테고리 코드일때
 			long gCode = Long.parseLong(gCodeStr);
 			
-			log.info("#######################g filterBy: "+filterBy);
-			log.info("#######################g cp: "+cp);
-			log.info("#######################g ps: "+ps);
-			log.info("#######################g gCode: "+gCode);	
+			//log.info("#######################g filterBy: "+filterBy);
+			//log.info("#######################g cp: "+cp);
+			//log.info("#######################g ps: "+ps);
+			//log.info("#######################g gCode: "+gCode);	
 			
 			GoodsVo list = goodsService.getGoodsVo(cp, ps, gCode, filterBy);
 			list.setCp(cp);
@@ -195,14 +207,36 @@ public class GoodsController {
 		long category_code = one_goods.getGoods_category_code();
 		String category_name = goods_categoryService.selectGoodsCategoryName(category_code);
 	
+		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
+		List<Goods> four_goods = new ArrayList<Goods>();
+		Random r = new Random();
+		if(related_goods.size()>=4) {
+					int a[] = new int[related_goods.size()];
+					for(int i=0;i<related_goods.size();i++) {
+						a[i]=r.nextInt(related_goods.size());
+						for(int j=0; j<i; j++) {
+							if(a[i]==a[j]) {
+								i--;
+							}
+						}
+					}	
+					for(int k=0;k<4;k++) {
+						Goods related_goods2 = related_goods.get(a[k]);
+						four_goods.add(related_goods2);
+					}
+				}
+		Goods_QnAVo qna_list = goods_qnaservice.selectPerPageQnA(1, 5, goods_index);
+		int qna_list_size = qna_list.getQna_list().size();
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("goods_details");
 		mv.addObject("one_goods", one_goods);
 		mv.addObject("review_size", review_size);
 		mv.addObject("category_name", category_name);
+		mv.addObject("four_goods", four_goods);
 		mv.addObject("creator", goods_creator);
-
+		mv.addObject("qna_list_size", qna_list_size);
+		
 		return mv;
 	}
 	@RequestMapping("goods_order.do")
@@ -268,6 +302,7 @@ public class GoodsController {
 		String review_cp = request.getParameter("review_cp");
 		String review_ps = request.getParameter("review_ps");
 		String goods_indexStr = request.getParameter("goods_index");
+		
 		//String category_name = request.getParameter("category_name");
 		long goods_index = Long.parseLong(goods_indexStr);
 		
@@ -276,9 +311,14 @@ public class GoodsController {
 		long category_code = one_goods.getGoods_category_code();
 		String category_name = goods_categoryService.selectGoodsCategoryName(category_code);
 		
+		String creator_name = one_goods.getCreator_name();
+		Creator goods_creator = creatorBoardService.getContentByCreator(creator_name);
+		session.setAttribute("creator", goods_creator);
+		
 		session.setAttribute("category_name", category_name);
 		session.setAttribute("one_goods", one_goods);
-
+		
+		
 		Goods_ReviewVo goods_review_vo = (Goods_ReviewVo)session.getAttribute("goods_review");
 		//(1) cp 
 		int cp = 1;
@@ -309,10 +349,28 @@ public class GoodsController {
 				review_list.setReview_cp(cp2);
 			}
 		}   
-		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ controller review_list: "+review_list);
-		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ controller review_list.size(): "+review_list.getReview_list().size());
-		session.setAttribute("review", review_list);
 		
+		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
+		List<Goods> four_goods = new ArrayList<Goods>();
+		Random r = new Random();
+		if(related_goods.size()>=4) {
+					int a[] = new int[related_goods.size()];
+					for(int i=0;i<related_goods.size();i++) {
+						a[i]=r.nextInt(related_goods.size());
+						for(int j=0; j<i; j++) {
+							if(a[i]==a[j]) {
+								i--;
+							}
+						}
+					}	
+					for(int k=0;k<4;k++) {
+						Goods related_goods2 = related_goods.get(a[k]);
+						four_goods.add(related_goods2);
+					}
+				}
+				
+		session.setAttribute("review", review_list);
+		session.setAttribute("four_goods", four_goods);
 		
 		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
 		session.setAttribute("review_size", review_size);
@@ -350,8 +408,34 @@ public class GoodsController {
 		Goods_ReviewVo review = goods_reviewservice.selectPerPageReview(1, 5, goods_index);
 		Goods_Review one_review = goods_reviewservice.selectOneReview(goods_review_index);
 		
-		
 		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
+		String creator_name = one_goods.getCreator_name();
+		long category_code = one_goods.getGoods_category_code();
+		Creator goods_creator = creatorBoardService.getContentByCreator(creator_name);
+		
+		
+		Goods_QnAVo qna_list = goods_qnaservice.selectPerPageQnA(1, 5, goods_index);
+		int qna_list_size = qna_list.getQna_list().size();
+		
+		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
+		List<Goods> four_goods = new ArrayList<Goods>();
+		Random r = new Random();
+		if(related_goods.size()>=4) {
+					int a[] = new int[related_goods.size()];
+					for(int i=0;i<related_goods.size();i++) {
+						a[i]=r.nextInt(related_goods.size());
+						for(int j=0; j<i; j++) {
+							if(a[i]==a[j]) {
+								i--;
+							}
+						}
+					}	
+					for(int k=0;k<4;k++) {
+						Goods related_goods2 = related_goods.get(a[k]);
+						four_goods.add(related_goods2);
+					}
+				}
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("goods_review_one");
 		mv.addObject("one_goods", one_goods);	
@@ -360,6 +444,10 @@ public class GoodsController {
 		mv.addObject("review", review);
 		mv.addObject("one_review", one_review);
 		mv.addObject("category_name", category_name);
+		mv.addObject("creator", goods_creator);
+		mv.addObject("qna_list_size", qna_list_size);
+		mv.addObject("four_goods", four_goods);
+		
 		
 		return mv;
 	}
@@ -438,10 +526,93 @@ public class GoodsController {
 		
 		int cp = 1;
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:goods_review.do");
+		mv.setViewName("redirect:goods_review.do#fix_point");
 		mv.addObject("goods_index", goods_index);
 		mv.addObject("review_cp", cp);
 		
 		return mv;
 	}
+	
+	@RequestMapping("goods_qna.do")
+	public String goods_qna(HttpServletRequest request, HttpSession session) {
+		String qna_cp = request.getParameter("qna_cp");
+		String qna_ps = request.getParameter("qna_ps");
+		String goods_indexStr = request.getParameter("goods_index");
+		//String category_name = request.getParameter("category_name");
+		long goods_index = Long.parseLong(goods_indexStr);
+		
+		//카테고리 이름 갖고오기
+		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
+		long category_code = one_goods.getGoods_category_code();
+		String category_name = goods_categoryService.selectGoodsCategoryName(category_code);
+		session.setAttribute("category_name", category_name);
+		session.setAttribute("one_goods", one_goods);
+		
+		//크리에이터 정보 갖고오기
+		String creator_name = one_goods.getCreator_name();
+		Creator goods_creator = creatorBoardService.getContentByCreator(creator_name);
+		session.setAttribute("creator", goods_creator);
+		
+
+		
+		Goods_QnAVo goods_qna_vo = (Goods_QnAVo)session.getAttribute("goods_qna");
+		//(1) cp 
+		int cp = 1;
+		if(qna_cp == null) {
+			Object cpObj = goods_qna_vo.getQna_cp();
+			if(cpObj != null) {
+				cp = (Integer)cpObj;
+			} else {
+				cp = 1;
+			}
+		}else {
+			qna_cp = qna_cp.trim();
+			cp = Integer.parseInt(qna_cp);
+		}
+		
+		//(2) ps 
+		int ps = 5;		
+		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ cp: "+cp);
+		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ps: "+ps);
+		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index: "+goods_index);
+		Goods_QnAVo qna_list = goods_qnaservice.selectPerPageQnA(cp, ps, goods_index);
+		qna_list.setQna_cp(cp);
+		qna_list.setQna_ps(ps);
+		qna_list.setGoods_index(goods_index);
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ qna_list: "+qna_list);
+		if(qna_list.getQna_list().size() == 0) {
+			if(cp > 1) {	
+				int cp2 = cp-1;
+				qna_list.setQna_cp(cp2);
+			}
+		}   
+		
+		session.setAttribute("qna_list", qna_list);
+		int qna_list_size = qna_list.getQna_list().size();
+		session.setAttribute("qna_list_size", qna_list_size);
+		
+		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
+		List<Goods> four_goods = new ArrayList<Goods>();
+		Random r = new Random();
+		if(related_goods.size()>=4) {
+					int a[] = new int[related_goods.size()];
+					for(int i=0;i<related_goods.size();i++) {
+						a[i]=r.nextInt(related_goods.size());
+						for(int j=0; j<i; j++) {
+							if(a[i]==a[j]) {
+								i--;
+							}
+						}
+					}	
+					for(int k=0;k<4;k++) {
+						Goods related_goods2 = related_goods.get(a[k]);
+						four_goods.add(related_goods2);
+					}
+				}
+		session.setAttribute("four_goods", four_goods);
+		
+		return "goods_qna_board";
+	}	
+	
+	
 }

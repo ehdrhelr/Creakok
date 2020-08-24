@@ -15,7 +15,9 @@ public class Goods_QnA {
 	private String member_name;
 	private String member_profile_pic;
 	private Date goods_qna_wdate;
+	private String goods_qna_subject;
 	private String goods_qna_content;
+	private String creator_name;
 	private String goods_qna_answer;
 	private Date goods_qna_adate;
 }

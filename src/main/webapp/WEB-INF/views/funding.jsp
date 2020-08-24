@@ -124,13 +124,13 @@
                              <c:choose>
                                   <c:when test="${categoryNames==funding_categoryName}">
                                      <a class="hcbae-nav nav-link active" data-toggle="tab" 
-                                     href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
+                                     href="#" role="tab" onclick="location.href='funding_list.do?funding_categoryName=${categoryNames}'">
                                          ${categoryNames}
                                          </a>
                                    </c:when>
                               <c:otherwise>
                                      <a class="hcbae-nav nav-link" data-toggle="tab" 
-                                     href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
+                                     href="#" role="tab" onclick="location.href='funding_list.do?funding_categoryName=${categoryNames}'">
                                         ${categoryNames}
                                      </a>
                                  </c:otherwise>
@@ -143,6 +143,12 @@
             </div>
         </div>
     </div>
+    
+    <script>
+       function f(){
+    	   
+       }
+    </script>
     <!-- ##### Breadcrumb Area End ##### -->
 
     <!-- ##### Shop Area Start ##### -->
