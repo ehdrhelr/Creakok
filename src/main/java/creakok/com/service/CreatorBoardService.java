@@ -19,6 +19,8 @@ public interface CreatorBoardService {
 	public boolean plusLike(long board_index);
 	// ũ�������� �̸� ��ȸ
 	public List<Creator> getCreatorName();
+	// Ư�� ũ�������� ���� ��ȸ
+	public Creator getCreator(String creator_name);
 	// ����
 	void deleteBoard(long board_index);
 

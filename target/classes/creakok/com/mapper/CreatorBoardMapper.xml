@@ -38,7 +38,7 @@
 			SELECT CREATOR_BOARD_INDEX_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 			INSERT INTO CREATOR_BOARD 
-					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, #{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null, 'subsub')
+					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, #{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null, #{creator_name})
 	</insert>
 	
 	<!-- 조회수 +1 -->
@@ -54,6 +54,11 @@
 	<!-- 크리에이터 정보 조회 -->
 	<select id="getCreatorName" resultType="Creator">
 		select * from CREATOR
+	</select>
+	
+	<!-- 특정 크리에이터 조회 -->
+	<select id="getCreator" resultType="Creator" parameterType="String">
+		select * from CREATOR where CREATOR_NAME = #{creator_name}
 	</select>
 	
 	<delete id="deleteBoard" parameterType="long">

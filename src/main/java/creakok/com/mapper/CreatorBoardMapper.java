@@ -20,9 +20,10 @@ public interface CreatorBoardMapper {
 	public boolean plusView(long board_index);
 	// 좋아요 +1
 	public boolean plusLike(long board_index);
-	// 크리에이터 이름 얻기
+	// 모든 크리에이터 정보 얻기
 	public List<Creator> getCreatorName();
-	
+	// 특정 크리에이터 조회
+	public Creator getCreator(String creator_name);
 	// 글삭제
 	void deleteBoard(long board_index);
 	// 글 검색 by index(안쓰나)
@@ -36,11 +37,7 @@ public interface CreatorBoardMapper {
 			@Param("board_searchName")String board_searchName);
 	int countBySearch(@Param("board_c_code") String c_code, 
 			@Param("board_searchName")String board_searchName);
-	/*
-	// 댓글관련
-	List<Comment> getComment(long board_index);
-	void writeComment(Comment comment);
-	*/
+	
 	
 	// 크리에이터 정보 조회(굿즈에서 사용)
 	Creator getContentByCreator (@Param("creator_name") String creator_name);

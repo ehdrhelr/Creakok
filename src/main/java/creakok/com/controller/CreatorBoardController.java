@@ -137,11 +137,13 @@ public class CreatorBoardController {
 		
 		// ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½
 		List<Creator> creatorList = creatorBoardService.getCreatorName();
-		for (int i=0; i<creatorList.size(); i++) {
-			
-		}
 		mv.addObject("creatorList", creatorList);
 		
+		// ÇöÀç ÆäÀÌÁö Å©¸®¿¡ÀÌÅÍ Á¤º¸ Á¶È¸ 
+		Creator theCreator = creatorBoardService.getCreator(creator_name);
+		//mv.addObject("theCreator", theCreator);		
+		session.setAttribute("theCreator", theCreator);
+		log.info("@@@@@@@@@@@@@@@@@@@@@@ theCreator.getCreator_banner_photo() : " + theCreator.getCreator_banner_photo());
 		return mv;
 	}
 	

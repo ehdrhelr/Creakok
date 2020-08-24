@@ -60,6 +60,11 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	public List<Creator> getCreatorName() {
 		return mapper.getCreatorName();
 	}
+	// 특정 크리에이터 정보 조회
+	@Override
+	public Creator getCreator(String creator_name) {
+		return mapper.getCreator(creator_name);
+	}
 	// 글삭제
 	@Override
 	public void deleteBoard(long board_index) {

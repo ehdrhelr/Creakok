@@ -216,11 +216,12 @@
                                     <td>제목</td><td>
                                         <input type="text" class="form-control" name="board_subject"></td></tr>
                                         <tr><td>글내용</td><td><textarea rows="10" cols="50" name="board_content" class="form-control"></textarea></td></tr>
+									<tr><td><input type="hidden" name="creator_name" value="${theCreator.creator_name}"></td></tr>                              
                               </tbody>
                          </table>
                          <input type="submit" value="글쓰기" class="btn" style="background-color:black !important; color:white">
                          <input type="reset" value="다시작성" class="btn" style="background-color:black !important; color:white">
-                         <button type="button" class="btn" style="background-color:black !important; color:white" onclick="location.href='board_page#fix_point'">전체 게시글보기</button>
+                         <button type="button" class="btn" style="background-color:black !important; color:white" onclick="location.href='board_page?creator_name=${theCreator.creator_name}#fix_point'">전체 게시글보기</button>
                        </form>
                   </div>
                   </div>
