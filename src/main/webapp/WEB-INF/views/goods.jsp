@@ -425,7 +425,7 @@
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
-                              <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>  
+                          <!--   <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>    -->   
                             </ul>
                         </nav>
                     </div>

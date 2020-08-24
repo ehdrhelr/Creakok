@@ -271,6 +271,7 @@ public class GoodsController {
 		//String category_name = request.getParameter("category_name");
 		long goods_index = Long.parseLong(goods_indexStr);
 		
+		//카테고리 이름 갖고오기
 		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
 		long category_code = one_goods.getGoods_category_code();
 		String category_name = goods_categoryService.selectGoodsCategoryName(category_code);
