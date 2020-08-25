@@ -34,9 +34,9 @@ public interface CreatorBoardMapper {
 	// 글 검색
 	List<Board> search(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, 
 			@Param("board_filterBy") String board_filterBy, @Param("board_c_code") String c_code, 
-			@Param("board_searchName")String board_searchName);
+			@Param("board_searchName") String board_searchName, @Param("creator_name") String creator_name);
 	int countBySearch(@Param("board_c_code") String c_code, 
-			@Param("board_searchName")String board_searchName);
+			@Param("board_searchName") String board_searchName, @Param("creator_name") String creator_name);
 	
 	
 	// 크리에이터 정보 조회(굿즈에서 사용)

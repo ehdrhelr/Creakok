@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import creakok.com.domain.Board;
 import creakok.com.domain.Funding;
 import creakok.com.domain.Goods;
 import creakok.com.domain.LikeTable;
@@ -34,8 +35,16 @@ public class LikeController {
 
 		if(tempL==0L) {
 			lts.setLikeNum(likeTable);
+			// 커뮤니티 게시글 하트 클릭 시 해당 게시글 좋아요 컬럼 +1
+			if (likeTable.getLike_type_code() == LikeType.COMMUNITY_LIKE) {
+				lts.increaseBoardLike(likeTable);
+			}
 		} else {
 			lts.deleteLike(likeTable);
+			// 커뮤니티 게시글 하트 취소 시 해당 게시글 좋아요 컬럼 -1
+			if (likeTable.getLike_type_code() == LikeType.COMMUNITY_LIKE) {
+				lts.decreaseBoardLike(likeTable);				
+			}
 		}
 		return Long.toString(tempL);
 	}
@@ -106,5 +115,15 @@ public class LikeController {
 		gv.setList(gList);
 		
 		return new ModelAndView("mypage_goods", "goods", gv);
+	}
+	
+	@ResponseBody
+	@PostMapping("getNewBoardLike") 
+	public long getNewBoardLike(LikeTable likeTable) {
+		log.info("@@@@@@@@@ likeTable: " + likeTable);
+		long boardLikeNum = lts.getNewBoardLike(likeTable);
+		log.info("@@@@@@@@@@@@ + boardLikeNum : " + boardLikeNum);
+		
+		return boardLikeNum;
 	}
 }
