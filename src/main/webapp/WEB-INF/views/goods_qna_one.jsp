@@ -81,8 +81,135 @@
 
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
-    <div id="header_div">
-    </div>
+
+        <!-- ***** Top Header Area ***** -->
+        <div class="top-header-area">
+            <div class="container" style="color:#666666!important;">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="top-header-content d-flex align-items-center justify-content-between">
+                            <!-- Top Header Content -->
+                            <div class="top-header-meta">
+  
+                            </div>
+
+                            <!-- Top Header Content -->
+                            <div class="top-header-meta d-flex">
+                                <div >
+                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;background-color:white;">프로젝트 만들기</button>
+                                </div>
+                                <!-- Language Dropdown -->
+                                <div class="language-dropdown">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#666666">Language</button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">USA</a>
+                                            <a class="dropdown-item" href="#">UK</a>
+                                            <a class="dropdown-item" href="#">Bangla</a>
+                                            <a class="dropdown-item" href="#">Hindi</a>
+                                            <a class="dropdown-item" href="#">Spanish</a>
+                                            <a class="dropdown-item" href="#">Latin</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Login -->
+                                <div class="login">
+                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
+                                </div>
+                                <!-- Cart -->
+                                <div class="cart">
+                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ***** Navbar Area ***** -->
+        <div class="alazea-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="alazeaNav">
+
+                        <!-- Nav Brand -->
+                        <a href="/" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu" style="color:#666666!important;">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Navbar Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="funding">FUNDING</a></li>
+                                    <li><a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300">GOODS</a></li>
+                                    <li><a href="#">COMMUNITY</a>
+                                        <ul class="dropdown">
+                                            <li><a href="index.html" >Home</a></li>
+                                            <li><a href="about.html">About</a></li>
+                                            <li><a href="shop.html">Shop</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="shop.html">Shop</a></li>
+                                                    <li><a href="shop-details.html">Shop Details</a></li>
+                                                    <li><a href="cart.html">Shopping Cart</a></li>
+                                                    <li><a href="checkout.html">Checkout</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="portfolio.html">Portfolio</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                                    <li><a href="gle-portfolio.html">Portfolio Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="blog.html">Blog</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="single-post.html">Blog Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="about.jsp">ABOUT</a></li>
+                                   <!--   <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="contact.html">Contact</a></li>  -->
+                                </ul>  
+
+                                <!-- Search Icon -->
+                                <div id="searchIcon" >
+                                    
+                                    <i aria-hidden="true"><img src="img/core-img/search.png"></i>
+                                </div>
+
+                            </div>
+                            <!-- Navbar End -->
+                        </div>
+                    </nav>
+
+                    <!-- Search Form -->
+                    <div class="search-form">
+                        <form action="#" method="get">
+                            <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
+                            <button type="submit" class="d-none"></button>
+                        </form>
+                        <!-- Close Icon -->
+                        <div class="closeIcon"><i aria-hidden="true"><img src="img/core-img/search.png"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
     <!-- ##### Header Area End ##### -->
 
@@ -136,12 +263,11 @@
                     </div>
                     <div class="ProjectIntroduction__ProjectIntroductionMainColumn-sc-1o2ojgb-8 ZOwbJ">
                         <figure class="ProjectIntroduction__ProjectCoverImageFigure-sc-1o2ojgb-9 fUBtAC">
-                        
-                         <!-- <img src="img/goods/${one_goods.goods_repre_pic}" alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" /></figure>  -->
-                        <p alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" style="background:url(img/goods/${one_goods.goods_repre_pic});background-repeat:no-repeat;background-size:cover;background-position:-0px -50px"></p>
+                        <!--  <img src="${one_goods.goods_repre_pic}" alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" /></figure> -->
+                         <p alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" style="background:url(img/goods/${one_goods.goods_repre_pic});background-repeat:no-repeat;background-size:cover;background-position:-0px -50px"></p>
                     </div>
                     <aside class="ProjectIntroduction__ProjectIntroductionSubColumn-sc-1o2ojgb-12 fHdIrJ">
-                        <div class="ProjectIntroduction__FundingStatus-sc-1o2ojgb-13 gGVEjs" style="margin-bottom:50px">
+                        <div class="ProjectIntroduction__FundingStatus-sc-1o2ojgb-13 gGVEjs"  style="margin-bottom:50px">
                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
                                 <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="margin-right:20px;">가격</div>
                                 <span id="product_price" class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;">${one_goods.goods_price}</span>
@@ -151,18 +277,7 @@
                                 
                             </div>
 
-
-
-						<!--
-                            <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
-                      			<span class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="margin-right:20px;" style="margin-right:20px;">선택</span>
-                                 <select style="width:50%;margin-bottom:20px">
-                                	 <option value="3" selected>${one_goods.goods_option} 보기</option>
-                                	 <option value="6">6개씩 보기</option>
-		                              <option value="9">9개씩 보기</option>
-                                 </select>
-                          </div>
-                       -->           
+     
 	                              <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
 	                             	<div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV"  style="margin-right:20px;">수량</div>
 	                                 <div class="quantity">
@@ -211,7 +326,7 @@
 	                                }
 	                                if( !isNaN( qty ) && qty  >1) effect.value--;
 	                                    return false; 
-	                         }
+	                       }
                        </script>
                        
                        
@@ -309,110 +424,212 @@
                         <div class="ProjectPage__MainColumnInner-f3cisk-4 kGPPtA">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf">
                                 <div class="StoryCard__StoryCardInner-sc-6cra5i-0 giOSQG">
-                                    <div class="storyContent" style="padding:0">
+                                    <div class="storyContent" style="padding:15px;font-size:10pt;height:500px">
                                       <!-- <img src="${one_goods.goods_detail_pic}">  -->
                                       
                                       
                                       
                                         <!-- 게시판 영역 start -->
 
-
-    <div class="container">
-     
-            <div  style="font-size:10pt;">
-                <h3>Q&A(${qna_list_size})</h3>
-                 <p style="font-size:12pt;color:#666666;margin-bottom:10px;">문의 글 남겨주시면 답변 드리겠습니다.</p>
-                <table style="">
-                    <colgroup>
-                        <col width="7%">
-                        <col width="50%">
-                        <col width="20%">
-                        <col width="13%">
-                        <col width="10%">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th style="padding:1.5px !important;">No</th>
-                            <th style="padding:1.5px !important;">제목</th>
-                            <th style="padding:1.5px !important;">작성자</th>
-                            <th style="padding:1.5px !important;">날짜</th>
-                            <th style="padding:1.5px !important;">답변</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:if test="${empty qna_list.qna_list}">
-                           <td colspan="6">
-                                                             문의글이 없습니다.
-                           </td>           
-                        </c:if>
-                          
-                        <c:if test="${!empty qna_list.qna_list}">
-                         <c:forEach items="${qna_list.qna_list}" var="qna_list">
-                             <tr>
-                                  <td style="padding:1.5px !important;">${qna_list.goods_qna_index}</td>
-                                  <td style="padding:1.5px !important;">
-                                    <a href="goods_one_qna.do?goods_qna_index=${qna_list.goods_qna_index}&goods_index=${qna_list.goods_index}#fix_point" style="color:black;overflow:hidden;width:200px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap">
-                                    ${qna_list.goods_qna_subject}
-                                    </a>
-                                  </td>
-                                  <td style="padding:1.5px !important;">${qna_list.member_name}</td>
-                                  <td style="padding:1.5px !important;">${qna_list.goods_qna_wdate}</td>
-                                  <td id="review_view" style="padding:1.5px !important;">
-                                      <c:if test="${!empty qna_list.goods_qna_answer}">
-                                                                                   답변 완료
-                                      </c:if>
-                                      <c:if test="${empty qna_list.goods_qna_answer}">
-                                                                                  답변 대기
-                                      </c:if>
-                                  </td>
-                              </tr>
-                         </c:forEach>
-                        </c:if> 
-
-                         
-            <tr>
-                <td colspan="6" align="center" style="border-bottom:0px">
-                 <c:forEach begin="1" end="${qna_list.totalPageCount}" var="i">
-                          <a href="goods_qna.do?qna_cp=${i}&goods_index=${qna_list.goods_index}#fix_point" style="color:black; font-size:11pt">
-                      <c:choose> 
-                      <c:when test="${i==qna_list.qna_cp}">
-                          <strong>${i}</strong>
-                      </c:when>
-                      <c:otherwise>
-                          ${i}
-                      </c:otherwise>
-                      </c:choose>
-                  </a>
-                  
-                  &nbsp;
-                  </c:forEach>
-                </td>                  
-            </tr>    
-                        
-                    </tbody>
-                </table>
-              
+    
+                                      <div class="container">
+                                      <!--  <div style="padding:15px"> -->
+                                           <div style="font-size:10pt;"> 
+                                                  <h3>Q&A(${qna_list_size})</h3>
+                                                   <p style="font-size:12pt;color:#666666;margin-bottom:10px;">문의 글 남겨주시면 답변 드리겠습니다.</p>
+                                                  <table style="">
+                                                      <colgroup>
+                                                          <col width="10%">
+                                                          <col width="30%">
+                                                          <col width="20%">
+                                                          <col width="10%">
+                                                          <col width="10%">
+                                                      </colgroup>
+                                                       <thead>
+                                                          <tr>
+                                                              <th style="padding:1.5px !important;">No</th>
+                                                              <th style="padding:1.5px !important;">제목</th>
+                                                              <th style="padding:1.5px !important;">작성자</th>
+                                                              <th style="padding:1.5px !important;">날짜</th>
+                                                              <th style="padding:1.5px !important;">답변</th>
+                                                          </tr>
+                                                      </thead>  
+                                                      <tbody>
+                                                            <tr> 
+                                                              <td style="padding:1.5px !important;">${one_qna.goods_qna_index}</td>
+                                                              <td style="padding:1.5px !important;">
+                                                                  <a href="#" style="color:black;">
+                                                                      ${one_qna.goods_qna_subject}
+                                                                  </a>
+                                                              </td>
+                                                              <td style="padding:1.5px !important;">${one_qna.member_name}</td>
+                                                              <td style="padding:1.5px !important;">${one_qna.goods_qna_wdate}</td>
+                                                              <td id="review_view" style="padding:1.5px !important;">
+                                                                <c:if test="${!empty one_qna.goods_qna_answer}">
+                                                                                                                                        답변 완료
+                                                                </c:if>
+                                                                <c:if test="${empty one_qna.goods_qna_answer}">
+                                                                                                                                        답변 대기
+                                                                </c:if>
+                                                              </td>
+                                                          </tr> 
+                                                           <tr>
+                                                              <td colspan="5">
+                                                                  <p style="text-align:center;font-size:10pt;color:black;font-size:10pt;margin-bottom:3%;margin-top:3%">${one_qna.goods_qna_content}</p> 
+                                                               </td>
+                                                          </tr>
+                                                          
+                                                          
+                                                          
+                                                          <!-- 크리에이터 답변이 있을 때 -->
+                                                          <c:if test="${!empty one_qna.goods_qna_answer}">
+                                                          <tr>
+                                                              <td colspan="5">
+                                                                 <p style="color:black;font-size:11pt;font-weight:600;text-align:left;margin-top:2%">└ ${one_qna.creator_name} <span style="font-weight:400"> 님의 답변 :</span> <span id="answer_here" style="font-weight:500">${one_qna.goods_qna_answer}</span><span style="font-weight:300;margin-left:5px">(${one_qna.goods_qna_adate})</span></p>
+                                                              </td>
+                                                          </tr>
+                                                          </c:if>
+                                                          <!-- 크리에이터 답변이 있을 때 End -->
+                                                          
+                                                          
+                                                          <!-- 크리에이터 답변이 없을 때 -->
+                                                         <c:if test="${empty one_qna.goods_qna_answer}">
+                                                            <tr>
+                                                                <td colspan="5" style="border:0;text-align:left">
+                                                                    <button style="background-color:#8a8888;color:white;padding:3px 5px 3px 5px" onclick="answer()">답변 달기</button>
+                                                                </td>
+                                                            </tr>
+                                                         </c:if>   
+                                                            <tr id="answer" style="display:none">
+                                                                
+                                                                <td colspan="5" style="border:0">
+                                                                    <form action="goods_qna_answer_insert.do#fix_point" method="post">
+                                                                        <p style="width:100%;text-algin:right;margin:0">
+                                                                            <label for="answer">└ 답변 :</label>&nbsp;
+                                                                            <input type="text" name="answer" value="" placeholder="답변을 적어주세요" style="height:100px;width:85%">
+                                                                            <input type="hidden" name="goods_qna_index" value="${one_qna.goods_qna_index}">
+                                                                            <input type="hidden" name="goods_index" value="${one_qna.goods_index}">
+                                                                            <input type="hidden" name="category_name" value="${category_name}">
+                                                                        </p>
+                                                                    
+                                                                </td>
+                                                                <tr id="answer2" style="display:none;text-align:right;border-top:0">
+                                                                    <td colspan="5" style="text-align:right">
+                                                                        <input type="submit" value="답변 등록" style="border:0;color:white;background-color:black;height:30px;padding:1px 3px 1px 3px;font-size:10pt;width:70px;margin-bottom:20px">
+                                                                    </td>
+                                                                    </form>
+                                                                </tr>
+                                                            </tr>
+                                                         
+                                                          <!-- 크리에이터 답변이 없을 때 End -->
+                                                      </tbody>
+                                                  </table>
+                                                  <p style="width:100%;text-align:center;margin-top:10px">
+                                                       <a href="goods_qna.do?qna_cp=1&qna_ps=5&goods_index=${one_qna.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>목록</a>
+                                                       <a href="goods_qna_update_form.do?goods_qna_index=${one_qna.goods_qna_index}&goods_index=${one_qna.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>수정</a>
+                                                       <a href="goods_qna_delete.do?goods_qna_index=${one_qna.goods_qna_index}&goods_index=${one_qna.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>삭제</a>
+                                                  </p>
+                                           </div> 
+                                  
+                                       </div> 
+                                     <!-- 게시판 영역 end -->
+             </div>
+          </div>
+        </div>
+      </div>
+   </div>  
+   
+    <script src="js/jquery-1.12.4.js"></script>    
+    <script>
+        //$("#answer").hide(); // display 속성을 none 으로 바꾼다. 
+        function answer(){
+            $("#answer").show();
+            $("#answer2").show();
+        }
+    </script>               
+         <!-- sweet alert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        function check_login() {
+            Toast.fire({
+                icon: 'error',
+                title: '로그인 후 이용해주세요.'
+            })
+        }
+        function no_right() {
+            Toast.fire({
+                icon: 'error',
+                title: '수정 권한이 없어요.'
+            })
+        }
             
-                
-                <p style="width:100%;text-align:center;margin-top:3%">
-                  <button type="button" class="" onclick="document.getElementById('reserv').style.display='block'"
-                      style="background-color:black; color:white; width:100px;height:30px;font-size:0.8em;"><a href="goods_review_write.do?goods_index=${review.goods_index}&category_name=${category_name}#fix_point" style="color:white;">문의하기</a></button>
-                </p>
-            </div>
-   </div>
-   <!-- 게시판 영역 end -->
-                                      
-                                      
-                                      
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-  
-                            
+        function deleteComment(comment_index) {
+            Swal.fire({
+                title: '정말 삭제하시겠어요?',
+                text: "삭제하면 되돌릴 수 없어요",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2da498',
+                cancelButtonColor: '#fc5230',
+                confirmButtonText: '지워주세요!',
+                cancelButtonText: '아니요'         
+            }).then((result) => {
+                if (result.value) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '댓글이 삭제되었어요!',
+                        showConfirmButton: false,
+                        timer: 1500     
+                    }).then($().ready(function(){
+                        location.href = "comment_delete?board_index=${board.board_index}&comment_index="+comment_index;
+                        })
+                    )
+                }
+            })          
+        }
+        
+        function check() {
+            for(var i=0; i<document.form.elements.length; i++) {
+                if(document.form.elements[i].value == "") {
+                     alert("모든 값을 입력 하셔야 합니다. ");
+                     return false;
+                }
+            }
+            document.form.submit();
+        }
+        
+        function updateComment(comment_index) {(async () => {
+            const { value: text } = await Swal.fire({
+              input: 'textarea',
+              inputPlaceholder: '이곳에 새로운 댓글을 작성해주세요...',
+              inputAttributes: {
+                'aria-label': 'Type your message here'
+              },
+              showCancelButton: true,
+              confirmButtonColor: '#2da498',
+              cancelButtonColor: '#fc5230',
+              confirmButtonText: '이렇게 수정할래요',
+              cancelButtonText: '수정 안할래요'
+                })
+            if (text) {  
+                  var board_indexId = document.getElementById("board_index").value;
+                  location.href="comment_update?board_index="+board_indexId+"&comment_index="+comment_index+"&comment_content="+text;                         
+                }
+            })()
+        }
+    </script>                  
                      <div class="ProjectPage__ProjectContentsSubColumn-f3cisk-3 egbEFv">
                         <div class="ProjectPage__SubColumnInner-f3cisk-6 qujmm">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf ProjectPage__StyledCreatorCard-f3cisk-5 lfTmkG">
@@ -430,14 +647,13 @@
                                     <div class="CreatorCard__CreatorContactButton-sc-1ifohey-6 jpHksr">
                                         <button class="Button-sc-1x93b2b-0 jQspcv" onclick="goCreator()">
                                             <i class="_3YmAkQhwzI7o-uUWz_8Mp4 _1QY7TzdLHKX3-BKPDNNYKF">
-                                                                                             커뮤니티 놀러가기
+                                                                                                커뮤니티 놀러가기
                                             </i>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="Sticker__Ghost-sc-1si6lg8-1 jchKaE" style="height: auto;"></div>
                         </div>
                     </div>
                             <div class="Sticker__Ghost-sc-1si6lg8-1 jchKaE" style="height: auto;"></div>
@@ -447,6 +663,7 @@
             </div>
         </div>
     </div>
+                           
 
      <script>
       function goCreator(){
@@ -467,7 +684,7 @@
                 </div>
             </div>
 
-             <div class="row">
+                         <div class="row">
                 
                 
                 <c:if test="${empty four_goods}">

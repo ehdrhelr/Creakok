@@ -235,7 +235,7 @@
                          </table>
                          <input type="submit" value="글쓰기" class="btn" style="background-color:black !important; color:white">
                          <input type="reset" value="다시작성" class="btn" style="background-color:black !important; color:white">
-                         <button type="button"  ="" class="btn" style="background-color:black !important; color:white" onclick="location.href='board_page#fix_point'">전체 게시글보기</button>
+                         <button type="button"  class="btn" style="background-color:black !important; color:white" onclick="location.href='board_page#fix_point'">전체 게시글보기</button>
                        </form>
                   </div>
                   </div>

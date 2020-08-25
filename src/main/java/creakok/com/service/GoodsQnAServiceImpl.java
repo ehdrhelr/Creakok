@@ -2,6 +2,7 @@ package creakok.com.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class GoodsQnAServiceImpl implements GoodsQnAService {
 	@Autowired
 	GoodsQnAMapper goods_qnaMapper;
 	
+	@Override
 	public Goods_QnAVo selectPerPageQnA(int qna_cp, int qna_ps, long goods_index){
 		//log.info("????????????????????????????????? qna_cp: "+qna_cp);
 		//log.info("????????????????????????????????? qna_ps: "+qna_ps);
@@ -33,7 +35,16 @@ public class GoodsQnAServiceImpl implements GoodsQnAService {
 		
 		return goods_qna_vo2;
 	}
+	@Override
 	public long selectGoodsQnACountByGoodsIndex(long goods_index) {
 		return goods_qnaMapper.selectGoodsQnACountByGoodsIndex(goods_index);
+	}
+	@Override
+	public Goods_QnA selectOneQnA( long goods_qna_index) {
+		return goods_qnaMapper.selectOneQnA(goods_qna_index);
+	}
+	@Override
+	public void updateOneAnswer(Goods_QnA goods_qna) {
+		goods_qnaMapper.updateOneAnswer(goods_qna);
 	}
 }

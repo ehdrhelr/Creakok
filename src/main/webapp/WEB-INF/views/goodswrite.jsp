@@ -1267,10 +1267,10 @@
 		    				      <div>
                                      <label for="reviewer_name">작성자</label>&nbsp;&nbsp;
                                     <input name="review_writer" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="reviewer_name" 
-                                    placeholder="작성자" value="" required>
+                                    placeholder="작성자" value="" readonly>
                                     <label for="goods_name">제품명</label>&nbsp;&nbsp;
                                     <input name="goods_name" style="display:inline-block;width:30%" class="form-control" id="goods_name" 
-                                    placeholder="제품명" value="" required>
+                                    placeholder="제품명" value="${one_goods.goods_name}" readonly>
                                 </div>
                                 
                                  <div style="margin-top:10px">

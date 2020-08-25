@@ -382,6 +382,7 @@ public class GoodsController {
 		String goods_indexStr = request.getParameter("goods_index");
 		String category_name = request.getParameter("category_name");
 		long goods_index = Long.parseLong(goods_indexStr);
+		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
 		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index(): "+goods_index);
 		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index(): "+category_name);
 		
@@ -389,6 +390,7 @@ public class GoodsController {
 		mv.setViewName("goodswrite");
 		mv.addObject("goods_index", goods_index);
 		mv.addObject("category_name", category_name);
+		mv.addObject("one_goods", one_goods);
 		
 		return mv;
 	}	
@@ -614,5 +616,82 @@ public class GoodsController {
 		return "goods_qna_board";
 	}	
 	
-	
+	@RequestMapping("goods_one_qna.do")
+	public ModelAndView goods_one_qna(HttpServletRequest request) {
+		String goods_indexStr = request.getParameter("goods_index");
+		String goods_qna_indexStr = request.getParameter("goods_qna_index");
+		long goods_index = Long.parseLong(goods_indexStr);
+		long goods_qna_index = Long.parseLong(goods_qna_indexStr);
+		
+		//카테고리이름
+		String category_name = request.getParameter("category_name");
+		
+		//qna 1개 정보
+		Goods_QnA one_qna = goods_qnaservice.selectOneQnA(goods_qna_index);
+		
+		//크리에이터 정보 & 판매하는 굿즈 정보
+		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
+		String creator_name = one_goods.getCreator_name();
+		long category_code = one_goods.getGoods_category_code();
+		Creator goods_creator = creatorBoardService.getContentByCreator(creator_name);
+		
+		//qna_list 사이즈
+		Goods_QnAVo qna_list = goods_qnaservice.selectPerPageQnA(1, 5, goods_index);
+		int qna_list_size = qna_list.getQna_list().size();
+		
+		//관련 굿즈 리스트
+		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
+		List<Goods> four_goods = new ArrayList<Goods>();
+		Random r = new Random();
+		if(related_goods.size()>=4) {
+					int a[] = new int[related_goods.size()];
+					for(int i=0;i<related_goods.size();i++) {
+						a[i]=r.nextInt(related_goods.size());
+						for(int j=0; j<i; j++) {
+							if(a[i]==a[j]) {
+								i--;
+							}
+						}
+					}	
+					for(int k=0;k<4;k++) {
+						Goods related_goods2 = related_goods.get(a[k]);
+						four_goods.add(related_goods2);
+					}
+				}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("goods_qna_one");
+		mv.addObject("one_goods", one_goods);	
+		mv.addObject("one_qna", one_qna);
+		mv.addObject("category_name", category_name);
+		mv.addObject("creator", goods_creator);
+		mv.addObject("qna_list_size", qna_list_size);
+		mv.addObject("four_goods", four_goods);
+		
+		return mv;
+	}
+	@PostMapping("goods_qna_answer_insert.do")
+	public ModelAndView goods_qna_answer_insert(HttpServletRequest request) {
+		String goods_qna_indexStr = request.getParameter("goods_qna_index");
+		String goods_indexStr = request.getParameter("goods_index");
+		String goods_qna_answer = request.getParameter("answer");
+		String category_name = request.getParameter("category_name");
+		
+		long goods_qna_index = Long.parseLong(goods_qna_indexStr);
+		long goods_index = Long.parseLong(goods_indexStr);
+		
+		Goods_QnA goods_qna = new Goods_QnA(goods_qna_index, goods_index, null, null, null, null, null, null, goods_qna_answer, null);
+
+		goods_qnaservice.updateOneAnswer(goods_qna);
+		
+		int cp = 1;
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:goods_one_qna.do");
+		mv.addObject("goods_index", goods_index);
+		mv.addObject("goods_qna_index", goods_qna_index);
+		mv.addObject("category_name", category_name);
+		mv.addObject("qna_cp", cp);
+		
+		return mv;
+	}
 }

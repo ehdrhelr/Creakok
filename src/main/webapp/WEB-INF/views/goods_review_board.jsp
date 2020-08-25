@@ -53,8 +53,21 @@
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
     <link rel="stylesheet" href="css/only_goods_review_board_jsp.css">
-
-
+    
+    <!--  텀블벅
+    <link rel="stylesheet" type="text/css" href="./css/hcbae/app.f329cff8a7f4484aad7e.css">
+    <link rel="stylesheet" href="./css/hcbae/semantic.css">   -->
+    
+   <style>
+        .storyContent h3 {
+          font-size: 1.5rem;
+          font-weight: normal;
+          color: #666;
+          margin-top: 0;
+          line-height: 1.5;
+          margin-bottom: 6.5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -331,7 +344,12 @@
                     </thead>
                     <tbody>
      
-                 
+                         <c:if test="${empty review.review_list}">
+                           <td colspan="5">
+                                                                  작성된 리뷰가 없습니다.
+                           </td>               
+                        </c:if>
+                        <c:if test="${!empty review.review_list}">
                          <c:forEach items="${review.review_list}" var="review_list2">
                              <tr>
                                   <td style="padding:1.5px !important;">${review_list2.goods_review_index}</td>
@@ -352,38 +370,20 @@
                                                                                                 ★★★★★
                                   </c:if>
                                   </td>
-                                  <td style="padding:1.5px !important;"><a href="goods_one_review.do?goods_review_index=${review_list2.goods_review_index}&goods_index=${review_list2.goods_index}&category_name=${category_name}#fix_point" color:black;overflow:hidden;width:200px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap>${review_list2.goods_review_subject}</a></td>
+                                  <td style="padding:1.5px !important;"><a href="goods_one_review.do?goods_review_index=${review_list2.goods_review_index}&goods_index=${review_list2.goods_index}&category_name=${category_name}#fix_point" style="color:black;overflow:hidden;width:200px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap">${review_list2.goods_review_subject}</a></td>
                                   <td style="padding:1.5px !important;">${review_list2.member_name}</td>
                                   <td style="padding:1.5px !important;">${review_list2.goods_review_date}</td>
                                   <td id="review_view" style="padding:1.5px !important;">${review_list2.goods_review_view}</td>
                               </tr>
+                              
                          </c:forEach>
-           
-                                    
+                        </c:if>
                         
-                    </tbody>
-                </table>
-                 
-               
-                
-                
-                <p style="width:100%;text-align:center;margin-top:3%">
-                  <button type="button" class="" onclick="document.getElementById('reserv').style.display='block'"
-                      style='background-color:black; color:white; width:100px;'><a href="goods_review_write.do?goods_index=${review.goods_index}&category_name=${category_name}#fix_point" style="color:white;">리뷰 작성하기</a></button>
-                </p>
-                    
-                    
-                    
-                    
-                    <td colspan="6">
-          </td>
-       
+                        
         <tr>
-          <td colspan="3" align="center">
-            
-
-            <c:forEach begin="1" end="${review.review_totalPageCount}" var="i">
-                    <a href="goods_review.do?review_cp=${i}&goods_index=${review.goods_index}#fix_point" style="color:black">
+          <td colspan="6" align="center" style="border-bottom:0px">
+                <c:forEach begin="1" end="${review.review_totalPageCount}" var="i">
+                    <a href="goods_review.do?review_cp=${i}&goods_index=${review.goods_index}#fix_point" style="color:black; font-size:11pt">
                 <c:choose> 
                 <c:when test="${i==review.review_cp}">
                     <strong>${i}</strong>
@@ -396,14 +396,19 @@
             
             &nbsp;
             </c:forEach>
-     
-          
           </td>
-         
-        </tr>  
-                    
-                    
-                    
+        </tr>
+                        
+                    </tbody>
+                </table>
+                 
+        
+                
+                
+                <p style="width:100%;text-align:center;margin-top:3%">
+                  <button type="button" class="" onclick="document.getElementById('reserv').style.display='block'"
+                      style="background-color:black; color:white; width:100px;height:30px;font-size:0.8em;"><a href="goods_review_write.do?goods_index=${review.goods_index}&category_name=${category_name}#fix_point" style="color:white;">리뷰 작성하기</a></button>
+                </p>
                     
             </div>
    </div>
@@ -419,25 +424,6 @@
                     
                     
                     
-                   <!--
-                    
-                    <div class="ProjectPage__ProjectContentsSubColumn-f3cisk-3 egbEFv">
-                        <div class="ProjectPage__SubColumnInner-f3cisk-6 qujmm">
-                            <div class="Card-sc-1sgtmvk-0 iZjgMf ProjectPage__StyledCreatorCard-f3cisk-5 lfTmkG">
-                                <div class="CreatorCard__CreatorCardInner-sc-1ifohey-0 iubrbI">
-                                    <div class="CreatorCard__CreatorCardLabel-sc-1ifohey-1 erXxPv">창작자 소개</div>
-                                    <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO"><span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"></span><a target="_blank" href="https://tumblbug.com/u/mcmp"><span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx">마장뮤직앤픽처스</span></a></div>
-                                    <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">40여 년 역사의 아날로그 레코딩 전문 스튜디오인 유니버샬 레코드를 기반으로한 ‘마장뮤직앤픽처스 스튜디오’에서 LP 제작 핵심 기술인 래커 커팅으로 음악의 소리골을 새기고, 성수동에 위치한 ‘마장뮤직앤픽처스 LP 공장’에서 도금 및 성형 기술으로 LP를 생산해내고 있습니다. 국내 LP 제작 기술을 세계적인 수준으로 끌어올린 아날로그 장인 정신으로, 마장뮤직앤픽처스는 이제 국내 대표를 넘어 아시아 No.1 LP 기획/제작 브랜드로써 LP 시장 문화를 선도해 나갈 것입니다.</div>
-                                    <div class="Divider-sc-17hnup0-0 eUqLBU"></div>
-                                    <div class="CreatorCard__CreatorStats-sc-1ifohey-5 dhVdtT">
-                                        <div>마지막 로그인&nbsp;&nbsp;<b>한 시간 전</b></div>진행한 프로젝트&nbsp;&nbsp;<b>1</b>&nbsp;&nbsp;&nbsp;&nbsp; 밀어준 프로젝트&nbsp;&nbsp;<b>0</b>
-                                    </div>
-                                    <div class="CreatorCard__CreatorContactButton-sc-1ifohey-6 jpHksr"><button class="Button-sc-1x93b2b-0 jQspcv"><i class="_3YmAkQhwzI7o-uUWz_8Mp4 _1QY7TzdLHKX3-BKPDNNYKF"></i>창작자에게 문의하기</button></div>
-                                </div>
-                            </div>
-                    -->           
-                            
-                            
                      <div class="ProjectPage__ProjectContentsSubColumn-f3cisk-3 egbEFv">
                         <div class="ProjectPage__SubColumnInner-f3cisk-6 qujmm">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf ProjectPage__StyledCreatorCard-f3cisk-5 lfTmkG">

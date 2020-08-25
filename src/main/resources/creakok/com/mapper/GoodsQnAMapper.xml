@@ -13,5 +13,13 @@
     
     <select id="selectGoodsQnACountByGoodsIndex" resultType="long" parameterType="long">
         select COUNT(GOODS_QNA_INDEX) from GOODS_QNA where GOODS_INDEX=${goods_index}
+    </select>      
+    
+    <select id="selectOneQnA" resultType="Goods_QnA" parameterType="long">
+        select * from GOODS_QNA where GOODS_QNA_INDEX=#{goods_qna_index}
     </select>          
+    
+    <update id="updateOneAnswer" parameterType="Goods_QnA">
+       update GOODS_QNA set GOODS_QNA_ANSWER=#{goods_qna_answer}, GOODS_QNA_ADATE=SYSDATE where GOODS_QNA_INDEX=${goods_qna_index}
+    </update>   
 </mapper>
