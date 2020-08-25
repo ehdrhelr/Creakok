@@ -226,49 +226,6 @@
                   </div>
                   </div>
                 </div>
-                
-				
-				<!-- 
-					<div class="row">
-					    <div class="col-md-2"></div>
-					    <div class="col-md-8">
-					        <h2 class="text-center" style="margin-top: 150px">게시글 쓰기</h2>
-					        <form action="board_write" method="post" \>
-					          <table class="table table-striped">
-					            <tr>
-					                <td>작성자</td>
-					                <td><input type="text"  class="form-control" name="member_name" value="${member.member_name}" readOnly></td>
-					            </tr>
-								<tr>
-					                <td>작성자</td>
-					                <td><input type="text"  class="form-control" name="member_email" value="${member.member_email}" readOnly></td>
-					            </tr>	
-					            <tr>
-					                <td>제목</td>
-					                <td><input type="text"  class="form-control" name="board_subject"></td>
-					            </tr>          
-					        <tr>
-					                <td>비밀번호</td>
-					                <td><input type="password"  class="form-control" name="password"></td>
-					            </tr>
-					            
-					            <tr>
-					                <td>글내용</td>
-					                <td><textarea rows="10" cols="50" name="board_content" class="form-control"></textarea></td>
-					            </tr>
-					            <tr>
-					                <td colspan="2"  class="text-center">
-					                    <input type="submit" value="글쓰기" class="btn" style="back-ground:black" !important>
-					                    <input type="reset" value="다시작성" class="btn btn-warning">
-					                    <button type="button"  class="btn btn-primary" onclick="location.href='board_page#fix_point'">전체 게시글보기</button>
-					                </td>
-					            </tr>     
-					          </table>
-					        </form>
-					    </div>
-					</div>
-				-->
-					
 					
 				</div>  
 			</div>

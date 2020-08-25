@@ -77,10 +77,9 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	}
 	// 글검색조회
 	@Override
-	public ListResult getListResultBySearchS(int currentPage, int pageSize, String filterBy, String c_code, String searchName) {
-		List<Board> list = (List<Board>)mapper.search(currentPage, pageSize, filterBy, c_code, searchName);
-		int countBySearch = mapper.countBySearch(c_code, searchName);
-		log.info("@@@@@@@@@@@@@@@@@@@@"+countBySearch+"@@@@@@@@@@@");
+	public ListResult getListResultBySearchS(int currentPage, int pageSize, String filterBy, String c_code, String searchName, String creator_name) {
+		List<Board> list = (List<Board>)mapper.search(currentPage, pageSize, filterBy, c_code, searchName, creator_name);
+		int countBySearch = mapper.countBySearch(c_code, searchName, creator_name);
 		return new ListResult(currentPage, countBySearch, pageSize, list, filterBy);
 	}
 	//크리에이터 정보 조회(굿즈에서 사용)

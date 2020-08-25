@@ -69,7 +69,7 @@
 	<select id="search" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
     	(select * from CREATOR_BOARD where ${board_c_code} like '%'||#{board_searchName}||'%' order by ${board_filterBy} desc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
+    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name}]]>
 	</select> 
 	
 	<!-- 검색했을 때 count -->

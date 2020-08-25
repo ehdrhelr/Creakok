@@ -27,7 +27,7 @@ public interface CreatorBoardService {
 	// ����
 	Board getBoard(long board_index);
 	// �˻� new
-	ListResult getListResultBySearchS(int currentPage, int pageSize, String filterBy, String c_code, String searchName);
+	ListResult getListResultBySearchS(int currentPage, int pageSize, String filterBy, String c_code, String searchName, String creator_name);
 	// ����
 	void edit(Board board);
 	/*

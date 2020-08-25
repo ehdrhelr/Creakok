@@ -38,9 +38,18 @@ public class CreatorBoardController {
 		String board_cpStr = request.getParameter("board_cp");
 		String board_psStr = request.getParameter("board_ps");
 		String board_filterBy = request.getParameter("board_filterBy");
-		String creator_name = request.getParameter("creator_name");		
+		String creator_name = request.getParameter("creator_name");
+		String c_code = request.getParameter("c_code");
+		String searchName = request.getParameter("searchName");
 		
 		HttpSession session = request.getSession();
+		
+		// 정렬할때 creator_name 안 넘어와서 현재 session에 있는 크리에이터 정보(the Creator)를 가져와서 입력해준다.
+		// 잘 사용하면 session.setAttribute("theCreator") 한번만 해줘도 될 것 같다.
+		if (creator_name == null) {
+			Creator theCreator= (Creator) session.getAttribute("theCreator");
+			creator_name = theCreator.getCreator_name();
+		}
 		
 		//(1) cp 
 		int board_cp = 1;
@@ -122,14 +131,6 @@ public class CreatorBoardController {
 		}
 		
 		session.setAttribute("board_filterBy", board_filterBy);
-		/*
-		// �˻������� ����¡�ϱ�
-		String searchName = request.getParameter("searchName");
-		String searchNameTemp = (String)session.getAttribute("searchName");
-		searchName = searchNameTemp;
-		session.setAttribute("searchName", searchName);
-		log.info("@@@@@@@@@@@@@@@@" + searchName);
-		*/
 		ListResult listResult = creatorBoardService.getListResultS(board_cp, board_ps, board_filterBy, creator_name);
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community");
@@ -139,7 +140,7 @@ public class CreatorBoardController {
 		List<Creator> creatorList = creatorBoardService.getCreatorName();
 		mv.addObject("creatorList", creatorList);
 		
-		// ���� ������ ũ�������� ���� ��ȸ 
+		// ���� ������ ũ�������� ���� ��ȸ 
 		Creator theCreator = creatorBoardService.getCreator(creator_name);
 		//mv.addObject("theCreator", theCreator);		
 		session.setAttribute("theCreator", theCreator);
@@ -253,7 +254,6 @@ public class CreatorBoardController {
 	
 	@PostMapping("board_update")
 	public String update(Board board) {
-		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@ board.getBoard_subject : " + board.getBoard_subject());
 		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@ board.getBoard_content : " + board.getBoard_content());
 		creatorBoardService.edit(board);
@@ -273,9 +273,13 @@ public class CreatorBoardController {
 		String board_cpStr = request.getParameter("board_cp");
 		String board_psStr = request.getParameter("board_ps");
 		String board_filterBy = request.getParameter("board_filterBy");
+		String board_c_code = request.getParameter("board_c_code");
+		String board_searchName = request.getParameter("board_searchName");
 		
 		HttpSession session = request.getSession();		
-		
+		Creator theCreator = (Creator) session.getAttribute("theCreator");
+		String creator_name = theCreator.getCreator_name();
+		log.info("@@@@@@@@@@@@@@@ creator_name : " + creator_name);
 		//(1) cp 
 		int board_cp = 1;
 		if(board_cpStr == null) {
@@ -331,8 +335,7 @@ public class CreatorBoardController {
 		}
 		session.setAttribute("filterBy", board_filterBy);
 		
-		String board_c_code = request.getParameter("board_c_code");
-		String board_searchName = request.getParameter("board_searchName");
+
 		
 		if (board_c_code==null) { 
 			String board_c_codeTemp = (String) session.getAttribute("board_c_code");
@@ -365,12 +368,10 @@ public class CreatorBoardController {
 		}
 		session.setAttribute("board_searchName", board_searchName);
 		
+		// mapper에서 and CREATOR_NAME = ${creator_name} 이 안들어간다... 
+		// 시간 지나니까 됨. 단순히 변경사항이 늦게 업데이트됨.
+		ListResult listResult = creatorBoardService.getListResultBySearchS(board_cp, board_ps, board_filterBy, board_c_code, board_searchName, creator_name);
 		
-		System.out.println("board_c_code: "+board_c_code+", board_searchName: "+board_searchName);
-		
-		ListResult listResult = creatorBoardService.getListResultBySearchS(board_cp, board_ps, board_filterBy, board_c_code, board_searchName);
-		listResult.setBoard_searchName(board_searchName);
-		listResult.setBoard_c_code(board_c_code);
 		request.setAttribute("listResult", listResult);
 		
 		ModelAndView mv = new ModelAndView();

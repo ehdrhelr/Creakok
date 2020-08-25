@@ -29,8 +29,6 @@
 	    and LIKE_MEMBER_EMAIL=#{like_member_email}
   </delete>
   
-  
-  
 	<select id="selectByFundingIndex" parameterType="long" resultType="Funding">
 	    select * from FUNDING where FUNDING_INDEX=${funding_index}
 	</select>
@@ -38,6 +36,20 @@
     <select id="selectByGoodsIndex" parameterType="long" resultType="Goods">
         select * from Goods where GOODS_INDEX=${goods_index}
     </select>
+
+  <!-- 하트 클릭시 커뮤니티 게시글에 BOARD_LIKE 컬럼 증/감 -->
+  <update id="increaseBoardLike" parameterType="LikeTable">
+  	update CREATOR_BOARD set BOARD_LIKE = BOARD_LIKE + 1 where BOARD_INDEX = #{like_content_index}
+  </update> 
+  
+  <update id="decreaseBoardLike" parameterType="LikeTable">
+  	update CREATOR_BOARD set BOARD_LIKE = BOARD_LIKE - 1 where BOARD_INDEX = #{like_content_index}
+  </update>
     
+  <!-- 증감된 BOARD_LIKE 값을 가져오기 위해 -->
+  <select id="getNewBoardLike" parameterType="LikeTable" resultType="Long">
+  	select count(*) from LIKE_TABLE where LIKE_CONTENT_INDEX = ${like_content_index} and LIKE_TYPE_CODE = ${like_type_code} 
+  </select>
+  
   
 </mapper>
