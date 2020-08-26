@@ -351,8 +351,8 @@
                              <tr>
                                   <td style="padding:1.5px !important;">${qna_list.goods_qna_index}</td>
                                   <td style="padding:1.5px !important;">
-                                    <a href="goods_one_qna.do?goods_qna_index=${qna_list.goods_qna_index}&goods_index=${qna_list.goods_index}#fix_point" style="color:black;overflow:hidden;width:200px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap">
-                                    ${qna_list.goods_qna_subject}
+                                    <a href="goods_one_qna.do?goods_qna_index=${qna_list.goods_qna_index}&goods_index=${qna_list.goods_index}#fix_point" >
+                                        <p style="font-size:10pt;color:black;width:200px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;margin:0;text-align:center;padding:0">${qna_list.goods_qna_subject}</p>
                                     </a>
                                   </td>
                                   <td style="padding:1.5px !important;">${qna_list.member_name}</td>
@@ -396,7 +396,7 @@
                 
                 <p style="width:100%;text-align:center;margin-top:3%">
                   <button type="button" class="" onclick="document.getElementById('reserv').style.display='block'"
-                      style="background-color:black; color:white; width:100px;height:30px;font-size:0.8em;"><a href="goods_review_write.do?goods_index=${review.goods_index}&category_name=${category_name}#fix_point" style="color:white;">문의하기</a></button>
+                      style="background-color:black; color:white; width:100px;height:30px;font-size:0.8em;"><a href="goods_qna_write_form.do?goods_index=${qna_list.goods_index}#fix_point" style="color:white;">문의하기</a></button>
                 </p>
             </div>
    </div>

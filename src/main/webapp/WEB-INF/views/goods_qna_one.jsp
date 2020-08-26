@@ -5,17 +5,7 @@
 <html lang="en">
 
 <head>
-    <script type="text/javascript">
-    var xmlHttpHeader = new XMLHttpRequest();
-    xmlHttpHeader.open("GET", "creakok_header.do", true); // true for asynchronous
-    xmlHttpHeader.send();
-    
-    xmlHttpHeader.onreadystatechange = function() {
-         if (xmlHttpHeader.readyState == 4 && xmlHttpHeader.status == 200) {
-             document.getElementById("header_div").innerHTML= xmlHttpHeader.responseText;
-         }
-    };
-    </script>
+
     
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -483,9 +473,16 @@
                                                           
                                                           <!-- 크리에이터 답변이 있을 때 -->
                                                           <c:if test="${!empty one_qna.goods_qna_answer}">
-                                                          <tr>
+                                                          <tr id="answer_is">
                                                               <td colspan="5">
-                                                                 <p style="color:black;font-size:11pt;font-weight:600;text-align:left;margin-top:2%">└ ${one_qna.creator_name} <span style="font-weight:400"> 님의 답변 :</span> <span id="answer_here" style="font-weight:500">${one_qna.goods_qna_answer}</span><span style="font-weight:300;margin-left:5px">(${one_qna.goods_qna_adate})</span></p>
+                                                                 <p style="color:black;font-size:11pt;font-weight:600;text-align:left;margin-top:2%">└ ${one_qna.creator_name} 
+                                                                     <span style="font-weight:400"> 님의 답변 :</span> 
+                                                                     <span id="answer_here" style="font-weight:500">${one_qna.goods_qna_answer}</span>
+                                                                     <span style="font-weight:300;margin-left:5px">(${one_qna.goods_qna_adate})</span>&nbsp;&nbsp;
+                                                                     <a href="#" style="color:#858585;font-weight:300" onclick="answerUpdate()">수정</a>&nbsp;
+                                                                     <span style="color:#858585;font-weight:300">|</span>&nbsp;
+                                                                     <a href="goods_qna_answer_delete.do?goods_qna_index=${one_qna.goods_qna_index}&goods_index=${one_qna.goods_index}&category_name=${category_name}#fix_point" style="color:#858585;font-weight:300">삭제</a>
+                                                                 </p>
                                                               </td>
                                                           </tr>
                                                           </c:if>
@@ -501,16 +498,15 @@
                                                             </tr>
                                                          </c:if>   
                                                             <tr id="answer" style="display:none">
-                                                                
                                                                 <td colspan="5" style="border:0">
-                                                                    <form action="goods_qna_answer_insert.do#fix_point" method="post">
-                                                                        <p style="width:100%;text-algin:right;margin:0">
-                                                                            <label for="answer">└ 답변 :</label>&nbsp;
-                                                                            <input type="text" name="answer" value="" placeholder="답변을 적어주세요" style="height:100px;width:85%">
+                                                                    <form action="goods_qna_answer_insert.do#fix_point" method="post" style="position:relative;height:60px">
+                                                                        
+                                                                            <label for="answer" style="position:absolute;left:0;top:10;margin:0;display:inline-block;">└ 답변 :</label>&nbsp;
+                                                                            <textarea id="answer" name="answer" rows="2" placeholder="답변 입력" style="width:87%;position:absolute;left:0;top:10;margin-left:60px;"></textarea>
                                                                             <input type="hidden" name="goods_qna_index" value="${one_qna.goods_qna_index}">
                                                                             <input type="hidden" name="goods_index" value="${one_qna.goods_index}">
                                                                             <input type="hidden" name="category_name" value="${category_name}">
-                                                                        </p>
+                                                                      
                                                                     
                                                                 </td>
                                                                 <tr id="answer2" style="display:none;text-align:right;border-top:0">
@@ -520,14 +516,38 @@
                                                                     </form>
                                                                 </tr>
                                                             </tr>
-                                                         
                                                           <!-- 크리에이터 답변이 없을 때 End -->
+                                                          
+  
+                                                          <!-- 크리에이터 답변 수정 -->
+                                                          
+                                                            <tr id="update" style="display:none">
+                                                                <td colspan="5" style="border:0">
+                                                                    <form action="goods_qna_answer_insert.do#fix_point" method="post" style="position:relative;height:60px"> 
+                                                                         <label for="answer" style="position:absolute;left:0;top:10;margin:0;display:inline-block;">└ 답변 :</label>&nbsp;
+                                                                            <textarea id="answer" name="answer" rows="2" placeholder="답변 입력" style="width:87%;position:absolute;left:0;top:10;margin-left:60px;">${one_qna.goods_qna_answer}</textarea>
+                                                                            <input type="hidden" name="goods_qna_index" value="${one_qna.goods_qna_index}">
+                                                                            <input type="hidden" name="goods_index" value="${one_qna.goods_index}">
+                                                                            <input type="hidden" name="category_name" value="${category_name}">
+                                                                      
+                                                                    
+                                                                </td>
+                                                                <tr id="update2" style="display:none;text-align:right;border-top:0">
+                                                                    <td colspan="5" style="text-align:right">
+                                                                        <input type="submit" value="답변 수정" style="border:0;color:white;background-color:black;height:30px;padding:1px 3px 1px 3px;font-size:10pt;width:70px;margin-bottom:20px">
+                                                                    </td>
+                                                                    </form>
+                                                                </tr>
+                                                            </tr>
+                                                          <!-- 크리에이터 답변 수정 End -->
+  
+                                                          
                                                       </tbody>
                                                   </table>
                                                   <p style="width:100%;text-align:center;margin-top:10px">
-                                                       <a href="goods_qna.do?qna_cp=1&qna_ps=5&goods_index=${one_qna.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>목록</a>
-                                                       <a href="goods_qna_update_form.do?goods_qna_index=${one_qna.goods_qna_index}&goods_index=${one_qna.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>수정</a>
-                                                       <a href="goods_qna_delete.do?goods_qna_index=${one_qna.goods_qna_index}&goods_index=${one_qna.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>삭제</a>
+                                                       <a href="goods_qna.do?qna_cp=1&qna_ps=5&goods_index=${one_qna.goods_index}#fix_point" style="background-color:black; color:white; width:130px; padding:3px">목록</a>
+                                                       <a href="goods_qna_update_form.do?goods_qna_index=${one_qna.goods_qna_index}&goods_index=${one_qna.goods_index}#fix_point" style="background-color:black; color:white; width:130px; padding:3px">수정</a>
+                                                       <a href="goods_qna_delete.do?goods_qna_index=${one_qna.goods_qna_index}&goods_index=${one_qna.goods_index}#fix_point" style="background-color:black; color:white; width:130px; padding:3px">삭제</a>
                                                   </p>
                                            </div> 
                                   
@@ -545,6 +565,11 @@
         function answer(){
             $("#answer").show();
             $("#answer2").show();
+        }
+        function answerUpdate(){
+        	$("#answer_is").hide();
+            $("#update").show();
+            $("#update2").show();        	
         }
     </script>               
          <!-- sweet alert2 -->

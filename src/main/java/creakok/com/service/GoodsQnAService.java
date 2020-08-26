@@ -12,4 +12,8 @@ public interface GoodsQnAService {
 	Goods_QnAVo selectPerPageQnA(int qna_cp, int qna_ps, long goods_index);
 	Goods_QnA selectOneQnA(long goods_qna_index);
 	void updateOneAnswer(Goods_QnA goods_qna);
+	void deleteOneAnswer(long goods_qna_index);
+	void deleteOneQnA(long goods_qna_index);
+	void updateOneQnA(Goods_QnA goods_qna);
+	void insertOneQnA(Goods_QnA goods_qna);
 }

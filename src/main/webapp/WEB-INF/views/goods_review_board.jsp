@@ -370,7 +370,12 @@
                                                                                                 ★★★★★
                                   </c:if>
                                   </td>
-                                  <td style="padding:1.5px !important;"><a href="goods_one_review.do?goods_review_index=${review_list2.goods_review_index}&goods_index=${review_list2.goods_index}&category_name=${category_name}#fix_point" style="color:black;overflow:hidden;width:200px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap">${review_list2.goods_review_subject}</a></td>
+                                  <td style="padding:1.5px !important;">
+                                  <a href="goods_one_review.do?goods_review_index=${review_list2.goods_review_index}&goods_index=${review_list2.goods_index}&category_name=${category_name}#fix_point" style="color:black;overflow:hidden;width:200px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap">
+                                    <p style="font-size:10pt;color:black;width:200px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;margin:0;text-align:center;padding:0">
+                                        ${review_list2.goods_review_subject}
+                                    </p>
+                                  </a></td>
                                   <td style="padding:1.5px !important;">${review_list2.member_name}</td>
                                   <td style="padding:1.5px !important;">${review_list2.goods_review_date}</td>
                                   <td id="review_view" style="padding:1.5px !important;">${review_list2.goods_review_view}</td>

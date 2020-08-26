@@ -47,4 +47,20 @@ public class GoodsQnAServiceImpl implements GoodsQnAService {
 	public void updateOneAnswer(Goods_QnA goods_qna) {
 		goods_qnaMapper.updateOneAnswer(goods_qna);
 	}
+	@Override
+	public void deleteOneAnswer( long goods_qna_index) {
+		goods_qnaMapper.deleteOneAnswer(goods_qna_index);
+	}
+	@Override
+	public void deleteOneQnA(long goods_qna_index) {
+		goods_qnaMapper.deleteOneQnA(goods_qna_index);
+	}
+	@Override
+	public void updateOneQnA(Goods_QnA goods_qna) {
+		goods_qnaMapper.updateOneQnA(goods_qna);
+	}
+	@Override
+	public void insertOneQnA(Goods_QnA goods_qna) {
+		goods_qnaMapper.insertOneQnA(goods_qna);
+	}
 }

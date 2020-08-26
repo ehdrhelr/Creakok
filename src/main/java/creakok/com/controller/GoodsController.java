@@ -194,11 +194,11 @@ public class GoodsController {
 	
 	
 	@RequestMapping("goods_detail.do")
-	public ModelAndView goods_detail(HttpServletRequest request, HttpSession session) {
+	public ModelAndView goods_detail(HttpServletRequest request) {
 		String goods_indexStr = request.getParameter("goods_index");
 		long goods_index = Long.parseLong(goods_indexStr);
 		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
-		
+		long qna_list_size = goods_qnaservice.selectGoodsQnACountByGoodsIndex(goods_index);
 		
 		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
 		String creator_name = one_goods.getCreator_name();
@@ -225,8 +225,6 @@ public class GoodsController {
 						four_goods.add(related_goods2);
 					}
 				}
-		Goods_QnAVo qna_list = goods_qnaservice.selectPerPageQnA(1, 5, goods_index);
-		int qna_list_size = qna_list.getQna_list().size();
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("goods_details");
@@ -241,10 +239,6 @@ public class GoodsController {
 	}
 	@RequestMapping("goods_order.do")
 	public ModelAndView goods_order(@RequestParam(name="price_amount") long price_amount, @RequestParam(name="product_name") String product_name, @RequestParam(name="product_price") long product_price, @RequestParam(name="qty") long qty) {
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&price_amount: "+price_amount);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_price: "+product_price);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&qty: "+qty);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("checkout");
@@ -374,6 +368,9 @@ public class GoodsController {
 		
 		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
 		session.setAttribute("review_size", review_size);
+		
+		long qna_list_size = goods_qnaservice.selectGoodsQnACountByGoodsIndex(goods_index);
+		session.setAttribute("qna_list_size", qna_list_size);
 		
 		return "goods_review_board";
 	}
@@ -555,7 +552,6 @@ public class GoodsController {
 		Creator goods_creator = creatorBoardService.getContentByCreator(creator_name);
 		session.setAttribute("creator", goods_creator);
 		
-
 		
 		Goods_QnAVo goods_qna_vo = (Goods_QnAVo)session.getAttribute("goods_qna");
 		//(1) cp 
@@ -574,9 +570,9 @@ public class GoodsController {
 		
 		//(2) ps 
 		int ps = 5;		
-		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ cp: "+cp);
-		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ps: "+ps);
-		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index: "+goods_index);
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ cp: "+cp);
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ps: "+ps);
+		//log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ goods_index: "+goods_index);
 		Goods_QnAVo qna_list = goods_qnaservice.selectPerPageQnA(cp, ps, goods_index);
 		qna_list.setQna_cp(cp);
 		qna_list.setQna_ps(ps);
@@ -590,7 +586,8 @@ public class GoodsController {
 		}   
 		
 		session.setAttribute("qna_list", qna_list);
-		int qna_list_size = qna_list.getQna_list().size();
+		
+		long qna_list_size = goods_qnaservice.selectGoodsQnACountByGoodsIndex(goods_index);
 		session.setAttribute("qna_list_size", qna_list_size);
 		
 		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
@@ -636,8 +633,7 @@ public class GoodsController {
 		Creator goods_creator = creatorBoardService.getContentByCreator(creator_name);
 		
 		//qna_list 사이즈
-		Goods_QnAVo qna_list = goods_qnaservice.selectPerPageQnA(1, 5, goods_index);
-		int qna_list_size = qna_list.getQna_list().size();
+		long qna_list_size = goods_qnaservice.selectGoodsQnACountByGoodsIndex(goods_index);
 		
 		//관련 굿즈 리스트
 		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
@@ -670,6 +666,99 @@ public class GoodsController {
 		
 		return mv;
 	}
+	@RequestMapping("goods_qna_write_form.do")
+	public ModelAndView goods_qna_write(HttpServletRequest request) {
+		String goods_indexStr = request.getParameter("goods_index");
+		long goods_index = Long.parseLong(goods_indexStr);
+			
+		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
+		String goods_name = one_goods.getGoods_name();
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("goods_qnawrite");
+		mv.addObject("one_goods", one_goods);
+		
+		return mv;
+	}
+	@RequestMapping("goods_qna_insert.do")
+	public ModelAndView goods_qna_insert(HttpServletRequest request) {
+		String goods_qna_writer = request.getParameter("qna_writer");
+		String goods_qna_subject = request.getParameter("qna_subject");
+		String goods_qna_content = request.getParameter("qna_content");
+		String goods_indexStr = request.getParameter("goods_index");
+		String creator_name = request.getParameter("creator_name");
+		long goods_index = Long.parseLong(goods_indexStr);
+				
+		Goods_QnA goods_qna = new Goods_QnA(-1, goods_index, goods_qna_writer, null, null, goods_qna_subject, goods_qna_content, creator_name, null, null);
+		goods_qnaservice.insertOneQnA(goods_qna);
+			
+		int qna_cp = 1;
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:goods_qna.do");
+		mv.addObject("goods_index", goods_index);
+		mv.addObject("qna_cp", qna_cp);
+			
+		return mv;
+	}
+	@RequestMapping("goods_qna_update_form.do")
+	public ModelAndView goods_qna_update_form(HttpServletRequest request) {
+		String goods_qna_indexStr = request.getParameter("goods_qna_index");
+		String goods_indexStr = request.getParameter("goods_index");
+		long goods_qna_index = Long.parseLong(goods_qna_indexStr);
+		long goods_index = Long.parseLong(goods_indexStr);
+			
+		Goods_QnA one_qna = goods_qnaservice.selectOneQnA(goods_qna_index);
+		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
+		String goods_name = one_goods.getGoods_name();
+		
+		int cp = 1;
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("goods_qnaupdate");
+		mv.addObject("one_qna", one_qna);
+		mv.addObject("goods_name", goods_name);
+		mv.addObject("qna_cp", cp);
+		
+		return mv;
+	}
+		@RequestMapping("goods_qna_update.do")
+		public ModelAndView goods_qna_update(HttpServletRequest request) {
+			String goods_qna_indexStr = request.getParameter("goods_qna_index");
+			String goods_indexStr = request.getParameter("goods_index");
+			String goods_qna_content = request.getParameter("goods_qna_content");
+			String goods_qna_subject = request.getParameter("goods_qna_subject");
+			long goods_qna_index = Long.parseLong(goods_qna_indexStr);
+			long goods_index = Long.parseLong(goods_indexStr);
+			
+			
+			Goods_QnA goods_qna = new Goods_QnA(goods_qna_index, goods_index, null, null, null, goods_qna_subject, goods_qna_content, null, null, null);
+			goods_qnaservice.updateOneQnA(goods_qna);
+			
+			int cp = 1;
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("redirect:goods_qna.do");
+			mv.addObject("goods_index", goods_index);
+			mv.addObject("qna_cp", cp);
+			
+			return mv;
+		}	
+	@RequestMapping("goods_qna_delete.do")
+	public ModelAndView goods_qna_delete(HttpServletRequest request) {
+		String goods_qna_indexStr = request.getParameter("goods_qna_index");
+		String goods_indexStr = request.getParameter("goods_index");
+		long goods_qna_index = Long.parseLong(goods_qna_indexStr);
+		long goods_index = Long.parseLong(goods_indexStr);
+			
+		goods_qnaservice.deleteOneQnA(goods_qna_index);
+			
+		int cp = 1;
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:goods_qna.do");
+		mv.addObject("goods_index", goods_index);
+		mv.addObject("goods_qna_index", goods_qna_index);
+		mv.addObject("qna_cp", cp);
+			
+		return mv;
+	}	
 	@PostMapping("goods_qna_answer_insert.do")
 	public ModelAndView goods_qna_answer_insert(HttpServletRequest request) {
 		String goods_qna_indexStr = request.getParameter("goods_qna_index");
@@ -683,6 +772,26 @@ public class GoodsController {
 		Goods_QnA goods_qna = new Goods_QnA(goods_qna_index, goods_index, null, null, null, null, null, null, goods_qna_answer, null);
 
 		goods_qnaservice.updateOneAnswer(goods_qna);
+		
+		int cp = 1;
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:goods_one_qna.do");
+		mv.addObject("goods_index", goods_index);
+		mv.addObject("goods_qna_index", goods_qna_index);
+		mv.addObject("category_name", category_name);
+		mv.addObject("qna_cp", cp);
+		
+		return mv;
+	}
+	@RequestMapping("goods_qna_answer_delete.do")
+	public ModelAndView goods_qna_answer_delete(HttpServletRequest request) {
+		String goods_qna_indexStr = request.getParameter("goods_qna_index");
+		String goods_indexStr = request.getParameter("goods_index");
+		String category_name = request.getParameter("category_name");
+		long goods_qna_index = Long.parseLong(goods_qna_indexStr);
+		long goods_index = Long.parseLong(goods_indexStr);
+		
+		goods_qnaservice.deleteOneAnswer(goods_qna_index);
 		
 		int cp = 1;
 		ModelAndView mv = new ModelAndView();

@@ -17,9 +17,25 @@
     
     <select id="selectOneQnA" resultType="Goods_QnA" parameterType="long">
         select * from GOODS_QNA where GOODS_QNA_INDEX=#{goods_qna_index}
-    </select>          
+    </select>    
+        
+    <insert id="insertOneQnA" parameterType="Goods_QnA">
+        insert into GOODS_QNA values(GOODS_QNA_INDEX_SEQ.nextval, ${goods_index}, #{member_name}, null, SYSDATE, #{goods_qna_subject}, #{goods_qna_content}, #{creator_name}, null, null)
+    </insert>     
+
+    <update id="updateOneQnA" parameterType="Goods_QnA">
+       update GOODS_QNA set GOODS_QNA_SUBJECT=#{goods_qna_subject}, GOODS_QNA_CONTENT=#{goods_qna_content}, GOODS_QNA_WDATE=SYSDATE where GOODS_QNA_INDEX=${goods_qna_index}
+    </update>        
     
+    <delete id="deleteOneQnA"  parameterType="long">
+        delete from GOODS_QNA where GOODS_QNA_INDEX=${goods_qna_index}
+    </delete>      
+     
     <update id="updateOneAnswer" parameterType="Goods_QnA">
        update GOODS_QNA set GOODS_QNA_ANSWER=#{goods_qna_answer}, GOODS_QNA_ADATE=SYSDATE where GOODS_QNA_INDEX=${goods_qna_index}
     </update>   
+    
+    <update id="deleteOneAnswer" parameterType="Goods_QnA">
+       update GOODS_QNA set GOODS_QNA_ANSWER=null, GOODS_QNA_ADATE=null where GOODS_QNA_INDEX=${goods_qna_index}
+    </update> 
 </mapper>
