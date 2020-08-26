@@ -11,9 +11,9 @@ import creakok.com.domain.Creator;
 public interface CreatorBoardMapper {
 	List<Board> getListResult(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, 
 			@Param("board_filterBy") String board_filterBy, @Param("creator_name") String creator_name);
+	
 	int count();
 	Board content(long board_index);
-	void insert(Board board);
 	// 글 작성
 	public int insertBoard(Board board);
 	// 조회수 +1
@@ -41,4 +41,12 @@ public interface CreatorBoardMapper {
 	
 	// 크리에이터 정보 조회(굿즈에서 사용)
 	Creator getContentByCreator (@Param("creator_name") String creator_name);
+	// 현재 글보다 큰 순번을 가진 글(with the same refer)의 순번을 +1 씩 증가시킨다.
+	void updateSunbun(Board board);
+	// 현재 게시글의 순번에 +1을 해주고 insert한다.
+	void insertAnswer(Board board);
+	/*
+	// 원글(답글도 포함)의 답글을 작성할 때 원글의 level보다 1 증가시킨다.
+	void updateLevel(Board board);
+	*/
 }

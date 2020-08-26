@@ -30,12 +30,7 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 		Board board = mapper.content(board_index);
 		return board;
 	}
-	
-	@Override
-	public void insertS(Board board) {
-		mapper.insert(board);
-	}
-	
+	// 글 작성
 	@Override
 	public int insertBoard(Board board) {
 		return mapper.insertBoard(board);
@@ -86,5 +81,16 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	@Override
 	public Creator getContentByCreator(String creator_name) {
 		return mapper.getContentByCreator(creator_name);
+	}
+	
+	// 현재 글보다 큰 순번을 가진 글(with the same refer)의 순번을 +1 씩 증가시킨다.
+	@Override
+	public void updateSunbun(Board board) {
+		mapper.updateSunbun(board);
+	}
+	// 현재 게시글의 순번에 +1을 해주고 insert한다.
+	@Override
+	public void insertAnswer(Board board) {
+		mapper.insertAnswer(board);
 	}
 }

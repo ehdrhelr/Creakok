@@ -31,7 +31,7 @@ public class IndexController {
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("index");
 		
-		// ũ�������� �̸� ���
+		// 상단바 크리에이터 이름 가져오기
 		List<Creator> creatorList = boardService.getCreatorName();
 		mv.addObject("creatorList", creatorList);
 		session.setAttribute("creatorList", creatorList);

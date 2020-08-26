@@ -120,7 +120,7 @@ public class CreatorBoardController {
 		}
 		session.setAttribute("board_searchName", board_searchName);
 		
-		if (board_filterBy==null) { 
+		if (board_filterBy==null) {
 			String board_filterByTemp = (String) session.getAttribute("board_filterBy");
 			if (board_filterByTemp !=null) {
 				board_filterBy = board_filterByTemp;
@@ -135,16 +135,16 @@ public class CreatorBoardController {
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community");
 		mv.addObject("listResult", listResult);
-		
-		// ��� �޴��� ũ�������� �̸� ���
-		List<Creator> creatorList = creatorBoardService.getCreatorName();
-		mv.addObject("creatorList", creatorList);
-		
-		// ���� ������ ũ�������� ���� ��ȸ 
+
+		// 해당 페이지의 크리에이터 정보 세션에 올리기
 		Creator theCreator = creatorBoardService.getCreator(creator_name);
-		//mv.addObject("theCreator", theCreator);		
 		session.setAttribute("theCreator", theCreator);
-		log.info("@@@@@@@@@@@@@@@@@@@@@@ theCreator.getCreator_banner_photo() : " + theCreator.getCreator_banner_photo());
+		
+		//대표컨텐츠 쏴주기
+		String contentOneLine = theCreator.getCreator_main_content();
+		String[] contentList = contentOneLine.split("@");
+		mv.addObject("contentList", contentList);
+		
 		return mv;
 	}
 	
@@ -157,93 +157,78 @@ public class CreatorBoardController {
 		
 		Board board = creatorBoardService.contentS(board_index);
 		
-		// ��� ��������
+		// 게시글의 댓글 조회
 		List<Comment> commentList = (List<Comment>) boardCommentService.getComment(board_index);
 		mv.addObject("commentList", commentList);
 		
+		// 조회수 무한정 증가하는 것을 억제를 위한 로직
 		Cookie[] cookies = request.getCookies();
-		// ���ϱ� ���� ���ο� ��Ű
+		// 비교하기 위한 새로운 쿠키
         Cookie viewCookie = null;
         
-        // ��Ű�� ���� ��� 
+        // 쿠키가 있을 경우
         if (cookies != null && cookies.length > 0) {
             for (int i = 0; i < cookies.length; i++) {
-                // Cookie�� name�� cookie + reviewNo�� ��ġ�ϴ� ��Ű�� viewCookie�� �־��� 
+                // Cookie의 name이 cookie + board_index와 일치하는 쿠키를 viewCookie에 넣어 
                 if (cookies[i].getName().equals("cookie"+board_index)) { 
-                    System.out.println("ó�� ��Ű�� ������ �� ����.");
+                    log.info("처음 쿠키가 생성한 뒤 들어옴");
                     viewCookie = cookies[i];
                 }
             }
         }
         
         if (board != null) {
-            System.out.println("System - �ش� ���������� �Ѿ");
+        	log.info("System - 해당 게시글로 넘어감");
             
             mv.addObject("board", board);
  
-            // ���� viewCookie�� null�� ��� ��Ű�� �����ؼ� ��ȸ�� ���� ������ ó����.
+            // 만일 viewCookie가 null일 경우 쿠키를 생성해서 조회수 증가 로직을 처리함.
             if (viewCookie == null) {    
-                System.out.println("cookie ����");
+                log.info("cookie 없음");
                 
-                // ��Ű ����(�̸�, ��)
+                // 쿠키 생성(이름, 값)
                 Cookie newCookie = new Cookie("cookie"+board_index, "|" + board_index + "|");
                                 
-                // ��Ű �߰�
+                // 쿠키 추가
                 response.addCookie(newCookie);
  
-                // ��Ű�� �߰� ��Ű�� ��ȸ�� ������Ŵ
+                // 쿠키를 추가 시키고 조회수 증가시킴
                 boolean result = creatorBoardService.plusView(board_index);
                 
                 if(result) {
-                    System.out.println("��ȸ�� ����");
+                	log.info("조회수 증가");
                 }else {
-                    System.out.println("��ȸ�� ���� ����");
+                    log.info("조회수 증가 에러");
                 }
             }
-            // viewCookie�� null�� �ƴҰ�� ��Ű�� �����Ƿ� ��ȸ�� ���� ������ ó������ ����.
+            // viewCookie가 null이 아닐 경우 쿠키가 있으므로 조회수 증가 로직을 처리하지 않음.
             else {
-                System.out.println("cookie ����");
+            	log.info("cookie 있음");
                 
-                // ��Ű �� �޾ƿ�.
+                // 쿠키 값 받아
                 String value = viewCookie.getValue();
                 
-                System.out.println("cookie �� : " + value);
-        
+                log.info("cookie 값 : " + value);
             }
-         // �޴��� ũ�������� �̸� ���
-    		List<Creator> creatorList = creatorBoardService.getCreatorName();
-    		mv.addObject("creatorList", creatorList);
-    		
-            return mv;
         } 
-        else {
-        	// �޴��� ũ�������� �̸� ���
-    		List<Creator> creatorList = creatorBoardService.getCreatorName();
-    		mv.addObject("creatorList", creatorList);
-    		
-            return mv;
-        }
-
+        return mv;
 	}
-	
+	// 글 작성 view 이동 
 	@GetMapping("board_write")
 	public ModelAndView boardWrite() {
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community_board_write");
 			
-		// �޴��� ũ�������� �̸� ���
-		List<Creator> creatorList = creatorBoardService.getCreatorName();
-		mv.addObject("creatorList", creatorList);
-			
 		return mv;
 	}
-	
+	// 글 작성 backend 작업 
 	@PostMapping("board_write")
 	public String write(Board board) {
 		creatorBoardService.insertBoard(board);
 		return "redirect: /board_content?board_index="+ board.getBoard_index();
 	}
 	
+	// 글 수정 view 이동
 	@GetMapping("board_update")
 	public ModelAndView update(long board_index) {
 		Board board = creatorBoardService.getBoard(board_index);
@@ -252,22 +237,21 @@ public class CreatorBoardController {
 		return mv;
 	}
 	
+	// 글 수정 backend 작업
 	@PostMapping("board_update")
 	public String update(Board board) {
-		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@ board.getBoard_subject : " + board.getBoard_subject());
-		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@ board.getBoard_content : " + board.getBoard_content());
 		creatorBoardService.edit(board);
 		return "redirect:board_content?board_index="+board.getBoard_index();
 	}
 	
-	// ����
+	// 글 삭제
 	@RequestMapping("board_delete")
 	public String deleteBoard(@RequestParam long board_index) {
 		creatorBoardService.deleteBoard(board_index);
 		return "redirect:board_page";
 	}
 
-	// �˻� 
+	// 글 검색
 	@RequestMapping("board_search")
 	public ModelAndView search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String board_cpStr = request.getParameter("board_cp");
@@ -279,7 +263,6 @@ public class CreatorBoardController {
 		HttpSession session = request.getSession();		
 		Creator theCreator = (Creator) session.getAttribute("theCreator");
 		String creator_name = theCreator.getCreator_name();
-		log.info("@@@@@@@@@@@@@@@ creator_name : " + creator_name);
 		//(1) cp 
 		int board_cp = 1;
 		if(board_cpStr == null) {
@@ -371,34 +354,22 @@ public class CreatorBoardController {
 		// mapper에서 and CREATOR_NAME = ${creator_name} 이 안들어간다... 
 		// 시간 지나니까 됨. 단순히 변경사항이 늦게 업데이트됨.
 		ListResult listResult = creatorBoardService.getListResultBySearchS(board_cp, board_ps, board_filterBy, board_c_code, board_searchName, creator_name);
-		
 		request.setAttribute("listResult", listResult);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("community");
 		
-		// ũ�������� �̸� ���
-		List<Creator> creatorList = creatorBoardService.getCreatorName();
-		mv.addObject("creatorList", creatorList);
-		
 		return  mv;
 	}
 	
-	// ��� �ۼ�
+	// 댓글 작성
 	@RequestMapping("comment_write")
 	public String writeComment(Comment comment) {
-		log.info("@@@@@@@@@@@ comment.getBoard_index() :" + comment.getBoard_index());
-		log.info("@@@@@@@@@@@ comment.getComment_content() :" + comment.getComment_content());
-		log.info("@@@@@@@@@@@ comment.getComment_index() :" + comment.getComment_index());
-		log.info("@@@@@@@@@@@ comment.getMember_email() :" + comment.getMember_email());
-		log.info("@@@@@@@@@@@ comment.getMember_name() :" + comment.getMember_name());
-		
 		boardCommentService.writeComment(comment);
-
 		return "redirect:board_content?board_index="+comment.getBoard_index();
 	}
 	
-	// ��� ����
+	// 댓글 수정
 	@RequestMapping("comment_update")
 	public ModelAndView updateComment(HttpServletRequest request) {
 		String comment_indexStr = request.getParameter("comment_index");
@@ -412,21 +383,46 @@ public class CreatorBoardController {
 		mv.setViewName("redirect:board_content?board_index="+board_index);
 		boardCommentService.updateComment(comment_index, comment_content);
 		
-		// �޴��� ũ�������� �̸� ���
-		List<Creator> creatorList = creatorBoardService.getCreatorName();
-		mv.addObject("creatorList", creatorList);
+		return mv;
+	}
+	// 댓글 삭제
+	@RequestMapping("comment_delete")
+	public String deleteComment(long board_index, long comment_index) {
+		boardCommentService.deleteComment(comment_index);
+		return "redirect:board_content?board_index="+board_index;
+	}
+	
+	// 답글 작성 view로 가기 위한 맵핑
+	// refer를 받아와야 할 것 같다..
+	@GetMapping("board_answer")
+	public ModelAndView boardAnswer(long board_index) {
+		Board board = creatorBoardService.getBoard(board_index);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("community_board_answer");
+		mv.addObject("board", board);
 		
 		return mv;
 	}
-	// ��� ����
-	@RequestMapping("comment_delete")
-	public String deleteComment(long board_index, long comment_index) {
-		log.info("###########" + board_index);
-		log.info("###########" + comment_index);
+	// 답글 작성 backend 처리 로직
+	@PostMapping("board_answer")
+	public String boardAnswer(Board board) {
 		
-		boardCommentService.deleteComment(comment_index);
+		String subjectWithSeperator = board.getBoard_subject();
+		long board_level = board.getBoard_level();
+		subjectWithSeperator = "└[답글] " + subjectWithSeperator;
+		for(int i=0; i<board_level; i++) {
+			subjectWithSeperator = "&nbsp;&nbsp;&nbsp;&nbsp;" + subjectWithSeperator;
+		}
 		
-		return "redirect:board_content?board_index="+board_index;
+		board.setBoard_subject(subjectWithSeperator);
+		
+		
+		// level, 순번 처리로직 
+		// 현재 글보다 큰 순번을 가진 글(with the same refer)의 순번을 +1 씩 증가시킨다.
+		creatorBoardService.updateSunbun(board);
+		// 현재 게시글의 level에 +1, 순번에 +1을 해주고 insert한다.
+		creatorBoardService.insertAnswer(board);
+		return "redirect:board_content?board_index="+board.getBoard_index();
 	}
-	 
 }
