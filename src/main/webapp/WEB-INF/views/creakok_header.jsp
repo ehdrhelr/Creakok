@@ -53,7 +53,7 @@
                           <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
                           
                           <!-- Cart -->
-                          <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
+                          <div class="cart"><a href="goods_cart.do"><i aria-hidden="true"></i> <span id="header_cart">Cart</span></a></div>
                         </c:if> 
                         
                     </div>
