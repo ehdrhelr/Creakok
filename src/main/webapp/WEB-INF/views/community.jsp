@@ -296,9 +296,9 @@
              <!-- Section Heading -->
 			<div class="section-heading text-center">
 				<h2 style="color:white; ">소통하는 사회, 크리콕!</h2>
-				<p style="color:white">자유게시판에서 팬들과 함께 소통해요</p>
+				<p style="color:white">채팅방에서 팬들과 함께 소통해요</p>
 				<p class="crowdy-btn-introduction" >
-				<a href="#"style="color:white; text-align:center">자세히 알아보기</a>
+				<a href="#"style="color:white; text-align:center">채팅방 입장</a>
 				</p>
 			</div>
         </div>
@@ -459,8 +459,7 @@
             &nbsp;
             </c:forEach>
             </c:if>
-             &nbsp;&nbsp;&nbsp; 
-            ${listResult.currentPage}page/${listResult.totalPageCount}pages
+
           </td>
           <!-- 없는게 나을 것 같다.
           <td colspan="2" align="center">

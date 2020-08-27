@@ -215,7 +215,7 @@ public class CreatorBoardController {
 	}
 	// 글 작성 view 이동 
 	@GetMapping("board_write")
-	public ModelAndView boardWrite() {
+	public ModelAndView boardWrite(HttpServletRequest request) {
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community_board_write");
 			
@@ -224,6 +224,8 @@ public class CreatorBoardController {
 	// 글 작성 backend 작업 
 	@PostMapping("board_write")
 	public String write(Board board) {
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		log.info("@@@@@@@@@@@ board.getBoard_index() : " + board.getBoard_index());
 		creatorBoardService.insertBoard(board);
 		return "redirect: /board_content?board_index="+ board.getBoard_index();
 	}

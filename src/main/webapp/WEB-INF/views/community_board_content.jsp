@@ -270,7 +270,7 @@
                                         <tr>
                                         	<td>글내용</td>
                                        			<td>
-                                        			<textarea rows="10" cols="50" name="board_content" class="form-control" readonly>${board.board_content}</textarea>
+                                        			<span id="textarea" style="width:692px; height:300px; text-align:left" name="board_content" class="form-control" readonly>${board.board_content}</span>
                                        			</td>
                                         </tr>
                               </tbody>
@@ -477,9 +477,8 @@
 			    xmlHttpLike.open("POST", "getNewBoardLike", true); // true for asynchronous
 			    xmlHttpLike.send(formData);
 			}
+			
         </script>
-	
-	
 </body>
 
 </html>
