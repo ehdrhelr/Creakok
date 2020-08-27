@@ -1275,38 +1275,23 @@
 		</div>
     </div>
     
-                 
-    
-    <script>
-      $('#summernote').summernote({
-        placeholder: '여기에 작성해주세요.',
-        tabsize: 2,
-      minHeight: 370,
-      maxHeight: null,
-      focus: true,
-        toolbar: [
-          ['font', ['bold', 'underline', 'clear']],
-          ['insert', ['picture']]
-        ]
-      });
-    </script>
       
-      <script>
+<script>
 
-function goWrite() {
-
-	var summernote = $("#summernote").val();
-
-	if(summernote == ''){
-		alert("내용을 입력해주세요");
-		return false;
-	}
+	function goWrite() {
 	
-	if(summernote != null){
-			frm.submit();
-		    return true;
+		var summernote = $("#summernote").val();
+	
+		if(summernote == ''){
+			alert("내용을 입력해주세요");
+			return false;
+		}
+		
+		if(summernote != null){
+				frm.submit();
+			    return true;
+		}
 	}
-}
 </script>
   
       
@@ -1347,6 +1332,49 @@ function goWrite() {
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+         <script src="/js/summernote/summernote-lite.js"></script>
+<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+<script>
+
+$('#summernote').summernote({
+    placeholder: '여기에 내용을 입력하세요',
+    tabsize: 2,
+    minHeight: 370,
+    maxHeight: null,
+    callbacks: {	//여기 부분이 이미지를 첨부하는 부분
+		onImageUpload : function(files) {
+			uploadSummernoteImageFileCommunity(files[0],this);
+		}
+	},
+    focus: true,
+    toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+  });
+  
+  function uploadSummernoteImageFileCommunity(file, editor){
+	  data = new FormData();
+	  data.append("file_detail_pic", file);
+	  $.ajax({
+			data : data,
+			type : "POST",
+			url : "/uploadSummernoteImageFileCommunity",
+			contentType : false,
+			processData : false,
+			success : function(url){
+				console.log(url);
+				$(editor).summernote('insertImage', url);
+			}
+	  });
+  }
+</script>
 </body>
 
 </html>
