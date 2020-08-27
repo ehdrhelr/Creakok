@@ -5,18 +5,6 @@
 <html lang="en">
 
 <head>
-    <script type="text/javascript">
-    var xmlHttpHeader = new XMLHttpRequest();
-    xmlHttpHeader.open("GET", "creakok_header.do", true); // true for asynchronous
-    xmlHttpHeader.send();
-    
-    xmlHttpHeader.onreadystatechange = function() {
-         if (xmlHttpHeader.readyState == 4 && xmlHttpHeader.status == 200) {
-             document.getElementById("header_div").innerHTML= xmlHttpHeader.responseText;
-         }
-    };
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,7 +45,7 @@
 
 </head>
 
-<body>
+<body onload="readFundingLike();">
    <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
@@ -69,6 +57,7 @@
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
     <div id="header_div">
+    <jsp:include page="creakok_header.jsp" flush="true"/>
     </div>
     </header>
     <!-- ##### Header Area End ##### -->
@@ -191,7 +180,7 @@
                      <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" 
                    href="funding_detail.do?funding_index=${funding_detail.funding_index}#fix_point">스토리</a>
                      <a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB active"
-                   href="funding_list.do?funding_index=${funding_detail.funding_index}&qna=1#fix_point" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)">Q&A(${funding_detail.funding_qna_totalCount})</a>
+                   href="funding_qna.do?funding_index=${funding_detail.funding_index}#fix_point" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)">Q&A(${funding_detail.funding_qna_totalCount})</a>
                    <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="/mcmp_project1/policy?ref=%EB%A9%94%EC%9D%B8%2F%EC%A3%BC%EB%AA%A9%ED%95%A0%EB%A7%8C%ED%95%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8">펀딩 안내</a></div>
                 </div>
                   
@@ -414,29 +403,10 @@
 
 
     <!-- Footer Bottom Area -->
-    <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="border-line"></div>
-                </div>
-                <!-- Copywrite Text -->
-                <div class="col-12 col-md-6" >
-                    <div class="copywrite-text"style="background-color: whitesmoke !important; ">
-                        <img src="img/core-img/creakok.png" alt=""><br/>
-                        <p>creakok@gmail.com  |  02.707.1480<br/>
-                            평일 10:00~17:00 (점심시간 12:00~13:00)<br/>
-                            토/일/공휴일 휴무</p>
-                        <p>(주)크리콕 | 소속 : 비트캠프 신촌센터  | 호스팅 제공자 : (주)CJ ENM<br/>
-                            서울 마포구 백범로 23 구프라자 3층</p>
-                        <p>ⓒ CREAKOK All rights reserved.</p>
-                    </div>
-                </div>
-                <!-- Footer Nav -->
-            </div>
-        </div>
+    <div id="footer_div">
+    <jsp:include page="creakok_footer.jsp" flush="true"/>
     </div>
-    <!-- ##### Footer Area End ##### -->
+    <!-- Footer Bottom Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
@@ -474,17 +444,64 @@
             <iframe id="ch-plugin-script-iframe" style="position:relative!important;height:100%!important;width:100%!important;border:none!important;" src="./saved_resource.html"></iframe>
         </div>
     </div>
-    <script type="text/javascript" async="" src="./js/hcbae/linkid.js"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/gtm.js"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/amplitude-5.2.2-min.gz.js"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/analytics.js"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/ch-plugin-web.js" charset="UTF-8"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/analytics.min.js"></script>
+   
     <script src="./js/hcbae/kakao.min.js"></script>
     <script src="./js/hcbae/semantic.js"></script>
     <script type="application/javascript" src="https://d2om2e6rfn032x.cloudfront.net/wpa/bundle.app.173e0183d7bc9f5995e8.js"></script>
+    
+    
+    <script type="text/javascript">
+    function readFundingLike(){
+        if('${member.member_email}' == '') {
+            return;
+        }
+        
+        let formData = new FormData();
+        formData.append('like_content_index','${funding_detail.funding_index}');
+        formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
+        formData.append('like_member_email','${member.member_email}');
+        
+        let xmlHttpLike = new XMLHttpRequest();
+        xmlHttpLike.open("POST", "readLike.do", true); // true for asynchronous
+        xmlHttpLike.send(formData);
+        xmlHttpLike.onreadystatechange = function() {
+            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                let obj = document.querySelector(".neDEf");
+                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
+                    obj.classList.remove('isLiked');
+                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
+                    obj.classList.add('isLiked');
+                }
+            }
+       };
+    }
 
-    <!--hcbae 텀블벅 가져오기 end-->
+    function clickFundingLike(){
+        if('${member.member_email}' == '') {
+            alert('로그인해주세요.');
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append('like_content_index','${funding_detail.funding_index}');
+        formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
+        formData.append('like_member_email','${member.member_email}');
+
+        let xmlHttpLike = new XMLHttpRequest();
+        xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
+        xmlHttpLike.send(formData);
+        xmlHttpLike.onreadystatechange = function() {
+            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                let obj = document.querySelector(".neDEf");
+                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
+                    obj.classList.add('isLiked');
+                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
+                    obj.classList.remove('isLiked');
+                }
+            }
+       };
+    }
+    </script>
 </body>
 
 </html>

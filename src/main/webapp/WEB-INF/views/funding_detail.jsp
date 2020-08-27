@@ -5,18 +5,6 @@
 <html lang="en">
 
 <head>
-    <script type="text/javascript">
-    var xmlHttpHeader = new XMLHttpRequest();
-    xmlHttpHeader.open("GET", "creakok_header.do", true); // true for asynchronous
-    xmlHttpHeader.send();
-    
-    xmlHttpHeader.onreadystatechange = function() {
-         if (xmlHttpHeader.readyState == 4 && xmlHttpHeader.status == 200) {
-             document.getElementById("header_div").innerHTML= xmlHttpHeader.responseText;
-         }
-    };
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,10 +54,13 @@
     </div>
 
     <!-- ##### Header Area Start ##### -->
+    <!-- ##### Header Area Start ##### -->
     <header class="header-area">
     <div id="header_div">
+    <jsp:include page="creakok_header.jsp" flush="true"/>
     </div>
     </header>
+    <!-- ##### Header Area End ##### -->
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcrumb Area Start ##### -->
@@ -297,21 +288,13 @@
     <!-- ##### Related Product Area End ##### -->
 
     <!-- Footer Bottom Area -->
-    <script type="text/javascript">
-    var xmlHttpFooter = new XMLHttpRequest();
-    xmlHttpFooter.open("GET", "creakok_footer.do", true); // true for asynchronous
-    xmlHttpFooter.send();
-    
-    xmlHttpFooter.onreadystatechange = function() {
-         if (xmlHttpFooter.readyState == 4 && xmlHttpFooter.status == 200) {
-             document.getElementById("footer_div").innerHTML= xmlHttpFooter.responseText;
-         }
-    };
-    </script>
+       
+  <!-- Footer Bottom Area -->
     <div id="footer_div">
+    <jsp:include page="creakok_footer.jsp" flush="true"/>
     </div>
     <!-- Footer Bottom Area End ##### -->
-
+    
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>

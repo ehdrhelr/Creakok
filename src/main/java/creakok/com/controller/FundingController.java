@@ -288,24 +288,38 @@ public class FundingController {
 	
 	@RequestMapping("funding_qna.writeForm")
 	public String write_qnaForm(HttpServletRequest request, HttpSession session) {
-		return "/funding_qna_write";
 		
+		 System.out.println("@@@@@@@@");
+		 System.out.println("@@@@@@@@");
+		 System.out.println("@@@@@@@@");
+		 System.out.println("@@@@@@@@");
+		
+		 return "/funding_qna_write";
 	
 	}
 	
 	@RequestMapping("funding_qna.write")
-	public String write_qna(HttpServletRequest request, HttpSession session) {
-
-	    String funding_indexStr = request.getParameter("funding_qna_index");
+	public ModelAndView write_qna(HttpServletRequest request, HttpSession session) {
+		 System.out.println("!111111111!!!!!!!!");
+		 System.out.println("!111111111!!!!!!!!");
+		 System.out.println("!111111111!!!!!!!!");
+		 System.out.println("!111111111!!!!!!!!");
+		 System.out.println("!111111111!!!!!!!!");
+		 System.out.println("!111111111!!!!!!!!");
+		  
+	    String funding_indexStr = request.getParameter("funding_index");
 	    long funding_index = Long.parseLong(funding_indexStr);
 	    String review_writer = request.getParameter("review_writer");
 	    String review_subject = request.getParameter("review_subject");
 	    String review_content = request.getParameter("review_content");
 	    Funding_qna funding_qna = new Funding_qna(-1, funding_index, review_writer, null, review_content, null, null, null, null, review_subject);
 	    service.write_qna(funding_qna);
+	    Funding funding = (Funding)session.getAttribute("funding_detail");
 	    
-	   
-	    return "redirect:funding_detail.do?funding_index="+funding_index+"&qna=1#fix_point";
+	    ModelAndView mv = new ModelAndView("/funding_qna","funding_detail", funding);
+	   log.info("2222222!!!!!!!!!");
+	   return mv;
+	    //return "redirect:funding_qna.do?funding_index="+funding_index+"#fix_point";
 	}
 	
 	@RequestMapping("funding_qna.detail")
