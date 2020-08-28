@@ -1252,7 +1252,7 @@
 		    				      <div>
                                      <label for="reviewer_name">작성자</label>&nbsp;&nbsp;
                                     <input name="review_writer" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="reviewer_name" 
-                                    placeholder="작성자" value="" required>
+                                    placeholder="작성자" value="${member.member_name}" readonly>
                                     <label for="goods_name">제품명</label>&nbsp;&nbsp;
                                     <input name="goods_name" style="display:inline-block;width:30%" class="form-control" id="goods_name" 
                                     placeholder="제품명" value="${one_goods.goods_name}" readonly>
@@ -1269,7 +1269,7 @@
 				<textarea id="summernote" name="review_content"></textarea>
 				
 				<p style="width:100%;text-align:center; margin-top:20px;">
-    				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" />
+    				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기"/>
     				<a href="goods_review.do?review_cp=1&goods_index=${goods_index}#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px" value="목록으로"/></a>
 				
                 </p>			 		
@@ -1288,22 +1288,22 @@
     	  //console.log(typeof(num));
           //alert(star);
       }
-function goWrite() {
-	var star = $("input[name='star']:checked").val();
-	var summernote = $("#summernote").val();
-	if (star == null){
-		alert("별점을 체크해주세요");
-		return false;
-	}
-	if(summernote == ''){
-		alert("내용을 입력해주세요");
-		return false;
-	}
-	
-	if(summernote != null && star != null){
-			frm.submit();
-		    location.href="goods_review.do?review_cp=1&goods_index="+${goods_index}+"&category_name="+${category_name};
-		    return true;
+      function goWrite() {
+    	var star = $("input[name='star']:checked").val();
+    	var summernote = $("#summernote").val();
+    	if (star == null){
+    		alert("별점을 체크해주세요");
+    		return false;
+    	}
+    	if(summernote == ''){
+    		alert("내용을 입력해주세요");
+    		return false;
+    	}
+    	
+    	if(summernote != null && star != null){
+    			frm.submit();
+    		    location.href="goods_review.do?review_cp=1&goods_index="+${goods_index}+"&category_name="+${category_name};
+    		    return true;
 	}
 	
 }

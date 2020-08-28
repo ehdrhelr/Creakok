@@ -533,8 +533,11 @@
                 
                 <p style="width:100%;text-align:center;margin-top:10px">
                      <a href="goods_review.do?review_cp=1&review_ps=5&goods_index=${one_review.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>목록</a>
-                     <a href="goods_review_update_form.do?goods_review_index=${one_review.goods_review_index}&goods_index=${one_review.goods_index}&review_rating=${one_review.goods_review_rating}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>수정</a>
-                     <a href="goods_review_delete.do?goods_review_index=${one_review.goods_review_index}&goods_index=${one_review.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>삭제</a>
+                     <c:if test="${member.member_name == one_review.member_name}">
+                        <a href="goods_review_update_form.do?goods_review_index=${one_review.goods_review_index}&goods_index=${one_review.goods_index}&review_rating=${one_review.goods_review_rating}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>수정</a>
+                        <a href="goods_review_delete.do?goods_review_index=${one_review.goods_review_index}&goods_index=${one_review.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>삭제</a>
+                     </c:if>
+                    
                 </p>
 
                     

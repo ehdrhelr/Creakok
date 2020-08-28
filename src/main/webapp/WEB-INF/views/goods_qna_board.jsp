@@ -412,11 +412,15 @@
                     </tbody>
                 </table>
               
-            
+            <!--  onclick="document.getElementById('reserv').style.display='block'" -->
                 
                 <p style="width:100%;text-align:center;margin-top:3%">
-                  <button type="button" class="" onclick="document.getElementById('reserv').style.display='block'"
-                      style="background-color:black; color:white; width:100px;height:30px;font-size:0.8em;"><a href="goods_qna_write_form.do?goods_index=${qna_list.goods_index}#fix_point" style="color:white;">문의하기</a></button>
+                  <button type="button" class=""
+                      style="background-color:black; color:white; width:100px;height:30px;font-size:0.8em;">
+                      <a href="#" style="color:white;" onclick="checkMember()">
+                                                     문의하기
+                      </a>
+                  </button>
                 </p>
             </div>
    </div>
@@ -471,6 +475,16 @@
      <script>
       function goCreator(){
           location.href="board_page?creator_name=${creator.creator_name}";
+      }
+      function checkMember(){
+          if('${member.member_email}' == '') {
+              alert('로그인해주세요.');
+              location.href="member_login.do";
+              return false;
+          }       
+          if('${member.member_email}' != ''){
+              location.href="goods_qna_write_form.do?goods_index=${qna_list.goods_index}#fix_point";
+          }
       }
     </script>   
 

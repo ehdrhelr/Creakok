@@ -290,18 +290,6 @@
                           </script>
                           
                           <script language="javascript">
-                              function urlClipCopy() {
-                                  var f = document.clipboard.url;
-                                  var url = document.getElementById('url');
-                                  url.value = document.location.href;
-                                  alert(url.value);
-                                  url.select();
-                                  document.execCommand(aCommandName, aShowDefaultUI, aValueArgument
-
-
-                                		  출처: https://withhsunny.tistory.com/30 [hsunny study blog]);
-                                  alert("클립보드로 URL이 복사되었습니다.");
-                              }
 		                      function goodsOrder(){
 			                  	var p_amount = document.getElementById('price_qty').innerHTML; 
 			                  	var price_amount = Number(Number(p_amount)+3000);
@@ -438,11 +426,15 @@
                 </table>
                  
         
-                
+                <!-- onclick="document.getElementById('reserv').style.display='block'" -->
                 
                 <p style="width:100%;text-align:center;margin-top:3%">
-                  <button type="button" class="" onclick="document.getElementById('reserv').style.display='block'"
-                      style="background-color:black; color:white; width:100px;height:30px;font-size:0.8em;"><a href="goods_review_write.do?goods_index=${review.goods_index}&category_name=${category_name}#fix_point" style="color:white;">리뷰 작성하기</a></button>
+                  <button type="button" class=""
+                      style="background-color:black; color:white; width:100px;height:30px;font-size:0.8em;">
+                      <a href="#" style="color:white;" onclick="checkMember()">
+                                                리뷰 작성하기
+                      </a>
+                  </button>
                 </p>
                     
             </div>
@@ -496,6 +488,16 @@
      <script>
       function goCreator(){
           location.href="board_page?creator_name=${creator.creator_name}";
+      }
+      function checkMember(){
+          if('${member.member_email}' == '') {
+              alert('로그인해주세요.');
+              location.href="member_login.do";
+              return false;
+          }       
+          if('${member.member_email}' != ''){
+        	  location.href="goods_review_write.do?goods_index=${review.goods_index}&category_name=${category_name}#fix_point";
+          }
       }
     </script>   
 

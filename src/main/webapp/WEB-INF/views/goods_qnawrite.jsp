@@ -1246,7 +1246,7 @@
 		    				      <div>
                                      <label for="qna_writer">작성자</label>&nbsp;&nbsp; 
                                     <input name="qna_writer" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="reviewer_name" 
-                                        value="" required>
+                                        value="${member.member_name}" readonly>
                                     <label for="goods_name">제품명</label>&nbsp;&nbsp;
                                     <input name="goods_name" style="display:inline-block;width:30%" class="form-control" id="goods_name" 
                                         value="${one_goods.goods_name}" readonly>
@@ -1298,7 +1298,6 @@ function goWrite() {
 	
 	if(summernote != null){
 			frm.submit();
-		    location.href="goods_qna_insert.do?qna_cp=1&goods_index="+${one_goods.goods_index};
 		    return true;
 	}
 	
