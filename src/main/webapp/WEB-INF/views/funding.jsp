@@ -132,11 +132,7 @@
                                    </c:when>
                               <c:otherwise>
                                      <a class="hcbae-nav nav-link" data-toggle="tab" 
-<<<<<<< HEAD
                                        href="#" role="tab" onclick="location.href='funding_list.do?funding_categoryName=${categoryNames}'">
-=======
-                                     href="#" role="tab" onclick="location.href='funding_list.do?funding_categoryName=${categoryNames}'">
->>>>>>> refs/heads/master_jihseo
                                         ${categoryNames}
                                      </a>
                                  </c:otherwise>

@@ -36,16 +36,11 @@ public class FundingController {
 	    String psStr = request.getParameter("funding_ps");
 	    String filterBy = request.getParameter("funding_filterBy");	 
 	    String categoryName= request.getParameter("funding_categoryName");
-<<<<<<< HEAD
-	 
-	    
-	    
-=======
+
 	    String funding_indexStr = request.getParameter("funding_index");
 	    FundingVo fundingVo = new FundingVo();
 	    
 	    log.info("#############################categoryName: "+categoryName);
->>>>>>> refs/heads/master_jihseo
 	    //(2) cp 
 	    cp = 1;
 		if(cpStr == null) {

@@ -256,16 +256,9 @@
                     </div>
                     <div class="ProjectIntroduction__ProjectIntroductionMainColumn-sc-1o2ojgb-8 ZOwbJ">
                         <figure class="ProjectIntroduction__ProjectCoverImageFigure-sc-1o2ojgb-9 fUBtAC">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        <img src="${one_goods.goods_repre_pic}" alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" /></figure>
-=======
                         <!--  <img src="${one_goods.goods_repre_pic}" alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" /></figure> -->
                          <p alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" style="background:url(img/goods/${one_goods.goods_repre_pic});background-repeat:no-repeat;background-size:cover;background-position:-0px -50px"></p>
->>>>>>> branch 'master' of https://github.com/daumhch/Creakok.git
-=======
-                        <img src="${one_goods.goods_repre_pic}" alt="프로젝트 커버 이미지" class="ProjectIntroduction__ProjectCoverImage-sc-1o2ojgb-11 hGsHpc" /></figure>
->>>>>>> refs/heads/newmaster_jhann
+
                     </div>
                     <aside class="ProjectIntroduction__ProjectIntroductionSubColumn-sc-1o2ojgb-12 fHdIrJ">
                         <div class="ProjectIntroduction__FundingStatus-sc-1o2ojgb-13 gGVEjs"  style="margin-bottom:50px">
