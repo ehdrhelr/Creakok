@@ -101,7 +101,8 @@
                         <c:choose>
                         
                            <c:when test="${funding_categoryName=='전체보기'}">
-                            <a class="hcbae-nav nav-link active" data-toggle="tab" href="funding_list.do?funding_categoryBy=전체보기" role="tab">
+                            <a class="hcbae-nav nav-link active" data-toggle="tab" href="#"
+                            onclick="location.href='funding_list.do?funding_categoryName=전체보기'"  role="tab">
                                                                 전체보기
                              </a>
                              </c:when>
@@ -112,7 +113,8 @@
                         
                         
                        <li class="nav-item">
-                            <a class="hcbae-nav nav-link" data-toggle="tab" href="funding_list.do?funding_categoryName=전체보기" role="tab">
+                            <a class="hcbae-nav nav-link" data-toggle="tab" href="#"
+                            onclick="location.href='funding_list.do?funding_categoryName=전체보기'"  role="tab">
                                                                 전체보기
                              </a>
                              </li>
@@ -124,13 +126,13 @@
                              <c:choose>
                                   <c:when test="${categoryNames==funding_categoryName}">
                                      <a class="hcbae-nav nav-link active" data-toggle="tab" 
-                                     href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
+                                     href="#" role="tab" onclick="location.href='funding_list.do?funding_categoryName=${categoryNames}'">
                                          ${categoryNames}
                                          </a>
                                    </c:when>
                               <c:otherwise>
                                      <a class="hcbae-nav nav-link" data-toggle="tab" 
-                                     href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
+                                       href="#" role="tab" onclick="location.href='funding_list.do?funding_categoryName=${categoryNames}'">
                                         ${categoryNames}
                                      </a>
                                  </c:otherwise>
@@ -154,7 +156,7 @@
                     <div class="shop-sorting-data d-flex flex-wrap align-items-center justify-content-between">
                         <!-- Shop Page Count -->
                         <div class="shop-page-count">
-                            <p>Showing 1–9 of 72 results</p>
+                            <p>Showing 1–${fundingVo.pageSize} of ${fundingVo.totalCount} results</p>
                         </div>
                         <!-- Search by Terms -->
                        
@@ -251,7 +253,7 @@
                                         <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
                                             </span></a>
                                   
-                                                 <a href="funding_list.do?funding_index=${fundingVo.funding_index}">
+                                                 <a href="funding_detail.do?funding_index=${fundingVo.funding_index}">
                                 
                                                      <img src="${fundingVo.funding_repre_pic}" alt="">
                                                 </a>
@@ -259,7 +261,7 @@
                                     <div class="CommonCard_info__1f4kq">
                                     <div class="RewardProjectCard_info__3JFub">
                                         <div class="RewardProjectCard_infoTop__3QR5w">
-                                        <a href="funding_list.do?funding_index=${fundingVo.funding_index}" class="CardLink_link__1k83H">
+                                        <a href="funding_detail.do?funding_index=${fundingVo.funding_index}" class="CardLink_link__1k83H">
                                             <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
                                                 <strong>${fundingVo.funding_subject}</strong>
                                             </p>

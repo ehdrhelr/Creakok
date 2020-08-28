@@ -4,7 +4,9 @@ import java.util.List;
 
 import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_category;
+import creakok.com.domain.Funding_qna;
 import creakok.com.vo.FundingVo;
+import creakok.com.vo.Funding_qnaVo;
 
 
 public interface FundingService {
@@ -17,5 +19,13 @@ public interface FundingService {
 	void remove(long funding_index);
 	List<Funding_category> getFunding_category();
 	List<Funding> getRelatedFunding(long categoryCode);
+	List<Funding_qna> getFunding_qna(Funding_qnaVo funding_qnaVo);
+	long getTotalCount_qna(long funding_index);
+	void write_qna(Funding_qna funding_qna);
+	Funding_qna getFunding_qna_detail(long funding_qna_index);
+	void editQna(Funding_qna funding_qna);
+	void answerQna(Funding_qna funding_qna);
+	void answerEditQna(Funding_qna funding_qna);
+	void answerDelete(long funding_qna_index);
 	
 }

@@ -200,8 +200,13 @@
                             펀딩, 커뮤니티 등 다양한 방법으로 <br/>
                             크리에이터와 함께 소통할 수 있는 공간입니다.</p>
                             
+<<<<<<< HEAD
                       <a href="fundingwrite_form.do"><img src="img/project/funding_project.png" alt="project_make" style="margin-top:30px"></a>
                       <a href=""><img src="img/project/goods_project.png" alt="project_make" style="margin-top:30px"></a>
+=======
+                        <a href="/fundingwrite_form.do"><img src="img/project/funding_project.png" alt="project_make" style="margin-top:30px"></a>
+                      <a href="/goodswrite_form.do"><img src="img/project/goods_project.png" alt="project_make" style="margin-top:30px"></a>
+>>>>>>> refs/heads/newmaster_jhann
                     </div>
                 </div>
             </div>
