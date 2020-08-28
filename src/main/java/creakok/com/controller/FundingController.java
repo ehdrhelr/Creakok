@@ -299,7 +299,7 @@ public class FundingController {
 	}
 	
 	@RequestMapping("funding_qna.write")
-	public ModelAndView write_qna(HttpServletRequest request, HttpSession session) {
+	public String write_qna(HttpServletRequest request, HttpSession session) {
 		 System.out.println("!111111111!!!!!!!!");
 		 System.out.println("!111111111!!!!!!!!");
 		 System.out.println("!111111111!!!!!!!!");
@@ -319,7 +319,7 @@ public class FundingController {
 	    //ModelAndView mv = new ModelAndView("/funding_qna","funding_detail", funding);
 	   //log.info("2222222!!!!!!!!!");
 	   //return mv;
-	    return "redirect:/";
+	    return "redirect:funding_qna.do?funding_index="+funding_index+"#fix_point";
 	}
 	
 	@RequestMapping("funding_qna.detail")
