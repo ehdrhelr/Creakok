@@ -32,6 +32,7 @@
   	   <typeAlias alias="Funding_Payinfo" type="creakok.com.domain.Funding_Payinfo"/>
   	   
   	   <typeAlias alias="LikeTable" type="creakok.com.domain.LikeTable"/>  
+        <typeAlias alias="Cart" type="creakok.com.domain.Cart"/>  
   	     
    	   <!-- Address라고만 쓰면 jh.md.domain.Address에 접근하게 alias를 설정해준다! -->
    </typeAliases>
