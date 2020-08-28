@@ -259,7 +259,7 @@
                 <p style="width:100%;text-align:center;margin-top:3%">
                   <button type="button" class="" onclick="document.getElementById('reserv').style.display='block'"
                       style='background-color:black; color:white; width:100px;'>
-                      <a href="funding_qna.writeForm?funding_index=${funding_detail.funding_index}" style="color:white;">
+                      <a href="funding_qna.writeForm?funding_index=${funding_detail.funding_index}" onclick="clickMemberCheckLogin();" style="color:white;">
                       문의하기</a></button>
                 </p>
                     
@@ -501,6 +501,7 @@
             }
        };
     }
+    
     </script>
 </body>
 
