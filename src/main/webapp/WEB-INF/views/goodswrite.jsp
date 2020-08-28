@@ -1056,13 +1056,9 @@
 
 
 
-<script src="/js/summernote/summernote-lite.js"></script>
-<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
 
-<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+
 
 
 
@@ -1281,7 +1277,7 @@
                                 </div>
                                 
 				<br>
-				<textarea id="summernote" name="review_content"></textarea>
+				<textarea id="summernote" name="content"></textarea>
 				
 				<p style="width:100%;text-align:center; margin-top:20px;">
     				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" />
@@ -1294,20 +1290,7 @@
     
                  
     
-    <script>
-      $('#summernote').summernote({
-        placeholder: 'Hello stand alone ui',
-        tabsize: 2,
-      minHeight: 370,
-      maxHeight: null,
-      focus: true,
-        toolbar: [
-          ['font', ['bold', 'underline', 'clear']],
-          ['insert', ['picture']]
-        ]
-      });
-    </script>
-      
+ 
       <script>
       function starcheck(){
     	  var star = $("input[name='star']:checked").val();

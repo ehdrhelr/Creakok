@@ -243,7 +243,7 @@
             <div class="Container-gci8y7-0 MskhC">
                 <div class="ProjectIntroduction__ProjectIntroductionWrapper-sc-1o2ojgb-1 bnFLKn">
                     <div class="ProjectIntroduction__ProjectOutline-sc-1o2ojgb-2 jbdzfG">
-                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="/discover?category=music"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">${category_name}</span></a>
+                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="#"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">${category_name}</span></a>
                             <h1 id="product_name" class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${one_goods.goods_name}</h1>
                             <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">
                             <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gOcHWp"></span>
@@ -501,21 +501,22 @@
                                                                 <td colspan="5" style="border:0">
                                                                     <form action="goods_qna_answer_insert.do#fix_point" method="post" style="position:relative;height:60px">
                                                                         
-                                                                            <label for="answer" style="position:absolute;left:0;top:10;margin:0;display:inline-block;">└ 답변 :</label>&nbsp;
-                                                                            <textarea id="answer" name="answer" rows="2" placeholder="답변 입력" style="width:87%;position:absolute;left:0;top:10;margin-left:60px;"></textarea>
+                                                                            <label for="answer3" style="position:absolute;left:0;top:10;margin:0;display:inline-block;">└ 답변 :</label>&nbsp;
+                                                                            <textarea id="answer3" name="answer" rows="2" placeholder="답변 입력" style="width:87%;position:absolute;left:0;top:10;margin-left:60px;"></textarea>
                                                                             <input type="hidden" name="goods_qna_index" value="${one_qna.goods_qna_index}">
                                                                             <input type="hidden" name="goods_index" value="${one_qna.goods_index}">
                                                                             <input type="hidden" name="category_name" value="${category_name}">
                                                                       
                                                                     
                                                                 </td>
-                                                                <tr id="answer2" style="display:none;text-align:right;border-top:0">
+                                                                
+                                                            </tr>
+                                                            <tr id="answer2" style="display:none;text-align:right;border-top:0">
                                                                     <td colspan="5" style="text-align:right">
                                                                         <input type="submit" value="답변 등록" style="border:0;color:white;background-color:black;height:30px;padding:1px 3px 1px 3px;font-size:10pt;width:70px;margin-bottom:20px">
                                                                     </td>
                                                                     </form>
                                                                 </tr>
-                                                            </tr>
                                                           <!-- 크리에이터 답변이 없을 때 End -->
                                                           
   
@@ -525,7 +526,7 @@
                                                                 <td colspan="5" style="border:0">
                                                                     <form action="goods_qna_answer_insert.do#fix_point" method="post" style="position:relative;height:60px"> 
                                                                          <label for="answer" style="position:absolute;left:0;top:10;margin:0;display:inline-block;">└ 답변 :</label>&nbsp;
-                                                                            <textarea id="answer" name="answer" rows="2" placeholder="답변 입력" style="width:87%;position:absolute;left:0;top:10;margin-left:60px;">${one_qna.goods_qna_answer}</textarea>
+                                                                            <textarea id="answer3" name="answer" rows="2" placeholder="답변 입력" style="width:87%;position:absolute;left:0;top:10;margin-left:60px;">${one_qna.goods_qna_answer}</textarea>
                                                                             <input type="hidden" name="goods_qna_index" value="${one_qna.goods_qna_index}">
                                                                             <input type="hidden" name="goods_index" value="${one_qna.goods_index}">
                                                                             <input type="hidden" name="category_name" value="${category_name}">

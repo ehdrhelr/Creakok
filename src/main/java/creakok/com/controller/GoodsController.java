@@ -1,19 +1,26 @@
 package creakok.com.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Creator;
@@ -22,6 +29,7 @@ import creakok.com.domain.Goods;
 import creakok.com.domain.Goods_Category;
 import creakok.com.domain.Goods_QnA;
 import creakok.com.domain.Goods_Review;
+import creakok.com.filesetting.Path;
 import creakok.com.service.CreatorBoardService;
 import creakok.com.service.GoodsDetailService;
 import creakok.com.service.GoodsQnAService;
@@ -391,6 +399,7 @@ public class GoodsController {
 		
 		return mv;
 	}	
+
 	@RequestMapping("goods_one_review.do")
 	public ModelAndView goods_one_review(HttpServletRequest request) {
 		String goods_indexStr = request.getParameter("goods_index");
