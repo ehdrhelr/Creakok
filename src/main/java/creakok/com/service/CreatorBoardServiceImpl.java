@@ -21,7 +21,7 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	@Override
 	public ListResult getListResultS(int currentPage, int pageSize, String filterBy, String creator_name) {
 		List<Board> list = (List<Board>)mapper.getListResult(currentPage, pageSize, filterBy, creator_name);
-		int count = mapper.count();
+		int count = mapper.countByCreator(creator_name);
 		return new ListResult(currentPage, count, pageSize, list, filterBy);
 	}
 	
@@ -30,12 +30,7 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 		Board board = mapper.content(board_index);
 		return board;
 	}
-	
-	@Override
-	public void insertS(Board board) {
-		mapper.insert(board);
-	}
-	
+	// 글 작성
 	@Override
 	public int insertBoard(Board board) {
 		return mapper.insertBoard(board);
@@ -60,6 +55,11 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	public List<Creator> getCreatorName() {
 		return mapper.getCreatorName();
 	}
+	// 특정 크리에이터 정보 조회
+	@Override
+	public Creator getCreator(String creator_name) {
+		return mapper.getCreator(creator_name);
+	}
 	// 글삭제
 	@Override
 	public void deleteBoard(long board_index) {
@@ -72,10 +72,9 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	}
 	// 글검색조회
 	@Override
-	public ListResult getListResultBySearchS(int currentPage, int pageSize, String filterBy, String c_code, String searchName) {
-		List<Board> list = (List<Board>)mapper.search(currentPage, pageSize, filterBy, c_code, searchName);
-		int countBySearch = mapper.countBySearch(c_code, searchName);
-		log.info("@@@@@@@@@@@@@@@@@@@@"+countBySearch+"@@@@@@@@@@@");
+	public ListResult getListResultBySearchS(int currentPage, int pageSize, String filterBy, String c_code, String searchName, String creator_name) {
+		List<Board> list = (List<Board>)mapper.search(currentPage, pageSize, filterBy, c_code, searchName, creator_name);
+		int countBySearch = mapper.countBySearch(c_code, searchName, creator_name);
 		return new ListResult(currentPage, countBySearch, pageSize, list, filterBy);
 	}
 	//크리에이터 정보 조회(굿즈에서 사용)
@@ -83,4 +82,18 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	public Creator getContentByCreator(String creator_name) {
 		return mapper.getContentByCreator(creator_name);
 	}
+<<<<<<< HEAD
+=======
+	
+	// 현재 글보다 큰 순번을 가진 글(with the same refer)의 순번을 +1 씩 증가시킨다.
+	@Override
+	public void updateSunbun(Board board) {
+		mapper.updateSunbun(board);
+	}
+	// 현재 게시글의 순번에 +1을 해주고 insert한다.
+	@Override
+	public void insertAnswer(Board board) {
+		mapper.insertAnswer(board);
+	}
+>>>>>>> branch 'master' of https://github.com/daumhch/Creakok.git
 }

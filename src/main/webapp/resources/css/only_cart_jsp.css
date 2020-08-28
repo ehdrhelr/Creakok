@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.hcbae_cart_total_css{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.hcbae_checkout_btn{
+    width: 25%;
+    margin: 40px auto;
+}

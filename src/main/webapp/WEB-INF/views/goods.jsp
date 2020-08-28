@@ -343,7 +343,7 @@
                             <p style="text-align:center;width:100%;"> 현재 판매중인 굿즈가 없습니다.</p>
                           </c:if>
                           
-                          
+                            <c:set var="listCount" value="0"/>
                             <c:forEach var="goods" items="${goods.list}" >      
                                 <!-- Single Product Area -->
                                 <div class="col-12 col-sm-6 col-lg-4">
@@ -382,7 +382,7 @@
                                                 <a href="#" class="wishlist-btn" onclick="testhcbae('${goods.goods_index}')">
                                                     <i class="goods_list_like icon_heart_alt"></i>
                                                 </a>
-                                                <a href="cart.html" class="add-to-cart-btn">장바구니에 담기</a>
+                                                <a href="#" class="add-to-cart-btn" onclick="addCart('${listCount}')">장바구니에 담기</a>
                                                 <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
                                             </div>
                                          </div>   
@@ -396,6 +396,7 @@
                                             </div>                                      
                                         </div>                         
                                     </div>
+                            <c:set var="listCount" value="${listCount + 1}"/>
                             </c:forEach>
                             
                             
@@ -425,7 +426,7 @@
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
-                              <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>  
+                          <!--   <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>    -->   
                             </ul>
                         </nav>
                     </div>
@@ -499,7 +500,45 @@
     }
     makeGoodsLikeList();
 </script>
-                                                    
+<script type="text/javascript">
+function addCart(count){
+    let goods_index_list = [];
+    let goods_category_code_list = [];
+    let goods_name_list = [];
+    let goods_repre_pic_list = [];
+    let unit_price_list = [];
+
+    <c:forEach var="goods" items="${goods.list}" >
+        goods_index_list.push('${goods.goods_index}');
+        goods_category_code_list.push('${goods.goods_category_code}');
+        goods_name_list.push('${goods.goods_name}');
+        goods_repre_pic_list.push('${goods.goods_repre_pic}');
+        unit_price_list.push('${goods.goods_price}');
+    </c:forEach>
+
+    let formData = new FormData();
+    formData.append('member_email', '${member.member_email}');
+    formData.append('goods_index', goods_index_list[count]);
+    formData.append('goods_category_code', goods_category_code_list[count]);
+    formData.append('goods_name', goods_name_list[count]);
+    formData.append('goods_repre_pic', goods_repre_pic_list[count]);
+    formData.append('unit_price', unit_price_list[count]);
+    formData.append('unit_count', 1);
+
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+             //console.log("#####:"+xmlHttp.responseText);
+             if(xmlHttp.responseText=="add_ok") {
+                 alert('상품을 장바구니에 담았습니다.');
+             }
+         }
+    };
+    xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
+    xmlHttp.send(formData);
+}
+
+</script>                                              
                                                     
 </body>
 

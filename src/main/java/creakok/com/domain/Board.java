@@ -19,4 +19,8 @@ public class Board {
 	private long board_view;
 	private long board_like;
 	private String member_profile_pic;
+	private String creator_name;
+	private long board_refer;
+	private long board_level;
+	private long board_sunbun;
 }
