@@ -9,7 +9,7 @@
     
     <select id="selectPerPageReview" resultType="Goods_Review" parameterType="Goods_ReviewVo">
         <![CDATA[select * from (select ROWNUM rnum, aa.* from
-        (select * from GOODS_REVIEW where GOODS_INDEX=${goods_index} order by GOODS_REVIEW_VIEW desc) aa)
+        (select * from GOODS_REVIEW where GOODS_INDEX=${goods_index} order by GOODS_REVIEW_DATE desc) aa)
         where rnum>${(review_cp-1)*review_ps} and rnum<=${review_cp*review_ps}
         ]]>
     </select>

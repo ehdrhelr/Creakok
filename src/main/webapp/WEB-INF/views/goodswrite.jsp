@@ -5,6 +5,8 @@
 <html lang="en">
 
 <head>
+
+
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -1054,20 +1056,7 @@
   
     <!-- Main Stylesheets -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
 
 </head>
 
@@ -1237,7 +1226,7 @@
           
           
 	    <div class="submit_a_review_area mt-50" style="width: 60%; margin: auto;" >
-	    	<form method="post" action="goods_review_insert.do" onsubmit="return goWrite()">
+	    	<form method="post" action="goods_review_insert.do#fix_point" onsubmit="return goWrite()">
                                    <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group d-flex align-items-center">
@@ -1263,7 +1252,7 @@
 		    				      <div>
                                      <label for="reviewer_name">작성자</label>&nbsp;&nbsp;
                                     <input name="review_writer" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="reviewer_name" 
-                                    placeholder="작성자" value="" readonly>
+                                    placeholder="작성자" value="" required>
                                     <label for="goods_name">제품명</label>&nbsp;&nbsp;
                                     <input name="goods_name" style="display:inline-block;width:30%" class="form-control" id="goods_name" 
                                     placeholder="제품명" value="${one_goods.goods_name}" readonly>
@@ -1277,7 +1266,7 @@
                                 </div>
                                 
 				<br>
-				<textarea id="summernote" name="content"></textarea>
+				<textarea id="summernote" name="review_content"></textarea>
 				
 				<p style="width:100%;text-align:center; margin-top:20px;">
     				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" />
@@ -1290,7 +1279,7 @@
     
                  
     
- 
+
       <script>
       function starcheck(){
     	  var star = $("input[name='star']:checked").val();
@@ -1358,6 +1347,45 @@ function goWrite() {
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+    <script src="/js/summernote/summernote-lite.js"></script>
+<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+    <script>
+   // $(document).ready(function(){
+      $('#summernote').summernote({
+        placeholder: '펀딩받고 싶은 컨텐츠의 기획내용을 입력해주세요.',
+        tabsize: 2,
+        minHeight: 370,
+        maxHeight: null,
+        callbacks: {    //여기 부분이 이미지를 첨부하는 부분
+            onImageUpload : function(files) {
+                uploadSummernoteImageFile(files[0],this);
+            }
+        },
+        focus: true,
+        toolbar: [
+              ['font', ['bold', 'underline', 'clear']],
+              ['color', ['color']],
+              ['insert', ['link', 'picture']]
+            ]
+      });
+      
+      function uploadSummernoteImageFile(file, editor){
+          data = new FormData();
+          data.append("file_detail_pic", file);
+          $.ajax({
+                data : data,
+                type : "POST",
+                url : "/uploadSummernoteImageFile_goods",
+                contentType : false,
+                processData : false,
+                success : function(url){
+                    $(editor).summernote('insertImage', url);
+                }
+          });
+      }
+ //   });
+    </script>
 </body>
 
 </html>
