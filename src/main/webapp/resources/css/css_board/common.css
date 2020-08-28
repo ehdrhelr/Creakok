@@ -21,7 +21,7 @@ header a:hover {background:none; color:#000;}
 .log button:hover { color:#123; border-color:#123; background:#eddec0;}
 .menu a {display:inline-block;  text-align:center; font-size:20px; margin-right:60px;}
 .menu a:last-child {margin-right:0;}
-/* ·Î±×ÀÎ Ã¢ */
+/* ï¿½Î±ï¿½ï¿½ï¿½ Ã¢ */
 input[type=text], input[type=password] {
 	width: 100%;
 	padding: 12px 20px;

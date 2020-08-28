@@ -5,13 +5,6 @@
 <html lang="en">
 
 <head>
-	<!-- ##### Header Area Start ##### -->
-    <header class="header-area">
-    <div id="header_div">
-    <jsp:include page="creakok_header.jsp" flush="true"/>
-    </div>
-    </header>
-    <!-- ##### Header Area End ##### -->
     
     <meta charset="UTF-8">
     <meta name="description" content="">

@@ -21,7 +21,7 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	@Override
 	public ListResult getListResultS(int currentPage, int pageSize, String filterBy, String creator_name) {
 		List<Board> list = (List<Board>)mapper.getListResult(currentPage, pageSize, filterBy, creator_name);
-		int count = mapper.count();
+		int count = mapper.countByCreator(creator_name);
 		return new ListResult(currentPage, count, pageSize, list, filterBy);
 	}
 	

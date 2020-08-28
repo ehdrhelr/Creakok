@@ -53,7 +53,7 @@ public class IndexController {
 	
 	@RequestMapping("about.do")
 	public String about() {
-		return "about";
+		return "test";
 	}
 
 	@GetMapping("creakok_header.do")

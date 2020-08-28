@@ -70,8 +70,13 @@
 	
 	<!-- 검색했을 때 count -->
 	<select id="countBySearch" resultType="int">
-		select COUNT(case when ${board_c_code} like '%'||#{board_searchName}||'%' then 1 end) from CREATOR_BOARD
+		select count(case when ${board_c_code} like '%'||#{board_searchName}||'%' then 1 end) from CREATOR_BOARD
 	</select> 
+	
+	<!-- 크리에이터별 카운트 -->
+	<select id="countByCreator" resultType="int">
+		select count(*) from CREATOR_BOARD where CREATOR_NAME = #{creator_name}
+	</select>
 	
 	<!-- 댓글 조회 -->
 	<select id="getComment" resultType="Comment">
