@@ -5,13 +5,6 @@
 <html lang="en">
 
 <head>
-	<!-- ##### Header Area Start ##### -->
-    <header class="header-area">
-    <div id="header_div">
-    <jsp:include page="creakok_header.jsp" flush="true"/>
-    </div>
-    </header>
-    <!-- ##### Header Area End ##### -->
     
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -196,33 +189,17 @@
             </div>
    
             <div class="row justify-content-center">
-			
+				
+				<c:forEach items="${contentList}" var="content">
                 <!-- Single Blog Post Area -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-blog-post mb-100">
 						<div class="embed-responsive embed-responsive-16by9" style="width:350px; height:200px;">
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/mMXCy0eKu7Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/${content}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 						</div>
                     </div>
                 </div>
-
-                <!-- Single Blog Post Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-blog-post mb-100">
-                         <div class="embed-responsive embed-responsive-16by9" style="width:350px; height:200px;">
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/tU5RYxK8yvA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-						</div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-blog-post mb-100">
-                         <div class="embed-responsive embed-responsive-16by9" style="width:350px; height:200px;">
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/3GqFW36Zz4w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-						</div>       
-                    </div>
-                </div>
+                </c:forEach>
 
             </div>
         </div>
@@ -312,9 +289,9 @@
              <!-- Section Heading -->
 			<div class="section-heading text-center">
 				<h2 style="color:white; ">소통하는 사회, 크리콕!</h2>
-				<p style="color:white">자유게시판에서 팬들과 함께 소통해요</p>
+				<p style="color:white">채팅방에서 팬들과 함께 소통해요</p>
 				<p class="crowdy-btn-introduction" >
-				<a href="#"style="color:white; text-align:center">자세히 알아보기</a>
+				<a href="#"style="color:white; text-align:center">채팅방 입장</a>
 				</p>
 			</div>
         </div>
@@ -475,8 +452,7 @@
             &nbsp;
             </c:forEach>
             </c:if>
-             &nbsp;&nbsp;&nbsp; 
-            ${listResult.currentPage}page/${listResult.totalPageCount}pages
+
           </td>
           <!-- 없는게 나을 것 같다.
           <td colspan="2" align="center">

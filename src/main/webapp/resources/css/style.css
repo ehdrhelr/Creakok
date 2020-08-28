@@ -45,7 +45,7 @@ p {
   font-weight: 400; }
 
 a,
-a:hover,
+a,
 a:focus {
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms;

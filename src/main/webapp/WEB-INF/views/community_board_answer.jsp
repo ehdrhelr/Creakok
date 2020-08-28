@@ -1057,13 +1057,22 @@
 
 
 
-	<script src="/js/summernote/summernote-lite.js"></script>
-	<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+<script src="/js/summernote/summernote-lite.js"></script>
+<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
 
-	<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
+<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+
+
+
+
+
+
+
+
 
 </head>
 
@@ -1227,13 +1236,13 @@
         
     
     <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
- 					<h3 style="text-align:center;margin-bottom:40px;font-size:18pt"> 게시글 작성하기</h3>
+ 					<h3 style="text-align:center;margin-bottom:40px;font-size:18pt"> 답글 작성하기</h3>
    
           
           
           
 	    <div class="submit_a_review_area mt-50" style="width: 60%; margin: auto;" >
-	    	<form method="post" action="board_write" onsubmit="return goWrite()">                            
+	    	<form method="post" action="board_answer?board_index=${board.board_index}" onsubmit="return goWrite()">                            
 		    				      <div>
                                      <label for="member_name">작성자</label>&nbsp;&nbsp;
                                     <input name="member_name" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="member_name" 
@@ -1248,53 +1257,41 @@
                                     <input name="board_subject" style="display:inline-block;width:90%" class="form-control" id="board_subject" 
                                    placeholder="제목" required>
                                   
-                                   <input type="hidden" name="member_email" value="${member.member_email}"/>
+                                    <input type="hidden" name="member_email" value="${member.member_email}"/>                      
+                              	    <input type="hidden" name="board_refer" value="${board.board_refer}"/>
+                              	    <input type="hidden" name="board_level" value="${board.board_level}"/>                              		
+                              	    <input type="hidden" name="board_sunbun" value="${board.board_sunbun}"/>
                                 </div>
                                 
 				<br>
 				<textarea id="summernote" name="board_content"></textarea>
 				
 				<p style="width:100%;text-align:center; margin-top:20px;">
-    				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" />
-    				<a href="board_page?creator_name=${theCreator.creator_name}#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px" value="목록으로"/></a>
+    				<input id="subBtn" type="submit" style="padding:3px;background-color:#2da498;color:white;border:0;border-radius:4px;width:100px" value="답글작성" />
+    				<a href="board_page?creator_name=${theCreator.creator_name}#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#2da498;border:1px solid #2da498;border-radius:4px;width:100px" value="목록으로"/></a>
 				
                 </p>			 		
 			</form>
 		</div>
     </div>
     
-                 
-    <!-- 원래 섬머노트 설정
-    <script>
-      $('#summernote').summernote({
-        placeholder: '여기에 작성해주세요.',
-        tabsize: 2,
-      minHeight: 370,
-      maxHeight: null,
-      focus: true,
-        toolbar: [
-          ['font', ['bold', 'underline', 'clear']],
-          ['insert', ['picture']]
-        ]
-      });
-    </script>
-      -->
-      <script>
+      
+<script>
 
-function goWrite() {
-
-	var summernote = $("#summernote").val();
-
-	if(summernote == ''){
-		alert("내용을 입력해주세요");
-		return false;
-	}
+	function goWrite() {
 	
-	if(summernote != null){
-			frm.submit();
-		    return true;
+		var summernote = $("#summernote").val();
+	
+		if(summernote == ''){
+			alert("내용을 입력해주세요");
+			return false;
+		}
+		
+		if(summernote != null){
+				frm.submit();
+			    return true;
+		}
 	}
-}
 </script>
   
       
@@ -1336,7 +1333,7 @@ function goWrite() {
     <!-- Active js -->
     <script src="js/active.js"></script>
     
-      <script src="/js/summernote/summernote-lite.js"></script>
+         <script src="/js/summernote/summernote-lite.js"></script>
 <script src="/js/summernote/lang/summernote-ko-KR.js"></script>
 <script>
 

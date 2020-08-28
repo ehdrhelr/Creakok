@@ -270,7 +270,7 @@
                                         <tr>
                                         	<td>글내용</td>
                                        			<td>
-                                        			<textarea rows="10" cols="50" name="board_content" class="form-control" readonly>${board.board_content}</textarea>
+                                        			<span id="textarea" style="width:692px; height:300px; text-align:left" name="board_content" class="form-control" readonly>${board.board_content}</span>
                                        			</td>
                                         </tr>
                               </tbody>
@@ -281,10 +281,11 @@
                          		<input type="reset" value="수정" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="location.href='board_update?board_index=${board.board_index}';">
                         	 	<input type="reset" value="삭제" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="deleteBoard()">
                          	</c:if>
-
+							
+							<input type="reset" value="답글 쓰기" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="location.href='board_answer?board_index=${board.board_index}';">
                          </c:if>
+                        
                          <button type="button" class="" style="background-color:black !important; color:white;width:133px;height:38px;border-radius:.25rem;display:inline-block" onclick="location.href='board_page?creator_name=${board.creator_name}#fix_point'">전체 게시글보기</button>
-						
 						
 <!----------------------- 댓글 조회 부분 --------------------->
 			<div class="form-group col-sm-12">
@@ -476,9 +477,8 @@
 			    xmlHttpLike.open("POST", "getNewBoardLike", true); // true for asynchronous
 			    xmlHttpLike.send(formData);
 			}
+			
         </script>
-	
-	
 </body>
 
 </html>
