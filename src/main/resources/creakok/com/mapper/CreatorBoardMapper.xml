@@ -87,9 +87,6 @@
 	<select id="getContentByCreator" resultType="Creator" parameterType="String">
 		select * from CREATOR where CREATOR_NAME=#{creator_name}
 	</select>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 	
 	<!-- 현재 글보다 큰 순번을 가진 글(with the same refer)의 순번을 +1 씩 증가시킨다. -->
 	<update id="updateSunbun" parameterType="Board">
@@ -106,8 +103,4 @@
 					#{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null, #{creator_name}, ${board_refer}, 
 					${board_level}+1, ${board_sunbun}+1)
 	</insert>
-	
->>>>>>> branch 'master' of https://github.com/daumhch/Creakok.git
-=======
->>>>>>> refs/heads/newmaster_jhann
 </mapper>

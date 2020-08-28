@@ -46,11 +46,4 @@ public interface CreatorBoardMapper {
 	void updateSunbun(Board board);
 	// 현재 게시글의 순번에 +1을 해주고 insert한다.
 	void insertAnswer(Board board);
-	/*
-	// 원글(답글도 포함)의 답글을 작성할 때 원글의 level보다 1 증가시킨다.
-	void updateLevel(Board board);
-	*/
-	
-	// 크리에이터 정보 조회(굿즈에서 사용)
-	Creator getContentByCreator (@Param("creator_name") String creator_name);
 }

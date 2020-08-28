@@ -82,9 +82,6 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	public Creator getContentByCreator(String creator_name) {
 		return mapper.getContentByCreator(creator_name);
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 	
 	// 현재 글보다 큰 순번을 가진 글(with the same refer)의 순번을 +1 씩 증가시킨다.
 	@Override
@@ -96,7 +93,11 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	public void insertAnswer(Board board) {
 		mapper.insertAnswer(board);
 	}
->>>>>>> branch 'master' of https://github.com/daumhch/Creakok.git
-=======
->>>>>>> refs/heads/newmaster_jhann
+
+	@Override
+	public void insertS(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
