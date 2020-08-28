@@ -1290,15 +1290,15 @@
       <script>
 
 function goWrite() {
-
+	var summernote = $("#summernote").val();
 	if(summernote == ''){
 		alert("내용을 입력해주세요");
 		return false;
 	}
 	
-	if(summernote != null && star != null){
+	if(summernote != null){
 			frm.submit();
-		    location.href="goods_review.do?review_cp=1&goods_index="+${goods_index}+"&category_name="+${category_name};
+		    location.href="goods_qna_insert.do?qna_cp=1&goods_index="+${one_goods.goods_index};
 		    return true;
 	}
 	
