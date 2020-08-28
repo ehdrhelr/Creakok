@@ -54,6 +54,7 @@
     <link rel="stylesheet" href="css/hcbae_css.css">
   
 
+
 </head>
 
 <body onload="readGoodsLike();">
@@ -112,7 +113,7 @@
             <div class="Container-gci8y7-0 MskhC">
                 <div class="ProjectIntroduction__ProjectIntroductionWrapper-sc-1o2ojgb-1 bnFLKn">
                     <div class="ProjectIntroduction__ProjectOutline-sc-1o2ojgb-2 jbdzfG">
-                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="/discover?category=music"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">${category_name}</span></a>
+                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="#"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">${category_name}</span></a>
                             <h1 id="product_name" class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${one_goods.goods_name}</h1>
                             <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">
                             <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gOcHWp"></span>
@@ -160,11 +161,12 @@
 	                             	<div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV"  style="margin-right:20px;">수량</div>
 	                                 <div class="quantity">
 	                                        <span class="qty-minus" style="padding:10px;" onclick="minus()"><i class="fa fa-minus" aria-hidden="true"></i></span>
-	                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1" readonly>
-	                                        <span class="qty-plus" onclick="plus()"><i class="fa fa-plus" aria-hidden="true"></i></span>
+	                                        <input type="number" class="qty-text" id="qty" style="width:40px" step="1" min="0" max="12" name="quantity" value="1" readonly>
+	                                        <span class="qty-plus" onclick="plus()" style="padding:10px" ><i class="fa fa-plus" aria-hidden="true"></i></span>
 	                                    </div>
 	                           	 </div>  
-                     
+                      
+                            
                        <script language="javascript">
 		                      function plus(){
 		                  		var effect = document.getElementById('qty'); 
@@ -186,21 +188,24 @@
                        			var effect = document.getElementById('qty'); 
                        			var qty = effect.value; 
                        			
-                       			var result = document.getElementById('price_qty');
-                       			var amount = ${one_goods.goods_price} * (Number(qty)-1);
+                       			if(qty>1){
+                         			var result = document.getElementById('price_qty');
+                         			var amount = ${one_goods.goods_price} * (Number(qty)-1);
+                         			
+    		                  		var result2 = document.getElementById('price_qty2');
+    		                  		var amount2 = (${one_goods.goods_price} * (Number(qty)-1))+3000; 
+    		                  		
+    		                  		result2.innerHTML= amount2;
+                       			}
                        			
-		                  		var result2 = document.getElementById('price_qty2');
-		                  		var amount2 = (${one_goods.goods_price} * (Number(qty)-1))+3000; 
-		                  		
-		                  		result2.innerHTML= amount2;
-		                  		
 	                       		if(amount>0){
 	                       			result.innerHTML= amount;
-	                       			
 	                       		}
-                       			
-                       			if( !isNaN( qty ) & qty  > 1) effect.value--;
-                           			return false;
+	                       		if(amount2>0){
+                                    result2.innerHTML= amount2;
+                                }
+                       			if( !isNaN( qty ) && qty  >1) effect.value--;
+                       		        return false; 
                        		}
                        </script>
                        
@@ -249,11 +254,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ProjectIntroduction__TertiaryButton-sc-1o2ojgb-26 fGephg"><button type="button" class="Button-sc-1x93b2b-0 ProjectIntroduction__ShareSNSButton-sc-1o2ojgb-25 llyixJ">
-                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe"><svg viewBox="0 0 44 44">
-                                                <path d="M35.4706,40.396 C32.9362,40.396 30.877,38.51 30.877,36.192 C30.877,33.874 32.9362,31.988 35.4706,31.988 C38.0028,31.988 40.0642,33.874 40.0642,36.192 C40.0642,38.512 38.0028,40.396 35.4706,40.396 M8.5316,26.204 C5.9994,26.204 3.938,24.318 3.938,22 C3.938,19.68 5.9994,17.796 8.5316,17.796 C11.0638,17.796 13.1252,19.68 13.1252,22 C13.1252,24.32 11.0638,26.204 8.5316,26.204 M35.4706,3.604 C38.0028,3.604 40.0642,5.49 40.0642,7.808 C40.0642,10.126 38.0028,12.012 35.4706,12.012 C32.9362,12.012 30.877,10.126 30.877,7.808 C30.877,5.488 32.9362,3.604 35.4706,3.604 M35.4706,28.384 C33.022,28.384 30.8198,29.334 29.2644,30.844 L16.7024,24.228 C16.9334,23.522 17.061,22.774 17.061,22 C17.061,21.226 16.9334,20.48 16.7046,19.772 L29.2644,13.156 C30.8198,14.668 33.022,15.616 35.4684,15.616 C40.183,15.616 44,12.12 44,7.808 C44,3.496 40.1808,0 35.4706,0 C30.7582,0 26.939,3.496 26.939,7.808 C26.939,8.582 27.0666,9.328 27.2954,10.036 L14.7334,16.652 C13.1802,15.142 10.978,14.192 8.5294,14.192 C3.8236,14.192 0,17.688 0,22 C0,26.312 3.8192,29.808 8.5316,29.808 C10.978,29.808 13.1802,28.86 14.7356,27.348 L27.2954,33.964 C27.0666,34.67 26.939,35.418 26.939,36.192 C26.939,40.504 30.7582,44 35.4706,44 C40.1808,44 44,40.504 44,36.192 C44,31.88 40.1808,28.384 35.4706,28.384"></path>
-                                            </svg></div>
-                                </button></div>
+                                
+                                <div class="ProjectIntroduction__TertiaryButton-sc-1o2ojgb-26 fGephg">
+                                    <button type="button" class="Button-sc-1x93b2b-0 ProjectIntroduction__ShareSNSButton-sc-1o2ojgb-25 llyixJ goods_share" data-clipboard-text="1" onclick="urlClipCopy()">
+                                            <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe"><svg viewBox="0 0 44 44">
+                                                    <path d="M35.4706,40.396 C32.9362,40.396 30.877,38.51 30.877,36.192 C30.877,33.874 32.9362,31.988 35.4706,31.988 C38.0028,31.988 40.0642,33.874 40.0642,36.192 C40.0642,38.512 38.0028,40.396 35.4706,40.396 M8.5316,26.204 C5.9994,26.204 3.938,24.318 3.938,22 C3.938,19.68 5.9994,17.796 8.5316,17.796 C11.0638,17.796 13.1252,19.68 13.1252,22 C13.1252,24.32 11.0638,26.204 8.5316,26.204 M35.4706,3.604 C38.0028,3.604 40.0642,5.49 40.0642,7.808 C40.0642,10.126 38.0028,12.012 35.4706,12.012 C32.9362,12.012 30.877,10.126 30.877,7.808 C30.877,5.488 32.9362,3.604 35.4706,3.604 M35.4706,28.384 C33.022,28.384 30.8198,29.334 29.2644,30.844 L16.7024,24.228 C16.9334,23.522 17.061,22.774 17.061,22 C17.061,21.226 16.9334,20.48 16.7046,19.772 L29.2644,13.156 C30.8198,14.668 33.022,15.616 35.4684,15.616 C40.183,15.616 44,12.12 44,7.808 C44,3.496 40.1808,0 35.4706,0 C30.7582,0 26.939,3.496 26.939,7.808 C26.939,8.582 27.0666,9.328 27.2954,10.036 L14.7334,16.652 C13.1802,15.142 10.978,14.192 8.5294,14.192 C3.8236,14.192 0,17.688 0,22 C0,26.312 3.8192,29.808 8.5316,29.808 C10.978,29.808 13.1802,28.86 14.7356,27.348 L27.2954,33.964 C27.0666,34.67 26.939,35.418 26.939,36.192 C26.939,40.504 30.7582,44 35.4706,44 C40.1808,44 44,40.504 44,36.192 C44,31.88 40.1808,28.384 35.4706,28.384"></path>
+                                                </svg></div>
+                                    </button></div>
                                 
                                  <a name="fix_point"></a>
                      
@@ -264,7 +271,23 @@
                 </div>
             </div>
             
-                          <script language="javascript">
+                          <!--  클립보드 복사    -->
+                          <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+                          <script>
+                            function urlClipCopy() {
+                            	//var here = window.location.href;
+                            	$('.goods_share').attr('data-clipboard-text', document.location.href);
+                                var clipboard = new Clipboard('.goods_share');
+                                clipboard.on('success', function(e) {
+                                	alert('주소가 복사되었습니다');
+                                	console.log(e);
+                                });
+                                clipboard.on('error', function(e) {
+                                	console.log(e);
+                                });
+                          	  }
+                            
+                          
 		                      function goodsOrder(){
 			                  	var p_amount = document.getElementById('price_qty').innerHTML; 
 			                  	var price_amount = Number(Number(p_amount)+3000);
@@ -278,17 +301,17 @@
 		                  		var qty = effect.value; 
 			                  	location.href="goods_order.do?price_amount="+price_amount+"&product_name="+product_name+"&product_price="+product_price+"&qty="+qty;
 		                  	}
+		                      
                        </script>         
-            
             
         </div><span style="font-size:0"></span>
         <div id="contentsNavigation">
             <nav class="ContentsNavigation__ProjectContentsNavigation-mwsx7i-1 bmUMcp">
                 <div class="ContentsNavigation__ProjectContentsNavigationInner-mwsx7i-2 OvVKa">
                     <div class="ContentsNavigation__NavLeft-mwsx7i-3 buZwam">
-                    <a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="/mcmp_project1/story?ref=%EB%A9%94%EC%9D%B8%2F%EC%A3%BC%EB%AA%A9%ED%95%A0%EB%A7%8C%ED%95%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8">상품상세정보</a>
+                    <a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" href="goods_detail.do?goods_index=${review.goods_index}#fix_point">상품상세정보</a>
                     <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="goods_review.do?review_cp=1&review_ps=5&goods_index=${one_goods.goods_index}&category_name=${category_name}#fix_point">리뷰<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(${review_size})</span></a>
-                    <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="#">Q&A</a></div>
+                    <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="goods_qna.do?qna_cp=1&qna_ps=5&goods_index=${one_goods.goods_index}&category_name=${category_name}#fix_point">Q&A<span class="ContentsNavigation__CommunityPostAmount-mwsx7i-6 jXWmuN">(${qna_list_size})</span></a></div>
                 </div>
             </nav>
         </div>
@@ -315,12 +338,18 @@
                                     <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"></span>
                                     <a target="_blank" href="img/funding/${goods_creator.creator_profile_photo}"><span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx">${creator.creator_name}</span></a></div>
                                     <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">
-                                    	${goods_creator.creator_profile_content}</div>
+                                    	</div>
                                     <div class="Divider-sc-17hnup0-0 eUqLBU"></div>
                              		  <div class="CreatorCard__CreatorStats-sc-1ifohey-5 dhVdtT">
-                                        <div>=&nbsp;&nbsp;</div>
+                                        <p>${creator.creator_profile_content}</p>
                                     </div>  
-                                    <div class="CreatorCard__CreatorContactButton-sc-1ifohey-6 jpHksr"><button class="Button-sc-1x93b2b-0 jQspcv"><i class="_3YmAkQhwzI7o-uUWz_8Mp4 _1QY7TzdLHKX3-BKPDNNYKF"></i>창작자에게 문의하기</button></div>
+                                    <div class="CreatorCard__CreatorContactButton-sc-1ifohey-6 jpHksr">
+                                        <button class="Button-sc-1x93b2b-0 jQspcv" onclick="goCreator()">
+                                            <i class="_3YmAkQhwzI7o-uUWz_8Mp4 _1QY7TzdLHKX3-BKPDNNYKF">
+                                                                                                커뮤니티 놀러가기
+                                            </i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -332,7 +361,11 @@
         </div>
     </div>
 
-
+    <script>
+      function goCreator(){
+    	  location.href="board_page?creator_name=${creator.creator_name}";
+      }
+    </script>
 
 
     <!-- ##### Related Product Area Start ##### -->
@@ -342,19 +375,28 @@
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
-                        <h2>Related Products</h2>
+                        <h2>관련 상품</h2>
                     </div>
                 </div>
             </div>
-
+        
+        
+        
+        
             <div class="row">
-
+                
+                
+                <c:if test="${empty four_goods}">
+                       <p style="text-align:center;width:100%;"> 관련 굿즈가 없습니다.</p>
+                </c:if>
+                
+                <c:forEach items="${four_goods}" var="goods_related">
                 <!-- Single Product Area -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-product-area mb-100">
                         <!-- Product Image -->
                         <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/40.png" alt=""></a>
+                            <a href="goods_detail.do?goods_index=${goods_related.goods_index}"><img src="img/goods/${goods_related.goods_repre_pic}" alt=""></a>
                             <!-- Product Tag -->
                             <div class="product-tag">
                                 <a href="#">Hot</a>
@@ -367,85 +409,17 @@
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
+                            <a href="goods_detail.do?goods_index=${goods_related.goods_index}">
+                                <p>${goods_related.goods_name}</p>
                             </a>
-                            <h6>$10.99</h6>
+                            <h6>${goods_related.goods_price}&nbsp;<span style="font-weight:200">원</span></h6>
                         </div>
                     </div>
                 </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-100">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/41.png" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-100">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/42.png" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-100">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/43.png" alt=""></a>
-                            <!-- Product Tag -->
-                            <div class="product-tag sale-tag">
-                                <a href="#">Hot</a>
-                            </div>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
+             </c:forEach>
             </div>
+            
+            
         </div>
     </div>
     <!-- ##### Related Product Area End ##### -->

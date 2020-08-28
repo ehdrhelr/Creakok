@@ -1359,8 +1359,7 @@
       maxHeight: null,
       focus: true,
         toolbar: [
-          ['font', ['bold', 'underline', 'clear']],
-          ['insert', ['picture']]
+          ['font', ['bold', 'underline', 'clear']]
         ]
       });
     </script>

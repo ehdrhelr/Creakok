@@ -13,4 +13,5 @@ public interface GoodsMapper {
 	long selectGoodsCount();
 	long selectGoodsCountByCode(@Param("gCode") long gCode);
 	String selectGoodsName(long goods_index);
+	List<Goods> getRelatedGoods(@Param("category_code") long category_code);
 }
