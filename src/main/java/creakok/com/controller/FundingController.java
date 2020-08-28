@@ -314,12 +314,12 @@ public class FundingController {
 	    String review_content = request.getParameter("review_content");
 	    Funding_qna funding_qna = new Funding_qna(-1, funding_index, review_writer, null, review_content, null, null, null, null, review_subject);
 	    service.write_qna(funding_qna);
-	    Funding funding = (Funding)session.getAttribute("funding_detail");
+	    //Funding funding = (Funding)session.getAttribute("funding_detail");
 	    
-	    ModelAndView mv = new ModelAndView("/funding_qna","funding_detail", funding);
-	   log.info("2222222!!!!!!!!!");
-	   return mv;
-	    //return "redirect:funding_qna.do?funding_index="+funding_index+"#fix_point";
+	    //ModelAndView mv = new ModelAndView("/funding_qna","funding_detail", funding);
+	   //log.info("2222222!!!!!!!!!");
+	   //return mv;
+	    return "redirect:/";
 	}
 	
 	@RequestMapping("funding_qna.detail")

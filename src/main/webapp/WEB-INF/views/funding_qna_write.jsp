@@ -138,8 +138,7 @@
 			
 			if(summernote !=null){
 				alert('넘어가');
-				location.href="funding_qna.do?funding_index="+${funding_detail.funding_index}+"#fix_point";
-				return true;
+				retrun true;
 			}
 		}
 	</script>
