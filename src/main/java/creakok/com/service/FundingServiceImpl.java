@@ -104,6 +104,10 @@ public class FundingServiceImpl implements FundingService {
 
 	@Override
 	public void write_qna(Funding_qna funding_qna) {
+		log.info("!!!!!!!!!!!!!!impli");
+		log.info("!!!!!!!!!!!!!!impli");
+		log.info("!!!!!!!!!!!!!!impli");
+		log.info(funding_qna);
 		fundingMapper.write_qna(funding_qna);
 	
 	}

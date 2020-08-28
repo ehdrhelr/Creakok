@@ -76,31 +76,29 @@
           
           
 	    <div class="submit_a_review_area mt-50" style="width: 60%; margin: auto;" >
-	    	<form method="post" action="funding_qna.write" onsubmit="return goWrite()">
-                      <div class="row">
+	    	<form method="post" action="funding_qna.writedo" onsubmit="return goWrite()">
+                      		<div class="row">
                                <div class="col-12">
                                    <div class="form-group d-flex align-items-center">
-                                       
                                    </div>
                                </div>
-                           
-                           </div>  
-  					 <div>
-                        <label for="reviewer_name">작성자</label>&nbsp;&nbsp;
-                       <input name="review_writer" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="reviewer_name" 
-                       placeholder="작성자" value="" required>
-                     
-                   </div>
+                          	</div>  
+		  					 <div>
+		                        <label for="reviewer_name">작성자</label>&nbsp;&nbsp;
+		                       <input name="!funding_qna_writer" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="reviewer_name" 
+		                       placeholder="작성자" value="" required>
+		                    </div>
                    
-                    <div style="margin-top:10px">
-                       <label for="review_subject" style="margin-right:2%">제목</label>
-                       <input name="review_subject" style="display:inline-block;width:90%" class="form-control" id="review_subject" 
-                      placeholder="제목" required>
-                      <input type="hidden" name="funding_qna_index" value="${funding_detail.funding_index}"/>
-                   </div>
+		                    <div style="margin-top:10px">
+		                       <label for="review_subject" style="margin-right:2%">제목</label>
+		                       <input name="!funding_qna_subject" style="display:inline-block;width:90%" class="form-control" id="review_subject" 
+		                      placeholder="제목" required>
+		                      <input type="hidden" name="!funding_index" value="${funding_detail.funding_index}"/>
+		                      
+		                   </div>
                                 
 				<br>
-				<textarea id="summernote" name="review_content"></textarea>
+				<textarea id="summernote" name="!funding_qna_content"></textarea>
 				
 				<p style="width:100%;text-align:center; margin-top:20px;">
     				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" />
@@ -135,11 +133,12 @@
 				alert("내용을 입력해주세요");
 				return false;
 			}
-			
-			if(summernote !=null){
-				alert('넘어가');
-				retrun true;
+			if(summernote != null){
+				frm.submit();
+				return true;
 			}
+			
+			return true;
 		}
 	</script>
   

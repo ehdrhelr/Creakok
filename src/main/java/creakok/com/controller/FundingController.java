@@ -1,6 +1,5 @@
 package creakok.com.controller;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,7 +18,6 @@ import creakok.com.domain.Funding_qna;
 import creakok.com.service.FundingService;
 import creakok.com.vo.FundingVo;
 import creakok.com.vo.Funding_qnaVo;
-import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 
@@ -288,38 +287,39 @@ public class FundingController {
 	
 	@RequestMapping("funding_qna.writeForm")
 	public String write_qnaForm(HttpServletRequest request, HttpSession session) {
-		
-		 System.out.println("@@@@@@@@");
-		 System.out.println("@@@@@@@@");
-		 System.out.println("@@@@@@@@");
-		 System.out.println("@@@@@@@@");
+		 String funding_index = request.getParameter("funding_index");
+		 System.out.println("@@@@@@@@1111");
+		 System.out.println("@@@@@@@@2222");
+		 System.out.println("funding_index : " + funding_index);
+		 System.out.println("@@@@@@@@3333");
+		 System.out.println("@@@@@@@@4444");
 		
 		 return "/funding_qna_write";
 	
 	}
 	
-	@RequestMapping("funding_qna.write")
+	@PostMapping("funding_qna.writedo")
 	public String write_qna(HttpServletRequest request, HttpSession session) {
-		 System.out.println("!111111111!!!!!!!!");
-		 System.out.println("!111111111!!!!!!!!");
-		 System.out.println("!111111111!!!!!!!!");
-		 System.out.println("!111111111!!!!!!!!");
-		 System.out.println("!111111111!!!!!!!!");
-		 System.out.println("!111111111!!!!!!!!");
 		  
-	    String funding_indexStr = request.getParameter("funding_index");
+	    String funding_indexStr = request.getParameter("!funding_index");
 	    long funding_index = Long.parseLong(funding_indexStr);
-	    String review_writer = request.getParameter("review_writer");
-	    String review_subject = request.getParameter("review_subject");
-	    String review_content = request.getParameter("review_content");
+	    log.info(funding_indexStr);
+	    String review_writer = request.getParameter("!funding_qna_writer");
+	    log.info(review_writer);
+	    String review_subject = request.getParameter("!funding_qna_subject");
+	    log.info(review_subject);
+	    String review_content = request.getParameter("!funding_qna_content");
+
+	    log.info(review_content);
 	    Funding_qna funding_qna = new Funding_qna(-1, funding_index, review_writer, null, review_content, null, null, null, null, review_subject);
-	    service.write_qna(funding_qna);
-	    //Funding funding = (Funding)session.getAttribute("funding_detail");
 	    
-	    //ModelAndView mv = new ModelAndView("/funding_qna","funding_detail", funding);
-	   //log.info("2222222!!!!!!!!!");
-	   //return mv;
-	    return "redirect:funding_qna.do?funding_index="+funding_index+"#fix_point";
+	    
+	    log.info(funding_qna);
+	    service.write_qna(funding_qna);
+	    
+	   
+	    
+	   return "redirect:funding_qna.do?funding_index="+funding_index+"#fix_point";
 	}
 	
 	@RequestMapping("funding_qna.detail")
