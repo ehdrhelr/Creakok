@@ -206,83 +206,7 @@
     </section>
     <!-- ##### Blog Area End ##### -->
 
-	 <!-- ##### About Area Start ##### -->
-    <section class="about-us-area">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-12 col-lg-5">
-                    <!-- Section Heading -->
-                    <div class="section-heading">
-                        <h2>이런 컨텐츠 어때요?</h2>
-                        <p>다크나이트가 만들어주었으면 하는 컨텐츠를 직접 투표해주세요!</p>
-                    </div>
 
-					<!-- Progress Bar Content Area -->
-                    <div class="alazea-progress-bar mb-50">
-                        <!-- Single Progress Bar -->
-                        <div class="single_progress_bar">
-                            <p>어벤져스 촬영장 방문하기</p>
-                            <div id="bar1" class="barfiller">
-                                <div class="tipWrap">
-                                    <span class="tip"></span>
-                                </div>
-                                <span class="fill" data-percentage="80"></span>
-								
-                            </div>
-							
-                        </div>
-
-                        <!-- Single Progress Bar -->
-                        <div class="single_progress_bar">
-                            <p>고담 썰 풀기</p>
-                            <div id="bar2" class="barfiller">
-                                <div class="tipWrap">
-                                    <span class="tip"></span>
-                                </div>
-                                <span class="fill" data-percentage="70"></span>
-                            </div>
-                        </div>
-
-                        <!-- Single Progress Bar -->
-                        <div class="single_progress_bar">
-                            <p>조커랑 합방하기</p>
-                            <div id="bar3" class="barfiller">
-                                <div class="tipWrap">
-                                    <span class="tip"></span>
-                                </div>
-                                <span class="fill" data-percentage="85"></span>
-                            </div>
-                        </div>
-              
-                    </div>
-                </div>
-				
-				  <div class="col-12 col-lg-6">
-                    <div class="alazea-benefits-area">
-                        <div class="row">
-                            <!-- Single Benefits Area -->
-                            <div class="col-12 col-sm-6" style="margin-left:130px">
-                                <div class="single-benefits-area">
-                                    <img src="img/core-img/like.png" alt="">
-
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-          
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="border-line"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### About Area End ##### -->
 	<!--크리에이터띠 싱단 배너-->
    <section class="subscribe-newsletter-area" style="background-image:linear-gradient(90deg,#fc5230 10%,#2da498 100%);">
         <div class="container">
@@ -519,7 +443,7 @@
 	 <script language="javascript">
 		function f(select){
 			var board_filterBy = select.value;
-			location.href="board_page?&board_filterBy="+board_filterBy+"#fix_point";
+			location.href="board_page?&board_filterBy="+board_filterBy+"&creator_name=${theCreator.creator_name}#fix_point";
 
 		} 
 	</script>

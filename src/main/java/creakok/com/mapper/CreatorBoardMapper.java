@@ -46,8 +46,7 @@ public interface CreatorBoardMapper {
 	void updateSunbun(Board board);
 	// 현재 게시글의 순번에 +1을 해주고 insert한다.
 	void insertAnswer(Board board);
-	/*
-	// 원글(답글도 포함)의 답글을 작성할 때 원글의 level보다 1 증가시킨다.
-	void updateLevel(Board board);
-	*/
+	// 정렬 기능
+	List<Board> getListResultByFilter(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, 
+			@Param("board_filterBy") String board_filterBy, @Param("creator_name") String creator_name);
 }

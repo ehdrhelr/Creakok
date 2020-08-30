@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import creakok.com.domain.Board;
-import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
 import creakok.com.mapper.CreatorBoardMapper;
 import creakok.com.vo.ListResult;
@@ -92,5 +91,12 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	@Override
 	public void insertAnswer(Board board) {
 		mapper.insertAnswer(board);
+	}
+	// 정렬 기능
+	@Override
+	public ListResult getListResultByFilterS(int currentPage, int pageSize, String filterBy, String creator_name) {
+		List<Board> list = (List<Board>)mapper.getListResultByFilter(currentPage, pageSize, filterBy, creator_name);log.info("@@@@@@@@@@@ 222222");
+		int count = mapper.countByCreator(creator_name);
+		return new ListResult(currentPage, count, pageSize, list, filterBy);
 	}
 }
