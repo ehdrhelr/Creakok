@@ -54,13 +54,11 @@
     </div>
 
     <!-- ##### Header Area Start ##### -->
-    <!-- ##### Header Area Start ##### -->
     <header class="header-area">
     <div id="header_div">
     <jsp:include page="creakok_header.jsp" flush="true"/>
     </div>
     </header>
-    <!-- ##### Header Area End ##### -->
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcrumb Area Start ##### -->
@@ -289,7 +287,7 @@
 
     <!-- Footer Bottom Area -->
        
-  <!-- Footer Bottom Area -->
+    <!-- Footer Bottom Area -->
     <div id="footer_div">
     <jsp:include page="creakok_footer.jsp" flush="true"/>
     </div>
@@ -388,6 +386,10 @@
        };
     }
     </script>
+
+    <jsp:include page="Language.jsp" flush="false">
+    <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
+    </jsp:include>
 
 </body>
 

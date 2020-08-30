@@ -373,6 +373,9 @@
     <script src="js/pay/trim.js"></script>
     <script src="js/pay/orderpay.js"></script>
     
+    <jsp:include page="Language.jsp" flush="false">
+    <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
+    </jsp:include>
     
 </body>
 

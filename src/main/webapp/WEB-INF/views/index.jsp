@@ -114,32 +114,12 @@
     <!-- ##### Hero Area End ##### -->
 
     
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <!-- ##### About Area Start ##### -->
     <section class="about-us-area section-padding-100-0">
         <div class="container">
             <div class="row justify-content-between">
 
-             
-                                    
-                                    
-                                    
+                
                 <div class="col-12 col-lg-6 howAbout">
                     <div class="alazea-benefits-area">
                         
