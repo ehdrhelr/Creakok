@@ -236,7 +236,10 @@ public class FundingController {
 						fundingSelected.setFunding_qnaVo(funding_qnaVo_temp);	
 						long qna_totalCount = service.getTotalCount_qna(funding_index);
 						fundingSelected.setFunding_qna_totalCount(qna_totalCount);
-						
+						log.info("445454545454");
+						log.info(fundingSelected.getCreator_name());
+						String creatorProfilContent = service.getCreatorProfilContent(fundingSelected.getCreator_name());
+						fundingSelected.setCreator_profil_content(creatorProfilContent);
 						session.setAttribute("funding_detail", fundingSelected);
 						return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
 						

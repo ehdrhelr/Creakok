@@ -72,7 +72,7 @@ public class ProjectController {
 	   
 	   Funding funding = new Funding(-1, write_creator, write_funding_subject, funding_category_code,
 			   url, content, write_funding_goal, 0, write_funding_wdate, write_funding_edate, 0, 0,
-			   null, null, null, -1, -1, null, null, write_funding_goal);
+			   null, null, null, -1, -1, null, null, write_funding_goal, null);
 
 	    
 	    service.writeFundingProject(funding);

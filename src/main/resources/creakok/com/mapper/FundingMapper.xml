@@ -59,8 +59,13 @@
     <update id="answerEditQna" parameterType="Funding_qna">
     	update FUNDING_QNA set FUNDING_QNA_ANSWER=#{funding_qna_answer}, FUNDING_QNA_ADATE=SYSDATE where FUNDING_QNA_INDEX=${funding_qna_index}
     </update>
- <update id="answerDelete" parameterType="long">
+ 	<update id="answerDelete" parameterType="long">
     	update FUNDING_QNA set FUNDING_QNA_ANSWER=null, FUNDING_QNA_ADATE=null where FUNDING_QNA_INDEX=${funding_qna_index}
     </update>
+    <select id="getCreatorProfilContent" parameterType="string" resultType="string">
+    	select creator_profile_content from CREATOR where CREATOR_NAME=#{creator_name}
+    </select>
+    
+    
     
 </mapper>

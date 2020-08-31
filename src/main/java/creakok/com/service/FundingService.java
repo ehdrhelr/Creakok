@@ -27,5 +27,6 @@ public interface FundingService {
 	void answerQna(Funding_qna funding_qna);
 	void answerEditQna(Funding_qna funding_qna);
 	void answerDelete(long funding_qna_index);
+	String getCreatorProfilContent(String creator_name);
 	
 }

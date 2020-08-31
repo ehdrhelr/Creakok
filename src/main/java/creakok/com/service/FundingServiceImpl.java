@@ -141,6 +141,12 @@ public class FundingServiceImpl implements FundingService {
 		
 	}
 
+	@Override
+	public String getCreatorProfilContent(String creator_name) {
+		String creatorProfilContent = fundingMapper.getCreatorProfilContent(creator_name);
+		return creatorProfilContent;
+	}
+
 	
 
 
