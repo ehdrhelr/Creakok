@@ -125,6 +125,8 @@ public class CreatorBoardController {
 				board_searchName = "#####";
 			}
 		}
+		
+		ListResult listResult = null;
 		session.setAttribute("board_searchName", board_searchName);
 		
 		if (board_filterBy==null) {
@@ -135,10 +137,15 @@ public class CreatorBoardController {
 			} else {
 				board_filterBy = "BOARD_INDEX";
 			}
+			log.info("@@@@@@@ 필터 적용 안된 listResult가져옴");
+			listResult = creatorBoardService.getListResultS(board_cp, board_ps, board_filterBy, creator_name);
+		} else {
+			log.info("@@@@@@@ 필터 적용된 listResult가져옴");
+			log.info("@@@@@@@@@ board_filterBy : " + board_filterBy);
+			listResult = creatorBoardService.getListResultByFilterS(board_cp, board_ps, board_filterBy, creator_name);
 		}
 		
 		session.setAttribute("board_filterBy", board_filterBy);
-		ListResult listResult = creatorBoardService.getListResultS(board_cp, board_ps, board_filterBy, creator_name);
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community");
 		mv.addObject("listResult", listResult);

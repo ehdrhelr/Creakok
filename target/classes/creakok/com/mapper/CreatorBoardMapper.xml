@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="creakok.com.mapper.CreatorBoardMapper">
-	<!-- 계층형 만들었음, 그러나 정렬 기능을 잃음. order by ${board.filterBy}를 뺐기때문에...-->
+	<!-- 계층형 만들었음, 그러나 정렬 기능을 잃음. order by ${board.filterBy}를 뺐기때문에... 그래서 getListResultByFilter를 만들어 주었다. -->
 	<select id="getListResult" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
     	(select * from CREATOR_BOARD order by BOARD_REFER desc, BOARD_SUNBUN asc) aa) 

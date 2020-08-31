@@ -93,11 +93,12 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	public void insertAnswer(Board board) {
 		mapper.insertAnswer(board);
 	}
-
+	// 정렬 기능
 	@Override
-	public void insertS(Board board) {
-		// TODO Auto-generated method stub
-		
+	public ListResult getListResultByFilterS(int currentPage, int pageSize, String filterBy, String creator_name) {
+		List<Board> list = (List<Board>)mapper.getListResultByFilter(currentPage, pageSize, filterBy, creator_name);log.info("@@@@@@@@@@@ 222222");
+		int count = mapper.countByCreator(creator_name);
+		return new ListResult(currentPage, count, pageSize, list, filterBy);
 	}
 
 }

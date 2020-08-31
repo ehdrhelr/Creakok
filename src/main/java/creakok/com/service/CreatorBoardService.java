@@ -36,5 +36,7 @@ public interface CreatorBoardService {
 	public void updateSunbun(Board board);
 	// 현재 게시글의 순번에 +1을 해주고 insert한다.
 	public void insertAnswer(Board board);
+	// 정렬 기능
+	ListResult getListResultByFilterS(int currentPage, int pageSize, String filterBy, String creator_name);
 }
 
