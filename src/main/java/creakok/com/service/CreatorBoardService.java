@@ -10,7 +10,6 @@ import creakok.com.vo.ListResult;
 public interface CreatorBoardService {
 	ListResult getListResultS(int currentPage, int pageSize, String filterBy, String creator_name);
 	Board contentS(long board_index);
-	void insertS(Board board);
 	// 글 작성
 	public int insertBoard(Board board);
 	// 조회수 +1
