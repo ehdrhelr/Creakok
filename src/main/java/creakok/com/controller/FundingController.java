@@ -26,23 +26,19 @@ import lombok.extern.log4j.Log4j;
 public class FundingController {
 	@Autowired
 	private FundingService service;
-	FundingVo fundingVo = new FundingVo();
+	
 	int cp =1;
 	int ps =3;
-	
 	@RequestMapping("funding_list.do")
 	public ModelAndView list(HttpServletRequest request, HttpSession session) {
 		String cpStr = request.getParameter("funding_cp");
 	    String psStr = request.getParameter("funding_ps");
 	    String filterBy = request.getParameter("funding_filterBy");	 
 	    String categoryName= request.getParameter("funding_categoryName");
-
 	    String funding_indexStr = request.getParameter("funding_index");
 	    FundingVo fundingVo = new FundingVo();
-	    
-	    log.info("#############################categoryName: "+categoryName);
-	    //(2) cp 
-	    cp = 1;
+	    //(1) cp 
+	   cp = 1;
 		if(cpStr == null) {
 			Object cpObj = session.getAttribute("funding_cp");
 			if(cpObj != null) {
@@ -159,7 +155,7 @@ public class FundingController {
 		session.setAttribute("funding_categoryName", categoryName);	
 		fundingVo = service.getFundingVo(cp, ps, filterBy, categoryBy);//카테고리 유즈드 리스트가 전부들어감
 		session.setAttribute("funding_categoryNames", fundingVo.getListCategoryUsed());
-	
+		session.setAttribute("fundingVo", fundingVo);
 		
 		if(fundingVo.getList().size() ==0 ) {
 			if(cp>1) {
@@ -191,10 +187,8 @@ public class FundingController {
 					cpStr_qna = cpStr_qna.trim();
 					cp_qna = Integer.parseInt(cpStr_qna);
 				}
-				session.setAttribute("fundingQna_cp", cp_qna);
-					
-		 
-			
+			session.setAttribute("fundingQna_cp", cp_qna);
+			FundingVo fundingVo = (FundingVo) session.getAttribute("fundingVo");
 			
 			if(fundingVo.getList().size() ==0 ) {
 				if(cp>1) {
@@ -290,12 +284,6 @@ public class FundingController {
 	@RequestMapping("funding_qna.writeForm")
 	public String write_qnaForm(HttpServletRequest request, HttpSession session) {
 		 String funding_index = request.getParameter("funding_index");
-		 System.out.println("@@@@@@@@1111");
-		 System.out.println("@@@@@@@@2222");
-		 System.out.println("funding_index : " + funding_index);
-		 System.out.println("@@@@@@@@3333");
-		 System.out.println("@@@@@@@@4444");
-		
 		 return "/funding_qna_write";
 	
 	}
@@ -305,22 +293,11 @@ public class FundingController {
 		  
 	    String funding_indexStr = request.getParameter("!funding_index");
 	    long funding_index = Long.parseLong(funding_indexStr);
-	    log.info(funding_indexStr);
 	    String review_writer = request.getParameter("!funding_qna_writer");
-	    log.info(review_writer);
 	    String review_subject = request.getParameter("!funding_qna_subject");
-	    log.info(review_subject);
 	    String review_content = request.getParameter("!funding_qna_content");
-
-	    log.info(review_content);
 	    Funding_qna funding_qna = new Funding_qna(-1, funding_index, review_writer, null, review_content, null, null, null, null, review_subject);
-	    
-	    
-	    log.info(funding_qna);
 	    service.write_qna(funding_qna);
-	    
-	   
-	    
 	   return "redirect:funding_qna.do?funding_index="+funding_index+"#fix_point";
 	}
 	
@@ -332,11 +309,7 @@ public class FundingController {
 	    long funding_qna_index = Long.parseLong(funding_qna_indexStr);
 	    long funding_index = Long.parseLong(funding_indexStr);
 	    Funding_qna funding_qna = service.getFunding_qna_detail(funding_qna_index);
-	  
 	    Funding funding = (Funding)session.getAttribute("funding_detail");
-	    log.info("333333333");
-	    log.info("funding:"+funding);
-	    
 	   // Funding funding = service.getFunding(funding_index);
 	    session.setAttribute("funding_qna_detail", funding_qna);
 	    ModelAndView mv =  new ModelAndView("/funding_qna_detail", "funding_qna_detail", funding_qna);
@@ -348,7 +321,6 @@ public class FundingController {
 	
 	@RequestMapping("funding_qna.editForm")
 	public ModelAndView edit_qnaForm(HttpServletRequest request, HttpSession session) {
-		
 		Funding_qna funding_qna = (Funding_qna)session.getAttribute("funding_qna_detail");
 		ModelAndView mv =  new ModelAndView("/funding_qna_write_edit", "funding_qna_detail", funding_qna);
 		return mv;
@@ -393,8 +365,6 @@ public class FundingController {
 		long funding_index = Long.parseLong(funding_indexStr);
 		String creator_name = request.getParameter("creator_name");
 		String answer = request.getParameter("answer");
-		log.info("!!!");
-		log.info(creator_name);
 		Funding_qna funding_qna = new Funding_qna(funding_qna_index, -1, null, null, null, null, answer, creator_name, null, null);
 
 		service.answerEditQna(funding_qna);
@@ -408,11 +378,6 @@ public class FundingController {
 		String funding_indexStr = request.getParameter("funding_index");
 		long funding_index = Long.parseLong(funding_indexStr);
 		String creator_name = request.getParameter("creator_name");
-		//String answer = request.getParameter("answer");
-		log.info("!!!");
-		log.info(creator_name);
-		//Funding_qna funding_qna = new Funding_qna(funding_qna_index, -1, null, null, null, null, answer, creator_name, null, null);
-
 		service.answerDelete(funding_qna_index);
 		return "redirect:funding_qna.detail?funding_index="+funding_index+"&funding_qna_index="+funding_qna_index+"#fix_point";
 		
