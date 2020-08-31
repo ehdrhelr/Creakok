@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import creakok.com.domain.Board;
+import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
 import creakok.com.mapper.CreatorBoardMapper;
 import creakok.com.vo.ListResult;
@@ -99,4 +100,5 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 		int count = mapper.countByCreator(creator_name);
 		return new ListResult(currentPage, count, pageSize, list, filterBy);
 	}
+
 }

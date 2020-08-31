@@ -995,12 +995,6 @@
             flex:0 0 70%;!important;
             max-width:63%;!important;
         }
-
-        
-        .stars{
-            background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAABaCAYAAACv+ebYAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDcvMDMvMTNJ3Rb7AAACnklEQVRoge2XwW3bMBSGPxa9NxtIGzTAW8DdRL7o3A0qb+BrdNIm9QAm0G7gbJBMwB5MoVJNUSRFIXGqHwhkmXr68hOPNH9ljOEt9OlNqBs4RlrrSmtdpdZ/Ti0EGnvtUoqTHFunBVCkuk6d6mbi83rggdteSa5THDeB3+UDO9z2inatXFum1roESuAReAB29vp15n2/gRfgZK+/gIuIXLxgrfUO+Bnzn0fom4ic+pvRVNuB/QrQ/RB6A7bwLjN8b985krO5MsKd0ElwJvgk1AteCPdCYWI5/SutddQxRUTU3DOzG4hd01EKqQnZuaLBITUh4F0CeLYm5CDw6PjuFTjaz9+BLwE1I8VO9StwAEoRaUSkseMHO+aqcWq2qwcdfQCOIvIy8dwDV/c/YL6zvWDbnQ3QuH5hltQEreM1dH/n6g28gT8eWLVUqqVKrb+vtGidFkCR6vp+0uLAba8k1/eRFh1ue0W7dv4sqpaSjGnR1Fy8YNWyY8W0aGpO/c1oqu3AKmlxCL0BW3iXGb637xzJ2VwZ4U7oJDgTfBLqBS+Ee6EQeMpULVFHUVOzPC3aNR2lkJotLbr0vtKiqWlMTcNaaXHQ0QfgaGqcaVG1jNLibGcbYyb/eDIlT6bjyZS+51JqtrS4gTfw/wzWqkKrKrU8fQPR6gKAmDKlPM3x1WkBFKmu0xxf3fZR5jnFdbzjv257JbmOdzx22yvadZzjW7e9ol27HWtVkjEtIubiB2u1Y8W0iJhTfzOe6uvAKmlxCL0FX+FdZvjevnMkd3Plgzuh0+A88EmoH7wM7oVC6AaiVdwuI2Z5WrRrOk4BNVtadOl9pUXENIhpWCstDjr6ABwR40yLaDVKi7Od7U1/Z0pzpjNngtNiaM2WFj8++A+motm0NTqjmwAAAABJRU5ErkJggg==") repeat-x 0 0;
-            width:150px;
-        }
     </style>
     
     <style>
@@ -1057,14 +1051,10 @@
 
 
 
-<script src="/js/summernote/summernote-lite.js"></script>
-<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+
 
 <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
+  
 
 
 
@@ -1087,144 +1077,9 @@
 
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
-
-        <!-- ***** Top Header Area ***** -->
-        <div class="top-header-area">
-            <div class="container" style="color:#666666!important;">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="top-header-content d-flex align-items-center justify-content-between">
-                            <!-- Top Header Content -->
-                            <div class="top-header-meta">
-  
-                            </div>
-
-                            <!-- Top Header Content -->
-                            <div class="top-header-meta d-flex">
-                                <div >
-                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;">프로젝트 만들기</button>
-                                </div>
-                                <!-- Language Dropdown -->
-                                <div class="language-dropdown">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#666666">Language</button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">USA</a>
-                                            <a class="dropdown-item" href="#">UK</a>
-                                            <a class="dropdown-item" href="#">Bangla</a>
-                                            <a class="dropdown-item" href="#">Hindi</a>
-                                            <a class="dropdown-item" href="#">Spanish</a>
-                                            <a class="dropdown-item" href="#">Latin</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <c:if test="${empty member}">
-                                  <!-- Login -->
-                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
-                                  <!-- Sign up -->
-                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
-                                </c:if>
-                                <c:if test="${!empty member}">
-                                  <!-- Login -->
-                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
-                                  
-                                  <!-- My Page -->
-                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
-                                  
-                                  <!-- Cart -->
-                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
-                                </c:if> 
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ***** Navbar Area ***** -->
-        <div class="alazea-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="alazeaNav">
-
-                        <!-- Nav Brand -->
-                        <a href="index.html" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu" style="color:#666666!important;">
-
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Navbar Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a href="index.html">FUNDING</a></li>
-                                    <li><a href="shop.html">GOODS</a></li>
-                                    <li><a href="#">COMMUNITY</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html" >Home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="shop.html">Shop</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="shop-details.html">Shop Details</a></li>
-                                                    <li><a href="cart.html">Shopping Cart</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="portfolio.html">Portfolio</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="`gle-portfolio.html">Portfolio Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="blog.html">Blog</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-post.html">Blog Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="shop.html">ABOUT</a></li>
-                                  
-                                </ul>  
-
-                                <!-- Search Icon -->
-                                <div id="searchIcon" >
-                                    
-                                    <i aria-hidden="true"><img src="img/core-img/search.png"></i>
-                                </div>
-
-                            </div>
-                            <!-- Navbar End -->
-                        </div>
-                    </nav>
-
-                    <!-- Search Form -->
-                    <div class="search-form">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
-                            <button type="submit" class="d-none"></button>
-                        </form>
-                        <!-- Close Icon -->
-                        <div class="closeIcon"><i aria-hidden="true"><img src="img/core-img/search.png"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="header_div">
+    <jsp:include page="creakok_header.jsp" flush="true"/>
+    </div>
     </header>
     <!-- ##### Header Area End ##### -->
 
@@ -1233,142 +1088,100 @@
     <br/>
     <br/><br/><br/><br/><br/><br/><br/>
     
-        
     
-    <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
- 					<h3 style="text-align:center;margin-bottom:40px;font-size:18pt"> 리뷰 작성하기</h3>
-   
-          
-          
-          
-	    <div class="submit_a_review_area mt-50" style="width: 60%; margin: auto;" >
-	    	<form method="post" action="goods_review_insert.do" onsubmit="return goWrite()">
-                                   <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group d-flex align-items-center">
-                                                    <span class="mr-15">별점 :</span>
-                                                    <div class="stars">
-                                                        <input type="radio" name="star" class="star-1" id="star-1" onclick="starcheck()" value="1">
-                                                        <label class="star-1" for="star-1">1</label>
-                                                        <input type="radio" name="star" class="star-2" id="star-2" onclick="starcheck()" value="2">
-                                                        <label class="star-2" for="star-2">2</label>
-                                                        <input type="radio" name="star" class="star-3" id="star-3" onclick="starcheck()" value="3">
-                                                        <label class="star-3" for="star-3">3</label>
-                                                        <input type="radio" name="star" class="star-4" id="star-4" onclick="starcheck()" value="4">
-                                                        <label class="star-4" for="star-4">4</label>
-                                                        <input type="radio" name="star" class="star-5" id="star-5" onclick="starcheck()" value="5">
-                                                        <label class="star-5" for="star-5">5</label>
-                                                        <input type="hidden" value="1" id="star_result" name="review_rating">
-                                                        <span></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        
-                                        </div>  
-		    				      <div>
-                                     <label for="reviewer_name">작성자</label>&nbsp;&nbsp;
-                                    <input name="review_writer" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="reviewer_name" 
-                                    placeholder="작성자" value="" required>
-                                    <label for="goods_name">제품명</label>&nbsp;&nbsp;
-                                    <input name="goods_name" style="display:inline-block;width:30%" class="form-control" id="goods_name" 
-                                    placeholder="제품명" value="" required>
+    
+        <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
+                    <h3 style="text-align:center;margin-bottom:40px;font-size:18pt">굿즈 판매하기</h3>
+        <div style="width: 60%; margin: auto;" >
+            <form method="post" action="/fundingwrite.do">
+                             <div >
+                                    <input name="write_creator" style="display:block;"class="form-control" id="first_name" 
+                                    placeholder="크리에이터" value="" required>
                                 </div>
                                 
-                                 <div style="margin-top:10px">
-                                    <label for="review_subject" style="margin-right:2%">제목</label>
-                                    <input name="review_subject" style="display:inline-block;width:90%" class="form-control" id="review_subject" 
-                                   placeholder="제목" required>
-                                   <input type="hidden" name="goods_index" value="${goods_index}"/>
+                                 <div >
+                                    <input  name="write_funding_goal"  style="display:inline-block;width:50%;margin-top:10px;" class="form-control" id="first_name" 
+                                     placeholder="가격" required>
+                                    <input type="text"  name="write_funding_wdate"  style="display:inline-block;width:23.3%;margin-top:10px;margin-left:5px;" class="form-control" id="first_name" 
+                                     placeholder="재고량" required>
+                                 
                                 </div>
                                 
-				<br>
-				<textarea id="summernote" name="review_content"></textarea>
-				
-				<p style="width:100%;text-align:center; margin-top:20px;">
-    				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" />
-    				<a href="goods_review.do?review_cp=1&goods_index=${goods_index}#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px" value="목록으로"/></a>
-				
-                </p>			 		
-			</form>
-		</div>
+                                 <div >
+                                    <input name="write_funding_subject" style="display:inline-block;width:74.5%"class="form-control" id="first_name" 
+                                   placeholder="판매할 제품명" required>
+                                    <select name="funding_category_code"style="display:inline-block; width:24%; margin-left:5px;margin-top:10px; padding:5px"
+                                    onChange="text.value=funding_category_code[selectedIndex].value">
+                                        <option value="">카테고리</option>
+                                        <option value="200">테크/가전</option>
+                                        <option value="201">패션/잡화</option>  
+                                    </select>           
+                                </div>
+                <br>
+                <textarea id="summernote" name="content"></textarea>
+                <label for="phonenumber"style="display:inline-block;">대표 이미지 첨부 :  </label>
+                <input type="file" name="write_funding_repre_pic" style="display:inline-block;margin-top:10px; width:85%;padding:2px;"class="form-control" id="first_name" 
+                                    onkeydown="goWrite(this.form)" required>    
+                <p style="width:100%;text-align:center; margin-top:20px;">
+                <input id="subBtn" type="button" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px" value="프로젝트 만들기" onclick="goWrite(this.form)"/>
+                <input id="subBtn" type="reset"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px"value="취소하기" onclick="goWrite(this.form)"/>
+                </p>                    
+            </form>
+        </div>
     </div>
-    
-                 
-    
-    <script>
-      $('#summernote').summernote({
-        placeholder: 'Hello stand alone ui',
-        tabsize: 2,
-      minHeight: 370,
-      maxHeight: null,
-      focus: true,
-        toolbar: [
-          ['font', ['bold', 'underline', 'clear']],
-          ['insert', ['picture']]
-        ]
-      });
-    </script>
-      
+
+     
       <script>
-      function starcheck(){
-    	  var star = $("input[name='star']:checked").val();
-    	  var star_result = $("#star_result").val(star);
-    	  //var num = Number(result);
-    	  //console.log(typeof(num));
-          //alert(star);
-      }
-function goWrite() {
-	var star = $("input[name='star']:checked").val();
-	var summernote = $("#summernote").val();
-	if (star == null){
-		alert("별점을 체크해주세요");
-		return false;
-	}
-
-	if(summernote == ''){
-		alert("내용을 입력해주세요");
-		return false;
-	}
-	
-	if(summernote != null && star != null){
-			frm.submit();
-		    location.href="goods_review.do?review_cp=1&goods_index="+${goods_index}+"&category_name="+${category_name};
-		    return true;
-	}
-
+function goWrite(frm) {
+    var write_creator = frm.write_creator.value;
+    var write_funding_goal = frm.write_funding_goal.value;
+    var write_funding_wdate = frm.write_funding_wdate.value;
+    var write_funding_edate = frm.write_funding_edate.value;
+    var write_funding_subject = frm.write_funding_subject.value;
+    var write_funding_repre_pic = frm.write_funding_repre_pic.value;
+    
+    if (write_creator.trim() == ''){
+        alert("크리에이터명을 입력해주세요");
+        return false;
+    }
+    if(write_funding_goal.trim() == ''){
+        alert("목표금액을 입력해주세요");
+        return false;
+    }
+    if(write_funding_wdate.trim() == ''){
+        alert("펀딩 시작날짜를 입력해주세요");
+        return false;
+    }
+    if(write_funding_edate.trim() == ''){
+        alert("펀딩 종료날짜를 입력해주세요");
+        return false;
+    }
+    if(write_funding_subject.trim() == ''){
+        alert("펀딩받을 프로젝트명을 입력해주세요");
+        return false;
+    }
+    if(write_funding_repre_pic.trim() == ''){
+        alert("펀딩 대표사진을 입력해주세요");
+        return false;
+    }
+    
+    
+    frm.submit();
 }
 </script>
   
       
-  <!-- Footer Bottom Area -->
-        <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="border-line"></div>
-                    </div>
-                    <!-- Copywrite Text -->
-                    <div class="col-12 col-md-6" >
-                        <div class="copywrite-text"style="background-color: whitesmoke !important; ">
-                            <img src="img/core-img/creakok.png" alt=""><br/>
-                            <p>creakok@gmail.com  |  02.707.1480<br/>
-                                평일 10:00~17:00 (점심시간 12:00~13:00)<br/>
-                                토/일/공휴일 휴무</p>
-                            <p>(주)크리콕 | 소속 : 비트캠프 신촌센터  | 호스팅 제공자 : (주)CJ ENM<br/>
-                                서울 마포구 백범로 23 구프라자 3층</p>
-                            <p>ⓒ CREAKOK All rights reserved.</p>
-                        </div>
-                    </div>
-                    <!-- Footer Nav -->
-                </div>
-            </div>
-        </div>
-
-<!-- Footer Bottom Area End ##### -->
+    <!-- Footer Bottom Area -->
+    <div id="footer_div">
+    <jsp:include page="creakok_footer.jsp" flush="true"/>
+    </div>
+    <!-- Footer Bottom Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
+   
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    
     <!-- Popper js -->
     <script src="js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap js -->
@@ -1377,6 +1190,53 @@ function goWrite() {
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    <script src="/js/summernote/summernote-lite.js"></script>
+<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+    <script>
+   // $(document).ready(function(){
+      $('#summernote').summernote({
+        placeholder: '펀딩받고 싶은 컨텐츠의 기획내용을 입력해주세요.',
+        tabsize: 2,
+        minHeight: 370,
+        maxHeight: null,
+        callbacks: {    //여기 부분이 이미지를 첨부하는 부분
+            onImageUpload : function(files) {
+                uploadSummernoteImageFile(files[0],this);
+            }
+        },
+        focus: true,
+        toolbar: [
+              ['style', ['style']],
+              ['font', ['bold', 'underline', 'clear']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['table', ['table']],
+              ['insert', ['link', 'picture', 'video']],
+              ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+      });
+      
+      function uploadSummernoteImageFile(file, editor){
+          data = new FormData();
+          data.append("file_detail_pic", file);
+          $.ajax({
+                data : data,
+                type : "POST",
+                url : "/uploadSummernoteImageFile_goods",
+                contentType : false,
+                processData : false,
+                success : function(url){
+                    $(editor).summernote('insertImage', url);
+                }
+          });
+      }
+ //   });
+    </script>
+    
+    <jsp:include page="Language.jsp" flush="false">
+    <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
+    </jsp:include>
+    
 </body>
 
 </html>

@@ -5,18 +5,6 @@
 <html lang="en">
 
 <head>
-    <script type="text/javascript">
-    var xmlHttpHeader = new XMLHttpRequest();
-    xmlHttpHeader.open("GET", "creakok_header.do", true); // true for asynchronous
-    xmlHttpHeader.send();
-    
-    xmlHttpHeader.onreadystatechange = function() {
-         if (xmlHttpHeader.readyState == 4 && xmlHttpHeader.status == 200) {
-             document.getElementById("header_div").innerHTML= xmlHttpHeader.responseText;
-         }
-    };
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,6 +57,7 @@
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
     <div id="header_div">
+    <jsp:include page="creakok_header.jsp" flush="true"/>
     </div>
     </header>
     <!-- ##### Header Area End ##### -->
@@ -343,7 +332,7 @@
                             <p style="text-align:center;width:100%;"> 현재 판매중인 굿즈가 없습니다.</p>
                           </c:if>
                           
-                          
+                            <c:set var="listCount" value="0"/>
                             <c:forEach var="goods" items="${goods.list}" >      
                                 <!-- Single Product Area -->
                                 <div class="col-12 col-sm-6 col-lg-4">
@@ -382,7 +371,7 @@
                                                 <a href="#" class="wishlist-btn" onclick="testhcbae('${goods.goods_index}')">
                                                     <i class="goods_list_like icon_heart_alt"></i>
                                                 </a>
-                                                <a href="cart.html" class="add-to-cart-btn">장바구니에 담기</a>
+                                                <a href="#" class="add-to-cart-btn" onclick="addCart('${listCount}')">장바구니에 담기</a>
                                                 <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
                                             </div>
                                          </div>   
@@ -396,6 +385,7 @@
                                             </div>                                      
                                         </div>                         
                                     </div>
+                            <c:set var="listCount" value="${listCount + 1}"/>
                             </c:forEach>
                             
                             
@@ -436,18 +426,8 @@
     <!-- ##### Shop Area End ##### -->
 
     <!-- Footer Bottom Area -->
-    <script type="text/javascript">
-    var xmlHttpFooter = new XMLHttpRequest();
-    xmlHttpFooter.open("GET", "creakok_footer.do", true); // true for asynchronous
-    xmlHttpFooter.send();
-    
-    xmlHttpFooter.onreadystatechange = function() {
-         if (xmlHttpFooter.readyState == 4 && xmlHttpFooter.status == 200) {
-             document.getElementById("footer_div").innerHTML= xmlHttpFooter.responseText;
-         }
-    };
-    </script>
     <div id="footer_div">
+    <jsp:include page="creakok_footer.jsp" flush="true"/>
     </div>
     <!-- Footer Bottom Area End ##### -->
 
@@ -499,7 +479,49 @@
     }
     makeGoodsLikeList();
 </script>
-                                                    
+<script type="text/javascript">
+function addCart(count){
+    let goods_index_list = [];
+    let goods_category_code_list = [];
+    let goods_name_list = [];
+    let goods_repre_pic_list = [];
+    let unit_price_list = [];
+
+    <c:forEach var="goods" items="${goods.list}" >
+        goods_index_list.push('${goods.goods_index}');
+        goods_category_code_list.push('${goods.goods_category_code}');
+        goods_name_list.push('${goods.goods_name}');
+        goods_repre_pic_list.push('${goods.goods_repre_pic}');
+        unit_price_list.push('${goods.goods_price}');
+    </c:forEach>
+
+    let formData = new FormData();
+    formData.append('member_email', '${member.member_email}');
+    formData.append('goods_index', goods_index_list[count]);
+    formData.append('goods_category_code', goods_category_code_list[count]);
+    formData.append('goods_name', goods_name_list[count]);
+    formData.append('goods_repre_pic', goods_repre_pic_list[count]);
+    formData.append('unit_price', unit_price_list[count]);
+    formData.append('unit_count', 1);
+
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+             //console.log("#####:"+xmlHttp.responseText);
+             if(xmlHttp.responseText=="add_ok") {
+                 alert('상품을 장바구니에 담았습니다.');
+             }
+         }
+    };
+    xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
+    xmlHttp.send(formData);
+}
+
+</script>                                              
+             
+    <jsp:include page="Language.jsp" flush="false">
+    <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
+    </jsp:include>
                                                     
 </body>
 

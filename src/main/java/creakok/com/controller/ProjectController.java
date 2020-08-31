@@ -50,7 +50,6 @@ public class ProjectController {
 		return "fundingwrite";
 	}
 	
-	
 	@RequestMapping("/fundingwrite.do")
 	public ModelAndView fundingwrite(HttpServletRequest request, HttpSession session, @RequestParam MultipartFile write_funding_repre_pic) {
 		
@@ -73,19 +72,19 @@ public class ProjectController {
 	   
 	   Funding funding = new Funding(-1, write_creator, write_funding_subject, funding_category_code,
 			   url, content, write_funding_goal, 0, write_funding_wdate, write_funding_edate, 0, 0,
-			   null, null, null, -1, -1, null);
+			   null, null, null, -1, -1, null, null, write_funding_goal);
 
 	    
 	    service.writeFundingProject(funding);
 		return new ModelAndView("/index", "", null);
 	}
 	
-	@RequestMapping("/goodswrite_form.do")
-	public String goodswrite() {
+	@RequestMapping("/goods_project_write_form.do")
+	public String goods_project_write_form() {
 		
-		return "goodswrite";
+		return "goods_project_write";
 	}
-	
+
 	@PostMapping(value="/uploadSummernoteImageFile")
 	@ResponseBody
 	public String uploadSummernoteImageFile(@RequestParam("file_detail_pic") MultipartFile multipartFile) {
@@ -105,9 +104,31 @@ public class ProjectController {
 		
 			e.printStackTrace();
 		}
-	
+
 		String str = "/summernoteImage/"+savedFileName;
 		return str;
-	}
+	}   
+	@PostMapping(value="/uploadSummernoteImageFile_goods")
+	@ResponseBody
+	public String uploadSummernoteImageFile_goods(@RequestParam("file_detail_pic") MultipartFile multipartFile) {
+		String fileRoot = Path.FILE_STORE_GOODS;	//저장될 외부 파일 경로
+		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
+		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자			
+		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
+		
+		File targetFile = new File(fileRoot + savedFileName);	
+		
+		try {
+			InputStream fileStream = multipartFile.getInputStream();
+			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
 	
-}
+		} catch (IOException e) {
+			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
+		
+			e.printStackTrace();
+		}
+
+		String str = "/summernoteImageGoods/"+savedFileName;
+		return str;
+	}
+}	

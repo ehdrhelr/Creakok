@@ -5,18 +5,6 @@
 <html lang="en">
 
 <head>
-    <script type="text/javascript">
-    var xmlHttpHeader = new XMLHttpRequest();
-    xmlHttpHeader.open("GET", "creakok_header.do", true); // true for asynchronous
-    xmlHttpHeader.send();
-    
-    xmlHttpHeader.onreadystatechange = function() {
-         if (xmlHttpHeader.readyState == 4 && xmlHttpHeader.status == 200) {
-             document.getElementById("header_div").innerHTML= xmlHttpHeader.responseText;
-         }
-    };
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,6 +56,7 @@
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
     <div id="header_div">
+    <jsp:include page="creakok_header.jsp" flush="true"/>
     </div>
     </header>
     <!-- ##### Header Area End ##### -->
@@ -101,7 +90,8 @@
                         <c:choose>
                         
                            <c:when test="${funding_categoryName=='전체보기'}">
-                            <a class="hcbae-nav nav-link active" data-toggle="tab" href="funding_list.do?funding_categoryBy=전체보기" role="tab">
+                            <a class="hcbae-nav nav-link active" data-toggle="tab" href="#"
+                            onclick="location.href='funding_list.do?funding_categoryName=전체보기'"  role="tab">
                                                                 전체보기
                              </a>
                              </c:when>
@@ -112,7 +102,8 @@
                         
                         
                        <li class="nav-item">
-                            <a class="hcbae-nav nav-link" data-toggle="tab" href="funding_list.do?funding_categoryName=전체보기" role="tab">
+                            <a class="hcbae-nav nav-link" data-toggle="tab" href="#"
+                            onclick="location.href='funding_list.do?funding_categoryName=전체보기'"  role="tab">
                                                                 전체보기
                              </a>
                              </li>
@@ -124,13 +115,13 @@
                              <c:choose>
                                   <c:when test="${categoryNames==funding_categoryName}">
                                      <a class="hcbae-nav nav-link active" data-toggle="tab" 
-                                     href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
+                                     href="#" role="tab" onclick="location.href='funding_list.do?funding_categoryName=${categoryNames}'">
                                          ${categoryNames}
                                          </a>
                                    </c:when>
                               <c:otherwise>
                                      <a class="hcbae-nav nav-link" data-toggle="tab" 
-                                     href="funding_list.do?funding_categoryName=${categoryNames}" role="tab">
+                                       href="#" role="tab" onclick="location.href='funding_list.do?funding_categoryName=${categoryNames}'">
                                         ${categoryNames}
                                      </a>
                                  </c:otherwise>
@@ -143,6 +134,12 @@
             </div>
         </div>
     </div>
+    
+    <script>
+       function f(){
+    	   
+       }
+    </script>
     <!-- ##### Breadcrumb Area End ##### -->
 
     <!-- ##### Shop Area Start ##### -->
@@ -154,7 +151,7 @@
                     <div class="shop-sorting-data d-flex flex-wrap align-items-center justify-content-between">
                         <!-- Shop Page Count -->
                         <div class="shop-page-count">
-                            <p>Showing 1–9 of 72 results</p>
+                            <p>Showing 1–${fundingVo.pageSize} of ${fundingVo.totalCount} results</p>
                         </div>
                         <!-- Search by Terms -->
                        
@@ -251,7 +248,7 @@
                                         <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
                                             </span></a>
                                   
-                                                 <a href="funding_list.do?funding_index=${fundingVo.funding_index}">
+                                                 <a href="funding_detail.do?funding_index=${fundingVo.funding_index}">
                                 
                                                      <img src="${fundingVo.funding_repre_pic}" alt="">
                                                 </a>
@@ -259,7 +256,7 @@
                                     <div class="CommonCard_info__1f4kq">
                                     <div class="RewardProjectCard_info__3JFub">
                                         <div class="RewardProjectCard_infoTop__3QR5w">
-                                        <a href="funding_list.do?funding_index=${fundingVo.funding_index}" class="CardLink_link__1k83H">
+                                        <a href="funding_detail.do?funding_index=${fundingVo.funding_index}" class="CardLink_link__1k83H">
                                             <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
                                                 <strong>${fundingVo.funding_subject}</strong>
                                             </p>
@@ -353,18 +350,8 @@
     <!-- ##### Shop Area End ##### -->
 
     <!-- Footer Bottom Area -->
-    <script type="text/javascript">
-    var xmlHttpFooter = new XMLHttpRequest();
-    xmlHttpFooter.open("GET", "creakok_footer.do", true); // true for asynchronous
-    xmlHttpFooter.send();
-    
-    xmlHttpFooter.onreadystatechange = function() {
-         if (xmlHttpFooter.readyState == 4 && xmlHttpFooter.status == 200) {
-             document.getElementById("footer_div").innerHTML= xmlHttpFooter.responseText;
-         }
-    };
-    </script>
     <div id="footer_div">
+    <jsp:include page="creakok_footer.jsp" flush="true"/>
     </div>
     <!-- Footer Bottom Area End ##### -->
 
@@ -379,6 +366,11 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+    <jsp:include page="Language.jsp" flush="false">
+    <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
+    </jsp:include>
+    
 </body>
 
 </html>

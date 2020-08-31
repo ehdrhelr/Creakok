@@ -3,6 +3,7 @@ package creakok.com.domain;
 import java.sql.Date;
 import java.util.List;
 
+import creakok.com.vo.Funding_qnaVo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,5 +30,8 @@ public class Funding {
 	private double percentage;
 	private long restdays; 
 	private List<Funding> listrelatedFunding;
+	private Funding_qnaVo funding_qnaVo;
+	private long funding_qna_totalCount;
+	//private List<Funding_qna> funding_qna;
 	
 }

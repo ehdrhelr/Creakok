@@ -41,6 +41,13 @@
 	</filter-mapping>
 
 
+    <context-param>
+        <param-name>enumServletContextConfig</param-name>
+        <param-value>creakok.com.domain.IdxLang</param-value>
+    </context-param>
+    <listener>
+        <listener-class>creakok.com.domain.EnumContextListener</listener-class>
+    </listener>
 
 		
 	<servlet-mapping>

@@ -22,7 +22,6 @@ public interface CreatorBoardService {
 	public Creator getCreator(String creator_name);
 	// 특정 글 삭제
 	void deleteBoard(long board_index);
-
 	// 특정 글 가져오기
 	Board getBoard(long board_index);
 	// 글 검색하기 
@@ -38,6 +37,5 @@ public interface CreatorBoardService {
 	public void insertAnswer(Board board);
 	// 정렬 기능
 	ListResult getListResultByFilterS(int currentPage, int pageSize, String filterBy, String creator_name);
-
 }
 

@@ -17,5 +17,7 @@ public class Funding_qna {
 	private String funding_qna_content;
 	private Date funding_qna_wdate;
 	private String funding_qna_answer;
+	private String funding_qna_answer_writer;
 	private Date funding_qna_adate;
+	private String funding_qna_subject;
 }
