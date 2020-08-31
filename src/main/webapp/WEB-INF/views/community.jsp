@@ -276,12 +276,12 @@
 					<form action="board_search#fix_point" name="check_into"
 						method="get">  
 						<ul class="clearfix">
-							<li><span>분류 : </span> 
+							<li><input type="hidden" name="board_cp" value=1></li> 
+							<li><span>분류 : </span>
 							<select name="board_c_code" id="store_code" onChange="text.value=c_code[selectedIndex].value" style='height:30px; margin-bottom:3px;'>
 									<option value="MEMBER_NAME">작성자</option>
 									<option value="BOARD_SUBJECT">글제목</option>
-							</select>
-
+							</select>							
 							<li>
 								<input type="text" name="board_searchName" style='height:30px; margin-bottom:3px;'
 									title="검색" required placeholder="Search" ma	xlength="20">
@@ -338,7 +338,6 @@
         </tr>
         <tr>
           <td colspan="3" align="center">
-          	
          	<c:if test="${empty listResult.board_searchName}">
             <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
                 	<a href="board_page?board_cp=${i}#fix_point">
@@ -357,7 +356,7 @@
 			</c:if>
             <c:if test="${!empty listResult.board_searchName}"> 
             <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                	<a href="board_search?board_cp=${i}#fix_point">
+                	<a href="board_search?board_cp=${i}&board_c_code=${listResult.board_c_code}&board_searchName=${listResult.board_searchName}#fix_point">
                 <c:choose> 
                 <c:when test="${i==listResult.currentPage}">
                     <strong>${i}</strong>
