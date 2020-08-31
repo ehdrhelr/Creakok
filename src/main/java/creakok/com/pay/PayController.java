@@ -49,5 +49,4 @@ public class PayController {
 		log.info("!!!!!!!!!!!!!!!!!!!"+funding_payinfo);
 		return new ModelAndView("funding_detail_pay", "funding_payinfo", funding_payinfo);
 	}
-	
 }

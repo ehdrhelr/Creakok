@@ -299,8 +299,15 @@
 			                  	
 			                  	var effect = document.getElementById('qty'); 
 		                  		var qty = effect.value; 
-			                  	location.href="goods_order.do?price_amount="+price_amount+"&product_name="+product_name+"&product_price="+product_price+"&qty="+qty;
-		                  	}
+		                  		if('${member.member_email}' == '') {
+		                  			alert('로그인 해주세요');
+		                  			location.href="member_login.do";
+		                            return false;
+		                  		}
+		                  		if('${member.member_email}' != '') {
+		                  			location.href="goods_order.do?price_amount="+price_amount+"&product_name="+product_name+"&product_price="+product_price+"&qty="+qty;	
+		                  		}
+		                      }
                        </script>         
             
             
@@ -409,7 +416,7 @@
                 <p style="width:100%;text-align:center;margin-top:10px">
                      <a href="goods_review.do?review_cp=1&review_ps=5&goods_index=${one_review.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>목록</a>
                      <c:if test="${member.member_name == one_review.member_name}">
-                        <a href="goods_review_update_form.do?goods_review_index=${one_review.goods_review_index}&goods_index=${one_review.goods_index}&review_rating=${one_review.goods_review_rating}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>수정</a>
+                        <a href="goods_review_update_form.do?goods_review_index=${one_review.goods_review_index}&goods_index=${one_review.goods_index}&review_rating=${one_review.goods_review_rating}#fix_point" style="background-color:black; color:white; width:130px; padding:3px">수정</a>
                         <a href="goods_review_delete.do?goods_review_index=${one_review.goods_review_index}&goods_index=${one_review.goods_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>삭제</a>
                      </c:if>
                     
@@ -494,7 +501,7 @@
                 
                 
                 <c:if test="${empty four_goods}">
-                       <p style="text-align:center;width:100%;"> 관련 굿즈가 없습니다.</p>
+                       <p style="text-align:center;width:100%;margin-bottom:10%"> 관련 굿즈가 없습니다.</p>
                 </c:if>
                 
                 <c:forEach items="${four_goods}" var="goods_related">

@@ -298,6 +298,36 @@ public class GoodsController {
 		mv.addObject("payInfo", payInfo);	
 		
 		return mv;
+	} 
+	@RequestMapping("goods_pay_success.do")
+	public ModelAndView goods_pay_success(HttpServletRequest request) {
+		String success_num = request.getParameter("success_num"); //고유ID
+		String success_id = request.getParameter("success_id"); //상점 거래ID
+		String success_amount = request.getParameter("success_amount"); //결제 금액 
+		String success_card_num = request.getParameter("success_card_num"); //카드 승인번호
+		
+		
+		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&고유 ID: "+success_num);
+		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&상점 거래ID: "+success_id);
+		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&결제 금액: "+success_amount);
+		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&success_card_num: "+success_card_num);
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("pay_success");
+		mv.addObject("success_num", success_num);	
+		
+		return mv;
+	}	
+	@RequestMapping("goods_pay_fail.do")
+	public ModelAndView goods_pay_fail(HttpServletRequest request) {
+		String fail_msg = request.getParameter("error_msg");
+		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&fail_msg: "+fail_msg);
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("pay_fail");
+		mv.addObject("fail_msg", fail_msg);	
+		
+		return mv;
 	}
 	@RequestMapping("goods_review.do")
 	public String goods_review(HttpServletRequest request, HttpSession session) {

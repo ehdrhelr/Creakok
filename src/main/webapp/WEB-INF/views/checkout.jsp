@@ -64,7 +64,7 @@
 
 
     <!-- ##### Checkout Area Start ##### -->
-    <div class="checkout_area mb-100">
+    <div class="checkout_area">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-12">
@@ -74,11 +74,11 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="first_name">이름 *</label>
-                                    <input  name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
+                                    <input  name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="${member.member_name}" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="email_address">이메일 주소</label>
-                                    <input  name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
+                                    <input  name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="${member.member_email}" readonly>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="phone_number">연락처 *</label>

@@ -292,7 +292,14 @@
 			                  	
 			                  	var effect = document.getElementById('qty'); 
 		                  		var qty = effect.value; 
-			                  	location.href="goods_order.do?price_amount="+price_amount+"&product_name="+product_name+"&product_price="+product_price+"&qty="+qty;
+		                  		if('${member.member_email}' == '') {
+		                  			alert('로그인 해주세요');
+		                  			location.href="member_login.do";
+		                            return false;
+		                  		}
+		                  		if('${member.member_email}' != '') {
+		                  			location.href="goods_order.do?price_amount="+price_amount+"&product_name="+product_name+"&product_price="+product_price+"&qty="+qty;	
+		                  		}
 		                  	}
                        </script>         
             
@@ -494,7 +501,7 @@
                 
                 
                 <c:if test="${empty four_goods}">
-                       <p style="text-align:center;width:100%;"> 관련 굿즈가 없습니다.</p>
+                       <p style="text-align:center;width:100%;margin-bottom:10%"> 관련 굿즈가 없습니다.</p>
                 </c:if>
                 
                 <c:forEach items="${four_goods}" var="goods_related">

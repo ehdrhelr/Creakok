@@ -31,12 +31,14 @@ IMP.request_pay({
         msg += '상점 거래ID : ' + rsp.merchant_uid;
         msg += '결제 금액 : ' + rsp.paid_amount;
         msg += '카드 승인번호 : ' + rsp.apply_num;
+        
+        location.href="goods_pay_success.do?success_num="+rsp.imp_uid+"&success_id="+rsp.merchant_uid+"&success_amount="+rsp.paid_amount+"&success_card_num="+rsp.apply_num;
     } else {
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
+        
+        location.href="goods_pay_fail.do?error_msg="+rsp.error_msg;
     }
-
-    alert(msg);
 });
 </script>
   </body>
