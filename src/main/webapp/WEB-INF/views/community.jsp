@@ -340,7 +340,7 @@
           <td colspan="3" align="center">
          	<c:if test="${empty listResult.board_searchName}">
             <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                	<a href="board_page?board_cp=${i}#fix_point">
+                	<a href="board_page?board_cp=${i}&board_filterBy=${listResult.board_filterBy}#fix_point">
                 <c:choose> 
                 <c:when test="${i==listResult.currentPage}">
                     <strong>${i}</strong>
