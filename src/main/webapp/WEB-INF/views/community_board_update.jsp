@@ -11,21 +11,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-   
     
-    
-      <!--텀블벅추가-->
-      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-      <meta name="format-detection" content="telephone=no">
+	<!--텀블벅추가-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
 
 
-  <meta name="apple-mobile-web-app-title" content="tumblbug">
-  <meta name="application-name" content="tumblbug">
+ 	<meta name="apple-mobile-web-app-title" content="tumblbug">
+  	<meta name="application-name" content="tumblbug">
 
+      <!-- Title -->
+    <title>CREAKOK</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Core Stylesheet -->
+ 	<link rel="stylesheet" href="css/style.css">
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+    <!-- BOTO TEST -->
+    <meta name="description" content="Boto Photo Studio HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    
-    
-    
+    <!-- Stylesheets -->
+ 	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
+	<link rel="stylesheet" href="css/css_boto/slick.css"/>
+  
+    <!-- Main Stylesheets -->
+	<link rel="stylesheet" href="css/css_boto/style.css"/>
+	
+	<!-- hcbae Stylesheets -->
+    <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
+    <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
+    <link rel="stylesheet" href="css/hcbae_css.css">
+
+	<script src="/js/summernote/summernote-lite.js"></script>
+	<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+
+	<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
      <style data-styled="etlKsY QGKgG jOcSCe iSuAdB jDMeTv MskhC fMekoE fbsOED hLwNNy cAHVaf jkgXDu gMdHoi hbKGuE iDsnca cLNJqs iJpZic fWpQcH zoWUI bgEfGq irjBzn dgBlAy hGAcLm jLeKfP jKakao uEieK grrCSr gqtUOr iWoXIb ijDFDl bKTrQD gVuNGp gUfPmS ilwNes erxKKA cDdnng bmduJF fpKouC dKBthp" data-styled-version="4.4.1">
       /* sc-component-id: SiteFooter__SROnlyLabel-sc-160ijjw-0 */
       .dKBthp {
@@ -966,44 +998,23 @@
           font-size: 1em;
           font-weight: 600;
       }
-      </style>
-          
-    <!--텀블벅추가-->
-    
-    
-    <!-- Title -->
-    <title>CREAKOK</title>
 
-    <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
-
-    <!-- Core Stylesheet -->
- <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Wadiz Css 
-    <link rel="stylesheet" href="css/wadiz_css1.css">
-     <link rel="stylesheet" href="css/wadiz_css2.css">
-    <link rel="stylesheet" href="css/wadiz_css3.css">
-    <link rel="stylesheet" href="css/wadiz_css4.css">-->
-     <style>
-        .three {
-            flex:0 0 33%;!important;
-        }
-        .ranking{
-            flex:0 0 35%;!important;
-        }
-        .howAbout{
-            flex:0 0 70%;!important;
-            max-width:63%;!important;
-        }
+      .three {
+          flex:0 0 33%;!important;
+      }
+      .ranking{
+          flex:0 0 35%;!important;
+      }
+      .howAbout{
+          flex:0 0 70%;!important;
+          max-width:63%;!important;
+      }
         
-        .stars{
-            background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAABaCAYAAACv+ebYAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDcvMDMvMTNJ3Rb7AAACnklEQVRoge2XwW3bMBSGPxa9NxtIGzTAW8DdRL7o3A0qb+BrdNIm9QAm0G7gbJBMwB5MoVJNUSRFIXGqHwhkmXr68hOPNH9ljOEt9OlNqBs4RlrrSmtdpdZ/Ti0EGnvtUoqTHFunBVCkuk6d6mbi83rggdteSa5THDeB3+UDO9z2inatXFum1roESuAReAB29vp15n2/gRfgZK+/gIuIXLxgrfUO+Bnzn0fom4ic+pvRVNuB/QrQ/RB6A7bwLjN8b985krO5MsKd0ElwJvgk1AteCPdCYWI5/SutddQxRUTU3DOzG4hd01EKqQnZuaLBITUh4F0CeLYm5CDw6PjuFTjaz9+BLwE1I8VO9StwAEoRaUSkseMHO+aqcWq2qwcdfQCOIvIy8dwDV/c/YL6zvWDbnQ3QuH5hltQEreM1dH/n6g28gT8eWLVUqqVKrb+vtGidFkCR6vp+0uLAba8k1/eRFh1ue0W7dv4sqpaSjGnR1Fy8YNWyY8W0aGpO/c1oqu3AKmlxCL0BW3iXGb637xzJ2VwZ4U7oJDgTfBLqBS+Ee6EQeMpULVFHUVOzPC3aNR2lkJotLbr0vtKiqWlMTcNaaXHQ0QfgaGqcaVG1jNLibGcbYyb/eDIlT6bjyZS+51JqtrS4gTfw/wzWqkKrKrU8fQPR6gKAmDKlPM3x1WkBFKmu0xxf3fZR5jnFdbzjv257JbmOdzx22yvadZzjW7e9ol27HWtVkjEtIubiB2u1Y8W0iJhTfzOe6uvAKmlxCL0FX+FdZvjevnMkd3Plgzuh0+A88EmoH7wM7oVC6AaiVdwuI2Z5WrRrOk4BNVtadOl9pUXENIhpWCstDjr6ABwR40yLaDVKi7Od7U1/Z0pzpjNngtNiaM2WFj8++A+motm0NTqjmwAAAABJRU5ErkJggg==") repeat-x 0 0;
-            width:150px;
-        }
-    </style>
-    
-    <style>
+      .stars{
+          background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAABaCAYAAACv+ebYAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDcvMDMvMTNJ3Rb7AAACnklEQVRoge2XwW3bMBSGPxa9NxtIGzTAW8DdRL7o3A0qb+BrdNIm9QAm0G7gbJBMwB5MoVJNUSRFIXGqHwhkmXr68hOPNH9ljOEt9OlNqBs4RlrrSmtdpdZ/Ti0EGnvtUoqTHFunBVCkuk6d6mbi83rggdteSa5THDeB3+UDO9z2inatXFum1roESuAReAB29vp15n2/gRfgZK+/gIuIXLxgrfUO+Bnzn0fom4ic+pvRVNuB/QrQ/RB6A7bwLjN8b985krO5MsKd0ElwJvgk1AteCPdCYWI5/SutddQxRUTU3DOzG4hd01EKqQnZuaLBITUh4F0CeLYm5CDw6PjuFTjaz9+BLwE1I8VO9StwAEoRaUSkseMHO+aqcWq2qwcdfQCOIvIy8dwDV/c/YL6zvWDbnQ3QuH5hltQEreM1dH/n6g28gT8eWLVUqqVKrb+vtGidFkCR6vp+0uLAba8k1/eRFh1ue0W7dv4sqpaSjGnR1Fy8YNWyY8W0aGpO/c1oqu3AKmlxCL0BW3iXGb637xzJ2VwZ4U7oJDgTfBLqBS+Ee6EQeMpULVFHUVOzPC3aNR2lkJotLbr0vtKiqWlMTcNaaXHQ0QfgaGqcaVG1jNLibGcbYyb/eDIlT6bjyZS+51JqtrS4gTfw/wzWqkKrKrU8fQPR6gKAmDKlPM3x1WkBFKmu0xxf3fZR5jnFdbzjv257JbmOdzx22yvadZzjW7e9ol27HWtVkjEtIubiB2u1Y8W0iJhTfzOe6uvAKmlxCL0FX+FdZvjevnMkd3Plgzuh0+A88EmoH7wM7oVC6AaiVdwuI2Z5WrRrOk4BNVtadOl9pUXENIhpWCstDjr6ABwR40yLaDVKi7Od7U1/Z0pzpjNngtNiaM2WFj8++A+motm0NTqjmwAAAABJRU5ErkJggg==") repeat-x 0 0;
+          width:150px;
+   	  }
+
     .jQspcv {
         cursor: pointer;
         display: inline-block;
@@ -1044,36 +1055,6 @@
     }
         
     </style>
-    
-    
-    <!-- BOTO TEST -->
-    <meta name="description" content="Boto Photo Studio HTML Template">
-    <meta name="keywords" content="photo, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Stylesheets -->
- 
-  
-    <!-- Main Stylesheets -->
-
-
-
-<script src="/js/summernote/summernote-lite.js"></script>
-<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
-
-<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
-
-
-
-
-
-
-
-
-
 </head>
 
 <body>
@@ -1085,158 +1066,18 @@
         </div>
     </div>
 
-    <!-- ##### Header Area Start ##### -->
+      	<!-- ##### Header Area Start ##### -->	
     <header class="header-area">
-
-        <!-- ***** Top Header Area ***** -->
-        <div class="top-header-area">
-            <div class="container" style="color:#666666!important;">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="top-header-content d-flex align-items-center justify-content-between">
-                            <!-- Top Header Content -->
-                            <div class="top-header-meta">
-  
-                            </div>
-
-                            <!-- Top Header Content -->
-                            <div class="top-header-meta d-flex">
-                                <div >
-                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;">프로젝트 만들기</button>
-                                </div>
-                                <!-- Language Dropdown -->
-                                <div class="language-dropdown">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#666666">Language</button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">USA</a>
-                                            <a class="dropdown-item" href="#">UK</a>
-                                            <a class="dropdown-item" href="#">Bangla</a>
-                                            <a class="dropdown-item" href="#">Hindi</a>
-                                            <a class="dropdown-item" href="#">Spanish</a>
-                                            <a class="dropdown-item" href="#">Latin</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <c:if test="${empty member}">
-                                  <!-- Login -->
-                                  <div class="login"><a href="member_login.do"><i aria-hidden="true"></i> <span>Login</span></a></div>
-                                  <!-- Sign up -->
-                                  <div class="join"><a href="member_join.do"><i aria-hidden="true"></i> <span>Join</span></a></div>
-                                </c:if>
-                                <c:if test="${!empty member}">
-                                  <!-- Login -->
-                                  <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span>Logout</span></a></div>
-                                  
-                                  <!-- My Page -->
-                                  <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span>My Page</span></a></div>
-                                  
-                                  <!-- Cart -->
-                                  <div class="cart"><a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a></div>
-                                </c:if> 
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ***** Navbar Area ***** -->
-        <div class="alazea-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="alazeaNav">
-
-                        <!-- Nav Brand -->
-                        <a href="index.html" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu" style="color:#666666!important;">
-
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Navbar Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a href="index.html">FUNDING</a></li>
-                                    <li><a href="shop.html">GOODS</a></li>
-                                    <li><a href="#">COMMUNITY</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html" >Home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="shop.html">Shop</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="shop-details.html">Shop Details</a></li>
-                                                    <li><a href="cart.html">Shopping Cart</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="portfolio.html">Portfolio</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="`gle-portfolio.html">Portfolio Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="blog.html">Blog</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-post.html">Blog Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="shop.html">ABOUT</a></li>
-                                  
-                                </ul>  
-
-                                <!-- Search Icon -->
-                                <div id="searchIcon" >
-                                    
-                                    <i aria-hidden="true"><img src="img/core-img/search.png"></i>
-                                </div>
-
-                            </div>
-                            <!-- Navbar End -->
-                        </div>
-                    </nav>
-
-                    <!-- Search Form -->
-                    <div class="search-form">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
-                            <button type="submit" class="d-none"></button>
-                        </form>
-                        <!-- Close Icon -->
-                        <div class="closeIcon"><i aria-hidden="true"><img src="img/core-img/search.png"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="header_div">
+    <jsp:include page="creakok_header.jsp" flush="true"/>
+    </div>
     </header>
     <!-- ##### Header Area End ##### -->
 
-    
-    <!--텀블벅추가-->
-    <br/>
-    <br/><br/><br/><br/><br/><br/><br/>
-    
-        
-    
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+      
     <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
- 					<h3 style="text-align:center;margin-bottom:40px;font-size:18pt"> 답글 작성하기</h3>
+ 					<h3 style="text-align:center;margin-bottom:40px;font-size:18pt">수정하기</h3>
    
           
           
@@ -1375,6 +1216,11 @@ $('#summernote').summernote({
 	  });
   }
 </script>
+
+	<jsp:include page="Language.jsp" flush="false">
+    <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
+    </jsp:include>
+
 </body>
 
 </html>

@@ -6,20 +6,6 @@
 <html lang="en">
 
 <head>
-
-<!-- BOTO TEST -->
-	<meta name="description" content="Boto Photo Studio HTML Template">
-	<meta name="keywords" content="photo, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
-	<link rel="stylesheet" href="css/css_boto/slick.css"/>
-
-	<!-- Main Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/style.css"/>
 	
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -36,19 +22,32 @@
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- Wadiz Css -->
-    <link rel="stylesheet" href="css/wadiz_css2.css">
-    <link rel="stylesheet" href="css/wadiz_css1.css">
-    <link rel="stylesheet" href="css/wadiz_css3.css">
-    <link rel="stylesheet" href="css/wadiz_css4.css">
+    <!-- BOTO TEST -->
+	<meta name="description" content="Boto Photo Studio HTML Template">
+	<meta name="keywords" content="photo, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
+	<link rel="stylesheet" href="css/css_boto/slick.css"/>
 
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="css/css_boto/style.css"/>
+	
+	<!-- hcbae Stylesheets -->
+    <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
+    <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
+    <link rel="stylesheet" href="css/hcbae_css.css">
+    
 	<!-- for review -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
-    <link rel='stylesheet' id='content-css'  href='css/css_board/content.css' type='text/css' media='all' />
+
    <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' />
   
 
@@ -241,6 +240,7 @@
 				<table border="1" width="600" align="center" cellpadding="3" cellspacing="1">
 	              	<tbody>					
 						<div class="form-group col-sm-12">
+				<!-- css 바꾸니까 게시글 표시안뜸 -->
 				<div class="row">
 					<div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -479,6 +479,12 @@
 			}
 			
         </script>
+        
+	<jsp:include page="Language.jsp" flush="false">
+    <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
+    </jsp:include>
+  
+</body>
 </body>
 
 </html>
