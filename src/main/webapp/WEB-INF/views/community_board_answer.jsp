@@ -1103,7 +1103,7 @@
                                  <div style="margin-top:10px">
                                     <label for="board_subject" style="margin-right:2%">제목</label>
                                     <input name="board_subject" style="display:inline-block;width:90%" class="form-control" id="board_subject" 
-                                   placeholder="제목" required>
+                                   placeholder="제목">
                                   
                                     <input type="hidden" name="member_email" value="${member.member_email}"/>                      
                               	    <input type="hidden" name="board_refer" value="${board.board_refer}"/>
@@ -1122,26 +1122,6 @@
 			</form>
 		</div>
     </div>
-    
-      
-<script>
-
-	function goWrite() {
-	
-		var summernote = $("#summernote").val();
-	
-		if(summernote == ''){
-			alert("내용을 입력해주세요");
-			return false;
-		}
-		
-		if(summernote != null){
-				frm.submit();
-			    return true;
-		}
-	}
-</script>
-  
       
     <!-- Footer Bottom Area -->
     <div id="footer_div">
@@ -1161,8 +1141,10 @@
     <!-- Active js -->
     <script src="js/active.js"></script>
     
-         <script src="/js/summernote/summernote-lite.js"></script>
-<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+	<script src="/js/summernote/summernote-lite.js"></script>
+	<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+  	<!-- sweet alert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script>
 
 $('#summernote').summernote({
@@ -1187,6 +1169,18 @@ $('#summernote').summernote({
         ]
   });
   
+	const Toast = Swal.mixin({
+		toast: true,
+		position: 'top-end',
+		showConfirmButton: false,
+		timer: 3000,
+		timerProgressBar: true,
+		onOpen: (toast) => {
+		toast.addEventListener('mouseenter', Swal.stopTimer)
+		toast.addEventListener('mouseleave', Swal.resumeTimer)
+		}
+	})
+	
   function uploadSummernoteImageFileCommunity(file, editor){
 	  data = new FormData();
 	  data.append("file_detail_pic", file);
@@ -1202,6 +1196,31 @@ $('#summernote').summernote({
 			}
 	  });
   }
+  function goWrite() {
+		
+		var summernote = $("#summernote").val();
+		var board_subject = $("#board_subject").val();
+
+		if(board_subject == '') {
+			Toast.fire({
+				icon: 'info',
+				title: '제목을 입력해주세요.'
+			})
+			return false;
+		}
+		if(summernote == ''){
+			Toast.fire({
+				icon: 'info',
+				title: '내용을 입력해주세요.'
+			})	
+			return false;
+		}
+		
+		if(summernote != null){
+				frm.submit();
+			    return true;
+		}
+	}
 </script>
 
     <jsp:include page="Language.jsp" flush="false">

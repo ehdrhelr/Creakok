@@ -1096,7 +1096,7 @@
                                  <div style="margin-top:10px">
                                     <label for="board_subject" style="margin-right:2%">제목</label>
                                     <input name="board_subject" style="display:inline-block;width:90%" class="form-control" id="board_subject" 
-                                   placeholder="제목" value="${board.board_subject}" required>
+                                   placeholder="제목" value="${board.board_subject}">
                                   
                                     <input type="hidden" name="member_email" value="${member.member_email}"/>                      
                               	    <input type="hidden" name="board_refer" value="${board.board_refer}"/>
@@ -1105,7 +1105,7 @@
                                 </div>
                                 
 				<br>
-				<textarea id="summernote" name="board_content">${board.board_content}</textarea>
+				<textarea id="summernote" name="board_content"></textarea>
 				
 				<p style="width:100%;text-align:center; margin-top:20px;">
     				<input id="subBtn" type="submit" style="padding:3px;background-color:#2da498;color:white;border:0;border-radius:4px;width:100px" value="수정하기" />
@@ -1116,26 +1116,6 @@
 		</div>
     </div>
     
-      
-<script>
-
-	function goWrite() {
-	
-		var summernote = $("#summernote").val();
-	
-		if(summernote == ''){
-			alert("내용을 입력해주세요");
-			return false;
-		}
-		
-		if(summernote != null){
-				frm.submit();
-			    return true;
-		}
-	}
-</script>
-  
-      
   <!-- Footer Bottom Area -->
         <div class="footer-bottom-area"style="background-color: whitesmoke !important; padding-top:50px; ">
             <div class="container">
@@ -1174,8 +1154,10 @@
     <!-- Active js -->
     <script src="js/active.js"></script>
     
-         <script src="/js/summernote/summernote-lite.js"></script>
-<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+    <script src="/js/summernote/summernote-lite.js"></script>
+	<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+  	<!-- sweet alert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script>
 
 $('#summernote').summernote({
@@ -1200,6 +1182,18 @@ $('#summernote').summernote({
         ]
   });
   
+	const Toast = Swal.mixin({
+		toast: true,
+		position: 'top-end',
+		showConfirmButton: false,
+		timer: 3000,
+		timerProgressBar: true,
+		onOpen: (toast) => {
+		toast.addEventListener('mouseenter', Swal.stopTimer)
+		toast.addEventListener('mouseleave', Swal.resumeTimer)
+		}
+	})
+	
   function uploadSummernoteImageFileCommunity(file, editor){
 	  data = new FormData();
 	  data.append("file_detail_pic", file);
@@ -1215,6 +1209,31 @@ $('#summernote').summernote({
 			}
 	  });
   }
+	function goWrite() {
+		
+		var summernote = $("#summernote").val();
+		var board_subject = $("#board_subject").val();
+		
+		if(board_subject == '') {
+			Toast.fire({
+				icon: 'info',
+				title: '제목을 입력해주세요.'
+			})
+			return false;
+		}
+		if(summernote == ''){
+			Toast.fire({
+				icon: 'info',
+				title: '내용을 입력해주세요.'
+			})	
+			return false;
+		}
+		
+		if(summernote != null){
+				frm.submit();
+			    return true;
+		}
+	}
 </script>
 
 	<jsp:include page="Language.jsp" flush="false">

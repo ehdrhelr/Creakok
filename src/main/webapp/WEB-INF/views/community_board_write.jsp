@@ -1106,7 +1106,7 @@
                                  <div style="margin-top:10px">
                                     <label for="board_subject" style="margin-right:2%">제목</label>
                                     <input name="board_subject" style="display:inline-block;width:90%" class="form-control" id="board_subject" 
-                                   placeholder="제목" required>
+                                   placeholder="제목">
                                   
                                    <input type="hidden" name="member_email" value="${member.member_email}"/>
                                 </div>
@@ -1122,39 +1122,49 @@
 			</form>
 		</div>
     </div>
-    
-                 
-    <!-- 원래 섬머노트 설정
-    <script>
-      $('#summernote').summernote({
-        placeholder: '여기에 작성해주세요.',
-        tabsize: 2,
-      minHeight: 370,
-      maxHeight: null,
-      focus: true,
-        toolbar: [
-          ['font', ['bold', 'underline', 'clear']],
-          ['insert', ['picture']]
-        ]
-      });
-    </script>
-      -->
-      <script>
 
-function goWrite() {
+  <!-- sweet alert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
 
-	var summernote = $("#summernote").val();
+	const Toast = Swal.mixin({
+		toast: true,
+		position: 'top-end',
+		showConfirmButton: false,
+		timer: 3000,
+		timerProgressBar: true,
+		onOpen: (toast) => {
+		toast.addEventListener('mouseenter', Swal.stopTimer)
+		toast.addEventListener('mouseleave', Swal.resumeTimer)
+		}
+	})
 
-	if(summernote == ''){
-		alert("내용을 입력해주세요");
-		return false;
-	}
+	function goWrite() {
 	
-	if(summernote != null){
-			frm.submit();
-		    return true;
+		var summernote = $("#summernote").val();
+		var board_subject = $("#board_subject").val();
+
+		if(board_subject == '') {
+			Toast.fire({
+				icon: 'info',
+				title: '제목을 입력해주세요.'
+			})
+			return false;
+		}
+		if(summernote == ''){
+			Toast.fire({
+				icon: 'info',
+				title: '내용을 입력해주세요.'
+			})	
+			return false;
+		}
+		
+		if(summernote != null){
+				frm.submit();
+			    return true;
+		}
 	}
-}
+
 </script>
   
       

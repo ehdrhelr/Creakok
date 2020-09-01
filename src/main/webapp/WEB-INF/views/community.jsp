@@ -409,9 +409,8 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-    
-  
-  <!-- sweet alert2 -->
+     
+    <!-- sweet alert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     
     <script>

@@ -124,15 +124,7 @@
 				cancelButtonText: '아니요'			
 			}).then((result) => {
 				if (result.value) {
-					Swal.fire({
-						icon: 'success',
-						title: '댓글이 삭제되었어요!',
-						showConfirmButton: false,
-						timer: 1500		
-					}).then($().ready(function(){
-						location.href = "comment_delete?board_index=${board.board_index}&comment_index="+comment_index;
-						})
-					)
+					location.href = "comment_delete?board_index=${board.board_index}&comment_index="+comment_index;
 				}
 			})			
 		}
@@ -149,15 +141,7 @@
 				cancelButtonText: '아니요'			
 			}).then((result) => {
 				if (result.value) {
-					Swal.fire({
-						icon: 'success',
-						title: '글이 삭제되었어요!',
-						showConfirmButton: false,
-						timer: 1500		
-					}).then($().ready(function(){
-						location.href = "board_delete?board_index=${board.board_index}";
-						})
-					)
+					location.href = "board_delete?board_index=${board.board_index}";
 				}
 			})			
 		}
@@ -328,7 +312,7 @@
 					                       		<div class="form-group">
 					                       			<label style="position:absolute;top:20px;left:15px;">댓글 작성하기</label>
 					                       			<div class="col-sm-10">
-					                       				<input type="text" class="form-control" name="comment_content" value="" style="position:absolute;top:50px;left:15px;height:40px;width:720px">                     		 
+					                       				<input id="comment_content" type="text" class="form-control" name="comment_content" value="" style="position:absolute;top:50px;left:15px;height:40px;width:720px">                     		 
 		                          					</div>
 		                          				</div>
 		                          				
@@ -337,8 +321,16 @@
 											  			<button type="button" class="repSubmit btn-success" style="background-color:black !important; color:white;width:70px;font-size:1em;height:30px;border-radius:.25rem;position:absolute;top:70px;left:15px;" onclick="check()">작성</button>
 											 			<script>
 														  var formObj = $(".replyForm form[role='form']");
-														        
+														   
 														  $(".repSubmit").click(function(){
+														   var comment_content = $("#comment_content").val();
+														   if (comment_content == '') {
+															   Toast.fire({
+																	icon: 'info',
+																	title: '내용을 입력해주세요.'
+																})
+																return false;
+														   }   
 														   formObj.attr("action", "comment_write");													   
 														   formObj.submit();
 														  });
