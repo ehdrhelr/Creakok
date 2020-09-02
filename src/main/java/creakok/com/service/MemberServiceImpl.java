@@ -1,11 +1,14 @@
 package creakok.com.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
 import creakok.com.domain.Nickname;
+import creakok.com.domain.Order_Info;
 import creakok.com.mapper.MemberMapper;
 import lombok.extern.log4j.Log4j;
 
@@ -76,15 +79,34 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int compareMemberPasswordS(String member_email, String member_password) {
 		Member member = memberMapper.selectAllByEmail(member_email);
-		if(member!=null) { //¾ÆÀÌµð°¡ ÀÖ´Â °æ¿ì
+		if(member!=null) { //ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½
 			if(member.getMember_password().equals(member_password)) { 
-				return LoginResult.LOGIN_OK; //ÆÐ½º¿öµå ¸Â´Â °æ¿ì
+				return LoginResult.LOGIN_OK; //ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â´ï¿½ ï¿½ï¿½ï¿½
 			}else {
-				return LoginResult.LOGIN_PASSWORD_FAIL; //ÆÐ½º¿öµå Æ²¸° °æ¿ì
+				return LoginResult.LOGIN_PASSWORD_FAIL; //ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ²ï¿½ï¿½ ï¿½ï¿½ï¿½
 			}
-		} else { //¾ÆÀÌµð°¡ ¾ø´Â °æ¿ì
+		} else { //ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 			return LoginResult.LOGIN_EMAIL_NOT_EXIST;
 		}
 	}//end of compareMemberPassword
-
+	
+	@Override
+	public List<Order_Info>selectOrderInfo(String member_email){
+		return memberMapper.selectOrderInfo(member_email);
+	}
+	
+	@Override
+	public long selectOrderCount(String member_email) {
+		return memberMapper.selectOrderCount(member_email);
+	}
+	
+	@Override
+	public void updateOrderTime(Order_Info order_info) {
+		memberMapper.updateOrderTime(order_info);
+	}
+	
+	@Override
+	public Order_Info selectOneOrderInfo(long order_index) {
+		return memberMapper.selectOneOrderInfo(order_index);
+	}
 }

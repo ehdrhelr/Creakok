@@ -234,7 +234,7 @@
                             <div class="ProjectIntroduction__ProjectButtonsInner-sc-1o2ojgb-20 jHbICj">
                                 <div class="ProjectIntroduction__PrimaryButton-sc-1o2ojgb-21 knPvZB">
                                     <div class="PledgeButton__Wrapper-arwur9-0 krUjgk">
-                                    <button class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:white; color:#fc5230; border:0.05em solid #fc5230;">장바구니</button>
+                                    <button class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:white;color:#fc5230;border:0.1em solid #fc5230 !important;line-height: 50%;" onclick="addCart()">장바구니</button>
                                     </div>
                                 </div>
                                 
@@ -655,6 +655,32 @@
        };
     }
     </script>
+    
+    <script type="text/javascript">
+    function addCart(){
+        let formData = new FormData();
+        formData.append('member_email', '${member.member_email}');
+        formData.append('goods_index', '${one_goods.goods_index}');
+        formData.append('goods_category_code', '${one_goods.goods_category_code}');
+        formData.append('goods_name', '${one_goods.goods_name}');
+        formData.append('goods_repre_pic', '${one_goods.goods_repre_pic}');
+        formData.append('unit_price', document.getElementById('product_price').innerText );
+        formData.append('unit_count', document.getElementById('qty').value );
+    
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+             if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                 //console.log("#####:"+xmlHttp.responseText);
+                 if(xmlHttp.responseText=="add_ok") {
+                     alert('상품을 장바구니에 담았습니다.');
+                 }
+             }
+        };
+        xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
+        xmlHttp.send(formData);
+    }
+    
+    </script>      
     
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>

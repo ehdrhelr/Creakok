@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="phone_number">연락처 *</label>
-                                    <input class="form-control" value="" onkeydown="enterCheck(this)" required>
+                                    <input class="form-control" value="" name="phone_number" onkeydown="enterCheck(this)" required>
                                 </div>
                               
                               
@@ -206,7 +206,7 @@
                                 	 <input type="radio" name="evidencecheck" form="order_form" onclick="" value="cashbill" style="height:18px;vertical-align:middle;width:18px !important;"> 현금영수증
                                                                                                                                     
                                <div style="padding-top:5px;">
-                               		<div id="evidence_data"><script type="text/javascript" src="/js/check.js"></script>                                                
+                               		<div id="evidence_data">                                              
 	                               		<div id="evidence_cashbill_data" style="display:none;">                                                                                                                            
 		                               		<span id="cashbilltype">
 							                    <select name="evidence_banktype" class="bank-type" onchange="togglecashbilltype(this.value)">

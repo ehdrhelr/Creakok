@@ -1,6 +1,11 @@
 package creakok.com.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import creakok.com.domain.Member;
+import creakok.com.domain.Order_Info;
 
 public interface MemberMapper {
 	
@@ -17,5 +22,8 @@ public interface MemberMapper {
 	void deleteMember(String member_email);
 	
 	void insertSocialMember(Member member);
-
+	List<Order_Info>selectOrderInfo(String member_email);
+	long selectOrderCount(String member_email);
+	void updateOrderTime(Order_Info order_info);
+	Order_Info selectOneOrderInfo(@Param("order_index") long order_index);
 }

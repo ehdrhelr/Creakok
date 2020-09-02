@@ -89,13 +89,13 @@
                     <div class="most__search__tab">
                         <ul class="nav nav-tabs nav-pills" role="tablist">
                             <li class="nav-item">
-                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
+                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
                             </li>
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#member-modify" role="tab">회원정보수정</a>
                             </li>
                             <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#my_order" role="tab">주문내역</a>
+                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="#my_order" role="tab">주문내역</a>
                             </li>
                         </ul>
                     </div>
@@ -105,7 +105,7 @@
         
             <!-- Tab panes -->
             <div class="tab-content"> <!--My Page Tabs Contents-->
-                <div id="jjim-list" class="container tab-pane active">
+                <div id="jjim-list" class="container tab-pane">
                     <h3>좋아요 리스트</h3>
                     <p>리스트를 어떻게 표시할까?</p>
                     
@@ -273,9 +273,9 @@
                 
                 
                 <!--  주문 내역   -->
-                 <div id="my_order" class="container tab-pane" style="margin-bottom:10%">
-                    <h3>주문 내역(총 ${order_count}개)</h3>
-                    <p style="margin-bottom:20px">주문 번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</p>
+                 <div id="my_order" class="container tab-pane active" style="margin-bottom:10%">
+                    <h3 style="margin-bottom:20px">주문 내역(총 ${order_count}개)</h3>
+                   
                     
                     <div id="mypage_funding_area"></div>
                     
@@ -290,16 +290,7 @@
                         <col width="15%">
                         <col width="15%">
                     </colgroup>
-                     <thead>
-                        <tr>
-                            <th style="padding:1.5px !important;">No</th>
-                            <th style="padding:1.5px !important;">주문일자</th>
-                            <th style="padding:1.5px !important;">주문번호</th>
-                            <th style="padding:1.5px !important;">상품명</th>
-                            <th style="padding:1.5px !important;">결제금액</th>
-                            <th style="padding:1.5px !important;">결제상태</th>
-                        </tr>
-                    </thead>  
+
                     <tbody>
                     
                         <c:if test="${empty order_info}">
@@ -308,28 +299,73 @@
                            </td>               
                         </c:if>
                         <c:if test="${!empty order_info}">
-                         <c:forEach items="${order_info}" var="order_info">
-                             <tr class="order_click_tr">
-                                 <td style="padding:3px !important;">${order_info.order_index}</td>
-                                 <td style="padding:3px !important;">${order_info.buy_date}</td>
-                                 <td style="padding:3px !important;"  class="order_click_td"><a href="member_orderdetail.do?order_indexStr=${order_info.order_index}&member_email=${order_info.member_email}" style="color:black;">${order_info.buyer_buyid}</a></td>
-                                 <td style="padding:3px !important;">${order_info.buy_product_name}</td>
-                                 <td style="padding:3px !important;">${order_info.buyer_pay_price} 원</td>
-                                 <td id="review_view" style="padding:1.5px !important;">
-                                     <c:if test="${order_info.buyer_pay_ok == 'true'}">
+                            
+                              <tr class="orderInfo_detail">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">No : </span><span>${order_info.order_index}</span>
+                                 </td>
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">주문인 : </span><span>${order_info.buyer_name}</span> 
+                                 </td>
+                              </tr>
+                              <tr class="orderInfo_detail">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">연락처 : </span><span>${order_info.buyer_phone}</span>
+                                 </td>
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">이메일 : </span><span>${order_info.member_email}</span> 
+                                 </td>
+                              </tr>
+                              <tr class="orderInfo_detail"">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">주문날짜 : </span><span>${order_info.buy_date}</span>
+                                 </td>
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">주      소 : </span><span>${order_info.buy_addr}</span> 
+                                 </td>
+                              </tr>
+                              
+                              <tr class="orderInfo_detail">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">결제금액 : </span><span>${order_info.buyer_pay_price}</span>
+                                 </td>
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">상품명 : </span><span>${order_info.buy_product_name}원</span> 
+                                 </td>
+                              </tr>
+  
+                              <tr class="orderInfo_detail">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">주문번호 : </span><span>${order_info.buyer_buyid}</span>
+                                 </td>
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">결제금액 : </span><span>${order_info.buyer_pay_price}</span> 
+                                 </td>
+                              </tr> 
+                              
+                              <tr class="orderInfo_detail">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:2px solid black;padding:10px">
+                                   <span style="font-weight:700">결제여부 : </span>
+                                   <span>
+                                   	 <c:if test="${order_info.buyer_pay_ok == 'true'}">
                                         	결제 완료
                                      </c:if>
                                      <c:if test="${order_info.buyer_pay_ok == 'false'}">
                                         	결제 대기
                                      </c:if>
+                                   	</span>
+                                 </td>
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:2px solid black;border-left:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">카드승인번호 : </span><span>${order_info.buyer_card_num}</span>
                                  </td>
                               </tr>
-    					</tbody>
-
-                        </c:forEach>
+							
 					 </c:if>
 
+
+                    </tbody>
                 </table>
+                			<p style="text-align:center;margin-top:20px"><a href="member_mypage.do?member_email=${order_info.member_email}" style="font-size:13pt;background-color:black; color:white; width:130px; padding:3px;">목록으로</a></p>
                 </div>
             </div> <!--My Page Tabs Contents-->
         </div>

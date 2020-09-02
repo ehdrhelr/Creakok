@@ -53,6 +53,15 @@
       values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, #{member_profile_pic}, SYSDATE, ${member_index})
   </insert>
 
+  <select id="selectOrderInfo" parameterType="String" resultType="Order_Info">
+    select * from ORDER_INFO where MEMBER_EMAIL=#{member_email} order by BUY_DATE desc
+  </select>
 
+  <select id="selectOrderCount" parameterType="String" resultType="long">
+    select COUNT(ORDER_INDEX) from ORDER_INFO where MEMBER_EMAIL=#{member_email}
+  </select> 
   
+  <select id="selectOneOrderInfo" parameterType="long" resultType="Order_Info">
+    select * from ORDER_INFO where ORDER_INDEX=${order_index}
+  </select>
 </mapper>

@@ -29,6 +29,7 @@ import creakok.com.domain.Goods;
 import creakok.com.domain.Goods_Category;
 import creakok.com.domain.Goods_QnA;
 import creakok.com.domain.Goods_Review;
+import creakok.com.domain.Order_Info;
 import creakok.com.filesetting.Path;
 import creakok.com.service.CreatorBoardService;
 import creakok.com.service.GoodsDetailService;
@@ -36,6 +37,8 @@ import creakok.com.service.GoodsQnAService;
 import creakok.com.service.GoodsReviewService;
 import creakok.com.service.GoodsService;
 import creakok.com.service.Goods_CategoryService;
+import creakok.com.service.MemberService;
+import creakok.com.service.PayService;
 import creakok.com.vo.GoodsVo;
 import creakok.com.vo.Goods_QnAVo;
 import creakok.com.vo.Goods_ReviewVo;
@@ -63,6 +66,11 @@ public class GoodsController {
 	@Autowired
 	private CreatorBoardService creatorBoardService;
 
+	@Autowired
+	private PayService payservice;
+
+	@Autowired
+	private MemberService memberservice;
 	
 	@RequestMapping("goods_list.do")
 	public String list(HttpServletRequest request, HttpSession session) {
@@ -259,6 +267,11 @@ public class GoodsController {
 	}	
 	@RequestMapping("goods_pay.do")
 	public ModelAndView goods_pay(HttpServletRequest request) {
+		String buyer_name = request.getParameter("name");
+		String buyer_phone = request.getParameter("phone_number");
+		String buyer_email = request.getParameter("email");
+		
+		
 		String delivery_name = request.getParameter("delivery_name");
 		String delivery_phone = request.getParameter("delivery_phone");
 		String address_num = request.getParameter("address_num");
@@ -266,11 +279,15 @@ public class GoodsController {
 		String address_detail = request.getParameter("address_detail");
 		String address_land = request.getParameter("address_land");
 		
-		String price_amount = request.getParameter("price_amount");
-		String product_qty = request.getParameter("product_qty");
+		String price_amountStr = request.getParameter("price_amount");
+		String product_qtyStr = request.getParameter("product_qty");
 		String product_name = request.getParameter("product_name");
 		String email =  request.getParameter("email");
-		     
+		
+		String rec_addr = address_num+address_road+address_detail+address_land;
+		
+		long price_amount = Long.parseLong(price_amountStr);
+		long product_qty = Long.parseLong(product_qtyStr);
 		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&name: "+delivery_name);
 		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&delivery_phone: "+delivery_phone);
 		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_num: "+address_num);
@@ -281,43 +298,65 @@ public class GoodsController {
 		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_qty: "+product_qty);
 		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
 		
-		PayInfoVo payInfo = new PayInfoVo();
-		payInfo.setDelivery_name(delivery_name);
-		payInfo.setDelivery_phone(delivery_phone);
-		payInfo.setAddress_num(address_num);
-		payInfo.setAddress_road(address_road);
-		payInfo.setAddress_detail(address_detail);
-		payInfo.setAddress_land(address_land);
-		payInfo.setPrice_amount(price_amount);
-		payInfo.setProduct_qty(product_qty);
-		payInfo.setProduct_name(product_name);
-		payInfo.setEmail(email);
+
+		PayInfoVo payInfo = new PayInfoVo(delivery_name, delivery_phone, address_num, address_road, address_detail, address_land, price_amountStr, product_qtyStr, product_name, email);
+
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("import_pay");
-		mv.addObject("payInfo", payInfo);	
+		mv.addObject("payInfo", payInfo);	 //order_index 같이 넘겨쥼
 		
 		return mv;
 	} 
 	@RequestMapping("goods_pay_success.do")
 	public ModelAndView goods_pay_success(HttpServletRequest request) {
+		String buyer_name = request.getParameter("buyer_name");
+		String buyer_phone = request.getParameter("buyer_phone");
+		String member_email = request.getParameter("buyer_email");
+
+		String buyer_addrStr = request.getParameter("buyer_addr");
+		String buyer_postcode = request.getParameter("buyer_postcode");
+		
+		String buyer_addr = buyer_addrStr+buyer_postcode;
+		
+		String product_name = request.getParameter("product_name");
+		String amount = request.getParameter("amount");
+		
 		String success_num = request.getParameter("success_num"); //고유ID
 		String success_id = request.getParameter("success_id"); //상점 거래ID
-		String success_amount = request.getParameter("success_amount"); //결제 금액 
+		String success_amountStr = request.getParameter("success_amount"); //결제 금액 
 		String success_card_num = request.getParameter("success_card_num"); //카드 승인번호
-		
-		
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&고유 ID: "+success_num);
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&상점 거래ID: "+success_id);
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&결제 금액: "+success_amount);
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&success_card_num: "+success_card_num);
+		String success_pay = request.getParameter("success_pay"); //결제 성공 여부		
 
+		Long success_amount = Long.parseLong(success_amountStr);
+		//Long amount = Long.parseLong(amountStr);
+		
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&고유 ID: "+success_num);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&상점 거래ID: "+success_id);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&결제 금액: "+success_amount);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&success_pay: "+success_pay);	
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_name: "+buyer_name);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&amount: "+amount);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_email: "+member_email);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_phone: "+buyer_phone);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_addr: "+buyer_addr);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_postcode: "+buyer_postcode);
+
+		
+		Order_Info order_info = new Order_Info(-1, buyer_name, buyer_phone, member_email, buyer_addr, null, product_name, 
+				success_num, success_id, success_amount, success_card_num, success_pay);
+		
+		payservice.insertOneOrder(order_info); 
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("pay_success");
 		mv.addObject("success_num", success_num);	
+		mv.addObject("member_email", member_email);	
 		
 		return mv;
 	}	
+	
 	@RequestMapping("goods_pay_fail.do")
 	public ModelAndView goods_pay_fail(HttpServletRequest request) {
 		String fail_msg = request.getParameter("error_msg");

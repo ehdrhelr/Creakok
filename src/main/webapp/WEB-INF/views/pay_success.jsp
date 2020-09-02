@@ -66,7 +66,7 @@
             <div class="row" style="margin-bottom:100px">
                 <div class="col-12">
                     <!-- Section Heading -->
-                    <div class="section-heading text-center" style="margin-top:10%">
+                    <div class="section-heading text-center" style="margin-top:10%;margin-bottom:10%">
                          <h2 style="line-height: 1.3; margin-bottom: 20px;">
                          <img src="img/goods/success-40.png" style="margin-right:5px;margin-bottom:-8px; margin-right:6px">주문이 완료되었습니다!</h2>
                       
@@ -80,7 +80,10 @@
 	                                 </p>
 	                  
                    </div>
-                   <p style="text-align:center"><a href="../" style="background-color:black; color:white; !important; font-size:13pt; padding:5px 10px;">확인</a></p>
+                   <p style="text-align:center">
+                   		<a href="../" style="background-color:black; color:white; !important; font-size:13pt; padding:5px 10px;">확인</a>
+                   		<a href="member_mypage.do?member_email=${member_email}" style="background-color:black; color:white; !important; font-size:13pt; padding:5px 10px;">주문내역 확인</a>
+                   </p>
                 </div>
             </div>
 
@@ -94,9 +97,21 @@
 		let minutes = today.getMinutes();  // 분
 		let seconds = today.getSeconds();  // 초
 		
-		let c_date = year+"-"+month+"-"+date+" "+hours+":"+minutes+":"+seconds;
+		let c_date = year+"-"+month+"-"+date;
 		
 		document.getElementById("sysdate").innerHTML = c_date;
+		
+		$.ajax({
+			url: "order_time.do",
+			data: "order_time=" + c_date,
+			type: "POST",
+			success : function(data){
+				alert("성공")
+			},
+			error : function(){
+				alert("에러")		
+			}
+		});
 	</script>
 
 
