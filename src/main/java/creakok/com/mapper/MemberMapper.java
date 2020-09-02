@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import creakok.com.domain.Member;
 import creakok.com.domain.Order_Info;
+import creakok.com.vo.Member_OrderInfoVo;
 
 public interface MemberMapper {
 	
@@ -26,4 +27,6 @@ public interface MemberMapper {
 	long selectOrderCount(String member_email);
 	void updateOrderTime(Order_Info order_info);
 	Order_Info selectOneOrderInfo(@Param("order_index") long order_index);
-}
+	List<Order_Info> selectPerPageOrder(Member_OrderInfoVo order_infoVo);
+	long selectOrderCountByEmail(String member_email);
+} 

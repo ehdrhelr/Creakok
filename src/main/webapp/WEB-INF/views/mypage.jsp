@@ -307,8 +307,8 @@
                                                                 주문 내역이 없습니다.</td>
                            </td>               
                         </c:if>
-                        <c:if test="${!empty order_info}">
-                         <c:forEach items="${order_info}" var="order_info">
+                        <c:if test="${!empty order_info.order_list}">
+                         <c:forEach items="${order_info.order_list}" var="order_info">
                              <tr class="order_click_tr">
                                  <td style="padding:3px !important;">${order_info.order_index}</td>
                                  <td style="padding:3px !important;">${order_info.buy_date}</td>
@@ -324,11 +324,28 @@
                                      </c:if>
                                  </td>
                               </tr>
-    					</tbody>
-
                         </c:forEach>
 					 </c:if>
-
+					 
+					 	<tr>
+				          <td colspan="6" align="center" style="border-bottom:0px">
+				           <c:forEach begin="1" end="${order_info.order_totalPageCount}" var="i">
+				                    <a href="member_mypage.do?order_cp=${i}&member_email=${order_info.member_email}#fix_point" style="color:black; font-size:11pt">
+				                <c:choose> 
+				                <c:when test="${i==order_info.order_cp}">
+				                    <strong>${i}</strong>
+				                </c:when>
+				                <c:otherwise>
+				                    ${i}
+				                </c:otherwise>
+				                </c:choose>
+				            </a>
+				            
+				            &nbsp;
+				            </c:forEach>
+				          </td>
+				     </tr>
+					</tbody>
                 </table>
                 </div>
             </div> <!--My Page Tabs Contents-->

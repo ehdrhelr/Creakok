@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import creakok.com.domain.Goods_Review;
 import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
 import creakok.com.domain.Nickname;
 import creakok.com.domain.Order_Info;
 import creakok.com.mapper.MemberMapper;
+import creakok.com.vo.Goods_ReviewVo;
+import creakok.com.vo.Member_OrderInfoVo;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
@@ -109,4 +112,27 @@ public class MemberServiceImpl implements MemberService {
 	public Order_Info selectOneOrderInfo(long order_index) {
 		return memberMapper.selectOneOrderInfo(order_index);
 	}
+	
+	@Override
+	public Member_OrderInfoVo selectPerPageOrder(int order_cp, int order_ps, String member_email) {
+		long order_totalCount = memberMapper.selectOrderCount(member_email);
+		
+		Member_OrderInfoVo order_infoVo = new Member_OrderInfoVo(order_cp, order_totalCount, order_ps, member_email, null);
+		List<Order_Info> order_list = memberMapper.selectPerPageOrder(order_infoVo);
+		
+		Member_OrderInfoVo order_infoVo2 = new Member_OrderInfoVo(order_cp, order_totalCount, order_ps, member_email, order_list); 
+		order_infoVo2.setOrder_totalPageCount(order_infoVo2.getOrder_totalPageCount());
+
+		log.info("################# selectPerPageOrder order_cp: "+order_cp);
+		log.info("################# selectPerPageOrder order_ps: "+order_ps);
+		log.info("################# selectPerPageOrder member_email: "+member_email);
+		log.info("★★★★★★★★★★★★★★★ selectPerPageOrder order_list: "+order_list);
+		
+		
+		return order_infoVo2;
+	}
 }
+
+
+
+

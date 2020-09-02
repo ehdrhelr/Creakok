@@ -57,6 +57,17 @@
     select * from ORDER_INFO where MEMBER_EMAIL=#{member_email} order by BUY_DATE desc
   </select>
 
+  <select id="selectPerPageOrder" resultType="Order_Info" parameterType="Member_OrderInfoVo">
+    <![CDATA[select * from (select ROWNUM rnum, aa.* from
+      (select * from ORDER_INFO where MEMBER_EMAIL=#{member_email} order by ORDER_INDEX desc) aa)
+      where rnum>${(order_cp-1)*order_ps} and rnum<=${order_cp*order_ps}
+    ]]>
+  </select>
+  
+  <select id="selectOrderCountByEmail" resultType="long" parameterType="String">
+      select COUNT(ORDER_INDEX) from ORDER_INFO where GOODS_INDEX=#{member_email}
+  </select>   
+       
   <select id="selectOrderCount" parameterType="String" resultType="long">
     select COUNT(ORDER_INDEX) from ORDER_INFO where MEMBER_EMAIL=#{member_email}
   </select> 

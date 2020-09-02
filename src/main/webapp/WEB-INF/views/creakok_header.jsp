@@ -47,7 +47,7 @@
                           <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span id="header_logout">Logout</span></a></div>
                           
                           <!-- My Page -->
-                          <div class="mypage"><a href="member_mypage.do?member_email=${member.member_email}"><i aria-hidden="true"></i> <span id="header_mypage">My Page</span></a></div>
+                          <div class="mypage"><a href="member_mypage.do?member_email=${member.member_email}&order_cp=1"><i aria-hidden="true"></i> <span id="header_mypage">My Page</span></a></div>
                           
                           <!-- Cart -->
                           <div class="cart"><a href="goods_cart.do"><i aria-hidden="true"></i> <span id="header_cart">Cart</span></a></div>
