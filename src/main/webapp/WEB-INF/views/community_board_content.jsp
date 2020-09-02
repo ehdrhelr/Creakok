@@ -247,7 +247,7 @@
                                         <tr>
                                         	<td>글내용</td>
                                        			<td>
-                                        			<span id="textarea" style="width:692px; height:300px; text-align:left" name="board_content" class="form-control" readonly>${board.board_content}</span>
+                                        			<span id="textarea" style="overflow:auto; width:692px; height:500px; text-align:left" name="board_content" class="form-control" readonly>${board.board_content}</span>
                                        			</td>
                                         </tr>
                               </tbody>

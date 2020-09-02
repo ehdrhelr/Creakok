@@ -247,6 +247,7 @@
 		</div>
 	</nav> 
 -->
+
 	<div class="container">
 			
 			<div class="r_list">
@@ -390,6 +391,7 @@
        
 		</div>
    </div>
+
    <!-- 게시판 영역 end -->
 
   	<!-- Footer Bottom Area -->
