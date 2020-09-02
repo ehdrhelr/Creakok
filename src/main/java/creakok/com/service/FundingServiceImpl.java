@@ -147,6 +147,12 @@ public class FundingServiceImpl implements FundingService {
 		return creatorProfilContent;
 	}
 
+	@Override
+	public void qnaDelete(long funding_qna_index) {
+		fundingMapper.qnaDelete(funding_qna_index);
+		
+	}
+
 	
 
 

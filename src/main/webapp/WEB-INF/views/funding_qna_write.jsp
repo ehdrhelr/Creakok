@@ -86,7 +86,7 @@
 		  					 <div>
 		                        <label for="reviewer_name">작성자</label>&nbsp;&nbsp;
 		                       <input name="!funding_qna_writer" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="reviewer_name" 
-		                       placeholder="작성자" value="" required>
+		                       placeholder="${member.member_name}" value="${member.member_name}" readonly>
 		                    </div>
                    
 		                    <div style="margin-top:10px">
@@ -102,7 +102,7 @@
 				
 				<p style="width:100%;text-align:center; margin-top:20px;">
     				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" />
-    				<a href="funding_qna.write?funding_index=${funding_detail.funding_index}&qna=1#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px" value="목록으로"/></a>
+    				<a href="funding_qna.do?funding_index=${funding_detail.funding_index}#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px" value="목록으로"/></a>
 				
                 </p>			 		
                 

@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="email_address">이메일 주소</label>
-                                    <input name="Payinfo_email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
+                                    <input name="Payinfo_email" class="form-control" id="email_address" value="${member.member_email}" readonly>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="phonenumber">연락처 *</label>
@@ -111,7 +111,7 @@
 						
 						<label for="amountPay">밀어주기 금액</label>
 						
-						<select id="amountPay" name="amountPay" onChange="amountPay2()">
+						<select id="amountPay" name="amountPay" onChange="amountPay2()" required>
 						        <option class="form-control" value="">--선택--</option>
 						        <option class="form-control" value="5000">5,000</option>
 						        <option class="form-control" value="10000">10,000</option>
@@ -123,16 +123,11 @@
 						
 							var a = document.getElementById("amountPay");
 							var b = a.options[a.selectedIndex].value;
-							//alert(b);
-							
 							var resultToshow = document.getElementById('amountToshow');
 							resultToshow.innerHTML=b;
 							var result = document.getElementById('amountPaygot');
 							
-							result.value=b;
-							alert(b);
-							alert(c);
-							                          
+							result.value=b;            
 						
 						}
 						
@@ -172,18 +167,9 @@
                                     <tr>
                                         <td>
                                             <ul class="pay-method" >    
+                                            
                                              <li style="margin-bottom:10px;">
-	               								 <input type="radio" class="chk-rdo" id="payByAcc" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important; display:inline;" value="B" onClick="deposit()"> 무통장입금 <em>
-	               								 <span class="op-bank-dc-price fc-red"></span></em>             
-		               								 <select name="pay_data" class="w280 MK_bank_select_list MK_pay_add_choice" style="width:50%;">
-			               								 <option value="">입금 계좌번호 선택(반드시 주문자 성함으로 입금)
-			               								 </option>                       
-			               								 <option value="국민은행 464401-04-096884 (예금주:(주)크리콕)">국민은행 464401-04-096884 (예금주:(주)크리콕)
-			               								 </option>            
-		               								 </select>  
-               								 </li>
-                                             <li style="margin-bottom:10px;">
-                								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()"> 신용카드/네이버페이/카카오페이
+                								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()" required> 신용카드/네이버페이/카카오페이
                 								     <em><span class="op-card-dc-price fc-red"></span></em>
                 							 </li>
                                             </ul>                                       
@@ -193,37 +179,7 @@
                             </table>
                         </div>
                         
-                        <div id="evidence" style="display:none;">                        
-                        	<div class="tbl-order" style="margin-top:0px;border-top:0px;">
-                            <table>
-                       
-                                <tbody>
-                                     <tr>
-                                <th scope="row"><div class="txt-l">증빙 신청</div></th>
-                                <td style="padding-left: 18px;">
-                                     <input type="radio" name="evidencecheck" form="order_form" onclick="" value="N" checked="checked" style="height:18px;vertical-align:middle;width:18px !important;"> 신청안함
-                                	 <input type="radio" name="evidencecheck" form="order_form" onclick="" value="cashbill" style="height:18px;vertical-align:middle;width:18px !important;"> 현금영수증
-                                                                                                                                    
-                               <div style="padding-top:5px;">
-                               		<div id="evidence_data"><script type="text/javascript" src="/js/check.js"></script>                                                
-	                               		<div id="evidence_cashbill_data" style="display:none;">                                                                                                                            
-		                               		<span id="cashbilltype">
-							                    <select name="evidence_banktype" class="bank-type" onchange="togglecashbilltype(this.value)">
-							                        <option value="0" selected="">핸드폰 번호
-							                        </option><option value="1">국세청 현금영수증 카드
-							                        </option><option value="2">사업자 번호
-							                    </option></select>
-							                </span>                                                                                             
-	                                    </div>
-                               		</div>                                            
-                               </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        </div>
-                        
+                      
                         
                         
                          <div class="col-12 text-center" style="margin-bottom:100px;">

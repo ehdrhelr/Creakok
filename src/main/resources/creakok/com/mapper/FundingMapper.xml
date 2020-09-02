@@ -65,7 +65,9 @@
     <select id="getCreatorProfilContent" parameterType="string" resultType="string">
     	select creator_profile_content from CREATOR where CREATOR_NAME=#{creator_name}
     </select>
-    
+    <delete id="qnaDelete" parameterType="long">
+   	    delete from FUNDING_QNA where FUNDING_QNA_INDEX=${funding_qna_index}
+    </delete>
     
     
 </mapper>

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_Payinfo;
+import creakok.com.domain.Member;
 import creakok.com.service.PayService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -23,17 +24,14 @@ public class PayController {
 	
 	@RequestMapping("funding_checkout.do")
 	public ModelAndView checkout(HttpServletRequest request, HttpSession session) {
-		String funding_indexStr = request.getParameter("funding_index");
-		
+		String funding_indexStr = request.getParameter("funding_index");	
 		Funding fundingCheckout = service.getFundingCheckoutInfo(Long.parseLong(funding_indexStr));
 		session.setAttribute("fundingCheckoutInfo", fundingCheckout);
-		//서비스단에서 불러올것 :펀딩제목, 크리에이터이름 등등 펀딩정보들? 세션에 올리자.
-		
-		
-		
-		
-		return new ModelAndView("/checkout3", "", null);
-		//return new ModelAndView("/checkout2", "", null);
+		//Member member = (Member)session.getAttribute("member");
+		//if(member !=null) {
+			
+		//}
+		return new ModelAndView("/funding_pay_checkout", "", null);
 	}
 	
 	@RequestMapping("funding_pay.do")
@@ -47,7 +45,7 @@ public class PayController {
 		
 		Funding_Payinfo funding_payinfo = new Funding_Payinfo(funding_indexStr, payinfo_name, payinfo_email, payinfo_phonenumber, payinfo_amountPayresult, fundingname);
 		log.info("!!!!!!!!!!!!!!!!!!!"+funding_payinfo);
-		return new ModelAndView("funding_detail_pay", "funding_payinfo", funding_payinfo);
+		return new ModelAndView("funding_pay_detail", "funding_payinfo", funding_payinfo);
 	}
 	
 }
