@@ -96,7 +96,7 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	// 정렬 기능
 	@Override
 	public ListResult getListResultByFilterS(int currentPage, int pageSize, String filterBy, String creator_name) {
-		List<Board> list = (List<Board>)mapper.getListResultByFilter(currentPage, pageSize, filterBy, creator_name);log.info("@@@@@@@@@@@ 222222");
+		List<Board> list = (List<Board>)mapper.getListResultByFilter(currentPage, pageSize, filterBy, creator_name);
 		int count = mapper.countByCreator(creator_name);
 		return new ListResult(currentPage, count, pageSize, list, filterBy);
 	}

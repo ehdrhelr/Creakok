@@ -281,6 +281,7 @@ public class CreatorBoardController {
 		String creator_name = theCreator.getCreator_name();
 		//(1) cp 
 		int board_cp = 1;
+		
 		if(board_cpStr == null) {
 			Object board_cpObj = session.getAttribute("board_cp");
 			if(board_cpObj != null) {
@@ -290,6 +291,7 @@ public class CreatorBoardController {
 			board_cpStr = board_cpStr.trim();
 			board_cp = Integer.parseInt(board_cpStr);
 		}
+	
 		session.setAttribute("board_cp", board_cp);
 		
 		//(2) ps 
@@ -370,6 +372,9 @@ public class CreatorBoardController {
 		// mapper에서 and CREATOR_NAME = ${creator_name} 이 안들어간다... 
 		// 시간 지나니까 됨. 단순히 변경사항이 늦게 업데이트됨.
 		ListResult listResult = creatorBoardService.getListResultBySearchS(board_cp, board_ps, board_filterBy, board_c_code, board_searchName, creator_name);
+		listResult.setBoard_searchName(board_searchName);
+		listResult.setBoard_c_code(board_c_code);
+ 
 		request.setAttribute("listResult", listResult);
 		
 		ModelAndView mv = new ModelAndView();

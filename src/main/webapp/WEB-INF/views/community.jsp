@@ -41,28 +41,22 @@
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
    
-    <!-- 잠깐 삭제
-    <!-- Wadiz Css --
-    <link rel="stylesheet" href="css/wadiz_css1.css">
-    <link rel="stylesheet" href="css/wadiz_css2.css">
-    <link rel="stylesheet" href="css/wadiz_css3.css">
-    <link rel="stylesheet" href="css/wadiz_css4.css">
-
+	<!-- 잠깐 -->
 	<!-- for review -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap -->
+    <!-- Bootstrap 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
+    
+    
+    
+    <!-- 이 녀석이 header 와 footer css충돌냄
     <link rel='stylesheet' id='content-css'  href='css/css_board/content.css' type='text/css' media='all' />
+	-->
     <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' />
-  
-
-	<link href="css/css_board/reservation_page.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css"
-	href="timepicker/jquery.datetimepicker.css"/ >
-	<link rel="shortcut icon" href="bit_logo.png" />
 	
+	<link href="css/css_board/reservation_page.css" rel="stylesheet">
 
     <style>
         .three {
@@ -244,14 +238,16 @@
        
     </section>
 	<!-- 게시판 영역 start -->
-	
+<!-- 
 	<nav class="page-nav">
 		<div class="inner">
 			<ul>
 				<li class="current"><a href="#">자유게시판</a></li>
 			</ul>
 		</div>
-	</nav>
+	</nav> 
+-->
+
 	<div class="container">
 			
 			<div class="r_list">
@@ -281,12 +277,12 @@
 					<form action="board_search#fix_point" name="check_into"
 						method="get">  
 						<ul class="clearfix">
-							<li><span>분류 : </span> 
+							<li><input type="hidden" name="board_cp" value=1></li> 
+							<li><span>분류 : </span>
 							<select name="board_c_code" id="store_code" onChange="text.value=c_code[selectedIndex].value" style='height:30px; margin-bottom:3px;'>
 									<option value="MEMBER_NAME">작성자</option>
 									<option value="BOARD_SUBJECT">글제목</option>
-							</select>
-
+							</select>							
 							<li>
 								<input type="text" name="board_searchName" style='height:30px; margin-bottom:3px;'
 									title="검색" required placeholder="Search" ma	xlength="20">
@@ -343,10 +339,9 @@
         </tr>
         <tr>
           <td colspan="3" align="center">
-          	
          	<c:if test="${empty listResult.board_searchName}">
             <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                	<a href="board_page?board_cp=${i}#fix_point">
+                	<a href="board_page?board_cp=${i}&board_filterBy=${listResult.board_filterBy}#fix_point">
                 <c:choose> 
                 <c:when test="${i==listResult.currentPage}">
                     <strong>${i}</strong>
@@ -362,7 +357,7 @@
 			</c:if>
             <c:if test="${!empty listResult.board_searchName}"> 
             <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                	<a href="board_search?board_cp=${i}#fix_point">
+                	<a href="board_search?board_cp=${i}&board_c_code=${listResult.board_c_code}&board_searchName=${listResult.board_searchName}#fix_point">
                 <c:choose> 
                 <c:when test="${i==listResult.currentPage}">
                     <strong>${i}</strong>
@@ -396,6 +391,7 @@
        
 		</div>
    </div>
+
    <!-- 게시판 영역 end -->
 
   	<!-- Footer Bottom Area -->
@@ -415,9 +411,8 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-    
-  
-  <!-- sweet alert2 -->
+     
+    <!-- sweet alert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     
     <script>
@@ -447,7 +442,7 @@
 
 		} 
 	</script>
-  <jsp:include page="Language.jsp" flush="false">
+    <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
     </jsp:include>
 </body>

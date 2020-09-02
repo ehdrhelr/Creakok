@@ -103,4 +103,15 @@
 					#{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null, #{creator_name}, ${board_refer}, 
 					${board_level}+1, ${board_sunbun}+1)
 	</insert>
+	
+	<!-- 정렬 기능 -->
+	<!-- ${board_filterBy}를 ${board.filterBy}로 작성했더니 오류가 났다. 
+	parameter의 이름은 board domain에 있는 변수이름과 동일하게 작성해줘야 하나보다.
+	추가) 아니다. mapper.java와 일치시켜야 하나보다 .-->
+	<select id="getListResultByFilter" resultType="Board">
+    	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
+    	(select * from CREATOR_BOARD order by ${board_filterBy} desc) aa) 
+    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name}]]>
+ 	</select>
+
 </mapper>
