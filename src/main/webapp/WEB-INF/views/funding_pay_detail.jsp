@@ -17,11 +17,11 @@
 			    pg : 'inicis', // version 1.1.0부터 지원.
 			    pay_method : 'card',
 			    merchant_uid : 'merchant_' + new Date().getTime(),
-			    name :'${funding_payinfo.fundingname}',
-			    amount : '${funding_payinfo.payinfo_amountpayresult}',
-			    buyer_email : '${funding_payinfo.payinfo_email}',
-			    buyer_name : '${funding_payinfo.payinfo_name}',
-			    buyer_tel : '${funding_payinfo.payinfo_phonenumber}',
+			    name :'${funding_payinfo.funding_subject}',
+			    amount : '${funding_payinfo.funding_payinfo_amountpay}',
+			    buyer_email : '${funding_payinfo.member_email}',
+			    buyer_name : '${funding_payinfo.funding_payinfo_name}',
+			    buyer_tel : '${funding_payinfo.funding_payinfo_phonenumber}',
 			    buyer_addr : '서울특별시 강남구 삼성동',
 			    buyer_postcode : '123-456',
 			    m_redirect_url : 'https://www.yourdomain.com/payments/complete'

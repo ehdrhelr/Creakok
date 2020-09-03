@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Funding;
-import creakok.com.domain.Funding_Payinfo;
+import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Member;
 import creakok.com.service.PayService;
 import lombok.AllArgsConstructor;
@@ -36,14 +36,18 @@ public class PayController {
 	
 	@RequestMapping("funding_pay.do")
 	public ModelAndView pay(HttpServletRequest request, HttpSession session) {
-		String funding_indexStr = request.getParameter("funding_index");
-		String payinfo_name = request.getParameter("Payinfo_name");
-		String payinfo_email = request.getParameter("Payinfo_email");
-		String payinfo_phonenumber = request.getParameter("Payinfo_phonenumber");
-		String payinfo_amountPayresult = request.getParameter("amountPaygot");
-		String fundingname = request.getParameter("fundingName");
 		
-		Funding_Payinfo funding_payinfo = new Funding_Payinfo(funding_indexStr, payinfo_name, payinfo_email, payinfo_phonenumber, payinfo_amountPayresult, fundingname);
+		String funding_payinfo_name = request.getParameter("Payinfo_name");
+		String member_email = request.getParameter("Payinfo_email");
+		String funding_payinfo_phonenumberStr = request.getParameter("Payinfo_phonenumber");
+		long funding_payinfo_phonenumber = Long.parseLong(funding_payinfo_phonenumberStr);
+		String funding_payinfo_amountpayStr = request.getParameter("amountPaygot");
+		long funding_payinfo_amountpay = Long.parseLong(funding_payinfo_amountpayStr);
+		String funding_indexStr = request.getParameter("funding_index");
+		long funding_index = Long.parseLong(funding_indexStr);
+		String funding_subject = request.getParameter("fundingName");
+	
+		Funding_payinfo funding_payinfo = new Funding_payinfo(-1, funding_payinfo_name, member_email, funding_payinfo_phonenumber, funding_payinfo_amountpay, funding_index, funding_subject);
 		log.info("!!!!!!!!!!!!!!!!!!!"+funding_payinfo);
 		return new ModelAndView("funding_pay_detail", "funding_payinfo", funding_payinfo);
 	}
