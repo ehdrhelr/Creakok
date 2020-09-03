@@ -33,3 +33,4 @@
         select * from GOODS where GOODS_CATEGORY_CODE=${category_code}
     </select>
 </mapper>
+	

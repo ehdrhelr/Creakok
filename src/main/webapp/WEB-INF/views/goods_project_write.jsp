@@ -1093,37 +1093,48 @@
         <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
                     <h3 style="text-align:center;margin-bottom:40px;font-size:18pt">굿즈 판매하기</h3>
         <div style="width: 60%; margin: auto;" >
-            <form method="post" action="/fundingwrite.do">
+            <form method="post" action="/goods_project_write.do">
                              <div >
                                     <input name="write_creator" style="display:block;"class="form-control" id="first_name" 
                                     placeholder="크리에이터" value="" required>
                                 </div>
                                 
                                  <div >
-                                    <input  name="write_funding_goal"  style="display:inline-block;width:50%;margin-top:10px;" class="form-control" id="first_name" 
+                                    <input  name="write_goods_price"  style="display:inline-block;width:50%;margin-top:10px;" class="form-control" id="first_name" 
                                      placeholder="가격" required>
-                                    <input type="text"  name="write_funding_wdate"  style="display:inline-block;width:23.3%;margin-top:10px;margin-left:5px;" class="form-control" id="first_name" 
+                                    <input type="text"  name="write_goods_stock"  style="display:inline-block;width:23.3%;margin-top:10px;margin-left:5px;" class="form-control" id="first_name" 
                                      placeholder="재고량" required>
                                  
                                 </div>
                                 
                                  <div >
-                                    <input name="write_funding_subject" style="display:inline-block;width:74.5%"class="form-control" id="first_name" 
+                                    <input name="write_goods_product" style="display:inline-block;width:74.5%"class="form-control" id="first_name" 
                                    placeholder="판매할 제품명" required>
-                                    <select name="funding_category_code"style="display:inline-block; width:24%; margin-left:5px;margin-top:10px; padding:5px"
-                                    onChange="text.value=funding_category_code[selectedIndex].value">
+                                    <select name="goods_category_code"style="display:inline-block; width:24%; margin-left:5px;margin-top:10px; padding:5px"
+                                    onChange="text.value=goods_category_code[selectedIndex].value">
                                         <option value="">카테고리</option>
-                                        <option value="200">테크/가전</option>
-                                        <option value="201">패션/잡화</option>  
+                                        <option value="301">뷰티</option>
+                                        <option value="302">디자인소품</option>  
+                                        <option value="301">홈리빙</option>
+                                        <option value="303">테크/가전</option>  
+                                        <option value="304">패션/잡화</option>
+                                        <option value="305">푸드</option>  
+                                        <option value="306">여행/레저</option>
+                                        <option value="307">스포츠/모빌리티</option>  
+                                        <option value="308">반려동물</option>
+                                        <option value="309">문화/예술</option>  
+                                        <option value="310">출산/육아</option>  
+                                        <option value="311">생활/건강</option>  
                                     </select>           
                                 </div>
+
                 <br>
                 <textarea id="summernote" name="content"></textarea>
-                <label for="phonenumber"style="display:inline-block;">대표 이미지 첨부 :  </label>
-                <input type="file" name="write_funding_repre_pic" style="display:inline-block;margin-top:10px; width:85%;padding:2px;"class="form-control" id="first_name" 
+                <label for="write_goods_repre_pic"style="display:inline-block;">대표 이미지 첨부 :  </label>
+                <input type="file" name="write_goods_repre_pic" id="write_goods_repre_pic" style="display:inline-block;margin-top:10px; width:85%;padding:2px;"class="form-control" id="first_name" 
                                     onkeydown="goWrite(this.form)" required>    
                 <p style="width:100%;text-align:center; margin-top:20px;">
-                <input id="subBtn" type="button" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px" value="프로젝트 만들기" onclick="goWrite(this.form)"/>
+                <input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px" value="프로젝트 만들기" onclick="goWrite(this.form)"/>
                 <input id="subBtn" type="reset"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px"value="취소하기" onclick="goWrite(this.form)"/>
                 </p>                    
             </form>
@@ -1134,34 +1145,35 @@
       <script>
 function goWrite(frm) {
     var write_creator = frm.write_creator.value;
-    var write_funding_goal = frm.write_funding_goal.value;
-    var write_funding_wdate = frm.write_funding_wdate.value;
-    var write_funding_edate = frm.write_funding_edate.value;
-    var write_funding_subject = frm.write_funding_subject.value;
-    var write_funding_repre_pic = frm.write_funding_repre_pic.value;
-    
+    var write_goods_price = frm.write_goods_price.value;
+    var write_goods_stock = frm.write_goods_stock.value;
+    var write_goods_product = frm.write_goods_product.value;
+    var goods_category_code = frm.goods_category_code.value;
+    var write_goods_repre_pic = frm.write_goods_repre_pic.value;
+   
+
     if (write_creator.trim() == ''){
         alert("크리에이터명을 입력해주세요");
         return false;
     }
-    if(write_funding_goal.trim() == ''){
-        alert("목표금액을 입력해주세요");
+    if(write_goods_price.trim() == ''){
+        alert("가격을 입력해주세요");
         return false;
     }
-    if(write_funding_wdate.trim() == ''){
-        alert("펀딩 시작날짜를 입력해주세요");
+    if(write_goods_stock.trim() == ''){
+        alert("재고 수량을 입력해주세요");
         return false;
     }
-    if(write_funding_edate.trim() == ''){
-        alert("펀딩 종료날짜를 입력해주세요");
+    if(write_goods_product.trim() == ''){
+        alert("제품명을 입력해주세요");
         return false;
     }
-    if(write_funding_subject.trim() == ''){
-        alert("펀딩받을 프로젝트명을 입력해주세요");
+    if(goods_category_code.trim() == ''){
+        alert("카테고리를 선택해주세요");
         return false;
     }
-    if(write_funding_repre_pic.trim() == ''){
-        alert("펀딩 대표사진을 입력해주세요");
+    if(write_goods_repre_pic.trim() == ''){
+        alert("굿즈 대표사진을 입력해주세요");
         return false;
     }
     

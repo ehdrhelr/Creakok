@@ -395,7 +395,7 @@
                                                           
                                                           
                                                           <!-- 크리에이터 답변이 없을 때 -->
-                                                          <c:if test="${member.member_email == one_qna.creator_email}">
+                                                          <c:if test="${member.member_name == one_qna.creator_name}">
                                                                <c:if test="${empty one_qna.goods_qna_answer}">
                                                                   <tr>
                                                                       <td colspan="5" style="border:0;text-align:left">

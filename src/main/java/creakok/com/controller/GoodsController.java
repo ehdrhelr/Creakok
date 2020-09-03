@@ -97,7 +97,7 @@ public class GoodsController {
 			Object cpObj = tempGoods.getCp();
 			if(cpObj != null) {
 				cp = (Integer)cpObj;
-			} else {
+			} else if(cpObj == null){
 				cp = 1;
 			}
 		}else {

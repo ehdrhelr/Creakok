@@ -56,4 +56,5 @@ public class GoodsServiceImpl implements GoodsService {
 	public List<Goods> getRelatedGoods(long category_code) {
 		return gMapper.getRelatedGoods(category_code);
 	}
+
 }

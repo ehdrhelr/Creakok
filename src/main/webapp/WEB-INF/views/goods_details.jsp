@@ -311,8 +311,10 @@
                         <div class="ProjectPage__MainColumnInner-f3cisk-4 kGPPtA">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf">
                                 <div class="StoryCard__StoryCardInner-sc-6cra5i-0 giOSQG">
-                                    <div class="storyContent">
-                                       <img src="img/goods/${one_goods.goods_detail_pic}">
+                                    <div class="storyContent" style="padding:15px">
+                                       
+                                       	${one_goods.goods_detail_pic}
+                                       	
                                     </div>
                                 </div>
                             </div>
