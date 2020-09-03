@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	
-	 <!-- Title -->
+	<!-- Title -->
     <title>COMMUNITY - CREAKOK</title>
 
     <!-- Favicon -->
@@ -26,6 +26,7 @@
 	<meta name="description" content="Boto Photo Studio HTML Template">
 	<meta name="keywords" content="photo, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
@@ -41,19 +42,9 @@
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
    
-	<!-- 잠깐 -->
 	<!-- for review -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
-    
-    
-    
-    <!-- 이 녀석이 header 와 footer css충돌냄
-    <link rel='stylesheet' id='content-css'  href='css/css_board/content.css' type='text/css' media='all' />
-	-->
+
     <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' />
 	
 	<link href="css/css_board/reservation_page.css" rel="stylesheet">
@@ -250,7 +241,7 @@
 
 	<div class="container">
 			
-			<div class="r_list">
+			<div class="r_list" style="height:900px;">
 				<div class="choose">
 					<ul class="clearfix">
 						<li><span>정렬 : </span>
@@ -293,8 +284,8 @@
 				<table>
 					<colgroup>
 						<col width="5%">
-						<col width="60%">
-						<col width="5%">
+						<col width="55%">
+						<col width="10%">
 						<col width="10%">
 						<col width="5%">
 						<col width="5%">

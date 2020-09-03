@@ -43,11 +43,10 @@ public class CreatorBoardController {
 	@RequestMapping("board_page")
 	public ModelAndView getListResult(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String board_cpStr = request.getParameter("board_cp");
-		String board_psStr = request.getParameter("board_ps");
 		String board_filterBy = request.getParameter("board_filterBy");
 		String creator_name = request.getParameter("creator_name");
-		String c_code = request.getParameter("c_code");
-		String searchName = request.getParameter("searchName");
+		String board_c_code = request.getParameter("board_c_code");
+		String board_searchName = request.getParameter("board_searchName");
 		
 		HttpSession session = request.getSession();
 		
@@ -72,38 +71,8 @@ public class CreatorBoardController {
 		session.setAttribute("board_cp", board_cp);
 		
 		//(2) ps 
-		int board_ps = 15;
-		/*
-		if(psStr == null) {
-			Object psObj = session.getAttribute("ps");
-			if(psObj != null) {
-				ps = (Integer)psObj;
-			}
-		}else {
-			psStr = psStr.trim();
-			int psParam = Integer.parseInt(psStr);
-			
-			Object psObj = session.getAttribute("ps");
-			if(psObj != null) {
-				int psSession = (Integer)psObj;
-				if(psSession != psParam) {
-					cp = 1;
-					session.setAttribute("cp", cp);
-				}
-			}else {
-				if(ps != psParam) {
-					cp = 1;
-					session.setAttribute("cp", cp);
-				}
-			}
-			
-			ps = psParam;
-		}
-		*/
+		int board_ps = 20;
 		session.setAttribute("board_ps", board_ps);
-		
-		String board_c_code = request.getParameter("board_c_code");
-		String board_searchName = request.getParameter("board_searchName");
 		
 		if (board_c_code==null) { 
 			String board_c_codeTemp = (String) session.getAttribute("board_c_code");
@@ -124,10 +93,10 @@ public class CreatorBoardController {
 			} else {
 				board_searchName = "#####";
 			}
-		}
+		}		
+		session.setAttribute("board_searchName", board_searchName);
 		
 		ListResult listResult = null;
-		session.setAttribute("board_searchName", board_searchName);
 		
 		if (board_filterBy==null) {
 			String board_filterByTemp = (String) session.getAttribute("board_filterBy");
