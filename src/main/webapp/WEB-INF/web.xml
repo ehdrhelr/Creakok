@@ -23,6 +23,9 @@
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<!-- 채팅기능구현을 위한 비동기처리 -->
+		<async-supported>true</async-supported>
+
 	</servlet>
 	
 	
