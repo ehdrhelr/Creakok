@@ -192,10 +192,6 @@ public class GoodsController {
 			list.setGCode(gCode);
 			
 			
-			
-			
-			
-			
 			if(list.getList().size() == 0) {
 				if(cp > 1) {	
 					int cp2 = cp-1;
@@ -216,13 +212,16 @@ public class GoodsController {
 		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
 		long qna_list_size = goods_qnaservice.selectGoodsQnACountByGoodsIndex(goods_index);
 		
+		//굿즈 정보, 크리에이터 정보
 		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
 		String creator_name = one_goods.getCreator_name();
 		Creator goods_creator = creatorBoardService.getContentByCreator(creator_name);
 		
+		//카테고리 이름
 		long category_code = one_goods.getGoods_category_code();
 		String category_name = goods_categoryService.selectGoodsCategoryName(category_code);
-	
+		
+		//관련 상품
 		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
 		List<Goods> four_goods = new ArrayList<Goods>();
 		Random r = new Random();
@@ -348,6 +347,10 @@ public class GoodsController {
 				success_num, success_id, success_amount, success_card_num, success_pay);
 		
 		payservice.insertOneOrder(order_info); 
+		
+		//굿즈 이름으로 goods_index 뽑아서 판매 수 +1
+		long goods_index = goodsService.getGoodsIndex(product_name);
+		goodsService.plusSaleNumber(goods_index);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("pay_success");
@@ -532,9 +535,11 @@ public class GoodsController {
 	public ModelAndView goods_review_delete(HttpServletRequest request) {
 		String goods_review_indexStr = request.getParameter("goods_review_index");
 		long goods_review_index = Long.parseLong(goods_review_indexStr);
-		goods_reviewservice.deleteOneReview(goods_review_index);
 		String goods_indexStr = request.getParameter("goods_index");
 		long goods_index = Long.parseLong(goods_indexStr);
+		
+		goods_reviewservice.deleteOneReview(goods_review_index);
+		goodsService.minusReviewNumber(goods_index);
 		
 		int cp = 1;
 		ModelAndView mv = new ModelAndView();
@@ -559,6 +564,7 @@ public class GoodsController {
 		Goods_Review goods_review = new Goods_Review(-1, review_writer, goods_index, null, review_rating, null, review_subject, review_content, null, 0);
 		
 		goods_reviewservice.insertOneReview(goods_review);
+		goodsService.plusReviewNumber(goods_index);
 		
 		int cp = 1;
 		ModelAndView mv = new ModelAndView();

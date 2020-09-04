@@ -382,9 +382,13 @@
                                                                        <span style="font-weight:400"> 님의 답변 :</span> 
                                                                        <span id="answer_here" style="font-weight:500">${one_qna.goods_qna_answer}</span>
                                                                        <span style="font-weight:300;margin-left:5px">(${one_qna.goods_qna_adate})</span>&nbsp;&nbsp;
+                                                                       
+                                                                     <c:if test="${member.member_email == creator.member_email}">  
                                                                        <a href="#" style="color:#858585;font-weight:300" onclick="answerUpdate()">수정</a>&nbsp;
                                                                        <span style="color:#858585;font-weight:300">|</span>&nbsp;
                                                                        <a href="goods_qna_answer_delete.do?goods_qna_index=${one_qna.goods_qna_index}&goods_index=${one_qna.goods_index}&category_name=${category_name}#fix_point" style="color:#858585;font-weight:300">삭제</a>
+                                                                    </c:if>
+                                                                       
                                                                    </p>
                                                                 </td>
                                                                </tr>
@@ -394,8 +398,9 @@
                                                           <!-- 크리에이터 답변이 있을 때 End -->
                                                           
                                                           
+                                                          
                                                           <!-- 크리에이터 답변이 없을 때 -->
-                                                          <c:if test="${member.member_name == one_qna.creator_name}">
+                                                          <c:if test="${member.member_email == creator.member_email}">
                                                                <c:if test="${empty one_qna.goods_qna_answer}">
                                                                   <tr>
                                                                       <td colspan="5" style="border:0;text-align:left">

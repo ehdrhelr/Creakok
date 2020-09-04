@@ -15,4 +15,8 @@ public interface GoodsMapper {
 	String selectGoodsName(long goods_index);
 	List<Goods> getRelatedGoods(@Param("category_code") long category_code);
 	void insertOneGoods(Goods goods);
+	void plusReviewNumber(@Param("goods_index") long goods_index);
+	void minusReviewNumber(@Param("goods_index") long goods_index);
+	long getGoodsIndex(@Param("goods_name") String goods_name);
+	void plusSaleNumber(@Param("goods_index") long goods_index);
 }
