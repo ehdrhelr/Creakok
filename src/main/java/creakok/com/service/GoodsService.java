@@ -17,4 +17,5 @@ public interface GoodsService {
 	void minusReviewNumber(long goods_index);
 	long getGoodsIndex(String goods_name);
 	void plusSaleNumber(long goods_index);
+	void minusStockNumber(long goods_index);
 }

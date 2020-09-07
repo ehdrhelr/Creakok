@@ -82,7 +82,7 @@
                    </div>
                    <p style="text-align:center">
                    		<a href="../" style="background-color:black; color:white; !important; font-size:13pt; padding:5px 10px;">확인</a>
-                   		<a href="member_mypage.do?member_email=${member_email}" style="background-color:black; color:white; !important; font-size:13pt; padding:5px 10px;">주문내역 확인</a>
+                   		<a href="member_mypage.do?order_cp=1&member_email=${member_email}" style="background-color:black; color:white; !important; font-size:13pt; padding:5px 10px;">주문내역 확인</a>
                    </p>
                 </div>
             </div>

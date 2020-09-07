@@ -48,5 +48,9 @@
     <update id="plusSaleNumber" parameterType="long">
         update GOODS set GOODS_SALE_NUMBER = GOODS_SALE_NUMBER+1 WHERE GOODS_INDEX=${goods_index}
     </update>
+    
+    <update id="minusStockNumber" parameterType="long">
+        update GOODS set GOODS_STOCK_NUMBER = GOODS_STOCK_NUMBER-1 WHERE GOODS_INDEX=${goods_index}
+    </update>
 </mapper>
 	

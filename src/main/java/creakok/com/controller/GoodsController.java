@@ -352,6 +352,9 @@ public class GoodsController {
 		long goods_index = goodsService.getGoodsIndex(product_name);
 		goodsService.plusSaleNumber(goods_index);
 		
+		//굿즈 재고 수량 -1
+		goodsService.minusStockNumber(goods_index);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("pay_success");
 		mv.addObject("success_num", success_num);	
@@ -400,7 +403,7 @@ public class GoodsController {
 			Object cpObj = goods_review_vo.getReview_cp();
 			if(cpObj != null) {
 				cp = (Integer)cpObj;
-			} else {
+			} else if(cpObj == null) {
 				cp = 1;
 			}
 		}else {

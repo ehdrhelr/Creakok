@@ -166,7 +166,7 @@ public class MemberController {
 			Object cpObj = order_infoVo.getOrder_cp();
 			if(cpObj != null) {
 				cp = (Integer)cpObj;
-			} else if((cpObj == null)){
+			} else if(cpObj == null){
 				cp = 1;
 			}
 		}else {

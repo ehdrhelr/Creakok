@@ -307,8 +307,18 @@
                                 <div class="col-12 col-sm-6 col-lg-4">
                                     <div class="single-product-area mb-50">
                                         <!-- Product Image -->
+                                        <div style="z-index:1">
+                                        	
+                                        </div>
                                         <div class="product-img">
-                                            <a href="goods_detail.do?goods_index=${goods.goods_index}"><img src="img/goods/${goods.goods_repre_pic}" alt=""></a>
+                                            <a href="goods_detail.do?goods_index=${goods.goods_index}">
+                                            	<c:if test="${goods.goods_stock_number == 0 }">
+                                            		<img src="img/goods/sold_out.png" alt="SOLD OUT IMAGE">
+                                            	</c:if>
+                                            	<c:if test="${goods.goods_stock_number != 0 }">
+                                            		<img src="img/goods/${goods.goods_repre_pic}" alt="상품 이미지">
+                                            	</c:if>
+                                            </a>
                                         
                                             <!-- Product Tag
                                             <div class="product-tag">

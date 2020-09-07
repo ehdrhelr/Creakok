@@ -19,4 +19,5 @@ public interface GoodsMapper {
 	void minusReviewNumber(@Param("goods_index") long goods_index);
 	long getGoodsIndex(@Param("goods_name") String goods_name);
 	void plusSaleNumber(@Param("goods_index") long goods_index);
+	void minusStockNumber(@Param("goods_index") long goods_index);
 }

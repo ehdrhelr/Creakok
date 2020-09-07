@@ -143,28 +143,33 @@
 	                             	<div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV"  style="margin-right:20px;">수량</div>
 	                                 <div class="quantity">
 	                                        <span class="qty-minus" style="padding:10px;" onclick="minus()"><i class="fa fa-minus" aria-hidden="true"></i></span>
-	                                        <input type="number" class="qty-text" id="qty" style="width:40px" step="1" min="0" max="12" name="quantity" value="1" readonly>
+	                                        <input type="number" class="qty-text" id="qty" style="width:40px" step="1" min="0" max="${one_goods.goods_stock_number}" name="quantity" value="1" readonly>
 	                                        <span class="qty-plus" onclick="plus()" style="padding:10px" ><i class="fa fa-plus" aria-hidden="true"></i></span>
 	                                    </div>
 	                           	 </div>  
                       
-                            
+
                        <script language="javascript">
 		                      function plus(){
 		                  		var effect = document.getElementById('qty'); 
 		                  		var qty = effect.value; 
 		                  			
 		                  		var result = document.getElementById('price_qty');
-		                  		var amount = ${one_goods.goods_price} * (Number(qty)+1);
+		                  		if(qty < ${one_goods.goods_stock_number}){
+		                  			var amount = ${one_goods.goods_price} * (Number(qty)+1);
+		                  			
+			                  		var result2 = document.getElementById('price_qty2');
+			                  		var amount2 = (${one_goods.goods_price} * (Number(qty)+1))+3000; 
+			                  		result2.innerHTML= amount2;
+			                  		
+			                  		result.innerHTML= amount;
+		                  		} else {
+		                  			var amount = 0;
+		                  		}
 		                  		
-		                  		
-		                  		var result2 = document.getElementById('price_qty2');
-		                  		var amount2 = (${one_goods.goods_price} * (Number(qty)+1))+3000; 
-		                  		result2.innerHTML= amount2;
-		                  		
-		                  		result.innerHTML= amount;
-		                  			if( !isNaN( qty )) effect.value++;
-		                      		return false;
+
+		                  		if( !isNaN( qty ) & qty < ${one_goods.goods_stock_number} ) effect.value++;
+		                      	return false;
 		                  	}
                        		function minus(){
                        			var effect = document.getElementById('qty'); 
@@ -196,10 +201,11 @@
                         		
                         		                
                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
-                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV">TOTAL    :   </div>
-                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="font-size:1.3em; font-weight:600;"><span id="price_qty">${one_goods.goods_price}</span> + <span style="font-size:1em; font-weight:100;">(배송비)</span> 3000원  =</div>
-                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;text-align:right"><span id="price_qty2">${one_goods.goods_price+3000}</span>
-                                <span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">원</span></div>
+                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" id="totalis">TOTAL    :   </div>
+                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV"  id="no_product" style="font-size:1.3em; font-weight:600;"><span id="price_qty">${one_goods.goods_price}</span> + <span style="font-size:1em; font-weight:100;">(배송비)</span> 3000원  =</div>
+                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" id="no_product2" style="font-size:2.3em; font-weight:600;text-align:right"><span id="price_qty2">${one_goods.goods_price+3000}</span>
+                               	<span id="wonwon" class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">원</span>
+                                </div>
                             </div>                         
                             
                                
@@ -211,10 +217,10 @@
                             <div class="ProjectIntroduction__ProjectButtonsInner-sc-1o2ojgb-20 jHbICj">
                                 <div class="ProjectIntroduction__PrimaryButton-sc-1o2ojgb-21 knPvZB">
                                     <div class="PledgeButton__Wrapper-arwur9-0 krUjgk">
-                                  		<a href="#" onclick="goodsOrder()" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230">
-                                	<!--  	 <input value="" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230"> -->
+                                  	<!--  <a href="#" onclick="goodsOrder()" id="buy_button" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230"> -->	
+                                    	<a href="#" onclick="goodsOrder()" id="buy_button" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230;color:white;border:0.1em solid #fc5230 !important;width:100%;height:56px;text-align:center;border-radius:5px;line-height: 50%;font-size:16.5px">	
                                     		구매하기
-                                   	 	</a>
+                                   	 	</a>      
                                     </div>
                                 </div>
                             </div>
@@ -281,13 +287,17 @@
 			                  	
 			                  	var effect = document.getElementById('qty'); 
 		                  		var qty = effect.value; 
-		                  		if('${member.member_email}' == '') {
-		                  			alert('로그인 해주세요');
-		                  			location.href="member_login.do";
-		                            return false;
-		                  		}
-		                  		if('${member.member_email}' != '') {
-		                  			location.href="goods_order.do?price_amount="+price_amount+"&product_name="+product_name+"&product_price="+product_price+"&qty="+qty;	
+		                  		if('${one_goods.goods_stock_number}' != 0) {
+			                  		if('${member.member_email}' == '') {
+			                  			alert('로그인 해주세요');
+			                  			location.href="member_login.do";
+			                            return false;
+			                  		}
+			                  		if('${member.member_email}' != '') {
+			                  			location.href="goods_order.do?price_amount="+price_amount+"&product_name="+product_name+"&product_price="+product_price+"&qty="+qty;	
+			                  		}
+		                  		} else {
+		                  			alert('품절된 상품입니다');
 		                  		}
 		                  	}
 		                      
@@ -414,6 +424,29 @@
         </div>
     </div>
     <!-- ##### Related Product Area End ##### -->
+    
+    
+    <!--  재고 수량 0일 때(품절 처리)  -->
+    <script src="js/js_board/jquery-1.12.4.js"></script>    
+	<script>
+		if('${one_goods.goods_stock_number}' == 0){
+             //alert('0');
+             $("#totalis").css('display','none');
+             $("#no_product").css('display','none');
+             $("#wonwon").css('display','none');
+             $("#price_qty2").html("품절된 상품입니다"); 
+             $("#price_qty2").css('font-size', '0.7em');
+             $("#price_qty2").css('font-weight', '600');
+             
+             $("#buy_button").css('background-color', '#828282');
+             $("#buy_button").css('border', '0.1em solid #828282');
+		}
+	</script>  
+	
+	
+	
+	
+	
 
     <!-- Footer Bottom Area -->
     <div id="footer_div">
@@ -432,7 +465,10 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-
+	
+					    
+				    
+				    
     <!--hcbae 텀블벅 가져오기 start-->
     <div id="ch-plugin">
         <div id="ch-plugin-core">
