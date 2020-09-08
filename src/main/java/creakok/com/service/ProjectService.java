@@ -5,6 +5,7 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 import creakok.com.domain.Funding;
+import creakok.com.domain.Goods;
 
 public interface ProjectService {
 
@@ -17,4 +18,5 @@ public interface ProjectService {
 	//editProject
 	//deleteProject
 	
+	void insertOneGoods(Goods goods);
 }

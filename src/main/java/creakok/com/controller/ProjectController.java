@@ -27,6 +27,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import creakok.com.domain.Funding;
+import creakok.com.domain.Goods;
 import creakok.com.filesetting.Path;
 import creakok.com.service.ProjectService;
 
@@ -78,12 +79,6 @@ public class ProjectController {
 	    service.writeFundingProject(funding);
 		return new ModelAndView("/index", "", null);
 	}
-	
-	@RequestMapping("/goods_project_write_form.do")
-	public String goods_project_write_form() {
-		
-		return "goods_project_write";
-	}
 
 	@PostMapping(value="/uploadSummernoteImageFile")
 	@ResponseBody
@@ -108,6 +103,33 @@ public class ProjectController {
 		String str = "/summernoteImage/"+savedFileName;
 		return str;
 	}   
+	
+	@RequestMapping("/goods_project_write_form.do")
+	public String goods_project_write_form() {
+		
+		return "goods_project_write";
+	}
+	
+	@PostMapping("/goods_project_write.do")
+	public String goods_project_write(HttpServletRequest request) {
+		String write_creator = request.getParameter("write_creator");
+		String write_goods_priceStr = request.getParameter("write_goods_price");
+		String write_goods_stockStr = request.getParameter("write_goods_stock");
+		String write_goods_product = request.getParameter("write_goods_product");
+		String goods_category_codeStr = request.getParameter("goods_category_code");
+		String content = request.getParameter("content");
+		String write_goods_repre_pic = request.getParameter("write_goods_repre_pic");
+		
+		long goods_category_code = Long.parseLong(goods_category_codeStr);
+		long write_goods_price = Long.parseLong(write_goods_priceStr);
+		long write_goods_stock = Long.parseLong(write_goods_stockStr);
+		Goods goods = new Goods(-1, goods_category_code, write_goods_product, write_goods_price, write_goods_repre_pic, content, write_creator, 0, 0, write_goods_stock, 0, null);
+	    
+		service.insertOneGoods(goods);
+		
+		return "project_write_ok";
+	}
+	
 	@PostMapping(value="/uploadSummernoteImageFile_goods")
 	@ResponseBody
 	public String uploadSummernoteImageFile_goods(@RequestParam("file_detail_pic") MultipartFile multipartFile) {

@@ -15,7 +15,7 @@
     <title>CREAKOK</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/creakok.ico">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
@@ -208,10 +208,10 @@
                         		
                         		                
                             <div class="ProjectIntroduction__Metric-sc-1o2ojgb-14 cZUBTY">
-                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV">TOTAL    :   </div>
-                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" style="font-size:1.3em; font-weight:600;"><span id="price_qty">${one_goods.goods_price}</span> + <span style="font-size:1em; font-weight:100;">(배송비)</span> 3000원  =</div>
-                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA" style="font-size:2.3em; font-weight:600;text-align:right"><span id="price_qty2">${one_goods.goods_price+3000}</span>
-                                <span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU">원</span></div>
+                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" id="totalis">TOTAL    :   </div>
+                                <div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV" id="no_product" style="font-size:1.3em; font-weight:600;"><span id="price_qty">${one_goods.goods_price}</span> + <span style="font-size:1em; font-weight:100;">(배송비)</span> 3000원  =</div>
+                                <div class="ProjectIntroduction__StatusValue-sc-1o2ojgb-16 lgJcVA"  id="no_product2" style="font-size:2.3em; font-weight:600;text-align:right"><span id="price_qty2">${one_goods.goods_price+3000}</span>
+                                <span class="ProjectIntroduction__Small-sc-1o2ojgb-18 lnSbIU" id="wonwon">원</span></div>
                             </div>                         
                             
                                
@@ -223,10 +223,10 @@
                             <div class="ProjectIntroduction__ProjectButtonsInner-sc-1o2ojgb-20 jHbICj">
                                 <div class="ProjectIntroduction__PrimaryButton-sc-1o2ojgb-21 knPvZB">
                                     <div class="PledgeButton__Wrapper-arwur9-0 krUjgk">
-                                  		<a href="#" onclick="goodsOrder()" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230">
-                                	<!--  	 <input value="" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230"> -->
+                                  	<!--  <a href="#" onclick="goodsOrder()" id="buy_button" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230"> -->	
+                                    	<a href="#" onclick="goodsOrder()" id="buy_button" class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:#fc5230;color:white;border:0.1em solid #fc5230 !important;width:100%;height:56px;text-align:center;border-radius:5px;line-height: 50%;font-size:16.5px">	
                                     		구매하기
-                                   	 	</a>
+                                   	 	</a> 
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +234,7 @@
                             <div class="ProjectIntroduction__ProjectButtonsInner-sc-1o2ojgb-20 jHbICj">
                                 <div class="ProjectIntroduction__PrimaryButton-sc-1o2ojgb-21 knPvZB">
                                     <div class="PledgeButton__Wrapper-arwur9-0 krUjgk">
-                                    <button class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:white; color:#fc5230; border:0.05em solid #fc5230;">장바구니</button>
+                                    <button class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny" style="background-color:white;color:#fc5230;border:0.1em solid #fc5230 !important;line-height: 50%;" onclick="addCart()">장바구니</button>
                                     </div>
                                 </div>
                                 
@@ -278,8 +278,8 @@
                               }
                           </script>
                           
-                          <script language="javascript">
-		                      function goodsOrder(){
+						<script language="javascript">
+	                      function goodsOrder(){
 			                  	var p_amount = document.getElementById('price_qty').innerHTML; 
 			                  	var price_amount = Number(Number(p_amount)+3000);
 			                  	//alert(price_amount);
@@ -290,7 +290,18 @@
 			                  	
 			                  	var effect = document.getElementById('qty'); 
 		                  		var qty = effect.value; 
-			                  	location.href="goods_order.do?price_amount="+price_amount+"&product_name="+product_name+"&product_price="+product_price+"&qty="+qty;
+		                  		if('${one_goods.goods_stock_number}' != 0) {
+			                  		if('${member.member_email}' == '') {
+			                  			alert('로그인 해주세요');
+			                  			location.href="member_login.do";
+			                            return false;
+			                  		}
+			                  		if('${member.member_email}' != '') {
+			                  			location.href="goods_order.do?price_amount="+price_amount+"&product_name="+product_name+"&product_price="+product_price+"&qty="+qty;	
+			                  		}
+		                  		} else {
+		                  			alert('품절된 상품입니다');
+		                  		}
 		                  	}
                        </script>         
             
@@ -543,6 +554,23 @@
     </div>
     <!-- ##### Related Product Area End ##### -->
 
+    <!--  재고 수량 0일 때(품절 처리)  -->
+    <script src="js/js_board/jquery-1.12.4.js"></script>    
+	<script>
+		if('${one_goods.goods_stock_number}' == 0){
+             //alert('0');
+             $("#totalis").css('display','none');
+             $("#no_product").css('display','none');
+             $("#wonwon").css('display','none');
+             $("#price_qty2").html("품절된 상품입니다"); 
+             $("#price_qty2").css('font-size', '0.7em');
+             $("#price_qty2").css('font-weight', '600');
+             
+             $("#buy_button").css('background-color', '#828282');
+             $("#buy_button").css('border', '0.1em solid #828282');
+		}
+	</script>  
+	
     <!-- Footer Bottom Area -->
     <div id="footer_div">
     <jsp:include page="creakok_footer.jsp" flush="true"/>
@@ -629,7 +657,7 @@
         }
         
         let formData = new FormData();
-        formData.append('like_content_index','${one_goods.goods_index}');
+        formData.append('like_content_index','${review.goods_index}');
         formData.append('like_type_code','${LikeType.GOODS_LIKE}');
         formData.append('like_member_email','${member.member_email}');
 
@@ -648,6 +676,32 @@
        };
     }
     </script>
+    
+    <script type="text/javascript">
+    function addCart(){
+        let formData = new FormData();
+        formData.append('member_email', '${member.member_email}');
+        formData.append('goods_index', '${one_goods.goods_index}');
+        formData.append('goods_category_code', '${one_goods.goods_category_code}');
+        formData.append('goods_name', '${one_goods.goods_name}');
+        formData.append('goods_repre_pic', '${one_goods.goods_repre_pic}');
+        formData.append('unit_price', document.getElementById('product_price').innerText );
+        formData.append('unit_count', document.getElementById('qty').value );
+    
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+             if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                 //console.log("#####:"+xmlHttp.responseText);
+                 if(xmlHttp.responseText=="add_ok") {
+                     alert('상품을 장바구니에 담았습니다.');
+                 }
+             }
+        };
+        xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
+        xmlHttp.send(formData);
+    }
+    
+    </script>      
     
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>

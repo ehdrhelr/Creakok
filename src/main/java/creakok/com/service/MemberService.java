@@ -1,6 +1,10 @@
 package creakok.com.service;
 
+import java.util.List;
+
 import creakok.com.domain.Member;
+import creakok.com.domain.Order_Info;
+import creakok.com.vo.Member_OrderInfoVo;
 
 public interface MemberService {
 	Member getMemberInfoS(String member_email);
@@ -18,5 +22,9 @@ public interface MemberService {
 	void signupSocialMemberS(Member member);
 	
 	String checkMemberOrigin(String member_email);
-	
+	List<Order_Info>selectOrderInfo(String member_email);
+	long selectOrderCount(String member_email);
+	void updateOrderTime(Order_Info order_info);
+	Order_Info selectOneOrderInfo(long order_index);
+	Member_OrderInfoVo selectPerPageOrder(int order_cp, int order_ps, String member_email);
 }
