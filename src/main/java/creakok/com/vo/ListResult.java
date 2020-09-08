@@ -27,6 +27,7 @@ public class ListResult {
 		this.board_filterBy = board_filterBy;
 	}
 	
+	
 	public ListResult(int currentPage, long totalCount, int pageSize, List<Board> list, String board_filterBy, String board_c_code, String board_searchName) {
 		this.currentPage = currentPage;
 		this.totalCount = totalCount;
@@ -104,4 +105,5 @@ public class ListResult {
 	public void setBoard_searchName(String board_searchName) {
 		this.board_searchName = board_searchName;
 	}
+
 }

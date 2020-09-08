@@ -51,14 +51,15 @@
 	    <beans:property name="order" value="0" />
 	</beans:bean>
 	
-	<!-- WebSocket 	-->
+	<!-- WebSocket 
 	<beans:bean id="ChattingController" class="creakok.com.controller.ChattingController"></beans:bean>
 
 	<websocket:handlers>
 		<websocket:mapping handler="ChattingController" path="/" />
 		<websocket:sockjs />
 	</websocket:handlers>
-
+	-->
+	
 	<context:component-scan base-package="creakok.com" />
    
 	

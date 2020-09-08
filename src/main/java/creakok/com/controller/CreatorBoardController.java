@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import creakok.com.domain.Board;
 import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
+import creakok.com.domain.Pagination;
 import creakok.com.filesetting.Path;
 import creakok.com.service.BoardCommentService;
 import creakok.com.service.CreatorBoardService;
@@ -118,7 +119,7 @@ public class CreatorBoardController {
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community");
 		mv.addObject("listResult", listResult);
-
+		
 		// 해당 페이지의 크리에이터 정보 세션에 올리기
 		Creator theCreator = creatorBoardService.getCreator(creator_name);
 		session.setAttribute("theCreator", theCreator);
@@ -128,6 +129,15 @@ public class CreatorBoardController {
 		String[] contentList = contentOneLine.split("@");
 		mv.addObject("contentList", contentList);
 		
+		/** pagination try **/
+		
+		// 전체 리스트 개수 
+		int listCnt = (int) listResult.getTotalCount();
+		log.info("@@@@@@@@@@ listCnt : " + listCnt);
+		Pagination pagination = new Pagination(listCnt, board_cp);
+		
+		mv.addObject("listCnt", listCnt);
+		mv.addObject("pagination", pagination);
 		return mv;
 	}
 	
