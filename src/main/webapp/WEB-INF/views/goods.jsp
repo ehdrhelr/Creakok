@@ -460,6 +460,11 @@
 </script>
 <script type="text/javascript">
 function addCart(count){
+	if('${member.member_email}' == '') {
+	    alert('로그인해주세요.');
+	    return;
+	}
+	   
     let goods_index_list = [];
     let goods_category_code_list = [];
     let goods_name_list = [];
