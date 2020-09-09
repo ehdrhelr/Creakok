@@ -89,13 +89,13 @@
                     <div class="most__search__tab">
                         <ul class="nav nav-tabs nav-pills" role="tablist">
                             <li class="nav-item">
-                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
+                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
                             </li>
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#member-modify" role="tab">회원정보수정</a>
                             </li>
                             <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#my_order" role="tab">주문내역</a>
+                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="#my_order" role="tab">주문내역</a>
                             </li>
                         </ul>
                     </div>
@@ -105,7 +105,7 @@
         
             <!-- Tab panes -->
             <div class="tab-content"> <!--My Page Tabs Contents-->
-                <div id="jjim-list" class="container tab-pane active">
+                <div id="jjim-list" class="container tab-pane">
                     <h3>좋아요 리스트</h3>
                     <p>리스트를 어떻게 표시할까?</p>
                     
@@ -273,7 +273,7 @@
                 
                 
                 <!--  주문 내역   -->
-                 <div id="my_order" class="container tab-pane" style="margin-bottom:10%">
+                 <div id="my_order" class="container tab-pane active" style="margin-bottom:10%">
                     <c:if test="${empty order_info}">
                        <h3>주문 내역(총  0개)</h3>              
                     </c:if>
