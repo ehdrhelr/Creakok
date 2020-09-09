@@ -684,6 +684,11 @@
     
     <script type="text/javascript">
     function addCart(){
+    	if('${member.member_email}' == '') {
+    	     alert('로그인해주세요.');
+    	     return;
+    	}
+        
         let formData = new FormData();
         formData.append('member_email', '${member.member_email}');
         formData.append('goods_index', '${one_goods.goods_index}');
@@ -702,11 +707,11 @@
                  }
              }
         };
-        xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
-        xmlHttp.send(formData);
+
+       xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
+       xmlHttp.send(formData);
     }
-    
-    </script>      
+    </script>       
     
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>

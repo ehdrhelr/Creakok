@@ -18,4 +18,5 @@ public interface GoodsService {
 	long getGoodsIndex(String goods_name);
 	void plusSaleNumber(long goods_index);
 	void minusStockNumber(long goods_index);
+	List<Goods> selectGoodsRanking();
 }

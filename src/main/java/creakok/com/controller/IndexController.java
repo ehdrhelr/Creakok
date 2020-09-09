@@ -8,10 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Creator;
+import creakok.com.domain.Goods;
 import creakok.com.service.CreatorBoardService;
+import creakok.com.service.GoodsService;
 import creakok.com.service.LikeTableService;
 import lombok.extern.log4j.Log4j;
 
@@ -25,6 +28,9 @@ public class IndexController {
 	
 	@Autowired
 	LikeTableService lts;
+	
+	@Autowired
+	private GoodsService goodsService;
 	
 	@RequestMapping(value="/", method =RequestMethod.GET)
 	public ModelAndView index(HttpSession session) {
@@ -66,5 +72,14 @@ public class IndexController {
 	public String creakok_footer() {
 		//log.info("### creakok_header do");
 		return "creakok_footer";
+	}
+	
+	@ResponseBody
+	@RequestMapping("ranking")
+	public List<Goods> ranking(HttpSession session){ //굿즈 실시간랭킹
+		List<Goods> goods_ranking = goodsService.selectGoodsRanking();
+		session.setAttribute("goods_ranking", goods_ranking);
+				
+		return goods_ranking;
 	}
 }

@@ -82,4 +82,9 @@ public class GoodsServiceImpl implements GoodsService {
 	public void minusStockNumber(long goods_index) {
 		gMapper.minusStockNumber(goods_index);
 	}
+	
+	@Override
+	public List<Goods> selectGoodsRanking(){
+		return gMapper.selectGoodsRanking();
+	}
 }

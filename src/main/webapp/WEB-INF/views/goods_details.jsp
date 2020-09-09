@@ -558,7 +558,8 @@
     }
     
     </script>
-     <script type="text/javascript">
+    
+    <script type="text/javascript">
     function addCart(){
     	if('${member.member_email}' == '') {
     	     alert('로그인해주세요.');
@@ -587,33 +588,6 @@
        xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
        xmlHttp.send(formData);
     }
-    
-    </script>  
-
-    <script type="text/javascript">
-    function addCart(){
-        let formData = new FormData();
-        formData.append('member_email', '${member.member_email}');
-        formData.append('goods_index', '${one_goods.goods_index}');
-        formData.append('goods_category_code', '${one_goods.goods_category_code}');
-        formData.append('goods_name', '${one_goods.goods_name}');
-        formData.append('goods_repre_pic', '${one_goods.goods_repre_pic}');
-        formData.append('unit_price', document.getElementById('product_price').innerText );
-        formData.append('unit_count', document.getElementById('qty').value );
-    
-        let xmlHttp = new XMLHttpRequest();
-        xmlHttp.onreadystatechange = function() {
-             if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-                 //console.log("#####:"+xmlHttp.responseText);
-                 if(xmlHttp.responseText=="add_ok") {
-                     alert('상품을 장바구니에 담았습니다.');
-                 }
-             }
-        };
-        xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
-        xmlHttp.send(formData);
-    }
-    
     </script>  
 
     <jsp:include page="Language.jsp" flush="false">
