@@ -329,8 +329,16 @@
         </tr>
         <tr>
           <td colspan="3" align="center">
+        
+        <c:if test="${listResult.curRange ne 1 }">
+        	<a href="#" onClick="fn_paging(1)">[처음]</a> 
+        </c:if>
+        <c:if test="${listResult.currentPage ne 1}">
+            <a href="#" onClick="fn_paging('${listResult.prevPage }')">[이전]</a> 
+        </c:if>
+        
          	<c:if test="${empty listResult.board_searchName}">
-            <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
+            <c:forEach begin="${listResult.startPage}" end="${listResult.endPage}" var="i">
                 	<a href="board_page?board_cp=${i}&board_filterBy=${listResult.board_filterBy}#fix_point">
                 <c:choose> 
                 <c:when test="${i==listResult.currentPage}">
@@ -346,7 +354,7 @@
             </c:forEach>
 			</c:if>
             <c:if test="${!empty listResult.board_searchName}"> 
-            <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
+            <c:forEach begin="${listResult.startPage}" end="${listResult.endPage}" var="i">
                 	<a href="board_search?board_cp=${i}&board_c_code=${listResult.board_c_code}&board_searchName=${listResult.board_searchName}#fix_point">
                 <c:choose> 
                 <c:when test="${i==listResult.currentPage}">
@@ -361,28 +369,17 @@
             &nbsp;
             </c:forEach>
             </c:if>
-
+            
+			<c:if test="${listResult.currentPage ne listResult.totalPageCount && listResult.totalPageCount > 0}">
+				<a href="#" onClick="fn_paging('${listResult.nextPage }')">[다음]</a> 
+			</c:if>
+			<c:if test="${listResult.curRange ne listResult.rangeCnt && listResult.rangeCnt > 0}">
+				<a href="#" onClick="fn_paging('${listResult.totalPageCount }')">[끝]</a> 
+			</c:if>
+		
           </td>
-          <!-- 없는게 나을 것 같다.
-          <td colspan="2" align="center">
-            총 게시물 수 : ${listResult.totalCount}
-          </td>
-        	-->  
-        
-        </tr>
-        <c:if test="${empty member}">
-        	<button type="button" class="searchBtn">
-			<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' onclick="check_login()">글쓰기</a></button>
-    	</c:if>
-   		<c:if test="${!empty member}">
-			<button type="button" class="searchBtn">
-			<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' href="board_write">글쓰기</a></button>
-    	</c:if>
-       
-		</div>
-   </div>
-	
-	<div>
+       <!-- pagination start --> 
+       <div>
     	<c:if test="${pagination.curRange ne 1 }">
         	<a href="#" onClick="fn_paging(1)">[처음]</a> 
         </c:if>
@@ -409,10 +406,25 @@
    	<div>
 		총 게시글 수 : ${pagination.listCnt } /    총 페이지 수 : ${pagination.pageCnt } / 현재 페이지 : ${pagination.curPage } / 현재 블럭 : ${pagination.curRange } / 총 블럭 수 : ${pagination.rangeCnt }
 	</div>
-
+    <!-- pagination end -->
+        
+        </tr>
+        <c:if test="${empty member}">
+        	<button type="button" class="searchBtn">
+			<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' onclick="check_login()">글쓰기</a></button>
+    	</c:if>
+   		<c:if test="${!empty member}">
+			<button type="button" class="searchBtn">
+			<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' href="board_write">글쓰기</a></button>
+    	</c:if>
+       
+		</div>
+   </div>
+	
 	<script>
 	function fn_paging(curPage) {
-		location.href = "board_page?board_cp=" + curPage;
+		location.href = "board_page?board_cp="+curPage+"&board_filterBy=${listResult.board_filterBy}#fix_point"
+		
 	}
 	</script>
    <!-- 게시판 영역 end -->

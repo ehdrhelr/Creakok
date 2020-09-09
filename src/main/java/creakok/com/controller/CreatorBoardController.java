@@ -138,6 +138,8 @@ public class CreatorBoardController {
 		
 		mv.addObject("listCnt", listCnt);
 		mv.addObject("pagination", pagination);
+		log.info("@@@@@@@@@@ listResult : " + listResult);
+		
 		return mv;
 	}
 	
