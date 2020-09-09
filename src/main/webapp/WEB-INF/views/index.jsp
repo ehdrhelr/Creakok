@@ -315,7 +315,7 @@
                                      <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
                                          <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309"><article>
                                              <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:35px;float:left;font-size:20px;font-weight: 500">
+                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
                                                      1
                                                  </p>
                                                  <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
@@ -340,7 +340,7 @@
                                      <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
                                          <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309"><article>
                                              <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:35px;float:left;font-size:20px;font-weight: 500">
+                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
                                                     2
                                                  </p>
                                                  <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
@@ -362,7 +362,7 @@
                                      <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
                                          <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309"><article>
                                              <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:35px;float:left;font-size:20px;font-weight: 500">
+                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
                                                      3
                                                  </p>
                                                  <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
@@ -386,7 +386,7 @@
                                      <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
                                          <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309"><article>
                                              <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:35px;float:left;font-size:20px;font-weight: 500">
+                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
                                                      4
                                                  </p>
                                                  <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
@@ -411,7 +411,7 @@
                                      <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
                                          <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309"><article>
                                              <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:35px;float:left;font-size:20px;font-weight: 500">
+                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
                                                      5
                                                  </p>
                                                  <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>

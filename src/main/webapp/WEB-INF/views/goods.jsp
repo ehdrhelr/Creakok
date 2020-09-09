@@ -347,11 +347,11 @@
                                                    xmlHttpLike.send(formData);
                                                 }
                                                 </script>
-                                                <a href="#" class="wishlist-btn" onclick="testhcbae('${goods.goods_index}')">
+                                                <a href="#" class="wishlist-btn" onclick="testhcbae('${goods.goods_index}')" style="margin-left:10%">
                                                     <i class="goods_list_like icon_heart_alt"></i>
                                                 </a>
                                                 <a href="#" class="add-to-cart-btn" onclick="addCart('${listCount}')">장바구니에 담기</a>
-                                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                                                <!--  <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>  -->
                                             </div>
                                          </div>   
                                             <!-- Product Info -->
@@ -460,6 +460,11 @@
 </script>
 <script type="text/javascript">
 function addCart(count){
+	   if('${member.member_email}' == '') {
+	        alert('로그인해주세요.');
+	        return;
+	    }
+	   
     let goods_index_list = [];
     let goods_category_code_list = [];
     let goods_name_list = [];
