@@ -115,12 +115,15 @@
 
     
     <!-- ##### About Area Start ##### -->
-    <section class="about-us-area section-padding-100-0">
+<section class="about-us-area section-padding-100-0">
         <div class="container">
             <div class="row justify-content-between">
 
-                
-                <div class="col-12 col-lg-6 howAbout">
+             
+                                    
+                                    
+                                    
+                <div class="col-12 col-lg-6">
                     <div class="alazea-benefits-area">
                         
                     <div class="section-heading">
@@ -131,20 +134,19 @@
      
                             
                             <!-- Single Benefits Area -->
-                            <div class="col-12 col-sm-6  three">
+                            <div class="col-12 col-sm-6">
 
-                                <div class="single-benefits-area ">                   
+                                <div class="single-benefits-area">                   
                                     <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        <div class="CommonCard_rect__2wpm4">
-                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" 
-                                                  style="background-image:url(img/core-img/ex1.png)">
-                                                 <a href="shop-details.html">
+                                        </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
+                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
+                                                 </span></a><a href="shop-details.html">
                                                      <img src="img/core-img/ex2.jpg" alt="">
                                                 </a>
-                                            </span>
+                                            
         
                                         </div>
-                                    </a>
+                                    
                                     <div class="CommonCard_info__1f4kq">
                                     <div class="RewardProjectCard_info__3JFub">
                                         <div class="RewardProjectCard_infoTop__3QR5w">
@@ -173,9 +175,9 @@
                                           <!-- Single Progress Bar -->
                                         <div class="single_progress_bar">
                                            
-                                            <div id="bar3" class="barfiller" style="border-radius:5px;">
+                                            <div id="bar1" class="barfiller" style="border-radius:50pt">
                                                
-                                                <span class="fill" data-percentage="60" style="border-radius:5px;!important; width: 126px; transition: width 1s ease-in-out 0s;"></span>
+                                                <span class="fill" data-percentage="60" style="background: rgb(252, 82, 48); width: 126px; transition: width 1s ease-in-out 0s;border-radius:30pt;"></span>
                                             </div>
                                         </div>
                                           
@@ -202,20 +204,19 @@
                             
                             
                             <!-- Single Benefits Area -->
-                            <div class="col-12 col-sm-6 three">
+                            <div class="col-12 col-sm-6">
 
                                 <div class="single-benefits-area">                   
                                     <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        <div class="CommonCard_rect__2wpm4">
-                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" 
-                                                  style="background-image:url(img/core-img/ex1.png)">
-                                                 <a href="shop-details.html">
+                                        </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
+                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
+                                                 </span></a><a href="shop-details.html">
                                                      <img src="img/core-img/ex2.jpg" alt="">
                                                 </a>
-                                            </span>
+                                            
         
                                         </div>
-                                    </a>
+                                    
                                     <div class="CommonCard_info__1f4kq">
                                     <div class="RewardProjectCard_info__3JFub">
                                         <div class="RewardProjectCard_infoTop__3QR5w">
@@ -244,9 +245,9 @@
                                           <!-- Single Progress Bar -->
                                         <div class="single_progress_bar">
                                            
-                                            <div id="bar4" class="barfiller" style="border-radius: 5px;">
+                                            <div id="bar2" class="barfiller" style="border-radius:50pt">
                                                
-                                                <span class="fill" data-percentage="60" style="border-radius: 5px;!important; width: 126px; transition: width 1s ease-in-out 0s;"></span>
+                                                <span class="fill" data-percentage="60" style="background: rgb(252, 82, 48); width: 126px; transition: width 1s ease-in-out 0s;border-radius:30pt;"></span>
                                             </div>
                                         </div>
                                           
@@ -265,12 +266,7 @@
                                     </div>  
                                 </div>
                             </div>
- 
-                      
-                            
-                            
-                            
-                            
+                        
                         </div>
                     </div>
                 </div>
@@ -288,7 +284,7 @@
                 
                 
                 
-               <div class="col-12 col-lg-5 ranking"  style="width:70%">
+                                <div class="col-12 col-lg-5" style="width:70%">
                     <!-- Section Heading -->
                     <div class="section-heading">
                         <h2 style="margin-bottom: 5px;">실시간 랭킹</h2>
@@ -324,10 +320,10 @@
                                                  </p>
                                                  <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
                                                  <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, <br/>에어리(Airy)'       
+                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
                                                  </p>
-                                                 <p class="commons_summary__2Ynez" style="margin-bottom:20px;">
-                                                     <span class="commons_achievementRate__2J-KL" style="color:#fc5230;font-weight: 600">
+                                                 <p class="commons_summary__2Ynez">
+                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
                                                      1,278%
                                                      </span>
                                                      패션·잡화
@@ -349,10 +345,10 @@
                                                  </p>
                                                  <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
                                                  <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, <br/>에어리(Airy)'       
+                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
                                                  </p>
-                                                 <p class="commons_summary__2Ynez"  style="margin-bottom:20px;">
-                                                     <span class="commons_achievementRate__2J-KL" style="color:#fc5230;font-weight: 600">
+                                                 <p class="commons_summary__2Ynez">
+                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
                                                      1,278%
                                                      </span>
                                                      패션·잡화
@@ -371,10 +367,10 @@
                                                  </p>
                                                  <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
                                                  <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, <br/>에어리(Airy)'       
+                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
                                                  </p>
-                                                 <p class="commons_summary__2Ynez"  style="margin-bottom:20px;">
-                                                     <span class="commons_achievementRate__2J-KL" style="color:#fc5230;font-weight: 600">
+                                                 <p class="commons_summary__2Ynez">
+                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
                                                      1,278%
                                                      </span>
                                                      패션·잡화
@@ -395,10 +391,10 @@
                                                  </p>
                                                  <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
                                                  <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, <br/>에어리(Airy)'       
+                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
                                                  </p>
-                                                 <p class="commons_summary__2Ynez"  style="margin-bottom:20px;">
-                                                     <span class="commons_achievementRate__2J-KL" style="color:#fc5230;font-weight: 600">
+                                                 <p class="commons_summary__2Ynez">
+                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
                                                      1,278%
                                                      </span>
                                                      패션·잡화
@@ -410,7 +406,29 @@
                                        
                                        
                                         
-                     
+                                   
+                                  <div class="TabContainer_tabList__1TS8l">
+                                     <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
+                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309"><article>
+                                             <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                                 <p style="color:#111111;width:15px;margin-right:5px;height:35px;float:left;font-size:20px;font-weight: 500">
+                                                     5
+                                                 </p>
+                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
+                                                 <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
+                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
+                                                 </p>
+                                                 <p class="commons_summary__2Ynez">
+                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
+                                                     1,278%
+                                                     </span>
+                                                     패션·잡화
+                                                 </p>
+                                             </div>
+                                             </article>
+                                         </a>                     
+                                    </div>                              
+                                        
                                         
                              
                                  </div>
@@ -421,35 +439,10 @@
                                      
 
                             
-                                       </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                    </section>           
-                                
-                                    
-                                    
-                                    
-                                    
+                    </div>
+                </div></div></div></div></section>           
                                     
 
-                    <!-- Progress Bar Content Area
-                    <div class="alazea-progress-bar mb-50">
-
-
-                        <!-- Single Progress Bar 
-                        <div class="single_progress_bar">
-                            <p>Office plants</p>
-                            <div id="bar1" class="barfiller">
-                                <div class="tipWrap">
-                                    <span class="tip"></span>
-                                </div>
-                                <span class="fill" data-percentage="80"></span>
-                            </div>
-                        </div>
-
-                    </div>  -->
                 </div>
                 
                 
@@ -471,7 +464,7 @@
             </div>
         </div>
     </section>
-    <!-- ##### About Area End ##### -->
+    <!--  -->
     
     
     
@@ -570,7 +563,7 @@
             </div>
         </div>
     </section>
-    <!-- ##### Testimonial Area End ##### -->
+    <!-- ##### About Area End ##### -->
 
     
     
