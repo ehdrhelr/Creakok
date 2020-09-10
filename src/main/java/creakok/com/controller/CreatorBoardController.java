@@ -125,8 +125,9 @@ public class CreatorBoardController {
 		session.setAttribute("theCreator", theCreator);
 		
 		//대표컨텐츠 쏴주기
+		String[] contentList = null;
 		String contentOneLine = theCreator.getCreator_main_content();
-		String[] contentList = contentOneLine.split("@");
+		if (contentOneLine != null) contentList = contentOneLine.split("@");
 		mv.addObject("contentList", contentList);
 		
 		/** pagination try **/
