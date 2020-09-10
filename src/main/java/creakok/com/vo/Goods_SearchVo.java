@@ -9,23 +9,21 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class GoodsVo {
+public class Goods_SearchVo {
    private int cp;
    private long totalCount;
    private int ps;
-   private List<Goods> list;
+   private List<Goods> result_list;
+   private String keyword;
    private long totalPageCount;
-   private long gCode;
-   private String filterBy;
 
-   public GoodsVo(int cp, long totalCount, int ps, List<Goods> list, long gCode, String filterBy) {
+   public Goods_SearchVo(int cp, long totalCount, int ps, List<Goods> result_list, String keyword) {
       this.cp = cp;
       this.totalCount = totalCount;
       this.ps = ps;
-      this.list = list;
-      this.totalPageCount = calTotalPageCount();
-      this.gCode = gCode;
-      this.filterBy = filterBy;
+      this.result_list = result_list;
+      this.keyword = keyword;
+      this.totalPageCount = calTotalPageCount();   
    }
    public long calTotalPageCount() {
       long tpc = totalCount/ps; 

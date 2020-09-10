@@ -31,6 +31,7 @@
    	   <typeAlias alias="Goods" type="creakok.com.domain.Goods"/>  
    	   <typeAlias alias="Goods_ReviewVo" type="creakok.com.vo.Goods_ReviewVo"/>  
    	   <typeAlias alias="Goods_QnAVo" type="creakok.com.vo.Goods_QnAVo"/>  
+   	   <typeAlias alias="Goods_SearchVo" type="creakok.com.vo.Goods_SearchVo"/>  
    	   
    	   <typeAlias alias="PayInfoVo" type="creakok.com.vo.PayInfoVo"/>  
   	   <typeAlias alias="Funding_Payinfo" type="creakok.com.domain.Funding_Payinfo"/>

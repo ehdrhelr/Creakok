@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import creakok.com.domain.Goods;
 import creakok.com.mapper.GoodsMapper;
 import creakok.com.vo.GoodsVo;
+import creakok.com.vo.Goods_SearchVo;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
@@ -84,7 +85,24 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 	
 	@Override
-	public List<Goods> selectGoodsRanking(){
+	public List<Goods> selectGoodsRanking(){ //실시간 굿즈랭킹
 		return gMapper.selectGoodsRanking();
+	}
+	
+	@Override
+	public Goods_SearchVo getSearchGoodsVo(int cp, int ps, String keyword){ //굿즈 검색
+		long totalCount = gMapper.selectGoodsCountBySearch(keyword);
+		Goods_SearchVo goods_searchVo = new Goods_SearchVo(cp, totalCount, ps, null, keyword);
+		List<Goods> result_list = gMapper.selectSearchGoods(goods_searchVo);
+		
+		Goods_SearchVo goods_searchVo2 = new Goods_SearchVo(cp, totalCount, ps, result_list, keyword);
+		goods_searchVo2.setTotalPageCount(goods_searchVo2.calTotalPageCount());
+		
+		return goods_searchVo2;
+	}
+	
+	@Override
+	public long selectGoodsCountBySearch(String keyword) {
+		return gMapper.selectGoodsCountBySearch(keyword);
 	}
 }

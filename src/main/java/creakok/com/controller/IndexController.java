@@ -1,21 +1,33 @@
 package creakok.com.controller;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import creakok.com.domain.Creator;
 import creakok.com.domain.Goods;
+import creakok.com.domain.Goods_Category;
 import creakok.com.service.CreatorBoardService;
 import creakok.com.service.GoodsService;
 import creakok.com.service.LikeTableService;
+import creakok.com.vo.GoodsVo;
+import creakok.com.vo.Goods_SearchVo;
 import lombok.extern.log4j.Log4j;
 
 
@@ -81,5 +93,48 @@ public class IndexController {
 		session.setAttribute("goods_ranking", goods_ranking);
 				
 		return goods_ranking;
+	}
+	
+	@RequestMapping("search.do")
+	public String search(@RequestParam("keyword") String keyword, HttpServletRequest request, HttpSession session) {
+		String cpStr = request.getParameter("cp");
+		String psStr = request.getParameter("ps");
+		
+		log.info("#######################cpStr: "+cpStr);
+		log.info("#######################psStr: "+psStr);
+		
+		Goods_SearchVo s_goods_searchVo = (Goods_SearchVo)session.getAttribute("goods_result");
+		//(1) cp 
+		int cp = 1;
+		if(cpStr == null) {
+				cp = 1;
+		}else {
+			cpStr = cpStr.trim();
+			cp = Integer.parseInt(cpStr);
+		}
+	//	session.setAttribute("cp", cp);
+		
+		//(2) ps 
+		int ps = 3;		
+		Goods_SearchVo goods_searchVo = goodsService.getSearchGoodsVo(cp, ps, keyword);
+		goods_searchVo.setCp(cp);
+		goods_searchVo.setPs(ps);
+		goods_searchVo.setKeyword(keyword);
+	    
+		if(goods_searchVo.getResult_list().size() == 0) {
+			if(cp > 1) {	
+				int cp2 = cp-1;
+				goods_searchVo.setCp(cp2);
+			}
+		}
+		
+		//검색결과 총 갯수
+		long goods_result_amount = goodsService.selectGoodsCountBySearch(keyword);
+		session.setAttribute("goods_result_amount", goods_result_amount);
+				
+		//log.info("@@@@@@@@@@@@@@@@@@@@@@@@search_goods: "+search_goods);
+		session.setAttribute("goods_result", goods_searchVo);
+		
+		return "search_result";
 	}
 }

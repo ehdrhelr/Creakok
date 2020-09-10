@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import creakok.com.domain.Goods;
 import creakok.com.vo.GoodsVo;
+import creakok.com.vo.Goods_SearchVo;
 
 public interface GoodsService {
 	GoodsVo listS(int cp, int ps, String filterBy);
@@ -19,4 +20,6 @@ public interface GoodsService {
 	void plusSaleNumber(long goods_index);
 	void minusStockNumber(long goods_index);
 	List<Goods> selectGoodsRanking();
+	Goods_SearchVo getSearchGoodsVo(int cp, int ps, String keyword);
+	long selectGoodsCountBySearch(String keyword);
 }

@@ -62,5 +62,20 @@
     <update id="minusStockNumber" parameterType="long">
         update GOODS set GOODS_STOCK_NUMBER = GOODS_STOCK_NUMBER-1 WHERE GOODS_INDEX=${goods_index}
     </update>
+    
+    <select id="selectSearchGoods" resultType="Goods" parameterType="Goods_SearchVo">
+		<![CDATA[select * from (select ROWNUM rnum, aa.* from
+		(select * from GOODS where GOODS_NAME like '%'||#{keyword}||'%' or 
+		CREATOR_NAME like '%'||#{keyword}||'%' order by GOODS_SALE_NUMBER desc) aa)
+		where rnum>${(cp-1)*ps} and rnum<=${cp*ps}
+		]]>
+    </select>   
+    
+    <select id="selectGoodsCountBySearch" resultType="long" parameterType="String">
+		select COUNT(GOODS_INDEX) from Goods where GOODS_NAME like '%'||#{keyword}||'%' or 
+		CREATOR_NAME like '%'||#{keyword}||'%'
+	</select>	
 </mapper>
+
+
 	
