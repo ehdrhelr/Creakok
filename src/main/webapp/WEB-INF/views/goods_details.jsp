@@ -403,9 +403,32 @@
                                 <a href="#">Hot</a>
                             </div>
                             <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                                <script>
+	                               function testhcbae(index){
+	                                   if('${member.member_email}' == '') {
+	                                       alert('로그인해주세요.');
+	                                       return;
+	                                   }
+	                                   
+	                                   let formData = new FormData();
+	                                   formData.append('like_content_index',index);
+	                                   formData.append('like_type_code','${LikeType.GOODS_LIKE}');
+	                                   formData.append('like_member_email','${member.member_email}');
+	
+	                                   let xmlHttpLike = new XMLHttpRequest();
+	                                   xmlHttpLike.onreadystatechange = function() {
+	                                   	if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+	                                       	makeGoodsLikeList();
+	                                       }
+	                                  };
+	                                  xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
+	                                  xmlHttpLike.send(formData);
+	                               }
+                                </script>
+                                 <a href="#" class="wishlist-btn" onclick="testhcbae('${goods_related.goods_index}')" style="margin-left:10%">
+                                                    <i class="goods_list_like icon_heart_alt"></i>
+                                                </a>
+                                <a href="#" class="add-to-cart-btn" onclick="addCart('${listCount}')">장바구니에 담기</a>
                             </div>
                         </div>
                         <!-- Product Info -->
@@ -506,89 +529,84 @@
     <!--hcbae 텀블벅 가져오기 end-->
     
     <script type="text/javascript">
-    function readGoodsLike(){
+    function makeGoodsLikeList(){
         if('${member.member_email}' == '') {
             return;
         }
-        
+        let likeList = document.querySelectorAll('.goods_list_like');
+        let tmep_count=0;
         let formData = new FormData();
-        formData.append('like_content_index','${one_goods.goods_index}');
+        let xmlHttpLike = new XMLHttpRequest();
+
+        <c:forEach var="goods" items="${goods.list}" >
+        formData = new FormData();
+        formData.append('like_content_index','${goods.goods_index}');
         formData.append('like_type_code','${LikeType.GOODS_LIKE}');
         formData.append('like_member_email','${member.member_email}');
         
-        let xmlHttpLike = new XMLHttpRequest();
-        xmlHttpLike.open("POST", "readLike.do", true); // true for asynchronous
-        xmlHttpLike.send(formData);
+        xmlHttpLike = new XMLHttpRequest();
         xmlHttpLike.onreadystatechange = function() {
             if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
-                let obj = document.querySelector(".neDEf");
                 if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
-                    obj.classList.remove('isLiked');
+                    likeList[tmep_count].classList.remove('icon_heart');
+                    likeList[tmep_count].classList.add('icon_heart_alt');
                 } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
-                    obj.classList.add('isLiked');
-                }
+                    likeList[tmep_count].classList.remove('icon_heart_alt');
+                    likeList[tmep_count].classList.add('icon_heart');
+                }                
             }
        };
+       xmlHttpLike.open("POST", "readLike.do", false); // true for asynchronous
+       xmlHttpLike.send(formData);
+       tmep_count++;
+       </c:forEach>
     }
+    makeGoodsLikeList();
+</script>
+<script type="text/javascript">
+function addCart(count){
+	   if('${member.member_email}' == '') {
+	        alert('로그인해주세요.');
+	        return;
+	    }
+	   
+    let goods_index_list = [];
+    let goods_category_code_list = [];
+    let goods_name_list = [];
+    let goods_repre_pic_list = [];
+    let unit_price_list = [];
 
-    function clickGoodsLike(){
-        if('${member.member_email}' == '') {
-            alert('로그인해주세요.');
-            return;
-        }
-        
-        let formData = new FormData();
-        formData.append('like_content_index','${one_goods.goods_index}');
-        formData.append('like_type_code','${LikeType.GOODS_LIKE}');
-        formData.append('like_member_email','${member.member_email}');
+    <c:forEach var="goods" items="${goods.list}" >
+        goods_index_list.push('${goods.goods_index}');
+        goods_category_code_list.push('${goods.goods_category_code}');
+        goods_name_list.push('${goods.goods_name}');
+        goods_repre_pic_list.push('${goods.goods_repre_pic}');
+        unit_price_list.push('${goods.goods_price}');
+    </c:forEach>
 
-        let xmlHttpLike = new XMLHttpRequest();
-        xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
-        xmlHttpLike.send(formData);
-        xmlHttpLike.onreadystatechange = function() {
-            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
-                let obj = document.querySelector(".neDEf");
-                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
-                    obj.classList.add('isLiked');
-                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
-                    obj.classList.remove('isLiked');
-                }
-            }
-       };
-    }
-    
-    </script>
-    
-    <script type="text/javascript">
-    function addCart(){
-    	if('${member.member_email}' == '') {
-    	     alert('로그인해주세요.');
-    	     return;
-    	}
-        
-        let formData = new FormData();
-        formData.append('member_email', '${member.member_email}');
-        formData.append('goods_index', '${one_goods.goods_index}');
-        formData.append('goods_category_code', '${one_goods.goods_category_code}');
-        formData.append('goods_name', '${one_goods.goods_name}');
-        formData.append('goods_repre_pic', '${one_goods.goods_repre_pic}');
-        formData.append('unit_price', document.getElementById('product_price').innerText );
-        formData.append('unit_count', document.getElementById('qty').value );
-    
-        let xmlHttp = new XMLHttpRequest();
-        xmlHttp.onreadystatechange = function() {
-             if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-                 //console.log("#####:"+xmlHttp.responseText);
-                 if(xmlHttp.responseText=="add_ok") {
-                     alert('상품을 장바구니에 담았습니다.');
-                 }
+    let formData = new FormData();
+    formData.append('member_email', '${member.member_email}');
+    formData.append('goods_index', goods_index_list[count]);
+    formData.append('goods_category_code', goods_category_code_list[count]);
+    formData.append('goods_name', goods_name_list[count]);
+    formData.append('goods_repre_pic', goods_repre_pic_list[count]);
+    formData.append('unit_price', unit_price_list[count]);
+    formData.append('unit_count', 1);
+
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+             //console.log("#####:"+xmlHttp.responseText);
+             if(xmlHttp.responseText=="add_ok") {
+                 alert('상품을 장바구니에 담았습니다.');
              }
-        };
+         }
+    };
+    xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
+    xmlHttp.send(formData);
+}
 
-       xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
-       xmlHttp.send(formData);
-    }
-    </script>  
+</script>      
 
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>

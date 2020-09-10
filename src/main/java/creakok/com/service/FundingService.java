@@ -7,6 +7,8 @@ import creakok.com.domain.Funding_category;
 import creakok.com.domain.Funding_qna;
 import creakok.com.vo.FundingVo;
 import creakok.com.vo.Funding_qnaVo;
+import creakok.com.vo.Funding_searchVo;
+import creakok.com.vo.Goods_SearchVo;
 
 
 public interface FundingService {
@@ -28,4 +30,6 @@ public interface FundingService {
 	void answerEditQna(Funding_qna funding_qna);
 	void answerDelete(long funding_qna_index);
 	
+	Funding_searchVo getSearchFundingVo(int funding_cp, int funding_ps, String keyword);
+	long selectFundingCountBySearch(String keyword);
 }

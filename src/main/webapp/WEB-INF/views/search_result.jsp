@@ -65,7 +65,7 @@
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
         <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>FUNDING</h2>
+            
         </div>
 
         <div class="container">
@@ -89,7 +89,7 @@
                 
                     <div class="most__search__tab">
                        <p style="text-align:left;color:black;font-size:1.5em;font-weight:700">
-                       		펀딩  개
+                       		펀딩  ${funding_result_amount}개
                        <p>
                     </div>
   
@@ -104,14 +104,15 @@
         <div class="container">
 
            <div class="row">
-             <c:if test="${empty fundingVo}">
+             <c:if test="${empty funding_result.funding_result_list}">
                      <p style="text-align:center;width:100%;"> 검색결과가 없습니다. </p>
              </c:if>
              
              
-              <c:if test="${!empty fundingVo.list}">
+              <c:if test="${!empty funding_result.funding_result_list}">
+              
               <!-- Single Product Area -->
-              <c:forEach items="${fundingVo.list}" var="fundingVo">
+              <c:forEach items="${funding_result.funding_result_list}" var="fundingVo">
            
                 <div class="col-12 col-sm-6 col-lg-4">
                       <div class="single-benefits-area">                   
@@ -181,30 +182,33 @@
            </div>
 
        </div>
-           <a name="fix_point"></a>    
-                <div class="col-12 text-center" style="margin-bottom:100px">
-                 <!--   <a href="#" class="btn alazea-btn">더보기</a>-->
-                      <nav aria-label="Page navigation"class="text-center">
-                      
-                            <ul class="pagination" style="margin-top:100px">
-                             <c:forEach begin="1" end="${fundingVo.totalPageCount}" var="i">
-                             
-                               <li class="page-item">
-                               <a class="page-link" href="funding_list.do?funding_cp=${i}">
+           <a name="fix_point"></a>   
+            
+               <!-- Pagination Start -->
+               <nav aria-label="Page navigation" id="link22" style="margin-bottom:10%">
+                    <ul class="pagination" >
+                          <c:forEach begin="1" end="${funding_result.funding_totalPageCount}" var="i">
                                 <c:choose>
-                                  <c:when test="${i==fundingVo.currentPage}">
-                                  <strong>${i}</strong>
-                                  </c:when>
-                    
-                                  <c:otherwise>
-                                  <span>${i}</span>
-                                  </c:otherwise>
-                                </c:choose>
-                                 </a> 
-                                </c:forEach>
-                            </ul>
-                        </nav>
-                </div>
+                                   <c:when test="${i==funding_result.funding_cp}">
+                                   <li class="page-item">
+                                   <a class="page-link" href="search.do?funding_cp=${i}&keyword=${funding_result.keyword}" style="border-radius:0;" onclick="getCp();">
+                                       <span style="color:black">${i}</span>
+                                       </a>
+                                       </li>
+                                   </c:when>
+                                   <c:otherwise>
+                                   <li class="page-item">
+                                   <a class="page-link" href="search.do?funding_cp=${i}&keyword=${funding_result.keyword}" style="border-radius:0;" onclick="getCp();">
+                                       <span>${i}</span>
+                                       </a>
+                                       </li>
+                                   </c:otherwise>
+                               </c:choose>
+                           </c:forEach>
+                     <!--   <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>    -->   
+                       </ul>
+                </nav>
+                <!-- Pagination End -->
     </section>
     <!--  펀딩 검색결과 End   -->
     
@@ -334,6 +338,68 @@
       
     </section>
     <!--  굿즈 검색결과 End   -->   
+
+    <!--  재고 수량 0일 때(품절 처리)  -->
+    <script src="js/js_board/jquery-1.12.4.js"></script>    
+	<script>
+		if('${one_goods.goods_stock_number}' == 0){
+             //alert('0');
+             $("#totalis").css('display','none');
+             $("#no_product").css('display','none');
+             $("#wonwon").css('display','none');
+             $("#price_qty2").html("품절된 상품입니다"); 
+             $("#price_qty2").css('font-size', '0.7em');
+             $("#price_qty2").css('font-weight', '600');
+             
+             $("#buy_button").css('background-color', '#828282');
+             $("#buy_button").css('border', '0.1em solid #828282');
+		}
+	</script>  
+
+<script type="text/javascript">
+function addCart(count){
+	   if('${member.member_email}' == '') {
+	        alert('로그인해주세요.');
+	        return;
+	    }
+	   
+    let goods_index_list = [];
+    let goods_category_code_list = [];
+    let goods_name_list = [];
+    let goods_repre_pic_list = [];
+    let unit_price_list = [];
+
+    <c:forEach var="goods" items="${goods.list}" >
+        goods_index_list.push('${goods.goods_index}');
+        goods_category_code_list.push('${goods.goods_category_code}');
+        goods_name_list.push('${goods.goods_name}');
+        goods_repre_pic_list.push('${goods.goods_repre_pic}');
+        unit_price_list.push('${goods.goods_price}');
+    </c:forEach>
+
+    let formData = new FormData();
+    formData.append('member_email', '${member.member_email}');
+    formData.append('goods_index', goods_index_list[count]);
+    formData.append('goods_category_code', goods_category_code_list[count]);
+    formData.append('goods_name', goods_name_list[count]);
+    formData.append('goods_repre_pic', goods_repre_pic_list[count]);
+    formData.append('unit_price', unit_price_list[count]);
+    formData.append('unit_count', 1);
+
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+             //console.log("#####:"+xmlHttp.responseText);
+             if(xmlHttp.responseText=="add_ok") {
+                 alert('상품을 장바구니에 담았습니다.');
+             }
+         }
+    };
+    xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
+    xmlHttp.send(formData);
+}
+
+</script>  
 
 
     <!-- Footer Bottom Area -->

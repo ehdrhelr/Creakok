@@ -8,8 +8,11 @@ import org.apache.ibatis.annotations.Param;
 import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_category;
 import creakok.com.domain.Funding_qna;
+import creakok.com.domain.Goods;
 import creakok.com.vo.FundingVo;
 import creakok.com.vo.Funding_qnaVo;
+import creakok.com.vo.Funding_searchVo;
+import creakok.com.vo.Goods_SearchVo;
 
 public interface FundingMapper {
 	List<Funding> selectPerPage(FundingVo fundingVo);
@@ -32,4 +35,7 @@ public interface FundingMapper {
 	void answerQna(Funding_qna funding_qna);
 	void answerEditQna(Funding_qna funding_qna);
 	void answerDelete(@Param(value = "funding_qna_index")long funding_qna_index);
+	
+	List<Funding> selectSearchFunding(Funding_searchVo funding_searchVo);
+	long selectFundingCountBySearch(@Param("keyword") String keyword);
 }
