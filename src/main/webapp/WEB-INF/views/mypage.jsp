@@ -15,7 +15,7 @@
     <title>CREAKOK</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/creakok.ico">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
@@ -40,7 +40,8 @@
     <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
-
+    
+	<link rel="stylesheet" href="css/only_goods_review_board_jsp.css">
 </head>
 
 <body>
@@ -93,6 +94,9 @@
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#member-modify" role="tab">회원정보수정</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#my_order" role="tab">주문내역</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -108,6 +112,7 @@
                     <div id="mypage_funding_area"></div>
                     
                     <div id="mypage_goods_area"></div>
+                    
                     
                     <script type="text/javascript">
                     function readFundingLikeList(){
@@ -264,9 +269,97 @@
                     </div>
                     
                 </div>
+                
+                
+                
+                <!--  주문 내역   -->
+                 <div id="my_order" class="container tab-pane" style="margin-bottom:10%">
+                    <c:if test="${empty order_info}">
+                       <h3>주문 내역(총  0개)</h3>              
+                    </c:if>
+                    <h3>주문 내역(총 ${order_count}개)</h3>
+                    <p style="margin-bottom:20px">주문 번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</p>
+                    
+                    <div id="mypage_funding_area"></div>
+                    
+                    <div id="mypage_goods_area"></div>
+                    
+                    <table style="">
+                    <colgroup>
+                        <col width="5%">
+                        <col width="15%">
+                        <col width="20%">
+                        <col width="30%">
+                        <col width="15%">
+                        <col width="15%">
+                    </colgroup>
+                     <thead>
+                        <tr>
+                            <th style="padding:1.5px !important;">No</th>
+                            <th style="padding:1.5px !important;">주문일자</th>
+                            <th style="padding:1.5px !important;">주문번호</th>
+                            <th style="padding:1.5px !important;">상품명</th>
+                            <th style="padding:1.5px !important;">결제금액</th>
+                            <th style="padding:1.5px !important;">결제상태</th>
+                        </tr>
+                    </thead>  
+                    <tbody>
+                    	
+                        <c:if test="${empty order_info}">
+                        <tr>
+                           <td colspan="6" style="border-bottom:1px solid black">
+                                                                주문 내역이 없습니다.
+                           </td>   
+                           </tr>            
+                        </c:if>
+                        
+                        <c:if test="${!empty order_info.order_list}">
+                         <c:forEach items="${order_info.order_list}" var="order_info">
+                             <tr class="order_click_tr">
+                                 <td style="padding:3px !important;">${order_info.order_index}</td>
+                                 <td style="padding:3px !important;">${order_info.buy_date}</td>
+                                 <td style="padding:3px !important;"  class="order_click_td"><a href="member_orderdetail.do?order_indexStr=${order_info.order_index}&member_email=${order_info.member_email}" style="color:black;">${order_info.buyer_buyid}</a></td>
+                                 <td style="padding:3px !important;">${order_info.buy_product_name}</td>
+                                 <td style="padding:3px !important;">${order_info.buyer_pay_price} 원</td>
+                                 <td id="review_view" style="padding:1.5px !important;">
+                                     <c:if test="${order_info.buyer_pay_ok == 'true'}">
+                                        	결제 완료
+                                     </c:if>
+                                     <c:if test="${order_info.buyer_pay_ok == 'false'}">
+                                        	결제 대기
+                                     </c:if>
+                                 </td>
+                              </tr>
+                        </c:forEach>
+					 </c:if>
+					 
+					 	<tr>
+				          <td colspan="6" align="center" style="border-bottom:0px">
+				           <c:forEach begin="1" end="${order_info.order_totalPageCount}" var="i">
+				                    <a href="member_mypage.do?order_cp=${i}&member_email=${order_info.member_email}#fix_point" style="color:black; font-size:11pt">
+				                <c:choose> 
+				                <c:when test="${i==order_info.order_cp}">
+				                    <strong>${i}</strong>
+				                </c:when>
+				                <c:otherwise>
+				                    ${i}
+				                </c:otherwise>
+				                </c:choose>
+				            </a>
+				            
+				            &nbsp;
+				            </c:forEach>
+				          </td>
+				     </tr>
+					</tbody>
+                </table>
+                </div>
             </div> <!--My Page Tabs Contents-->
         </div>
     </div>
+
+
+
 
 
     <!-- Footer Bottom Area -->
@@ -286,6 +379,8 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+
     
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>

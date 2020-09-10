@@ -32,4 +32,25 @@
     <select id="getRelatedGoods" parameterType="long" resultType="Goods">
         select * from GOODS where GOODS_CATEGORY_CODE=${category_code}
     </select>
+    
+    <update id="plusReviewNumber" parameterType="long">
+        update GOODS set GOODS_REVIEW_NUMBER = GOODS_REVIEW_NUMBER+1 WHERE GOODS_INDEX=${goods_index}
+    </update>
+    
+    <update id="minusReviewNumber" parameterType="long">
+        update GOODS set GOODS_REVIEW_NUMBER = GOODS_REVIEW_NUMBER-1 WHERE GOODS_INDEX=${goods_index}
+    </update>
+    
+    <select id="getGoodsIndex" parameterType="String" resultType="long">
+    	select GOODS_INDEX from GOODS where GOODS_NAME=#{goods_name}
+    </select>
+    
+    <update id="plusSaleNumber" parameterType="long">
+        update GOODS set GOODS_SALE_NUMBER = GOODS_SALE_NUMBER+1 WHERE GOODS_INDEX=${goods_index}
+    </update>
+    
+    <update id="minusStockNumber" parameterType="long">
+        update GOODS set GOODS_STOCK_NUMBER = GOODS_STOCK_NUMBER-1 WHERE GOODS_INDEX=${goods_index}
+    </update>
 </mapper>
+	

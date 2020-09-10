@@ -15,7 +15,7 @@
     <title>CREAKOK</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/creakok.ico">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
@@ -167,7 +167,7 @@
                 <div class="col-12 col-md-4 col-lg-3">
                     <div class="shop-sidebar-area">
 
-                        <!-- Shop Widget -->
+                        <!-- Shop Widget
                         <div class="shop-widget price mb-50">
                             <h4 class="widget-title">가격대 선택</h4>
                             <div class="widget-desc">
@@ -180,7 +180,7 @@
                                     <div class="range-price">0원 - 30000원</div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Shop Widget -->
                         <div class="shop-widget catagory mb-50">
@@ -259,65 +259,34 @@
     
                         <!-- Shop Widget -->
                         <div class="shop-widget best-seller mb-50">
-                            <h4 class="widget-title">Best Seller</h4>
+                            <h4 class="widget-title">
+                            
+                            </h4>
                             <div class="widget-desc">
 
                                 <!-- Single Best Seller Products -->
                                 <div class="single-best-seller-product d-flex align-items-center">
                                     <div class="product-thumbnail">
-                                        <a href="goods-details.html"><img src="img/bg-img/4.jpg" alt=""></a>
+                                    
                                     </div>
                                     <div class="product-info">
-                                        <a href="goods-details.html">Cactus Flower</a>
-                                        <p>$10.99</p>
+                                       
+                                        <p>
+                                        
+                                        </p>
                                         <div class="ratings">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                                           
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Single Best Seller Products -->
-                                <div class="single-best-seller-product d-flex align-items-center">
-                                    <div class="product-thumbnail">
-                                        <a href="goods-details.html"><img src="img/bg-img/5.jpg" alt=""></a>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="goods-details.html">Tulip Flower</a>
-                                        <p>$11.99</p>
-                                        <div class="ratings">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Single Best Seller Products -->
-                                <div class="single-best-seller-product d-flex align-items-center">
-                                    <div class="product-thumbnail">
-                                        <a href="goods-details.html"><img src="img/bg-img/34.jpg" alt=""></a>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="goods-details.html">Recuerdos Plant</a>
-                                        <p>$9.99</p>
-                                        <div class="ratings">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                                
 
                             </div>
                         </div>
+                        
+                        
+                        
                     </div>
                 </div>
                 
@@ -338,8 +307,18 @@
                                 <div class="col-12 col-sm-6 col-lg-4">
                                     <div class="single-product-area mb-50">
                                         <!-- Product Image -->
+                                        <div style="z-index:1">
+                                        	
+                                        </div>
                                         <div class="product-img">
-                                            <a href="goods_detail.do?goods_index=${goods.goods_index}"><img src="img/goods/${goods.goods_repre_pic}" alt=""></a>
+                                            <a href="goods_detail.do?goods_index=${goods.goods_index}">
+                                            	<c:if test="${goods.goods_stock_number == 0 }">
+                                            		<img src="img/goods/sold_out.png" alt="SOLD OUT IMAGE">
+                                            	</c:if>
+                                            	<c:if test="${goods.goods_stock_number != 0 }">
+                                            		<img src="img/goods/${goods.goods_repre_pic}" alt="상품 이미지">
+                                            	</c:if>
+                                            </a>
                                         
                                             <!-- Product Tag
                                             <div class="product-tag">
@@ -481,6 +460,11 @@
 </script>
 <script type="text/javascript">
 function addCart(count){
+	if('${member.member_email}' == '') {
+	    alert('로그인해주세요.');
+	    return;
+	}
+	   
     let goods_index_list = [];
     let goods_category_code_list = [];
     let goods_name_list = [];

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import creakok.com.domain.Funding;
+import creakok.com.domain.Goods;
 import creakok.com.filesetting.Path;
 import creakok.com.mapper.ProjectMapper;
 import lombok.extern.log4j.Log4j;
@@ -74,5 +75,9 @@ public class ProjectServiceImpl implements ProjectService {
 			}
 		}
 	}
-
+	
+	@Override
+	public void insertOneGoods(Goods goods) {
+		mapper.insertOneGoods(goods);
+	}
 }

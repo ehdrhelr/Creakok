@@ -2,6 +2,7 @@ package creakok.com.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,5 +56,30 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public List<Goods> getRelatedGoods(long category_code) {
 		return gMapper.getRelatedGoods(category_code);
+	}
+
+	@Override
+	public void plusReviewNumber(long goods_index) {
+		gMapper.plusReviewNumber(goods_index);
+	}
+	
+	@Override
+	public void minusReviewNumber(long goods_index) {
+		gMapper.minusReviewNumber(goods_index);
+	}
+	
+	@Override
+	public long getGoodsIndex(String goods_name) {
+		return gMapper.getGoodsIndex(goods_name);
+	}
+	
+	@Override
+	public void plusSaleNumber(long goods_index) {
+		gMapper.plusSaleNumber(goods_index);
+	}
+	
+	@Override
+	public void minusStockNumber(long goods_index) {
+		gMapper.minusStockNumber(goods_index);
 	}
 }

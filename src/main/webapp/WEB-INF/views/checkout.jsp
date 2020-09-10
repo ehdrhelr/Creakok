@@ -15,7 +15,7 @@
     <title>Alazea - Gardening &amp; Landscaping HTML Template</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/creakok.ico">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
@@ -64,7 +64,7 @@
 
 
     <!-- ##### Checkout Area Start ##### -->
-    <div class="checkout_area mb-100">
+    <div class="checkout_area">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-12">
@@ -74,15 +74,15 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="first_name">이름 *</label>
-                                    <input  name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
+                                    <input  name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="${member.member_name}" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="email_address">이메일 주소</label>
-                                    <input  name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
+                                    <input  name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="${member.member_email}" readonly>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="phone_number">연락처 *</label>
-                                    <input class="form-control" value="" onkeydown="enterCheck(this)" required>
+                                    <input class="form-control" value="" name="phone_number" onkeydown="enterCheck(this)" required>
                                 </div>
                               
                               
@@ -206,7 +206,7 @@
                                 	 <input type="radio" name="evidencecheck" form="order_form" onclick="" value="cashbill" style="height:18px;vertical-align:middle;width:18px !important;"> 현금영수증
                                                                                                                                     
                                <div style="padding-top:5px;">
-                               		<div id="evidence_data"><script type="text/javascript" src="/js/check.js"></script>                                                
+                               		<div id="evidence_data">                                              
 	                               		<div id="evidence_cashbill_data" style="display:none;">                                                                                                                            
 		                               		<span id="cashbilltype">
 							                    <select name="evidence_banktype" class="bank-type" onchange="togglecashbilltype(this.value)">

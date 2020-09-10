@@ -374,7 +374,7 @@ public class CreatorBoardController {
 		ListResult listResult = creatorBoardService.getListResultBySearchS(board_cp, board_ps, board_filterBy, board_c_code, board_searchName, creator_name);
 		listResult.setBoard_searchName(board_searchName);
 		listResult.setBoard_c_code(board_c_code);
- 
+
 		request.setAttribute("listResult", listResult);
 		
 		ModelAndView mv = new ModelAndView();
