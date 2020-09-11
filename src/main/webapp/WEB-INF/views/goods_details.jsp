@@ -403,9 +403,32 @@
                                 <a href="#">Hot</a>
                             </div>
                             <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                                <script>
+	                               function testhcbae(index){
+	                                   if('${member.member_email}' == '') {
+	                                       alert('로그인해주세요.');
+	                                       return;
+	                                   }
+	                                   
+	                                   let formData = new FormData();
+	                                   formData.append('like_content_index',index);
+	                                   formData.append('like_type_code','${LikeType.GOODS_LIKE}');
+	                                   formData.append('like_member_email','${member.member_email}');
+	
+	                                   let xmlHttpLike = new XMLHttpRequest();
+	                                   xmlHttpLike.onreadystatechange = function() {
+	                                   	if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+	                                       	makeGoodsLikeList();
+	                                       }
+	                                  };
+	                                  xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
+	                                  xmlHttpLike.send(formData);
+	                               }
+                                </script>
+                                 <a href="#" class="wishlist-btn" onclick="testhcbae('${goods_related.goods_index}')" style="margin-left:10%">
+                                                    <i class="goods_list_like icon_heart_alt"></i>
+                                                </a>
+                                <a href="#" class="add-to-cart-btn" onclick="addCart('${listCount}')">장바구니에 담기</a>
                             </div>
                         </div>
                         <!-- Product Info -->
@@ -542,41 +565,55 @@
         formData.append('like_type_code','${LikeType.GOODS_LIKE}');
         formData.append('like_member_email','${member.member_email}');
 
-        let xmlHttpLike = new XMLHttpRequest();
-        xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
+            function makeGoodsLikeList(){
+quest();
+        xmlHttpLike.open("POST", "clickLike.do", true); // true for asyn        let likeList = document.querySelectorAll('.goods_list_like');
+        let tmep_count=0;
         xmlHttpLike.send(formData);
         xmlHttpLike.onreadystatechange = function() {
-            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
-                let obj = document.querySelector(".neDEf");
+            if (xmlHttpLike.readySta        let xmlHttpLike = new XMLHttpRequest();
+
+        <c:forEach var="goods" items="${goods.list}" >
+        formData = new FormData();
+        formData.append('like_content_index','${goods.goods_index}');
+.querySelector(".neDEf");
                 if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
                     obj.classList.add('isLiked');
                 } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
-                    obj.classList.remove('isLiked');
-                }
-            }
-       };
-    }
-    
-    </script>
-
-
-    <script type="text/javascript">
-    function addCart(){
-    	if('${member.member_email}' == '') {
-    	     alert('로그인해주세요.');
-    	     return;
-    	}
+                    obj.classList.remove('isLiked'        xmlHttpLike = new XMLHttpRequest();
+_email}' = 	}
     	   
-        let formData = new FormData();
-        formData.append('member_email', '${member.member_email}');
+                       likeList[tmep_count].classList.remove('icon_heart');
+                    likeList[tmep_count].classList.add('icon_heart_alt');
+append('member_email', '${member.member_email}');
         formData.append('goods_index', '${one_goods.goods_index}');
-        formData.append('goods_category_code', '${one_goods.goods_category_code}');
-        formData.append('goods_name', '${one_goods.goods_name}');
+        formData.append('goods_category_code', '${one_good                    likeList[tmep_count].classList.remove('icon_heart_alt');
+                    likeList[tmep_count].classList.add('icon_heart');
+                }                
+e_goods.goods_name}');
         formData.append('goods_repre_pic', '${one_goods.goods_repre_pic}');
-        formData.append('unit_price', document.getElementById('product_price').innerText );
+        formData.append('unit_price', d       xmlHttpLike.open("POST", "readLike.do", false); // true for asynchronous
+       xmlHttpLike.send(formData);
+       tmep_count++;
+       </c:forEach>
+ocument.getElementById('product_price').innerText );
         formData.append('unit_count', document.getElementById('qty').value );
     
-        let xmlHttp = new XMLHttpRequest();
+        let xmlHttp = new XM    makeGoodsLikeList();
+</script>
+<script type="text/javascript">
+function addCart(count){
+	   if('${member.member_email}' == '') {
+	        alert('로그인해주세요.');
+	        return;
+	    }
+	   
+    let goods_index_list = [];
+    let goods_category_code_list = [];
+    let goods_name_list = [];
+    let goods_repre_pic_list = [];
+    let unit_price_list = [];
+LHttpRequest();
         xmlHttp.onreadystatechange = function() {
              if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
                  //console.log("#####:"+xmlHttp.responseText);
