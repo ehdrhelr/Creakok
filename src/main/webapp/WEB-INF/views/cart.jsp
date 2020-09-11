@@ -123,7 +123,13 @@
                                             <span class="qty-plus" onclick="plusQuantity('${listCount}');"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                         </div>
                                     </td>
-                                    <td class="price"><span class="unit_price"><script>document.write( addComma('${cartunit.unit_price}') );</script>원</span></td>
+                                    <td class="price">
+	                                    <span class="unit_price" id="price_stock">
+	                                   	  <script>document.write( addComma('${cartunit.unit_price}') );
+		                                   </script>
+		                            	    원
+	                                    </span>
+                                    </td>
                                     <td class="total_price"><span class="unit_total_price"><script>document.write( addComma('${cartunit.unit_price*cartunit.unit_count}') );</script>원</span></td>
                                     <td class="action"><a href="#"><i class="icon_close" onclick="deleteCart('${listCount}')"></i></a></td>
                                 </tr>
@@ -153,7 +159,7 @@
                             <h5 id="TotalPrice"></h5>
                         </div>
                         <div class="checkout-btn hcbae_checkout_btn">
-                            <a href="#" class="btn alazea-btn w-100" onclick="location.href='order.do';">주문하기</a>
+                            <a href="#" class="btn alazea-btn w-100" onclick="stockCheck()">주문하기</a>
                         </div>
                     </div>
                 </div>
@@ -171,8 +177,6 @@
     
     
     <script type="text/javascript">
-
-
     function deleteCart(count){
         //alert('????:'+count);
         let member_email_list = [];
@@ -274,8 +278,36 @@
     }
     calSubTotal();
     
-    </script>
     
+    function stockCheck(){
+    	let arr = new Array();
+    	
+        <c:forEach var="cart" items="${goods_stock}">
+        	arr.push({goods_stock:'${cart.goods_stock_number}'});
+        	console.log(arr);
+        </c:forEach>
+
+        arr.some(function(v) {
+         	  if (v.goods_stock == 0) {
+         	    console.log(v); 
+         	    alert('품절된 상품은 구매하실 수 없습니다');
+         	    return (v.goods_stock ==0);
+         	  } 
+        });
+
+        let flag2 = arr.every(val => {return val.goods_stock != 0});
+        console.log(flag2);      
+        if( flag2 !== false ){
+        	console.log('2');
+        	location.href="order.do";
+        } else if ( flag2 == false ){
+        	console.log('3');
+        	location.href="#";
+        }
+   	 	
+    }
+    </script>
+    <!--  -->
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->

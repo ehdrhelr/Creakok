@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import creakok.com.domain.Cart;
+import creakok.com.domain.Goods;
 import creakok.com.mapper.CartMapper;
 import lombok.extern.log4j.Log4j;
 
@@ -56,5 +57,9 @@ public class CartServiceImpl implements CartService {
 			cartMapper.updateCartCount(cart);
 		}
 	}
-
+	
+	@Override
+	public Goods selectGoodsStock(long goods_index) { //굿즈 수량 체크(품절), 품절된 굿즈 이름 뽑기
+		return cartMapper.selectGoodsStock(goods_index);
+	}
 }

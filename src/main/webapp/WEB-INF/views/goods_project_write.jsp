@@ -1101,9 +1101,9 @@
                                 
                                  <div >
                                     <input  name="write_goods_price"  style="display:inline-block;width:50%;margin-top:10px;" class="form-control" id="first_name" 
-                                     placeholder="가격" required>
+                                     placeholder="가격(숫자만 입력 가능)" required>
                                     <input type="text"  name="write_goods_stock"  style="display:inline-block;width:23.3%;margin-top:10px;margin-left:5px;" class="form-control" id="first_name" 
-                                     placeholder="재고량" required>
+                                     placeholder="재고량(숫자만 입력 가능)" required>
                                  
                                 </div>
                                 

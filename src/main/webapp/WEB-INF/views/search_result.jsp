@@ -262,35 +262,7 @@
                                           <div class="product-tag">
                                               <a href="#">Hot</a>
                                           </div> -->
-                                          <div class="product-meta d-flex">
-                                              <script>
-                                              function testhcbae(index){
-                                                  if('${member.member_email}' == '') {
-                                                      alert('로그인해주세요.');
-                                                      return;
-                                                  }
-                                                  
-                                                  let formData = new FormData();
-                                                  formData.append('like_content_index',index);
-                                                  formData.append('like_type_code','${LikeType.GOODS_LIKE}');
-                                                  formData.append('like_member_email','${member.member_email}');
-
-                                                  let xmlHttpLike = new XMLHttpRequest();
-                                                  xmlHttpLike.onreadystatechange = function() {
-                                                  	if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
-                                                      	makeGoodsLikeList();
-                                                      }
-                                                 };
-                                                 xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
-                                                 xmlHttpLike.send(formData);
-                                              }
-                                              </script>
-                                              <a href="#" class="wishlist-btn" onclick="testhcbae('${goods.goods_index}')" style="margin-left:10%">
-                                                  <i class="goods_list_like icon_heart_alt"></i>
-                                              </a>
-                                              <a href="#" class="add-to-cart-btn" onclick="addCart('${listCount}')">장바구니에 담기</a>
-                                              <!--  <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>  -->
-                                          </div>
+                                          
                                        </div>   
                                     <!-- Product Info -->
                                     <div class="product-info mt-15">
