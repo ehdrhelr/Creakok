@@ -20,6 +20,7 @@
          <typeAlias alias="Funding_qnaVo" type="creakok.com.vo.Funding_qnaVo"/>
           <typeAlias alias="Funding_category" type="creakok.com.domain.Funding_category"/>
             <typeAlias alias="Funding_qna" type="creakok.com.domain.Funding_qna"/>  
+            <typeAlias alias="Funding_Payinfo" type="creakok.com.domain.Funding_payinfo"/>
             
        <typeAlias alias="GoodsVo" type="creakok.com.vo.GoodsVo"/> 
        <typeAlias alias="Goods_Category" type="creakok.com.domain.Goods_Category"/>  
@@ -30,7 +31,7 @@
    	   <typeAlias alias="Goods_QnAVo" type="creakok.com.vo.Goods_QnAVo"/>  
    	   
    	   <typeAlias alias="PayInfoVo" type="creakok.com.vo.PayInfoVo"/>  
-  	   <typeAlias alias="Funding_Payinfo" type="creakok.com.domain.Funding_Payinfo"/>
+  	   
   	   
   	   <typeAlias alias="LikeTable" type="creakok.com.domain.LikeTable"/>  
         <typeAlias alias="Cart" type="creakok.com.domain.Cart"/>  
