@@ -87,6 +87,7 @@ public class CreatorBoardController {
 		session.setAttribute("board_c_code", board_c_code);
 		
 		if (board_searchName==null) { 
+			session.removeAttribute("board_searchName");
 			String board_searchNameTemp = (String) session.getAttribute("board_searchName");
 			if (board_searchNameTemp !=null) {
 				board_searchName = board_searchNameTemp;
@@ -100,6 +101,7 @@ public class CreatorBoardController {
 		ListResult listResult = null;
 		
 		if (board_filterBy==null) {
+			session.removeAttribute("board_filterBy");
 			String board_filterByTemp = (String) session.getAttribute("board_filterBy");
 			if (board_filterByTemp !=null) {
 				board_filterBy = board_filterByTemp;
@@ -132,7 +134,7 @@ public class CreatorBoardController {
 		
 		/** pagination try **/
 		
-		// 전체 리스트 개수 
+		// 전체 리스트 개수 -- 삭제예정
 		int listCnt = (int) listResult.getTotalCount();
 		log.info("@@@@@@@@@@ listCnt : " + listCnt);
 		Pagination pagination = new Pagination(listCnt, board_cp);
