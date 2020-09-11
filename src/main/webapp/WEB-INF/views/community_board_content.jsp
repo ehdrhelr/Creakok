@@ -46,30 +46,9 @@
 	<!-- for review -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-   <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' />
   
 	<link href="css/css_board/reservation_page.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css"
-	href="timepicker/jquery.datetimepicker.css"/ >
-	<link rel="shortcut icon" href="bit_logo.png" />
-	
-	 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-   	<script src="js/js_board/jquery.form.min.js"></script>
-  	<script src="js/js_board/jquery.validate.min.js"></script>
-  	<script src="js/js_board/vue.min.js"></script>
-   	<script src="js/js_board/jquery.cookie.js"></script>
-
-	<script src="js/js_board/moment.min.js"></script>
-   	<script src="js/js_board/moment-timezone-with-data.min.js"></script>
-
-   	<script src="js/js_board/vueComponent/vue-filter.js"></script>
-   	
-   	<script src="js/js_board/app/App.js"></script>
-   
-   	<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="timepicker/jquery.js"></script>
-	<script src="timepicker/jquery.datetimepicker.full.min.js"></script>
-	<script src="js/js_board/login.js"></script>
 
     <style>
         .three {
@@ -351,10 +330,6 @@
 
    <!-- 게시판 영역 end -->
 
- <section id="container">
-
- </section>
-
 	<!-- Footer Bottom Area -->
     <div id="footer_div">
     <jsp:include page="creakok_footer.jsp" flush="true"/>
@@ -469,7 +444,6 @@
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
     </jsp:include>
   
-</body>
 </body>
 
 </html>

@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import creakok.com.domain.Board;
 import creakok.com.domain.Comment;
 import creakok.com.domain.Creator;
+import creakok.com.domain.Pagination;
 import creakok.com.filesetting.Path;
 import creakok.com.service.BoardCommentService;
 import creakok.com.service.CreatorBoardService;
@@ -43,11 +44,10 @@ public class CreatorBoardController {
 	@RequestMapping("board_page")
 	public ModelAndView getListResult(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String board_cpStr = request.getParameter("board_cp");
-		String board_psStr = request.getParameter("board_ps");
 		String board_filterBy = request.getParameter("board_filterBy");
 		String creator_name = request.getParameter("creator_name");
-		String c_code = request.getParameter("c_code");
-		String searchName = request.getParameter("searchName");
+		String board_c_code = request.getParameter("board_c_code");
+		String board_searchName = request.getParameter("board_searchName");
 		
 		HttpSession session = request.getSession();
 		
@@ -72,38 +72,8 @@ public class CreatorBoardController {
 		session.setAttribute("board_cp", board_cp);
 		
 		//(2) ps 
-		int board_ps = 15;
-		/*
-		if(psStr == null) {
-			Object psObj = session.getAttribute("ps");
-			if(psObj != null) {
-				ps = (Integer)psObj;
-			}
-		}else {
-			psStr = psStr.trim();
-			int psParam = Integer.parseInt(psStr);
-			
-			Object psObj = session.getAttribute("ps");
-			if(psObj != null) {
-				int psSession = (Integer)psObj;
-				if(psSession != psParam) {
-					cp = 1;
-					session.setAttribute("cp", cp);
-				}
-			}else {
-				if(ps != psParam) {
-					cp = 1;
-					session.setAttribute("cp", cp);
-				}
-			}
-			
-			ps = psParam;
-		}
-		*/
+		int board_ps = 20;
 		session.setAttribute("board_ps", board_ps);
-		
-		String board_c_code = request.getParameter("board_c_code");
-		String board_searchName = request.getParameter("board_searchName");
 		
 		if (board_c_code==null) { 
 			String board_c_codeTemp = (String) session.getAttribute("board_c_code");
@@ -117,6 +87,7 @@ public class CreatorBoardController {
 		session.setAttribute("board_c_code", board_c_code);
 		
 		if (board_searchName==null) { 
+			session.removeAttribute("board_searchName");
 			String board_searchNameTemp = (String) session.getAttribute("board_searchName");
 			if (board_searchNameTemp !=null) {
 				board_searchName = board_searchNameTemp;
@@ -124,12 +95,13 @@ public class CreatorBoardController {
 			} else {
 				board_searchName = "#####";
 			}
-		}
-		
-		ListResult listResult = null;
+		}		
 		session.setAttribute("board_searchName", board_searchName);
 		
+		ListResult listResult = null;
+		
 		if (board_filterBy==null) {
+			session.removeAttribute("board_filterBy");
 			String board_filterByTemp = (String) session.getAttribute("board_filterBy");
 			if (board_filterByTemp !=null) {
 				board_filterBy = board_filterByTemp;
@@ -149,15 +121,27 @@ public class CreatorBoardController {
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community");
 		mv.addObject("listResult", listResult);
-
+		
 		// 해당 페이지의 크리에이터 정보 세션에 올리기
 		Creator theCreator = creatorBoardService.getCreator(creator_name);
 		session.setAttribute("theCreator", theCreator);
 		
 		//대표컨텐츠 쏴주기
+		String[] contentList = null;
 		String contentOneLine = theCreator.getCreator_main_content();
-		String[] contentList = contentOneLine.split("@");
+		if (contentOneLine != null) contentList = contentOneLine.split("@");
 		mv.addObject("contentList", contentList);
+		
+		/** pagination try **/
+		
+		// 전체 리스트 개수 -- 삭제예정
+		int listCnt = (int) listResult.getTotalCount();
+		log.info("@@@@@@@@@@ listCnt : " + listCnt);
+		Pagination pagination = new Pagination(listCnt, board_cp);
+		
+		mv.addObject("listCnt", listCnt);
+		mv.addObject("pagination", pagination);
+		log.info("@@@@@@@@@@ listResult : " + listResult);
 		
 		return mv;
 	}

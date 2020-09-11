@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	
-	 <!-- Title -->
+	<!-- Title -->
     <title>COMMUNITY - CREAKOK</title>
 
     <!-- Favicon -->
@@ -26,6 +26,7 @@
 	<meta name="description" content="Boto Photo Studio HTML Template">
 	<meta name="keywords" content="photo, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
@@ -41,19 +42,9 @@
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
    
-	<!-- 잠깐 -->
 	<!-- for review -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR:300,400,700&display=swap&subset=korean" rel="stylesheet">
-    
-    
-    
-    <!-- 이 녀석이 header 와 footer css충돌냄
-    <link rel='stylesheet' id='content-css'  href='css/css_board/content.css' type='text/css' media='all' />
-	-->
+
     <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' />
 	
 	<link href="css/css_board/reservation_page.css" rel="stylesheet">
@@ -70,7 +61,6 @@
             max-width:63%;!important;
         }
     </style>
-    
     
 </head>
 
@@ -250,7 +240,7 @@
 
 	<div class="container">
 			
-			<div class="r_list">
+			<div class="r_list" style="height:900px;">
 				<div class="choose">
 					<ul class="clearfix">
 						<li><span>정렬 : </span>
@@ -293,8 +283,8 @@
 				<table>
 					<colgroup>
 						<col width="5%">
-						<col width="60%">
-						<col width="5%">
+						<col width="55%">
+						<col width="10%">
 						<col width="10%">
 						<col width="5%">
 						<col width="5%">
@@ -339,8 +329,16 @@
         </tr>
         <tr>
           <td colspan="3" align="center">
+        
+        <c:if test="${listResult.curRange ne 1 }">
+        	<a href="#" onClick="fn_paging(1)">[처음]</a> 
+        </c:if>
+        <c:if test="${listResult.currentPage ne 1}">
+            <a href="#" onClick="fn_paging('${listResult.prevPage }')">[이전]</a> 
+        </c:if>
+        
          	<c:if test="${empty listResult.board_searchName}">
-            <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
+            <c:forEach begin="${listResult.startPage}" end="${listResult.endPage}" var="i">
                 	<a href="board_page?board_cp=${i}&board_filterBy=${listResult.board_filterBy}#fix_point">
                 <c:choose> 
                 <c:when test="${i==listResult.currentPage}">
@@ -356,8 +354,8 @@
             </c:forEach>
 			</c:if>
             <c:if test="${!empty listResult.board_searchName}"> 
-            <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                	<a href="board_search?board_cp=${i}&board_c_code=${listResult.board_c_code}&board_searchName=${listResult.board_searchName}#fix_point">
+            <c:forEach begin="${listResult.startPage}" end="${listResult.endPage}" var="i">
+                	<a href="board_search?board_cp=${i}&board_filterBy=${listResult.board_filterBy}&board_c_code=${listResult.board_c_code}&board_searchName=${listResult.board_searchName}#fix_point">
                 <c:choose> 
                 <c:when test="${i==listResult.currentPage}">
                     <strong>${i}</strong>
@@ -371,13 +369,20 @@
             &nbsp;
             </c:forEach>
             </c:if>
-
+            
+			<c:if test="${listResult.currentPage ne listResult.totalPageCount && listResult.totalPageCount > 0}">
+				<a href="#" onClick="fn_paging('${listResult.nextPage }')">[다음]</a> 
+			</c:if>
+			<c:if test="${listResult.curRange ne listResult.rangeCnt && listResult.rangeCnt > 0}">
+				<a href="#" onClick="fn_paging('${listResult.totalPageCount }')">[끝]</a> 
+			</c:if>
+		
           </td>
-          <!-- 없는게 나을 것 같다.
-          <td colspan="2" align="center">
-            총 게시물 수 : ${listResult.totalCount}
-          </td>
-        	-->  
+<!-- 참고용 
+   	<div>
+		총 게시글 수 : ${pagination.listCnt } /    총 페이지 수 : ${pagination.pageCnt } / 현재 페이지 : ${pagination.curPage } / 현재 블럭 : ${pagination.curRange } / 총 블럭 수 : ${pagination.rangeCnt }
+	</div>
+-->
         
         </tr>
         <c:if test="${empty member}">
@@ -391,7 +396,17 @@
        
 		</div>
    </div>
+	
+	<script>
+	function fn_paging(curPage) {
+		if ('${listResult.board_searchName}' == '') {
+			location.href = "board_page?board_cp="+curPage+"&board_filterBy=${listResult.board_filterBy}#fix_point"	
+		} else {
+			location.href = "board_search?board_cp="+curPage+"&board_filterBy=${listResult.board_filterBy}&board_c_code=${listResult.board_c_code}&board_searchName=${listResult.board_searchName}#fix_point"
+		}
+	}
 
+	</script>
    <!-- 게시판 영역 end -->
 
   	<!-- Footer Bottom Area -->
@@ -438,13 +453,21 @@
 	 <script language="javascript">
 		function f(select){
 			var board_filterBy = select.value;
-			location.href="board_page?&board_filterBy="+board_filterBy+"&creator_name=${theCreator.creator_name}#fix_point";
-
+			
+			if ('${listResult.board_searchName}' == '') {
+				location.href = "board_page?board_cp=1&board_filterBy="+board_filterBy+"&creator_name=${theCreator.creator_name}#fix_point"	
+			} else {
+				location.href = "board_search?board_cp=1&board_filterBy="+board_filterBy+"&board_c_code=${listResult.board_c_code}&board_searchName=${listResult.board_searchName}#fix_point"
+			}
 		} 
 	</script>
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
     </jsp:include>
+    
+     <!-- Javascript pagination -->
+	<script type="text/javascript" src="../js/paging.js"></script>
+	
 </body>
 
 </html>
