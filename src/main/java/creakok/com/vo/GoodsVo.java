@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class GoodsVo {
-   
    private int cp;
    private long totalCount;
    private int ps;

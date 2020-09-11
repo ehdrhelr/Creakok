@@ -47,7 +47,7 @@
                           <div class="login"><a href="member_logout.do"><i aria-hidden="true"></i> <span id="header_logout">Logout</span></a></div>
                           
                           <!-- My Page -->
-                          <div class="mypage"><a href="member_mypage.do"><i aria-hidden="true"></i> <span id="header_mypage">My Page</span></a></div>
+                          <div class="mypage"><a href="member_mypage.do?member_email=${member.member_email}&order_cp=1"><i aria-hidden="true"></i> <span id="header_mypage">My Page</span></a></div>
                           
                           <!-- Cart -->
                           <div class="cart"><a href="goods_cart.do"><i aria-hidden="true"></i> <span id="header_cart">Cart</span></a></div>
@@ -113,15 +113,22 @@
 
             <!-- Search Form -->
             <div class="search-form">
-                <form action="#" method="get">
-                    <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
-                    <button type="submit" class="d-none"></button>
+                <form action="search.do" method="post">
+                    <input type="search" name="keyword" id="search" placeholder="어떤 펀딩/굿즈를 찾고계신가요?">
+                    <!-- <button type="submit" class="d-none" id="search_btn"></button> -->
+                
+	                <!-- Close Icon -->
+	                <div class="closeIcon" id="search_btn">
+		                <i aria-hidden="true">
+		                	<button type="submit" id="search_btn"><img src="img/core-img/search.png"></button>
+		                </i>
+	                </div>
                 </form>
-                <!-- Close Icon -->
-                <div class="closeIcon"><i aria-hidden="true"><img src="img/core-img/search.png"></i></div>
-            </div>
-        </div>
-    </div>
-</div>
+           	 </div>
+           	 <!-- Search Form End -->
+           	 
+	        </div>
+	    </div>
+	</div>
 
 </body>

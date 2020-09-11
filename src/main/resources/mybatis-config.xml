@@ -14,12 +14,16 @@
       <typeAlias alias="Member_category" type="creakok.com.domain.Member_category"/>
       <typeAlias alias="Member_origin" type="creakok.com.domain.Member_origin"/>
       <typeAlias alias="Member" type="creakok.com.domain.Member"/>
-   	     <typeAlias alias="Funding" type="creakok.com.domain.Funding"/>
-   	     <typeAlias alias="FundingVo" type="creakok.com.vo.FundingVo"/>
-         <typeAlias alias="Funding_commentVo" type="creakok.com.vo.Funding_commentVo"/>
-         <typeAlias alias="Funding_qnaVo" type="creakok.com.vo.Funding_qnaVo"/>
-          <typeAlias alias="Funding_category" type="creakok.com.domain.Funding_category"/>
-            <typeAlias alias="Funding_qna" type="creakok.com.domain.Funding_qna"/>  
+      <typeAlias alias="Member_OrderInfoVo" type="creakok.com.vo.Member_OrderInfoVo"/>
+      
+      
+   	   <typeAlias alias="Funding" type="creakok.com.domain.Funding"/>
+   	   <typeAlias alias="FundingVo" type="creakok.com.vo.FundingVo"/>
+       <typeAlias alias="Funding_commentVo" type="creakok.com.vo.Funding_commentVo"/>
+       <typeAlias alias="Funding_qnaVo" type="creakok.com.vo.Funding_qnaVo"/>
+       <typeAlias alias="Funding_category" type="creakok.com.domain.Funding_category"/>
+       <typeAlias alias="Funding_qna" type="creakok.com.domain.Funding_qna"/>  
+       <typeAlias alias="Funding_searchVo" type="creakok.com.vo.Funding_searchVo"/>  
             
        <typeAlias alias="GoodsVo" type="creakok.com.vo.GoodsVo"/> 
        <typeAlias alias="Goods_Category" type="creakok.com.domain.Goods_Category"/>  
@@ -28,9 +32,11 @@
    	   <typeAlias alias="Goods" type="creakok.com.domain.Goods"/>  
    	   <typeAlias alias="Goods_ReviewVo" type="creakok.com.vo.Goods_ReviewVo"/>  
    	   <typeAlias alias="Goods_QnAVo" type="creakok.com.vo.Goods_QnAVo"/>  
+   	   <typeAlias alias="Goods_SearchVo" type="creakok.com.vo.Goods_SearchVo"/>  
    	   
    	   <typeAlias alias="PayInfoVo" type="creakok.com.vo.PayInfoVo"/>  
   	   <typeAlias alias="Funding_Payinfo" type="creakok.com.domain.Funding_Payinfo"/>
+  	   <typeAlias alias="Order_Info" type="creakok.com.domain.Order_Info"/>
   	   
   	   <typeAlias alias="LikeTable" type="creakok.com.domain.LikeTable"/>  
         <typeAlias alias="Cart" type="creakok.com.domain.Cart"/>  

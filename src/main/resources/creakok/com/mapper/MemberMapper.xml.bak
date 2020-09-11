@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="creakok.com.mapper.MemberMapper">
+
+  <select id="selectAllByEmail" parameterType="String" resultType="Member">
+    select * from MEMBER where MEMBER_EMAIL=#{member_email}
+  </select>
+  
+  <select id="selectByEmail" parameterType="String" resultType="Member">
+    select MEMBER_EMAIL from MEMBER where MEMBER_EMAIL=#{member_email}
+  </select>
+  
+  <select id="selectByName" parameterType="String" resultType="Member">
+    select MEMBER_NAME from MEMBER where MEMBER_NAME=#{member_name}
+  </select>
+
+  <select id="selectMemberOrigin" parameterType="String" resultType="String">
+    select MEMBER_ORIGIN_CODE from MEMBER where MEMBER_EMAIL=#{member_email}
+  </select>
+  
+  <update id="updatePassword" parameterType="MEMBER">
+    update MEMBER set MEMBER_PASSWORD=#{member_password} where MEMBER_EMAIL=#{member_email}
+  </update>
+  
+  <update id="updateNameByIndex" parameterType="MEMBER">
+    update MEMBER set MEMBER_NAME=#{member_name} where MEMBER_INDEX=#{member_index}
+  </update>
+  
+  <update id="updateNameByEmail" parameterType="MEMBER">
+    update MEMBER set MEMBER_NAME=#{member_name} where MEMBER_EMAIL=#{member_email}
+  </update>
+  
+  <insert id="insertMember" parameterType="MEMBER">
+    <selectKey keyProperty="member_index" resultType="long" order="BEFORE">
+    SELECT MEMBER_INDEX_SEQ.nextval FROM dual
+    </selectKey>
+    insert into MEMBER(member_category_code, member_origin_code, member_email, member_name, member_password, member_joindate, member_index) 
+      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, SYSDATE, ${member_index})
+  </insert>
+  
+  <delete id="deleteMember" parameterType="String">
+    delete from MEMBER where MEMBER_EMAIL=#{member_email}
+  </delete>
+
+
+  <insert id="insertSocialMember" parameterType="MEMBER">
+    <selectKey keyProperty="member_index" resultType="long" order="BEFORE">
+    SELECT MEMBER_INDEX_SEQ.nextval FROM dual
+    </selectKey>
+    insert into MEMBER(member_category_code, member_origin_code, member_email, member_name, member_password, member_profile_pic, member_joindate, member_index) 
+      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, #{member_profile_pic}, SYSDATE, ${member_index})
+  </insert>
+
+
+  
+</mapper>

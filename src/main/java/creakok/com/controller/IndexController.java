@@ -1,18 +1,35 @@
 package creakok.com.controller;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import creakok.com.domain.Creator;
+import creakok.com.domain.Goods;
+import creakok.com.domain.Goods_Category;
 import creakok.com.service.CreatorBoardService;
+import creakok.com.service.FundingService;
+import creakok.com.service.GoodsService;
 import creakok.com.service.LikeTableService;
+import creakok.com.vo.Funding_searchVo;
+import creakok.com.vo.GoodsVo;
+import creakok.com.vo.Goods_SearchVo;
 import lombok.extern.log4j.Log4j;
 
 
@@ -25,6 +42,12 @@ public class IndexController {
 	
 	@Autowired
 	LikeTableService lts;
+	
+	@Autowired
+	private GoodsService goodsService;
+	
+	@Autowired
+	private FundingService fundingService;
 	
 	@RequestMapping(value="/", method =RequestMethod.GET)
 	public ModelAndView index(HttpSession session) {
@@ -66,5 +89,99 @@ public class IndexController {
 	public String creakok_footer() {
 		//log.info("### creakok_header do");
 		return "creakok_footer";
+	}
+	
+	@ResponseBody
+	@RequestMapping("ranking")
+	public List<Goods> ranking(HttpSession session){ //굿즈 실시간랭킹
+		List<Goods> goods_ranking = goodsService.selectGoodsRanking();
+		session.setAttribute("goods_ranking", goods_ranking);
+				
+		return goods_ranking;
+	}
+	
+	@RequestMapping("search.do")
+	public String search(@RequestParam("keyword") String keyword, HttpServletRequest request, HttpSession session) {
+		String funding_cpStr = request.getParameter("funding_cp");
+		String funding_keyword = request.getParameter("keyword");
+		
+		//log.info("#######################cpStr: "+cpStr);
+		//log.info("#######################psStr: "+psStr);
+		
+		Funding_searchVo s_funding_searchVo = (Funding_searchVo)session.getAttribute("funding_searchVo");
+		//(1) cp 
+		int funding_cp = 1;
+		if(funding_cpStr == null) {
+				funding_cp = 1;
+		}else {
+			funding_cpStr = funding_cpStr.trim();
+			funding_cp = Integer.parseInt(funding_cpStr);
+		}
+	//	session.setAttribute("cp", cp);
+		
+		//(2) ps 
+		int funding_ps = 3;		
+		Funding_searchVo funding_searchVo = fundingService.getSearchFundingVo(funding_cp, funding_ps, keyword);
+		funding_searchVo.setFunding_cp(funding_cp);
+		funding_searchVo.setFunding_ps(funding_ps);
+		funding_searchVo.setKeyword(keyword);
+	    
+		if(funding_searchVo.getFunding_result_list().size() == 0) {
+			if(funding_cp > 1) {	
+				int funding_cp2 = funding_cp-1;
+				funding_searchVo.setFunding_cp(funding_cp2);
+			}
+		}
+		//log.info("@@@@@@@@@@@@@@@@@@@@@@@@search_goods: "+search_goods);
+		session.setAttribute("funding_result", funding_searchVo);
+		
+		//검색결과 총 갯수
+		long funding_result_amount = fundingService.selectFundingCountBySearch(funding_keyword);
+		session.setAttribute("funding_result_amount", funding_result_amount);
+				
+		
+		
+		
+		/////////////////////////////////////////////////////////////////////
+		///////////////////////////// 굿즈 검색  ////////////////////////////////
+		/////////////////////////////////////////////////////////////////////
+		
+		String cpStr = request.getParameter("cp");
+		
+		//log.info("#######################cpStr: "+cpStr);
+		
+		Goods_SearchVo s_goods_searchVo = (Goods_SearchVo)session.getAttribute("goods_result");
+		//(1) cp 
+		int cp = 1;
+		if(cpStr == null) {
+				cp = 1;
+		}else {
+			cpStr = cpStr.trim();
+			cp = Integer.parseInt(cpStr);
+		}
+	//	session.setAttribute("cp", cp);
+		
+		//(2) ps 
+		int ps = 3;		
+		Goods_SearchVo goods_searchVo = goodsService.getSearchGoodsVo(cp, ps, keyword);
+		goods_searchVo.setCp(cp);
+		goods_searchVo.setPs(ps);
+		goods_searchVo.setKeyword(keyword);
+	    
+		if(goods_searchVo.getResult_list().size() == 0) {
+			if(cp > 1) {	
+				int cp2 = cp-1;
+				goods_searchVo.setCp(cp2);
+			}
+		}
+		
+		//검색결과 총 갯수
+		long goods_result_amount = goodsService.selectGoodsCountBySearch(keyword);
+		session.setAttribute("goods_result_amount", goods_result_amount);
+				
+		//log.info("@@@@@@@@@@@@@@@@@@@@@@@@search_goods: "+search_goods);
+		session.setAttribute("goods_result", goods_searchVo);
+		
+		return "search_result";
 	}
 }

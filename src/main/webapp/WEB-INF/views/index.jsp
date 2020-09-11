@@ -115,12 +115,15 @@
 
     
     <!-- ##### About Area Start ##### -->
-    <section class="about-us-area section-padding-100-0">
+<section class="about-us-area section-padding-100-0">
         <div class="container">
             <div class="row justify-content-between">
 
-                
-                <div class="col-12 col-lg-6 howAbout">
+             
+                                    
+                                    
+                                    
+                <div class="col-12 col-lg-6">
                     <div class="alazea-benefits-area">
                         
                     <div class="section-heading">
@@ -131,20 +134,19 @@
      
                             
                             <!-- Single Benefits Area -->
-                            <div class="col-12 col-sm-6  three">
+                            <div class="col-12 col-sm-6">
 
-                                <div class="single-benefits-area ">                   
+                                <div class="single-benefits-area">                   
                                     <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        <div class="CommonCard_rect__2wpm4">
-                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" 
-                                                  style="background-image:url(img/core-img/ex1.png)">
-                                                 <a href="shop-details.html">
+                                        </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
+                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
+                                                 </span></a><a href="shop-details.html">
                                                      <img src="img/core-img/ex2.jpg" alt="">
                                                 </a>
-                                            </span>
+                                            
         
                                         </div>
-                                    </a>
+                                    
                                     <div class="CommonCard_info__1f4kq">
                                     <div class="RewardProjectCard_info__3JFub">
                                         <div class="RewardProjectCard_infoTop__3QR5w">
@@ -173,9 +175,9 @@
                                           <!-- Single Progress Bar -->
                                         <div class="single_progress_bar">
                                            
-                                            <div id="bar3" class="barfiller" style="border-radius:5px;">
+                                            <div id="bar1" class="barfiller" style="border-radius:50pt">
                                                
-                                                <span class="fill" data-percentage="60" style="border-radius:5px;!important; width: 126px; transition: width 1s ease-in-out 0s;"></span>
+                                                <span class="fill" data-percentage="60" style="background: rgb(252, 82, 48); width: 126px; transition: width 1s ease-in-out 0s;border-radius:30pt;"></span>
                                             </div>
                                         </div>
                                           
@@ -202,20 +204,19 @@
                             
                             
                             <!-- Single Benefits Area -->
-                            <div class="col-12 col-sm-6 three">
+                            <div class="col-12 col-sm-6">
 
                                 <div class="single-benefits-area">                   
                                     <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        <div class="CommonCard_rect__2wpm4">
-                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" 
-                                                  style="background-image:url(img/core-img/ex1.png)">
-                                                 <a href="shop-details.html">
+                                        </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
+                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
+                                                 </span></a><a href="shop-details.html">
                                                      <img src="img/core-img/ex2.jpg" alt="">
                                                 </a>
-                                            </span>
+                                            
         
                                         </div>
-                                    </a>
+                                    
                                     <div class="CommonCard_info__1f4kq">
                                     <div class="RewardProjectCard_info__3JFub">
                                         <div class="RewardProjectCard_infoTop__3QR5w">
@@ -244,9 +245,9 @@
                                           <!-- Single Progress Bar -->
                                         <div class="single_progress_bar">
                                            
-                                            <div id="bar4" class="barfiller" style="border-radius: 5px;">
+                                            <div id="bar2" class="barfiller" style="border-radius:50pt">
                                                
-                                                <span class="fill" data-percentage="60" style="border-radius: 5px;!important; width: 126px; transition: width 1s ease-in-out 0s;"></span>
+                                                <span class="fill" data-percentage="60" style="background: rgb(252, 82, 48); width: 126px; transition: width 1s ease-in-out 0s;border-radius:30pt;"></span>
                                             </div>
                                         </div>
                                           
@@ -265,12 +266,7 @@
                                     </div>  
                                 </div>
                             </div>
- 
-                      
-                            
-                            
-                            
-                            
+                        
                         </div>
                     </div>
                 </div>
@@ -288,46 +284,44 @@
                 
                 
                 
-               <div class="col-12 col-lg-5 ranking"  style="width:70%">
+                  <div class="col-12 col-lg-5" style="width:70%">
                     <!-- Section Heading -->
-                    <div class="section-heading">
+                    <div class="section-heading" style="margin-bottom:20px">
                         <h2 style="margin-bottom: 5px;">실시간 랭킹</h2>
                         
                         
-                        <button type="button" title="REWARD" class="TabButton_btnTab__K2OC3 TabButton_active__32awQ">
-                                             펀딩하기
-                        </button>&nbsp;&nbsp;
-                         |&nbsp;&nbsp;
-                        <button type="button" title="EQUITY" class="TabButton_btnTab__K2OC3">
-                                             투자하기
+                        <button type="button" title="REWARD" class="TabButton_btnTab__K2OC3 TabButton_active__32awQ" style="font-size:13pt;font-weight:600">
+                                                              펀딩
                         </button>
+                        &nbsp;&nbsp;
+                         <sapn style="font-size:13pt">|</sapn>
+                         &nbsp;&nbsp;
+                        <button type="button" title="EQUITY" class="TabButton_btnTab__K2OC3" onclick="goodsRanking()" style="font-size:13pt;font-weight:600">
+                                                              굿즈
+                        </button>
+                        <p>
+                         	실시간 랭킹으로 현재 HOT한 펀딩/굿즈를 만나보세요.
+                        </p>
                     </div>
-
-                                    
-                                    
-                                    
-                                    
-                         <section class="SectionContainerLayout_container__1f8kt RankingFundingWrap_container__2VQZB RecommendationDesktop_rankingFunding__RiDmN">
+                    
+                   <section id="ranking" class="SectionContainerLayout_container__1f8kt RankingFundingWrap_container__2VQZB RecommendationDesktop_rankingFunding__RiDmN">
                              
-                             <div>
-                                 <div>
-                                     
-                                     <div class="TabContainer_tab__LrP70">
-                                         
-                                    
+                           
+                                  <div class="TabContainer_tab__LrP70">
                                    <div class="TabContainer_tabList__1TS8l">
                                      <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
-                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309"><article>
+                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309">
+                                         <article>
                                              <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:35px;float:left;font-size:20px;font-weight: 500">
+                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
                                                      1
                                                  </p>
                                                  <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
                                                  <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, <br/>에어리(Airy)'       
+                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
                                                  </p>
-                                                 <p class="commons_summary__2Ynez" style="margin-bottom:20px;">
-                                                     <span class="commons_achievementRate__2J-KL" style="color:#fc5230;font-weight: 600">
+                                                 <p class="commons_summary__2Ynez">
+                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
                                                      1,278%
                                                      </span>
                                                      패션·잡화
@@ -336,69 +330,25 @@
                                              </article>
                                          </a>                     
                                     </div>
-                               
-                                       
-                                       
-                                       
-                                    <div class="TabContainer_tabList__1TS8l">
-                                     <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
-                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309"><article>
-                                             <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:35px;float:left;font-size:20px;font-weight: 500">
-                                                    2
-                                                 </p>
-                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
-                                                 <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, <br/>에어리(Airy)'       
-                                                 </p>
-                                                 <p class="commons_summary__2Ynez"  style="margin-bottom:20px;">
-                                                     <span class="commons_achievementRate__2J-KL" style="color:#fc5230;font-weight: 600">
-                                                     1,278%
-                                                     </span>
-                                                     패션·잡화
-                                                 </p>
-                                             </div>
-                                             </article>
-                                         </a>                     
-                                    </div>                                   
-                                        
-                                    <div class="TabContainer_tabList__1TS8l">
-                                     <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
-                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309"><article>
-                                             <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:35px;float:left;font-size:20px;font-weight: 500">
-                                                     3
-                                                 </p>
-                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
-                                                 <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, <br/>에어리(Airy)'       
-                                                 </p>
-                                                 <p class="commons_summary__2Ynez"  style="margin-bottom:20px;">
-                                                     <span class="commons_achievementRate__2J-KL" style="color:#fc5230;font-weight: 600">
-                                                     1,278%
-                                                     </span>
-                                                     패션·잡화
-                                                 </p>
-                                             </div>
-                                             </article>
-                                         </a>                     
-                                    </div>   
-                                        
-                                        
-                                        
+                               </div>
+                            </div>      
+                            
+                            
+                                                              <div class="TabContainer_tab__LrP70">
                                    <div class="TabContainer_tabList__1TS8l">
                                      <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
-                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309"><article>
+                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309">
+                                         <article>
                                              <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:35px;float:left;font-size:20px;font-weight: 500">
-                                                     4
+                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
+                                                     1
                                                  </p>
                                                  <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
                                                  <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, <br/>에어리(Airy)'       
+                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
                                                  </p>
-                                                 <p class="commons_summary__2Ynez"  style="margin-bottom:20px;">
-                                                     <span class="commons_achievementRate__2J-KL" style="color:#fc5230;font-weight: 600">
+                                                 <p class="commons_summary__2Ynez">
+                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
                                                      1,278%
                                                      </span>
                                                      패션·잡화
@@ -406,74 +356,201 @@
                                              </div>
                                              </article>
                                          </a>                     
-                                    </div>   
-                                       
-                                       
-                                        
-                     
-                                        
-                             
-                                 </div>
-                             </div>                                      
+                                    </div>
+                               </div>
+                            </div> 
+                            
+                            
+                                                              <div class="TabContainer_tab__LrP70">
+                                   <div class="TabContainer_tabList__1TS8l">
+                                     <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
+                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309">
+                                         <article>
+                                             <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
+                                                     1
+                                                 </p>
+                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
+                                                 <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
+                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
+                                                 </p>
+                                                 <p class="commons_summary__2Ynez">
+                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
+                                                     1,278%
+                                                     </span>
+                                                     패션·잡화
+                                                 </p>
+                                             </div>
+                                             </article>
+                                         </a>                     
+                                    </div>
+                               </div>
+                            </div> 
+                            
+                            
+                                                              <div class="TabContainer_tab__LrP70">
+                                   <div class="TabContainer_tabList__1TS8l">
+                                     <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
+                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309">
+                                         <article>
+                                             <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
+                                                     1
+                                                 </p>
+                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
+                                                 <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
+                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
+                                                 </p>
+                                                 <p class="commons_summary__2Ynez">
+                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
+                                                     1,278%
+                                                     </span>
+                                                     패션·잡화
+                                                 </p>
+                                             </div>
+                                             </article>
+                                         </a>                     
+                                    </div>
+                               </div>
+                            </div> 
+                            
+                            
+                                                              <div class="TabContainer_tab__LrP70">
+                                   <div class="TabContainer_tabList__1TS8l">
+                                     <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
+                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309">
+                                         <article>
+                                             <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
+                                                     1
+                                                 </p>
+                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
+                                                 <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
+                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
+                                                 </p>
+                                                 <p class="commons_summary__2Ynez">
+                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
+                                                     1,278%
+                                                     </span>
+                                                     패션·잡화
+                                                 </p>
+                                             </div>
+                                             </article>
+                                         </a>                     
+                                    </div>
+                               </div>
+                            </div>                                 
                                          
-                                         
-                                </div>
+                      </section>                    
+                  </div>
                                      
 
                             
-                                       </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                    </section>           
+                
+                                   
+                                                               
+                            
                                 
-                                    
-                                    
-                                    
-                                    
-                                    
-
-                    <!-- Progress Bar Content Area
-                    <div class="alazea-progress-bar mb-50">
-
-
-                        <!-- Single Progress Bar 
-                        <div class="single_progress_bar">
-                            <p>Office plants</p>
-                            <div id="bar1" class="barfiller">
-                                <div class="tipWrap">
-                                    <span class="tip"></span>
-                                </div>
-                                <span class="fill" data-percentage="80"></span>
-                            </div>
-                        </div>
-
-                    </div>  -->
-                </div>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="border-line"></div>
-                </div>
-            </div>
-        </div>
     </section>
     <!-- ##### About Area End ##### -->
     
     
+    
+    
+         <!--  ##### 실시간 랭킹 Ajax #####  -->
+      	  <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>					                       
+               <script>
+	                        function goodsRanking(){
+								//var jsonData = JSON.stringify(value);
+								///var obj = {goods_sale_number:goods_sale_number};
+								
+								//var jsonData = JSON.stringify(obj);
+								//console.log("jsonData: "+jsonData);
+								//var jsonData = JSON.stringify(responseData);
+								//var GoodsVo = JSON.parse(jsonData);
+								
+								$.ajax({ 
+									 url: "ranking", 
+									 type: "GET",
+									 async: true,
+  								  	 dataType: "json",
+									 contentType: "application/json; charset=UTF-8", //★★ 요놈 절대 빼먹으면안됨
+									 error:function(request,status,error){
+									        alert("실패"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)   	
+									 },
+									 success: function(responseData){
+										var jsonData = JSON.stringify(responseData);
+										var ranking_goods = JSON.parse(jsonData);
+										console.log(ranking_goods);
+										//console.log("rRRRRRRRRRRRRRRRR: "+jsonData);
+										
+										
+										var html = "";
+										for(var i=0; i<ranking_goods.length; i++) {
+											html += "<div class='TabContainer_tab__LrP70'>";
+											html += "<div class='TabContainer_tabList__1TS8l'>";
+											html += "<div class='TabContainer_listItem__2XDgU' style='margin-bottom:3%'>";
+											html += "<a class='CardType_projectCard__3xhjb CardType_projectCardA__33rbP' href='/web/campaign/detail/75309'>";
+											html += "<article>";
+											html += "<div class='commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj'>";
+											html += "<p style='color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500'>"+(i+1)+"</p>";
+	                                        html += "<span style='width:60px;height:60px;float:left; margin-right:15px;'><img src='img/goods/"+ranking_goods[i].goods_repre_pic+"' alt=''>";
+	                                        html += "</span>";
+	                                        html += "<p class='commons_title__1yGWm' style='font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500'>"
+	                                        		+ranking_goods[i].goods_name+"</p>";
+	                                        html += "<p class='commons_summary__2Ynez'>";
+	                                        html += "<span class='commons_achievementRate__2J-KL' style='margin-bottom: 5px; color:#fc5230;font-weight: 600'>"+ranking_goods[i].goods_price+"원</span>";
+	                                        		if(ranking_goods[i].goods_category_code == 301) {
+	                                        			html += "&nbsp;&nbsp;&nbsp;뷰티</p>";
+	                                        		}
+	                                        		if(ranking_goods[i].goods_category_code == 302) {
+	                                        			html += "&nbsp;&nbsp;&nbsp;디자인소품</p>";
+	                                        		}
+	                                        		if(ranking_goods[i].goods_category_code == 303) {
+	                                        			html += "&nbsp;&nbsp;&nbsp;홈리빙</p>";
+	                                        		}
+	                                        		if(ranking_goods[i].goods_category_code == 304) {
+	                                        			html += "&nbsp;&nbsp;&nbsp;테크/가전</p>";
+	                                        		}
+	                                        		if(ranking_goods[i].goods_category_code == 305) {
+	                                        			html += "&nbsp;&nbsp;&nbsp;패션/잡화</p>";
+	                                        		}
+	                                        		if(ranking_goods[i].goods_category_code == 306) {
+	                                        			html += "&nbsp;&nbsp;&nbsp;푸드</p>";
+	                                        		}
+	                                        		if(ranking_goods[i].goods_category_code == 307) {
+	                                        			html += "&nbsp;&nbsp;&nbsp;여행/레저</p>";
+	                                        		}
+	                                        		if(ranking_goods[i].goods_category_code == 308) {
+	                                        			html += "&nbsp;&nbsp;&nbsp;스포츠/모빌리티</p>";
+	                                        		}
+	                                        		if(ranking_goods[i].goods_category_code == 309) {
+	                                        			html += "&nbsp;&nbsp;&nbsp;반려동물</p>";
+	                                        		}
+	                                        		if(ranking_goods[i].goods_category_code == 310) {
+	                                        			html += "&nbsp;&nbsp;&nbsp;문화/예술</p>";
+	                                        		}	                                        		
+	                                        		if(ranking_goods[i].goods_category_code == 311) {
+	                                        			html += "&nbsp;&nbsp;&nbsp;출산/육아</p>";
+	                                        		}
+	                                        		if(ranking_goods[i].goods_category_code == 312) {
+	                                        			html += "&nbsp;&nbsp;&nbsp;생활/건강</p>";
+	                                        		}	 	                                        				
+	                                        html += "</div>";
+	                                        html += "</article>";
+	                                        html += "</a>";                   
+	                                        html += "</div>";
+	                                        html += "</div>";
+	                                        html += "</div>";
+	                                        
+	                                        $("#ranking").html(html);
+										}
+											
+									}
+								})
+	                        }
+			</script>
+           <!--  #####실시간 랭킹 Ajax End #####  -->          
     
     
     
