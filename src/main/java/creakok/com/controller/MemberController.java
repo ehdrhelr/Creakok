@@ -202,6 +202,54 @@ public class MemberController {
 		return mv;
 	}
 
+	@RequestMapping("member_order.do")
+	public ModelAndView member_order(String member_email, HttpServletRequest request, HttpSession session) {
+		String order_cp = request.getParameter("order_cp");
+		
+		Member_OrderInfoVo order_infoVo = (Member_OrderInfoVo)session.getAttribute("order_infoVo");
+		
+		//(1) cp 
+		int cp = 1;
+		if(order_cp == null) {
+			Object cpObj = order_infoVo.getOrder_cp();
+			if(cpObj != null) {
+				cp = (Integer)cpObj;
+			} else if(cpObj == null){
+				cp = 1;
+			}
+		}else {
+			order_cp = order_cp.trim();
+			cp = Integer.parseInt(order_cp);
+		}
+		
+		//(2) ps 
+		int ps = 5;	
+
+		Member_OrderInfoVo order_list = mService.selectPerPageOrder(cp, ps, member_email);
+		order_list.setOrder_cp(cp);
+		order_list.setOrder_ps(ps);
+		order_list.setMember_email(member_email);
+		
+		if(order_list.getOrder_list().size() == 0) {
+			if(cp > 1) {	
+				int cp2 = cp-1;
+				order_list.setOrder_cp(cp2);
+			}
+		}   
+		
+		//log.info("######################################member_email: "+member_email);
+		//log.info("######################################order_info: "+order_info);
+		
+		long order_count = mService.selectOrderCount(member_email);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("mypage_order");
+		mv.addObject("order_info", order_list);	
+		mv.addObject("order_count", order_count);	
+		
+		return mv;
+	}
+	
 	@RequestMapping("member_orderdetail.do")
 	public ModelAndView member_orderdetail(String order_indexStr, String member_email) {
 		long order_index = Long.parseLong(order_indexStr);

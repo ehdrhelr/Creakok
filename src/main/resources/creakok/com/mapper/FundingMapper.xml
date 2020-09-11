@@ -59,8 +59,23 @@
     <update id="answerEditQna" parameterType="Funding_qna">
     	update FUNDING_QNA set FUNDING_QNA_ANSWER=#{funding_qna_answer}, FUNDING_QNA_ADATE=SYSDATE where FUNDING_QNA_INDEX=${funding_qna_index}
     </update>
- <update id="answerDelete" parameterType="long">
+ 	<update id="answerDelete" parameterType="long">
     	update FUNDING_QNA set FUNDING_QNA_ANSWER=null, FUNDING_QNA_ADATE=null where FUNDING_QNA_INDEX=${funding_qna_index}
     </update>
+ 
+    
+    
+    <select id="selectSearchFunding" resultType="Funding" parameterType="Funding_searchVo">
+		<![CDATA[select * from (select ROWNUM rnum, aa.* from
+		(select * from FUNDING where FUNDING_SUBJECT like '%'||#{keyword}||'%' or 
+		CREATOR_NAME like '%'||#{keyword}||'%' order by FUNDING_WDATE desc) aa)
+		where rnum>${(funding_cp-1)*funding_ps} and rnum<=${funding_cp*funding_ps}
+		]]>
+    </select>   
+    
+    <select id="selectFundingCountBySearch" resultType="long" parameterType="String">
+		select COUNT(FUNDING_INDEX) from FUNDING where FUNDING_SUBJECT like '%'||#{keyword}||'%' or 
+		CREATOR_NAME like '%'||#{keyword}||'%'
+	</select>	
     
 </mapper>

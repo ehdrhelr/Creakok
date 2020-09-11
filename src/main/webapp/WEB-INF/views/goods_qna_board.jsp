@@ -156,51 +156,56 @@
 	                             	<div class="ProjectIntroduction__StatusTitle-sc-1o2ojgb-15 hrvSQV"  style="margin-right:20px;">수량</div>
 	                                 <div class="quantity">
 	                                        <span class="qty-minus" style="padding:10px;" onclick="minus()"><i class="fa fa-minus" aria-hidden="true"></i></span>
-	                                        <input type="number" class="qty-text" style="width:40px" id="qty" step="1" min="1" max="12" name="quantity" value="1" readonly>
+	                                        <input type="number" class="qty-text" id="qty" style="width:40px" step="1" min="0" max="${one_goods.goods_stock_number}" name="quantity" value="1" readonly>
 	                                        <span class="qty-plus" onclick="plus()" style="padding:10px"><i class="fa fa-plus" aria-hidden="true"></i></span>
 	                                    </div>
 	                           	 </div>  
                      
-                       <script language="javascript">
+                        <script language="javascript">
 		                      function plus(){
 		                  		var effect = document.getElementById('qty'); 
 		                  		var qty = effect.value; 
 		                  			
 		                  		var result = document.getElementById('price_qty');
-		                  		var amount = ${one_goods.goods_price} * (Number(qty)+1);
+		                  		if(qty < ${one_goods.goods_stock_number}){
+		                  			var amount = ${one_goods.goods_price} * (Number(qty)+1);
+		                  			
+			                  		var result2 = document.getElementById('price_qty2');
+			                  		var amount2 = (${one_goods.goods_price} * (Number(qty)+1))+3000; 
+			                  		result2.innerHTML= amount2;
+			                  		
+			                  		result.innerHTML= amount;
+		                  		} else {
+		                  			var amount = 0;
+		                  		}
 		                  		
-		                  		
-		                  		var result2 = document.getElementById('price_qty2');
-		                  		var amount2 = (${one_goods.goods_price} * (Number(qty)+1))+3000; 
-		                  		result2.innerHTML= amount2;
-		                  		
-		                  		result.innerHTML= amount;
-		                  			if( !isNaN( qty )) effect.value++;
-		                      		return false;
+
+		                  		if( !isNaN( qty ) & qty < ${one_goods.goods_stock_number} ) effect.value++;
+		                      	return false;
 		                  	}
-	                        function minus(){
-	                                var effect = document.getElementById('qty'); 
-	                                var qty = effect.value; 
-	                                
-	                                if(qty>1){
-	                                    var result = document.getElementById('price_qty');
-	                                    var amount = ${one_goods.goods_price} * (Number(qty)-1);
-	                                    
-	                                    var result2 = document.getElementById('price_qty2');
-	                                    var amount2 = (${one_goods.goods_price} * (Number(qty)-1))+3000; 
-	                                    
-	                                    result2.innerHTML= amount2;
-	                                }
-	                                
-	                                if(amount>0){
-	                                    result.innerHTML= amount;
-	                                }
-	                                if(amount2>0){
-	                                    result2.innerHTML= amount2;
-	                                }
-	                                if( !isNaN( qty ) && qty  >1) effect.value--;
-	                                    return false; 
-	                         }
+                       		function minus(){
+                       			var effect = document.getElementById('qty'); 
+                       			var qty = effect.value; 
+                       			
+                       			if(qty>1){
+                         			var result = document.getElementById('price_qty');
+                         			var amount = ${one_goods.goods_price} * (Number(qty)-1);
+                         			
+    		                  		var result2 = document.getElementById('price_qty2');
+    		                  		var amount2 = (${one_goods.goods_price} * (Number(qty)-1))+3000; 
+    		                  		
+    		                  		result2.innerHTML= amount2;
+                       			}
+                       			
+	                       		if(amount>0){
+	                       			result.innerHTML= amount;
+	                       		}
+	                       		if(amount2>0){
+                                    result2.innerHTML= amount2;
+                                }
+                       			if( !isNaN( qty ) && qty  >1) effect.value--;
+                       		        return false; 
+                       		}
                        </script>
                        
                        
@@ -519,11 +524,6 @@
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
@@ -666,6 +666,11 @@
 
     <script type="text/javascript">
     function addCart(){
+    	if('${member.member_email}' == '') {
+    	     alert('로그인해주세요.');
+    	     return;
+    	}
+        
         let formData = new FormData();
         formData.append('member_email', '${member.member_email}');
         formData.append('goods_index', '${one_goods.goods_index}');
@@ -684,11 +689,11 @@
                  }
              }
         };
-        xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
-        xmlHttp.send(formData);
+
+       xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
+       xmlHttp.send(formData);
     }
-    
-    </script>  
+    </script>    
     
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>

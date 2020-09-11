@@ -6,10 +6,7 @@
 <div class="col-12 col-md-8 col-lg-9"  id="goods_area">
     <div class="shop-products-area">
         <div class="row">
-        
-          <c:if test="${empty goods.list}">
-            <p style="text-align:center;width:100%;"> 현재 판매중인 굿즈가 없습니다.</p>
-          </c:if>
+
           
           
             <c:forEach var="goods" items="${goods.list}" >      

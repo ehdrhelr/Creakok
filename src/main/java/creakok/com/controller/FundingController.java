@@ -189,7 +189,7 @@ public class FundingController {
 				}
 			session.setAttribute("fundingQna_cp", cp_qna);
 			FundingVo fundingVo = (FundingVo) session.getAttribute("fundingVo");
-			
+	
 			if(fundingVo.getList().size() ==0 ) {
 				if(cp>1) {
 					return new ModelAndView("redirect:funding_list.do?funding_cp="+(cp-1));

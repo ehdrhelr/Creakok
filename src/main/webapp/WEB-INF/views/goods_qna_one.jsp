@@ -646,11 +646,7 @@
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
+
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
@@ -793,6 +789,11 @@
 
     <script type="text/javascript">
     function addCart(){
+    	if('${member.member_email}' == '') {
+    	     alert('로그인해주세요.');
+    	     return;
+    	}
+        
         let formData = new FormData();
         formData.append('member_email', '${member.member_email}');
         formData.append('goods_index', '${one_goods.goods_index}');
@@ -811,11 +812,11 @@
                  }
              }
         };
-        xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
-        xmlHttp.send(formData);
+
+       xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
+       xmlHttp.send(formData);
     }
-    
-    </script>   
+    </script>  
     
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
