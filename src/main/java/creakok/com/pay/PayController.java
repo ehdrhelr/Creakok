@@ -49,7 +49,63 @@ public class PayController {
 	
 		Funding_payinfo funding_payinfo = new Funding_payinfo(-1, funding_payinfo_name, member_email, funding_payinfo_phonenumber, funding_payinfo_amountpay, funding_index, funding_subject);
 		log.info("!!!!!!!!!!!!!!!!!!!"+funding_payinfo);
-		return new ModelAndView("funding_pay_detail", "funding_payinfo", funding_payinfo);
+		return new ModelAndView("funding_import_pay", "funding_payinfo", funding_payinfo);
 	}
+	/*
+	@RequestMapping("funding_pay_success.do")
+	public ModelAndView goods_pay_success(HttpServletRequest request) {
+		String buyer_name = request.getParameter("buyer_name");
+		String buyer_phone = request.getParameter("buyer_phone");
+		String member_email = request.getParameter("buyer_email");
+
+		String buyer_addrStr = request.getParameter("buyer_addr");
+		String buyer_postcode = request.getParameter("buyer_postcode");
+		
+		String buyer_addr = buyer_addrStr+buyer_postcode;
+		
+		String product_name = request.getParameter("product_name");
+		String amount = request.getParameter("amount");
+		
+		String success_num = request.getParameter("success_num"); //고유ID
+		String success_id = request.getParameter("success_id"); //상점 거래ID
+		String success_amountStr = request.getParameter("success_amount"); //결제 금액 
+		String success_card_num = request.getParameter("success_card_num"); //카드 승인번호
+		String success_pay = request.getParameter("success_pay"); //결제 성공 여부		
+
+		Long success_amount = Long.parseLong(success_amountStr);
+		//Long amount = Long.parseLong(amountStr);
+		
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&고유 ID: "+success_num);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&상점 거래ID: "+success_id);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&결제 금액: "+success_amount);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&success_pay: "+success_pay);	
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_name: "+buyer_name);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&amount: "+amount);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_email: "+member_email);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_phone: "+buyer_phone);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_addr: "+buyer_addr);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_postcode: "+buyer_postcode);
+
+		
+		Funding_payinfo order_info = new Funding_payinfo(funding_payinfo_index, funding_payinfo_name, member_email, funding_payinfo_phonenumber, funding_payinfo_amountpay, funding_index, funding_subject);
+	
+		
+		//payservice.insertOneOrder(order_info); 
+		
+		//굿즈 이름으로 goods_index 뽑아서 판매 수 +1
+		//long goods_index = goodsService.getGoodsIndex(product_name);
+		//goodsService.plusSaleNumber(goods_index);
+		
+		//굿즈 재고 수량 -1
+		//goodsService.minusStockNumber(goods_index);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("pay_success");
+		mv.addObject("success_num", success_num);	
+		mv.addObject("member_email", member_email);	
+		
+		return mv;
+	}	*/
 	
 }
