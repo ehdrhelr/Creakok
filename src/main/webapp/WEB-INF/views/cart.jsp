@@ -113,7 +113,18 @@
                                 <c:forEach items="${cart_list}" var="cartunit">
                                  <tr>
                                     <td class="cart_product_img">
-                                        <a href="#"><img src="img/goods/${cartunit.goods_repre_pic}" alt="Product"></a>
+                                        <a href="goods_detail.do?goods_index=${cartunit.goods_index}">
+                                            <c:forEach var="cart" items="${goods_stock}">
+                                            	<c:if test="${cart.goods_name == cartunit.goods_name}">
+	    											<c:if test="${cart.goods_stock_number == 0}">
+	    												<img src="img/goods/sold_out.png" alt="Product">
+	    											</c:if>
+	    											<c:if test="${cart.goods_stock_number != 0}">
+	    												<img src="img/goods/${cartunit.goods_repre_pic}" alt="Product">
+	    											</c:if>
+    											</c:if>
+    										</c:forEach>
+                                        </a>
                                         <h5>${cartunit.goods_name}</h5>
                                     </td>
                                     <td class="qty">
@@ -124,13 +135,38 @@
                                         </div>
                                     </td>
                                     <td class="price">
-	                                    <span class="unit_price" id="price_stock">
-	                                   	  <script>document.write( addComma('${cartunit.unit_price}') );
-		                                   </script>
-		                            	    원
-	                                    </span>
+                                    	 <c:forEach var="cart" items="${goods_stock}">
+                                           	<c:if test="${cart.goods_name == cartunit.goods_name}">
+    											<c:if test="${cart.goods_stock_number == 0}">
+    												<span class="unit_price" id="price_stock">품절</span>
+    											</c:if>
+    											<c:if test="${cart.goods_stock_number != 0}">
+				                                    <span class="unit_price" id="price_stock">
+				                                   	  <script>document.write( addComma('${cartunit.unit_price}') );
+					                                   </script>
+					                            	    원
+				                                    </span>
+    											</c:if>
+   											</c:if>
+    									</c:forEach>
                                     </td>
-                                    <td class="total_price"><span class="unit_total_price"><script>document.write( addComma('${cartunit.unit_price*cartunit.unit_count}') );</script>원</span></td>
+                                    <td class="total_price">
+                                        <c:forEach var="cart" items="${goods_stock}">
+                                           	<c:if test="${cart.goods_name == cartunit.goods_name}">
+    											<c:if test="${cart.goods_stock_number == 0}">
+    												<span class="unit_total_price">품절</span>
+    											</c:if>
+    											<c:if test="${cart.goods_stock_number != 0}">
+			                                    	<span class="unit_total_price">
+			                                    		<script>
+			                                    			document.write( addComma('${cartunit.unit_price*cartunit.unit_count}') );
+			                                    		</script>
+			                                    		원
+			                                    	</span>
+    											</c:if>
+   											</c:if>
+    									</c:forEach>
+                                    </td>
                                     <td class="action"><a href="#"><i class="icon_close" onclick="deleteCart('${listCount}')"></i></a></td>
                                 </tr>
                                 <c:set var="listCount" value="${listCount + 1}"/>
@@ -177,6 +213,7 @@
     
     
     <script type="text/javascript">
+
     function deleteCart(count){
         //alert('????:'+count);
         let member_email_list = [];
