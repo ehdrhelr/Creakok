@@ -46,16 +46,20 @@ public class PayController {
 		String funding_indexStr = request.getParameter("funding_index");
 		long funding_index = Long.parseLong(funding_indexStr);
 		String funding_subject = request.getParameter("fundingName");
-	
-		Funding_payinfo funding_payinfo = new Funding_payinfo(-1, funding_payinfo_name, member_email, funding_payinfo_phonenumber, funding_payinfo_amountpay, funding_index, funding_subject);
+		
+		
+		
+		Funding_payinfo funding_payinfo = new Funding_payinfo(-1, funding_payinfo_name, member_email, funding_payinfo_phonenumber, funding_payinfo_amountpay, funding_index, funding_subject,
+			null, null, null, null);
 		log.info("!!!!!!!!!!!!!!!!!!!"+funding_payinfo);
 		return new ModelAndView("funding_import_pay", "funding_payinfo", funding_payinfo);
 	}
 	
 	@RequestMapping("funding_pay_success.do")
-	public ModelAndView goods_pay_success(HttpServletRequest request) {
+	public ModelAndView goods_pay_success(HttpServletRequest request, HttpSession session) {
 		String buyer_name = request.getParameter("buyer_name");
-		String buyer_phone = request.getParameter("buyer_phone");
+		String buyer_phoneStr = request.getParameter("buyer_phone");
+		long buyer_phone = Long.parseLong(buyer_phoneStr);
 		String member_email = request.getParameter("buyer_email");
 
 		String buyer_addrStr = request.getParameter("buyer_addr");
@@ -73,6 +77,7 @@ public class PayController {
 		String success_pay = request.getParameter("success_pay"); //결제 성공 여부		
 
 		Long success_amount = Long.parseLong(success_amountStr);
+		
 		//Long amount = Long.parseLong(amountStr);
 		
 		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&고유 ID: "+success_num);
@@ -90,10 +95,11 @@ public class PayController {
 		//Order_Info order_info = new Order_Info(-1, buyer_name, buyer_phone, member_email, buyer_addr, null, product_name, 
 		//		success_num, success_id, success_amount, success_card_num, success_pay);
 		
+		Funding_payinfo order_infoBefore = (Funding_payinfo) session.getAttribute("funding_payinfo");
 		
-		Funding_payinfo order_info = new Funding_payinfo(-1, buyer_name, member_email, buyer_phone, success_amount, -1, product_name, success_num, success_id, success_card_num, success_pay);
+		Funding_payinfo order_info = new Funding_payinfo(-1, buyer_name, member_email, buyer_phone, success_amount, order_infoBefore.getFunding_index(), product_name, success_num, success_id, success_card_num, success_pay);
 	
-		
+		service.insertFunding_order(order_info);
 		//payservice.insertOneOrder(order_info); 
 		
 		//굿즈 이름으로 goods_index 뽑아서 판매 수 +1
