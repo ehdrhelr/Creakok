@@ -28,7 +28,9 @@ import com.google.gson.JsonObject;
 
 import creakok.com.domain.Funding;
 import creakok.com.domain.Goods;
+import creakok.com.domain.Member;
 import creakok.com.filesetting.Path;
+import creakok.com.service.CreatorBoardService;
 import creakok.com.service.ProjectService;
 
 import lombok.AllArgsConstructor;
@@ -39,6 +41,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 public class ProjectController {
 	private ProjectService service;
+	private CreatorBoardService creatorboardservice;
 	
 	@RequestMapping(value="/project.do", method =RequestMethod.GET)
 	public String funding() {
@@ -105,7 +108,12 @@ public class ProjectController {
 	}   
 	
 	@RequestMapping("/goods_project_write_form.do")
-	public String goods_project_write_form() {
+	public String goods_project_write_form(HttpSession session) {
+		//Object memberObj = session.getAttribute("member");
+		//Member member = (Member)memberObj;
+		
+		//creatorboardservice.getContentByCreator(member.getMember_name());
+		//log.info("##############################3요기요기 member_email: "+member.getMember_email());
 		
 		return "goods_project_write";
 	}

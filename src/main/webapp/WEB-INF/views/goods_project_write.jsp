@@ -1096,7 +1096,7 @@
             <form method="post" action="/goods_project_write.do">
                              <div >
                                     <input name="write_creator" style="display:block;"class="form-control" id="first_name" 
-                                    placeholder="크리에이터" value="" required>
+                                    placeholder="크리에이터" value="${member.member_name}" readonly>
                                 </div>
                                 
                                  <div >
