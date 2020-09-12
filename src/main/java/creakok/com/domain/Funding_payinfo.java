@@ -15,4 +15,8 @@ public class Funding_payinfo {
 	private long funding_payinfo_amountpay;
 	private long funding_index;
 	private String funding_subject; 
+	private String success_num;
+	private String success_id;
+	private String success_card_num;
+	private String success_pay;
 }

@@ -51,7 +51,7 @@ public class PayController {
 		log.info("!!!!!!!!!!!!!!!!!!!"+funding_payinfo);
 		return new ModelAndView("funding_import_pay", "funding_payinfo", funding_payinfo);
 	}
-	/*
+	
 	@RequestMapping("funding_pay_success.do")
 	public ModelAndView goods_pay_success(HttpServletRequest request) {
 		String buyer_name = request.getParameter("buyer_name");
@@ -87,8 +87,11 @@ public class PayController {
 		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_addr: "+buyer_addr);
 		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_postcode: "+buyer_postcode);
 
+		//Order_Info order_info = new Order_Info(-1, buyer_name, buyer_phone, member_email, buyer_addr, null, product_name, 
+		//		success_num, success_id, success_amount, success_card_num, success_pay);
 		
-		Funding_payinfo order_info = new Funding_payinfo(funding_payinfo_index, funding_payinfo_name, member_email, funding_payinfo_phonenumber, funding_payinfo_amountpay, funding_index, funding_subject);
+		
+		Funding_payinfo order_info = new Funding_payinfo(-1, buyer_name, member_email, buyer_phone, success_amount, -1, product_name, success_num, success_id, success_card_num, success_pay);
 	
 		
 		//payservice.insertOneOrder(order_info); 
@@ -106,6 +109,6 @@ public class PayController {
 		mv.addObject("member_email", member_email);	
 		
 		return mv;
-	}	*/
+	}	
 	
 }
