@@ -10,16 +10,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+    
     <!-- Title -->
-    <title>Alazea - Gardening &amp; Landscaping HTML Template</title>
-
+    <title>CREAKOK</title>
+    
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/creakok.ico">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- BOTO TEST -->
+    <meta name="description" content="Boto Photo Studio HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+      <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/fresco.css"/>
+    <link rel="stylesheet" href="css/css_boto/slick.css"/>
+  
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/style.css"/>
+
+    <!-- hcbae Stylesheets -->
+    <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
+    <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
+    <link rel="stylesheet" href="css/hcbae_css.css">
+    <link rel="stylesheet" href="css/only_cart_jsp.css">
+    <script>
+    function addComma(num) {
+        let regexp = /\B(?=(\d{3})+(?!\d))/g;
+        let result = num.toString().replace(regexp, ',');
+        return result;
+    }
+    function inputNumberRemoveComma(str) {
+        str = String(str);
+        return str.replace(/[^\d]+/g, "");
+    }
+    </script>
 </head>
 
 <body>
@@ -33,132 +64,9 @@
 
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
-
-        <!-- ***** Top Header Area ***** -->
-        <div class="top-header-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="top-header-content d-flex align-items-center justify-content-between">
-                            <!-- Top Header Content -->
-                            <div class="top-header-meta">
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="infodeercreative@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span>Email: infodeercreative@gmail.com</span></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="+1 234 122 122"><i class="fa fa-phone" aria-hidden="true"></i> <span>Call Us: +1 234 122 122</span></a>
-                            </div>
-
-                            <!-- Top Header Content -->
-                            <div class="top-header-meta d-flex">
-                                <!-- Language Dropdown -->
-                                <div class="language-dropdown">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">USA</a>
-                                            <a class="dropdown-item" href="#">UK</a>
-                                            <a class="dropdown-item" href="#">Bangla</a>
-                                            <a class="dropdown-item" href="#">Hindi</a>
-                                            <a class="dropdown-item" href="#">Spanish</a>
-                                            <a class="dropdown-item" href="#">Latin</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Login -->
-                                <div class="login">
-                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>Login</span></a>
-                                </div>
-                                <!-- Cart -->
-                                <div class="cart">
-                                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ***** Navbar Area ***** -->
-        <div class="alazea-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="alazeaNav">
-
-                        <!-- Nav Brand -->
-                        <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Navbar Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="shop.html">Shop</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="shop-details.html">Shop Details</a></li>
-                                                    <li><a href="cart.html">Shopping Cart</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="portfolio.html">Portfolio</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="single-portfolio.html">Portfolio Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="blog.html">Blog</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-post.html">Blog Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-
-                                <!-- Search Icon -->
-                                <div id="searchIcon">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </div>
-
-                            </div>
-                            <!-- Navbar End -->
-                        </div>
-                    </nav>
-
-                    <!-- Search Form -->
-                    <div class="search-form">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
-                            <button type="submit" class="d-none"></button>
-                        </form>
-                        <!-- Close Icon -->
-                        <div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="header_div">
+    <jsp:include page="creakok_header.jsp" flush="true"/>
+    </div>
     </header>
     <!-- ##### Header Area End ##### -->
 
@@ -201,22 +109,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <c:set var="listCount" value="0"/>
+                                <c:forEach items="${cart_list}" var="cartunit">
+                                 <tr>
                                     <td class="cart_product_img">
-                                        <a href="#"><img src="img/bg-img/34.jpg" alt="Product"></a>
-                                        <h5>Recuerdos Plant</h5>
+                                        <a href="#"><img src="img/goods/${cartunit.goods_repre_pic}" alt="Product"></a>
+                                        <h5>${cartunit.goods_name}</h5>
                                     </td>
                                     <td class="qty">
                                         <div class="quantity">
-                                            <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                            <input type="number" class="qty-text" id="qty" step="1" min="1" max="99" name="quantity" value="1">
-                                            <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                            <span class="qty-minus" onclick="minusQuantity('${listCount}');"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                            <input type="number" class="qty-text" id="qty" step="1" min="1" max="99" name="quantity" value="${cartunit.unit_count}" onchange="calTotalPrice('${listCount}');">
+                                            <span class="qty-plus" onclick="plusQuantity('${listCount}');"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                         </div>
                                     </td>
-                                    <td class="price"><span>$9.99</span></td>
-                                    <td class="total_price"><span>$9.99</span></td>
-                                    <td class="action"><a href="#"><i class="icon_close"></i></a></td>
+                                    <td class="price"><span class="unit_price"><script>document.write( addComma('${cartunit.unit_price}') );</script>원</span></td>
+                                    <td class="total_price"><span class="unit_total_price"><script>document.write( addComma('${cartunit.unit_price*cartunit.unit_count}') );</script>원</span></td>
+                                    <td class="action"><a href="#"><i class="icon_close" onclick="deleteCart('${listCount}')"></i></a></td>
                                 </tr>
+                                <c:set var="listCount" value="${listCount + 1}"/>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -224,50 +136,24 @@
             </div>
 
             <div class="row">
-
-                <!-- Coupon Discount -->
-                <div class="col-12 col-lg-6">
-                    <div class="coupon-discount mt-70">
-                        <h5>COUPON DISCOUNT</h5>
-                        <p>Coupons can be applied in the cart prior to checkout. Add an eligible item from the booth of the seller that created the coupon code to your cart. Click the green "Apply code" button to add the coupon to your order. The order total will update to indicate the savings specific to the coupon code entered.</p>
-                        <form action="#" method="post">
-                            <input type="text" name="coupon-code" placeholder="Enter your coupon code">
-                            <button type="submit">APPLY COUPON</button>
-                        </form>
-                    </div>
-                </div>
-
                 <!-- Cart Totals -->
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 hcbae_cart_total_css">
                     <div class="cart-totals-area mt-70">
                         <h5 class="title--">Cart Total</h5>
                         <div class="subtotal d-flex justify-content-between">
                             <h5>Subtotal</h5>
-                            <h5>$9.99</h5>
+                            <h5 id="subTotalPrice"></h5>
                         </div>
-                        <div class="shipping d-flex justify-content-between">
-                            <h5>Shipping</h5>
-                            <div class="shipping-address">
-                                <form action="#" method="post">
-                                    <select class="custom-select">
-                                      <option selected>Country</option>
-                                      <option value="1">USA</option>
-                                      <option value="2">Latvia</option>
-                                      <option value="3">Japan</option>
-                                      <option value="4">Bangladesh</option>
-                                    </select>
-                                    <input type="text" name="shipping-text" id="shipping-text" placeholder="State">
-                                    <input type="text" name="shipping-zip" id="shipping-zip" placeholder="ZIP">
-                                    <button type="submit">Update Total</button>
-                                </form>
-                            </div>
+                        <div class="subtotal d-flex justify-content-between">
+                            <h5>배송비</h5>
+                            <h5 id="shipping_fee"></h5>
                         </div>
                         <div class="total d-flex justify-content-between">
                             <h5>Total</h5>
-                            <h5>$9.99</h5>
+                            <h5 id="TotalPrice"></h5>
                         </div>
-                        <div class="checkout-btn">
-                            <a href="#" class="btn alazea-btn w-100">PROCEED TO CHECKOUT</a>
+                        <div class="checkout-btn hcbae_checkout_btn">
+                            <a href="#" class="btn alazea-btn w-100" onclick="location.href='order.do';">주문하기</a>
                         </div>
                     </div>
                 </div>
@@ -277,140 +163,119 @@
     </div>
     <!-- ##### Cart Area End ##### -->
 
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area bg-img" style="background-image: url(img/bg-img/3.jpg);">
-        <!-- Main Footer Area -->
-        <div class="main-footer-area">
-            <div class="container">
-                <div class="row">
+    <!-- Footer Bottom Area -->
+    <div id="footer_div">
+    <jsp:include page="creakok_footer.jsp" flush="true"/>
+    </div>
+    <!-- Footer Bottom Area End ##### -->
+    
+    
+    <script type="text/javascript">
 
-                    <!-- Single Footer Widget -->
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-footer-widget">
-                            <div class="footer-logo mb-30">
-                                <a href="#"><img src="img/core-img/logo.png" alt=""></a>
-                            </div>
-                            <p>Lorem ipsum dolor sit samet, consectetur adipiscing elit. India situs atione mantor</p>
-                            <div class="social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Single Footer Widget -->
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-footer-widget">
-                            <div class="widget-title">
-                                <h5>QUICK LINK</h5>
-                            </div>
-                            <nav class="widget-nav">
-                                <ul>
-                                    <li><a href="#">Purchase</a></li>
-                                    <li><a href="#">FAQs</a></li>
-                                    <li><a href="#">Payment</a></li>
-                                    <li><a href="#">News</a></li>
-                                    <li><a href="#">Return</a></li>
-                                    <li><a href="#">Advertise</a></li>
-                                    <li><a href="#">Shipping</a></li>
-                                    <li><a href="#">Career</a></li>
-                                    <li><a href="#">Orders</a></li>
-                                    <li><a href="#">Policities</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+    function deleteCart(count){
+        //alert('????:'+count);
+        let member_email_list = [];
+        let goods_index_list = [];
+        let goods_category_code_list = [];
 
-                    <!-- Single Footer Widget -->
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-footer-widget">
-                            <div class="widget-title">
-                                <h5>BEST SELLER</h5>
-                            </div>
+        <c:forEach var="cart" items="${cart_list}" >
+            member_email_list.push('${cart.member_email}');
+            goods_index_list.push('${cart.goods_index}');
+            goods_category_code_list.push('${cart.goods_category_code}');
+        </c:forEach>
 
-                            <!-- Single Best Seller Products -->
-                            <div class="single-best-seller-product d-flex align-items-center">
-                                <div class="product-thumbnail">
-                                    <a href="shop-details.html"><img src="img/bg-img/4.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <a href="shop-details.html">Cactus Flower</a>
-                                    <p>$10.99</p>
-                                </div>
-                            </div>
+        let formData = new FormData();
+        formData.append('member_email', member_email_list[count]);
+        formData.append('goods_index', goods_index_list[count]);
+        formData.append('goods_category_code', goods_category_code_list[count]);
+        formData.append('unit_count', document.querySelectorAll('.qty-text')[count].value );
+        
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+             if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                 //console.log("#####:"+xmlHttp.responseText);
+                 if(xmlHttp.responseText=="delete_ok"){
+                     location.href="goods_cart.do";
+                 }
+             }
+        };
+        xmlHttp.open("POST", "deleteCart.do", true); // true for asynchronous
+        xmlHttp.send(formData);
+    }
+    
+    function minusQuantity(count) {
+        let qty = document.querySelectorAll('.qty-text')[count].value; 
+        if( !isNaN( qty ) && qty>1) qty--;
+        document.querySelectorAll('.qty-text')[count].value = qty;
+        //console.log("########qty:"+qty);
+        calTotalPrice(count);
+        calSubTotal();
+    }
+    function plusQuantity(count) {
+        let qty = document.querySelectorAll('.qty-text')[count].value; 
+        if( !isNaN( qty )) qty++;
+        document.querySelectorAll('.qty-text')[count].value = qty;
+        //console.log("########qty:"+qty);
+        calTotalPrice(count);
+        calSubTotal();
+    }
+    function calTotalPrice(count) {
+        let qty = document.querySelectorAll('.qty-text')[count].value;
+        let price = inputNumberRemoveComma(document.querySelectorAll('.unit_price')[count].innerText);
+        let total_price_list = document.querySelectorAll('.unit_total_price');
+        total_price_list[count].innerText = addComma(qty*price)+"원";
+        //console.log("########:"+total_price_list[count].innerText);
+        updateList(count);
+        calSubTotal();
+    }
+    
+    function updateList(count) {
+        let member_email_list = [];
+        let goods_index_list = [];
+        let goods_category_code_list = [];
 
-                            <!-- Single Best Seller Products -->
-                            <div class="single-best-seller-product d-flex align-items-center">
-                                <div class="product-thumbnail">
-                                    <a href="shop-details.html"><img src="img/bg-img/5.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <a href="shop-details.html">Tulip Flower</a>
-                                    <p>$11.99</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <c:forEach var="cart" items="${cart_list}" >
+            member_email_list.push('${cart.member_email}');
+            goods_index_list.push('${cart.goods_index}');
+            goods_category_code_list.push('${cart.goods_category_code}');
+        </c:forEach>
 
-                    <!-- Single Footer Widget -->
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-footer-widget">
-                            <div class="widget-title">
-                                <h5>CONTACT</h5>
-                            </div>
-
-                            <div class="contact-information">
-                                <p><span>Address:</span> 505 Silk Rd, New York</p>
-                                <p><span>Phone:</span> +1 234 122 122</p>
-                                <p><span>Email:</span> info.deercreative@gmail.com</p>
-                                <p><span>Open hours:</span> Mon - Sun: 8 AM to 9 PM</p>
-                                <p><span>Happy hours:</span> Sat: 2 PM to 4 PM</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer Bottom Area -->
-        <div class="footer-bottom-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="border-line"></div>
-                    </div>
-                    <!-- Copywrite Text -->
-                    <div class="col-12 col-md-6">
-                        <div class="copywrite-text">
-                            <p>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
-                        </div>
-                    </div>
-                    <!-- Footer Nav -->
-                    <div class="col-12 col-md-6">
-                        <div class="footer-nav">
-                            <nav>
-                                <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Service</a></li>
-                                    <li><a href="#">Portfolio</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- ##### Footer Area End ##### -->
+        let formData = new FormData();
+        formData.append('member_email', member_email_list[count]);
+        formData.append('goods_index', goods_index_list[count]);
+        formData.append('goods_category_code', goods_category_code_list[count]);
+        formData.append('unit_count', document.querySelectorAll('.qty-text')[count].value );
+        
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+             if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                 //console.log("#####:"+xmlHttp.responseText);
+             }
+        };
+        xmlHttp.open("POST", "updateCart.do", true); // true for asynchronous
+        xmlHttp.send(formData);
+    }
+    
+    function calSubTotal(){
+        let subTotal=0;
+        let total_price_list = document.querySelectorAll('.unit_total_price');
+        for(var i=0; i<total_price_list.length; i++){
+            //console.log( "ttttt:"+total_price_list[i].innerText );
+            subTotal+=parseInt( inputNumberRemoveComma(total_price_list[i].innerText) );
+        }
+        //console.log( "subTotal:"+subTotal );
+        document.getElementById('subTotalPrice').innerText = addComma(subTotal)+"원";
+        
+        document.getElementById('shipping_fee').innerText = addComma(3000)+"원";
+        
+        let shipping_fee =parseInt( inputNumberRemoveComma(document.getElementById('shipping_fee').innerText) );
+        document.getElementById('TotalPrice').innerText = addComma(subTotal+shipping_fee)+"원";
+    }
+    calSubTotal();
+    
+    </script>
+    
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
@@ -423,6 +288,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
 </body>
 
 </html>

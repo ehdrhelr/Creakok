@@ -23,6 +23,9 @@
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<!-- 채팅기능구현을 위한 비동기처리 -->
+		<async-supported>true</async-supported>
+
 	</servlet>
 	
 	
@@ -41,11 +44,20 @@
 	</filter-mapping>
 
 
+    <context-param>
+        <param-name>enumServletContextConfig</param-name>
+        <param-value>creakok.com.domain.IdxLang</param-value>
+    </context-param>
+    <listener>
+        <listener-class>creakok.com.domain.EnumContextListener</listener-class>
+    </listener>
 
 		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<absolute-ordering />
 
 </web-app>

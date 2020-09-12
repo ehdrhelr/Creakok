@@ -16,7 +16,7 @@
     <title>Alazea - Gardening &amp; Landscaping HTML Template</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/creakok.ico">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">

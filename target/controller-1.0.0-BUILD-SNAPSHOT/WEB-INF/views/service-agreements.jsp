@@ -55,6 +55,7 @@
             clip: rect(0 0 0 0);
             overflow: hidden;
         }
+
         /* sc-component-id: SiteFooter__StatusNewLabel-sc-160ijjw-1 */
         .bmduJF {
             display: inline-block;
@@ -67,11 +68,13 @@
             height: 12px;
             margin: 0 0 0 3px;
         }
+
         /* sc-component-id: SiteFooter__FooterWrapper-sc-160ijjw-2 */
         .gVuNGp {
             classname: _2nkoQovCMNDdKtTjNi5W_x;
             padding: 34px 0 3em !important;
         }
+
         /* sc-component-id: SiteFooter__FooterColumnWrapper-sc-160ijjw-3 */
         .gUfPmS {
             display: -webkit-box;
@@ -90,42 +93,51 @@
             align-items: stretch;
             padding: 0 1rem;
         }
+
         .gUfPmS .footer-column {
             border-top: 1px solid rgba(0, 0, 0, 0.1);
             padding: 2rem 0;
         }
+
         .gUfPmS .grid-three,
         .gUfPmS .grid-four,
         .gUfPmS .grid-nine,
         .gUfPmS .grid-sixteen {
             width: 100%;
         }
+
         @media (min-width:768px) {
             .gUfPmS {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
                 padding: 0 !important;
             }
+
             .gUfPmS .footer-column {
                 border-top: none;
                 padding: 1rem;
             }
+
             .gUfPmS .grid-three {
                 width: 18.75%;
             }
+
             .gUfPmS .grid-four {
                 width: 25%;
             }
+
             .gUfPmS .grid-nine {
                 width: 56.25%;
             }
         }
+
         @media (min-width:1080px) {
             .gUfPmS {
                 width: 1080px;
                 margin: 0 auto !important;
             }
         }
+
         /* sc-component-id: SiteFooter__FooterSubColumn-sc-160ijjw-4 */
         .ilwNes {
             classname: footer-column grid-three _152MAijd_UogerBKCVqZR_ _1lLHKI5v9AoCyeggtffvGZ;
@@ -133,27 +145,33 @@
             padding-top: 2rem !important;
             padding-bottom: 2rem !important;
         }
+
         .ilwNes:first-of-type {
             border-top: none;
         }
+
         .erxKKA {
             classname: footer-column grid-four _152MAijd_UogerBKCVqZR_ _1lLHKI5v9AoCyeggtffvGZ;
             width: 100%;
             padding-top: 2rem !important;
             padding-bottom: 2rem !important;
         }
+
         .erxKKA:first-of-type {
             border-top: none;
         }
+
         .cDdnng {
             classname: footer-column grid-nine _152MAijd_UogerBKCVqZR_ _1lLHKI5v9AoCyeggtffvGZ _2h2Lxt21YmZS8bCMfCUMnE;
             width: 100%;
             padding-top: 2rem !important;
             padding-bottom: 2rem !important;
         }
+
         .cDdnng:first-of-type {
             border-top: none;
         }
+
         /* sc-component-id: SiteFooter__SocialLinkWrapper-sc-160ijjw-5 */
         .fpKouC {
             line-height: 1rem;
@@ -171,30 +189,37 @@
             align-items: center;
             height: 22px;
         }
+
         .fpKouC a {
             width: 22px;
             display: block;
             text-align: center;
             margin: 0 3px;
         }
+
         .fpKouC a>i {
             width: auto;
             margin: 0;
         }
+
         .fpKouC .brunch-link svg {
             width: 19px;
             height: 19px;
             fill: #757575;
         }
+
         .fpKouC .brunch-link svg.dark {
             fill: #fff;
         }
+
         .fpKouC .brunch-link:hover svg {
             fill: #000;
         }
+
         .fpKouC .brunch-link:hover svg.dark {
             fill: #757575;
         }
+
         /* sc-component-id: Container-gci8y7-0 */
         .MskhC {
             width: 100%;
@@ -202,12 +227,14 @@
             position: relative;
             padding: 0;
         }
+
         @media (min-width:1080px) {
             .MskhC {
                 width: 1080px;
                 margin: 0 auto;
             }
         }
+
         /* sc-component-id: ProfileImg__StyledProfileImg-sc-1vio56c-0 */
         .bgEfGq {
             display: inline-block;
@@ -220,12 +247,14 @@
             box-shadow: 0 0 1px 0 rgba(208, 208, 208, 1) inset, 0 0 1px 0 rgba(208, 208, 208, 1);
             margin-right: 0;
         }
+
         @media (min-width:1080px) {
             .bgEfGq {
                 width: 38px;
                 height: 38px;
             }
         }
+
         /* sc-component-id: Header-ou4e17-0 */
         .jDMeTv {
             width: 100%;
@@ -243,27 +272,32 @@
             position: relative;
             z-index: 999;
         }
+
         @media (min-width:1080px) {
             .jDMeTv {
                 height: 65px;
             }
         }
+
         /* sc-component-id: TumblbugLogo-sc-5rx33z-0 */
         .iDsnca {
             fill: #000000;
             width: 70px;
             height: 18.41px;
         }
+
         @media (min-width:1080px) {
             .iDsnca {
                 width: 85px;
                 height: 22.36px;
             }
         }
+
         /* sc-component-id: SiteHeader__SiteHeaderWrapper-q8dvod-0 */
         .iSuAdB {
             position: relative;
         }
+
         /* sc-component-id: SiteHeader__SiteHeaderMenu-q8dvod-1 */
         .fMekoE {
             display: -webkit-box;
@@ -280,6 +314,7 @@
             justify-content: space-between;
             position: relative;
         }
+
         /* sc-component-id: SiteHeader__LeftMenu-q8dvod-2 */
         .fbsOED {
             -webkit-flex: 1 0 25%;
@@ -291,6 +326,7 @@
             display: -ms-flexbox;
             display: flex;
         }
+
         /* sc-component-id: SiteHeader__CenterMenu-q8dvod-3 */
         .hbKGuE {
             width: 10rem;
@@ -315,9 +351,11 @@
             -ms-flex-align: center;
             align-items: center;
         }
+
         .hbKGuE:hover>div {
             fill: #757575;
         }
+
         /* sc-component-id: SiteHeader__RightMenu-q8dvod-4 */
         .cLNJqs {
             -webkit-flex: 1 0 25%;
@@ -337,6 +375,7 @@
             -ms-flex-pack: end;
             justify-content: flex-end;
         }
+
         /* sc-component-id: SiteHeader__BlockLink-q8dvod-6 */
         .fWpQcH {
             color: inherit;
@@ -355,9 +394,11 @@
             line-height: 58px;
             padding: 0 1rem;
         }
+
         .fWpQcH:hover {
             color: inherit;
         }
+
         /* sc-component-id: SiteHeader__LinkButton-q8dvod-7 */
         .hLwNNy {
             border: none;
@@ -370,22 +411,27 @@
             line-height: 58px;
             padding: 0 1rem;
         }
+
         .hLwNNy>i {
             font-size: 1.25em;
         }
+
         @media (min-width:1080px) {
             .hLwNNy {
                 line-height: 65px;
             }
+
             .hLwNNy>i {
                 font-size: 1em;
                 margin-right: 0.5em;
             }
         }
+
         .hLwNNy:hover,
         .hLwNNy:active {
             color: #757575;
         }
+
         /* sc-component-id: SiteHeader__LinkItem-q8dvod-8 */
         .gMdHoi {
             diplay: block;
@@ -399,36 +445,44 @@
             line-height: 58px;
             padding: 0 1rem;
         }
+
         .gMdHoi>i {
             font-size: 1.25em;
         }
+
         @media (min-width:1080px) {
             .gMdHoi {
                 line-height: 65px;
             }
+
             .gMdHoi>i {
                 font-size: 1em;
                 margin-right: 0.5em;
             }
         }
+
         .gMdHoi:hover {
             color: #757575;
         }
+
         /* sc-component-id: SiteHeader__ItemLabel-q8dvod-9 */
         @media (max-width:1079px) {
             .cAHVaf {
                 display: none;
             }
         }
+
         /* sc-component-id: SiteHeader__ForMobile-q8dvod-10 */
         .jkgXDu {
             display: none;
         }
+
         @media (min-width:1080px) {
             .jkgXDu {
                 display: inline;
             }
         }
+
         /* sc-component-id: SiteHeader__ProfileImageWrapper-q8dvod-12 */
         .zoWUI {
             display: -webkit-box;
@@ -442,6 +496,7 @@
             position: relative;
             margin-left: 0.75rem;
         }
+
         /* sc-component-id: SiteHeader__SearchButton-q8dvod-15 */
         .iJpZic {
             cursor: pointer;
@@ -479,15 +534,18 @@
             margin-right: -0.8rem;
             z-index: 9;
         }
+
         .iJpZic>i {
             margin: 0 .42857143em 0 -.21428571em;
         }
+
         .iJpZic:hover,
         .iJpZic:focus,
         .iJpZic:active {
             background-color: #d9d9d9;
             color: rgba(0, 0, 0, 8);
         }
+
         .iJpZic:before {
             content: '';
             display: block;
@@ -500,6 +558,7 @@
             background-repeat: no-repeat;
             background-position: 50% 50%;
         }
+
         @media (min-width:1080px) {
             .iJpZic:before {
                 margin: 0;
@@ -507,28 +566,33 @@
                 height: 24px;
             }
         }
+
         .iJpZic:focus,
         .iJpZic:hover,
         .iJpZic:active {
             background-color: transparent;
         }
+
         @media (min-width:1080px) {
             .iJpZic {
                 margin: 0 0.5rem 0 0;
                 padding: 5px;
             }
         }
+
         /* sc-component-id: Membership__MembershipWrapper-o1o1he-0 */
         .irjBzn {
             padding: 50px 0;
             background-color: #ffffff;
             border-bottom: 1px solid #efefef;
         }
+
         @media (max-width:767px) {
             .irjBzn {
                 padding: 25px 0;
             }
         }
+
         /* sc-component-id: ServiceAgreements__ContentsBody-sc-192nqvr-0 */
         .kgSuxg {
             height: 100%;
@@ -544,15 +608,18 @@
             -ms-flex-pack: center;
             justify-content: center;
         }
+
         .kgSuxg p {
             color: #757575;
             font-size: 1.1em;
             word-break: keep-all;
         }
+
         /* sc-component-id: ServiceAgreements__ServiceAgreementsHeader-sc-192nqvr-1 */
         .jiSOCu {
             margin: 0;
         }
+
         /* sc-component-id: ServiceAgreements__Guidance-sc-192nqvr-2 */
         .hwjRMa {
             border-top: 1px solid #efefef;
@@ -560,6 +627,7 @@
             margin: 10px 0 20px 0;
             padding: 20px 0;
         }
+
         /* sc-component-id: ServiceAgreements__SubmitButton-sc-192nqvr-3 */
         .gFgAyJ {
             cursor: pointer;
@@ -597,25 +665,30 @@
             margin-top: 20px;
             height: 45px;
         }
+
         .gFgAyJ>i {
             margin: 0 .42857143em 0 -.21428571em;
         }
+
         .gFgAyJ:hover,
         .gFgAyJ:focus,
         .gFgAyJ:active {
             background-color: #d9d9d9;
             color: rgba(0, 0, 0, 8);
         }
+
         .gFgAyJ:hover,
         .gFgAyJ:focus,
         .gFgAyJ:active {
             background-color: #ff4543;
             color: #fff;
         }
+
         /* sc-component-id: ServiceAgreements__ServiceAgreementCheckbox-sc-192nqvr-4 */
         .ieMDUN {
             margin: 8px auto;
         }
+
         /* sc-component-id: ServiceAgreements__MembershipBody-sc-192nqvr-5 */
         .deKUvf {
             box-shadow: 0 1px 2px 1px #efefef;
@@ -626,6 +699,7 @@
             font-size: 13px;
             width: 380px;
         }
+
         @media (max-width:767px) {
             .deKUvf {
                 width: 100%;
@@ -633,6 +707,7 @@
                 box-shadow: none;
             }
         }
+
         /* sc-component-id: ScrollTop__StyledIcon-j9uqn7-0 */
         .jOcSCe {
             display: -webkit-box !important;
@@ -666,6 +741,7 @@
             align-items: center;
             overflow: hidden;
         }
+
         .jOcSCe svg {
             fill: #0D0D0D;
             width: 18px;
@@ -677,11 +753,13 @@
             -webkit-transition-timing-function: ease-in;
             transition-timing-function: ease-in;
         }
+
         @media only screen and (min-width:1080px) {
             .jOcSCe svg {
                 width: 24px;
             }
         }
+
         /* sc-component-id: ScrollTop__ScrollTopBtnWrapper-j9uqn7-1 */
         .etlKsY {
             position: fixed;
@@ -694,15 +772,19 @@
             z-index: 999;
             display: none;
         }
+
         .etlKsY.animate .ScrollTop__StyledIcon-j9uqn7-0 {
             opacity: 0.8 !important;
         }
+
         .etlKsY.animate .ScrollTop__StyledIcon-j9uqn7-0 svg {
             opacity: 0.5;
         }
+
         .etlKsY:hover .ScrollTop__StyledIcon-j9uqn7-0 svg {
             opacity: 1;
         }
+
         @media only screen and (min-width:1080px) {
             .etlKsY {
                 width: 56px;
@@ -711,6 +793,7 @@
                 right: 24px;
             }
         }
+
         /* sc-component-id: ScrollTop__ScrollTopBtn-j9uqn7-2 */
         .QGKgG {
             width: 0;
@@ -725,9 +808,11 @@
             background: transparent;
             z-index: 2;
         }
+
         .QGKgG span {
             position: relative;
         }
+
         .QGKgG:active {
             outline: none;
         }
@@ -739,7 +824,7 @@
     <title>CREAKOK</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/creakok.ico">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
@@ -776,177 +861,13 @@
     </div>
   </div>
 
-  <!-- ##### Header Area Start ##### -->
-  <header class="header-area">
-
-    <!-- ***** Top Header Area ***** -->
-    <div class="top-header-area">
-      <div class="container" style="color: #666666 !important;">
-        <div class="row">
-          <div class="col-12">
-            <div
-              class="top-header-content d-flex align-items-center justify-content-between">
-              <!-- Top Header Content -->
-              <div class="top-header-meta"></div>
-
-              <!-- Top Header Content -->
-              <div class="top-header-meta d-flex">
-                <div>
-                  <button type="button" class="makeProject" style="font-size: 9pt; color: #fc5230; border: 1px solid #fc5230; border-radius: 3px; padding: 3px 4px; margin-right: 15px;">프로젝트 만들기</button>
-                </div>
-                <!-- Language Dropdown -->
-                <div class="language-dropdown">
-                  <div class="dropdown">
-                    <button
-                      class="btn btn-secondary dropdown-toggle mr-30"
-                      type="button" id="dropdownMenuButton"
-                      data-toggle="dropdown" aria-haspopup="true"
-                      aria-expanded="false" style="color: #666666">Language</button>
-                    <div class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">USA</a> <a
-                        class="dropdown-item" href="#">UK</a> <a
-                        class="dropdown-item" href="#">Bangla</a> <a
-                        class="dropdown-item" href="#">Hindi</a> <a
-                        class="dropdown-item" href="#">Spanish</a> <a
-                        class="dropdown-item" href="#">Latin</a>
-                    </div>
-                  </div>
-                </div>
-
-                <c:if test="${empty member}">
-                  <!-- Login -->
-                  <div class="login">
-                    <a href="member_login.do"><i aria-hidden="true"></i>
-                      <span>Login</span></a>
-                  </div>
-                  <!-- Sign up -->
-                  <div class="join">
-                    <a href="member_join.do"><i aria-hidden="true"></i>
-                      <span>Join</span></a>
-                  </div>
-                </c:if>
-                <c:if test="${!empty member}">
-                  <!-- Login -->
-                  <div class="login">
-                    <a href="member_logout.do"><i aria-hidden="true"></i>
-                      <span>Logout</span></a>
-                  </div>
-
-                  <!-- My Page -->
-                  <div class="mypage">
-                    <a href="member_mypage.do"><i aria-hidden="true"></i>
-                      <span>My Page</span></a>
-                  </div>
-
-                  <!-- Cart -->
-                  <div class="cart">
-                    <a href="#"><i aria-hidden="true"></i> <span>Cart
-                        <span class="cart-quantity">(1)</span>
-                    </span></a>
-                  </div>
-                </c:if>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+    <div id="header_div">
+    <jsp:include page="creakok_header.jsp" flush="true"/>
     </div>
-
-    <!-- ***** Navbar Area ***** -->
-    <div class="alazea-main-menu">
-      <div class="classy-nav-container breakpoint-off">
-        <div class="container">
-          <!-- Menu -->
-          <nav class="classy-navbar justify-content-between"
-            id="alazeaNav">
-
-            <!-- Nav Brand -->
-            <a href="index.html" class="nav-brand"><img
-              src="img/core-img/creakok.png" alt=""></a>
-
-            <!-- Navbar Toggler -->
-            <div class="classy-navbar-toggler">
-              <span class="navbarToggler"><span></span><span></span><span></span></span>
-            </div>
-
-            <!-- Menu -->
-            <div class="classy-menu" style="color: #666666 !important;">
-
-              <!-- Close Button -->
-              <div class="classycloseIcon">
-                <div class="cross-wrap">
-                  <span class="top"></span><span class="bottom"></span>
-                </div>
-              </div>
-
-              <!-- Navbar Start -->
-              <div class="classynav">
-                <ul>
-                  <li><a href="index.html">FUNDING</a></li>
-                  <li><a href="shop.html">GOODS</a></li>
-                  <li><a href="#">COMMUNITY</a>
-                    <ul class="dropdown">
-                      <li><a href="index.html">Home</a></li>
-                      <li><a href="about.html">About</a></li>
-                      <li><a href="shop.html">Shop</a>
-                        <ul class="dropdown">
-                          <li><a href="shop.html">Shop</a></li>
-                          <li><a href="shop-details.html">Shop
-                              Details</a></li>
-                          <li><a href="cart.html">Shopping Cart</a></li>
-                          <li><a href="checkout.html">Checkout</a></li>
-                        </ul></li>
-                      <li><a href="portfolio.html">Portfolio</a>
-                        <ul class="dropdown">
-                          <li><a href="portfolio.html">Portfolio</a></li>
-                          <li><a href="`gle-portfolio.html">Portfolio
-                              Details</a></li>
-                        </ul></li>
-                      <li><a href="blog.html">Blog</a>
-                        <ul class="dropdown">
-                          <li><a href="blog.html">Blog</a></li>
-                          <li><a href="single-post.html">Blog
-                              Details</a></li>
-                        </ul></li>
-                      <li><a href="contact.html">Contact</a></li>
-                    </ul></li>
-                  <li><a href="shop.html">ABOUT</a></li>
-                  <!--   <li><a href="portfolio.html">Portfolio</a></li>
-                                    <li><a href="contact.html">Contact</a></li>  -->
-                </ul>
-
-                <!-- Search Icon -->
-                <div id="searchIcon">
-
-                  <i aria-hidden="true"><img
-                    src="img/core-img/search.png"></i>
-                </div>
-
-              </div>
-              <!-- Navbar End -->
-            </div>
-          </nav>
-
-          <!-- Search Form -->
-          <div class="search-form">
-            <form action="#" method="get">
-              <input type="search" name="search" id="search"
-                placeholder="Type keywords &amp; press enter...">
-              <button type="submit" class="d-none"></button>
-            </form>
-            <!-- Close Icon -->
-            <div class="closeIcon">
-              <i aria-hidden="true"><img
-                src="img/core-img/search.png"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- ##### Header Area End ##### -->
+    </header>
+    <!-- ##### Header Area End ##### -->
 
   <!--텀블벅추가-->
 
@@ -985,60 +906,28 @@
   <!--텀블벅추가-->
 
 
-  <!-- Footer Bottom Area -->
-  <div class="footer-bottom-area"
-    style="background-color: whitesmoke !important; padding-top: 50px;">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="border-line"></div>
-        </div>
-        <!-- Copywrite Text -->
-        <div class="col-12 col-md-6">
-          <div class="copywrite-text"
-            style="background-color: whitesmoke !important;">
-            <img src="img/core-img/creakok.png" alt=""><br />
-            <p>
-              creakok@gmail.com | 02.707.1480<br /> 평일 10:00~17:00 (점심시간
-              12:00~13:00)<br /> 토/일/공휴일 휴무
-            </p>
-            <p>
-              (주)크리콕 | 소속 : 비트캠프 신촌센터 | 호스팅 제공자 : (주)CJ ENM<br /> 서울 마포구
-              백범로 23 구프라자 3층
-            </p>
-            <p>ⓒ CREAKOK All rights reserved.</p>
-          </div>
-        </div>
-        <!-- Footer Nav -->
-      </div>
+    <!-- Footer Bottom Area -->
+    <div id="footer_div">
+    <jsp:include page="creakok_footer.jsp" flush="true"/>
     </div>
-  </div>
+    <!-- Footer Bottom Area End ##### -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- Footer Bottom Area End ##### -->
-
-  <!-- ##### All Javascript Files ##### -->
-  <!-- jQuery-2.2.4 js -->
-  <script src="js/jquery/jquery-2.2.4.min.js"></script>
-  <!-- Popper js -->
-  <script src="js/bootstrap/popper.min.js"></script>
-  <!-- Bootstrap js -->
-  <script src="js/bootstrap/bootstrap.min.js"></script>
-  <!-- All Plugins js -->
-  <script src="js/plugins/plugins.js"></script>
-  <!-- Active js -->
-  <script src="js/active.js"></script>
+    <!-- ##### All Javascript Files ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+    
+    <jsp:include page="Language.jsp" flush="false">
+    <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
+    </jsp:include>
+    
 </body>
 
 </html>

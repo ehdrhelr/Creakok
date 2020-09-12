@@ -3,7 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="creakok.com.mapper.GoodsMapper">
-
+	<select id="selectGoodsRanking"  resultType="Goods">
+		<![CDATA[select *
+		from 
+		 (
+		  select *
+		  from GOODS
+		  order by GOODS_SALE_NUMBER desc
+		 )
+		where ROWNUM <= 5]]>
+	</select>
+	
 	<select id="list" resultType="Goods" parameterType="GoodsVo">
 		<![CDATA[select * from (select ROWNUM rnum, aa.* from
 		(select * from GOODS order by ${filterBy} desc) aa)
@@ -25,4 +35,47 @@
 	<select id="selectGoodsCountByCode" resultType="long" parameterType="long">
 		select COUNT(GOODS_INDEX) from Goods where GOODS_CATEGORY_CODE=${gCode}
 	</select>	
+	
+	<select id="selectGoodsName" resultType="String" parameterType="long">
+        select GOODS_NAME from GOODS where GOODS_INDEX=#{goods_index}
+    </select>
+    <select id="getRelatedGoods" parameterType="long" resultType="Goods">
+        select * from GOODS where GOODS_CATEGORY_CODE=${category_code}
+    </select>
+    
+    <update id="plusReviewNumber" parameterType="long">
+        update GOODS set GOODS_REVIEW_NUMBER = GOODS_REVIEW_NUMBER+1 WHERE GOODS_INDEX=${goods_index}
+    </update>
+    
+    <update id="minusReviewNumber" parameterType="long">
+        update GOODS set GOODS_REVIEW_NUMBER = GOODS_REVIEW_NUMBER-1 WHERE GOODS_INDEX=${goods_index}
+    </update>
+    
+    <select id="getGoodsIndex" parameterType="String" resultType="long">
+    	select GOODS_INDEX from GOODS where GOODS_NAME=#{goods_name}
+    </select>
+    
+    <update id="plusSaleNumber" parameterType="long">
+        update GOODS set GOODS_SALE_NUMBER = GOODS_SALE_NUMBER+1 WHERE GOODS_INDEX=${goods_index}
+    </update>
+    
+    <update id="minusStockNumber" parameterType="long">
+        update GOODS set GOODS_STOCK_NUMBER = GOODS_STOCK_NUMBER-1 WHERE GOODS_INDEX=${goods_index}
+    </update>
+    
+    <select id="selectSearchGoods" resultType="Goods" parameterType="Goods_SearchVo">
+		<![CDATA[select * from (select ROWNUM rnum, aa.* from
+		(select * from GOODS where GOODS_NAME like '%'||#{keyword}||'%' or 
+		CREATOR_NAME like '%'||#{keyword}||'%' order by GOODS_SALE_NUMBER desc) aa)
+		where rnum>${(cp-1)*ps} and rnum<=${cp*ps}
+		]]>
+    </select>   
+    
+    <select id="selectGoodsCountBySearch" resultType="long" parameterType="String">
+		select COUNT(GOODS_INDEX) from Goods where GOODS_NAME like '%'||#{keyword}||'%' or 
+		CREATOR_NAME like '%'||#{keyword}||'%'
+	</select>	
 </mapper>
+
+
+	
