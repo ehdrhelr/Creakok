@@ -144,6 +144,18 @@ public class FundingServiceImpl implements FundingService {
 		
 	}
 
+	@Override
+	public String getCreatorProfilContent(String creator_name) {
+		String creatorProfilContent = fundingMapper.getCreatorProfilContent(creator_name);
+		return creatorProfilContent;
+	}
+
+	@Override
+	public void qnaDelete(long funding_qna_index) {
+		fundingMapper.qnaDelete(funding_qna_index);
+		
+	}
+
 	
 	
 	@Override
