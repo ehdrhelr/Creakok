@@ -113,6 +113,7 @@
 						
 						<select id="amountPay" name="amountPay" onChange="amountPay2()" required>
 						        <option class="form-control" value="">--선택--</option>
+						        <option class="form-control" value="1000">1,000</option>
 						        <option class="form-control" value="5000">5,000</option>
 						        <option class="form-control" value="10000">10,000</option>
 						        <option class="form-control" value="50000">50,000</option>
