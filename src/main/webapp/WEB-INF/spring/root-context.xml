@@ -39,6 +39,10 @@
 			 value="classpath:/mybatis-config.xml"/>
 	</bean>
 	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+  		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+ 	</bean>
+	
 	<!-- Transaction -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

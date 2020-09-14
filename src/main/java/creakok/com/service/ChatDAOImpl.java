@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import creakok.com.domain.ChatRoomVO;
 import creakok.com.domain.MessageVO;
@@ -17,7 +18,7 @@ public class ChatDAOImpl implements ChatDAO{
 	@Inject
 	private SqlSession session;
 
-	private static String namespace = "com.almom.mapper.ChatMapper";
+	private static String namespace = "creakok.com.mapper.ChatMapper";
 
 	
 	
