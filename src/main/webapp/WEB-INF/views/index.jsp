@@ -566,7 +566,7 @@
 		<div class="hero-slider" id="search_creator_result">
 			<c:forEach items="${all_creator}" var="all_creator">
 				<div class="slide-item">
-					<a class="fresco" href="#" data-fresco-group="projects">
+					<a class="fresco" href="#" data-fresco-group="projects" onclick="location.href='board_page?creator_name=${all_creator.creator_name}'">
 						<img src="img/community/${all_creator.creator_profile_photo}" alt="">
 					</a>
 					<h2 style="text-align:center">${all_creator.creator_name}</h2>

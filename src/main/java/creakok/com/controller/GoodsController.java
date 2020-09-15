@@ -449,9 +449,6 @@ public class GoodsController {
 		session.setAttribute("review", review_list);
 		session.setAttribute("four_goods", four_goods);
 		
-		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
-		session.setAttribute("review_size", review_size);
-		
 		long qna_list_size = goods_qnaservice.selectGoodsQnACountByGoodsIndex(goods_index);
 		session.setAttribute("qna_list_size", qna_list_size);
 		
@@ -639,6 +636,8 @@ public class GoodsController {
 		Creator goods_creator = creatorBoardService.getContentByCreator(creator_name);
 		session.setAttribute("creator", goods_creator);
 		
+		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
+		session.setAttribute("review_size", review_size);
 		
 		Goods_QnAVo goods_qna_vo = (Goods_QnAVo)session.getAttribute("goods_qna");
 		//(1) cp 
@@ -676,6 +675,8 @@ public class GoodsController {
 		
 		long qna_list_size = goods_qnaservice.selectGoodsQnACountByGoodsIndex(goods_index);
 		session.setAttribute("qna_list_size", qna_list_size);
+		
+		
 		
 		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
 		List<Goods> four_goods = new ArrayList<Goods>();
