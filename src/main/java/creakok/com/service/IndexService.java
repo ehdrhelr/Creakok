@@ -12,4 +12,6 @@ public interface IndexService {
 	List<Funding> selectFundingByWdate();
 	List<Creator> selectCreator();
 	List<Goods> selectGoodsByReview();
+	List<Creator> selectAllCreator();
+	List<Creator> selectCreatorBySearch(String creator_name);
 }

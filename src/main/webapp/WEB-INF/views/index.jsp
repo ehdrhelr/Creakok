@@ -481,13 +481,6 @@
 	                        }
 			</script>
            <!--  #####실시간 랭킹 Ajax End #####  -->          
-    
-    
-    
-
-
-
-
 
 
     <!-- ##### Testimonial Area Start ##### -->
@@ -533,15 +526,6 @@
     <!-- ##### Testimonial Area End ##### -->
 
     
-    
-    
-    
-    
-
-    
-    
-    
-    
     	<div id="preloder">
 		<div class="loader"></div>
 	</div>
@@ -554,7 +538,7 @@
                     <div class="section-heading text-center">
                         <h2 style="color:white; ">소통하는 사회, 크리콕!</h2>
                         <p style="color:white">크리에이터와 대중이 자유롭게 "소통하는 공간", 크리콕</p>
-                      <p class="crowdy-btn-introduction" >
+                      	<p class="crowdy-btn-introduction" >
                           <a href="#"style="color:white; text-align:center">자세히 알아보기</a>
                         </p>
                     </div>
@@ -573,82 +557,84 @@
         <div class="section-heading text-center">
                         <h2 style="margin-bottom:10px">크리콕 커뮤니티</h2>
                        <!-- <p>크리에이터를 검색해보세요.</p>-->
-                <form action="#" method="get" >
-                    <input style ="width:300px; height:35px; background-color:#b7c7c5" type="search" name="searchCreator" id="searchCreator" placeholder="크리에이터를 검색해보세요.">
-                      <button type="submit" > <img src="img/core-img/search.png"></button>
-                       
-        </form>
+               
+                    <input type="search" name="searchCreator" id="searchCreator" placeholder="크리에이터를 검색해보세요." style="width:300px; height:35px; background-color:#b7c7c5;opacity:0.7;border:0">
+                      <button type="submit" onclick="searchCreator()"> <img src="img/core-img/search.png"></button>
+            
         </div>
         
-		<div class="hero-slider">
-			<div class="slide-item">
-				<a class="fresco" href="img/img_boto/hero-slider/1.jpg" data-fresco-group="projects">
-					<img src="img/img_boto/hero-slider/1.jpg" alt="">
-				</a>
-			</div>
-			<div class="slide-item">
-				<a class="fresco" href="img/img_boto/hero-slider/2.jpg" data-fresco-group="projects">
-					<img src="img/img_boto/hero-slider/2.jpg" alt="">
+		<div class="hero-slider" id="search_creator_result">
+			<c:forEach items="${all_creator}" var="all_creator">
+				<div class="slide-item">
+					<a class="fresco" href="#" data-fresco-group="projects">
+						<img src="img/community/${all_creator.creator_profile_photo}" alt="">
 					</a>
-			</div>
-			<div class="slide-item">
-				<a class="fresco" href="img/img_boto/hero-slider/3.jpg" data-fresco-group="projects">
-					<img src="img/img_boto/hero-slider/3.jpg" alt="">
-				</a>	
-			</div>
-			<div class="slide-item">
-				<a class="fresco" href="img/img_boto/hero-slider/4.jpg" data-fresco-group="projects">
-					<img src="img/img_boto/hero-slider/4.jpg" alt="">
-				</a>	
-			</div>
-			<div class="slide-item">
-				<a class="fresco" href="img/img_boto/hero-slider/5.jpg" data-fresco-group="projects">
-					<img src="img/img_boto/hero-slider/5.jpg" alt="">
-				</a>	
-			</div>
-			<div class="slide-item">
-				<a class="fresco" href="imgimg_boto//hero-slider/6.jpg" data-fresco-group="projects">
-					<img src="img/img_boto/hero-slider/6.jpg" alt="">
-				</a>	
-			</div>
-			<div class="slide-item">
-				<a class="fresco" href="img/img_boto/hero-slider/7.jpg" data-fresco-group="projects">
-					<img src="img/img_boto/hero-slider/7.jpg" alt="">
-				</a>	
-			</div>
+					<h2 style="text-align:center">${all_creator.creator_name}</h2>
+					<p style="text-align:center">${all_creator.creator_profile_content}</p>
+				</div>
+			</c:forEach>
 		</div>
 		<div class="hero-text-slider">
+		
 			<div class="text-item">
-				<h2>Nature</h2>
-				<p>Photography</p>
+
 			</div>
-			<div class="text-item">
-				<h2>Red Heartbeat</h2>
-				<p>Photography</p>
-			</div>
-			<div class="text-item">
-				<h2>Blue Dreem</h2>
-				<p>Photography</p>
-			</div>
-			<div class="text-item">
-				<h2>Christian Church</h2>
-				<p>Photography</p>
-			</div>
-			<div class="text-item">
-				<h2>Red Darkness</h2>
-				<p>Photography</p>
-			</div>
-			<div class="text-item">
-				<h2>Beauty with Brain</h2>
-				<p>Photography</p>
-			</div>
-			<div class="text-item">
-				<h2>Remarkable</h2>
-				<p>Photography</p>
-			</div>
+
 		</div>
 	</section>
 	<!-- Hero Section end -->
+ 
+          <!--  ##### 크리에이터 검색 Ajax #####  -->
+          <script src="js/js_botoTest/slick.min.js"></script>
+      	  <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>					                       
+               <script>
+	                        function searchCreator(){
+								//var jsonData = JSON.stringify(value);
+								///var obj = {goods_sale_number:goods_sale_number};
+								
+								//var jsonData = JSON.stringify(obj);
+								//console.log("jsonData: "+jsonData);
+								//var jsonData = JSON.stringify(responseData);
+								//var GoodsVo = JSON.parse(jsonData);
+
+								$.ajax({ 
+									 url: "search_creator.do", 
+									 type: "GET",
+									 async: true,
+  								  	 dataType: "json",
+  								  	 data:{"creator_name" : $('#searchCreator').val()},
+									 contentType: "application/json; charset=UTF-8", //★★ 요놈 절대 빼먹으면안됨
+									 error:function(request,status,error){
+									        alert("실패"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)   	
+									 },
+									 success: function(responseData){
+										console.log(responseData);
+										var jsonData = JSON.stringify(responseData);
+										var search_creator = JSON.parse(jsonData);
+										console.log(search_creator);
+										
+										//var html2 = "";
+										//$('#search_creator_result').empty();
+										//for(var i=0; i<search_creator.length; i++) {
+										//	html2 += "<div class='slide-item'>";
+										//	html2 += "<a class='fresco' href='#' data-fresco-group='projects'>";
+										//	html2 += "<img src='img/community/"+search_creator[i].creator_profile_photo+"' alt=''>";
+										//	html2 += "</a>";
+										//	html2 += "<h2 style='text-align:center'>"+search_creator[i].creator_name+"</h2>";
+										//	html2 += "<p style='text-align:center'>"+search_creator[i].creator_profile_content+"</p>";
+										//	html2 += "</div>";
+										//}
+										
+										//$('#search_creator_result').html(html2);
+									}
+								})
+	                        }
+	                        
+
+	    				
+			</script>
+           <!--  ##### 크리에이터 검색 End #####  -->   
+ 
     
     	<!--====== Javascripts & Jquery ======-->
 	<script src="js_botoTest/vendor/jquery-3.2.1.min.js"></script>

@@ -29,7 +29,7 @@
 		where ROWNUM <= 3]]>
 	</select> 	
 	
-	<select id="selectGoodsByReview"  resultType="Goods">
+	<select id="selectGoodsByReview" resultType="Goods">
 		<![CDATA[select *
 		from 
 		 (
@@ -39,4 +39,12 @@
 		 )
 		where ROWNUM <= 4]]>
 	</select> 
+	
+	<select id="selectAllCreator" resultType="Creator">
+		select * from CREATOR
+	</select>
+	
+	<select id="selectCreatorBySearch" resultType="Creator" parameterType="String">
+		select * from CREATOR where CREATOR_NAME like '%'||#{creator_name}||'%'
+	</select>	
 </mapper>

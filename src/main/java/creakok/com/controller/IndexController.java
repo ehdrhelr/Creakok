@@ -72,13 +72,17 @@ public class IndexController {
 		List<Creator> creator_list = indexService.selectCreator();
 		mv.addObject("creator_list", creator_list);
 		
+		// 크리에이터 검색(모든 크리에이터)
+		List<Creator> all_creator = indexService.selectAllCreator();
+		mv.addObject("all_creator", all_creator);
+		
 		//오늘의 추천 굿즈
 		List<Goods> goods_list = indexService.selectGoodsByReview();
 		mv.addObject("goods_list", goods_list);
 		
 		return mv;
 	}
-
+	
 	@RequestMapping(value="/community", method =RequestMethod.GET)
 	public String community() {
 		return "community";
@@ -195,5 +199,13 @@ public class IndexController {
 		session.setAttribute("goods_result", goods_searchVo);
 		
 		return "search_result";
+	}
+	
+	@ResponseBody
+	@RequestMapping("search_creator.do")
+	public List<Creator> search_creator(@RequestParam("creator_name") String creator_name) {
+		List<Creator> search_creator2 = indexService.selectCreatorBySearch(creator_name);		
+		
+		return search_creator2;		
 	}
 }

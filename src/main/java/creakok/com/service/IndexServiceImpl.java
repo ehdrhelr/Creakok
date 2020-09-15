@@ -42,4 +42,17 @@ public class IndexServiceImpl implements IndexService {
 		List<Goods> goods = indexMapper.selectGoodsByReview();
 		return goods;
 	}
+	
+	@Override
+	public List<Creator> selectAllCreator(){
+		List<Creator> all_creator = indexMapper.selectAllCreator();
+		return all_creator;
+	}
+	
+	@Override
+	public List<Creator> selectCreatorBySearch(String creator_name){
+		List<Creator> search_creator = indexMapper.selectCreatorBySearch(creator_name);
+		
+		return search_creator;
+	}
 }
