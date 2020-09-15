@@ -1,6 +1,7 @@
 package creakok.com.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,11 +22,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import creakok.com.domain.Creator;
+import creakok.com.domain.Funding;
 import creakok.com.domain.Goods;
 import creakok.com.domain.Goods_Category;
 import creakok.com.service.CreatorBoardService;
 import creakok.com.service.FundingService;
 import creakok.com.service.GoodsService;
+import creakok.com.service.IndexService;
 import creakok.com.service.LikeTableService;
 import creakok.com.vo.Funding_searchVo;
 import creakok.com.vo.GoodsVo;
@@ -36,7 +39,6 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Controller
 public class IndexController {
-	
 	@Autowired
 	private CreatorBoardService boardService;
 	
@@ -48,6 +50,9 @@ public class IndexController {
 	
 	@Autowired
 	private FundingService fundingService;
+
+	@Autowired
+	private IndexService indexService;
 	
 	@RequestMapping(value="/", method =RequestMethod.GET)
 	public ModelAndView index(HttpSession session) {
@@ -58,6 +63,18 @@ public class IndexController {
 		List<Creator> creatorList = boardService.getCreatorName();
 		mv.addObject("creatorList", creatorList);
 		session.setAttribute("creatorList", creatorList);
+		
+		// funding 프로젝트 추천(최신 프로젝트)
+		List<Funding> funding_list = indexService.selectFundingByWdate();
+		mv.addObject("funding_list", funding_list);
+		
+		// 이달의 크리에이터
+		List<Creator> creator_list = indexService.selectCreator();
+		mv.addObject("creator_list", creator_list);
+		
+		//오늘의 추천 굿즈
+		List<Goods> goods_list = indexService.selectGoodsByReview();
+		mv.addObject("goods_list", goods_list);
 		
 		return mv;
 	}

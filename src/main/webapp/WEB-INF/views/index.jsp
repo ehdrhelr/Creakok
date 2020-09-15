@@ -128,11 +128,10 @@
                         
                     <div class="section-heading">
                         <h2>이 프로젝트 어때요?</h2>
-                        <p>We are leading in the plants service fields.</p>
                     </div>
                         <div class="row">
      
-                            
+                          <c:forEach items="${funding_list}" var="funding"> 
                             <!-- Single Benefits Area -->
                             <div class="col-12 col-sm-6">
 
@@ -140,8 +139,8 @@
                                     <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
                                         </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
                                             <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
-                                                 </span></a><a href="shop-details.html">
-                                                     <img src="img/core-img/ex2.jpg" alt="">
+                                                 </span></a><a href="funding_detail.do?funding_index=${funding.funding_index}">
+                                                     <img src="${funding.funding_repre_pic}" alt="">
                                                 </a>
                                             
         
@@ -152,15 +151,15 @@
                                         <div class="RewardProjectCard_infoTop__3QR5w">
                                         <a href="#" class="CardLink_link__1k83H">
                                             <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
-                                                <strong>가격과 온도를 모두 낮췄다! 10억펀딩 신소재 &lt;밸런스온 이지핏 베개&gt;</strong>
+                                                <strong>${funding.funding_subject}</strong>
                                             </p>
                                         </a>
                                     <div style="margin-bottom: 10px;">
                                         <span class="RewardProjectCard_category__2muXk" style="color:#90949C; font-size:13px;">
-                                            홈리빙
+                                            	${funding.funding_category_name}
                                         </span>
                                         <span class="RewardProjectCard_makerName__2q4oH" style="color:#90949C; font-size:13px;">
-                                            밸런스온 (불스원)
+                                            	 ${funding.creator_name}
                                         </span>
                                     </div>
                                     </div>
@@ -182,91 +181,22 @@
                                         </div>
                                           
                                         <span class="RewardProjectCard_amount__2AyJF" style="color:#fc5230; font-size:18px; font-weight:bold">
-                                           80%
+                                          	 ${funding.percentage}%
                                         </span>                                      
                                         
                                         <span class="RewardProjectCard_amount__2AyJF" style="color:#90949C; font-size:16px; margin-right:5%;font-weight:bold">
-                                            55,828,600원
+                                            ${funding.funding_amount}
                                         </span>
                                         <span class="RewardProjectCard_days__3eece RewardProjectCard_isAchieve__1LcUu">
-                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">17일</span>
+                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">${funding.restdays}일</span>
                                             <span class="RewardProjectCard_remainingDayText__2sRLV" style="color:#90949C;">남음</span>
                                             <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
                                      </div>
                                     </div>  
                                 </div>
                             </div>
-
-                            
-                            
-                            
-                            
-                            
-                            
-                            <!-- Single Benefits Area -->
-                            <div class="col-12 col-sm-6">
-
-                                <div class="single-benefits-area">                   
-                                    <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                            <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
-                                                 </span></a><a href="shop-details.html">
-                                                     <img src="img/core-img/ex2.jpg" alt="">
-                                                </a>
-                                            
-        
-                                        </div>
-                                    
-                                    <div class="CommonCard_info__1f4kq">
-                                    <div class="RewardProjectCard_info__3JFub">
-                                        <div class="RewardProjectCard_infoTop__3QR5w">
-                                        <a href="#" class="CardLink_link__1k83H">
-                                            <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
-                                                <strong>가격과 온도를 모두 낮췄다! 10억펀딩 신소재 &lt;밸런스온 이지핏 베개&gt;</strong>
-                                            </p>
-                                        </a>
-                                    <div style="margin-bottom: 10px;">
-                                        <span class="RewardProjectCard_category__2muXk" style="color:#90949C; font-size:13px;">
-                                            홈리빙
-                                        </span>
-                                        <span class="RewardProjectCard_makerName__2q4oH" style="color:#90949C; font-size:13px;">
-                                            밸런스온 (불스원)
-                                        </span>
-                                    </div>
-                                    </div>
-                                        <div class="RewardProjectCard_gauge__3p9US">
-                                            <span style="width: 100%;">
-                                            </span>
-                                        </div>
-                                        <span class="RewardProjectCard_percent__3TW4_">
-                                            
-                                        </span>
-                                        
-                                          <!-- Single Progress Bar -->
-                                        <div class="single_progress_bar">
-                                           
-                                            <div id="bar2" class="barfiller" style="border-radius:50pt">
-                                               
-                                                <span class="fill" data-percentage="60" style="background: rgb(252, 82, 48); width: 126px; transition: width 1s ease-in-out 0s;border-radius:30pt;"></span>
-                                            </div>
-                                        </div>
-                                          
-                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#fc5230; font-size:18px; font-weight:bold">
-                                           80%
-                                        </span>                                      
-                                        
-                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#90949C; font-size:16px; margin-right:5%;font-weight:bold">
-                                            55,828,600원
-                                        </span>
-                                        <span class="RewardProjectCard_days__3eece RewardProjectCard_isAchieve__1LcUu">
-                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">17일</span>
-                                            <span class="RewardProjectCard_remainingDayText__2sRLV" style="color:#90949C;">남음</span>
-                                            <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
-                                     </div>
-                                    </div>  
-                                </div>
-                            </div>
-                        
+						</c:forEach>
+						
                         </div>
                     </div>
                 </div>
@@ -566,81 +496,34 @@
             <div class="row">
                 <div class="col-12">
                     <div class="testimonials-slides owl-carousel">
-
-                        <!-- Single Testimonial Slide -->
+			
+                       
+                      <c:forEach items="${creator_list}" var="creator">
                         <div class="single-testimonial-slide">
                             <div class="row align-items-center">
                                 <div class="col-12 col-md-6">
                                     <div class="testimonial-thumb">
-                                        <img src="img/bg-img/13.jpg" alt="">
+                                        <img src="img/community/${creator.creator_profile_photo}" alt="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="testimonial-content">
                                         <!-- Section Heading -->
                                         <div class="section-heading">
-                                            <h2>이달의 크리에이터</h2>
-                                            <p>어쩌고 저쩌고?</p>
+                                        	<p>이달의 크리에이터</p>
+                                            <h2>${creator.creator_name}</h2>
                                         </div>
-                                        <p>“크리에이터의 소갯말이 나올것이여어어어어어어어어”</p>
+                                        <p>${creator.creator_profile_content}</p>
                                         <div class="testimonial-author-info">
-                                            <h6>김형섭</h6>
-                                            <p>인천 앞바다 다크나이트</p>
+                                            <h6 style="font-size:1em">채널 바로가기</h6>
+                                            <a href="https://www.youtube.com/" style="display:inline-block;margin-top:10px;margin-right:5px"><img src="img/community/youtube.png" style="width:49px"></a>
+                                            <a href="https://www.instagram.com" style="display:inline-block;margin-top:8px"><img src="img/community/instagram.png" style="width:35px"></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Single Testimonial Slide -->
-                        <div class="single-testimonial-slide">
-                            <div class="row align-items-center">
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-thumb">
-                                        <img src="img/bg-img/14.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-content">
-                                        <!-- Section Heading -->
-                                        <div class="section-heading">
-                                            <h2>이달의 크리에이터</h2>
-                                            <p>어쩌고 저쩌고?</p>
-                                        </div>
-                                        <p>“크리에이터의 소갯말이 나올것이여어어어어어어어어”</p>
-                                        <div class="testimonial-author-info">
-                                            <h6>김형섭</h6>
-                                            <p>인천 앞바다 다크나이트</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>      
-                        </div>
-
-                        <!-- Single Testimonial Slide -->
-                        <div class="single-testimonial-slide">
-                            <div class="row align-items-center">
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-thumb">
-                                        <img src="img/bg-img/15.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-content">
-                                        <!-- Section Heading -->
-                                        <div class="section-heading">
-                                             <h2>이달의 크리에이터</h2>
-                                            <p>어쩌고 저쩌고?</p>
-                                        </div>
-                                        <p>“크리에이터의 소갯말이 나올것이여어어어어어어어어”</p>
-                                        <div class="testimonial-author-info">
-                                            <h6>김형섭</h6>
-                                            <p>인천 앞바다 다크나이트</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+					   </c:forEach>
 
                     </div>
                 </div>
@@ -667,11 +550,6 @@
 <!--크리에이터띠 싱단 배너-->
    <section class="subscribe-newsletter-area" style="background-image:linear-gradient(90deg,#fc5230 10%,#2da498 100%);">
         <div class="container">
-            
-            
-         
-          
-                
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
                         <h2 style="color:white; ">소통하는 사회, 크리콕!</h2>
@@ -679,32 +557,12 @@
                       <p class="crowdy-btn-introduction" >
                           <a href="#"style="color:white; text-align:center">자세히 알아보기</a>
                         </p>
-                       
-                        
-                   
                     </div>
                 </div>
-                
-                
-                <!--
-                    <div class="col-12 col-lg-6">
-                        <div class="subscribe-form">
-                            <form action="#" method="get">
-                                <input type="email" name="subscribe-email" id="subscribeEmail" placeholder="Enter your email">
-                                <button type="submit" class="btn alazea-btn">SUBSCRIBE</button>
-                            </form>
-                        </div>
-                    </div>
-                -->
-         
-    
-
         <!-- Subscribe Side Thumbnail -->
         <div class="subscribe-side-thumb wow fadeInUp" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInUp;">
-          
-        </div>
-       
-    </section>
+      </div>
+   </section>
     
 <!--크리에이터띠 싱단 배너끝-->
 	<!-- Hero Section -->
@@ -715,22 +573,12 @@
         <div class="section-heading text-center">
                         <h2 style="margin-bottom:10px">크리콕 커뮤니티</h2>
                        <!-- <p>크리에이터를 검색해보세요.</p>-->
-                   
-            
-      
                 <form action="#" method="get" >
-              
-                 
                     <input style ="width:300px; height:35px; background-color:#b7c7c5" type="search" name="searchCreator" id="searchCreator" placeholder="크리에이터를 검색해보세요.">
                       <button type="submit" > <img src="img/core-img/search.png"></button>
                        
-                
         </form>
         </div>
-     
-      
-
-        
         
 		<div class="hero-slider">
 			<div class="slide-item">
@@ -808,58 +656,7 @@
 	<script src="js_botoTest/slick.min.js"></script>
 	<script src="js_botoTest/fresco.min.js"></script>
 	<script src="js_botoTest/main.js"></script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
     <!-- ##### Product Area Start ##### -->
     <section class="new-arrivals-products-area bg-gray section-padding-100">
         <div class="container">
@@ -875,104 +672,31 @@
 
             <div class="row">
 
-                <!-- Single Product Area -->
+               <c:forEach var="goods" items="${goods_list}" >  
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Product Image -->
                         <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/9.jpg" alt=""></a>
+                            <a href="goods_detail.do?goods_index=${goods.goods_index}"><img src="img/goods/${goods.goods_repre_pic}" alt=""></a>
                             <!-- Product Tag -->
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
+                       	 <p style="margin-bottom:5px;text-align:left">${goods.creator_name}</p>
+                            <a href="goods_detail.do?goods_index=${goods.goods_index}">
+                                <p style="text-align:left">${goods.goods_name}</p>
                             </a>
-                            <h6>$10.99</h6>
+                            <h6 style="text-align:left"><strong>${goods.goods_price}</strong> 원</h6>
                         </div>
                     </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="200ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/10.jpg" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="300ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/11.jpg" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="400ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/12.jpg" alt=""></a>
-                            <!-- Product Tag -->
-                            <div class="product-tag sale-tag">
-                                <a href="#">Hot</a>
-                            </div>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
+               	 </div>
+				</c:forEach>
+				
                 <div class="col-12 text-center">
-                    <a href="#" class="btn alazea-btn">더보기</a>
+                    <a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300" class="btn alazea-btn" style="background-color:#fc5230;color:white;font-size:1.2em;font-weight:700;height:40px">더보기</a>
                 </div>
 
             </div>
@@ -990,7 +714,7 @@
                     <!-- Section Heading -->
                     <div class="section-heading">
                         <h2>문의하기</h2>
-                        <p>크리콕 팀과 소통을 원하시다면 메세지를 보내주세요!</p>
+                        <p>문의사항이 있을 경우 글 남겨주시면 이메일로 답변드리겠습니다.</p>
                     </div>
                     <!-- Contact Form Area -->
                     <div class="contact-form-area mb-100">
@@ -1013,11 +737,11 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="메세지"></textarea>
+                                        <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="문의 내용"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn alazea-btn mt-15">메세지 보내기</button>
+                                    <button type="submit" class="btn alazea-btn mt-15" style="background-color:#2da498;color:white;font-size:1.2em;font-weight:700;height:40px">문의하기</button>
                                 </div>
                             </div>
                         </form>
