@@ -34,34 +34,22 @@ public class ChattingController extends TextWebSocketHandler {
 	private Map<String, WebSocketSession> users = new ConcurrentHashMap<String, WebSocketSession>();
 
 	@Override
-
-	public void afterConnectionEstablished(
-
-			WebSocketSession session) throws Exception {
-
+	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		log(session.getId() + " 연결 됨!!");
-
 		users.put(session.getId(), session);
 		connectedUsers.add(session);
 	}
 
 	@Override
-
-	public void afterConnectionClosed(
-
-			WebSocketSession session, CloseStatus status) throws Exception {
-
+	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		log(session.getId() + " 연결 종료됨");
 		connectedUsers.remove(session);
 		users.remove(session.getId());
-
 	}
 
 
 	@Override
-	   protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-
-
+	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		System.out.println(message.getPayload());
 
 		  Map<String, Object> map = null;
@@ -69,7 +57,6 @@ public class ChattingController extends TextWebSocketHandler {
 	      MessageVO messageVO = MessageVO.convertMessage(message.getPayload());
 
 	      System.out.println("1 : " + messageVO.toString());
-
 
 	      ChatRoomVO roomVO  = new ChatRoomVO();
 	      roomVO.setCLASS_class_id(messageVO.getCLASS_class_id()); //클래스
@@ -79,9 +66,7 @@ public class ChattingController extends TextWebSocketHandler {
 	      ChatRoomVO croom =null;
 	      if(!messageVO.getUSER_user_id().equals(messageVO.getTUTOR_USER_user_id())) {
 	    	  System.out.println("a");
-
-
-
+	    	  
 	    	  if(dao.isRoom(roomVO) == null ) {
 	    		  System.out.println("b");
 	    		  dao.createRoom(roomVO);
@@ -104,10 +89,6 @@ public class ChattingController extends TextWebSocketHandler {
 	      }else {
 	    	  messageVO.setMessage_receiver(roomVO.getUSER_user_id());
 	      }
-
-
-
-
 	      for (WebSocketSession websocketSession : connectedUsers) {
 	         map = websocketSession.getAttributes();
 	         UserVO login = (UserVO) map.get("login");
@@ -119,25 +100,16 @@ public class ChattingController extends TextWebSocketHandler {
 	            String msgJson = gson.toJson(messageVO);
 	            websocketSession.sendMessage(new TextMessage(msgJson));
 	         }
-
-
 	      }
 	   }
 
 	@Override
 
-	public void handleTransportError(
-
-			WebSocketSession session, Throwable exception) throws Exception {
-
+	public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
 		log(session.getId() + " 익셉션 발생: " + exception.getMessage());
-
 	}
 
 	private void log(String logmsg) {
-
 		System.out.println(new Date() + " : " + logmsg);
-
 	}
-
 }

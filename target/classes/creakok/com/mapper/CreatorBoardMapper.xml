@@ -6,8 +6,8 @@
 	<!-- 계층형 만들었음, 그러나 정렬 기능을 잃음. order by ${board.filterBy}를 뺐기때문에... 그래서 getListResultByFilter를 만들어 주었다. -->
 	<select id="getListResult" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    	(select * from CREATOR_BOARD order by BOARD_REFER desc, BOARD_SUNBUN asc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name}]]>
+    	(select * from CREATOR_BOARD where CREATOR_NAME = #{creator_name} order by BOARD_REFER desc, BOARD_SUNBUN asc, BOARD_INDEX desc) aa) 
+    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
  	</select>
  	
 	<select id="count" resultType="int">
@@ -110,8 +110,8 @@
 	추가) 아니다. mapper.java와 일치시켜야 하나보다 .-->
 	<select id="getListResultByFilter" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    	(select * from CREATOR_BOARD order by ${board_filterBy} desc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name}]]>
+    	(select * from CREATOR_BOARD where CREATOR_NAME = #{creator_name} order by BOARD_REFER desc, BOARD_SUNBUN asc, ${board_filterBy} desc) aa) 
+    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
  	</select>
 
 </mapper>
