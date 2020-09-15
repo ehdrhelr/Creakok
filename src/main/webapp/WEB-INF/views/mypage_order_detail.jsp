@@ -365,7 +365,7 @@
 
                     </tbody>
                 </table>
-                			<p style="text-align:center;margin-top:20px"><a href="member_mypage.do?member_email=${order_info.member_email}&order_cp=1" style="font-size:13pt;background-color:black; color:white; width:130px; padding:3px;">목록으로</a></p>
+                			<p style="text-align:center;margin-top:20px"><a href="member_order.do?member_email=${order_info.member_email}&order_cp=1" style="font-size:13pt;background-color:black; color:white; width:130px; padding:3px;">목록으로</a></p>
                 </div>
             </div> <!--My Page Tabs Contents-->
         </div>
