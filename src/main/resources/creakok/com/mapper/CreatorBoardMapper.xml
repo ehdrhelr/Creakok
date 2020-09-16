@@ -3,11 +3,43 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="creakok.com.mapper.CreatorBoardMapper">
-	<!-- 계층형 만들었음, 그러나 정렬 기능을 잃음. order by ${board.filterBy}를 뺐기때문에... 그래서 getListResultByFilter를 만들어 주었다. -->
+	<!--
 	<select id="getListResult" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
     	(select * from CREATOR_BOARD where CREATOR_NAME = #{creator_name} order by BOARD_REFER desc, BOARD_SUNBUN asc, BOARD_INDEX desc) aa) 
     	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
+ 	</select>
+ 	-->
+ 	<select id="getListResult" resultType="Board">
+    	<![CDATA[
+    	select * from
+        	(select ROWNUM AS rnum,
+                data.* from (
+                        select BOARD_INDEX,
+                               LPAD('[RE]' , 4 * (LEVEL-1), '_') || BOARD_SUBJECT AS BOARD_SUBJECT,
+                               BOARD_CONTENT,
+                               MEMBER_NAME,
+                               MEMBER_EMAIL,
+                               BOARD_WDATE,
+                               BOARD_VIEW,
+                               BOARD_LIKE,
+                               MEMBER_PROFILE_PIC,
+                               CREATOR_NAME,
+                               BOARD_REFER,
+                               BOARD_LEVEL,
+                               BOARD_SUNBUN,
+                               BOARD_PARENT,
+                               LEVEL
+                        from CREATOR_BOARD
+                       	where CREATOR_NAME = #{creator_name}
+                        START WITH BOARD_PARENT = 0
+                        CONNECT BY PRIOR BOARD_INDEX = BOARD_PARENT
+                        ORDER SIBLINGS BY ${board_filterBy} desc, BOARD_REFER
+                        )
+                data
+            )
+		where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}
+		]]>
  	</select>
  	
 	<select id="count" resultType="int">
@@ -34,7 +66,7 @@
 			SELECT CREATOR_BOARD_INDEX_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 			INSERT INTO CREATOR_BOARD 
-					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, #{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null, #{creator_name}, BOARD_REFER_SEQ.nextval, 0, 0)
+					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, #{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null, #{creator_name}, #{board_index}, 0, 0, 0)
 	</insert>
 	
 	<!-- 조회수 +1 -->
@@ -62,15 +94,48 @@
 	</delete>
 	
 	<!-- 검색 -->
+	<!--
 	<select id="search" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
     	(select * from CREATOR_BOARD where ${board_c_code} like '%'||#{board_searchName}||'%' order by ${board_filterBy} desc) aa) 
     	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name}]]>
-	</select> 
+	</select>
+	--> 
+	<select id="search" resultType="Board">
+    	<![CDATA[
+    	select * from
+        	(select ROWNUM AS rnum,
+                data.* from (
+                        select BOARD_INDEX,
+                               LPAD('[RE]' , 4 * (LEVEL-1), '_') || BOARD_SUBJECT AS BOARD_SUBJECT,
+                               BOARD_CONTENT,
+                               MEMBER_NAME,
+                               MEMBER_EMAIL,
+                               BOARD_WDATE,
+                               BOARD_VIEW,
+                               BOARD_LIKE,
+                               MEMBER_PROFILE_PIC,
+                               CREATOR_NAME,
+                               BOARD_REFER,
+                               BOARD_LEVEL,
+                               BOARD_SUNBUN,
+                               BOARD_PARENT,
+                               LEVEL
+                        from CREATOR_BOARD
+                       	where CREATOR_NAME = #{creator_name} and ${board_c_code} like '%'||#{board_searchName}||'%'
+                        START WITH BOARD_PARENT = 0
+                        CONNECT BY PRIOR BOARD_INDEX = BOARD_PARENT
+                        ORDER SIBLINGS BY ${board_filterBy} desc, BOARD_REFER
+                        )
+                data
+            )
+		where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}
+		]]>
+	</select>
 	
 	<!-- 검색했을 때 count -->
 	<select id="countBySearch" resultType="int">
-		select count(case when ${board_c_code} like '%'||#{board_searchName}||'%' then 1 end) from CREATOR_BOARD
+		select count(case when ${board_c_code} like '%'||#{board_searchName}||'%' then 1 end) from CREATOR_BOARD where CREATOR_NAME = #{creator_name}
 	</select> 
 	
 	<!-- 크리에이터별 카운트 -->
@@ -101,17 +166,49 @@
 			INSERT INTO CREATOR_BOARD 
 					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, 
 					#{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null, #{creator_name}, ${board_refer}, 
-					${board_level}+1, ${board_sunbun}+1)
+					${board_level}+1, ${board_sunbun}+1, ${board_parent})
 	</insert>
 	
 	<!-- 정렬 기능 -->
 	<!-- ${board_filterBy}를 ${board.filterBy}로 작성했더니 오류가 났다. 
 	parameter의 이름은 board domain에 있는 변수이름과 동일하게 작성해줘야 하나보다.
-	추가) 아니다. mapper.java와 일치시켜야 하나보다 .-->
+	추가) 아니다. mapper.java와 일치시켜야 하나보다 .
 	<select id="getListResultByFilter" resultType="Board">
     	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
     	(select * from CREATOR_BOARD where CREATOR_NAME = #{creator_name} order by BOARD_REFER desc, BOARD_SUNBUN asc, ${board_filterBy} desc) aa) 
     	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
+ 	</select>
+ 	-->
+ 	<select id="getListResultByFilter" resultType="Board">
+    	<![CDATA[
+    	select * from
+        	(select ROWNUM AS rnum,
+                data.* from (
+                        select BOARD_INDEX,
+                               LPAD('[RE]' , 4 * (LEVEL-1), '_') || BOARD_SUBJECT AS BOARD_SUBJECT,
+                               BOARD_CONTENT,
+                               MEMBER_NAME,
+                               MEMBER_EMAIL,
+                               BOARD_WDATE,
+                               BOARD_VIEW,
+                               BOARD_LIKE,
+                               MEMBER_PROFILE_PIC,
+                               CREATOR_NAME,
+                               BOARD_REFER,
+                               BOARD_LEVEL,
+                               BOARD_SUNBUN,
+                               BOARD_PARENT,
+                               LEVEL
+                        from CREATOR_BOARD
+                       	where CREATOR_NAME = #{creator_name}
+                        START WITH BOARD_PARENT = 0
+                        CONNECT BY PRIOR BOARD_INDEX = BOARD_PARENT
+                        ORDER SIBLINGS BY ${board_filterBy} desc, BOARD_REFER
+                        )
+                data
+            )
+		where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}
+		]]>
  	</select>
 
 </mapper>

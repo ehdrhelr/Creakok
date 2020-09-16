@@ -132,15 +132,7 @@ public class CreatorBoardController {
 		if (contentOneLine != null) contentList = contentOneLine.split("@");
 		mv.addObject("contentList", contentList);
 		
-		/** pagination try **/
 		
-		// 전체 리스트 개수 -- 삭제예정
-		int listCnt = (int) listResult.getTotalCount();
-		log.info("@@@@@@@@@@ listCnt : " + listCnt);
-		Pagination pagination = new Pagination(listCnt, board_cp);
-		
-		mv.addObject("listCnt", listCnt);
-		mv.addObject("pagination", pagination);
 		log.info("@@@@@@@@@@ listResult : " + listResult);
 		
 		return mv;
@@ -414,7 +406,9 @@ public class CreatorBoardController {
 	@PostMapping("board_answer")
 	public String boardAnswer(Board board) {
 		
-		String subjectWithSeperator = board.getBoard_subject();
+		/*	컨트롤러에서 답글 제목에 '└[답글]'을 추가하는 로직, db에서 select할때 LPAD하는 걸로 변경.
+		 
+	 	String subjectWithSeperator = board.getBoard_subject();
 		long board_level = board.getBoard_level();
 		subjectWithSeperator = "└[답글] " + subjectWithSeperator;
 		for(int i=0; i<board_level; i++) {
@@ -422,7 +416,13 @@ public class CreatorBoardController {
 		}
 		
 		board.setBoard_subject(subjectWithSeperator);
+		 */	
 		
+		/* 원글의 board_index를 가져와서 답글의 board_parent에 넣어준다. 
+		 * CONNECT BY 로 부모자식관계형성 
+		 */
+		long board_indexParent = board.getBoard_index();
+		board.setBoard_parent(board_indexParent);	
 		
 		// level, 순번 처리로직 
 		// 현재 글보다 큰 순번을 가진 글(with the same refer)의 순번을 +1 씩 증가시킨다.
