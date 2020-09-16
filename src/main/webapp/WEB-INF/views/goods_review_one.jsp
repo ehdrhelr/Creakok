@@ -57,9 +57,7 @@
           line-height: 1.5;
           margin-bottom: 6.5px;
         }
-        p {
-          color:black;
-        }
+
     </style>
 </head>
 

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -449,6 +450,9 @@ public class GoodsController {
 		session.setAttribute("review", review_list);
 		session.setAttribute("four_goods", four_goods);
 		
+		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
+		session.setAttribute("review_size", review_size);
+		
 		long qna_list_size = goods_qnaservice.selectGoodsQnACountByGoodsIndex(goods_index);
 		session.setAttribute("qna_list_size", qna_list_size);
 		
@@ -539,7 +543,10 @@ public class GoodsController {
 		long goods_index = Long.parseLong(goods_indexStr);
 		
 		goods_reviewservice.deleteOneReview(goods_review_index);
-		goodsService.minusReviewNumber(goods_index);
+		long goods_review_count = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
+		
+		// 굿즈에 리뷰 수 업데이트
+		goods_reviewservice.updateReviewNumber(goods_review_count, goods_index);
 		
 		int cp = 1;
 		ModelAndView mv = new ModelAndView();
@@ -564,7 +571,11 @@ public class GoodsController {
 		Goods_Review goods_review = new Goods_Review(-1, review_writer, goods_index, null, review_rating, null, review_subject, review_content, null, 0);
 		
 		goods_reviewservice.insertOneReview(goods_review);
-		goodsService.plusReviewNumber(goods_index);
+		
+		long goods_review_count = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
+		// 굿즈에 리뷰 수 업데이트
+		goods_reviewservice.updateReviewNumber(goods_review_count, goods_index);
+		log.info("????????????????????????????????????: "+goods_review_count);
 		
 		int cp = 1;
 		ModelAndView mv = new ModelAndView();

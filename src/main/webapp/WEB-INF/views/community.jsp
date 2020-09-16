@@ -141,10 +141,10 @@
 																		<div class="testimonial-author-info">
 																			 <div class="welcome-btn-group" style="padding:5px">
 																			 <c:if test="${!empty theCreator.creator_link_youtube}">
-																				 <a href="${theCreator.creator_link_youtube}"><img src="img/bg-img/youtube.png" alt=""></a>
+																				 <a href="${theCreator.creator_link_youtube}"><img src="img/community/youtube.png" alt="" style="width:50px"></a>
 																			 </c:if>
 																			 <c:if test="${!empty theCreator.creator_link_instagram}">	 
-																				 <a href="${theCreator.creator_link_instagram}"><img src="img/bg-img/insta.png" alt=""></a>
+																				 <a href="${theCreator.creator_link_instagram}"><img src="img/community/instagram.png" alt="" style="width:35px;border-radius:7pt;margin-left:5px"></a>
 																			</c:if>
 																			</div>
 																		</div>

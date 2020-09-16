@@ -2,6 +2,8 @@ package creakok.com.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import creakok.com.domain.Goods_Review;
 import creakok.com.vo.Goods_ReviewVo;
 
@@ -14,4 +16,6 @@ public interface GoodsReviewService {
 	void deleteOneReview(long goods_review_index);
 	void insertOneReview(Goods_Review goods_review);
 	void updateOneReview(Goods_Review goods_review);
+	
+	void updateReviewNumber(long goods_review_count, long goods_index);
 }

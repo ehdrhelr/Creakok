@@ -67,4 +67,9 @@ public class GoodsReviewServiceImpl implements GoodsReviewService {
 	public void updateOneReview(Goods_Review goods_review) {
 		goodsservicemapper.updateOneReview(goods_review);
 	}
+	
+	@Override
+	public void updateReviewNumber(long goods_review_count, long goods_index) {
+		goodsservicemapper.updateReviewNumber(goods_review_count, goods_index);
+	}
 }

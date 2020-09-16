@@ -65,12 +65,18 @@
 <script>
 	function membercheck(){
 		if('${member.member_email}' == '') {
-		  	alert('로그인 해주세요');
+		  	alert('로그인 해주세요.(크리에이터만 이용 가능)');
 		  		location.href="member_login.do";
 		       return false;
 		 }
 		if('${member.member_email}' != '') {
-		  		location.href="project.do";	
+			if('${member.member_category_code}' != 0){
+				alert('크리에이터 전용 서비스입니다.')
+			}
+			if('${member.member_category_code}' == 0){
+				location.href="project.do";	
+			}
+		  		
 		}		
 	}
 </script>

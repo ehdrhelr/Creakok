@@ -22,6 +22,21 @@
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- BOTO TEST -->
+	<meta name="description" content="Boto Photo Studio HTML Template">
+	<meta name="keywords" content="photo, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
+	<link rel="stylesheet" href="css/css_boto/slick.css"/>
+
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="css/css_boto/style.css"/>
 	
 	<!-- hcbae Stylesheets -->
     <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
@@ -164,7 +179,7 @@
 </head>
 
 <body>
-<c:if test="${empty member}">
+	<c:if test="${empty member}">
       <script>
       console.log("empty member");
       </script>
@@ -177,6 +192,7 @@
       console.log('pass: ${member.member_password}');
       </script>
     </c:if>
+    
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
@@ -185,43 +201,37 @@
         </div>
     </div>
 
-   	<!-- ##### Header Area Start ##### -->	
+    <!-- ##### Header Area Start ##### -->
     <header class="header-area">
     <div id="header_div">
     <jsp:include page="creakok_header.jsp" flush="true"/>
     </div>
     </header>
     <!-- ##### Header Area End ##### -->
-
-	<!-- 게시판 영역 start -->
-<div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
- 					<h3 style="text-align:center;margin-bottom:40px;font-size:18pt"> 게시글 </h3>
-
-	<div class="r_list">
-		<div class="text-center">
-				<table border="1" width="600" align="center" cellpadding="3" cellspacing="1">
-	              	<tbody>					
-						<div class="form-group col-sm-12">
-				<!-- css 바꾸니까 게시글 표시안뜸 -->
-				<div class="row">
-					<div class="col-md-2"></div>
-                    <div class="col-md-8">
-    					<h2 class="text-center" style="margin-bottom:30px">게시글</h2>
-                    <div class>
-                    	<div>
-                             	<label class="control-label">작성 날짜</label>
-						   			<span style="margin-right:30px"><fmt:formatDate value="${board.board_wdate}" pattern="yyyy-MM-dd" /></span>
-						   	 	<label for="view">조회</label>
-						   	 	<span style="margin-right:30px">${board.board_view}</span>
-						    	<label for="like">좋아요</label>
-						    	<span id="board_like">${board.board_like}</span>
-						    	&nbsp;&nbsp;&nbsp;
-						    	<a href="#" class="wishlist-btn" onclick="testhcbae('${board.board_index}')">
-                        		<i class="board_list_like icon_heart_alt"></i>
-                        		</a>
-                        	</div>
-                    
-                        <table class="table" style="width:70%;margin:0 auto;width:70%;margin:0 auto;margin-bottom:10px;">
+    
+    <!-- ##### Hero Area Start ##### -->
+    <section class="team-area section-padding-100-0" style="margin-top:100px;">
+        
+         <div class="container">
+            <div class="row" style="width:80%;margin:0 auto">
+                <div class="col-12">
+                    <!-- Section Heading -->
+                    <div class="section-heading text-center">
+						<h2 class="text-center" style="margin-bottom:30px">게시글</h2>
+						<div style="text-align:center">
+                           	<label class="control-label">작성 날짜</label>
+				   			<span style="margin-right:30px"><fmt:formatDate value="${board.board_wdate}" pattern="yyyy-MM-dd" /></span>
+					   	 	<label for="view">조회</label>
+					   	 	<span style="margin-right:30px">${board.board_view}</span>
+					    	<label for="like">좋아요</label>
+					    	<span id="board_like">${board.board_like}</span>
+					    	&nbsp;&nbsp;&nbsp;
+					    	<a href="#" class="wishlist-btn" onclick="testhcbae('${board.board_index}')">
+                       		<i class="board_list_like icon_heart_alt"></i>
+                       		</a>
+                       	</div>
+	                    
+                        <table class="table" style="margin:0 auto;width:100%;margin:0 auto;margin-bottom:10px;">
 						   <tbody><tr><td>작성자</td><td>
                                 <input type="text" class="form-control" name="member_name" value="${board.member_name}" readonly=""></td></tr>
                                   <tr><td>Email</td><td>
@@ -232,59 +242,63 @@
                                         <tr>
                                         	<td>글내용</td>
                                        			<td>
-                                        			<span id="textarea" style="overflow:auto; width:692px; height:500px; text-align:left" name="board_content" class="form-control" readonly>${board.board_content}</span>
+                                        			<span id="textarea" style="overflow:auto; width:100%; height:500px; text-align:left" name="board_content" class="form-control" readonly>${board.board_content}</span>
                                        			</td>
                                         </tr>
                               </tbody>
                          </table>
-
-                         <c:if test="${!empty member}">
-                         	<c:if test="${member.member_email == board.member_email}">
-                         		<input type="reset" value="수정" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="location.href='board_update?board_index=${board.board_index}';">
-                        	 	<input type="reset" value="삭제" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="deleteBoard()">
-                         	</c:if>
-							
-							<input type="reset" value="답글 쓰기" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="location.href='board_answer?board_index=${board.board_index}';">
-                         </c:if>
-                        
-                         <button type="button" class="" style="background-color:black !important; color:white;width:133px;height:38px;border-radius:.25rem;display:inline-block" onclick="location.href='board_page?creator_name=${board.creator_name}#fix_point'">전체 게시글보기</button>
+	
+                        <c:if test="${!empty member}">
+                        	<c:if test="${member.member_email == board.member_email}">
+                        		<p style="text-align:left">
+                        		
+	                        		<input type="reset" value="수정" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="location.href='board_update?board_index=${board.board_index}';">
+	                       	 		<input type="reset" value="삭제" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="deleteBoard()">
+                        		</p>
+                        	</c:if>
 						
-<!----------------------- 댓글 조회 부분 --------------------->
-			<div class="form-group col-sm-12">
-				<div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-       		 
-                    <div class="text-center" style="margin-bottom:100px">
-                        <table class="table" style="width:70%;margin:0 auto;width:70%;margin:0 auto;margin-bottom:10px;">        	
+						<input type="reset" value="답글 쓰기" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="location.href='board_answer?board_index=${board.board_index}';">
+                        </c:if>
+                       
+                        <button type="button" class="" style="background-color:black !important; color:white;width:133px;height:38px;border-radius:.25rem;display:inline-block" onclick="location.href='board_page?creator_name=${board.creator_name}#fix_point'">전체 게시글보기</button>
+						
+					
+						<!----------------------- 댓글 조회 부분 --------------------->
+                        <table class="table" style="margin:0 auto;margin-bottom:10px;">        	
 							<c:forEach items="${commentList}" var="repList">
-							<div style="position:relative;margin-bottom:70px;text-align:left;">
+							<div style="margin-top:40px;margin-bottom:40px">
 								
-								<p style="text-align:left; margin-bottom:10px"><img src="img/user_20.png" style="margin-right:5px">${repList.member_name}
+								<p style="text-align:left; margin-bottom:10px"><img src="img/user_20.png" style="margin-right:5px;width:25px;display:inline-block">${repList.member_name}
 								(<fmt:formatDate value="${repList.comment_wdate}" pattern="yyyy-MM-dd" />)</p> 
-								<input type="text" class="form-control" name="comment_content" value="${repList.comment_content}" readonly="" style="height:28px;width:746px" readonly>
+								<input type="text" class="form-control" name="comment_content" value="${repList.comment_content}" style="height:40px;width:100%" readonly>
 								
 								<c:if test="${!empty member}">
 									<c:if test="${member.member_email == repList.member_email}">
 										<input type="hidden" id="board_index" value="${repList.board_index}">
-										<input type="reset" value="수정" class="commentUpdateBtn" style="background-color:black !important; 
-										color:white;width:70px;font-size:1em;height:30px;border-radius:.25rem;position:absolute;top:70px;left:15px;"
-										onclick="updateComment('${repList.comment_index}')">
-	                         			<input type="reset" value="삭제" class="commentDelBtn" style="background-color:black !important; 
-	                         			color:white;width:80px;font-size:1em;height:30px;border-radius:.25rem;position:absolute;top:70px;left:90px;" 
-	                         			onclick="deleteComment('${repList.comment_index}')">
+										
+										<p style="text-align:left;margin-top:10px">
+											<input type="reset" value="수정" class="commentUpdateBtn" style="background-color:black !important; 
+											color:white;width:70px;font-size:1em;height:30px;border-radius:.25rem;"
+											onclick="updateComment('${repList.comment_index}')">
+		                         			<input type="reset" value="삭제" class="commentDelBtn" style="background-color:black !important; 
+		                         			color:white;width:80px;font-size:1em;height:30px;border-radius:.25rem;" 
+		                         			onclick="deleteComment('${repList.comment_index}')">
+		                         		</p>
 									</c:if>
 								</c:if>
 							</div>
                        		</c:forEach> 
                        		
-                       		<hr width="746px" color="black" size="3">
-                       		
+                       	</table>      
+
+
 <!----------------------------------- 댓글 작성 부분 ---------------------------------------->
-	                     		<div style="position:relative;margin-bottom:70px;text-align:left;">
+	                     		<div style="margin-top:40px;margin-bottom:40px">
 		                     		<c:if test="${empty member}">                     		
-			                       		<span style="position:absolute;top:20px;left:15px;">댓글 작성하기</span>
-			                       		<input type="text" class="form-control" id="comment_content" name="comment_content" value="로그인 후 이용해주세요." style="position:absolute;top:50px;left:15px;height:40px" readonly>                      		 
+			                       		<p style="text-align:left;">댓글 작성하기</p>
+			                       		<p style="text-align:left;margin-top:10px">
+			                       		<input type="text" class="form-control" id="comment_content" name="comment_content" value="로그인 후 이용해주세요." style="height:40px" readonly>                      		 
+                          		 		</p>
                           		 	</c:if>
                           		 	
                           			<c:if test="${!empty member}">
@@ -294,16 +308,16 @@
 												<input type="hidden" id="member_email" name="member_email" value="${member.member_email}" readonly="readonly" />
 												<input type="hidden" class="form-control" name="member_name" value="${member.member_name}" readonly="readonly"/>
 					                       		
-					                       		<div class="form-group">
-					                       			<label style="position:absolute;top:20px;left:15px;">댓글 작성하기</label>
-					                       			<div class="col-sm-10">
-					                       				<input id="comment_content" type="text" class="form-control" name="comment_content" value="" style="position:absolute;top:50px;left:15px;height:40px;width:720px">                     		 
-		                          					</div>
-		                          				</div>
-		                          				
-				                          		 <div class="form-group">
-											 		<div class="col-sm-offset-2 col-sm-10">
-											  			<button type="button" class="repSubmit btn-success" style="background-color:black !important; color:white;width:70px;font-size:1em;height:30px;border-radius:.25rem;position:absolute;top:70px;left:15px;" onclick="check()">작성</button>
+					                       		<div class="form-group" style="margin-top:40px;margin-bottom:40px">
+					                       			
+					                       				<p style="text-align:left;">댓글 작성하기</p>
+					                       				<p style="text-align:left;margin-top:10px">
+					                       					<input id="comment_content" type="text" class="form-control" name="comment_content" value="" style="height:40px;">                     		 
+		                          						</p>
+		                          					
+		                          						<p style="text-align:left;margin-top:10px">
+											  			<button type="button" class="repSubmit btn-success" style="background-color:black !important; color:white;width:50px;font-size:1em;height:30px;border-radius:.25rem;" onclick="check()">작성</button>
+											 			</p>
 											 			<script>
 														  var formObj = $(".replyForm form[role='form']");
 														   
@@ -320,27 +334,39 @@
 														   formObj.submit();
 														  });
 														 </script>
-											  		</div>
 										  		</div>
 								  	  		</form>
+								  	  	</section>
 						  				</c:if>
-						  			</div>							
-							</section>
-                          </table>      
-                  	</div>
-                  </div>
-                </div>		
-		</div>
-	</div>
-	
+						  			</div>
+						  			
 
-   <!-- 게시판 영역 end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
 
- <section id="container">
+        </div>
+    </section>
+    <!-- ##### Hero Area End ##### -->
 
- </section>
+                       		
+		
+                            
+                            
+                            
 
-	<!-- Footer Bottom Area -->
+    
+    
+    <!-- 맨 아래 여백 -->
+	<div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
+	</div>		  			
+   <!-- 맨 아래 여백 end -->
+    
+    
+
+
+    <!-- Footer Bottom Area -->
     <div id="footer_div">
     <jsp:include page="creakok_footer.jsp" flush="true"/>
     </div>
@@ -358,8 +384,7 @@
     <!-- Active js -->
     <script src="js/active.js"></script>
     
-	<script type="text/javascript">
-
+	<script>
     function testhcbae(index){
         if('${member.member_email}' == '') {
             check_login();
@@ -448,13 +473,11 @@
 			    xmlHttpLike.send(formData);
 			}
 			
-        </script>
-        
-	<jsp:include page="Language.jsp" flush="false">
+        </script>   
+   
+    <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
     </jsp:include>
-  
-</body>
 </body>
 
 </html>
