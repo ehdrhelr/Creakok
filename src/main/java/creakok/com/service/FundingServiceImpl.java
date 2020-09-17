@@ -156,36 +156,4 @@ public class FundingServiceImpl implements FundingService {
 		
 	}
 
-	@Override
-	public Funding_searchVo getSearchFundingVo(int funding_cp, int funding_ps, String keyword) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public long selectFundingCountBySearch(String keyword) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/*
-	
-	@Override
-	public Funding_searchVo getSearchFundingVo(int funding_cp, int funding_ps, String keyword){ //펀딩 검색
-		long funding_totalCount = fundingMapper.selectFundingCountBySearch(keyword);
-		Funding_searchVo funding_searchVo = new Funding_searchVo(funding_cp, funding_totalCount, funding_ps, null, keyword);
-		List<Funding> funding_result_list = fundingMapper.selectSearchFunding(funding_searchVo);
-		
-		Funding_searchVo funding_searchVo2 = new Funding_searchVo(funding_cp, funding_totalCount, funding_ps, funding_result_list, keyword);
-		funding_searchVo2.setFunding_totalPageCount(funding_searchVo2.calTotalPageCount());
-		
-		return funding_searchVo2;
-	}
-	
-	@Override
-	public long selectFundingCountBySearch(String keyword) { //펀딩 검색결과 총갯수
-		return fundingMapper.selectFundingCountBySearch(keyword);
-	}
-*/
-
 }

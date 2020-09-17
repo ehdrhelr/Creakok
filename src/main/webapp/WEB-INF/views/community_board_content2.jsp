@@ -247,21 +247,21 @@
                                         </tr>
                               </tbody>
                          </table>
-	
+                         
+						<p style="text-align:center">
                         <c:if test="${!empty member}">
                         	<c:if test="${member.member_email == board.member_email}">
-                        		<p style="text-align:left">
                         		
 	                        		<input type="reset" value="수정" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="location.href='board_update?board_index=${board.board_index}';">
 	                       	 		<input type="reset" value="삭제" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="deleteBoard()">
-                        		</p>
+                        	
                         	</c:if>
 						
-						<input type="reset" value="답글 쓰기" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="location.href='board_answer?board_index=${board.board_index}';">
-                        </c:if>
-                       
-                        <button type="button" class="" style="background-color:black !important; color:white;width:133px;height:38px;border-radius:.25rem;display:inline-block" onclick="location.href='board_page?creator_name=${board.creator_name}#fix_point'">전체 게시글보기</button>
-						
+								<input type="reset" value="답글 쓰기" class="" style="background-color:black !important; color:white;width:85px;height:38px;border-radius:.25rem;" onclick="location.href='board_answer?board_index=${board.board_index}';">
+	                        </c:if>
+	                       
+	                       	 <button type="button" class="" style="background-color:black !important; color:white;width:133px;height:38px;border-radius:.25rem;display:inline-block" onclick="location.href='board_page?creator_name=${board.creator_name}#fix_point'">전체 게시글보기</button>
+						</p>
 					
 						<!----------------------- 댓글 조회 부분 --------------------->
                         <table class="table" style="margin:0 auto;margin-bottom:10px;">        	

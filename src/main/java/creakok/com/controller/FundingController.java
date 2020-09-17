@@ -182,7 +182,7 @@ public class FundingController {
 					Object cp_qnaObj = session.getAttribute("fundingQna_cp");
 					if(cp_qnaObj != null) {
 						cp_qna = (Integer)cp_qnaObj;
-					}
+					} 
 				}else {
 					cpStr_qna = cpStr_qna.trim();
 					cp_qna = Integer.parseInt(cpStr_qna);
