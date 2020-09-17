@@ -24,7 +24,7 @@
        <typeAlias alias="Funding_category" type="creakok.com.domain.Funding_category"/>
        <typeAlias alias="Funding_qna" type="creakok.com.domain.Funding_qna"/>  
        <typeAlias alias="Funding_searchVo" type="creakok.com.vo.Funding_searchVo"/>  
-            <typeAlias alias="Funding_payinfo" type="creakok.com.domain.Funding_payinfo"/>
+       <typeAlias alias="Funding_payinfo" type="creakok.com.domain.Funding_payinfo"/>
             
             
        <typeAlias alias="GoodsVo" type="creakok.com.vo.GoodsVo"/> 
