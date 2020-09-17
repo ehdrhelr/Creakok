@@ -120,7 +120,7 @@
 				cancelButtonText: '아니요'			
 			}).then((result) => {
 				if (result.value) {
-					location.href = "board_delete?board_index=${board.board_index}";
+					location.href = "board_delete?board_index=${board.board_index}&creator_name=${board.creator_name}";
 				}
 			})			
 		}

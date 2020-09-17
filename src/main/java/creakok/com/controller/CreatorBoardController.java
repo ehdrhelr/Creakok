@@ -238,8 +238,8 @@ public class CreatorBoardController {
 	
 	// 글 삭제
 	@RequestMapping("board_delete")
-	public String deleteBoard(@RequestParam long board_index) {
-		creatorBoardService.deleteBoard(board_index);
+	public String deleteBoard(@RequestParam long board_index, @RequestParam String creator_name) {
+		creatorBoardService.deleteBoard(board_index, creator_name);
 		return "redirect:board_page";
 	}
 

@@ -1105,7 +1105,7 @@
                                 </div>
                                 
 				<br>
-				<textarea id="summernote" name="board_content"></textarea>
+				<textarea id="summernote" name="board_content">${board.board_content}</textarea>
 				
 				<p style="width:100%;text-align:center; margin-top:20px;">
     				<input id="subBtn" type="submit" style="padding:3px;background-color:#2da498;color:white;border:0;border-radius:4px;width:100px" value="수정하기" />
