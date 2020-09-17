@@ -33,7 +33,17 @@
     <delete id="deleteOneReview"  parameterType="long">
         delete from GOODS_REVIEW where GOODS_REVIEW_INDEX=#{goods_review_index}
     </delete>    
+    
     <update id="updateOneReview" parameterType="Goods_Review">
        update GOODS_REVIEW set GOODS_REVIEW_SUBJECT=#{goods_review_subject}, GOODS_REVIEW_CONTENT=#{goods_review_content} where GOODS_REVIEW_INDEX=${goods_review_index}
     </update>     
+    
+    <update id="updateReviewNumber" parameterType="long">
+        update GOODS set GOODS_REVIEW_NUMBER = ${goods_review_count} WHERE GOODS_INDEX=${goods_index}
+    </update>
+
+    <update id="minusReviewNumber" parameterType="long">
+        update GOODS set GOODS_REVIEW_NUMBER = GOODS_REVIEW_NUMBER-1 WHERE GOODS_INDEX=${goods_index}
+    </update>
+  
 </mapper>

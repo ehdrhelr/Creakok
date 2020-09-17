@@ -190,6 +190,7 @@
                                     <tr>
                                         <td>
                                             <ul class="pay-method" >    
+                                            <!--
                                              <li style="margin-bottom:10px;">
 	               								 <input type="radio" class="chk-rdo" id="payByAcc" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important; display:inline;" value="B" onClick="deposit()"> 무통장입금 <em>
 	               								 <span class="op-bank-dc-price fc-red"></span></em>             
@@ -200,8 +201,9 @@
 			               								 </option>            
 		               								 </select>  
                								 </li>
+               								   -->
                                              <li style="margin-bottom:10px;">
-                								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()"> 신용카드/네이버페이/카카오페이
+                								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()" checked> 신용카드/네이버페이/카카오페이
                 								     <em><span class="op-card-dc-price fc-red"></span></em>
                 							 </li>
                                                                                    

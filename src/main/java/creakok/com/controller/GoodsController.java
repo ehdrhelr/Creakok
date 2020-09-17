@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -426,7 +427,9 @@ public class GoodsController {
 				review_list.setReview_cp(cp2);
 			}
 		}   
+		session.setAttribute("review", review_list);
 		
+		//연관 굿즈 추천
 		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
 		List<Goods> four_goods = new ArrayList<Goods>();
 		Random r = new Random();
@@ -445,8 +448,6 @@ public class GoodsController {
 						four_goods.add(related_goods2);
 					}
 				}
-				
-		session.setAttribute("review", review_list);
 		session.setAttribute("four_goods", four_goods);
 		
 		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
@@ -542,7 +543,10 @@ public class GoodsController {
 		long goods_index = Long.parseLong(goods_indexStr);
 		
 		goods_reviewservice.deleteOneReview(goods_review_index);
-		goodsService.minusReviewNumber(goods_index);
+		long goods_review_count = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
+		
+		// 굿즈에 리뷰 수 업데이트
+		goods_reviewservice.updateReviewNumber(goods_review_count, goods_index);
 		
 		int cp = 1;
 		ModelAndView mv = new ModelAndView();
@@ -564,10 +568,14 @@ public class GoodsController {
 		long goods_index = Long.parseLong(goods_indexStr);
 		//log.info("############################################# goods_indexStr: "+goods_indexStr);
 		
-		Goods_Review goods_review = new Goods_Review(-1, review_writer, goods_index, null, review_rating, null, review_subject, review_content, null, 0);
+		Goods_Review goods_review = new Goods_Review(-1, review_writer, goods_index, null, review_rating, null, review_subject, review_content, null, 0, -1);
 		
 		goods_reviewservice.insertOneReview(goods_review);
-		goodsService.plusReviewNumber(goods_index);
+		
+		long goods_review_count = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
+		// 굿즈에 리뷰 수 업데이트
+		goods_reviewservice.updateReviewNumber(goods_review_count, goods_index);
+		log.info("????????????????????????????????????: "+goods_review_count);
 		
 		int cp = 1;
 		ModelAndView mv = new ModelAndView();
@@ -606,7 +614,7 @@ public class GoodsController {
 		
 		String review_subject = request.getParameter("review_subject");
 		String review_content = request.getParameter("review_content");
-		Goods_Review goods_review = new Goods_Review(goods_review_index, null, goods_index, null, -1, null, review_subject, review_content, null, 0);
+		Goods_Review goods_review = new Goods_Review(goods_review_index, null, goods_index, null, -1, null, review_subject, review_content, null, 0, -1);
 				
 		goods_reviewservice.updateOneReview(goods_review);
 		
@@ -639,6 +647,8 @@ public class GoodsController {
 		Creator goods_creator = creatorBoardService.getContentByCreator(creator_name);
 		session.setAttribute("creator", goods_creator);
 		
+		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
+		session.setAttribute("review_size", review_size);
 		
 		Goods_QnAVo goods_qna_vo = (Goods_QnAVo)session.getAttribute("goods_qna");
 		//(1) cp 
@@ -676,6 +686,8 @@ public class GoodsController {
 		
 		long qna_list_size = goods_qnaservice.selectGoodsQnACountByGoodsIndex(goods_index);
 		session.setAttribute("qna_list_size", qna_list_size);
+		
+		
 		
 		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
 		List<Goods> four_goods = new ArrayList<Goods>();
@@ -776,7 +788,7 @@ public class GoodsController {
 		String creator_name = request.getParameter("creator_name");
 		long goods_index = Long.parseLong(goods_indexStr);
 				
-		Goods_QnA goods_qna = new Goods_QnA(-1, goods_index, goods_qna_writer, null, null, goods_qna_subject, goods_qna_content, creator_name, null, null);
+		Goods_QnA goods_qna = new Goods_QnA(-1, goods_index, goods_qna_writer, null, null, goods_qna_subject, goods_qna_content, creator_name, null, null, -1);
 		goods_qnaservice.insertOneQnA(goods_qna);
 			
 		int qna_cp = 1;
@@ -817,7 +829,7 @@ public class GoodsController {
 			long goods_index = Long.parseLong(goods_indexStr);
 			
 			
-			Goods_QnA goods_qna = new Goods_QnA(goods_qna_index, goods_index, null, null, null, goods_qna_subject, goods_qna_content, null, null, null);
+			Goods_QnA goods_qna = new Goods_QnA(goods_qna_index, goods_index, null, null, null, goods_qna_subject, goods_qna_content, null, null, null, -1);
 			goods_qnaservice.updateOneQnA(goods_qna);
 			
 			int cp = 1;
@@ -856,7 +868,7 @@ public class GoodsController {
 		long goods_qna_index = Long.parseLong(goods_qna_indexStr);
 		long goods_index = Long.parseLong(goods_indexStr);
 		
-		Goods_QnA goods_qna = new Goods_QnA(goods_qna_index, goods_index, null, null, null, null, null, null, goods_qna_answer, null);
+		Goods_QnA goods_qna = new Goods_QnA(goods_qna_index, goods_index, null, null, null, null, null, null, goods_qna_answer, null, -1);
 
 		goods_qnaservice.updateOneAnswer(goods_qna);
 		

@@ -1,5 +1,6 @@
 package creakok.com.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import creakok.com.domain.Cart;
+import creakok.com.domain.Goods;
 import creakok.com.domain.Member;
 import creakok.com.service.CartService;
 import lombok.extern.log4j.Log4j;
@@ -51,10 +53,18 @@ public class CartController {
 			return "/index";
 		}
 		List<Cart> list = cartService.readAllCart(member.getMember_email());
+		
+		//재고 수량 체크 + 품절된 굿즈 이름 뽑기
+		List<Goods> goods_stock = new ArrayList<Goods>();
+		for(Cart c : list) {
+			goods_stock.add(cartService.selectGoodsStock(c.getGoods_index()));
+		}
+		log.info("#######################goods_stock :"+goods_stock);
 		// for(Cart c : list) {
 		// log.info("####cart:"+c);
 		// }
 		model.addAttribute("cart_list", list);
+		model.addAttribute("goods_stock", goods_stock);
 		return "cart";
 	}
 

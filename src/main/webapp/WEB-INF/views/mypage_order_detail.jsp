@@ -327,7 +327,7 @@
                               
                               <tr class="orderInfo_detail">
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
-                                   <span style="font-weight:700">결제금액 : </span><span>${order_info.buyer_pay_price}</span>
+                                   <span style="font-weight:700">총 금액 : </span><span>${order_info.buyer_pay_price}</span>
                                  </td>
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
                                    <span style="font-weight:700">상품명 : </span><span>${order_info.buy_product_name}원</span> 
@@ -339,13 +339,7 @@
                                    <span style="font-weight:700">주문번호 : </span><span>${order_info.buyer_buyid}</span>
                                  </td>
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
-                                   <span style="font-weight:700">결제금액 : </span><span>${order_info.buyer_pay_price}</span> 
-                                 </td>
-                              </tr> 
-                              
-                              <tr class="orderInfo_detail">
-                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:2px solid black;padding:10px">
-                                   <span style="font-weight:700">결제여부 : </span>
+                                   <span style="font-weight:700">결제여부 : </span> 
                                    <span>
                                    	 <c:if test="${order_info.buyer_pay_ok == 'true'}">
                                         	결제 완료
@@ -355,8 +349,14 @@
                                      </c:if>
                                    	</span>
                                  </td>
-                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:2px solid black;border-left:1px solid #bdbdbd;padding:10px">
+                              </tr> 
+                              
+                              <tr class="orderInfo_detail">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:2px solid black;padding:10px">
                                    <span style="font-weight:700">카드승인번호 : </span><span>${order_info.buyer_card_num}</span>
+                                 </td>
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:2px solid black;border-left:1px solid #bdbdbd;padding:10px">
+                                   
                                  </td>
                               </tr>
 					 </c:if>

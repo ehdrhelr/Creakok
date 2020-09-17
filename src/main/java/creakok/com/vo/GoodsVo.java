@@ -17,7 +17,7 @@ public class GoodsVo {
    private long totalPageCount;
    private long gCode;
    private String filterBy;
-
+   
    public GoodsVo(int cp, long totalCount, int ps, List<Goods> list, long gCode, String filterBy) {
       this.cp = cp;
       this.totalCount = totalCount;

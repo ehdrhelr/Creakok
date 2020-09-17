@@ -21,8 +21,10 @@
 
                     <!-- Top Header Content -->
                     <div class="top-header-meta d-flex">
-                        <div >
-                            <a href="project.do" id="makeProject" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:5px 5px;margin-right:15px;">프로젝트 만들기</a>
+                        <div>	
+                            <a href="#" id="makeProject" class="makeProject" onclick="membercheck()" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:5px 5px;margin-right:15px;">
+                            	프로젝트 만들기
+                            </a>
                         </div>
                         <!-- Language Dropdown -->
                         <div class="language-dropdown">
@@ -59,6 +61,25 @@
         </div>
     </div>
 </div>
+
+<script>
+	function membercheck(){
+		if('${member.member_email}' == '') {
+		  	alert('로그인 해주세요.(크리에이터만 이용 가능)');
+		  		location.href="member_login.do";
+		       return false;
+		 }
+		if('${member.member_email}' != '') {
+			if('${member.member_category_code}' != 0){
+				alert('크리에이터 전용 서비스입니다.')
+			}
+			if('${member.member_category_code}' == 0){
+				location.href="project.do";	
+			}
+		  		
+		}		
+	}
+</script>
 
 <!-- ***** Navbar Area ***** -->
 <div class="alazea-main-menu">

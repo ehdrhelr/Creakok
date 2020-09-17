@@ -20,4 +20,5 @@ public class Goods_QnA {
 	private String creator_name;
 	private String goods_qna_answer;
 	private Date goods_qna_adate;
+	private long qna_list_number; //문의 글 번호
 }

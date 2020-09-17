@@ -128,22 +128,22 @@
                         
                     <div class="section-heading">
                         <h2>이 프로젝트 어때요?</h2>
-                        <p>We are leading in the plants service fields.</p>
                     </div>
                         <div class="row">
      
-     
-     
-     				<c:forEach items="${wdate_funding}" var="funding">
- 						<div class="col-12 col-sm-6">
+							<c:forEach items="${funding_list}" var="funding"> 
+                            <!-- Single Benefits Area -->
+                            <div class="col-12 col-sm-6">
 
                                 <div class="single-benefits-area">                   
                                     <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
                                         </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
                                             <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
-                                                 </span></a><a href="shop-details.html">
+												</span></a><a href="funding_detail.do?funding_index=${funding.funding_index}">
                                                      <img src="${funding.funding_repre_pic}" alt="">
                                                 </a>
+                                            
+        
                                         </div>
                                     
                                     <div class="CommonCard_info__1f4kq">
@@ -156,55 +156,10 @@
                                         </a>
                                     <div style="margin-bottom: 10px;">
                                         <span class="RewardProjectCard_category__2muXk" style="color:#90949C; font-size:13px;">
-                                        	<c:if test="${funding.funding_category_code == 200}">
-                                        		테크/가전
-                                        	</c:if>
-                                         	<c:if test="${funding.funding_category_code == 201}">
-                                        		패션/잡화
-                                        	</c:if>
-                                        	<c:if test="${funding.funding_category_code == 202}">
-                                        		뷰티
-                                        	</c:if>
-                                        	<c:if test="${funding.funding_category_code == 203}">
-                                        		홈리빙
-                                        	</c:if>
-                                        	<c:if test="${funding.funding_category_code == 204}">
-                                        		디자인소품
-                                        	</c:if>
-                                        	<c:if test="${funding.funding_category_code == 205}">
-                                        		여행/레저
-                                        	</c:if>
-                                        	<c:if test="${funding.funding_category_code == 206}">
-                                        		스포츠/모빌리티
-                                        	</c:if>
-                                        	<c:if test="${funding.funding_category_code == 207}">
-                                        		반려동물
-                                        	</c:if>
-                                        	<c:if test="${funding.funding_category_code == 208}">
-                                        		모임
-                                        	</c:if>
-                                        	<c:if test="${funding.funding_category_code == 209}">
-                                        		공연/컬쳐
-                                        	</c:if>
-                                        	<c:if test="${funding.funding_category_code == 210}">
-                                        		소셜/캠페인
-                                        	</c:if>
-                                        	<c:if test="${funding.funding_category_code == 211}">
-                                        		교육/키즈
-                                        	</c:if>
-                                        	<c:if test="${funding.funding_category_code == 212}">
-                                        		게임/취미
-                                        	</c:if>
-                                        	<c:if test="${funding.funding_category_code == 213}">
-                                        		출판
-                                        	</c:if>
-                                         	<c:if test="${funding.funding_category_code == 214}">
-                                        		기부/후원
-                                        	</c:if>                                       	
-                                      			
+                                        	${funding.funding_category_name}
                                         </span>
                                         <span class="RewardProjectCard_makerName__2q4oH" style="color:#90949C; font-size:13px;">
-                                           		${funding.creator_name}
+                                           	${funding.creator_name}
                                         </span>
                                     </div>
                                     </div>
@@ -226,22 +181,23 @@
                                         </div>
                                           
                                         <span class="RewardProjectCard_amount__2AyJF" style="color:#fc5230; font-size:18px; font-weight:bold">
-                                            ${funding.percentage}%
+                                             ${funding.percentage}%
                                         </span>                                      
                                         
                                         <span class="RewardProjectCard_amount__2AyJF" style="color:#90949C; font-size:16px; margin-right:5%;font-weight:bold">
                                             ${funding.funding_amount}
                                         </span>
                                         <span class="RewardProjectCard_days__3eece RewardProjectCard_isAchieve__1LcUu">
-                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">17일</span>
+                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">${funding.restdays}일</span>
                                             <span class="RewardProjectCard_remainingDayText__2sRLV" style="color:#90949C;">남음</span>
                                             <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
                                      </div>
                                     </div>  
                                 </div>
-                            </div>        
-                    </c:forEach>   
-                            
+       
+                            </div>
+						</c:forEach>
+						
                         </div>
                     </div>
                 </div>
@@ -418,6 +374,13 @@
                                          
                       </section>                    
                   </div>
+                                     
+
+                            
+                
+                                   
+                                                               
+                            
                                 
     </section>
     <!-- ##### About Area End ##### -->
@@ -522,42 +485,47 @@
     
 
 
-
     <!-- ##### Testimonial Area Start ##### -->
     <section class="testimonial-area section-padding-100 bg-gray" style="margin-top:80px">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="testimonials-slides owl-carousel">
-		             <c:forEach items="${creator3}" var="creator3">
-		                   <div class="single-testimonial-slide">
+		             
+			
+                       
+                      <c:forEach items="${creator_list}" var="creator">
+                        <div class="single-testimonial-slide">
                             <div class="row align-items-center">
                                 <div class="col-12 col-md-6">
                                     <div class="testimonial-thumb">
-                                        <img src="img/community/${creator3.creator_profile_photo}" alt="">
+                                       
+                                        <img src="img/community/${creator.creator_profile_photo}" alt="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="testimonial-content">
                                         <!-- Section Heading -->
                                         <div class="section-heading">
+                                     
                                         	<p>이달의 크리에이터</p>
-                                            <h2>${creator3.creator_name}</h2>
-                                            <p>${creator3.creator_profile_content}</p>
+                                            <h2>${creator.creator_name}</h2>
                                         </div>
-                                        <!--  <p>“크리에이터의 소갯말이 나올것이여어어어어어어어어”</p>  -->
+                                    
+                                        <p>${creator.creator_profile_content}</p>
                                         <div class="testimonial-author-info">
-                                           <!--  <h6>채널 이름</h6>  -->
-                                            <p stlye="color:#828282">채널 바로가기</p>
-                                            <a href="${creator3.creator_link_youtube}" style="display:inline-block;margin-top:-12px"> <img src="img/community/youtube.png" style="width:45px">	</a>
-                                            <a href="${creator3.creator_link_instagram}" style="display:inline-block;margin-top:13px;margin-left:5px"> <img src="img/community/instagram.png" style="width:35px">	</a>
-										</div>
+                                           
+                                            <h6 style="font-size:1em">채널 바로가기</h6>
+                                            <a href="https://www.youtube.com/" style="display:inline-block;margin-top:10px;margin-right:5px"><img src="img/community/youtube.png" style="width:49px"></a>
+                                            <a href="https://www.instagram.com" style="display:inline-block;margin-top:8px"><img src="img/community/instagram.png" style="width:35px"></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>      
+                          
+                            </div>
                         </div>
-                      </c:forEach>
-                        
+					   </c:forEach>
+
                     </div>
                 </div>
             </div>
@@ -565,10 +533,10 @@
     </section>
     <!-- ##### Testimonial Area End ##### -->
 
-    	<div id="preloder">
-		<div class="loader"></div>
-	</div>
+
     
+    
+
     
 <!--크리에이터띠 싱단 배너-->
    <section class="subscribe-newsletter-area" style="background-image:linear-gradient(90deg,#fc5230 10%,#2da498 100%);">
@@ -578,33 +546,16 @@
                     <div class="section-heading text-center">
                         <h2 style="color:white; ">소통하는 사회, 크리콕!</h2>
                         <p style="color:white">크리에이터와 대중이 자유롭게 "소통하는 공간", 크리콕</p>
-                      <p class="crowdy-btn-introduction" >
+                      	<p class="crowdy-btn-introduction" >
                           <a href="about.do"style="color:white; text-align:center">자세히 알아보기</a>
                         </p>
                        
                     </div>
                 </div>
-                
-                
-                <!--
-                    <div class="col-12 col-lg-6">
-                        <div class="subscribe-form">
-                            <form action="#" method="get">
-                                <input type="email" name="subscribe-email" id="subscribeEmail" placeholder="Enter your email">
-                                <button type="submit" class="btn alazea-btn">SUBSCRIBE</button>
-                            </form>
-                        </div>
-                    </div>
-                -->
-         
-    
-
         <!-- Subscribe Side Thumbnail -->
         <div class="subscribe-side-thumb wow fadeInUp" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInUp;">
-          
-        </div>
-       
-    </section>
+      </div>
+   </section>
     
 <!--크리에이터띠 싱단 배너끝-->
 	<!-- Hero Section -->
@@ -613,38 +564,44 @@
     
 	<section class="hero__section">
         <div class="section-heading text-center">
-          <h2 style="margin-bottom:10px">크리콕 커뮤니티</h2>
-           <!-- <form action="community_search.do" method="post" >  --> 
-                  <input style="width:300px; height:35px; background-color:#b7c7c5;border:0;opacity:0.8" type="text" name="communitySearch" id="communitySearch" placeholder="크리에이터를 검색해보세요.">
-                    <button type="submit" onclick="searchCreator()" style="margin-left:3px"> <img src="img/core-img/search.png"></button>
-     	   <!-- </form>  --> 
+
+                        <h2 style="margin-bottom:10px">크리콕 커뮤니티</h2>
+                       <!-- <p>크리에이터를 검색해보세요.</p>-->
+               
+                    <input type="search" name="searchCreator" id="searchCreator" placeholder="크리에이터를 검색해보세요." style="width:300px; height:35px; background-color:#b7c7c5;opacity:0.7;border:0">
+                      <button type="submit" onclick="searchCreator()"> <img src="img/core-img/search.png"></button>
+            
         </div>
      
-		<div class="hero-slider" id="search_creator">
+        
+		<div class="hero-slider" id="search_creator_result">
 			<c:forEach items="${all_creator}" var="all_creator">
 				<div class="slide-item">
-					<a class="fresco" href="#" onclick="location.href='board_page?creator_name=${all_creator.creator_name}'" data-fresco-group="projects">
+					<a class="fresco" href="#" data-fresco-group="projects" onclick="location.href='board_page?creator_name=${all_creator.creator_name}'">
 						<img src="img/community/${all_creator.creator_profile_photo}" alt="">
 					</a>
 					
 					<h2 style="text-align:center">${all_creator.creator_name}</h2>
 					<p style="text-align:center">${all_creator.creator_profile_content}</p>
-					
 				</div>
 			</c:forEach>
 		</div>
 		
+		<div class="hero-text-slider">
 		
-		<div class="hero-text-slider"  id="search_creator_text">
-				<div class="text-item">
-				</div>	
+			<div class="text-item">
+
+			</div>
+
 		</div>
 		
 	</section>
 	<!-- Hero Section end -->
 	
 	
-	          <!--  ##### 커뮤니티 검색 Ajax #####  -->
+ 
+          <!--  ##### 크리에이터 검색 Ajax #####  -->
+          <script src="js/js_botoTest/slick.min.js"></script>
       	  <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>					                       
                <script>
 	                        function searchCreator(){
@@ -655,54 +612,45 @@
 								//console.log("jsonData: "+jsonData);
 								//var jsonData = JSON.stringify(responseData);
 								//var GoodsVo = JSON.parse(jsonData);
-								var creator_search = $('#communitySearch').val();
-								console.log(creator_search);
+
 								$.ajax({ 
-									 url: "community_search.do", 
+									 url: "search_creator.do", 
 									 type: "GET",
 									 async: true,
-									 data: {creator_name: $('#communitySearch').val()},
   								  	 dataType: "json",
+  								  	 data:{"creator_name" : $('#searchCreator').val()},
 									 contentType: "application/json; charset=UTF-8", //★★ 요놈 절대 빼먹으면안됨
 									 error:function(request,status,error){
 									        alert("실패"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)   	
 									 },
 									 success: function(responseData){
 										console.log(responseData);
-										//JSONObject jsonObj = XML.toJSONObject(responseData);
-										//String json = jsonObj.toString();
 										var jsonData = JSON.stringify(responseData);
 										var search_creator = JSON.parse(jsonData);
 										console.log(search_creator);
-										//console.log("rRRRRRRRRRRRRRRRR: "+jsonData);
 										
-										var html = "";
-										var html2 = "";
-										for(var i=0; i<search_creator.length; i++) {
-											
-											html += "<div class='slide-item'>";
-											html += "<a class='fresco' href='#' onclick='location.href=board_page?creator_name="+search_creator[i].creator_name+"' data-fresco-group='projects'>";
-											html += "<img src='img/community/"+search_creator[i].creator_profile_photo+"' alt=''>";
-											html += "</a>";
-											html += "<h2 style='text-align:center'>"+search_creator[i].creator_name+"</h2>";
-											html += "<p style='text-align:center'>"+search_creator[i].creator_profile_content+"</p>";
-											html += "</div>";
-	                                        
-	                                        $("#search_creator").html(html);
-	                                        
-										}
-											
+										//var html2 = "";
+										//$('#search_creator_result').empty();
+										//for(var i=0; i<search_creator.length; i++) {
+										//	html2 += "<div class='slide-item'>";
+										//	html2 += "<a class='fresco' href='#' data-fresco-group='projects'>";
+										//	html2 += "<img src='img/community/"+search_creator[i].creator_profile_photo+"' alt=''>";
+										//	html2 += "</a>";
+										//	html2 += "<h2 style='text-align:center'>"+search_creator[i].creator_name+"</h2>";
+										//	html2 += "<p style='text-align:center'>"+search_creator[i].creator_profile_content+"</p>";
+										//	html2 += "</div>";
+										//}
+										
+										//$('#search_creator_result').html(html2);
 									}
 								})
-								
 	                        }
+	                        
+
+	    				
 			</script>
-           <!--  ##### 커뮤니티 검색  Ajax End #####  -->     
-			<div class="hero-text-slider"  id="search_creator_text">
-				<div class="text-item">
-				</div>	
-		</div>
-	
+           <!--  ##### 크리에이터 검색 End #####  -->   
+ 
     
     	<!--====== Javascripts & Jquery ======-->
 	<script src="js_botoTest/vendor/jquery-3.2.1.min.js"></script>
@@ -714,6 +662,7 @@
     
     
     
+ 
     <!-- ##### Product Area Start ##### -->
     <section class="new-arrivals-products-area bg-gray section-padding-100">
         <div class="container">
@@ -729,12 +678,12 @@
 
             <div class="row">
 
-                <!-- Single Product Area -->
+               <c:forEach var="goods" items="${goods_list}" >  
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Product Image -->
                         <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/9.jpg" alt=""></a>
+                            <a href="goods_detail.do?goods_index=${goods.goods_index}"><img src="img/goods/${goods.goods_repre_pic}" alt=""></a>
                             <!-- Product Tag -->
                             <div class="product-tag">
                                 <a href="#">Hot</a>
@@ -743,74 +692,19 @@
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
+                       	 <p style="margin-bottom:5px;text-align:left">${goods.creator_name}</p>
+                            <a href="goods_detail.do?goods_index=${goods.goods_index}">
+                                <p style="text-align:left">${goods.goods_name}</p>
                             </a>
-                            <h6>$10.99</h6>
+                            <h6 style="text-align:left"><strong>${goods.goods_price}</strong> 원</h6>
                         </div>
                     </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="200ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/10.jpg" alt=""></a>
-
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="300ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/11.jpg" alt=""></a>
-
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="400ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/12.jpg" alt=""></a>
-                            <!-- Product Tag -->
-                            <div class="product-tag sale-tag">
-                                <a href="#">Hot</a>
-                            </div>
-
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
+              
+               	 </div>
+				</c:forEach>
+				
                 <div class="col-12 text-center">
-                    <a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300" class="btn alazea-btn" style="color:white;background-color:#fc5230;font-size:1.1em;font-weight:600;height:40px;width:70px">더보기</a>
+ 	                 <a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300" class="btn alazea-btn" style="background-color:#fc5230;color:white;font-size:1.2em;font-weight:700;height:40px">더보기</a>
                 </div>
 
             </div>
@@ -828,7 +722,7 @@
                     <!-- Section Heading -->
                     <div class="section-heading">
                         <h2>문의하기</h2>
-                        <p>크리콕 팀과 소통을 원하시다면 메세지를 보내주세요!</p>
+                        <p>문의사항이 있을 경우 글 남겨주시면 이메일로 답변드리겠습니다.</p>
                     </div>
                     <!-- Contact Form Area -->
                     <div class="contact-form-area mb-100">
@@ -851,11 +745,11 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="메세지"></textarea>
+                                        <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="문의 내용"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn alazea-btn mt-15" style="color:white;background-color:#2da498;font-size:1.1em;font-weight:600;height:40px;width:70px">메세지 보내기</button>
+                                    <button type="submit" class="btn alazea-btn mt-15" style="background-color:#2da498;color:white;font-size:1.2em;font-weight:700;height:40px">문의하기</button>
                                 </div>
                             </div>
                         </form>

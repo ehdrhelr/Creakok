@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="creakok.com.mapper.IndexMapper">
+	<select id="selectFundingByWdate"  resultType="Funding">
+		<![CDATA[select *
+		from 
+		 (
+		  select *
+		  from FUNDING
+		  order by FUNDING_WDATE desc
+		 )
+		where ROWNUM <= 4]]>
+	</select>
+ 
+ 	<select id="selectFundingCategoryN"  resultType="String" parameterType="long">
+ 		select FUNDING_CATEGORY_NAME from FUNDING_CATEGORY where FUNDING_CATEGORY_CODE=${category_code}
+ 	</select>   
+ 	
+	<select id="selectCreator"  resultType="Creator">
+		<![CDATA[select *
+		from 
+		 (
+		  select *
+		  from CREATOR
+		  order by CREATOR_NAME desc
+		 )
+		where ROWNUM <= 3]]>
+	</select> 	
+	
+	<select id="selectGoodsByReview" resultType="Goods">
+		<![CDATA[select *
+		from 
+		 (
+		  select *
+		  from GOODS
+		  order by GOODS_REVIEW_NUMBER desc
+		 )
+		where ROWNUM <= 4]]>
+	</select> 
+	
+	<select id="selectAllCreator" resultType="Creator">
+		select * from CREATOR
+	</select>
+	
+	<select id="selectCreatorBySearch" resultType="Creator" parameterType="String">
+		select * from CREATOR where CREATOR_NAME like '%'||#{creator_name}||'%'
+	</select>	
+</mapper>

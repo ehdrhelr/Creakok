@@ -22,21 +22,6 @@
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <!-- BOTO TEST -->
-	<meta name="description" content="Boto Photo Studio HTML Template">
-	<meta name="keywords" content="photo, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
-	<link rel="stylesheet" href="css/css_boto/fresco.css"/>
-	<link rel="stylesheet" href="css/css_boto/slick.css"/>
-
-	<!-- Main Stylesheets -->
-	<link rel="stylesheet" href="css/css_boto/style.css"/>
 	
 	<!-- hcbae Stylesheets -->
     <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>

@@ -403,6 +403,7 @@
                                 <a href="#">Hot</a>
                             </div>
                             
+
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">

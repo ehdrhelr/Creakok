@@ -374,7 +374,7 @@
                         <c:if test="${!empty qna_list.qna_list}">
                          <c:forEach items="${qna_list.qna_list}" var="qna_list">
                              <tr>
-                                  <td style="padding:1.5px !important;">${qna_list.goods_qna_index}</td>
+                                  <td style="padding:1.5px !important;">${qna_list.qna_list_number}</td>
                                   <td style="padding:1.5px !important;">
                                     <a href="goods_one_qna.do?goods_qna_index=${qna_list.goods_qna_index}&goods_index=${qna_list.goods_index}#fix_point" >
                                         <p style="font-size:10pt;color:black;width:200px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;margin:0;text-align:center;padding:0">${qna_list.goods_qna_subject}</p>
@@ -524,6 +524,8 @@
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div>
+
+
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">

@@ -113,7 +113,18 @@
                                 <c:forEach items="${cart_list}" var="cartunit">
                                  <tr>
                                     <td class="cart_product_img">
-                                        <a href="#"><img src="img/goods/${cartunit.goods_repre_pic}" alt="Product"></a>
+                                        <a href="goods_detail.do?goods_index=${cartunit.goods_index}">
+                                            <c:forEach var="cart" items="${goods_stock}">
+                                            	<c:if test="${cart.goods_name == cartunit.goods_name}">
+	    											<c:if test="${cart.goods_stock_number == 0}">
+	    												<img src="img/goods/sold_out.png" alt="Product">
+	    											</c:if>
+	    											<c:if test="${cart.goods_stock_number != 0}">
+	    												<img src="img/goods/${cartunit.goods_repre_pic}" alt="Product">
+	    											</c:if>
+    											</c:if>
+    										</c:forEach>
+                                        </a>
                                         <h5>${cartunit.goods_name}</h5>
                                     </td>
                                     <td class="qty">
@@ -123,8 +134,39 @@
                                             <span class="qty-plus" onclick="plusQuantity('${listCount}');"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                         </div>
                                     </td>
-                                    <td class="price"><span class="unit_price"><script>document.write( addComma('${cartunit.unit_price}') );</script>원</span></td>
-                                    <td class="total_price"><span class="unit_total_price"><script>document.write( addComma('${cartunit.unit_price*cartunit.unit_count}') );</script>원</span></td>
+                                    <td class="price">
+                                    	 <c:forEach var="cart" items="${goods_stock}">
+                                           	<c:if test="${cart.goods_name == cartunit.goods_name}">
+    											<c:if test="${cart.goods_stock_number == 0}">
+    												<span class="unit_price" id="price_stock">품절</span>
+    											</c:if>
+    											<c:if test="${cart.goods_stock_number != 0}">
+				                                    <span class="unit_price" id="price_stock">
+				                                   	  <script>document.write( addComma('${cartunit.unit_price}') );
+					                                   </script>
+					                            	    원
+				                                    </span>
+    											</c:if>
+   											</c:if>
+    									</c:forEach>
+                                    </td>
+                                    <td class="total_price">
+                                        <c:forEach var="cart" items="${goods_stock}">
+                                           	<c:if test="${cart.goods_name == cartunit.goods_name}">
+    											<c:if test="${cart.goods_stock_number == 0}">
+    												<span class="unit_total_price">품절</span>
+    											</c:if>
+    											<c:if test="${cart.goods_stock_number != 0}">
+			                                    	<span class="unit_total_price">
+			                                    		<script>
+			                                    			document.write( addComma('${cartunit.unit_price*cartunit.unit_count}') );
+			                                    		</script>
+			                                    		원
+			                                    	</span>
+    											</c:if>
+   											</c:if>
+    									</c:forEach>
+                                    </td>
                                     <td class="action"><a href="#"><i class="icon_close" onclick="deleteCart('${listCount}')"></i></a></td>
                                 </tr>
                                 <c:set var="listCount" value="${listCount + 1}"/>
@@ -153,7 +195,7 @@
                             <h5 id="TotalPrice"></h5>
                         </div>
                         <div class="checkout-btn hcbae_checkout_btn">
-                            <a href="#" class="btn alazea-btn w-100" onclick="location.href='order.do';">주문하기</a>
+                            <a href="#" class="btn alazea-btn w-100" onclick="stockCheck()">주문하기</a>
                         </div>
                     </div>
                 </div>
@@ -171,7 +213,6 @@
     
     
     <script type="text/javascript">
-
 
     function deleteCart(count){
         //alert('????:'+count);
@@ -274,8 +315,36 @@
     }
     calSubTotal();
     
-    </script>
     
+    function stockCheck(){
+    	let arr = new Array();
+    	
+        <c:forEach var="cart" items="${goods_stock}">
+        	arr.push({goods_stock:'${cart.goods_stock_number}'});
+        	console.log(arr);
+        </c:forEach>
+
+        arr.some(function(v) {
+         	  if (v.goods_stock == 0) {
+         	    console.log(v); 
+         	    alert('품절된 상품은 구매하실 수 없습니다');
+         	    return (v.goods_stock ==0);
+         	  } 
+        });
+
+        let flag2 = arr.every(val => {return val.goods_stock != 0});
+        console.log(flag2);      
+        if( flag2 !== false ){
+        	console.log('2');
+        	location.href="order.do";
+        } else if ( flag2 == false ){
+        	console.log('3');
+        	location.href="#";
+        }
+   	 	
+    }
+    </script>
+    <!--  -->
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
