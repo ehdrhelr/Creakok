@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import creakok.com.domain.Funding;
 import creakok.com.domain.Order_Info;
+import creakok.com.domain.Funding_payinfo;
 import creakok.com.mapper.PayMapper;
 
 @Service
@@ -22,4 +23,8 @@ public class PayServiceImpl implements PayService {
 	public void insertOneOrder(Order_Info order_info) {
 		paymapper.insertOneOrder(order_info);
 	}
+	@Override
+	public void insertFunding_order(Funding_payinfo funding_payinfo) {
+	}
+
 }

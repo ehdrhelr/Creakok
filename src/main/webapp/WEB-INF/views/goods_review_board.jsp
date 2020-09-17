@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.LikeType"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -375,7 +375,7 @@
                         <c:if test="${!empty review.review_list}">
                          <c:forEach items="${review.review_list}" var="review_list2">
                              <tr>
-                                  <td style="padding:1.5px !important;">${review_list2.goods_review_index}</td>
+                                  <td style="padding:1.5px !important;">${review_list2.list_number}</td>
                                   <td style="padding:1.5px !important;">
                                   <c:if test="${review_list2.goods_review_rating == 1}">
                                                                                                 ★

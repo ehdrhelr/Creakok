@@ -50,4 +50,7 @@ public interface CreatorBoardMapper {
 	// 정렬 기능
 	List<Board> getListResultByFilter(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, 
 			@Param("board_filterBy") String board_filterBy, @Param("creator_name") String creator_name);
+	
+	// 크리에이터로 커뮤니티 검색(index)
+	List<Creator> searchCommunity(@Param("creator_name") String creator_name);
 }

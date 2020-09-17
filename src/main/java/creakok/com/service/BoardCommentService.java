@@ -2,7 +2,10 @@ package creakok.com.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import creakok.com.domain.Comment;
+import creakok.com.domain.Creator;
 
 public interface BoardCommentService {
 	// 댓글 조회

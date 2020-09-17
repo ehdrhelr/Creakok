@@ -18,4 +18,7 @@ public interface GoodsReviewMapper {
 	void deleteOneReview(long goods_review_index);
 	void insertOneReview(Goods_Review goods_review);
 	void updateOneReview(Goods_Review goods_review);
+	
+	void updateReviewNumber(@Param(value = "goods_review_count") long goods_review_count, @Param(value = "goods_index") long goods_index);
+	void minusReviewNumber(@Param(value = "goods_index") long goods_index);
 }

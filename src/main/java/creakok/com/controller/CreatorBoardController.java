@@ -151,7 +151,7 @@ public class CreatorBoardController {
 			@RequestParam long board_index) {
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("community_board_content");
+		mv.setViewName("community_board_content2");
 		
 		Board board = creatorBoardService.contentS(board_index);
 		

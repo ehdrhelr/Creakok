@@ -155,8 +155,10 @@ public class MemberController {
 	}
 	
 	@RequestMapping("member_mypage.do")
-	public ModelAndView mypage(String member_email, HttpServletRequest request, HttpSession session) {
+	public ModelAndView mypage(HttpServletRequest request, HttpSession session) {
 		String order_cp = request.getParameter("order_cp");
+		Member member = (Member)session.getAttribute("member");
+		String member_email = member.getMember_email();
 		
 		Member_OrderInfoVo order_infoVo = (Member_OrderInfoVo)session.getAttribute("order_infoVo");
 		
@@ -178,6 +180,7 @@ public class MemberController {
 		int ps = 5;	
 
 		Member_OrderInfoVo order_list = mService.selectPerPageOrder(cp, ps, member_email);
+		session.setAttribute("order_infoVo", order_list);
 		order_list.setOrder_cp(cp);
 		order_list.setOrder_ps(ps);
 		order_list.setMember_email(member_email);

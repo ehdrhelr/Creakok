@@ -32,6 +32,7 @@ public class Funding {
 	private List<Funding> listrelatedFunding;
 	private Funding_qnaVo funding_qnaVo;
 	private long funding_qna_totalCount;
+	private String creator_profil_content;
 	//private List<Funding_qna> funding_qna;
 	
 }

@@ -57,9 +57,7 @@
           line-height: 1.5;
           margin-bottom: 6.5px;
         }
-        p {
-          color:black;
-        }
+
     </style>
 </head>
 
@@ -519,6 +517,8 @@
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div>
+
+
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
