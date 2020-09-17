@@ -31,6 +31,8 @@ public class GoodsReviewServiceImpl implements GoodsReviewService {
 		Goods_ReviewVo goods_review_vo2 = new Goods_ReviewVo(review_cp, review_totalCount, review_ps, goods_index, review_list);
 		goods_review_vo2.setReview_totalPageCount(goods_review_vo2.getReview_totalPageCount());
 		
+
+			
 		log.info("############# selectPerPageReview review_cp: "+review_cp);
 		log.info("############# selectPerPageReview review_ps: "+review_ps);
 		log.info("############# selectPerPageReview goods_index: "+goods_index);
