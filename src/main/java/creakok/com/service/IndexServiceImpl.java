@@ -10,6 +10,7 @@ import creakok.com.domain.Funding;
 import creakok.com.domain.Goods;
 import creakok.com.mapper.AboutMapper;
 import creakok.com.mapper.IndexMapper;
+import creakok.com.vo.Funding_searchVo;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
@@ -54,5 +55,21 @@ public class IndexServiceImpl implements IndexService {
 		List<Creator> search_creator = indexMapper.selectCreatorBySearch(creator_name);
 		
 		return search_creator;
+	}
+	@Override
+	public Funding_searchVo getSearchFundingVo(int funding_cp, int funding_ps, String keyword){ //펀딩 검색
+		long funding_totalCount = indexMapper.selectFundingCountBySearch(keyword);
+		Funding_searchVo funding_searchVo = new Funding_searchVo(funding_cp, funding_totalCount, funding_ps, null, keyword);
+		List<Funding> funding_result_list = indexMapper.selectSearchFunding(funding_searchVo);
+		
+		Funding_searchVo funding_searchVo2 = new Funding_searchVo(funding_cp, funding_totalCount, funding_ps, funding_result_list, keyword);
+		funding_searchVo2.setFunding_totalPageCount(funding_searchVo2.calTotalPageCount());
+		
+		return funding_searchVo2;
+	}
+	
+	@Override
+	public long selectFundingCountBySearch(String keyword) { //펀딩 검색결과 총갯수
+		return indexMapper.selectFundingCountBySearch(keyword);
 	}
 }

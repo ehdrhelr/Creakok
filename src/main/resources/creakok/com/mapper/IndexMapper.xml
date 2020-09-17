@@ -47,4 +47,17 @@
 	<select id="selectCreatorBySearch" resultType="Creator" parameterType="String">
 		select * from CREATOR where CREATOR_NAME like '%'||#{creator_name}||'%'
 	</select>	
+	
+	<select id="selectSearchFunding" resultType="Funding" parameterType="Funding_searchVo">
+		<![CDATA[select * from (select ROWNUM rnum, aa.* from
+		(select * from FUNDING where FUNDING_SUBJECT like '%'||#{keyword}||'%' or 
+		CREATOR_NAME like '%'||#{keyword}||'%' order by FUNDING_WDATE desc) aa)
+		where rnum>${(funding_cp-1)*funding_ps} and rnum<=${funding_cp*funding_ps}
+		]]>
+    </select>   
+    
+    <select id="selectFundingCountBySearch" resultType="long" parameterType="String">
+		select COUNT(FUNDING_INDEX) from FUNDING where FUNDING_SUBJECT like '%'||#{keyword}||'%' or 
+		CREATOR_NAME like '%'||#{keyword}||'%'
+	</select>	
 </mapper>

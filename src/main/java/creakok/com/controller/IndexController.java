@@ -128,7 +128,7 @@ public class IndexController {
 		//(1) cp 
 		int funding_cp = 1;
 		if(funding_cpStr == null) {
-				funding_cp = 1;
+			funding_cp = 1;
 		}else {
 			funding_cpStr = funding_cpStr.trim();
 			funding_cp = Integer.parseInt(funding_cpStr);
@@ -137,7 +137,7 @@ public class IndexController {
 		
 		//(2) ps 
 		int funding_ps = 3;		
-		Funding_searchVo funding_searchVo = fundingService.getSearchFundingVo(funding_cp, funding_ps, keyword);
+		Funding_searchVo funding_searchVo = indexService.getSearchFundingVo(funding_cp, funding_ps, keyword);
 		funding_searchVo.setFunding_cp(funding_cp);
 		funding_searchVo.setFunding_ps(funding_ps);
 		funding_searchVo.setKeyword(keyword);
@@ -152,7 +152,7 @@ public class IndexController {
 		session.setAttribute("funding_result", funding_searchVo);
 		
 		//검색결과 총 갯수
-		long funding_result_amount = fundingService.selectFundingCountBySearch(funding_keyword);
+		long funding_result_amount = indexService.selectFundingCountBySearch(funding_keyword);
 		session.setAttribute("funding_result_amount", funding_result_amount);
 				
 		

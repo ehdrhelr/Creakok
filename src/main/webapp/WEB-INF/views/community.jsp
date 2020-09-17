@@ -311,7 +311,7 @@
 				         <TR align='center' noshade>
 				             <TD >${board.board_index}</TD>
 				             <TD align="left">
-				                 <a href="board_content?board_index=${board.board_index}" style="overflow:hidden;text-overflow:ellipsis;white-space: nowrap;margin:0;padding:0">
+				                 <a href="board_content?board_index=${board.board_index}" style="overflow:hidden;text-overflow:ellipsis;white-space: nowrap;margin:0;padding:0;color:black">
 				                 ${board.board_subject}
 				                 </a>
 				             </TD>
@@ -340,7 +340,7 @@
          	<c:if test="${empty listResult.board_searchName}">
             <c:forEach begin="${listResult.startPage}" end="${listResult.endPage}" var="i">
            		 <div style="margin-top:15px">
-		                	<a href="board_page?board_cp=${i}&board_filterBy=${listResult.board_filterBy}#fix_point">
+		                	<a href="board_page?board_cp=${i}&board_filterBy=${listResult.board_filterBy}#fix_point" style="color:black">
 		                <c:choose> 
 		                <c:when test="${i==listResult.currentPage}">
 		                    <strong>${i}</strong>
