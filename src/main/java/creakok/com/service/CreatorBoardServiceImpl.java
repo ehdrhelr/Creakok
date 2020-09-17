@@ -62,8 +62,8 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 	}
 	// 글삭제
 	@Override
-	public void deleteBoard(long board_index) {
-		mapper.deleteBoard(board_index);
+	public void deleteBoard(long board_index, String creator_name) {
+		mapper.deleteBoard(board_index, creator_name);
 	}
 	// 글수정
 	@Override

@@ -17,13 +17,13 @@ IMP.request_pay({
     pg : 'html5_inicis',
     pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
-    name : '주문명:결제테스트',
-    amount : 14000,
-    buyer_email : 'iamport@siot.do',
-    buyer_name : '구매자이름',
-    buyer_tel : '010-1234-5678',
-    buyer_addr : '서울특별시 강남구 삼성동',
-    buyer_postcode : '123-456'
+    name : '${payInfo.product_name}',
+    amount : '${payInfo.price_amount}',
+    buyer_email : '${payInfo.email}',
+    buyer_name : '${payInfo.delivery_name}',
+    buyer_tel : '${payInfo.delivery_phone}',
+    buyer_addr : '${payInfo.address_road}'+'${payInfo.address_detail}',
+    buyer_postcode : '${payInfo.address_num}'
 }, function(rsp) {
     if ( rsp.success ) {
         var msg = '결제가 완료되었습니다.';
@@ -31,12 +31,17 @@ IMP.request_pay({
         msg += '상점 거래ID : ' + rsp.merchant_uid;
         msg += '결제 금액 : ' + rsp.paid_amount;
         msg += '카드 승인번호 : ' + rsp.apply_num;
+       	
+        location.href="goods_pay_success.do?success_num="+rsp.imp_uid+"&success_id="+rsp.merchant_uid+"&success_amount="+rsp.paid_amount+"&success_card_num="+rsp.apply_num+"&success_pay="+rsp.success+
+        		"&buyer_name="+rsp.buyer_name+"&product_name="+rsp.name+"&amount="+rsp.amount+"&buyer_email="+rsp.buyer_email+"&buyer_phone="+rsp.buyer_tel+
+        		"&buyer_addr="+rsp.buyer_addr+"&buyer_postcode="+rsp.buyer_postcode;
+        
     } else {
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
+        
+        location.href="goods_pay_fail.do?error_msg="+rsp.error_msg;
     }
-
-    alert(msg);
 });
 </script>
   </body>

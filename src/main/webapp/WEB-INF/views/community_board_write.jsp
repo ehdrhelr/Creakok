@@ -1141,7 +1141,7 @@
 
 	function goWrite() {
 	
-		var summernote = $("#summernote").val();
+		var summernote = $("#summernote").val();		
 		var board_subject = $("#board_subject").val();
 
 		if(board_subject == '') {
@@ -1151,7 +1151,7 @@
 			})
 			return false;
 		}
-		if(summernote == ''){
+		if(summernote == '' || summernote == ' '){
 			Toast.fire({
 				icon: 'info',
 				title: '내용을 입력해주세요.'

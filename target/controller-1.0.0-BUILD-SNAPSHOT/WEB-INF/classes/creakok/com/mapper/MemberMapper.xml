@@ -4,29 +4,75 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="creakok.com.mapper.MemberMapper">
 
-	<select id="selectAllByEmail" parameterType="String" resultType="Member">
-		select * from MEMBER where MEMBER_EMAIL=#{member_email}
-	</select>
+  <select id="selectAllByEmail" parameterType="String" resultType="Member">
+    select * from MEMBER where MEMBER_EMAIL=#{member_email}
+  </select>
   
-	<select id="selectByEmail" parameterType="String" resultType="Member">
-    	select MEMBER_EMAIL from MEMBER where MEMBER_EMAIL=#{member_email}
-	</select>
+  <select id="selectByEmail" parameterType="String" resultType="Member">
+    select MEMBER_EMAIL from MEMBER where MEMBER_EMAIL=#{member_email}
+  </select>
   
-	<select id="selectByName" parameterType="String" resultType="Member">
-    	select MEMBER_NAME from MEMBER where MEMBER_NAME=#{member_name}
-	</select>
+  <select id="selectByName" parameterType="String" resultType="Member">
+    select MEMBER_NAME from MEMBER where MEMBER_NAME=#{member_name}
+  </select>
+
+  <select id="selectMemberOrigin" parameterType="String" resultType="String">
+    select MEMBER_ORIGIN_CODE from MEMBER where MEMBER_EMAIL=#{member_email}
+  </select>
   
-	<update id="updatePassword" parameterType="MEMBER">
-    	update MEMBER set MEMBER_PASSWORD=#{member_password} where MEMBER_EMAIL=#{member_email}
-	</update>
+  <update id="updatePassword" parameterType="MEMBER">
+    update MEMBER set MEMBER_PASSWORD=#{member_password} where MEMBER_EMAIL=#{member_email}
+  </update>
   
-	<insert id="insertMember" parameterType="MEMBER">
-		insert into MEMBER(member_email, member_name, member_password, member_joindate) 
-      		values(#{member_email}, #{member_name}, #{member_password}, SYSDATE)
-	</insert>
+  <update id="updateNameByIndex" parameterType="MEMBER">
+    update MEMBER set MEMBER_NAME=#{member_name} where MEMBER_INDEX=#{member_index}
+  </update>
   
-	<delete id="deleteMember" parameterType="String">
-    	delete from MEMBER where MEMBER_EMAIL=#{member_email}
- 	</delete>
+  <update id="updateNameByEmail" parameterType="MEMBER">
+    update MEMBER set MEMBER_NAME=#{member_name} where MEMBER_EMAIL=#{member_email}
+  </update>
   
+  <insert id="insertMember" parameterType="MEMBER">
+    <selectKey keyProperty="member_index" resultType="long" order="BEFORE">
+    SELECT MEMBER_INDEX_SEQ.nextval FROM dual
+    </selectKey>
+    insert into MEMBER(member_category_code, member_origin_code, member_email, member_name, member_password, member_joindate, member_index) 
+      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, SYSDATE, ${member_index})
+  </insert>
+  
+  <delete id="deleteMember" parameterType="String">
+    delete from MEMBER where MEMBER_EMAIL=#{member_email}
+  </delete>
+
+
+  <insert id="insertSocialMember" parameterType="MEMBER">
+    <selectKey keyProperty="member_index" resultType="long" order="BEFORE">
+    SELECT MEMBER_INDEX_SEQ.nextval FROM dual
+    </selectKey>
+    insert into MEMBER(member_category_code, member_origin_code, member_email, member_name, member_password, member_profile_pic, member_joindate, member_index) 
+      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, #{member_profile_pic}, SYSDATE, ${member_index})
+  </insert>
+
+  <select id="selectOrderInfo" parameterType="String" resultType="Order_Info">
+    select * from ORDER_INFO where MEMBER_EMAIL=#{member_email} order by BUY_DATE desc
+  </select>
+
+  <select id="selectPerPageOrder" resultType="Order_Info" parameterType="Member_OrderInfoVo">
+    <![CDATA[select * from (select ROWNUM rnum, aa.* from
+      (select * from ORDER_INFO where MEMBER_EMAIL=#{member_email} order by ORDER_INDEX desc) aa)
+      where rnum>${(order_cp-1)*order_ps} and rnum<=${order_cp*order_ps}
+    ]]>
+  </select>
+  
+  <select id="selectOrderCountByEmail" resultType="long" parameterType="String">
+      select COUNT(ORDER_INDEX) from ORDER_INFO where GOODS_INDEX=#{member_email}
+  </select>   
+       
+  <select id="selectOrderCount" parameterType="String" resultType="long">
+    select COUNT(ORDER_INDEX) from ORDER_INFO where MEMBER_EMAIL=#{member_email}
+  </select> 
+  
+  <select id="selectOneOrderInfo" parameterType="long" resultType="Order_Info">
+    select * from ORDER_INFO where ORDER_INDEX=${order_index}
+  </select>
 </mapper>

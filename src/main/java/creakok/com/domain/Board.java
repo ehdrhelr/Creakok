@@ -23,4 +23,7 @@ public class Board {
 	private long board_refer;
 	private long board_level;
 	private long board_sunbun;
+	/* 계층형을 위해 추가 */
+	private long board_parent;
+	private long level;
 }

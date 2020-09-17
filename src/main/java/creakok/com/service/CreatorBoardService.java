@@ -21,7 +21,7 @@ public interface CreatorBoardService {
 	// 특정 크리에이터 정보 조회
 	public Creator getCreator(String creator_name);
 	// 특정 글 삭제
-	void deleteBoard(long board_index);
+	void deleteBoard(long board_index, String creator_name);
 	// 특정 글 가져오기
 	Board getBoard(long board_index);
 	// 글 검색하기 

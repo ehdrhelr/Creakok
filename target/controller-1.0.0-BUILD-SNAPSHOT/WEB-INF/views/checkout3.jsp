@@ -10,15 +10,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+    
     <!-- Title -->
-    <title>Alazea - Gardening &amp; Landscaping HTML Template</title>
+    <title>CREAKOK</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/creakok.ico">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    
+    <!-- BOTO TEST -->
+    <meta name="description" content="Boto Photo Studio HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/fresco.css"/>
+    <link rel="stylesheet" href="css/css_boto/slick.css"/>
+  
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/style.css"/>
+
+    <!-- hcbae Stylesheets -->
+    <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
+    <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
+    <link rel="stylesheet" href="css/hcbae_css.css">
+  
 
 </head>
 
@@ -33,138 +55,12 @@
 
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
-
-        <!-- ***** Top Header Area ***** -->
-        <div class="top-header-area">
-            <div class="container" style="color:#666666!important;">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="top-header-content d-flex align-items-center justify-content-between">
-                            <!-- Top Header Content -->
-                            <div class="top-header-meta">
-  
-                            </div>
-
-                            <!-- Top Header Content -->
-                            <div class="top-header-meta d-flex">
-                                <div >
-                                    <button type="button" class="makeProject" style="font-size:9pt;color:#fc5230;border:1px solid #fc5230;border-radius:3px;padding:3px 4px;margin-right:15px;background-color:white;">프로젝트 만들기</button>
-                                </div>
-                                <!-- Language Dropdown -->
-                                <div class="language-dropdown">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#666666">Language</button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">USA</a>
-                                            <a class="dropdown-item" href="#">UK</a>
-                                            <a class="dropdown-item" href="#">Bangla</a>
-                                            <a class="dropdown-item" href="#">Hindi</a>
-                                            <a class="dropdown-item" href="#">Spanish</a>
-                                            <a class="dropdown-item" href="#">Latin</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Login -->
-                                <div class="login">
-                                    <a href="#"><i aria-hidden="true"></i> <span>Login</span></a>
-                                </div>
-                                <!-- Cart -->
-                                <div class="cart">
-                                    <a href="#"><i  aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ***** Navbar Area ***** -->
-        <div class="alazea-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="alazeaNav">
-
-                        <!-- Nav Brand -->
-                        <a href="/" class="nav-brand"><img src="img/core-img/creakok.png" alt=""></a>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu" style="color:#666666!important;">
-
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Navbar Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a href="funding">FUNDING</a></li>
-                                    <li><a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300">GOODS</a></li>
-                                    <li><a href="#">COMMUNITY</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html" >Home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="shop.html">Shop</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="shop-details.html">Shop Details</a></li>
-                                                    <li><a href="cart.html">Shopping Cart</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="portfolio.html">Portfolio</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="gle-portfolio.html">Portfolio Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="blog.html">Blog</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-post.html">Blog Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about.jsp">ABOUT</a></li>
-                                   <!--   <li><a href="portfolio.html">Portfolio</a></li>
-                                    <li><a href="contact.html">Contact</a></li>  -->
-                                </ul>  
-
-                                <!-- Search Icon -->
-                                <div id="searchIcon" >
-                                    
-                                    <i aria-hidden="true"><img src="img/core-img/search.png"></i>
-                                </div>
-
-                            </div>
-                            <!-- Navbar End -->
-                        </div>
-                    </nav>
-
-                    <!-- Search Form -->
-                    <div class="search-form">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
-                            <button type="submit" class="d-none"></button>
-                        </form>
-                        <!-- Close Icon -->
-                        <div class="closeIcon"><i aria-hidden="true"><img src="img/core-img/search.png"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="header_div">
+    <jsp:include page="creakok_header.jsp" flush="true"/>
+    </div>
     </header>
     <!-- ##### Header Area End ##### -->
-
+    
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
@@ -200,33 +96,48 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="first_name">이름 *</label>
-                                    <input  name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
+                                    <input  name="Payinfo_name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="email_address">이메일 주소</label>
-                                    <input  name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
+                                    <input name="Payinfo_email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="" required>
                                 </div>
                                 <div class="col-6 mb-4">
-                                    <label for="phone_number">연락처 *</label>
-                                    <input class="form-control" value="" onkeydown="enterCheck(this)" required>
-                                </div>
-                              
-                              
-                              
-                                
-
-                        
-                               </div>
+                                    <label for="phonenumber">연락처 *</label>
+                                    <input name ="Payinfo_phonenumber"class="form-control" value="" onkeydown="enterCheck(this)" required>
+                                </div>                       
+                              </div>
                          <h5 style="margin-top:20px;">결제 내용</h5>
 						
 						<label for="amountPay">밀어주기 금액</label>
 						
-						<select id="amountPay" name="amountPay" onChange="javascript:fn_changeSelected(this);">
+						<select id="amountPay" name="amountPay" onChange="amountPay2()">
 						        <option class="form-control" value="">--선택--</option>
-						        <option class="form-control" value="1">5000</option>
-						        <option class="form-control" value="2">10000</option>
-						        <option class="form-control" value="3">50000</option>
+						        <option class="form-control" value="5000">5,000</option>
+						        <option class="form-control" value="10000">10,000</option>
+						        <option class="form-control" value="50000">50,000</option>
 						</select> 
+						
+						<script language="javascript">
+						function amountPay2(){
+						
+							var a = document.getElementById("amountPay");
+							var b = a.options[a.selectedIndex].value;
+							//alert(b);
+							
+							var resultToshow = document.getElementById('amountToshow');
+							resultToshow.innerHTML=b;
+							var result = document.getElementById('amountPaygot');
+							
+							result.value=b;
+							alert(b);
+							alert(c);
+							                          
+						
+						}
+						
+						
+						</script>
                 <div class="col-12 mb-4">
                     <div class="checkout-content">
                     
@@ -236,7 +147,10 @@
                                 <h5>Funding</h5>
                                 <div class="single-products d-flex justify-content-between align-items-center">
                                     <p>${fundingCheckoutInfo.funding_subject}</p>
-                                    <h5>$9.99</h5>
+                                      <input type="hidden" name = "fundingName" id="fundingName" value="${fundingCheckoutInfo.funding_subject}">
+                                    <h5 id="amountToshow"></h5>
+                                    <input type="hidden" name = "amountPaygot" id="amountPaygot" value="0">
+                                
                                 </div>
                             </div>
                         </div>
@@ -244,16 +158,7 @@
                             <h5>담당 크리에이터</h5>
                             <h5>${fundingCheckoutInfo.creator_name}</h5>
                         </div>
-                        <!-- 
-                        <div class="shipping d-flex justify-content-between align-items-center">
-                            <h5>펀딩 프로젝트 제목</h5>
-                            <h5>$3.00</h5>
-                        </div>
-                        <div class="order-total d-flex justify-content-between align-items-center">
-                            <h5>Order Total</h5>
-                            <h5>$12.99</h5>
-                        </div>
-                         -->
+                    
 			         </div>
                     </div>
                     

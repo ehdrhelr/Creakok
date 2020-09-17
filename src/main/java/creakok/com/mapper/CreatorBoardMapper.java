@@ -24,8 +24,8 @@ public interface CreatorBoardMapper {
 	public List<Creator> getCreatorName();
 	// 특정 크리에이터 조회
 	public Creator getCreator(String creator_name);
-	// 글삭제
-	void deleteBoard(long board_index);
+	// 글삭제 (자식글도 함께 삭제됨)
+	void deleteBoard(@Param("board_index") long board_index, @Param("creator_name") String creator_name);
 	// 글 검색 by index(안쓰나)
 	Board selectByIndex(long board_index);
 	// update
@@ -50,6 +50,7 @@ public interface CreatorBoardMapper {
 	// 정렬 기능
 	List<Board> getListResultByFilter(@Param("currentPage") int currentPage, @Param("pageSize") int pageSize, 
 			@Param("board_filterBy") String board_filterBy, @Param("creator_name") String creator_name);
+				
 	
 	// 크리에이터로 커뮤니티 검색(index)
 	List<Creator> searchCommunity(@Param("creator_name") String creator_name);
