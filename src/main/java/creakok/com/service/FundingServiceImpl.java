@@ -144,7 +144,31 @@ public class FundingServiceImpl implements FundingService {
 		
 	}
 
-	
+	@Override
+	public String getCreatorProfilContent(String creator_name) {
+		String creatorProfilContent = fundingMapper.getCreatorProfilContent(creator_name);
+		return creatorProfilContent;
+	}
+
+	@Override
+	public void qnaDelete(long funding_qna_index) {
+		fundingMapper.qnaDelete(funding_qna_index);
+		
+	}
+
+	@Override
+	public Funding_searchVo getSearchFundingVo(int funding_cp, int funding_ps, String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long selectFundingCountBySearch(String keyword) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/*
 	
 	@Override
 	public Funding_searchVo getSearchFundingVo(int funding_cp, int funding_ps, String keyword){ //펀딩 검색
@@ -162,6 +186,6 @@ public class FundingServiceImpl implements FundingService {
 	public long selectFundingCountBySearch(String keyword) { //펀딩 검색결과 총갯수
 		return fundingMapper.selectFundingCountBySearch(keyword);
 	}
-
+*/
 
 }

@@ -15,7 +15,7 @@
     <title>CREAKOK</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/creakok.ico">
+    <link rel="icon" href="img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
@@ -146,7 +146,7 @@
                                 <div class="ProjectIntroduction__PrimaryButton-sc-1o2ojgb-21 knPvZB">
                                     <div class="PledgeButton__Wrapper-arwur9-0 krUjgk">
                                     
-                                    <button onclick="clickFundingSupport();"
+                                    <button onclick = "location.href='funding_checkout.do?funding_index=${funding_detail.funding_index}'"
                                     class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny">
                                     프로젝트 밀어주기</button></div>
                                 </div>
@@ -181,12 +181,13 @@
            
                 <div class="ContentsNavigation__ProjectContentsNavigationInner-mwsx7i-2 OvVKa">
                     <div class="ContentsNavigation__NavLeft-mwsx7i-3 buZwam">
-                    <a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" 
+                    <a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" 
                     href="funding_detail.do?funding_index=${funding_detail.funding_index}#fix_point">스토리</a>
                      
                     <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" 
                    href="funding_qna.do?funding_index=${funding_detail.funding_index}#fix_point">Q&A(${funding_detail.funding_qna_totalCount})</a>
-                    <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="funding_about.do?funding_index=${funding_detail.funding_index}#fix_point">펀딩 안내</a></div>
+                    <a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB active" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)" 
+                    href="funding_about.do?funding_index=${funding_detail.funding_index}#fix_point">펀딩안내</a></div>
                 </div>
             </nav>
         </div>
@@ -197,7 +198,6 @@
                         <div class="ProjectPage__MainColumnInner-f3cisk-4 kGPPtA">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf">
                                 <div class="StoryCard__StoryCardInner-sc-6cra5i-0 giOSQG">
-                                <!--펀딩안내 html만들어서 띄우기 ! -->
                                     ${funding_detail.funding_detail_pic}
                                 </div>
                             </div>
@@ -408,16 +408,6 @@
                 }
             }
        };
-    }
-   
-    function clickFundingSupport(){
-    	
-    		if('${member.member_email}' == '') {
-                alert('로그인해주세요.');
-                return;
-            }else{
-            	location.href="funding_checkout.do?funding_index=${funding_detail.funding_index}"
-            }
     }
     
     </script>

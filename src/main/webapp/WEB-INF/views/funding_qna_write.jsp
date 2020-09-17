@@ -87,6 +87,7 @@
 		                        <label for="reviewer_name">작성자</label>&nbsp;&nbsp;
 		                       <input name="!funding_qna_writer" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="reviewer_name" 
 		                       value="${member.member_name}" readonly>
+		                       placeholder="${member.member_name}" value="${member.member_name}" readonly>
 		                    </div>
                    
 		                    <div style="margin-top:10px">

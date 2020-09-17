@@ -15,12 +15,12 @@
     <title>CREAKOK</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/creakok.ico">
+    <link rel="icon" href="img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    
     
     <!-- BOTO TEST -->
     <meta name="description" content="Boto Photo Studio HTML Template">
@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
+  
 
 </head>
 
@@ -59,7 +60,7 @@
     </div>
     </header>
     <!-- ##### Header Area End ##### -->
-
+    
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
@@ -85,99 +86,75 @@
 
 
     <!-- ##### Checkout Area Start ##### -->
-    <div class="checkout_area">
+    <div class="checkout_area mb-100">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-12">
                     <div class="checkout_details_area clearfix">
                         <h5 style="margin-bottom:5px;">주문자 정보</h5>
-                        <form action="goods_pay.do" method="post" name="f">
+                        <form action="funding_pay.do?funding_index=${funding_detail.funding_index}" method="post" name="f">
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="first_name">이름 *</label>
-                                    <input  name="name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="${member.member_name}" required>
+                                    <input  name="Payinfo_name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="email_address">이메일 주소</label>
-                                    <input  name="email" class="form-control" id="email_address" onkeydown="enterCheck(this)" value="${member.member_email}" readonly>
+                                    <input name="Payinfo_email" class="form-control" id="email_address" value="${member.member_email}" readonly>
                                 </div>
                                 <div class="col-6 mb-4">
-                                    <label for="phone_number">연락처 *</label>
-                                    <input class="form-control" value="" name="phone_number" onkeydown="enterCheck(this)" required>
-                                </div>
-                              
-                              
-                              
-                                
-
-						<h5 class="col-12 mb-4" style="margin-top:20px;">배송 정보</h5>
-                       
-                        
-                                <div class="col-md-6 mb-4">
-                                    <label for="first_name">이름 *</label>
-                                    <input name="delivery_name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="" required>
-                                </div>
-                                <div class="col-6 mb-4">
-                                    <label for="phone_number">연락처 *</label>
-                                    <input name="delivery_phone" class="form-control" value="" onkeydown="enterCheck(this)" required>
-                                </div>
-                              
-                        
-                               <div class="col-12 mb-4">
-          							 <label for="city" style="width:100%">주소 *</label>
-					                 <input type="text" name="address_num" id="sample4_postcode" placeholder="우편번호" style="margin-bottom:15px; width:80%;display:inline" onkeydown="enterCheck(this)" required>
-					                 <input type="button" onclick="sample4_execDaumPostcode()" style="margin-bottom:15px; width:19%; display:inline; background-color:#888888;color:white;" value="우편번호 찾기"><br>
-					                 <input type="text" name="address_road" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom:15px;">
-					                 	<input type="text" name="address_detail" id="sample4_detailAddress" placeholder="상세주소" style="margin-bottom:15px;">
-					                 	<input type="text" name="address_land" id="sample4_jibunAddress" placeholder="지번주소" style="margin-bottom:15px;">
-										<span id="guide" style="color:#999;display:none"></span>
-										<input type="text" id="sample4_extraAddress" placeholder="참고항목" >
-					            </div>     
-    				<!--
-                                <div class="col-12">
-                                    <div class="d-flex align-items-center">
-                                        <!-- Single Checkbox 
-                                        <div class="custom-control custom-checkbox d-flex align-items-center mr-30">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                            <label class="custom-control-label" for="customCheck1">Ship to a different address?</label>
-                                        </div>
-                                        <!-- Single Checkbox
-                                        <div class="custom-control custom-checkbox d-flex align-items-center">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                            <label class="custom-control-label" for="customCheck2">Create an account?</label>
-                                        </div>
-                                    </div>
-                                </div>
-                       -->           
-                                
-                         
+                                    <label for="phonenumber">연락처 *</label>
+                                    <input name ="Payinfo_phonenumber"class="form-control" value="" onkeydown="enterCheck(this)" required>
+                                </div>                       
+                              </div>
+                         <h5 style="margin-top:20px;">결제 내용</h5>
+						
+						<label for="amountPay">밀어주기 금액</label>
+						
+						<select id="amountPay" name="amountPay" onChange="amountPay2()" required>
+						        <option class="form-control" value="">--선택--</option>
+						        <option class="form-control" value="1000">1,000</option>
+						        <option class="form-control" value="5000">5,000</option>
+						        <option class="form-control" value="10000">10,000</option>
+						        <option class="form-control" value="50000">50,000</option>
+						</select> 
+						
+						<script language="javascript">
+						function amountPay2(){
+						
+							var a = document.getElementById("amountPay");
+							var b = a.options[a.selectedIndex].value;
+							var resultToshow = document.getElementById('amountToshow');
+							resultToshow.innerHTML=b;
+							var result = document.getElementById('amountPaygot');
+							
+							result.value=b;            
+						
+						}
+						
+						
+						</script>
                 <div class="col-12 mb-4">
                     <div class="checkout-content">
-                        <h5 class="title--" style="margin-top:20px;">주문 내역</h5>
+                    
+                      <!--  <h5 class="title--" style="margin-top:20px;">주문 내역</h5>  --> 
                         <div class="products">
                             <div class="products-data">
-                                <p style="width:40%">상품명</p>
+                                <h5>Funding</h5>
                                 <div class="single-products d-flex justify-content-between align-items-center">
-                                    <h5>${product_name}</h5>
-                                    <input type="hidden" name="product_name" value="${product_name}">
-                                    <h5  style="font-size:1.5em">${product_price} &nbsp;<span style="font-size:15pt;font-weight:200">원</span>
-                                    &nbsp;<span style="font-size:15pt;font-weight:400">(${product_qty} 개)</span>
-                                    <input type="hidden" name="product_qty" value="${product_qty}">
-                                    </h5>
-                               
+                                    <p>${fundingCheckoutInfo.funding_subject}</p>
+                                      <input type="hidden" name = "fundingName" id="fundingName" value="${fundingCheckoutInfo.funding_subject}">
+                                    <h5 id="amountToshow"></h5>
+                                    <input type="hidden" name = "amountPaygot" id="amountPaygot" value="0">
+                                
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="shipping d-flex justify-content-between align-items-center">
-                            <p>배송비</p>
-                            <h5 style="font-size:1.5em">+ 3000 &nbsp;&nbsp;&nbsp;<span style="font-size:15pt;font-weight:200">원</span></h5>
+                        <div class="subtotal d-flex justify-content-between align-items-center">
+                            <h5>담당 크리에이터</h5>
+                            <h5>${fundingCheckoutInfo.creator_name}</h5>
                         </div>
-                        <div class="order-total d-flex justify-content-between align-items-center">
-                            <h5 style="font-size:2.3em">Total</h5>
-                            <h5 style="font-size:2.3em; color:#fc5230">${price_amount} &nbsp;&nbsp;<span style="font-size:15pt;font-weight:200;color:black">원</span></h5>
-                      		 <input type="hidden" name="price_amount" value="${price_amount}">
-                        </div>
+                    
 			         </div>
                     </div>
                     
@@ -186,66 +163,24 @@
                     
                      <h5 class="col-12 mb-4" style="margin-top:20px;">결제방법</h5>
                      <div class="col-12 mb-4">
+                     <table>
                                 <tbody>
                                     <tr>
                                         <td>
                                             <ul class="pay-method" >    
+                                            
                                              <li style="margin-bottom:10px;">
-	               								 <input type="radio" class="chk-rdo" id="payByAcc" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important; display:inline;" value="B" onClick="deposit()"> 무통장입금 <em>
-	               								 <span class="op-bank-dc-price fc-red"></span></em>             
-		               								 <select name="pay_data" class="w280 MK_bank_select_list MK_pay_add_choice" style="width:50%;margin-left:5%;">
-			               								 <option value="">입금 계좌번호 선택(반드시 주문자 성함으로 입금)
-			               								 </option>                       
-			               								 <option value="국민은행 464401-04-096884 (예금주:(주)크리콕)">국민은행 464401-04-096884 (예금주:(주)크리콕)
-			               								 </option>            
-		               								 </select>  
-               								 </li>
-                                             <li style="margin-bottom:10px;">
-                								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()"> 신용카드/네이버페이/카카오페이
+                								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()" required> 신용카드/네이버페이/카카오페이
                 								     <em><span class="op-card-dc-price fc-red"></span></em>
                 							 </li>
-                                                                                   
+                                            </ul>                                       
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         
-                        <div id="evidence" style="display:none;">                        
-                        	<div class="tbl-order" style="margin-top:0px;border-top:0px;">
-                            <table>
-                             <!--     <caption>증빙 신청</caption>
-                                <colgroup>
-                                    <col style="width: 110px">
-                                    <col>
-                                </colgroup>   -->
-                                <tbody>
-                                     <tr>
-                                <th scope="row"><div class="txt-l">증빙 신청</div></th>
-                                <td style="padding-left: 18px;">
-                                     <input type="radio" name="evidencecheck" form="order_form" onclick="" value="N" checked="checked" style="height:18px;vertical-align:middle;width:18px !important;"> 신청안함
-                                	 <input type="radio" name="evidencecheck" form="order_form" onclick="" value="cashbill" style="height:18px;vertical-align:middle;width:18px !important;"> 현금영수증
-                                                                                                                                    
-                               <div style="padding-top:5px;">
-                               		<div id="evidence_data">                                              
-	                               		<div id="evidence_cashbill_data" style="display:none;">                                                                                                                            
-		                               		<span id="cashbilltype">
-							                    <select name="evidence_banktype" class="bank-type" onchange="togglecashbilltype(this.value)">
-							                        <option value="0" selected="">핸드폰 번호
-							                        </option><option value="1">국세청 현금영수증 카드
-							                        </option><option value="2">사업자 번호
-							                    </option></select>
-							                </span>                                                                                             
-	                                    </div>
-                               		</div>                                            
-                               </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        </div>
-                        
+                      
                         
                         
                          <div class="col-12 text-center" style="margin-bottom:100px;">
@@ -357,11 +292,140 @@
 
 
 
-    <!-- Footer Bottom Area -->
-    <div id="footer_div">
-    <jsp:include page="creakok_footer.jsp" flush="true"/>
-    </div>
-    <!-- Footer Bottom Area End ##### -->
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area bg-img" style="background-image: url(img/bg-img/3.jpg);">
+        <!-- Main Footer Area -->
+        <div class="main-footer-area">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget">
+                            <div class="footer-logo mb-30">
+                                <a href="#"><img src="img/core-img/logo.png" alt=""></a>
+                            </div>
+                            <p>Lorem ipsum dolor sit samet, consectetur adipiscing elit. India situs atione mantor</p>
+                            <div class="social-info">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget">
+                            <div class="widget-title">
+                                <h5>QUICK LINK</h5>
+                            </div>
+                            <nav class="widget-nav">
+                                <ul>
+                                    <li><a href="#">Purchase</a></li>
+                                    <li><a href="#">FAQs</a></li>
+                                    <li><a href="#">Payment</a></li>
+                                    <li><a href="#">News</a></li>
+                                    <li><a href="#">Return</a></li>
+                                    <li><a href="#">Advertise</a></li>
+                                    <li><a href="#">Shipping</a></li>
+                                    <li><a href="#">Career</a></li>
+                                    <li><a href="#">Orders</a></li>
+                                    <li><a href="#">Policities</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget">
+                            <div class="widget-title">
+                                <h5>BEST SELLER</h5>
+                            </div>
+
+                            <!-- Single Best Seller Products -->
+                            <div class="single-best-seller-product d-flex align-items-center">
+                                <div class="product-thumbnail">
+                                    <a href="shop-details.html"><img src="img/bg-img/4.jpg" alt=""></a>
+                                </div>
+                                <div class="product-info">
+                                    <a href="shop-details.html">Cactus Flower</a>
+                                    <p>$10.99</p>
+                                </div>
+                            </div>
+
+                            <!-- Single Best Seller Products -->
+                            <div class="single-best-seller-product d-flex align-items-center">
+                                <div class="product-thumbnail">
+                                    <a href="shop-details.html"><img src="img/bg-img/5.jpg" alt=""></a>
+                                </div>
+                                <div class="product-info">
+                                    <a href="shop-details.html">Tulip Flower</a>
+                                    <p>$11.99</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget">
+                            <div class="widget-title">
+                                <h5>CONTACT</h5>
+                            </div>
+
+                            <div class="contact-information">
+                                <p><span>Address:</span> 505 Silk Rd, New York</p>
+                                <p><span>Phone:</span> +1 234 122 122</p>
+                                <p><span>Email:</span> info.deercreative@gmail.com</p>
+                                <p><span>Open hours:</span> Mon - Sun: 8 AM to 9 PM</p>
+                                <p><span>Happy hours:</span> Sat: 2 PM to 4 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom Area -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="border-line"></div>
+                    </div>
+                    <!-- Copywrite Text -->
+                    <div class="col-12 col-md-6">
+                        <div class="copywrite-text">
+                            <p>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+                        </div>
+                    </div>
+                    <!-- Footer Nav -->
+                    <div class="col-12 col-md-6">
+                        <div class="footer-nav">
+                            <nav>
+                                <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Service</a></li>
+                                    <li><a href="#">Portfolio</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
@@ -374,11 +438,6 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-    
-    <jsp:include page="Language.jsp" flush="false">
-    <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
-    </jsp:include>
-    
 </body>
 
 </html>
