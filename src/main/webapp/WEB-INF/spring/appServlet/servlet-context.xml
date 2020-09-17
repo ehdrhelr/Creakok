@@ -29,15 +29,15 @@
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/scss/**" location="/resources/scss/" />
 	<resources mapping="/img/**" location="/resources/img/" />
-<<<<<<< HEAD
+
 	<resources mapping="/summernoteImage/**" location="file:///Users/joohyunann/git/Creakok/src/main/webapp/resources/img/funding/" />
 	<resources mapping="/summernoteImageCommunity/**" location="file:///Users/shion/git/Creakok/src/main/webapp/resources/img/community/" />
 	<resources mapping="/summernoteImageGoods/**" location="file:///C:/Users/bit/git/Creakok/src/main/webapp/resources/img/goods/" />	
-=======
+
 	<resources mapping="/summernoteImage/**" location="file:///C:/Users/SJH/git/Creakok/src/main/webapp/resources/img/funding/" />
 	<resources mapping="/summernoteImageCommunity/**" location="file:///C:/Users/SJH/git/Creakok/src/main/webapp/resources/img/community/" />
 	<resources mapping="/summernoteImageGoods/**" location="file:///C:/Users/SJH/git/Creakok/src/main/webapp/resources/img/goods/" />	
->>>>>>> refs/heads/master_jhseo3
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
