@@ -3,13 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="creakok.com.mapper.CreatorBoardMapper">
-	<!--
-	<select id="getListResult" resultType="Board">
-    	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    	(select * from CREATOR_BOARD where CREATOR_NAME = #{creator_name} order by BOARD_REFER desc, BOARD_SUNBUN asc, BOARD_INDEX desc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
- 	</select>
- 	-->
+
  	<select id="getListResult" resultType="Board">
     	<![CDATA[
     	select * from
@@ -89,18 +83,17 @@
 		select * from CREATOR where CREATOR_NAME = #{creator_name}
 	</select>
 	
-	<delete id="deleteBoard" parameterType="long">
-		delete from CREATOR_BOARD where board_index = #{board_index}
+	<!-- 삭제 (부모글 삭제시 자식글도 삭제됨) -->
+	<delete id="deleteBoard">
+		DELETE FROM CREATOR_BOARD 
+			WHERE CREATOR_NAME = #{creator_name} and BOARD_INDEX in (
+                         			SELECT BOARD_INDEX FROM CREATOR_BOARD
+                                    START WITH BOARD_INDEX = #{board_index} 
+                                    CONNECT BY PRIOR  BOARD_INDEX = BOARD_PARENT
+                                   )
 	</delete>
 	
 	<!-- 검색 -->
-	<!--
-	<select id="search" resultType="Board">
-    	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    	(select * from CREATOR_BOARD where ${board_c_code} like '%'||#{board_searchName}||'%' order by ${board_filterBy} desc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name}]]>
-	</select>
-	--> 
 	<select id="search" resultType="Board">
     	<![CDATA[
     	select * from
@@ -170,15 +163,6 @@
 	</insert>
 	
 	<!-- 정렬 기능 -->
-	<!-- ${board_filterBy}를 ${board.filterBy}로 작성했더니 오류가 났다. 
-	parameter의 이름은 board domain에 있는 변수이름과 동일하게 작성해줘야 하나보다.
-	추가) 아니다. mapper.java와 일치시켜야 하나보다 .
-	<select id="getListResultByFilter" resultType="Board">
-    	<![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    	(select * from CREATOR_BOARD where CREATOR_NAME = #{creator_name} order by BOARD_REFER desc, BOARD_SUNBUN asc, ${board_filterBy} desc) aa) 
-    	where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}]]>
- 	</select>
- 	-->
  	<select id="getListResultByFilter" resultType="Board">
     	<![CDATA[
     	select * from
