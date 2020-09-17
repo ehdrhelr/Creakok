@@ -46,7 +46,7 @@
 	<!-- for review -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' />
+    <!-- <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' /> -->
   
 	<link href="css/css_board/reservation_page.css" rel="stylesheet">
 
