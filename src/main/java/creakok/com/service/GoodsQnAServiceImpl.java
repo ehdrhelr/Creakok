@@ -28,6 +28,13 @@ public class GoodsQnAServiceImpl implements GoodsQnAService {
 		log.info("????????????????????????????????? qna_totalCount: "+qna_totalCount);
 		Goods_QnAVo goods_qna_vo = new Goods_QnAVo(qna_cp, qna_totalCount, qna_ps, goods_index, null);
 		List<Goods_QnA> qna_list = goods_qnaMapper.selectPerPageQnA(goods_qna_vo);
+
+		//문의 글 번호
+		long qna_list_number;
+		for(int i=0; i<qna_list.size(); i++) {
+			qna_list_number = qna_totalCount - ((qna_cp-1)*qna_ps)-i;
+			qna_list.get(i).setQna_list_number(qna_list_number);
+		}
 		
 		Goods_QnAVo goods_qna_vo2 = new Goods_QnAVo(qna_cp, qna_totalCount, qna_ps, goods_index, qna_list);
 		goods_qna_vo2.setTotalPageCount(goods_qna_vo2.getTotalPageCount());

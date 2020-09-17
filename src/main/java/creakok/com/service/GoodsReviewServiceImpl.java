@@ -1,6 +1,7 @@
   
 package creakok.com.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +28,23 @@ public class GoodsReviewServiceImpl implements GoodsReviewService {
 		long review_totalCount = goodsservicemapper.selectGoodsReviewCountByGoodsIndex(goods_index);
 		Goods_ReviewVo goods_review_vo = new Goods_ReviewVo(review_cp, review_totalCount, review_ps, goods_index, null);
 		List<Goods_Review> review_list = goodsservicemapper.selectPerPageReview(goods_review_vo);
+
+		//리뷰 글 번호
+		long list_number;
+		for(int i=0; i<review_list.size(); i++) {
+			list_number = review_totalCount - ((review_cp-1)*review_ps)-i;
+		
+			review_list.get(i).setList_number(list_number);
+		}
 		
 		Goods_ReviewVo goods_review_vo2 = new Goods_ReviewVo(review_cp, review_totalCount, review_ps, goods_index, review_list);
 		goods_review_vo2.setReview_totalPageCount(goods_review_vo2.getReview_totalPageCount());
-		
-
-			
+	
 		log.info("############# selectPerPageReview review_cp: "+review_cp);
 		log.info("############# selectPerPageReview review_ps: "+review_ps);
 		log.info("############# selectPerPageReview goods_index: "+goods_index);
 		log.info("★★★★★★★★★★★★★★★ selectPerPageReview review_list: "+review_list);
+		
 		return goods_review_vo2;
 	}
 	
