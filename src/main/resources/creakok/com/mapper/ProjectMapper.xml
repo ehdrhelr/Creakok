@@ -22,4 +22,8 @@
     <insert id="insertOneGoods" parameterType="Goods">
        insert into GOODS values(GOODS_INDEX_SEQ.nextval, ${goods_category_code}, #{goods_name}, ${goods_price}, #{goods_repre_pic}, #{goods_detail_pic}, #{creator_name}, 0, 0, ${goods_stock_number}, 0, null)     
 	</insert>
+	
+	<select id="selectByGoodsName" parameterType="String" resultType="Goods">
+    	select GOODS_NAME from GOODS where GOODS_NAME=#{goods_name}
+    </select>
 </mapper>
