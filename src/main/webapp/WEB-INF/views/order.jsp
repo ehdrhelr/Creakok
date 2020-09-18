@@ -85,7 +85,7 @@
 
 
     <!-- ##### Checkout Area Start ##### -->
-    <div class="checkout_area mb-100">
+    <div class="checkout_area mb-100" style="margin-bottom:0 !important">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-12">
