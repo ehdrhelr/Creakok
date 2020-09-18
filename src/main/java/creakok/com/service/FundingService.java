@@ -29,7 +29,6 @@ public interface FundingService {
 	void answerQna(Funding_qna funding_qna);
 	void answerEditQna(Funding_qna funding_qna);
 	void answerDelete(long funding_qna_index);
-	
-	Funding_searchVo getSearchFundingVo(int funding_cp, int funding_ps, String keyword);
-	long selectFundingCountBySearch(String keyword);
+	String getCreatorProfilContent(String creator_name);
+	void qnaDelete(long funding_qna_index);
 }

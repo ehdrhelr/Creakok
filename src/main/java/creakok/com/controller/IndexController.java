@@ -1,6 +1,7 @@
 package creakok.com.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,11 +22,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import creakok.com.domain.Creator;
+import creakok.com.domain.Funding;
 import creakok.com.domain.Goods;
 import creakok.com.domain.Goods_Category;
 import creakok.com.service.CreatorBoardService;
 import creakok.com.service.FundingService;
 import creakok.com.service.GoodsService;
+import creakok.com.service.IndexService;
 import creakok.com.service.LikeTableService;
 import creakok.com.vo.Funding_searchVo;
 import creakok.com.vo.GoodsVo;
@@ -36,7 +39,6 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Controller
 public class IndexController {
-	
 	@Autowired
 	private CreatorBoardService boardService;
 	
@@ -48,6 +50,9 @@ public class IndexController {
 	
 	@Autowired
 	private FundingService fundingService;
+
+	@Autowired
+	private IndexService indexService;
 	
 	@RequestMapping(value="/", method =RequestMethod.GET)
 	public ModelAndView index(HttpSession session) {
@@ -59,9 +64,25 @@ public class IndexController {
 		mv.addObject("creatorList", creatorList);
 		session.setAttribute("creatorList", creatorList);
 		
+		// funding 프로젝트 추천(최신 프로젝트)
+		List<Funding> funding_list = indexService.selectFundingByWdate();
+		mv.addObject("funding_list", funding_list);
+		
+		// 이달의 크리에이터
+		List<Creator> creator_list = indexService.selectCreator();
+		mv.addObject("creator_list", creator_list);
+		
+		// 크리에이터 검색(모든 크리에이터)
+		List<Creator> all_creator = indexService.selectAllCreator();
+		mv.addObject("all_creator", all_creator);
+		
+		//오늘의 추천 굿즈
+		List<Goods> goods_list = indexService.selectGoodsByReview();
+		mv.addObject("goods_list", goods_list);
+		
 		return mv;
 	}
-
+	
 	@RequestMapping(value="/community", method =RequestMethod.GET)
 	public String community() {
 		return "community";
@@ -73,11 +94,6 @@ public class IndexController {
 
 	}
 	 */
-	
-	@RequestMapping("about.do")
-	public String about() {
-		return "about";
-	}
 
 	@GetMapping("creakok_header.do")
 	public String creakok_header() {
@@ -112,7 +128,7 @@ public class IndexController {
 		//(1) cp 
 		int funding_cp = 1;
 		if(funding_cpStr == null) {
-				funding_cp = 1;
+			funding_cp = 1;
 		}else {
 			funding_cpStr = funding_cpStr.trim();
 			funding_cp = Integer.parseInt(funding_cpStr);
@@ -121,7 +137,7 @@ public class IndexController {
 		
 		//(2) ps 
 		int funding_ps = 3;		
-		Funding_searchVo funding_searchVo = fundingService.getSearchFundingVo(funding_cp, funding_ps, keyword);
+		Funding_searchVo funding_searchVo = indexService.getSearchFundingVo(funding_cp, funding_ps, keyword);
 		funding_searchVo.setFunding_cp(funding_cp);
 		funding_searchVo.setFunding_ps(funding_ps);
 		funding_searchVo.setKeyword(keyword);
@@ -136,7 +152,7 @@ public class IndexController {
 		session.setAttribute("funding_result", funding_searchVo);
 		
 		//검색결과 총 갯수
-		long funding_result_amount = fundingService.selectFundingCountBySearch(funding_keyword);
+		long funding_result_amount = indexService.selectFundingCountBySearch(funding_keyword);
 		session.setAttribute("funding_result_amount", funding_result_amount);
 				
 		
@@ -183,5 +199,13 @@ public class IndexController {
 		session.setAttribute("goods_result", goods_searchVo);
 		
 		return "search_result";
+	}
+	
+	@ResponseBody
+	@RequestMapping("search_creator.do")
+	public List<Creator> search_creator(@RequestParam("creator_name") String creator_name) {
+		List<Creator> search_creator2 = indexService.selectCreatorBySearch(creator_name);		
+		
+		return search_creator2;		
 	}
 }

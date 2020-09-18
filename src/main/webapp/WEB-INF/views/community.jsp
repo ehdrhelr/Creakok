@@ -45,7 +45,7 @@
 	<!-- for review -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' />
+    <!-- <link rel='stylesheet' id='global-css'  href='css/css_board/global.css' type='text/css' media='all' /> -->
 	
 	<link href="css/css_board/reservation_page.css" rel="stylesheet">
 
@@ -131,10 +131,10 @@
 																		<div class="testimonial-author-info">
 																			 <div class="welcome-btn-group" style="padding:5px">
 																			 <c:if test="${!empty theCreator.creator_link_youtube}">
-																				 <a href="${theCreator.creator_link_youtube}"><img src="img/bg-img/youtube.png" alt=""></a>
+																				 <a href="${theCreator.creator_link_youtube}"><img src="img/community/youtube.png" alt="" style="width:50px"></a>
 																			 </c:if>
 																			 <c:if test="${!empty theCreator.creator_link_instagram}">	 
-																				 <a href="${theCreator.creator_link_instagram}"><img src="img/bg-img/insta.png" alt=""></a>
+																				 <a href="${theCreator.creator_link_instagram}"><img src="img/community/instagram.png" alt="" style="width:35px;border-radius:7pt;margin-left:5px"></a>
 																			</c:if>
 																			</div>
 																		</div>
@@ -240,7 +240,7 @@
 
 	<div class="container">
 			
-			<div class="r_list" style="height:900px;">
+			<div class="section-heading text-center" style="margin-top:10%;margin-bottom:10%">
 				<div class="choose">
 					<ul class="clearfix">
 						<li><span>정렬 : </span>
@@ -283,9 +283,9 @@
 				<table>
 					<colgroup>
 						<col width="5%">
-						<col width="55%">
-						<col width="10%">
-						<col width="10%">
+						<col width="50%">
+						<col width="5%">
+						<col width="20%">
 						<col width="5%">
 						<col width="5%">
 					</colgroup>
@@ -311,7 +311,7 @@
 				         <TR align='center' noshade>
 				             <TD >${board.board_index}</TD>
 				             <TD align="left">
-				                 <a href="board_content?board_index=${board.board_index}">
+				                 <a href="board_content?board_index=${board.board_index}" style="overflow:hidden;text-overflow:ellipsis;white-space: nowrap;margin:0;padding:0;color:black">
 				                 ${board.board_subject}
 				                 </a>
 				             </TD>
@@ -324,7 +324,7 @@
 					</tbody>
 				</table>
 	<td colspan="6">
-            <hr width="1120" color="white" size="2" noshade>
+	
           </td>
         </tr>
         <tr>
@@ -339,22 +339,25 @@
         
          	<c:if test="${empty listResult.board_searchName}">
             <c:forEach begin="${listResult.startPage}" end="${listResult.endPage}" var="i">
-                	<a href="board_page?board_cp=${i}&board_filterBy=${listResult.board_filterBy}#fix_point">
-                <c:choose> 
-                <c:when test="${i==listResult.currentPage}">
-                    <strong>${i}</strong>
-                </c:when>
-                <c:otherwise>
-                    ${i}
-                </c:otherwise>
-                </c:choose>
-            </a>
+           		 <div style="margin-top:15px">
+		                	<a href="board_page?board_cp=${i}&board_filterBy=${listResult.board_filterBy}#fix_point" style="color:black">
+		                <c:choose> 
+		                <c:when test="${i==listResult.currentPage}">
+		                    <strong>${i}</strong>
+		                </c:when>
+		                <c:otherwise>
+		                    ${i}
+		                </c:otherwise>
+		           	     </c:choose>
+		            </a>
+		         </div>
             
             &nbsp;
             </c:forEach>
 			</c:if>
             <c:if test="${!empty listResult.board_searchName}"> 
             <c:forEach begin="${listResult.startPage}" end="${listResult.endPage}" var="i">
+                	<div style="margin-top:15px">
                 	<a href="board_search?board_cp=${i}&board_filterBy=${listResult.board_filterBy}&board_c_code=${listResult.board_c_code}&board_searchName=${listResult.board_searchName}#fix_point">
                 <c:choose> 
                 <c:when test="${i==listResult.currentPage}">
@@ -364,8 +367,8 @@
                     ${i}
                 </c:otherwise>
                 </c:choose>
-            </a>
-            
+	           		 </a>
+	            </div>
             &nbsp;
             </c:forEach>
             </c:if>
@@ -386,12 +389,16 @@
         
         </tr>
         <c:if test="${empty member}">
-        	<button type="button" class="searchBtn">
-			<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' onclick="check_login()">글쓰기</a></button>
+	        <div style="margin-top:2%">
+	        	<button type="button" class="searchBtn">
+				<a style="background-color:black;!important; color:white;!important; width:70px;!important; padding:5px" onclick="check_login()">글쓰기</a></button>
+	    	</div>
     	</c:if>
    		<c:if test="${!empty member}">
-			<button type="button" class="searchBtn">
-			<a style='background-color:black;!important; color:white;!important; width:70px;!important; margin-bottom:20%;!important;' href="board_write">글쓰기</a></button>
+	   		<div style="margin-top:2%">
+				<button type="button" class="searchBtn">
+				<a style="background-color:black;!important; color:white;!important; width:70px;!important; padding:5px" href="board_write">글쓰기</a></button>
+	    	</div>
     	</c:if>
        
 		</div>

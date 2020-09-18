@@ -1,6 +1,7 @@
 package creakok.com.domain;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,4 +21,5 @@ public class Goods_Review {
 	private String goods_review_content;
 	private String member_profile_pic;
 	private long goods_review_view;
+	private long list_number; //게시판 글 번호
 }

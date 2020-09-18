@@ -182,7 +182,7 @@ public class FundingController {
 					Object cp_qnaObj = session.getAttribute("fundingQna_cp");
 					if(cp_qnaObj != null) {
 						cp_qna = (Integer)cp_qnaObj;
-					}
+					} 
 				}else {
 					cpStr_qna = cpStr_qna.trim();
 					cp_qna = Integer.parseInt(cpStr_qna);
@@ -236,7 +236,10 @@ public class FundingController {
 						fundingSelected.setFunding_qnaVo(funding_qnaVo_temp);	
 						long qna_totalCount = service.getTotalCount_qna(funding_index);
 						fundingSelected.setFunding_qna_totalCount(qna_totalCount);
-						
+						log.info("445454545454");
+						log.info(fundingSelected.getCreator_name());
+						String creatorProfilContent = service.getCreatorProfilContent(fundingSelected.getCreator_name());
+						fundingSelected.setCreator_profil_content(creatorProfilContent);
 						session.setAttribute("funding_detail", fundingSelected);
 						return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
 						
@@ -382,7 +385,29 @@ public class FundingController {
 		return "redirect:funding_qna.detail?funding_index="+funding_index+"&funding_qna_index="+funding_qna_index+"#fix_point";
 		
 	}
+	@RequestMapping("funding_about.do")
+	public ModelAndView about(HttpServletRequest request, HttpSession session) {
+		String funding_indexStr = request.getParameter("funding_index");
+		long funding_index = Long.parseLong(funding_indexStr);
+		
+		long qna_totalCount = service.getTotalCount_qna(funding_index);
+		Funding funding = (Funding)session.getAttribute("funding_detail");
+		funding.setFunding_qna_totalCount(qna_totalCount);
 	
+		session.setAttribute("funding_detail", funding);
+		return new ModelAndView("/funding_about", "funding_detail", funding);	
+	}
+	@RequestMapping("funding_qna.delete")
+	public String qnaDelte(HttpServletRequest request, HttpSession session) {
+		String funding_qna_indexStr = request.getParameter("funding_qna_index");
+		long funding_qna_index = Long.parseLong(funding_qna_indexStr);
+		String funding_indexStr = request.getParameter("funding_index");
+		long funding_index = Long.parseLong(funding_indexStr);
+		//String creator_name = request.getParameter("creator_name");
+		service.qnaDelete(funding_qna_index);
+		return "redirect:funding_qna.do?funding_index="+funding_index+"#fix_point";
+		
+	}
 	
 	
 }

@@ -195,4 +195,9 @@
 		]]>
  	</select>
 
+	<!-- 크리에이터로 커뮤니티 검색(index) -->
+	<select id="searchCommunity" resultType="Creator" parameterType="String">
+		select * from CREATOR where CREATOR_NAME like '%'||#{creator_name}||'%'
+	</select> 
+
 </mapper>

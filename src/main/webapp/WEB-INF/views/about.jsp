@@ -69,39 +69,22 @@
             <!-- Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(img/bg-img/1.jpg);"></div>
+                <div class="bg-img" style="background-image: url(img/bg-img/1.jpg);"></div>
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
                             <!-- Post Content -->
                             <div class="hero-slides-content text-center">
-                                <h2>Plants exist in the weather and light rays that surround them</h2>
+                                <h2>About</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque ante nec ipsum iaculis, ac iaculis ipsum porttitor. Vivamus cursus nisl lectus, id mattis nisl lobortis eu. Duis diam augue, dapibus ut dolor at, mattis maximus dolor.</p>
+                                
+                                <!--
                                 <div class="welcome-btn-group">
                                     <a href="#" class="btn alazea-btn mr-30">GET STARTED</a>
                                     <a href="#" class="btn alazea-btn active">CONTACT US</a>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post bg-overlay">
-                <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(img/bg-img/2.jpg);"></div>
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12">
-                            <!-- Post Content -->
-                            <div class="hero-slides-content text-center">
-                                <h2>Plants exist in the weather and light rays that surround them</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque ante nec ipsum iaculis, ac iaculis ipsum porttitor. Vivamus cursus nisl lectus, id mattis nisl lobortis eu. Duis diam augue, dapibus ut dolor at, mattis maximus dolor.</p>
-                                <div class="welcome-btn-group">
-                                    <a href="#" class="btn alazea-btn mr-30">GET STARTED</a>
-                                    <a href="#" class="btn alazea-btn active">CONTACT US</a>
-                                </div>
+                                  -->
+                                  
                             </div>
                         </div>
                     </div>
@@ -120,12 +103,13 @@
     
         <!-- ##### Team Area Start ##### -->
     <section class="team-area section-padding-100-0">
+    
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
-                         <h2 style="font-family:Jalnan;line-height: 1.3; margin-bottom: 20px;"><span style="color:#2da498">CREA</span><span style="color:#cccccc">TOR</span> <span style="color:#fc5230">KOK!</span></h2>
+                         <h2 style="font-family:fonts/Jalnan;line-height: 1.3; margin-bottom: 20px;"><span style="color:#2da498">CREA</span><span style="color:#cccccc">TOR</span> <span style="color:#fc5230">KOK!</span></h2>
                         <p>크리콕은 내가 관심있는 크리에이터를 고르고<br/>
                             펀딩, 커뮤니티 등 다양한 방법으로 <br/>
                             크리에이터와 함께 소통할 수 있는 공간입니다.</p>
@@ -140,13 +124,9 @@
                     <div class="single-team-member text-center mb-100">
                         <!-- Team Member Thumb -->
                         <div class="team-member-thumb">
-                             <img src="img/plus/funding.png" alt="">
+                             <img src="img/plus/funding-1.jpg" alt="">
                         </div>
-                        <!-- Team Member Info
-                        <div class="team-member-info mt-30">
-                            <h5 style="font-size:13pt;font-weight:500;">컨텐츠 펀딩</h5>
-                            <p>크리에이터의 '이런 컨텐츠 어때요?'</p>
-                        </div> -->
+
                     </div>
                 </div>
 
@@ -155,7 +135,7 @@
                     <div class="single-team-member text-center mb-100">
                         <!-- Team Member Thumb -->
                         <div class="team-member-thumb">
-                             <img src="img/plus/goods.png" alt="">
+                             <img src="img/plus/goods-1.jpg" alt="">
                         </div>
                         <!-- Team Member Info
                       
@@ -171,7 +151,7 @@
                     <div class="single-team-member text-center mb-100">
                         <!-- Team Member Thumb -->
                         <div class="team-member-thumb">
-                             <img src="img/plus/community.png" alt="">
+                             <img src="img/plus/community-1.jpg" alt="">
                         </div>
                         <!-- Team Member Info
                         <div class="team-member-info mt-30">
@@ -186,7 +166,7 @@
                     <div class="single-team-member text-center mb-100">
                         <!-- Team Member Thumb -->
                         <div class="team-member-thumb">
-                             <img src="img/plus/creator_link.png" alt="">
+                             <img src="img/plus/creator.jpg" alt="">
                         </div>
                         <!-- Team Member Info
                         <div class="team-member-info mt-30">
@@ -198,6 +178,9 @@
 
             </div>
         </div>
+        
+
+        
     </section>
     <!-- ##### Team Area End ##### -->
 
@@ -222,110 +205,82 @@
                     </div>
                 </div>
             </div>
-
+       </div>
+    
+		<div class="container">
             <div class="row">
-
                 <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="100ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/9.jpg" alt=""></a>
-                            <!-- Product Tag -->
-                            <div class="product-tag">
-                                <a href="#">Hot</a>
+              <c:forEach items="${funding_top3}" var="fundingVo">
+           
+                <div class="col-12 col-sm-6 col-lg-4">
+                      <div class="single-benefits-area">                   
+                          <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
+                              </a><div class="CommonCard_rect__2wpm4">
+                                    <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
+                                        <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
+                                            </span></a>
+                                  
+                                                 <a href="funding_detail.do?funding_index=${fundingVo.funding_index}">
+                                
+                                                     <img src="${fundingVo.funding_repre_pic}" alt="">
+                                                </a>
+           
+                                    <div class="CommonCard_info__1f4kq">
+                                    <div class="RewardProjectCard_info__3JFub">
+                                        <div class="RewardProjectCard_infoTop__3QR5w">
+                                        <a href="funding_detail.do?funding_index=${fundingVo.funding_index}" class="CardLink_link__1k83H">
+                                            <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
+                                                <strong>${fundingVo.funding_subject}</strong>
+                                            </p>
+                                        </a>
+                                    <div style="margin-bottom: 10px;">
+                                        <span class="RewardProjectCard_category__2muXk" style="color:#90949C; font-size:13px;">
+                                           ${fundingVo.funding_category_name}
+                                        </span>
+                                        <span class="RewardProjectCard_makerName__2q4oH" style="color:#90949C; font-size:13px;">
+                                            ${fundingVo.creator_name}
+                                        </span>
+                                    </div>
+                                    </div>
+                                        <div class="RewardProjectCard_gauge__3p9US">
+                                            <span style="width: 100%;">
+                                            </span>
+                                        </div>
+                                        <span class="RewardProjectCard_percent__3TW4_">
+                                        </span>
+                                        
+                                          <!-- Single Progress Bar -->
+                                        <div class="single_progress_bar">
+                                           
+                                            <div id="bar4" class="barfiller" style="border-radius: 5px;">
+                                               
+                                                <span class="fill" data-percentage="60" style="border-radius: 5px; width: 162px; transition: width 1s ease-in-out 0s; background: rgb(252, 82, 48);"></span>
+                                            </div>
+                                        </div>
+                                          
+                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#fc5230; font-size:18px; font-weight:bold">
+                                            ${fundingVo.percentage}%
+                                        </span>                                      
+                                        
+                                        <span class="RewardProjectCard_amount__2AyJF" style="color:#90949C; font-size:16px; margin-right:5%;font-weight:bold">
+                                              ${fundingVo.funding_amount}원
+                                        </span>
+                                        <span class="RewardProjectCard_days__3eece RewardProjectCard_isAchieve__1LcUu">
+                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">${fundingVo.restdays}일</span>
+                                            <span class="RewardProjectCard_remainingDayText__2sRLV" style="color:#90949C;"> 남음</span>
+                                            <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
+                                     </div>
+                                    </div>  
+                                </div>
                             </div>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
                             </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="200ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/10.jpg" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="300ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/11.jpg" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="400ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/12.jpg" alt=""></a>
-                            <!-- Product Tag -->
-                            <div class="product-tag sale-tag">
-                                <a href="#">Hot</a>
-                            </div>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 text-center">
-                    <a href="#" class="btn alazea-btn" style="font-size:15pt;border-radius:35px;">컨텐츠 제안하러 가기</a>
-                </div>
-
+                   </c:forEach>   
             </div>
+
+	        <div class="col-12 text-center">
+	            <a href="#" onclick="funding_membercheck()" class="btn alazea-btn" style="font-size:15pt;background-color:#2da498;color:white;font-weight:500;">컨텐츠 제안하러 가기</a>
+	        </div>
+	        
         </div>
     </section>
     <!-- ##### Product Area End ##### -->
@@ -347,103 +302,39 @@
             </div>
 
             <div class="row">
+                <c:forEach items="${goods_top3}" var="goods_top3">
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-product-area mb-100">
+                        <!-- Product Image -->
+                        <div class="product-img">
+                            <a href="goods_detail.do?goods_index=${goods_top3.goods_index}"><img src="img/goods/${goods_top3.goods_repre_pic}" alt=""></a>
+                            <!-- Product Tag
+                            <div class="product-tag">
+                                <a href="#">Hot</a>
+                            </div> -->
 
-                <!-- Single Team Member Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-team-member text-center mb-100">
-                        <!-- Team Member Thumb -->
-                        <div class="team-member-thumb">
-                            <img src="img/bg-img/team1.png" alt="">
-                            <!-- Social Info -->
-                            <div class="team-member-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
                         </div>
-                        <!-- Team Member Info -->
-                        <div class="team-member-info mt-30">
-                            <h5>Joseph Corbin</h5>
-                            <p>CEO &amp; Founder</p>
-                        </div>
+                        <!-- Product Info -->
+                        <div class="product-info mt-15">
+                            <p style="margin-bottom:5px;">${goods_top3.creator_name}</p>
+                            <a href="goods_detail.do?goods_index=${goods_top3.goods_index}">
+                                <p style="color:#545454;font-weight:500;font-size:1.5em">${goods_top3.goods_name}</p>
+                            </a>
+                            <h6 style="font-size:1.5em"><strong>${goods_top3.goods_price}</strong> 원</h6>
+                        </div> 
                     </div>
                 </div>
-
-                <!-- Single Team Member Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-team-member text-center mb-100">
-                        <!-- Team Member Thumb -->
-                        <div class="team-member-thumb">
-                            <img src="img/bg-img/team2.png" alt="">
-                            <!-- Social Info -->
-                            <div class="team-member-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <!-- Team Member Info -->
-                        <div class="team-member-info mt-30">
-                            <h5>Tasha Deserio</h5>
-                            <p>Garden Designer</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Team Member Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-team-member text-center mb-100">
-                        <!-- Team Member Thumb -->
-                        <div class="team-member-thumb">
-                            <img src="img/bg-img/team3.png" alt="">
-                            <!-- Social Info -->
-                            <div class="team-member-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <!-- Team Member Info -->
-                        <div class="team-member-info mt-30">
-                            <h5>Cody Baker</h5>
-                            <p>Plan Manager</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Team Member Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-team-member text-center mb-100">
-                        <!-- Team Member Thumb -->
-                        <div class="team-member-thumb">
-                            <img src="img/bg-img/team4.png" alt="">
-                            <!-- Social Info -->
-                            <div class="team-member-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <!-- Team Member Info -->
-                        <div class="team-member-info mt-30">
-                            <h5>Pearl Kansas</h5>
-                            <p>Marketer</p>
-                        </div>
-                    </div>
-                </div>
-          
-                <div class="col-12 text-center" style="margin-bottom: 55px">
-                    <a href="#" class="btn alazea-btn" style="font-size:15pt; border-radius:35px;">굿즈 판매하러 가기</a>
-                </div>
+             </c:forEach>
             </div>
-            
-            
 
+	        <div class="col-12 text-center" style="margin-bottom:10%">
+	            <a href="#" onclick="goods_membercheck()" class="btn alazea-btn" style="font-size:15pt;background-color:#fc5230;color:white;font-weight:500;">굿즈 판매하러 가기</a>
+		    </div>
+	    
         </div>
+        
+
     </section>
     <!-- ##### Team Area End ##### -->
 
@@ -463,110 +354,32 @@
             </div>
 
             <div class="row">
-
+                <c:forEach items="${creator3}" var="creator3">
                 <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="100ms">
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-product-area mb-100">
                         <!-- Product Image -->
                         <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/9.jpg" alt=""></a>
-                            
+                            <a href="board_page?creator_name=${creator3.creator_name}"><img src="img/community/${creator3.creator_profile_photo}" alt=""></a>
                             <!-- Product Tag
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div> -->
-                            
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
+
                         </div>
                         <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Creator</p>
+                        <div class="product-info mt-15">
+                            <a href="board_page?creator_name=${creator3.creator_name}">
+                                <p style="color:#545454;font-weight:500;font-size:1.5em">${creator3.creator_name}</p>
                             </a>
-                            <h6>대표 커뮤니티1</h6>
-                        </div>
+                            <h6 style="font-size:1em">${creator3.creator_profile_content}</h6>
+                        </div> 
                     </div>
                 </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="200ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/10.jpg" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Creator</p>
-                            </a>
-                            <h6>대표 커뮤니티2</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="300ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/11.jpg" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Creator</p>
-                            </a>
-                            <h6>대표 커뮤니티3</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="400ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/12.jpg" alt=""></a>
-                            <!-- Product Tag
-                            <div class="product-tag sale-tag">
-                                <a href="#">Hot</a>
-                            </div> -->
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Creator</p>
-                            </a>
-                            <h6>대표 커뮤니티4</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 text-center">
-                    <a href="#" class="btn alazea-btn" style="font-size:15pt; border-radius:35px;">커뮤니티 구경하러 가기</a>
-                </div>
-
+             </c:forEach>
             </div>
+            
+            
         </div>
     </section>
     <!-- ##### Product Area End ##### -->
@@ -586,7 +399,7 @@
                             <img src="img/plus/fundings_icon.png" class="wideImg" alt="">
                         </div>
                         <div class="cf-content">
-                            <h2 style="color:#ffff;"><span class="counter" style="font-size:30pt;font-family:Jalnan;">20</span>%</h2>
+                        	<h2 style="color:white;font-size:30pt;font-family:Jalnan;">${funding_count}<span style="font-size:15pt;margin-left:2px">개의</span></h2>
                             <h6 style="font-size:15pt;color:#ffff;">FUNDINGS</h6>
                         </div>
                     </div>
@@ -599,7 +412,7 @@
                             <img src="img/plus/goods_icon.png" class="wideImg" alt="">
                         </div>
                         <div class="cf-content">
-                            <h2 style="color:#ffff;"><span class="counter" style="color:#ffff;font-size:30pt;font-family:Jalnan;">20</span>%</h2>
+                            <h2 style="color:white;font-size:30pt;font-family:Jalnan;">${goods_count}<span style="font-size:15pt;margin-left:2px">개의</span></h2>
                             <h6 style="font-size:15pt;color:#ffff;">GOODS</h6>
                         </div>
                     </div>
@@ -611,8 +424,8 @@
                         <div class="cf-icon">
                             <img src="img/plus/community_icon.png" alt="" class="wideImg" >
                         </div>
-                        <div class="cf-content">
-                            <h2 style="color:#ffff;"><span class="counter" style="font-size:30pt;font-family:Jalnan;">20</span>%</h2>
+                        <div class="cf-content"> 
+                            <h2 style="color:white;font-size:30pt;font-family:Jalnan;">${creator_count}<span style="font-size:15pt;margin-left:2px">개의</span></h2>
                             <h6 style="font-size:15pt;color:#ffff;">COMMUNITES</h6>
                         </div>
                     </div>
@@ -625,7 +438,7 @@
                             <img src="img/plus/creator_icon.png" class="wideImg" alt="">
                         </div>
                         <div class="cf-content">
-                            <h2 style="color:#ffff;"><span class="counter" style="font-size:30pt;font-family:Jalnan;">20</span>%</h2>
+                            <h2 style="color:white;font-size:30pt;font-family:Jalnan;">${creator_count}<span style="font-size:15pt;margin-left:2px">명의</span></h2>
                             <h6 style="font-size:15pt;color:#ffff;">CREATORS</h6>
                         </div>
                     </div>
@@ -651,7 +464,7 @@
                         <h2 h2 style="font-size:25pt; margin-bottom:20px;font-family:Jalnan;">
                             <span style="color:#2da498">CREA</span><span style="color:#fc5230">KOK</span>
                         </h2>
-                        <p>크리콕 </p>
+                        <p>크리콕 운영진 소개</p>
                     </div>
                 </div>
             </div>
@@ -664,13 +477,14 @@
                         <!-- Team Member Thumb -->
                         <div class="team-member-thumb">
                             <img src="img/bg-img/team1.png" alt="">
-                            <!-- Social Info -->
+                            
+                            <!-- Social Info
                             <div class="team-member-social-info">
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
+                            </div>  -->
                         </div>
                         <!-- Team Member Info -->
                         <div class="team-member-info mt-30">
@@ -686,13 +500,15 @@
                         <!-- Team Member Thumb -->
                         <div class="team-member-thumb">
                             <img src="img/bg-img/team2.png" alt="">
-                            <!-- Social Info -->
+                            
+                            <!-- Social Info
                             <div class="team-member-social-info">
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
+                            </div>  -->
+                            
                         </div>
                         <!-- Team Member Info -->
                         <div class="team-member-info mt-30">
@@ -708,13 +524,14 @@
                         <!-- Team Member Thumb -->
                         <div class="team-member-thumb">
                             <img src="img/bg-img/team3.png" alt="">
-                            <!-- Social Info -->
+                            
+                            <!-- Social Info
                             <div class="team-member-social-info">
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
+                            </div>  -->
                         </div>
                         <!-- Team Member Info -->
                         <div class="team-member-info mt-30">
@@ -730,13 +547,14 @@
                         <!-- Team Member Thumb -->
                         <div class="team-member-thumb">
                             <img src="img/bg-img/team4.png" alt="">
-                            <!-- Social Info -->
+                            
+                            <!-- Social Info
                             <div class="team-member-social-info">
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
+                            </div>  -->
                         </div>
                         <!-- Team Member Info -->
                         <div class="team-member-info mt-30">
@@ -769,6 +587,30 @@
     <!-- Active js -->
     <script src="js/active.js"></script>
     
+    <script>
+		function funding_membercheck(){
+			if('${member.member_email}' == '') {
+			  	alert('로그인 해주세요');
+			  		location.href="member_login.do";
+			       return false;
+			 }
+			if('${member.member_email}' != '') {  
+			  		location.href="/fundingwrite_form.do";	
+			}		
+		}
+		
+		function goods_membercheck(){
+			if('${member.member_email}' == '') {
+			  	alert('로그인 해주세요');
+			  		location.href="member_login.do";
+			       return false;
+			 }
+			if('${member.member_email}' != '') {  
+			  		location.href="/goods_project_write_form.do";	
+			}		
+		}
+	</script>    
+   
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
     </jsp:include>

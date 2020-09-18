@@ -100,5 +100,11 @@ public class CreatorBoardServiceImpl implements CreatorBoardService {
 		int count = mapper.countByCreator(creator_name);
 		return new ListResult(currentPage, count, pageSize, list, filterBy);
 	}
-
+	
+	// 크리에이터로 커뮤니티 검색(Index)
+	@Override
+	public List<Creator> searchCommunity(String creator_name){
+		List<Creator> search_community = mapper.searchCommunity(creator_name);
+		return search_community;
+	}
 }

@@ -37,5 +37,8 @@ public interface CreatorBoardService {
 	public void insertAnswer(Board board);
 	// 정렬 기능
 	ListResult getListResultByFilterS(int currentPage, int pageSize, String filterBy, String creator_name);
+	
+	// 크리에이터로 커뮤니티 검색(Index)
+	List<Creator> searchCommunity(String creator_name);
 }
 

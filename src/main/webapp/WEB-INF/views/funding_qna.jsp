@@ -181,7 +181,7 @@
                    href="funding_detail.do?funding_index=${funding_detail.funding_index}#fix_point">스토리</a>
                      <a aria-current="page" class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB active"
                    href="funding_qna.do?funding_index=${funding_detail.funding_index}#fix_point" style="color:rgba(0,0,0,1);border-bottom:3px solid rgba(0,0,0,1);padding-bottom:calc(0.5rem - 3px)">Q&A(${funding_detail.funding_qna_totalCount})</a>
-                   <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="/mcmp_project1/policy?ref=%EB%A9%94%EC%9D%B8%2F%EC%A3%BC%EB%AA%A9%ED%95%A0%EB%A7%8C%ED%95%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8">펀딩 안내</a></div>
+                   <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="funding_about.do?funding_index=${funding_detail.funding_index}#fix_point">펀딩 안내</a></div>
                 </div>
                   
             </nav>
@@ -257,10 +257,13 @@
                 
                 
                 <p style="width:100%;text-align:center;margin-top:3%">
+                 <c:if test="${!empty member}">
                   <button type="button" class="" onclick="document.getElementById('reserv').style.display='block'"
                       style='background-color:black; color:white; width:100px;'>
+                    
                       <a href="funding_qna.writeForm?funding_index=${funding_detail.funding_index}" onclick="clickMemberCheckLogin();" style="color:white;">
                       문의하기</a></button>
+                      </c:if>
                 </p>
                     
                     
@@ -309,8 +312,7 @@
                     </div>
               
                             
-                            
-                     <div class="ProjectPage__ProjectContentsSubColumn-f3cisk-3 egbEFv">
+                   <div class="ProjectPage__ProjectContentsSubColumn-f3cisk-3 egbEFv">
                         <div class="ProjectPage__SubColumnInner-f3cisk-6 qujmm">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf ProjectPage__StyledCreatorCard-f3cisk-5 lfTmkG">
                                 <div class="CreatorCard__CreatorCardInner-sc-1ifohey-0 iubrbI">
@@ -318,20 +320,17 @@
                                     <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO"><span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"></span><a target="_blank" href="https://tumblbug.com/u/mcmp">
                                     <span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx"> ${funding_detail.creator_name}</span></a></div>
                                     <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">
-                                            창작자 소갯글
+                                            ${funding_detail.creator_profil_content}
                                     
                                     </div>
                                     <div class="Divider-sc-17hnup0-0 eUqLBU"></div>
-                                    <div class="CreatorCard__CreatorStats-sc-1ifohey-5 dhVdtT">
-                                        <div>마지막 로그인&nbsp;&nbsp;<b>한 시간 전</b></div>진행한 프로젝트&nbsp;&nbsp;<b>1</b>&nbsp;&nbsp;&nbsp;&nbsp; 밀어준 프로젝트&nbsp;&nbsp;<b>0</b>
+                                     <div class="CreatorCard__CreatorContactButton-sc-1ifohey-6 jpHksr">
+                                        <button class="Button-sc-1x93b2b-0 jQspcv" onclick="goCreator()">
+                                            <i class="_3YmAkQhwzI7o-uUWz_8Mp4 _1QY7TzdLHKX3-BKPDNNYKF">
+                                                                                                커뮤니티 놀러가기
+                                            </i>
+                                        </button>
                                     </div>
-                                    <div class="CreatorCard__CreatorContactButton-sc-1ifohey-6 jpHksr"><button class="Button-sc-1x93b2b-0 jQspcv"><i class="_3YmAkQhwzI7o-uUWz_8Mp4 _1QY7TzdLHKX3-BKPDNNYKF"></i>창작자에게 문의하기</button></div>
-                                </div>
-                            </div>
-                            <div class="Sticker__Wrapper-sc-1si6lg8-0 jyrVcI">
-                               
-                                  
-                            </div>
                             <div class="Sticker__Ghost-sc-1si6lg8-1 jchKaE" style="height: auto;"></div>
                         </div>
                     </div>

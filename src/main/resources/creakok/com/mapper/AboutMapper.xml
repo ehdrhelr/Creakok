@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="creakok.com.mapper.AboutMapper">
+	<select id="selectGoodsTop3"  resultType="Goods">
+		<![CDATA[select *
+		from 
+		 (
+		  select *
+		  from GOODS
+		  order by GOODS_SALE_NUMBER desc
+		 )
+		where ROWNUM <= 3]]>
+	</select>
+
+	<select id="selectFundingTop3"  resultType="Funding">
+		<![CDATA[select *
+		from 
+		 (
+		  select *
+		  from FUNDING
+		  order by FUNDING_AMOUNT desc
+		 )
+		where ROWNUM <= 3]]>
+	</select>
+
+	<select id="selectCreator3"  resultType="Creator">
+		<![CDATA[select *
+		from 
+		 (
+		  select *
+		  from CREATOR
+		  order by CREATOR_NAME asc
+		 )
+		where ROWNUM <= 3]]>
+	</select>
+		
+	<select id="selectFundingCount"  resultType="long">
+		select COUNT(FUNDING_INDEX) from FUNDING
+	</select>	
+	
+	<select id="selectGoodsCount"  resultType="long">
+		select COUNT(GOODS_INDEX) from GOODS
+	</select>	
+	
+	<select id="selectCreatorCount"  resultType="long">
+		select COUNT(MEMBER_EMAIL) from CREATOR
+	</select>	
+</mapper>
+
+
+	

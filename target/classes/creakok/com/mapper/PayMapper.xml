@@ -6,31 +6,20 @@
 	<select id="getFundingCheckoutInfo" parameterType="long" resultType="Funding">
        select * from Funding where FUNDING_INDEX=${funding_index}
     </select>
-    <!--    (select * from FUNDING where #{FUNDING_CATEGORY_CODE}=${} order by #{filterBy} desc) aa)  -->
-   <select id="selectPerPageCategory" parameterType="Funding" resultType="String">
-      select FUNDING_CATEGORY_NAME from FUNDING_CATEGORY where FUNDING_CATEGORY_CODE=${funding_category_code}
-    </select>
-    
-    <select id="selectCategoryName" parameterType="Integer" resultType="String">
-      select FUNDING_CATEGORY_NAME from FUNDING_CATEGORY where FUNDING_CATEGORY_CODE=${codeUsed}
-    </select>
-    
-     <select id="selectCategoryCode" resultType="Integer">
-      select FUNDING_CATEGORY_CODE from FUNDING
-    </select>
-    
-    
-	<select id="selectCount" parameterType="String" resultType="long">
-        select COUNT(FUNDING_INDEX) from FUNDING where FUNDING_CATEGORY_CODE=${categoryByUsed}
-    </select>
-    
-    <select id="getFunding_category" resultType="Funding_category">
-        select * from FUNDING_CATEGORY
-    </select>
-    
-     <select id="getRelatedFunding" parameterType="long" resultType="Funding">
-        select * from FUNDING where FUNDING_CATEGORY_CODE=${categoryCode}
-    </select>
+   <insert id="insertFunding_order" parameterType="Funding_payinfo">
+   	 insert into Funding_payinfo values(
+   	 FUNDING_PAYINFO_SEQ.nextval,
+   	 #{funding_payinfo_name},
+   	 #{member_email},
+   	 ${funding_payinfo_phonenumber},
+   	 ${funding_payinfo_amountpay},
+   	 ${funding_index},
+   	 #{funding_subject},
+   	 #{success_num},
+   	 #{success_id},
+   	 #{success_card_num},
+   	 #{success_pay})
+   </insert>
     
     <insert id="insertOneOrder" parameterType="Order_Info">
 	    insert into ORDER_INFO values(ORDER_INDEX_SEQ.nextval, #{buyer_name}, #{buyer_phone}, #{member_email}, #{buy_addr}, SYSDATE, #{buy_product_name}, #{buyer_buyid}, #{buyer_merid}, ${buyer_pay_price}, #{buyer_card_num}, #{buyer_pay_ok})

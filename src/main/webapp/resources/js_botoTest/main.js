@@ -64,8 +64,10 @@ $(window).on('load', function() {
 		infinite: true,
 		speed: 300,
 		slidesToShow: 1,
+		slidesToScroll: 1,
 		centerMode: true,
 		variableWidth: true,
+		variableHeight: true,
 		centerMode: true,
 		arrows: false,
 		asNavFor: '.hero-text-slider',
@@ -94,13 +96,7 @@ $(window).on('load', function() {
 		}
 	}));
 
-	hero_slider.on('click', '.slick-slide', function (e) {
-		e.preventDefault();
-		var index = $(this).data("slick-index");
-		if ($('.slick-slider').slick('slickCurrentSlide') !== index) {
-			$('.slick-slider').slick('slickGoTo', index);
-		}
-	});
+
 
 	$('.hero-text-slider').slick({
 		dots: false,
