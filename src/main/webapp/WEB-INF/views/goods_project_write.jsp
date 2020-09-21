@@ -104,7 +104,7 @@
                                  <div >
                                     <input name="write_goods_product" style="display:inline-block;width:74.5%;margin-top:10px"class="form-control" id="first_name" 
                                    placeholder="판매할 제품명" onKeyUp="checkName(this)" required>
-                                    <label for="write_goods_product" id="checkName_Id" class="SignUp__InputLabel-k5h4n5-1 bpYHsq hcbae-member-joinwithEmail-check" style="margin-top:4%"></label>
+                                    <label for="write_goods_product" id="checkName_Id" class="SignUp__InputLabel-k5h4n5-1 bpYHsq hcbae-member-joinwithEmail-check" style="margin-top:2%"></label>
                                 </div>
 
                 <br>
@@ -190,7 +190,6 @@
 		   	if(result2 == '사용가능합니다.'){
 			    if(write_goods_price.trim() > 9 ){
 			    	if( write_goods_stock.trim() > 9 ){
-			    		alert(result2);
 			    		frm.submit();
 			    		return true;
 			    	}

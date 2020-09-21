@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.LikeType"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -119,7 +119,7 @@
                             <h1 id="product_name" class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${one_goods.goods_name}</h1>
                             <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">
                             <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gOcHWp"></span>
-                            <a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="/u/mcmp">
+                            <a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="board_page?creator_name=${one_goods.creator_name}">
                             	${one_goods.creator_name}</a></div>
                         </div>
                     </div>
@@ -376,7 +376,7 @@
                              <tr>
                                   <td style="padding:1.5px !important;">${qna_list.qna_list_number}</td>
                                   <td style="padding:1.5px !important;">
-                                    <a href="goods_one_qna.do?goods_qna_index=${qna_list.goods_qna_index}&goods_index=${qna_list.goods_index}#fix_point" >
+                                    <a href="goods_one_qna.do?goods_qna_index=${qna_list.goods_qna_index}&goods_index=${qna_list.goods_index}&qna_list_number=${qna_list.qna_list_number}#fix_point" >
                                         <p style="font-size:10pt;color:black;width:200px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;margin:0;text-align:center;padding:0">${qna_list.goods_qna_subject}</p>
                                     </a>
                                   </td>
@@ -506,9 +506,7 @@
                 </div>
             </div>
 
-             <div class="row">
-                
-                
+                         <div class="row">
                 <c:if test="${empty four_goods}">
                        <p style="text-align:center;width:100%;margin-bottom:10%"> 관련 굿즈가 없습니다.</p>
                 </c:if>
@@ -524,15 +522,16 @@
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div>
-
+                            
 
                         </div>
                         <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="goods_detail.do?goods_index=${goods_related.goods_index}">
-                                <p>${goods_related.goods_name}</p>
+                        <div class="product-info mt-15">
+                            <p style="margin-bottom:5px;color:black">${goods_related.creator_name}</p>
+                            <a href="goods_detail.do?goods_index=${goods_related.goods_index}" style="color:black">
+                                <p style="color:black;font-weight:500">${goods_related.goods_name}</p>
                             </a>
-                            <h6>${goods_related.goods_price}&nbsp;<span style="font-weight:200">원</span></h6>
+                            <h6 style="color:black;font-size:1.5em">${goods_related.goods_price}&nbsp;<span style="color:black;font-weight:400">원</span></h6>
                         </div>
                     </div>
                 </div>

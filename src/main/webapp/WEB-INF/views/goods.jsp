@@ -224,7 +224,7 @@
         console.log("gCode: "+gCode);
         console.log("cp: "+cp); */
         
-        location.href="goods_list.do?ps="+ps;
+        location.href="goods_list.do?ps="+ps+"&cp=1";
         
      }
      function getCp(){
@@ -242,6 +242,8 @@
          for(var i=0; i<obj.length; i++){
              if(obj[i] != chk){
                  obj[i].checked = false;
+             } else {
+            	 obj[i].checked = true;
              }
          }
          var gCode;

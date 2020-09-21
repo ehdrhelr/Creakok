@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="phone_number">연락처 *</label>
-                                    <input class="form-control" value="" onkeydown="enterCheck(this)" required>
+                                    <input type="number" class="form-control" value="" onkeydown="enterCheck(this)" placeholder="숫자만 입력" required>
                                 </div>
                               
                               
@@ -119,7 +119,7 @@
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="phone_number">연락처 *</label>
-                                    <input name="delivery_phone" class="form-control" value="" onkeydown="enterCheck(this)" required>
+                                    <input type="number" name="delivery_phone" class="form-control" value="" onkeydown="enterCheck(this)" placeholder="숫자만 입력" required>
                                 </div>
                               
                         

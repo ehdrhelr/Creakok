@@ -70,25 +70,26 @@
             <!-- Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(img/bg-img/1.jpg);"></div>
+                <div class="slide-img bg-img" style="background-image: url(img/bg-img/creakok_open_1920.png);"></div>
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
                             <!-- Post Content -->
                             <div class="hero-slides-content text-center">
-                                <h2>Plants exist in the weather and light rays that surround them</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque ante nec ipsum iaculis, ac iaculis ipsum porttitor. Vivamus cursus nisl lectus, id mattis nisl lobortis eu. Duis diam augue, dapibus ut dolor at, mattis maximus dolor.</p>
+                                <h2></h2>
+                                <p></p>
+                                <!--
                                 <div class="welcome-btn-group">
                                     <a href="#" class="btn alazea-btn mr-30">GET STARTED</a>
                                     <a href="#" class="btn alazea-btn active">CONTACT US</a>
-                                </div>
+                                </div>    -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Single Hero Post -->
+           <!--  Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
                 <div class="slide-img bg-img" style="background-image: url(img/bg-img/2.jpg);"></div>
@@ -108,7 +109,8 @@
                     </div>
                 </div>
             </div>
-
+        
+         
         </div>
     </section>
     <!-- ##### Hero Area End ##### -->
@@ -566,10 +568,10 @@
         <div class="section-heading text-center">
 
                         <h2 style="margin-bottom:10px">크리콕 커뮤니티</h2>
-                       <!-- <p>크리에이터를 검색해보세요.</p>-->
+                        <p>다양한 크리에이터의 커뮤니티를 방문해보세요.</p>
                
-                    <input type="search" name="searchCreator" id="searchCreator" placeholder="크리에이터를 검색해보세요." style="width:300px; height:35px; background-color:#b7c7c5;opacity:0.7;border:0">
-                      <button type="submit" onclick="searchCreator()"> <img src="img/core-img/search.png"></button>
+                    <!-- <input type="search" name="searchCreator" id="searchCreator" placeholder="크리에이터를 검색해보세요." style="width:300px; height:35px; background-color:#b7c7c5;opacity:0.7;border:0">
+                      <button type="submit" onclick="searchCreator()"> <img src="img/core-img/search.png"></button>  -->
             
         </div>
      

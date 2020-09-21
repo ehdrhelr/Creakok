@@ -244,7 +244,7 @@ img {
   background-position: center center;
   background-size: cover; }
   .bg-overlay::after {
-    
+    background-color: rgba(17, 17, 17, 0.5);
     position: absolute;
     z-index: -1;
     top: 0;
@@ -616,7 +616,9 @@ img {
         min-width: 125px;
         padding: 0 10px; } }
 
-
+.hero-post-slides .owl-item.center .single-hero-post .slide-img {
+  -webkit-animation: slide 24s linear infinite;
+  animation: slide 24s linear infinite; }
 
 @-webkit-keyframes slide {
   0% {

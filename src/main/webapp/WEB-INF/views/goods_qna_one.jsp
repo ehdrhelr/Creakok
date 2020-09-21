@@ -121,7 +121,7 @@
                             <h1 id="product_name" class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${one_goods.goods_name}</h1>
                             <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">
                             <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gOcHWp"></span>
-                            <a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="/u/mcmp">
+                            <a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="board_page?creator_name=${one_goods.creator_name}">
                             	${one_goods.creator_name}</a></div>
                         </div>
                     </div>
@@ -151,46 +151,51 @@
 	                                    </div>
 	                           	 </div>  
                      
-                       <script language="javascript">
-		                      function plus(){
-		                  		var effect = document.getElementById('qty'); 
-		                  		var qty = effect.value; 
-		                  			
-		                  		var result = document.getElementById('price_qty');
-		                  		var amount = ${one_goods.goods_price} * (Number(qty)+1);
-		                  		
-		                  		
-		                  		var result2 = document.getElementById('price_qty2');
-		                  		var amount2 = (${one_goods.goods_price} * (Number(qty)+1))+3000; 
-		                  		result2.innerHTML= amount2;
-		                  		
-		                  		result.innerHTML= amount;
-		                  			if( !isNaN( qty )) effect.value++;
-		                      		return false;
-		                  	}
-	                        function minus(){
-	                                var effect = document.getElementById('qty'); 
-	                                var qty = effect.value; 
-	                                
-	                                if(qty>1){
-	                                    var result = document.getElementById('price_qty');
-	                                    var amount = ${one_goods.goods_price} * (Number(qty)-1);
-	                                    
-	                                    var result2 = document.getElementById('price_qty2');
-	                                    var amount2 = (${one_goods.goods_price} * (Number(qty)-1))+3000; 
-	                                    
-	                                    result2.innerHTML= amount2;
-	                                }
-	                                
-	                                if(amount>0){
-	                                    result.innerHTML= amount;
-	                                }
-	                                if(amount2>0){
-	                                    result2.innerHTML= amount2;
-	                                }
-	                                if( !isNaN( qty ) && qty  >1) effect.value--;
-	                                    return false; 
-	                       }
+                      <script language="javascript">
+                              function plus(){
+                                var effect = document.getElementById('qty'); 
+                                var qty = effect.value; 
+                                    
+                                var result = document.getElementById('price_qty');
+                                if(qty < ${one_goods.goods_stock_number}){
+                                    var amount = ${one_goods.goods_price} * (Number(qty)+1);
+                                    
+                                    var result2 = document.getElementById('price_qty2');
+                                    var amount2 = (${one_goods.goods_price} * (Number(qty)+1))+3000; 
+                                    result2.innerHTML= amount2;
+                                    
+                                    result.innerHTML= amount;
+                                } else {
+                                    var amount = 0;
+                                }
+                                
+
+                                if( !isNaN( qty ) & qty < ${one_goods.goods_stock_number} ) effect.value++;
+                                return false;
+                            }
+                            function minus(){
+                                var effect = document.getElementById('qty'); 
+                                var qty = effect.value; 
+                                
+                                if(qty>1){
+                                    var result = document.getElementById('price_qty');
+                                    var amount = ${one_goods.goods_price} * (Number(qty)-1);
+                                    
+                                    var result2 = document.getElementById('price_qty2');
+                                    var amount2 = (${one_goods.goods_price} * (Number(qty)-1))+3000; 
+                                    
+                                    result2.innerHTML= amount2;
+                                }
+                                
+                                if(amount>0){
+                                    result.innerHTML= amount;
+                                }
+                                if(amount2>0){
+                                    result2.innerHTML= amount2;
+                                }
+                                if( !isNaN( qty ) && qty  >1) effect.value--;
+                                    return false; 
+                            }
                        </script>
                        
                        
@@ -350,7 +355,7 @@
                                                       </thead>  
                                                       <tbody>
                                                             <tr> 
-                                                              <td style="padding:1.5px !important;">${one_qna.goods_qna_index}</td>
+                                                              <td style="padding:1.5px !important;">${qna_list_number}</td>
                                                               <td style="padding:1.5px !important;">
                                                                   <a href="#" style="color:black;">
                                                                       ${one_qna.goods_qna_subject}
@@ -628,9 +633,7 @@
                 </div>
             </div>
 
-                         <div class="row">
-                
-                
+            <div class="row">
                 <c:if test="${empty four_goods}">
                        <p style="text-align:center;width:100%;margin-bottom:10%"> 관련 굿즈가 없습니다.</p>
                 </c:if>
@@ -646,14 +649,16 @@
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div>
+                            
 
                         </div>
                         <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="goods_detail.do?goods_index=${goods_related.goods_index}">
-                                <p>${goods_related.goods_name}</p>
+                        <div class="product-info mt-15">
+                            <p style="margin-bottom:5px;color:black">${goods_related.creator_name}</p>
+                            <a href="goods_detail.do?goods_index=${goods_related.goods_index}" style="color:black">
+                                <p style="color:black;font-weight:500">${goods_related.goods_name}</p>
                             </a>
-                            <h6>${goods_related.goods_price}&nbsp;<span style="font-weight:200">원</span></h6>
+                            <h6 style="color:black;font-size:1.5em">${goods_related.goods_price}&nbsp;<span style="color:black;font-weight:400">원</span></h6>
                         </div>
                     </div>
                 </div>

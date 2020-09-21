@@ -78,7 +78,7 @@ public class GoodsController {
 	private MemberService memberservice;
 	
 	@RequestMapping("goods_list.do")
-	public String list(HttpServletRequest request, HttpSession session) {
+	public ModelAndView list(HttpServletRequest request, HttpSession session) {
 		String cpStr = request.getParameter("cp");
 		String psStr = request.getParameter("ps");
 		String gCodeStr = request.getParameter("gCode");
@@ -95,11 +95,12 @@ public class GoodsController {
 		session.setAttribute("gCategory", gCategory);	
 		
 		
-		GoodsVo tempGoods = (GoodsVo)session.getAttribute("goods");
+		//GoodsVo tempGoods = (GoodsVo)session.getAttribute("goods");
 		//(1) cp 
 		int cp = 1;
 		if(cpStr == null) {
-			Object cpObj = tempGoods.getCp();
+			//Object cpObj = tempGoods.getCp();
+			Object cpObj = session.getAttribute("goods_cp");
 			if(cpObj != null) {
 				cp = (Integer)cpObj;
 			} else if(cpObj == null){
@@ -109,13 +110,13 @@ public class GoodsController {
 			cpStr = cpStr.trim();
 			cp = Integer.parseInt(cpStr);
 		}
-	//	session.setAttribute("cp", cp);
+		session.setAttribute("goods_cp", cp);
 		
 		//(2) ps 
 		int ps = 3;		
 		if(psStr == null) {
-			//Object psObj = session.getAttribute("ps");
-			Object psObj = tempGoods.getPs();
+			//Object psObj = tempGoods.getPs();
+			Object psObj = session.getAttribute("goods_ps");
 			if(psObj != null) {
 				ps = (Integer)psObj;
 			} else {
@@ -126,7 +127,8 @@ public class GoodsController {
 			ps = Integer.parseInt(psStr);
 			if(gCodeStr == null) {
 			//	gCodeStr = "300";
-				Object select_gCodeObj = tempGoods.getGCode();
+				Object select_gCodeObj = session.getAttribute("gCode");
+				//Object select_gCodeObj = tempGoods.getGCode();
 				if(select_gCodeObj != null) {
 					gCodeStr = select_gCodeObj.toString();
 				}else {
@@ -134,11 +136,12 @@ public class GoodsController {
 				}
 			}
 		}
-		
+		session.setAttribute("goods_ps", ps);
 	
 		 String filterBy = "goods_sale_number";
 		 if(filterByStr==null) {
-	            Object filterByObj = tempGoods.getFilterBy();
+	            //Object filterByObj = tempGoods.getFilterBy();
+			 	Object filterByObj = session.getAttribute("filterBy");
 	            if(filterByObj != null) {
 	            	filterBy = (String)filterByObj;
 	            }else {
@@ -148,7 +151,8 @@ public class GoodsController {
 	            filterBy = filterByStr.trim();
 				if(gCodeStr == null) {
 					//	gCodeStr = "300";
-						Object select_gCodeObj = tempGoods.getGCode();
+						//Object select_gCodeObj = tempGoods.getGCode();
+						Object select_gCodeObj = session.getAttribute("gCode");
 						if(select_gCodeObj != null) {
 							gCodeStr = select_gCodeObj.toString();
 						}else {
@@ -160,11 +164,11 @@ public class GoodsController {
 		
 		if( gCodeStr.equals("300") || gCodeStr == null ) { //카테고리 코드=300 (전체보기) 일때
 			long gCode = Long.parseLong(gCodeStr);
-			log.info("@@@@@@@@@@@@@@@@@@@@@@@@filterBy: "+filterBy);
-			log.info("@@@@@@@@@@@@@@@@@@@@@@@@cp: "+cp);
-			log.info("@@@@@@@@@@@@@@@@@@@@@@@@ps: "+ps);
-			log.info("#######################gCodeStr: "+gCodeStr);
-			log.info("#######################gCode: "+gCode);
+			//log.info("@@@@@@@@@@@@@@@@@@@@@@@@filterBy: "+filterBy);
+			//log.info("@@@@@@@@@@@@@@@@@@@@@@@@cp: "+cp);
+			//log.info("@@@@@@@@@@@@@@@@@@@@@@@@ps: "+ps);
+			//log.info("#######################gCodeStr: "+gCodeStr);
+			//log.info("#######################gCode: "+gCode);
 		    GoodsVo goodsVo = goodsService.listS(cp, ps, filterBy); //전체리스트 뽑아오고
 		    goodsVo.setCp(cp); //cp랑 이것저것 세팅해쥼
 		    goodsVo.setPs(ps);
@@ -175,20 +179,22 @@ public class GoodsController {
 				if(cp > 1) {	
 					int cp2 = cp-1;
 					goodsVo.setCp(cp2);
+					//return new ModelAndView("goods_list.do?cp="+cp2+"&gCode="+gCode);
+				} else {
+					//return new ModelAndView("goods_list.do?cp="+cp+"&gCode="+gCode);
 				}
 			}
 			
-			
+			session.setAttribute("gCode", gCode);
 			session.setAttribute("goods", goodsVo);
-
 			
 		} else if( !gCodeStr.equals("300") )  { //다른 카테고리 코드일때
 			long gCode = Long.parseLong(gCodeStr);
 			
-			//log.info("#######################g filterBy: "+filterBy);
-			//log.info("#######################g cp: "+cp);
-			//log.info("#######################g ps: "+ps);
-			//log.info("#######################g gCode: "+gCode);	
+			log.info("#######################g filterBy: "+filterBy);
+			log.info("#######################g cp: "+cp);
+			log.info("#######################g ps: "+ps);
+			log.info("#######################g gCode: "+gCode);	
 			
 			GoodsVo list = goodsService.getGoodsVo(cp, ps, gCode, filterBy);
 			list.setCp(cp);
@@ -196,17 +202,22 @@ public class GoodsController {
 			list.setFilterBy(filterBy);
 			list.setGCode(gCode);
 			
-			
 			if(list.getList().size() == 0) {
 				if(cp > 1) {	
 					int cp2 = cp-1;
 					list.setCp(cp2);
-				}
+					
+				} 
 			}   
+			session.setAttribute("gCode", gCode);
 			session.setAttribute("goods", list);
 		}
 
-		return "goods";
+		
+		//(3) ModelAndView
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("goods");
+		return mv;
 	}
 	
 	
@@ -579,6 +590,7 @@ public class GoodsController {
 		boolean flag = goods_reviewservice.updateReviewViews(goods_review_index);
 		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
 		String category_name = request.getParameter("category_name");
+		String list_number = request.getParameter("list_number");
 		
 		//log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@: "+goods_review_index);
 		//log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@: "+gName);
@@ -624,6 +636,7 @@ public class GoodsController {
 		mv.addObject("creator", goods_creator);
 		mv.addObject("qna_list_size", qna_list_size);
 		mv.addObject("four_goods", four_goods);
+		mv.addObject("list_number", list_number);
 		
 		
 		return mv;
@@ -811,6 +824,7 @@ public class GoodsController {
 		String goods_qna_indexStr = request.getParameter("goods_qna_index");
 		long goods_index = Long.parseLong(goods_indexStr);
 		long goods_qna_index = Long.parseLong(goods_qna_indexStr);
+		String qna_list_number = request.getParameter("qna_list_number");
 		
 		//카테고리이름
 		String category_name = request.getParameter("category_name");
@@ -855,6 +869,7 @@ public class GoodsController {
 		mv.addObject("creator", goods_creator);
 		mv.addObject("qna_list_size", qna_list_size);
 		mv.addObject("four_goods", four_goods);
+		mv.addObject("qna_list_number", qna_list_number);
 		
 		return mv;
 	}
