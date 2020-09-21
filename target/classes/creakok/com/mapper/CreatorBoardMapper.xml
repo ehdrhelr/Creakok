@@ -10,7 +10,7 @@
         	(select ROWNUM AS rnum,
                 data.* from (
                         select BOARD_INDEX,
-                               LPAD('[RE]' , 4 * (LEVEL-1), '_') || BOARD_SUBJECT AS BOARD_SUBJECT,
+                               LPAD('   ┗ ' , 20 * (LEVEL - 1), '&nbsp') || BOARD_SUBJECT AS BOARD_SUBJECT,
                                BOARD_CONTENT,
                                MEMBER_NAME,
                                MEMBER_EMAIL,
@@ -100,7 +100,7 @@
         	(select ROWNUM AS rnum,
                 data.* from (
                         select BOARD_INDEX,
-                               LPAD('[RE]' , 4 * (LEVEL-1), '_') || BOARD_SUBJECT AS BOARD_SUBJECT,
+                               LPAD('   ┗ ' , 20 * (LEVEL - 1), '&nbsp') || BOARD_SUBJECT AS BOARD_SUBJECT,
                                BOARD_CONTENT,
                                MEMBER_NAME,
                                MEMBER_EMAIL,
@@ -169,7 +169,7 @@
         	(select ROWNUM AS rnum,
                 data.* from (
                         select BOARD_INDEX,
-                               LPAD('[RE]' , 4 * (LEVEL-1), '_') || BOARD_SUBJECT AS BOARD_SUBJECT,
+                               LPAD('   ┗ ' , 20 * (LEVEL - 1), '&nbsp') || BOARD_SUBJECT AS BOARD_SUBJECT,
                                BOARD_CONTENT,
                                MEMBER_NAME,
                                MEMBER_EMAIL,

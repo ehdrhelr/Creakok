@@ -1091,25 +1091,25 @@
           
 	    <div class="submit_a_review_area mt-50" style="width: 60%; margin: auto;" >
 	    	<form method="post" action="board_answer?board_index=${board.board_index}" onsubmit="return goWrite()">                            
-		    				      <div>
-                                     <label for="member_name">작성자</label>&nbsp;&nbsp;
-                                    <input name="member_name" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="member_name" 
-                                    placeholder="작성자" value="${member.member_name}" required readOnly>
-                                    <label for="creator_name">크리에이터</label>&nbsp;&nbsp;
-                                    <input name="creator_name" style="display:inline-block;width:30%" class="form-control" id="goods_name" 
-                                    placeholder="제품명" value="${theCreator.creator_name}" required readOnly>
-                                </div>
+		    <div>
+           		<label for="member_name">작성자</label>&nbsp;&nbsp;
+               		<input name="member_name" style="display:inline-block;width:30%;margin-right:5%" class="form-control" id="member_name" 
+                    	placeholder="작성자" value="${member.member_name}" required readOnly>
+                <label for="creator_name">크리에이터</label>&nbsp;&nbsp;
+                    <input name="creator_name" style="display:inline-block;width:30%" class="form-control" id="goods_name" 
+                        placeholder="제품명" value="${theCreator.creator_name}" required readOnly>
+            </div>
                                 
-                                 <div style="margin-top:10px">
-                                    <label for="board_subject" style="margin-right:2%">제목</label>
-                                    <input name="board_subject" style="display:inline-block;width:90%" class="form-control" id="board_subject" 
-                                   placeholder="제목">
+            <div style="margin-top:10px">
+                <label for="board_subject" style="margin-right:2%">제목</label>
+                    <input name="board_subject" style="display:inline-block;width:90%" class="form-control" id="board_subject" 
+                        placeholder="제목">
                                   
-                                    <input type="hidden" name="member_email" value="${member.member_email}"/>                      
-                              	    <input type="hidden" name="board_refer" value="${board.board_refer}"/>
-                              	    <input type="hidden" name="board_level" value="${board.board_level}"/>                              		
-                              	    <input type="hidden" name="board_sunbun" value="${board.board_sunbun}"/>
-                                </div>
+                    <input type="hidden" name="member_email" value="${member.member_email}"/>                      
+                    <input type="hidden" name="board_refer" value="${board.board_refer}"/>
+                    <input type="hidden" name="board_level" value="${board.board_level}"/>                              		
+                    <input type="hidden" name="board_sunbun" value="${board.board_sunbun}"/>
+            </div>
                                 
 				<br>
 				<textarea id="summernote" name="board_content"></textarea>
@@ -1208,7 +1208,7 @@ $('#summernote').summernote({
 			})
 			return false;
 		}
-		if(summernote == ''){
+		if(summernote == '' || summernote == ' '){
 			Toast.fire({
 				icon: 'info',
 				title: '내용을 입력해주세요.'
