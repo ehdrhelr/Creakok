@@ -60,8 +60,9 @@
             flex:0 0 70%;!important;
             max-width:63%;!important;
         }
-    </style>
-    
+        a:link { color: black; text-decoration: none;}
+		a:visited { color: black; text-decoration: none;}	
+	</style>
 </head>
 
 <body>
@@ -284,8 +285,8 @@
 					<colgroup>
 						<col width="5%">
 						<col width="50%">
-						<col width="5%">
-						<col width="20%">
+						<col width="15%">
+						<col width="10%">
 						<col width="5%">
 						<col width="5%">
 					</colgroup>
@@ -293,7 +294,6 @@
 
 						<tr>
 							<th> </th>
-					<!--	<th>EXHIBITION</th>	-->
 							<th>제목</th>
 							<th>작성자</th>
 							<th>날짜</th>
@@ -328,6 +328,7 @@
           </td>
         </tr>
         <tr>
+        <div style="margin-top:15px">
           <td colspan="3" align="center">
         
         <c:if test="${listResult.curRange ne 1 }">
@@ -336,42 +337,38 @@
         <c:if test="${listResult.currentPage ne 1}">
             <a href="#" onClick="fn_paging('${listResult.prevPage }')">[이전]</a> 
         </c:if>
-        
-         	<c:if test="${empty listResult.board_searchName}">
-            <c:forEach begin="${listResult.startPage}" end="${listResult.endPage}" var="i">
-           		 <div style="margin-top:15px">
-		                	<a href="board_page?board_cp=${i}&board_filterBy=${listResult.board_filterBy}#fix_point" style="color:black">
-		                <c:choose> 
+        <c:if test="${empty listResult.board_searchName}">
+        	<c:forEach begin="${listResult.startPage}" end="${listResult.endPage}" var="i">
+		    	<a href="board_page?board_cp=${i}&board_filterBy=${listResult.board_filterBy}#fix_point" style="color:black">
+		        	<c:choose> 
 		                <c:when test="${i==listResult.currentPage}">
 		                    <strong>${i}</strong>
 		                </c:when>
 		                <c:otherwise>
 		                    ${i}
 		                </c:otherwise>
-		           	     </c:choose>
-		            </a>
-		         </div>
-            
+		           	</c:choose>
+		        </a>
             &nbsp;
-            </c:forEach>
-			</c:if>
-            <c:if test="${!empty listResult.board_searchName}"> 
-            <c:forEach begin="${listResult.startPage}" end="${listResult.endPage}" var="i">
-                	<div style="margin-top:15px">
-                	<a href="board_search?board_cp=${i}&board_filterBy=${listResult.board_filterBy}&board_c_code=${listResult.board_c_code}&board_searchName=${listResult.board_searchName}#fix_point">
-                <c:choose> 
+           	</c:forEach>
+		</c:if>
+				
+        <c:if test="${!empty listResult.board_searchName}"> 
+           	<c:forEach begin="${listResult.startPage}" end="${listResult.endPage}" var="i">
+                <a href="board_search?board_cp=${i}&board_filterBy=${listResult.board_filterBy}&board_c_code=${listResult.board_c_code}&board_searchName=${listResult.board_searchName}#fix_point">
+            <c:choose> 
                 <c:when test="${i==listResult.currentPage}">
                     <strong>${i}</strong>
                 </c:when>
                 <c:otherwise>
                     ${i}
                 </c:otherwise>
-                </c:choose>
+             </c:choose>
 	           		 </a>
-	            </div>
             &nbsp;
-            </c:forEach>
-            </c:if>
+            	</c:forEach>
+            
+           	</c:if>
             
 			<c:if test="${listResult.currentPage ne listResult.totalPageCount && listResult.totalPageCount > 0}">
 				<a href="#" onClick="fn_paging('${listResult.nextPage }')">[다음]</a> 
@@ -381,6 +378,7 @@
 			</c:if>
 		
           </td>
+          </div>
 <!-- 참고용 
    	<div>
 		총 게시글 수 : ${pagination.listCnt } /    총 페이지 수 : ${pagination.pageCnt } / 현재 페이지 : ${pagination.curPage } / 현재 블럭 : ${pagination.curRange } / 총 블럭 수 : ${pagination.rangeCnt }

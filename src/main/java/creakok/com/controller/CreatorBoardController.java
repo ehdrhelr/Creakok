@@ -240,7 +240,7 @@ public class CreatorBoardController {
 	@RequestMapping("board_delete")
 	public String deleteBoard(@RequestParam long board_index, @RequestParam String creator_name) {
 		creatorBoardService.deleteBoard(board_index, creator_name);
-		return "redirect:board_page";
+		return "redirect:board_page#fix_point";
 	}
 
 	// 글 검색
@@ -455,4 +455,5 @@ public class CreatorBoardController {
 		String str = "/summernoteImageCommunity/"+savedFileName;
 		return str;
 	}
+
 }

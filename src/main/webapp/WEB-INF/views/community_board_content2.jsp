@@ -141,7 +141,7 @@
 				cancelButtonText: '아니요'			
 			}).then((result) => {
 				if (result.value) {
-					location.href = "board_delete?board_index=${board.board_index}";
+					location.href = "board_delete?board_index=${board.board_index}&creator_name=${board.creator_name}";
 				}
 			})			
 		}
@@ -267,8 +267,7 @@
                         <table class="table" style="margin:0 auto;margin-bottom:10px;">        	
 							<c:forEach items="${commentList}" var="repList">
 							<div style="margin-top:40px;margin-bottom:40px">
-								
-								<p style="text-align:left; margin-bottom:10px"><img src="img/user_20.png" style="margin-right:5px;width:25px;display:inline-block">${repList.member_name}
+								<p style="text-align:left; margin-bottom:10px"><img src="img/member_profile_pics/${repList.member_profile_pic}" style="margin-right:5px;width:50px;display:inline-block">${repList.member_name}
 								(<fmt:formatDate value="${repList.comment_wdate}" pattern="yyyy-MM-dd" />)</p> 
 								<input type="text" class="form-control" name="comment_content" value="${repList.comment_content}" style="height:40px;width:100%" readonly>
 								
@@ -307,6 +306,7 @@
 												<input type="hidden" id="board_index" name="board_index" value="${board.board_index}" readonly="readonly" />
 												<input type="hidden" id="member_email" name="member_email" value="${member.member_email}" readonly="readonly" />
 												<input type="hidden" class="form-control" name="member_name" value="${member.member_name}" readonly="readonly"/>
+												<input type="hidden" class="form-control" name="member_profile_pic" value="${member.member_profile_pic}" readonly="readonly"/>
 					                       		
 					                       		<div class="form-group" style="margin-top:40px;margin-bottom:40px">
 					                       			
@@ -479,5 +479,4 @@
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
     </jsp:include>
 </body>
-
 </html>

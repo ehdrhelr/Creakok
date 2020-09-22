@@ -17,7 +17,7 @@
 	<!-- 댓글 작성 -->
 	<insert id="writeComment">
 	 	insert into BOARD_COMMENT values(BOARD_COMMENT_INDEX_SEQ.nextval, #{board_index}, #{member_name}, 
-	 	#{member_email}, #{comment_content}, SYSDATE, null)
+	 	#{member_email}, #{comment_content}, SYSDATE, #{member_profile_pic})
 	</insert>
 	
 	<!-- 특정 댓글 조회 -->
