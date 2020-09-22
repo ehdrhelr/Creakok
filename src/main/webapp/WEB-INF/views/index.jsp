@@ -74,6 +74,7 @@
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
+                            <!-- <p style="text-align:left">메롱메롱</p> -->
                             <!-- Post Content -->
                             <div class="hero-slides-content text-center">
                                 <h2></h2>
