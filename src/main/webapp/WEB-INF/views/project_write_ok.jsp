@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+    
     <!-- Title -->
     <title>CREAKOK</title>
 
@@ -19,30 +19,34 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     
-    <!-- Wadiz Css -->
-    <link rel="stylesheet" href="css/wadiz_css1.css">
-     <link rel="stylesheet" href="css/wadiz_css2.css">
-    <link rel="stylesheet" href="css/wadiz_css3.css">
-    <link rel="stylesheet" href="css/wadiz_css4.css">
-    
-    <!--  table 
-    <link rel="stylesheet" href="css/only_goods_review_board_jsp.css"> -->
-<style>
-    @font-face {
-  font-family: 'Jalnan';
-  src: url('fonts/Jalnan.ttf');
-}  
-    .wideImg{
-        max-width: 135%;!important;
-    }
- </style>    
- 
+    <!-- BOTO TEST -->
+    <meta name="description" content="Boto Photo Studio HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/fresco.css"/>
+    <link rel="stylesheet" href="css/css_boto/slick.css"/>
+  
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/style.css"/>
+
+    <!-- hcbae Stylesheets -->
+    <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
+    <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
+    <link rel="stylesheet" href="css/hcbae_css.css">
+
+    <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
 
 </head>
 
 <body>
-    <!-- Preloader -->
+   <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
         <div class="preloader-img">
@@ -60,7 +64,7 @@
 
    
         <!-- ##### Team Area Start ##### -->
-    <section class="team-area section-padding-100-0">
+    <section class="team-area section-padding-100-0" style="margin-bottom:20%">
         <div class="container">
         
             <div class="row" style="margin-bottom:100px">
@@ -68,7 +72,7 @@
                     <!-- Section Heading -->
                     <div class="section-heading text-center" style="margin-top:10%;margin-bottom:10%">
                          <h2 style="line-height: 1.3; margin-bottom: 20px;">
-                         <img src="img/goods/success-40.png" style="margin-right:5px;margin-bottom:-8px; margin-right:6px">작성이 완료되었습니다!</h2>
+                         <img src="img/goods/success-40.png" style="margin-right:5px;margin-top:-5px; margin-right:6px">작성이 완료되었습니다!</h2>
                       
                             
                             
@@ -98,7 +102,9 @@
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
+   
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    
     <!-- Popper js -->
     <script src="js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap js -->

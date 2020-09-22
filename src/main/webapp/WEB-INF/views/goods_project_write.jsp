@@ -72,25 +72,19 @@
         <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
                     <h3 style="text-align:center;margin-bottom:40px;font-size:18pt">굿즈 판매하기</h3>
         <div style="width: 60%; margin: auto;" >
-            <form method="post" action="/goods_project_write.do">
+            <form method="post" action="/goods_project_write.do" onSubmit="return false">
                              <div >
                                     <input name="write_creator" style="display:block;"class="form-control" id="first_name" 
                                     placeholder="크리에이터" value="${member.member_name}" readonly>
                                 </div>
                                 
                                  <div >
-                                    <input  name="write_goods_price"  style="display:inline-block;width:50%;margin-top:10px;" class="form-control" id="first_name" 
-                                     placeholder="가격(숫자만 입력 가능)" required>
-                                    <input type="text"  name="write_goods_stock"  style="display:inline-block;width:23.3%;margin-top:10px;margin-left:5px;" class="form-control" id="first_name" 
-                                     placeholder="재고량(숫자만 입력 가능)" required>
-                                 
-                                </div>
-                                
-                                 <div >
-                                    <input name="write_goods_product" style="display:inline-block;width:74.5%"class="form-control" id="first_name" 
-                                   placeholder="판매할 제품명" required>
-                                    <select name="goods_category_code"style="display:inline-block; width:24%; margin-left:5px;margin-top:10px; padding:5px"
-                                    onChange="text.value=goods_category_code[selectedIndex].value">
+                                    <input type="number" min="10" name="write_goods_price"  style="display:inline-block;width:40%;margin-top:10px;" class="form-control" id="first_name" 
+                                     placeholder="가격(숫자만 입력)" required>
+                                    <input type="number" min="10" name="write_goods_stock"  style="display:inline-block;width:30%;margin-top:10px;margin-left:5px;" class="form-control" id="first_name" 
+                                     placeholder="재고량(숫자만 입력)" required>
+                                 	<select name="goods_category_code"style="display:inline-block; width:26%; margin-left:5px;margin-top:10px; padding:5px"
+                                    	onChange="text.value=goods_category_code[selectedIndex].value">
                                         <option value="">카테고리</option>
                                         <option value="301">뷰티</option>
                                         <option value="302">디자인소품</option>  
@@ -104,11 +98,17 @@
                                         <option value="309">문화/예술</option>  
                                         <option value="310">출산/육아</option>  
                                         <option value="311">생활/건강</option>  
-                                    </select>           
+                                    </select> 
+                                </div>
+                                
+                                 <div >
+                                    <input name="write_goods_product" style="display:inline-block;width:74.5%;margin-top:10px"class="form-control" id="first_name" 
+                                   placeholder="판매할 제품명" onKeyUp="checkName(this)" required>
+                                    <label for="write_goods_product" id="checkName_Id" class="SignUp__InputLabel-k5h4n5-1 bpYHsq hcbae-member-joinwithEmail-check" style="margin-top:2%"></label>
                                 </div>
 
                 <br>
-                <textarea id="summernote" name="content"></textarea>
+                <textarea id="summernote" name="content" id="content" required></textarea>
                 <label for="write_goods_repre_pic"style="display:inline-block;">대표 이미지 첨부 :  </label>
                 <input type="file" name="write_goods_repre_pic" id="write_goods_repre_pic" style="display:inline-block;margin-top:10px; width:85%;padding:2px;"class="form-control" id="first_name" 
                                     onkeydown="goWrite(this.form)" required>    
@@ -122,44 +122,82 @@
 
      
       <script>
-function goWrite(frm) {
-    var write_creator = frm.write_creator.value;
-    var write_goods_price = frm.write_goods_price.value;
-    var write_goods_stock = frm.write_goods_stock.value;
-    var write_goods_product = frm.write_goods_product.value;
-    var goods_category_code = frm.goods_category_code.value;
-    var write_goods_repre_pic = frm.write_goods_repre_pic.value;
-   
+      function checkName(obj){
+    	    let name = obj.value;
+    	    let result = document.getElementById('checkName_Id');
 
-    if (write_creator.trim() == ''){
-        alert("크리에이터명을 입력해주세요");
-        return false;
-    }
-    if(write_goods_price.trim() == ''){
-        alert("가격을 입력해주세요");
-        return false;
-    }
-    if(write_goods_stock.trim() == ''){
-        alert("재고 수량을 입력해주세요");
-        return false;
-    }
-    if(write_goods_product.trim() == ''){
-        alert("제품명을 입력해주세요");
-        return false;
-    }
-    if(goods_category_code.trim() == ''){
-        alert("카테고리를 선택해주세요");
-        return false;
-    }
-    if(write_goods_repre_pic.trim() == ''){
-        alert("굿즈 대표사진을 입력해주세요");
-        return false;
-    }
-    
-    
-    frm.submit();
-}
-</script>
+    	    var xhttp = new XMLHttpRequest();
+    	      xhttp.onreadystatechange = function() {
+    	        if (this.readyState == 4 && this.status == 200) {
+    	          console.log("name:"+this.responseText);
+    	          if(name===''){
+    	              result.innerHTML = ""; //입력한게 없으면 표시도 없다.
+    	          } else {
+    	              if(this.responseText === "exist") {
+    	                  result.innerHTML = "이미 존재합니다."; 
+    	              } else {
+    	                  result.innerHTML = "사용가능합니다.";
+    	              }
+    	          }
+    	        }
+    	    };//end of onreadystatechange
+    	    xhttp.open("GET", "goods_nameCheck.do?goods_name="+name, true);
+    	    xhttp.send();
+    	}
+		function goWrite(frm) {
+		    var write_creator = frm.write_creator.value;
+		    var write_goods_price = frm.write_goods_price.value;
+		    var write_goods_stock = frm.write_goods_stock.value;
+		    var write_goods_product = frm.write_goods_product.value;
+		    var goods_category_code = frm.goods_category_code.value;
+		    var write_goods_repre_pic = frm.write_goods_repre_pic.value;
+		    var content = frm.content.value;
+			
+		    var result2 = document.getElementById('checkName_Id').innerHTML;
+		    
+		    if (write_creator.trim() == ''){
+		        alert("크리에이터명을 입력해주세요");
+		        return false;
+		    }
+		    if(write_goods_price.trim() == ''){
+		        alert("가격을 입력해주세요(숫자만 입력 가능)");
+		        return false;
+		    }
+		    if(write_goods_stock.trim() == ''){
+		        alert("재고 수량을 입력해주세요(숫자만 입력 가능)");
+		        return false;
+		    }
+		    if(write_goods_product.trim() == ''){
+		        alert("제품명을 입력해주세요");
+		        return false;
+		    }
+		    if(goods_category_code.trim() == ''){
+		        alert("카테고리를 선택해주세요");
+		        return false;
+		    }
+		    if(write_goods_repre_pic.trim() == ''){
+		        alert("굿즈 대표사진을 입력해주세요");
+		        return false;
+		    }
+		   	if (content.trim() == ''){
+				alert("판매할 굿즈의 상세 내용을 입력해주세요");
+				return false;
+			}
+		   	if(result2 != '사용가능합니다.'){
+				alert("제품명 중복체크 해주세요");
+				return false;		   		
+		   	}
+		   	if(result2 == '사용가능합니다.'){
+			    if(write_goods_price.trim() > 9 ){
+			    	if( write_goods_stock.trim() > 9 ){
+			    		frm.submit();
+			    		return true;
+			    	}
+			    }
+		    }
+		}
+
+		</script>
   
       
     <!-- Footer Bottom Area -->
@@ -186,7 +224,7 @@ function goWrite(frm) {
     <script>
    // $(document).ready(function(){
       $('#summernote').summernote({
-        placeholder: '펀딩받고 싶은 컨텐츠의 기획내용을 입력해주세요.',
+        placeholder: '판매할 굿즈의 상세 내용을 입력해주세요.',
         tabsize: 2,
         minHeight: 370,
         maxHeight: null,

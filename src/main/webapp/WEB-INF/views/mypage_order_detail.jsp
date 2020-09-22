@@ -327,10 +327,10 @@
                               
                               <tr class="orderInfo_detail">
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
-                                   <span style="font-weight:700">총 금액 : </span><span>${order_info.buyer_pay_price}</span>
+                                   <span style="font-weight:700">총 금액 : </span><span>${order_info.buyer_pay_price} 원</span>
                                  </td>
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
-                                   <span style="font-weight:700">상품명 : </span><span>${order_info.buy_product_name}원</span> 
+                                   <span style="font-weight:700">상품명 : </span><span>${order_info.buy_product_name}</span> 
                                  </td>
                               </tr>
   

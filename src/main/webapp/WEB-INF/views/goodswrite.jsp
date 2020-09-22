@@ -42,7 +42,6 @@
     <link rel="stylesheet" href="css/hcbae_css.css">
 
     <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
-
 </head>
 
 <body>

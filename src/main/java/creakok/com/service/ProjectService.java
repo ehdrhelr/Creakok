@@ -2,6 +2,7 @@ package creakok.com.service;
 
 import java.sql.Date;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.web.multipart.MultipartFile;
 
 import creakok.com.domain.Funding;
@@ -19,4 +20,5 @@ public interface ProjectService {
 	//deleteProject
 	
 	void insertOneGoods(Goods goods);
+	Goods selectByGoodsName(String goods_name);
 }

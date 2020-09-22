@@ -80,4 +80,9 @@ public class ProjectServiceImpl implements ProjectService {
 	public void insertOneGoods(Goods goods) {
 		mapper.insertOneGoods(goods);
 	}
+	
+	@Override
+	public Goods selectByGoodsName(String goods_name) {
+		return mapper.selectByGoodsName(goods_name);
+	}
 }

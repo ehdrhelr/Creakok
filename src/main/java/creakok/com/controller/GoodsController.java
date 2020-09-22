@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
@@ -74,7 +78,7 @@ public class GoodsController {
 	private MemberService memberservice;
 	
 	@RequestMapping("goods_list.do")
-	public String list(HttpServletRequest request, HttpSession session) {
+	public ModelAndView list(HttpServletRequest request, HttpSession session) {
 		String cpStr = request.getParameter("cp");
 		String psStr = request.getParameter("ps");
 		String gCodeStr = request.getParameter("gCode");
@@ -91,11 +95,12 @@ public class GoodsController {
 		session.setAttribute("gCategory", gCategory);	
 		
 		
-		GoodsVo tempGoods = (GoodsVo)session.getAttribute("goods");
+		//GoodsVo tempGoods = (GoodsVo)session.getAttribute("goods");
 		//(1) cp 
 		int cp = 1;
 		if(cpStr == null) {
-			Object cpObj = tempGoods.getCp();
+			//Object cpObj = tempGoods.getCp();
+			Object cpObj = session.getAttribute("goods_cp");
 			if(cpObj != null) {
 				cp = (Integer)cpObj;
 			} else if(cpObj == null){
@@ -105,13 +110,13 @@ public class GoodsController {
 			cpStr = cpStr.trim();
 			cp = Integer.parseInt(cpStr);
 		}
-	//	session.setAttribute("cp", cp);
+		session.setAttribute("goods_cp", cp);
 		
 		//(2) ps 
 		int ps = 3;		
 		if(psStr == null) {
-			//Object psObj = session.getAttribute("ps");
-			Object psObj = tempGoods.getPs();
+			//Object psObj = tempGoods.getPs();
+			Object psObj = session.getAttribute("goods_ps");
 			if(psObj != null) {
 				ps = (Integer)psObj;
 			} else {
@@ -122,7 +127,8 @@ public class GoodsController {
 			ps = Integer.parseInt(psStr);
 			if(gCodeStr == null) {
 			//	gCodeStr = "300";
-				Object select_gCodeObj = tempGoods.getGCode();
+				Object select_gCodeObj = session.getAttribute("gCode");
+				//Object select_gCodeObj = tempGoods.getGCode();
 				if(select_gCodeObj != null) {
 					gCodeStr = select_gCodeObj.toString();
 				}else {
@@ -130,11 +136,12 @@ public class GoodsController {
 				}
 			}
 		}
-		
+		session.setAttribute("goods_ps", ps);
 	
 		 String filterBy = "goods_sale_number";
 		 if(filterByStr==null) {
-	            Object filterByObj = tempGoods.getFilterBy();
+	            //Object filterByObj = tempGoods.getFilterBy();
+			 	Object filterByObj = session.getAttribute("filterBy");
 	            if(filterByObj != null) {
 	            	filterBy = (String)filterByObj;
 	            }else {
@@ -144,7 +151,8 @@ public class GoodsController {
 	            filterBy = filterByStr.trim();
 				if(gCodeStr == null) {
 					//	gCodeStr = "300";
-						Object select_gCodeObj = tempGoods.getGCode();
+						//Object select_gCodeObj = tempGoods.getGCode();
+						Object select_gCodeObj = session.getAttribute("gCode");
 						if(select_gCodeObj != null) {
 							gCodeStr = select_gCodeObj.toString();
 						}else {
@@ -156,11 +164,11 @@ public class GoodsController {
 		
 		if( gCodeStr.equals("300") || gCodeStr == null ) { //카테고리 코드=300 (전체보기) 일때
 			long gCode = Long.parseLong(gCodeStr);
-			log.info("@@@@@@@@@@@@@@@@@@@@@@@@filterBy: "+filterBy);
-			log.info("@@@@@@@@@@@@@@@@@@@@@@@@cp: "+cp);
-			log.info("@@@@@@@@@@@@@@@@@@@@@@@@ps: "+ps);
-			log.info("#######################gCodeStr: "+gCodeStr);
-			log.info("#######################gCode: "+gCode);
+			//log.info("@@@@@@@@@@@@@@@@@@@@@@@@filterBy: "+filterBy);
+			//log.info("@@@@@@@@@@@@@@@@@@@@@@@@cp: "+cp);
+			//log.info("@@@@@@@@@@@@@@@@@@@@@@@@ps: "+ps);
+			//log.info("#######################gCodeStr: "+gCodeStr);
+			//log.info("#######################gCode: "+gCode);
 		    GoodsVo goodsVo = goodsService.listS(cp, ps, filterBy); //전체리스트 뽑아오고
 		    goodsVo.setCp(cp); //cp랑 이것저것 세팅해쥼
 		    goodsVo.setPs(ps);
@@ -171,20 +179,22 @@ public class GoodsController {
 				if(cp > 1) {	
 					int cp2 = cp-1;
 					goodsVo.setCp(cp2);
+					//return new ModelAndView("goods_list.do?cp="+cp2+"&gCode="+gCode);
+				} else {
+					//return new ModelAndView("goods_list.do?cp="+cp+"&gCode="+gCode);
 				}
 			}
 			
-			
+			session.setAttribute("gCode", gCode);
 			session.setAttribute("goods", goodsVo);
-
 			
 		} else if( !gCodeStr.equals("300") )  { //다른 카테고리 코드일때
 			long gCode = Long.parseLong(gCodeStr);
 			
-			//log.info("#######################g filterBy: "+filterBy);
-			//log.info("#######################g cp: "+cp);
-			//log.info("#######################g ps: "+ps);
-			//log.info("#######################g gCode: "+gCode);	
+			log.info("#######################g filterBy: "+filterBy);
+			log.info("#######################g cp: "+cp);
+			log.info("#######################g ps: "+ps);
+			log.info("#######################g gCode: "+gCode);	
 			
 			GoodsVo list = goodsService.getGoodsVo(cp, ps, gCode, filterBy);
 			list.setCp(cp);
@@ -192,17 +202,22 @@ public class GoodsController {
 			list.setFilterBy(filterBy);
 			list.setGCode(gCode);
 			
-			
 			if(list.getList().size() == 0) {
 				if(cp > 1) {	
 					int cp2 = cp-1;
 					list.setCp(cp2);
-				}
+					
+				} 
 			}   
+			session.setAttribute("gCode", gCode);
 			session.setAttribute("goods", list);
 		}
 
-		return "goods";
+		
+		//(3) ModelAndView
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("goods");
+		return mv;
 	}
 	
 	
@@ -308,6 +323,80 @@ public class GoodsController {
 		
 		return mv;
 	} 
+	
+	@ResponseBody
+	@RequestMapping("cart_goods_pay.do")
+	public ModelAndView cart_goods_pay(HttpServletRequest request) {
+		String buyer_name = request.getParameter("name");
+		String buyer_phone = request.getParameter("phone_number");
+		String buyer_email = request.getParameter("email");
+		
+		
+		String delivery_name = request.getParameter("delivery_name");
+		String delivery_phone = request.getParameter("delivery_phone");
+		String address_num = request.getParameter("address_num");
+		String address_road = request.getParameter("address_road");
+		String address_detail = request.getParameter("address_detail");
+		String address_land = request.getParameter("address_land");
+		String rec_addr = address_num+address_road+address_detail+address_land;
+
+		String email =  request.getParameter("email");
+		
+		//상품명, 수량, 총 가격 받기
+		String[] product_name_list = request.getParameterValues("product_name");
+		String[] product_qty_list = request.getParameterValues("product_qty");
+		String price_amountStr = request.getParameter("price_amount");
+		
+		
+		
+		long price_amount = Long.parseLong(price_amountStr);
+		//long product_qty = Long.parseLong(product_qtyStr);
+		
+		String product_name2 = "";
+		String product_name = "";
+		for(int i=0; i<product_name_list.length; i++) {
+			product_name2 += product_name_list[i]+", ";
+			product_name = product_name2.substring(0, product_name2.length()-2);
+		}
+		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
+		
+		long one_product_qty;
+		long qty_amount = 0L;
+		String amount_product_qtyStr = "";
+		for(int a=0; a<product_qty_list.length; a++) {
+			one_product_qty = Long.parseLong(product_qty_list[a]);
+			qty_amount += one_product_qty;
+			amount_product_qtyStr = Long.toString(qty_amount);
+		}
+		String product_qtyStr = "총 "+amount_product_qtyStr+"개";
+		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_qtyStr: "+product_qtyStr);
+
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&name: "+delivery_name);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&delivery_phone: "+delivery_phone);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_num: "+address_num);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_road: "+address_road);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_detail: "+address_detail);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_land: "+address_land);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&price_amount: "+price_amount);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_qty: "+product_qty);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
+		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&orderList: "+orderList);
+		
+
+		PayInfoVo payInfo = new PayInfoVo(delivery_name, delivery_phone, address_num, address_road, address_detail, address_land, 
+				price_amountStr, product_qtyStr, product_name, email);
+
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("import_pay");
+		mv.addObject("payInfo", payInfo);	 //order_index 같이 넘겨쥼
+		
+		return mv;
+	} 	
+	
+	
+	
+	
 	@RequestMapping("goods_pay_success.do")
 	public ModelAndView goods_pay_success(HttpServletRequest request) {
 		String buyer_name = request.getParameter("buyer_name");
@@ -349,12 +438,27 @@ public class GoodsController {
 		
 		payservice.insertOneOrder(order_info); 
 		
-		//굿즈 이름으로 goods_index 뽑아서 판매 수 +1
-		long goods_index = goodsService.getGoodsIndex(product_name);
-		goodsService.plusSaleNumber(goods_index);
-		
-		//굿즈 재고 수량 -1
-		goodsService.minusStockNumber(goods_index);
+		// 상품이 여러개일때, 한개일때 
+		long goods_index = 0L;
+		if(product_name.contains(", ")) {
+			String[] product_name_list = product_name.split(", "); //상품명 이름 분리
+			for(int i=0; i<product_name_list.length; i++) {
+				//굿즈 이름으로 goods_index 뽑아서 판매 수 +1
+				goods_index = goodsService.getGoodsIndex(product_name_list[i]);
+				goodsService.plusSaleNumber(goods_index);		
+				
+				//굿즈 재고 수량 -1
+				goodsService.minusStockNumber(goods_index);
+			}
+		} else {
+			//굿즈 이름으로 goods_index 뽑아서 판매 수 +1
+			goods_index = goodsService.getGoodsIndex(product_name);
+			goodsService.plusSaleNumber(goods_index);		
+			
+			//굿즈 재고 수량 -1
+			goodsService.minusStockNumber(goods_index);
+		}
+
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("pay_success");
@@ -486,6 +590,7 @@ public class GoodsController {
 		boolean flag = goods_reviewservice.updateReviewViews(goods_review_index);
 		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
 		String category_name = request.getParameter("category_name");
+		String list_number = request.getParameter("list_number");
 		
 		//log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@: "+goods_review_index);
 		//log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@: "+gName);
@@ -531,6 +636,7 @@ public class GoodsController {
 		mv.addObject("creator", goods_creator);
 		mv.addObject("qna_list_size", qna_list_size);
 		mv.addObject("four_goods", four_goods);
+		mv.addObject("list_number", list_number);
 		
 		
 		return mv;
@@ -718,6 +824,7 @@ public class GoodsController {
 		String goods_qna_indexStr = request.getParameter("goods_qna_index");
 		long goods_index = Long.parseLong(goods_indexStr);
 		long goods_qna_index = Long.parseLong(goods_qna_indexStr);
+		String qna_list_number = request.getParameter("qna_list_number");
 		
 		//카테고리이름
 		String category_name = request.getParameter("category_name");
@@ -762,6 +869,7 @@ public class GoodsController {
 		mv.addObject("creator", goods_creator);
 		mv.addObject("qna_list_size", qna_list_size);
 		mv.addObject("four_goods", four_goods);
+		mv.addObject("qna_list_number", qna_list_number);
 		
 		return mv;
 	}

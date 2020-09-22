@@ -15,6 +15,7 @@ import org.apache.http.impl.execchain.MainClientExec;
 import org.apache.log4j.chainsaw.Main;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -160,5 +161,15 @@ public class ProjectController {
 
 		String str = "/summernoteImageGoods/"+savedFileName;
 		return str;
+	}
+	
+	@ResponseBody
+	@GetMapping("goods_nameCheck.do")
+	public String goods_nameCheck(String goods_name) { //굿즈 상품명 중복 체크
+		//log.info("#############################################"+goods_name);
+		
+		Goods goods = service.selectByGoodsName(goods_name);
+		if(goods != null) return "exist";
+		else return "not_exist";
 	}
 }	
