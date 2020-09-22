@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.Member_origin"%>
+<%@ page contentType="text/html; charset=utf-8" 
+import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, creakok.com.filesetting.Path"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -41,7 +42,7 @@
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
     
-	<link rel="stylesheet" href="css/only_goods_review_board_jsp.css">
+  <link rel="stylesheet" href="css/only_goods_review_board_jsp.css">
 </head>
 
 <body>
@@ -88,6 +89,12 @@
                 <div class="col-12">
                     <div class="most__search__tab">
                         <ul class="nav nav-tabs nav-pills" role="tablist">
+                            <c:if test="${member.member_email == Member_category.SUPER_ACCOUNT}">
+                            <li class="nav-item">
+                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#standby_creator" role="tab">크리에이터 신청명단</a>
+                            </li>
+                            </c:if>
+                        
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link active" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
                             </li>
@@ -105,7 +112,71 @@
         
             <!-- Tab panes -->
             <div class="tab-content"> <!--My Page Tabs Contents-->
-                <div id="jjim-list" class="container tab-pane active">
+                <div id="standby_creator" class="container tab-pane" >
+                    <h3>크리에이터 신청 리스트</h3>
+                      <table style="">
+                      <colgroup>
+                          <col width="12%">
+                          <col width="12%">
+                          <col width="20%">
+                          <col width="20%">
+                          <col width="30%">
+                          <col width="6%">
+                      </colgroup>
+                       <thead>
+                          <tr>
+                              <th style="padding:1.5px !important;">이름</th>
+                              <th style="padding:1.5px !important;">이메일</th>
+                              <th style="padding:1.5px !important;">소개</th>
+                              <th style="padding:1.5px !important;">대표사진</th>
+                              <th style="padding:1.5px !important;">배너사진</th>
+                              <th style="padding:1.5px !important;">등록/취소</th>
+                          </tr>
+                      </thead>  
+                      <tbody>
+                        <c:if test="${empty standby_list}">
+                          <tr>
+                            <td colspan="6" style="border-bottom:1px solid black">신청 내역이 없습니다.</td>   
+                          </tr>
+                        </c:if>
+                        <c:if test="${!empty standby_list}">
+                          <c:set var="listCount" value="0"/>
+                          <c:forEach items="${standby_list}" var="creator">
+                             <tr class="order_click_tr">
+                                <td style="padding:3px !important;">${creator.creator_name}</td>
+                                <td style="padding:3px !important;">${creator.member_email}</td>
+                                <td style="padding:3px !important;">${creator.creator_profile_content}</td>
+                                <td style="padding:3px !important;"><img src="${Path.IMG_STORE_CREATOR}${creator.creator_profile_photo}"></td>
+                                <td style="padding:3px !important;"><img src="${Path.IMG_STORE_CREATOR}${creator.creator_banner_photo}"></td>
+                                <td style="padding:3px !important;">
+                                  <input type="button" value="등록" onclick="addCreator_standby('${creator.creator_name}')"><br/>
+                                  <input type="button" value="삭제" onclick="deleteCreator_standby('${creator.creator_name}')">
+                                  <script type="text/javascript">
+                                  function deleteCreator_standby(creator_name){
+                                      let result = confirm(creator_name+'을 크리에이터 신청 리스트에서 삭제하겠습니까?')
+                                      if(result){
+                                          location.href="deleteCreator_standby.do?creator_name="+creator_name;    
+                                      }
+                                  }
+                                  function addCreator_standby(creator_name){
+                                      let result = confirm(creator_name+'을 크리에이터로 등록하겠습니까?')
+                                      if(result){
+                                          location.href="addCreator_standby.do?creator_name="+creator_name;    
+                                      }
+                                  }
+                                  </script>
+                                  
+                                </td>
+                              </tr>
+                          <c:set var="listCount" value="${listCount + 1}"/>
+                          </c:forEach>
+                        </c:if>
+                      </tbody>
+                  </table>
+                </div>
+                
+                
+                <div id="jjim-list" class="container tab-pane">
                     <h3>좋아요 리스트</h3>
                     <p>리스트를 어떻게 표시할까?</p>
                     
@@ -116,14 +187,14 @@
                     
                     <script type="text/javascript">
                     function readFundingLikeList(){
-                    	if('${member.member_email}' == '') {
+                      if('${member.member_email}' == '') {
                             return;
                         }
                         
                         var xmlHttpFundingLikeList = new XMLHttpRequest();
                         xmlHttpFundingLikeList.onreadystatechange = function() {
                              if (xmlHttpFundingLikeList.readyState == 4 && xmlHttpFundingLikeList.status == 200) {
-                            	 //var returnV = xmlHttpFundingLikeList.responseText; 
+                               //var returnV = xmlHttpFundingLikeList.responseText; 
                                  //console.log(returnV);
                                  document.getElementById("mypage_funding_area").innerHTML= xmlHttpFundingLikeList.responseText;
                              }
@@ -230,6 +301,48 @@
                     </div>
                     </c:if>
                     
+                    <c:if test="${member.member_category_code == Member_category.MEMBER_NORMAL}">
+                    <div class="hcbae-member-modify-area">
+                        <h3>크리에이터 신청하기</h3>
+                        <span class="hcbae-member-modify-button">
+                        <input class="btn" type="button" data-target="#craetor-join-area" data-toggle="collapse" value="수정" onclick="changeButtonText(this)">
+                        </span>
+                        
+                        <div id="craetor-join-area" class="collapse">
+                        <p>크리에이터로 등록되면, 펀딩/굿즈 등록과 커뮤니티 게시판 생성을 할 수 있습니다.<br>
+                                                크리에이터 신청을 하면, 크리콕 내부 검토 후에 크리에이터로 등록해 드립니다.</p>
+                        
+                        <span>
+                          <c:if test="${empty CreatorStandbyExist}">
+                            <script>
+                            function joinCreator(){
+                                const popupWidth = 850;
+                                const popupHeight = 750;
+                                const popupX = (window.screen.width/2)-(popupWidth/2);
+                                const popupY= (window.screen.height/2)-(popupHeight/2);
+                                window.open('joinCreator.do', '크리에어터 신청하기', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+                            }
+                            </script>
+                            <input class="btn" type="button" value="신청하기" onclick="joinCreator();">
+                          </c:if>
+                          <c:if test="${!empty CreatorStandbyExist}">
+                            <script>
+                            function joinCreatorUpdate(member_email){
+                                const popupWidth = 850;
+                                const popupHeight = 750;
+                                const popupX = (window.screen.width/2)-(popupWidth/2);
+                                const popupY= (window.screen.height/2)-(popupHeight/2);
+                                window.open('joinCreatorUpdate.do?member_email='+member_email, '크리에어터 신청 수정하기', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+                            }
+                            </script>
+                            <input class="btn" type="button" value="신청 수정하기" onclick="joinCreatorUpdate('${member.member_email}');">
+                          </c:if>
+
+                        </span>
+                        </div>   
+                    </div>
+                    </c:if>
+                    
                     <div class="hcbae-member-modify-area">
                         <h3>수정할 정보가 뭐가 더 있을까?</h3>
                         <span class="hcbae-member-modify-button">
@@ -304,7 +417,7 @@
                         </tr>
                     </thead>  
                     <tbody>
-                    	
+                      
                         <c:if test="${empty order_info}">
                         <tr>
                            <td colspan="6" style="border-bottom:1px solid black">
@@ -323,37 +436,38 @@
                                  <td style="padding:3px !important;">${order_info.buyer_pay_price} 원</td>
                                  <td id="review_view" style="padding:1.5px !important;">
                                      <c:if test="${order_info.buyer_pay_ok == 'true'}">
-                                        	결제 완료
+                                          결제 완료
                                      </c:if>
                                      <c:if test="${order_info.buyer_pay_ok == 'false'}">
-                                        	결제 대기
+                                          결제 대기
                                      </c:if>
                                  </td>
                               </tr>
                         </c:forEach>
-					 </c:if>
-					 
-					 	<tr>
-				          <td colspan="6" align="center" style="border-bottom:0px">
-				           <c:forEach begin="1" end="${order_info.order_totalPageCount}" var="i">
-				                    <a href="member_order.do?order_cp=${i}&member_email=${order_info.member_email}#fix_point" style="color:black; font-size:11pt">
-				                <c:choose> 
-				                <c:when test="${i==order_info.order_cp}">
-				                    <strong>${i}</strong>
-				                </c:when>
-				                <c:otherwise>
-				                    ${i}
-				                </c:otherwise>
-				                </c:choose>
-				            </a>
-				            
-				            &nbsp;
-				            </c:forEach>
-				          </td>
-				     </tr>
-					</tbody>
+                     </c:if>
+                     
+                      <tr>
+                            <td colspan="6" align="center" style="border-bottom:0px">
+                             <c:forEach begin="1" end="${order_info.order_totalPageCount}" var="i">
+                                      <a href="member_order.do?order_cp=${i}&member_email=${order_info.member_email}#fix_point" style="color:black; font-size:11pt">
+                                  <c:choose> 
+                                  <c:when test="${i==order_info.order_cp}">
+                                      <strong>${i}</strong>
+                                  </c:when>
+                                  <c:otherwise>
+                                      ${i}
+                                  </c:otherwise>
+                                  </c:choose>
+                              </a>
+                              
+                              &nbsp;
+                              </c:forEach>
+                            </td>
+                       </tr>
+                    </tbody>
                 </table>
                 </div>
+                
             </div> <!--My Page Tabs Contents-->
         </div>
     </div>

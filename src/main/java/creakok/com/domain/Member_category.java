@@ -13,4 +13,6 @@ public class Member_category {
 	
 	public static long MEMBER_CREATOR = 0L;
 	public static long MEMBER_NORMAL = 1L;
+	
+	public static final String SUPER_ACCOUNT="creakok_super@cafe24.com";
 }

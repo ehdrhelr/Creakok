@@ -9,7 +9,8 @@ import creakok.com.domain.Order_Info;
 import creakok.com.vo.Member_OrderInfoVo;
 
 public interface MemberMapper {
-	
+	int updateMemberCategory(Member member);
+
 	Member selectAllByEmail(String member_email);
 	Member selectByEmail(String member_email);
 	Member selectByName(String member_name);
