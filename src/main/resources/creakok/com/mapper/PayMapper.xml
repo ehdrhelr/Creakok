@@ -24,5 +24,9 @@
     <insert id="insertOneOrder" parameterType="Order_Info">
 	    insert into ORDER_INFO values(ORDER_INDEX_SEQ.nextval, #{buyer_name}, #{buyer_phone}, #{member_email}, #{buy_addr}, SYSDATE, #{buy_product_name}, #{buyer_buyid}, #{buyer_merid}, ${buyer_pay_price}, #{buyer_card_num}, #{buyer_pay_ok})
    </insert> 
+   
+   <select id="selectByOrderIndex" parameterType="long" resultType="Order_Info">
+        select * from ORDER_INFO where order_index=${order_index}
+   </select>
 				
 </mapper>

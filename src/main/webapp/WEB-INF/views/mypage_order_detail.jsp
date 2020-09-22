@@ -304,6 +304,8 @@
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
                                    <span style="font-weight:700">No : </span><span>${order_info.order_index}</span>
                                  </td>
+                                 <input type="hidden" id="order_index" name="order_index" value="${order_info.order_index}">
+                                 
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
                                    <span style="font-weight:700">주문인 : </span><span>${order_info.buyer_name}</span> 
                                  </td>
@@ -365,15 +367,34 @@
 
                     </tbody>
                 </table>
-                			<p style="text-align:center;margin-top:20px"><a href="member_order.do?member_email=${order_info.member_email}&order_cp=1" style="font-size:13pt;background-color:black; color:white; width:130px; padding:3px;">목록으로</a></p>
+                			<p style="text-align:center;margin-top:20px">
+                                <a href="member_order.do?member_email=${order_info.member_email}&order_cp=1" style="font-size:13pt;background-color:black; color:white; width:130px; padding:3px;">목록으로</a>
+                                <a href="#" onclick="popupPost()" style="font-size:13pt;background-color:white;border:1px solid black; color:black; width:130px; padding:3px;">주문 취소</a>
+                            </p>
                 </div>
             </div> <!--My Page Tabs Contents-->
         </div>
     </div>
 
+    <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>   
+    <script type="text/javascript">
 
+          function popupPost(){ 
+              const popupWidth = 800;
+              const popupHeight = 450;
+              const popupX = (window.screen.width/2)-(popupWidth/2);
+              const popupY= (window.screen.height/2)-(popupHeight/2);
+              window.open('goods_pay_cancel.do?order_index=${order_info.order_index}', '환불 신청', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+            } 
 
+    </script>
 
+            
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script><!-- jQuery CDN --->
+  
 
     <!-- Footer Bottom Area -->
     <div id="footer_div">

@@ -267,7 +267,7 @@ public class MemberController {
 			
 		return mv;
 	}
-		
+	
 	@RequestMapping("member_logout.do")
 	public String logout(HttpSession session) {
 		session.removeAttribute("member");

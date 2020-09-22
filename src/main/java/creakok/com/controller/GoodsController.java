@@ -479,6 +479,33 @@ public class GoodsController {
 		
 		return mv;
 	}
+	
+	@ResponseBody
+	@RequestMapping("goods_pay_cancel.do") //환불
+	public ModelAndView goods_pay_cancel(@RequestParam("order_index") String order_index) {
+		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$ order_index: "+order_index);
+		long order_index2 = Long.parseLong(order_index);
+		
+		Order_Info order_info = payservice.selectByOrderIndex(order_index2);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("pay_cancel");
+		mv.addObject("order_info", order_info);
+		
+		return mv;
+	}	
+	
+	
+	@RequestMapping("goods_order_delete.do") //환불
+	public ModelAndView goods_order_delete(HttpServletRequest request) {
+		String order_index = request.getParameter("order_index");
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("import_cancel_pay");
+			
+		return mv;
+	}		
+	
 	@RequestMapping("goods_review.do")
 	public String goods_review(HttpServletRequest request, HttpSession session) {
 		String review_cp = request.getParameter("review_cp");

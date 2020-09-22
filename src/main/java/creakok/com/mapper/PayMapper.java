@@ -12,4 +12,5 @@ public interface PayMapper {
 	Funding getFundingCheckoutInfo(@Param(value = "funding_index") long funding_index);
 	void insertOneOrder(Order_Info order_info);
 	void insertFunding_order(Funding_payinfo funding_payinfo);
+	Order_Info selectByOrderIndex(@Param(value = "order_index") long order_index);
 }
