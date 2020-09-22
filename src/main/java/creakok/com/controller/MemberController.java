@@ -10,15 +10,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import creakok.com.domain.Creator;
 import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
 import creakok.com.domain.Member_category;
 import creakok.com.domain.Member_origin;
 import creakok.com.domain.Order_Info;
 import creakok.com.kakao.KakaoLogin;
+import creakok.com.service.CreatorService;
 import creakok.com.service.MemberService;
 import creakok.com.vo.Goods_ReviewVo;
 import creakok.com.vo.Member_OrderInfoVo;
@@ -31,6 +35,8 @@ public class MemberController {
 	@Autowired
 	private MemberService mService;
 	
+	@Autowired
+	private CreatorService cService;
 	
 	@ResponseBody
 	@GetMapping("member_readMemberOrign.do")
@@ -75,8 +81,20 @@ public class MemberController {
 	@GetMapping("member_readName.do")
 	public String readName(String member_name) {
 		Member member = mService.checkNameExist(member_name);
-		//log.info("###"+member);
-		if(member != null) return "exist";
+		boolean member_exist = (member != null) ? true : false;
+		
+		Creator creator = cService.checkNameExist(member_name);
+		boolean creator_exist = (creator != null) ? true : false;
+		
+		Creator creator_standby = cService.checkNameExist_standby(member_name);
+		boolean creator_standby_exist = (creator_standby != null) ? true : false;
+		
+		log.info("### ????:"+member_exist+"/"+creator_exist+"/"+creator_standby_exist );
+		
+		//if(member != null) return "exist";
+		//else return "not_exist";
+		
+		if(member_exist | creator_exist |creator_standby_exist) return "exist";
 		else return "not_exist";
 	}
 		
@@ -199,6 +217,24 @@ public class MemberController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("mypage");
+		
+		if(member_email.equals(Member_category.SUPER_ACCOUNT) ) {
+			List<Creator> standby_list = cService.readAllCreatorStandby();
+			for(Creator c : standby_list) {
+				//log.info("///////////////:"+c.getCreator_name() );
+			}
+			mv.addObject("standby_list", standby_list);
+		}
+		
+		Creator cTemp = cService.checkEmailExist_standby(member_email);
+		log.info("######## cTemp:"+cTemp);
+		if(cTemp != null) {
+			mv.addObject("CreatorStandbyExist", true);	
+		} else {
+			mv.addObject("CreatorStandbyExist", null);
+		}
+		
+		
 		mv.addObject("order_info", order_list);	
 		mv.addObject("order_count", order_count);	
 		
@@ -307,5 +343,114 @@ public class MemberController {
 		return "index";
 	}//end of login
 	
+	
+	@RequestMapping("joinCreator.do")
+	public String joinCreator() {
+		return "joinCreator";
+	}
+	
+	@RequestMapping("joinCreatorUpdate.do")
+	public ModelAndView joinCreatorUpdate(String member_email) {
+		Creator creator = cService.checkEmailExist_standby(member_email);
+		//log.info("########### creator:"+creator);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("joinCreatorUpdate");
+		mv.addObject("creator", creator);	
+		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping("writeCreatorJoinData.do")
+	public String writeCreatorJoinData(Creator creator, @RequestParam List<MultipartFile> creator_pics) {
+		//log.info("#########creator:"+creator);
+		String path = "C:/Users/bit/git/Creakok_master/src/main/webapp/resources/img/creator/";
+		
+		int nAddResult = cService.addCreatorStandby(creator);
+		//log.info("######## nAddResult:"+nAddResult);
+		if( nAddResult == 1) { //DB에 기록이 성공했다면. 파일을 저장하자.
+			MultipartFile profile = creator_pics.get(0);
+			String creator_profile_photo = cService.saveImage(profile, path);
+			creator.setCreator_profile_photo(creator_profile_photo);	
+			cService.updateCreatorProfileImages(creator);
+			
+			MultipartFile banner = creator_pics.get(1);
+			String creator_banner_photo = cService.saveImage(banner, path);
+			creator.setCreator_banner_photo(creator_banner_photo);
+			cService.updateCreatorBannerImages(creator);
+		}
+		return "<script>opener.parent.location.reload(); self.close();</script>";
+	}
+	
+	@ResponseBody
+	@RequestMapping("updateCreatorJoinData.do")
+	public String updateCreatorJoinData(Creator creator, @RequestParam List<MultipartFile> creator_pics) {
+		//log.info("#########creator:"+creator);
+		String path = "C:/Users/bit/git/Creakok_master/src/main/webapp/resources/img/creator/";
+		
+		//저장된 것을 읽어온다.
+		Creator existCreator = cService.checkEmailExist_standby(creator.getMember_email() );
+		
+		//일단 업데이트를 하고
+		int nAddResult = cService.updateCreator_standby(creator);
+		//log.info("######## nAddResult:"+nAddResult);
+		if( nAddResult == 1 ) { //DB에 기록이 성공했다면. 파일을 저장하자.
+			MultipartFile profile = creator_pics.get(0);
+			if(profile.getSize() != 0) { //첨부파일이 있으면 새로 저장하자.
+				String creator_profile_photo = cService.saveImage(profile, path);
+				creator.setCreator_profile_photo(creator_profile_photo);
+			} else {
+				//첨부파일이 없으면 기존 내용을 그대로 사용하자.
+				creator.setCreator_profile_photo(existCreator.getCreator_profile_photo() );
+			}
+			cService.updateCreatorProfileImages(creator);
+
+			MultipartFile banner = creator_pics.get(1);
+			if(banner.getSize() != 0) {
+				String creator_banner_photo = cService.saveImage(banner, path);
+				creator.setCreator_banner_photo(creator_banner_photo);
+			} else {
+				creator.setCreator_banner_photo(existCreator.getCreator_banner_photo() );
+			}
+			cService.updateCreatorBannerImages(creator);
+		}
+		return "<script>opener.parent.location.reload(); self.close();</script>";
+	}
+	
+	@RequestMapping("addCreator_standby.do")
+	public String addCreator_standby(String creator_name, HttpSession session) {
+		//log.info("######## creator:"+creator_name);
+		Creator creator = cService.checkNameExist_standby(creator_name);
+		if(creator != null) {
+			int nAddResult = cService.addCreator(creator);
+			if( nAddResult == 1) {
+				int nDeleteResult = cService.deleteCreator_standby(creator);
+				if(nDeleteResult == 1) {
+					Member member = new Member();
+					member.setMember_email(creator.getMember_email() );
+					mService.setMemberCreator( member );
+					
+					member.setMember_name(creator_name);
+					mService.changeName(member);
+				}
+			}
+		}
+		return "redirect:/member_mypage.do";
+	}
+	
+	@RequestMapping("deleteCreator_standby.do")
+	public String deleteCreator_standby(String creator_name, HttpSession session) {
+		//log.info("######## creator:"+creator_name);
+		Creator creator = cService.checkNameExist_standby(creator_name);
+		if(creator != null) {
+			int nDeleteResult = cService.deleteCreator_standby(creator);
+			
+			//session.removeAttribute("standby_list");
+			//List<Creator> standby_list = cService.readAllCreatorStandby();
+			//session.setAttribute("standby_list", standby_list);
+
+			//if(nDeleteResult == 1) return "add ok";
+		}
+		return "redirect:/member_mypage.do";
+	}
 	
 }

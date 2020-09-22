@@ -7,6 +7,10 @@ import creakok.com.domain.Order_Info;
 import creakok.com.vo.Member_OrderInfoVo;
 
 public interface MemberService {
+	
+	int setMemberCreator(Member member);
+	int setMemberNormal(Member member);
+	
 	Member getMemberInfoS(String member_email);
 	int compareMemberPasswordS(String member_email, String member_password);
 	void changeMemberPasswordS(String member_email, String new_password);
