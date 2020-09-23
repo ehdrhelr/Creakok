@@ -176,7 +176,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                 </div>
                 
                 
-                <div id="jjim-list" class="container tab-pane">
+                <div id="jjim-list" class="container tab-pane active">
                     <h3>좋아요 리스트</h3>
                     <p>리스트를 어떻게 표시할까?</p>
                     
