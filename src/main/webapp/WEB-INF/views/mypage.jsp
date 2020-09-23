@@ -146,8 +146,8 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                                 <td style="padding:3px !important;">${creator.creator_name}</td>
                                 <td style="padding:3px !important;">${creator.member_email}</td>
                                 <td style="padding:3px !important;">${creator.creator_profile_content}</td>
-                                <td style="padding:3px !important;"><img src="${Path.IMG_STORE_CREATOR}${creator.creator_profile_photo}"></td>
-                                <td style="padding:3px !important;"><img src="${Path.IMG_STORE_CREATOR}${creator.creator_banner_photo}"></td>
+                                <td style="padding:3px !important;"><img src="${Path.IMG_STORE_COMMUNITY_SHORT}${creator.creator_profile_photo}"></td>
+                                <td style="padding:3px !important;"><img src="${Path.IMG_STORE_COMMUNITY_SHORT}${creator.creator_banner_photo}"></td>
                                 <td style="padding:3px !important;">
                                   <input type="button" value="등록" onclick="addCreator_standby('${creator.creator_name}')"><br/>
                                   <input type="button" value="삭제" onclick="deleteCreator_standby('${creator.creator_name}')">

@@ -21,6 +21,7 @@ import creakok.com.domain.Member;
 import creakok.com.domain.Member_category;
 import creakok.com.domain.Member_origin;
 import creakok.com.domain.Order_Info;
+import creakok.com.filesetting.Path;
 import creakok.com.kakao.KakaoLogin;
 import creakok.com.service.CreatorService;
 import creakok.com.service.MemberService;
@@ -363,7 +364,7 @@ public class MemberController {
 	@RequestMapping("writeCreatorJoinData.do")
 	public String writeCreatorJoinData(Creator creator, @RequestParam List<MultipartFile> creator_pics) {
 		//log.info("#########creator:"+creator);
-		String path = "C:/Users/bit/git/Creakok_master/src/main/webapp/resources/img/creator/";
+		String path = Path.IMG_STORE_COMMUNITY;
 		
 		int nAddResult = cService.addCreatorStandby(creator);
 		//log.info("######## nAddResult:"+nAddResult);
@@ -385,7 +386,7 @@ public class MemberController {
 	@RequestMapping("updateCreatorJoinData.do")
 	public String updateCreatorJoinData(Creator creator, @RequestParam List<MultipartFile> creator_pics) {
 		//log.info("#########creator:"+creator);
-		String path = "C:/Users/bit/git/Creakok_master/src/main/webapp/resources/img/creator/";
+		String path = Path.IMG_STORE_COMMUNITY;
 		
 		//저장된 것을 읽어온다.
 		Creator existCreator = cService.checkEmailExist_standby(creator.getMember_email() );

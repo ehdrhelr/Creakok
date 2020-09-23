@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8"
+import ="creakok.com.filesetting.Path"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -101,7 +102,7 @@
             <!-- Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
-				<div class="slide-img bg-img" style="background-image: url(img/community/${theCreator.creator_banner_photo});"></div>
+				<div class="slide-img bg-img" style="background-image: url(${Path.IMG_STORE_COMMUNITY_SHORT}${theCreator.creator_banner_photo});"></div>
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
