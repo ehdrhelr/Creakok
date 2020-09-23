@@ -317,16 +317,22 @@
                          <c:forEach items="${order_info.order_list}" var="order_info">
                              <tr class="order_click_tr">
                                  <td style="padding:3px !important;">${order_info.order_index}</td>
-                                 <td style="padding:3px !important;">${order_info.buy_date}</td>
+                                 <td style="padding:3px !important;" id="wdate">${order_info.buy_date}</td>
                                  <td style="padding:3px !important;"  class="order_click_td"><a href="member_orderdetail.do?order_indexStr=${order_info.order_index}&member_email=${order_info.member_email}" style="color:black;">${order_info.buyer_buyid}</a></td>
                                  <td style="padding:3px !important;">${order_info.buy_product_name}</td>
                                  <td style="padding:3px !important;">${order_info.buyer_pay_price} 원</td>
                                  <td id="review_view" style="padding:1.5px !important;">
-                                     <c:if test="${order_info.buyer_pay_ok == 'true'}">
-                                        	결제 완료
+                                     <c:if test="${order_info.buyer_pay_ok == 'ready'}">
+                                        	미결제
                                      </c:if>
-                                     <c:if test="${order_info.buyer_pay_ok == 'false'}">
-                                        	결제 대기
+                                     <c:if test="${order_info.buyer_pay_ok == 'paid'}">
+                                        	결제완료
+                                     </c:if>
+                                     <c:if test="${order_info.buyer_pay_ok == 'cancelled'}">
+                                                                                        결제취소
+                                     </c:if>
+                                     <c:if test="${order_info.buyer_pay_ok == 'failed'}">
+                                                                                        결제실패
                                      </c:if>
                                  </td>
                               </tr>

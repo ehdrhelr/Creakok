@@ -41,7 +41,6 @@
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
 
-
 </head>
 
 <body>
@@ -58,17 +57,18 @@
         <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
                     <h3 style="text-align:center;margin-bottom:40px;font-size:18pt">환불 신청</h3>
         <div class="text-center">
-            <form method="post" action="goods_order_delete.do" id="frm" target="payback_popup" onsubmit="return false">
+            <form method="post" action="goods_order_delete.do" id="frm" target="_self" onsubmit="return false">
                                  <div>
-                                    <label for="order_number" style="margin-right:5px">상품명 : </label>&nbsp;
-                                    <input name="order_number" style="display:inline-block;width:60%;margin-bottom:10px"class="form-control" 
+                                    <label for="product_name" style="margin-right:5px">상품명 : </label>&nbsp;
+                                    <input name="product_name" style="display:inline-block;width:60%;margin-bottom:10px"class="form-control" 
                                     placeholder="" value="${order_info.buy_product_name}" readonly>
                                 </div>
+                                    <input type="hidden" name="order_index" value="${order_info.order_index}">
                                                                
                                 <div>
                                     <label for="order_number" style="margin-right:5px">주문번호 : </label>
                                     <input name="order_number" style="display:inline-block;width:60%"class="form-control" 
-                                    placeholder="" value="${order_info.buyer_buyid}" readonly>
+                                    placeholder="" value="${order_info.buyer_merid}" readonly>
                                 </div>
                                 
                                  <div >
@@ -80,7 +80,7 @@
                                   
                                     <label>환불 사유 : </label>
                                     <select name="paycancel_reason" style="display:inline-block; width:60%; margin-left:5px;margin-top:10px; padding:5px"
-                                        onChange="text.value=paycancel_reason[selectedIndex].value">
+                                        onChange="paycancel_reason.value=paycancel_reason[selectedIndex].value">
                                         <option value="none">환불 이유 선택</option>
                                         <option value="11">실수로 구매함</option>
                                         <option value="22">단순 변심</option>
@@ -100,29 +100,30 @@
         </div>
     </div>
 
-     
-      <script>
+       <!-- 아임포트 서버에 결제 요청  -->
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- jQuery CDN --->
 
+          
+      <script>
         function goWrite() {
         	var select_reason = $("select[name=paycancel_reason]").val();
+        	
             if(select_reason == 'none'){
                 alert("환불 이유를 선택해주세요");
                 return false;
             } else {
             	document.getElementById('frm').submit();
+            	opener.document.location.href="/";
+            	//self.close();
+            	
             	return true;
             }
-            
-
         }
         
         function closePopup(){
         	self.close();
         }
-        </script>
-  
-
-
+      </script>
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
    
@@ -136,11 +137,6 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-
-    
-    <jsp:include page="Language.jsp" flush="false">
-    <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
-    </jsp:include>
     
 </body>
 

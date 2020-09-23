@@ -33,4 +33,9 @@ public class PayServiceImpl implements PayService {
 		
 		return order_info;
 	}
+	
+	@Override
+	public void deleteOneOrder(long order_index) {
+		paymapper.deleteOneOrder(order_index);
+	}
 }

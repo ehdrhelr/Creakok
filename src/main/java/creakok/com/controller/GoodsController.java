@@ -43,7 +43,7 @@ import creakok.com.service.GoodsReviewService;
 import creakok.com.service.GoodsService;
 import creakok.com.service.Goods_CategoryService;
 import creakok.com.service.MemberService;
-import creakok.com.service.PayService;
+
 import creakok.com.vo.GoodsVo;
 import creakok.com.vo.Goods_QnAVo;
 import creakok.com.vo.Goods_ReviewVo;
@@ -70,9 +70,6 @@ public class GoodsController {
 	
 	@Autowired
 	private CreatorBoardService creatorBoardService;
-
-	@Autowired
-	private PayService payservice;
 
 	@Autowired
 	private MemberService memberservice;
@@ -280,231 +277,7 @@ public class GoodsController {
 		
 		return mv;		
 	}	
-	@RequestMapping("goods_pay.do")
-	public ModelAndView goods_pay(HttpServletRequest request) {
-		String buyer_name = request.getParameter("name");
-		String buyer_phone = request.getParameter("phone_number");
-		String buyer_email = request.getParameter("email");
-		
-		
-		String delivery_name = request.getParameter("delivery_name");
-		String delivery_phone = request.getParameter("delivery_phone");
-		String address_num = request.getParameter("address_num");
-		String address_road = request.getParameter("address_road");
-		String address_detail = request.getParameter("address_detail");
-		String address_land = request.getParameter("address_land");
-		
-		String price_amountStr = request.getParameter("price_amount");
-		String product_qtyStr = request.getParameter("product_qty");
-		String product_name = request.getParameter("product_name");
-		String email =  request.getParameter("email");
-		
-		String rec_addr = address_num+address_road+address_detail+address_land;
-		
-		long price_amount = Long.parseLong(price_amountStr);
-		long product_qty = Long.parseLong(product_qtyStr);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&name: "+delivery_name);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&delivery_phone: "+delivery_phone);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_num: "+address_num);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_road: "+address_road);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_detail: "+address_detail);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_land: "+address_land);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&price_amount: "+price_amount);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_qty: "+product_qty);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
-		
 
-		PayInfoVo payInfo = new PayInfoVo(delivery_name, delivery_phone, address_num, address_road, address_detail, address_land, price_amountStr, product_qtyStr, product_name, email);
-
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("import_pay");
-		mv.addObject("payInfo", payInfo);	 //order_index 같이 넘겨쥼
-		
-		return mv;
-	} 
-	
-	@ResponseBody
-	@RequestMapping("cart_goods_pay.do")
-	public ModelAndView cart_goods_pay(HttpServletRequest request) {
-		String buyer_name = request.getParameter("name");
-		String buyer_phone = request.getParameter("phone_number");
-		String buyer_email = request.getParameter("email");
-		
-		
-		String delivery_name = request.getParameter("delivery_name");
-		String delivery_phone = request.getParameter("delivery_phone");
-		String address_num = request.getParameter("address_num");
-		String address_road = request.getParameter("address_road");
-		String address_detail = request.getParameter("address_detail");
-		String address_land = request.getParameter("address_land");
-		String rec_addr = address_num+address_road+address_detail+address_land;
-
-		String email =  request.getParameter("email");
-		
-		//상품명, 수량, 총 가격 받기
-		String[] product_name_list = request.getParameterValues("product_name");
-		String[] product_qty_list = request.getParameterValues("product_qty");
-		String price_amountStr = request.getParameter("price_amount");
-		
-		
-		
-		long price_amount = Long.parseLong(price_amountStr);
-		//long product_qty = Long.parseLong(product_qtyStr);
-		
-		String product_name2 = "";
-		String product_name = "";
-		for(int i=0; i<product_name_list.length; i++) {
-			product_name2 += product_name_list[i]+", ";
-			product_name = product_name2.substring(0, product_name2.length()-2);
-		}
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
-		
-		long one_product_qty;
-		long qty_amount = 0L;
-		String amount_product_qtyStr = "";
-		for(int a=0; a<product_qty_list.length; a++) {
-			one_product_qty = Long.parseLong(product_qty_list[a]);
-			qty_amount += one_product_qty;
-			amount_product_qtyStr = Long.toString(qty_amount);
-		}
-		String product_qtyStr = "총 "+amount_product_qtyStr+"개";
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_qtyStr: "+product_qtyStr);
-
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&name: "+delivery_name);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&delivery_phone: "+delivery_phone);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_num: "+address_num);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_road: "+address_road);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_detail: "+address_detail);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&address_land: "+address_land);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&price_amount: "+price_amount);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_qty: "+product_qty);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&orderList: "+orderList);
-		
-
-		PayInfoVo payInfo = new PayInfoVo(delivery_name, delivery_phone, address_num, address_road, address_detail, address_land, 
-				price_amountStr, product_qtyStr, product_name, email);
-
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("import_pay");
-		mv.addObject("payInfo", payInfo);	 //order_index 같이 넘겨쥼
-		
-		return mv;
-	} 	
-	
-	
-	
-	
-	@RequestMapping("goods_pay_success.do")
-	public ModelAndView goods_pay_success(HttpServletRequest request) {
-		String buyer_name = request.getParameter("buyer_name");
-		String buyer_phone = request.getParameter("buyer_phone");
-		String member_email = request.getParameter("buyer_email");
-
-		String buyer_addrStr = request.getParameter("buyer_addr");
-		String buyer_postcode = request.getParameter("buyer_postcode");
-		
-		String buyer_addr = buyer_addrStr+buyer_postcode;
-		
-		String product_name = request.getParameter("product_name");
-		String amount = request.getParameter("amount");
-		
-		String success_num = request.getParameter("success_num"); //고유ID
-		String success_id = request.getParameter("success_id"); //상점 거래ID
-		String success_amountStr = request.getParameter("success_amount"); //결제 금액 
-		String success_card_num = request.getParameter("success_card_num"); //카드 승인번호
-		String success_pay = request.getParameter("success_pay"); //결제 성공 여부		
-
-		Long success_amount = Long.parseLong(success_amountStr);
-		//Long amount = Long.parseLong(amountStr);
-		
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&고유 ID: "+success_num);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&상점 거래ID: "+success_id);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&결제 금액: "+success_amount);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&success_pay: "+success_pay);	
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_name: "+buyer_name);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&amount: "+amount);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_email: "+member_email);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_phone: "+buyer_phone);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_addr: "+buyer_addr);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_postcode: "+buyer_postcode);
-
-		
-		Order_Info order_info = new Order_Info(-1, buyer_name, buyer_phone, member_email, buyer_addr, null, product_name, 
-				success_num, success_id, success_amount, success_card_num, success_pay);
-		
-		payservice.insertOneOrder(order_info); 
-		
-		// 상품이 여러개일때, 한개일때 
-		long goods_index = 0L;
-		if(product_name.contains(", ")) {
-			String[] product_name_list = product_name.split(", "); //상품명 이름 분리
-			for(int i=0; i<product_name_list.length; i++) {
-				//굿즈 이름으로 goods_index 뽑아서 판매 수 +1
-				goods_index = goodsService.getGoodsIndex(product_name_list[i]);
-				goodsService.plusSaleNumber(goods_index);		
-				
-				//굿즈 재고 수량 -1
-				goodsService.minusStockNumber(goods_index);
-			}
-		} else {
-			//굿즈 이름으로 goods_index 뽑아서 판매 수 +1
-			goods_index = goodsService.getGoodsIndex(product_name);
-			goodsService.plusSaleNumber(goods_index);		
-			
-			//굿즈 재고 수량 -1
-			goodsService.minusStockNumber(goods_index);
-		}
-
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("pay_success");
-		mv.addObject("success_num", success_num);	
-		mv.addObject("member_email", member_email);	
-		
-		return mv;
-	}	
-	
-	@RequestMapping("goods_pay_fail.do")
-	public ModelAndView goods_pay_fail(HttpServletRequest request) {
-		String fail_msg = request.getParameter("error_msg");
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&fail_msg: "+fail_msg);
-
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("pay_fail");
-		mv.addObject("fail_msg", fail_msg);	
-		
-		return mv;
-	}
-	
-	@ResponseBody
-	@RequestMapping("goods_pay_cancel.do") //환불
-	public ModelAndView goods_pay_cancel(@RequestParam("order_index") String order_index) {
-		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$ order_index: "+order_index);
-		long order_index2 = Long.parseLong(order_index);
-		
-		Order_Info order_info = payservice.selectByOrderIndex(order_index2);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("pay_cancel");
-		mv.addObject("order_info", order_info);
-		
-		return mv;
-	}	
-	
-	
-	@RequestMapping("goods_order_delete.do") //환불
-	public ModelAndView goods_order_delete(HttpServletRequest request) {
-		String order_index = request.getParameter("order_index");
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("import_cancel_pay");
-			
-		return mv;
-	}		
 	
 	@RequestMapping("goods_review.do")
 	public String goods_review(HttpServletRequest request, HttpSession session) {
@@ -589,6 +362,7 @@ public class GoodsController {
 		
 		return "goods_review_board";
 	}
+	
 	@RequestMapping("goods_review_write.do")
 	public ModelAndView goods_review_write(HttpServletRequest request) {
 		String goods_indexStr = request.getParameter("goods_index");

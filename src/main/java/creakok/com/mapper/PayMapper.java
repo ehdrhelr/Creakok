@@ -13,4 +13,5 @@ public interface PayMapper {
 	void insertOneOrder(Order_Info order_info);
 	void insertFunding_order(Funding_payinfo funding_payinfo);
 	Order_Info selectByOrderIndex(@Param(value = "order_index") long order_index);
+	void deleteOneOrder(@Param(value = "order_index") long order_index);
 }

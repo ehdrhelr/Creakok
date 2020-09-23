@@ -338,16 +338,22 @@
   
                               <tr class="orderInfo_detail">
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
-                                   <span style="font-weight:700">주문번호 : </span><span>${order_info.buyer_buyid}</span>
+                                   <span style="font-weight:700">주문번호 : </span><span>${order_info.buyer_merid}</span>
                                  </td>
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
                                    <span style="font-weight:700">결제여부 : </span> 
                                    <span>
-                                   	 <c:if test="${order_info.buyer_pay_ok == 'true'}">
-                                        	결제 완료
+                                     <c:if test="${order_info.buyer_pay_ok == 'ready'}">
+                                                                                        미결제
                                      </c:if>
-                                     <c:if test="${order_info.buyer_pay_ok == 'false'}">
-                                        	결제 대기
+                                     <c:if test="${order_info.buyer_pay_ok == 'paid'}">
+                                                                                        결제완료
+                                     </c:if>
+                                     <c:if test="${order_info.buyer_pay_ok == 'cancelled'}">
+                                                                                        결제취소
+                                     </c:if>
+                                     <c:if test="${order_info.buyer_pay_ok == 'failed'}">
+                                                                                        결제실패
                                      </c:if>
                                    	</span>
                                  </td>

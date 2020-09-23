@@ -27,7 +27,6 @@
             });
             const { access_token } = getToken.data.response; // 엑세스 토큰
             /* 결제정보 조회 */
-            ...
           } catch (error) {
             res.status(400).send(error);
           }
@@ -44,7 +43,7 @@
   <script>
     function cancelPay() {
       jQuery.ajax({
-        "url": "http://www.myservice.com/payments/cancel",
+        "url": "goods_order_delete.do",
         "type": "POST",
         "contentType": "application/json",
         "data": JSON.stringify({
