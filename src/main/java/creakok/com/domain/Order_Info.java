@@ -1,6 +1,6 @@
 package creakok.com.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,7 @@ public class Order_Info {
 	private long order_index;
 	private String buyer_name; //주문자 이름
 	private String buyer_phone; //주문자 연락처
-	private String member_email; //주문자 연락처
+	private String member_email; //주문자 메일
 	private String buy_addr;
 	private String buy_date;
 	private String buy_product_name; //상품명

@@ -43,6 +43,8 @@ IMP.request_pay({
         location.href="goods_pay_fail.do?error_msg="+rsp.error_msg;
     }
 });
+
+
 </script>
   </body>
 </html>

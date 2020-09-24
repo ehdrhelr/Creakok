@@ -26,5 +26,16 @@ public class PayServiceImpl implements PayService {
 	@Override
 	public void insertFunding_order(Funding_payinfo funding_payinfo) {
 	}
-
+	
+	@Override
+	public Order_Info selectByOrderIndex(long order_index) {
+		Order_Info order_info = paymapper.selectByOrderIndex(order_index);
+		
+		return order_info;
+	}
+	
+	@Override
+	public void deleteOneOrder(long order_index) {
+		paymapper.deleteOneOrder(order_index);
+	}
 }
