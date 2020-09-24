@@ -304,15 +304,15 @@
                         </tr>
                     </thead>  
                     <tbody>
-                    	
-                        <c:if test="${empty order_info}">
-                        <tr>
+                         
+                        <c:if test="${empty order_info.order_list}">
+                          <tr>
                            <td colspan="6" style="border-bottom:1px solid black">
                                                                 주문 내역이 없습니다.
                            </td>   
-                           </tr>            
+                          </tr>           
                         </c:if>
-                        
+                         
                         <c:if test="${!empty order_info.order_list}">
                          <c:forEach items="${order_info.order_list}" var="order_info">
                              <tr class="order_click_tr">
