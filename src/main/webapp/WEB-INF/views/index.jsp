@@ -140,7 +140,7 @@
 
                                 <div class="single-benefits-area">                   
                                     <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        </a><div class="CommonCard_rect__2wpm4"><a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
+                                        </a><div class="CommonCard_rect__2wpm4"><a href="funding_detail.do?funding_index=${funding.funding_index}" class="CardLink_link__1k83H CommonCard_image__vaqkf">
                                             <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
 												</span></a><a href="funding_detail.do?funding_index=${funding.funding_index}">
                                                      <img src="${funding.funding_repre_pic}" alt="">

@@ -29,8 +29,9 @@ public class FundingController {
 	
 	int cp =1;
 	int ps =3;
-	@RequestMapping("funding_list.do")
-	public ModelAndView list(HttpServletRequest request, HttpSession session) {
+	
+	
+	public FundingVo fundingVo(HttpServletRequest request, HttpSession session) {
 		String cpStr = request.getParameter("funding_cp");
 	    String psStr = request.getParameter("funding_ps");
 	    String filterBy = request.getParameter("funding_filterBy");	 
@@ -157,6 +158,13 @@ public class FundingController {
 		session.setAttribute("funding_categoryNames", fundingVo.getListCategoryUsed());
 		session.setAttribute("fundingVo", fundingVo);
 		
+		
+		
+		return fundingVo;
+	}
+	@RequestMapping("funding_list.do")
+	public ModelAndView list(HttpServletRequest request, HttpSession session) {
+		FundingVo fundingVo = fundingVo(request, session);
 		if(fundingVo.getList().size() ==0 ) {
 			if(cp>1) {
 				return new ModelAndView("redirect:funding_list.do?funding_cp="+(cp-1));
@@ -164,8 +172,6 @@ public class FundingController {
 				return new ModelAndView("redirect:funding_list.do", "fundingVo", null);
 			}
 		}
-		
-			
 		//(3) ModelAndView
 		ModelAndView mv = new ModelAndView("/funding", "fundingVo", fundingVo);
 		return mv;
@@ -189,66 +195,68 @@ public class FundingController {
 				}
 			session.setAttribute("fundingQna_cp", cp_qna);
 			FundingVo fundingVo = (FundingVo) session.getAttribute("fundingVo");
-	
-			if(fundingVo.getList().size() ==0 ) {
-				if(cp>1) {
-					return new ModelAndView("redirect:funding_list.do?funding_cp="+(cp-1));
-				}else {
-					return new ModelAndView("redirect:funding_list.do", "fundingVo", null);
-				}
-			}else if(funding_indexStr!=null) {
-				
-				long funding_index = Long.parseLong(funding_indexStr);
-				List<Funding> AllListrelatedFunding = new ArrayList<Funding>();
-				List<Funding> ListrelatedFunding = new ArrayList<Funding>();	
-				long categoryCode = 0L;
-				
-				for(Funding fundingSelected : fundingVo.getList()) {			
-					if(fundingSelected.getFunding_index()==funding_index) {
-						categoryCode = fundingSelected.getFunding_category_code();
-					
-				
-						AllListrelatedFunding = service.getRelatedFunding(categoryCode);	
-						Random r = new Random();
-						if(AllListrelatedFunding.size()>=4) {
-							int a[] = new int[AllListrelatedFunding.size()];
-							for(int i=0;i<AllListrelatedFunding.size();i++) {
-								a[i]=r.nextInt(AllListrelatedFunding.size());
-								for(int j=0; j<i; j++) {
-									if(a[i]==a[j]) {
-										i--;
-									}
-								}
-							}	
-							for(int k=0;k<4;k++) {
-								Funding fundingRelated = AllListrelatedFunding.get(a[k]);
-								ListrelatedFunding.add(fundingRelated);
-							}
-						}
-						fundingSelected.setListrelatedFunding(ListrelatedFunding);
-						long funding_index_qna = fundingSelected.getFunding_index();
-						long totalCount_qna = service.getTotalCount_qna(funding_index_qna);
-						
-						Funding_qnaVo funding_qnaVo_temp = new Funding_qnaVo(funding_index_qna, cp_qna, totalCount_qna, 5, null);
-						
-						List<Funding_qna> funding_qna_list = service.getFunding_qna(funding_qnaVo_temp);
-						funding_qnaVo_temp.setList(funding_qna_list);
-						fundingSelected.setFunding_qnaVo(funding_qnaVo_temp);	
-						long qna_totalCount = service.getTotalCount_qna(funding_index);
-						fundingSelected.setFunding_qna_totalCount(qna_totalCount);
-						log.info("445454545454");
-						log.info(fundingSelected.getCreator_name());
-						String creatorProfilContent = service.getCreatorProfilContent(fundingSelected.getCreator_name());
-						fundingSelected.setCreator_profil_content(creatorProfilContent);
-						session.setAttribute("funding_detail", fundingSelected);
-						return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
-						
-				
+			if(fundingVo!=null) {
+				if(fundingVo.getList().size() ==0 ) {
+					if(cp>1) {
+						return new ModelAndView("redirect:funding_list.do?funding_cp="+(cp-1));
+					}else {
+						return new ModelAndView("redirect:funding_list.do", "fundingVo", null);
 					}
-				}	
-			//return new ModelAndView("/funding_detail", "fundingVo", fundingVo);
-		}
-	  
+				}else if(funding_indexStr!=null) {
+					
+					long funding_index = Long.parseLong(funding_indexStr);
+					List<Funding> AllListrelatedFunding = new ArrayList<Funding>();
+					List<Funding> ListrelatedFunding = new ArrayList<Funding>();	
+					long categoryCode = 0L;
+					
+					for(Funding fundingSelected : fundingVo.getList()) {			
+						if(fundingSelected.getFunding_index()==funding_index) {
+							categoryCode = fundingSelected.getFunding_category_code();
+						
+					
+							AllListrelatedFunding = service.getRelatedFunding(categoryCode);	
+							Random r = new Random();
+							if(AllListrelatedFunding.size()>=4) {
+								int a[] = new int[AllListrelatedFunding.size()];
+								for(int i=0;i<AllListrelatedFunding.size();i++) {
+									a[i]=r.nextInt(AllListrelatedFunding.size());
+									for(int j=0; j<i; j++) {
+										if(a[i]==a[j]) {
+											i--;
+										}
+									}
+								}	
+								for(int k=0;k<4;k++) {
+									Funding fundingRelated = AllListrelatedFunding.get(a[k]);
+									ListrelatedFunding.add(fundingRelated);
+								}
+							}
+							fundingSelected.setListrelatedFunding(ListrelatedFunding);
+							long funding_index_qna = fundingSelected.getFunding_index();
+							long totalCount_qna = service.getTotalCount_qna(funding_index_qna);
+							
+							Funding_qnaVo funding_qnaVo_temp = new Funding_qnaVo(funding_index_qna, cp_qna, totalCount_qna, 5, null);
+							
+							List<Funding_qna> funding_qna_list = service.getFunding_qna(funding_qnaVo_temp);
+							funding_qnaVo_temp.setList(funding_qna_list);
+							fundingSelected.setFunding_qnaVo(funding_qnaVo_temp);	
+							long qna_totalCount = service.getTotalCount_qna(funding_index);
+							fundingSelected.setFunding_qna_totalCount(qna_totalCount);
+							log.info("445454545454");
+							log.info(fundingSelected.getCreator_name());
+							String creatorProfilContent = service.getCreatorProfilContent(fundingSelected.getCreator_name());
+							fundingSelected.setCreator_profil_content(creatorProfilContent);
+							session.setAttribute("funding_detail", fundingSelected);
+							return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
+							
+					
+						}
+					}	
+				//return new ModelAndView("/funding_detail", "fundingVo", fundingVo);
+				}
+			}else {
+				
+			}
 		ModelAndView mv = new ModelAndView("/funding", "fundingVo", fundingVo);
 		return mv;
 	    
