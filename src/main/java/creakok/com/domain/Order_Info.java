@@ -15,7 +15,7 @@ public class Order_Info {
 	private String buyer_phone; //주문자 연락처
 	private String member_email; //주문자 메일
 	private String buy_addr;
-	private Date buy_date;
+	private String buy_date;
 	private String buy_product_name; //상품명
 	private String buyer_buyid; //고유id
 	private String buyer_merid; //merchant id

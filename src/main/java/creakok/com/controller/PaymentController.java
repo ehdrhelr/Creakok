@@ -373,7 +373,7 @@ public class PaymentController {
 		long buyer_pay_price;
 		long paid_atLong;
 		long unixTime;
-		Date buy_date;
+		Date date;
 		
 		HttpClient client = HttpClientBuilder.create().build(); 
 		HttpGet get = new HttpGet(IMPORT_PAYMENTINFO_URL + mId + "/paid"); 
@@ -401,11 +401,7 @@ public class PaymentController {
 			buyer_card_num = resNode.get("apply_num").asText(); 
 			buyer_pay_ok = resNode.get("status").asText(); 
 			
-		    // 형식 바꾸기
-		    //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		    //sdf.setTimeZone(TimeZone.getTimeZone("GMT+9")); // GMT(그리니치 표준시 +9 시가 한국의 표준시
-		    //String formattedDate = sdf.format(date);
-		    //log.info("++++++++++++++++++++++++++++++++++++import date: "+formattedDate);
+
 		    
 			log.info("++++++++++++++++++++++++++++++++++++import buyer_name: "+buyer_name);
 			log.info("++++++++++++++++++++++++++++++++++++import paid_at: "+paid_at);
@@ -419,7 +415,14 @@ public class PaymentController {
 		// 카드 결제 시간 - 형식 바꾸기
 		paid_atLong = Long.parseLong(paid_at);
 	    unixTime = paid_atLong * 1000;
-		buy_date = new Date(paid_atLong);
+		date = new Date(unixTime);
+		
+	    // 형식 바꾸기
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    sdf.setTimeZone(TimeZone.getTimeZone("GMT+9")); // GMT(그리니치 표준시 +9 시가 한국의 표준시
+	    String buy_date = sdf.format(date);
+	    log.info("++++++++++++++++++++++++++++++++++++import date: "+buy_date);
+	    
 	    Order_Info order_info = new Order_Info(-1L, buyer_name, buyer_phone, member_email, 
 	    		buyer_addr, buy_date, buy_product_name, buyer_buyid, buyer_merid, 
 	    		buyer_pay_price, buyer_card_num, buyer_pay_ok);
