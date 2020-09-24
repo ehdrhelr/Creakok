@@ -35,7 +35,7 @@ public class PayController {
 	}
 	
 	@RequestMapping("funding_pay.do")
-	public ModelAndView pay(HttpServletRequest request, HttpSession session) {
+	public ModelAndView funding_pay(HttpServletRequest request, HttpSession session) {
 		
 		String funding_payinfo_name = request.getParameter("Payinfo_name");
 		String member_email = request.getParameter("Payinfo_email");
@@ -57,7 +57,7 @@ public class PayController {
 	}
 	
 	@RequestMapping("funding_pay_success.do")
-	public ModelAndView goods_pay_success(HttpServletRequest request, HttpSession session) {
+	public ModelAndView funding_pay_success(HttpServletRequest request, HttpSession session) {
 		String buyer_name = request.getParameter("buyer_name");
 		String buyer_phoneStr = request.getParameter("buyer_phone");
 		long buyer_phone = Long.parseLong(buyer_phoneStr);
@@ -89,26 +89,13 @@ public class PayController {
 		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
 		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&amount: "+amount);
 		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_email: "+member_email);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_phone: "+buyer_phone);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_addr: "+buyer_addr);
-		//log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_postcode: "+buyer_postcode);
-
-		//Order_Info order_info = new Order_Info(-1, buyer_name, buyer_phone, member_email, buyer_addr, null, product_name, 
-		//		success_num, success_id, success_amount, success_card_num, success_pay);
 		
-		Funding_payinfo order_infoBefore = (Funding_payinfo) session.getAttribute("funding_payinfo");
+		Funding_payinfo funding_pay_info_before = (Funding_payinfo) session.getAttribute("funding_payinfo");
 		
-		Funding_payinfo order_info = new Funding_payinfo(-1, buyer_name, member_email, buyer_phone, success_amount, order_infoBefore.getFunding_index(), product_name, success_num, success_id, success_card_num, success_pay);
-	
-		service.insertFunding_order(order_info);
-		//payservice.insertOneOrder(order_info); 
+		Funding_payinfo funding_pay_info = new Funding_payinfo(-1, buyer_name, member_email, buyer_phone, success_amount, funding_pay_info_before.getFunding_index(), product_name, success_num, success_id, success_card_num, success_pay);
 		
-		//굿즈 이름으로 goods_index 뽑아서 판매 수 +1
-		//long goods_index = goodsService.getGoodsIndex(product_name);
-		//goodsService.plusSaleNumber(goods_index);
+		service.insertFunding_order(funding_pay_info);
 		
-		//굿즈 재고 수량 -1
-		//goodsService.minusStockNumber(goods_index);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("funding_pay_success");
@@ -117,6 +104,18 @@ public class PayController {
 		
 		return mv;
 	}	
+	
+	@RequestMapping("funding_pay_fail.do")
+	public ModelAndView funding_pay_fail(HttpServletRequest request) {
+		String fail_msg = request.getParameter("error_msg");
+		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&fail_msg: "+fail_msg);
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("pay_fail");
+		mv.addObject("fail_msg", fail_msg);	
+		
+		return mv;
+	}
 }
 
 	

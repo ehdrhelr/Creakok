@@ -39,6 +39,7 @@
 			    } else {
 			        var msg = '결제에 실패하였습니다.';
 			        msg += '에러내용 : ' + rsp.error_msg;
+			        location.href="funding_pay_fail.do?error_msg="+rsp.error_msg;
 			    }
 			    alert(msg);
 			});

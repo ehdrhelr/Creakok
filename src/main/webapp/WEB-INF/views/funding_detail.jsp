@@ -277,7 +277,7 @@
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
+                            <a href="funding_list.do?funding_index=${funding_related.funding_index}">
                                 <p>${funding_related.funding_subject}</p>
                             </a>
                             <h6>${funding_related.creator_name}</h6>

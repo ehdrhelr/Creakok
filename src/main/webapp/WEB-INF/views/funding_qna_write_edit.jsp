@@ -120,7 +120,6 @@
       focus: true,
         toolbar: [
           ['font', ['bold', 'underline', 'clear']],
-          ['insert', ['picture']]
         ]
       });
     </script>
