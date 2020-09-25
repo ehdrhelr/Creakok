@@ -256,13 +256,13 @@
                                                           <c:if test="${!empty funding_qna_detail.funding_qna_answer}">
                                                           <tr id="answer_is">
                                                               <td colspan="5">
-                                                                 <p style="color:black;font-size:11pt;font-weight:600;text-align:left;margin-top:2%">└ ${one_qna.creator_name} 
-                                                                     <span style="font-weight:400"> ${funding_detail.creator_name}님의 답변 :</span> 
+                                                                 <p style="color:black;font-size:11pt;font-weight:600;text-align:left;margin-top:2%">└ ${funding_detail.creator_name} 
+                                                                     <span style="font-weight:400"> 님의 답변 :</span> 
                                                                      <span id="answer_here" style="font-weight:500">${funding_qna_detail.funding_qna_answer}</span>
                                                                      <span style="font-weight:300;margin-left:5px">(${funding_qna_detail.funding_qna_adate})</span>&nbsp;&nbsp;
                                                                      
-                                                                    <c:if test="${member.member_name == funding_qna_detail.member_name}">
-                                                                     <a href="funding_qna.editForm" onclick="answerUpdate()" style="color:#858585;font-weight:300">수정</a>&nbsp;
+                                                                    <c:if test="${member.member_name == funding_detail.creator_name}">
+                                                                     <a href="#" onclick="answerUpdate()" style="color:#858585;font-weight:300">수정</a>&nbsp;
                                                                      <span style="color:#858585;font-weight:300">|</span>&nbsp;
                                                                      <a href="funding_qna.answerDelete?funding_qna_index=${funding_qna_detail.funding_qna_index}&funding_index=${funding_qna_detail.funding_index}#fix_point" style="color:#858585;font-weight:300">삭제</a>
                                                                 
@@ -272,8 +272,8 @@
                                                           </tr>
                                                           </c:if>
                                                           <!-- 크리에이터 답변이 있을 때 End -->
-                                                          <!-- 크리에이터 답변 수정 -->
                                                           
+                                                          <!-- 크리에이터 답변 수정 -->
                                                             <tr id="update" style="display:none">
                                                                 <td colspan="5" style="border:0">
                                                                     <form action="funding_qna.answerEdit#fix_point" method="post" style="position:relative;height:60px"> 
@@ -293,9 +293,9 @@
                                                                     </form>
                                                                 </tr>
                                                             </tr>
+                                                            
+                                                         
                                                           <!-- 크리에이터 답변 수정 End -->
-                                                          
-                                                          <!-- 크리에이터 답변이 없을 때 -->
                                                        <!-- 크리에이터 답변이 없을 때 -->
                                                        
                                                         <!-- 크리에이터 답변이 없을 때 -->
@@ -340,7 +340,7 @@
                                                   </table>
                                                   <p style="width:100%;text-align:center;margin-top:10px">
                                                        <a href="funding_qna.do?funding_index=${funding_qna_detail.funding_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>목록</a>
-                                                   <c:if test="${member.member_name == funding_qna_detail.member_name}">
+                                                                <c:if test="${member.member_name == funding_qna_detail.member_name}">
                                                                      <a href="funding_qna.editForm" style='background-color:black; color:white; width:130px; padding:3px'>수정</a>&nbsp;
                                                                      
                                                                      <a href="funding_qna.delete?funding_qna_index=${funding_qna_detail.funding_qna_index}&funding_index=${funding_qna_detail.funding_index}#fix_point"style='background-color:black; color:white; width:130px; padding:3px'>삭제</a>

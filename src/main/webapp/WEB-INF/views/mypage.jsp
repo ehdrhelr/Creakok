@@ -482,7 +482,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                        <h3>펀딩 내역(총  0개)</h3>              
                     </c:if>
                     <h3>주문 내역(총 ${order_count}개)</h3>
-                    <p style="margin-bottom:20px">펀딩 번호를 클릭하시면 해당 펀딩에 대한 상세내역을 확인하실 수 있습니다.</p>
+                    <p style="margin-bottom:20px">펀딩 제목을 클릭하시면 해당 펀딩에 대한 상세내역을 확인하실 수 있습니다.</p>
                     
                     <div id="mypage_funding_area"></div>
                     
@@ -491,19 +491,21 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                     <table style="">
                     <colgroup>
                         <col width="5%">
-                        <col width="15%">
+                        <col width="25%">
                         <col width="20%">
-                        <col width="30%">
                         <col width="15%">
+                        <col width="10%">
                         <col width="15%">
+                        <col width="10%">
                     </colgroup>
                      <thead>
                         <tr>
                             <th style="padding:1.5px !important;">No</th>
-                            <th style="padding:1.5px !important;">펀딩일자</th>
-                            <th style="padding:1.5px !important;">펀딩번호</th>
                             <th style="padding:1.5px !important;">펀딩 제목</th>
-                            <th style="padding:1.5px !important;">결제금액</th>
+                            <th style="padding:1.5px !important;">펀딩액</th>
+                            <th style="padding:1.5px !important;">펀딩 종료일</th>
+                            <th style="padding:1.5px !important;">펀딩여부</th>
+                            <th style="padding:1.5px !important;">결제예정일</th>
                             <th style="padding:1.5px !important;">결제상태</th>
                         </tr>
                     </thead>  
@@ -522,16 +524,21 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                          <c:forEach items="${order_info.order_list}" var="order_info">
                              <tr class="order_click_tr">
                                  <td style="padding:3px !important;">${order_info.order_index}</td>
-                                 <td style="padding:3px !important;">${order_info.buy_date}</td>
-                                 <td style="padding:3px !important;"  class="order_click_td"><a href="member_orderdetail.do?order_indexStr=${order_info.order_index}&member_email=${order_info.member_email}" style="color:black;">${order_info.buyer_buyid}</a></td>
-                                 <td style="padding:3px !important;">${order_info.buy_product_name}</td>
+                                 <td style="padding:3px !important;">
+                                    <a href="member_orderdetail.do?order_indexStr=${order_info.order_index}&member_email=${order_info.member_email}" style="color:black;">
+                                     ${order_info.buy_product_name}
+                                    </a>
+                                 </td>
                                  <td style="padding:3px !important;">${order_info.buyer_pay_price} 원</td>
+                                 <td style="padding:3px !important;"  class="order_click_td">${order_info.buy_date}</td>
+                                 <td style="padding:3px !important;">펀딩완료</td>
+                                 <td style="padding:3px !important;">${order_info.buy_date}</td>
                                  <td id="review_view" style="padding:1.5px !important;">
                                      <c:if test="${order_info.buyer_pay_ok == 'true'}">
-                                          결제 완료
+                                                                                    결제 완료
                                      </c:if>
                                      <c:if test="${order_info.buyer_pay_ok == 'false'}">
-                                          결제 대기
+                                                                                     결제 대기
                                      </c:if>
                                  </td>
                               </tr>
