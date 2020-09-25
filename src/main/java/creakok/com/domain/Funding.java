@@ -33,6 +33,7 @@ public class Funding {
 	private Funding_qnaVo funding_qnaVo;
 	private long funding_qna_totalCount;
 	private String creator_profil_content;
+	private String creator_profil_photo;
 	//private List<Funding_qna> funding_qna;
 	
 }

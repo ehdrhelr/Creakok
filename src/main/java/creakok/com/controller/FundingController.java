@@ -245,7 +245,9 @@ public class FundingController {
 							log.info("445454545454");
 							log.info(fundingSelected.getCreator_name());
 							String creatorProfilContent = service.getCreatorProfilContent(fundingSelected.getCreator_name());
+							String creatorProfilPhoto = service.getCreatorProfilPhoto(fundingSelected.getCreator_name());
 							fundingSelected.setCreator_profil_content(creatorProfilContent);
+							fundingSelected.setCreator_profil_photo(creatorProfilPhoto);
 							session.setAttribute("funding_detail", fundingSelected);
 							return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
 							

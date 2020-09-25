@@ -62,10 +62,11 @@
  	<update id="answerDelete" parameterType="long">
     	update FUNDING_QNA set FUNDING_QNA_ANSWER=null, FUNDING_QNA_ADATE=null where FUNDING_QNA_INDEX=${funding_qna_index}
     </update>
- 
- 
     <select id="getCreatorProfilContent" parameterType="string" resultType="string">
     	select creator_profile_content from CREATOR where CREATOR_NAME=#{creator_name}
+    </select>
+    <select id="getCreatorProfilPhoto" parameterType="string" resultType="string">
+    	select CREATOR_PROFILE_PHOTO from CREATOR where CREATOR_NAME=#{creator_name}
     </select>
     <delete id="qnaDelete" parameterType="long">
    	    delete from FUNDING_QNA where FUNDING_QNA_INDEX=${funding_qna_index}

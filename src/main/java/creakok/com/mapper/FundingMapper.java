@@ -33,5 +33,6 @@ public interface FundingMapper {
 	void answerEditQna(Funding_qna funding_qna);
 	void answerDelete(@Param(value = "funding_qna_index")long funding_qna_index);
 	String getCreatorProfilContent(@Param(value = "creator_name") String creator_name);
+	String getCreatorProfilPhoto(@Param(value = "creator_name") String creator_name);
 	void qnaDelete(@Param(value = "funding_qna_index")long funding_qna_index);
 }

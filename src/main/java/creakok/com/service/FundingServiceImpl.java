@@ -149,6 +149,12 @@ public class FundingServiceImpl implements FundingService {
 		String creatorProfilContent = fundingMapper.getCreatorProfilContent(creator_name);
 		return creatorProfilContent;
 	}
+	
+	@Override
+	public String getCreatorProfilPhoto(String creator_name) {
+		String creatorProfilPhoto = fundingMapper.getCreatorProfilPhoto(creator_name);
+		return creatorProfilPhoto;
+	}
 
 	@Override
 	public void qnaDelete(long funding_qna_index) {
