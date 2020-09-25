@@ -22,7 +22,7 @@ public class Language {
 		{"굿즈","Goods","Des biens"},
 		{"커뮤니티","Community","Communauté"},
 		
-		{"크리콕!?","About","À propos"},
+		{"크리콕","About","À propos"},
 		//header end
 		
 		//footer start

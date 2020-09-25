@@ -19,7 +19,7 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/css/font-awesome.min.css">
     
     
     <!-- BOTO TEST -->
@@ -109,7 +109,7 @@
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
-                         <h2 style="font-family:fonts/Jalnan;line-height: 1.3; margin-bottom: 20px;"><span style="color:#2da498">CREA</span><span style="color:#cccccc">TOR</span> <span style="color:#fc5230">KOK!</span></h2>
+                         <h2 style="font-family:Jalnan;line-height: 1.3; margin-bottom: 20px;"><span style="color:#2da498">CREA</span><span style="color:#cccccc">TOR</span> <span style="color:#fc5230">KOK!</span></h2>
                         <p>크리콕은 내가 관심있는 크리에이터를 고르고<br/>
                             펀딩, 커뮤니티 등 다양한 방법으로 <br/>
                             크리에이터와 함께 소통할 수 있는 공간입니다.</p>

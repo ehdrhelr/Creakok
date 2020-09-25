@@ -448,8 +448,8 @@
                                 <div class="CreatorCard__CreatorCardInner-sc-1ifohey-0 iubrbI">
                                     <div class="CreatorCard__CreatorCardLabel-sc-1ifohey-1 erXxPv">크리에이터 소개</div>
                                     <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO">
-                                    <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"></span>
-                                    <a target="_blank" href="img/funding/${goods_creator.creator_profile_photo}"><span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx">${creator.creator_name}</span></a></div>
+                                    <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG" style="background-image: url(img/community/${creator.creator_profile_photo});"></span>
+                                    <a target="_blank" href="# "><span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx">${creator.creator_name}</span></a></div>
                                     <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">
                                         </div>
                                     <div class="Divider-sc-17hnup0-0 eUqLBU"></div>
