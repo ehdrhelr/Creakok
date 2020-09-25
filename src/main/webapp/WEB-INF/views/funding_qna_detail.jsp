@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.LikeType"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
 
 </head>
 
-<body>
+<body onload="readFundingLike();">
    <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
@@ -74,9 +74,9 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="/" ><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="funding_list.do">FUNDING</a></li>
-                            <li class="breadcrumb-item active" aria-current="funding_detail.do">Funding Details</li>
+                         <li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i> Home</li>
+                            <li class="breadcrumb-item" style="font-weight:300; color:#757575;">FUNDING</li>
+                            <li class="breadcrumb-item active" aria-current="funding_detail.do"><span style="font-weight:600; color:black;">FUNDING DETAILS</span></li>
                         </ol>
                     </nav>
                 </div>
@@ -458,7 +458,8 @@
                             <div class="Card-sc-1sgtmvk-0 iZjgMf ProjectPage__StyledCreatorCard-f3cisk-5 lfTmkG">
                                 <div class="CreatorCard__CreatorCardInner-sc-1ifohey-0 iubrbI">
                                     <div class="CreatorCard__CreatorCardLabel-sc-1ifohey-1 erXxPv">창작자 소개</div>
-                                    <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO"><span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"></span><a target="_blank" href="https://tumblbug.com/u/mcmp">
+                                    <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO"><span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"  style="background-image: url(img/community/섭이섭이얼굴.jpg);"></span>
+                                    <a target="_blank" href="#">
                                     <span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx"> ${funding_detail.creator_name}</span></a></div>
                                     <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">
                                             ${funding_detail.creator_profil_content}
@@ -516,11 +517,11 @@
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div>
-                            <div class="product-meta d-flex">
+                            <!-- <div class="product-meta d-flex">
                                 <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
                                 <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
                                 <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
+                            </div>  -->
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
@@ -592,6 +593,62 @@
     <script src="./js/hcbae/semantic.js"></script>
     <script type="application/javascript" src="https://d2om2e6rfn032x.cloudfront.net/wpa/bundle.app.173e0183d7bc9f5995e8.js"></script>
 
+
+    <script type="text/javascript">
+    function readFundingLike(){
+        if('${member.member_email}' == '') {
+            return;
+        }
+        
+        let formData = new FormData();
+        formData.append('like_content_index','${funding_detail.funding_index}');
+        formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
+        formData.append('like_member_email','${member.member_email}');
+        
+        let xmlHttpLike = new XMLHttpRequest();
+        xmlHttpLike.open("POST", "readLike.do", true); // true for asynchronous
+        xmlHttpLike.send(formData);
+        xmlHttpLike.onreadystatechange = function() {
+            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                let obj = document.querySelector(".neDEf");
+                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
+                    obj.classList.remove('isLiked');
+                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
+                    obj.classList.add('isLiked');
+                }
+            }
+       };
+    }
+
+    function clickFundingLike(){
+        if('${member.member_email}' == '') {
+            alert('로그인해주세요.');
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append('like_content_index','${funding_detail.funding_index}');
+        formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
+        formData.append('like_member_email','${member.member_email}');
+
+        let xmlHttpLike = new XMLHttpRequest();
+        xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
+        xmlHttpLike.send(formData);
+        xmlHttpLike.onreadystatechange = function() {
+            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                let obj = document.querySelector(".neDEf");
+                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
+                    obj.classList.add('isLiked');
+                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
+                    obj.classList.remove('isLiked');
+                }
+            }
+       };
+    }
+    
+    </script>
+    
+    
     <!--hcbae 텀블벅 가져오기 end-->
     
     <jsp:include page="Language.jsp" flush="false">

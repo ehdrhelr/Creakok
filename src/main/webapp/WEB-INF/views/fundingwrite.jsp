@@ -81,15 +81,17 @@
                                  <div >
                                     <input  name="write_funding_goal"  style="display:inline-block;width:50%;margin-top:10px;" class="form-control" id="first_name" 
                                      placeholder="달성금액" required>
-                                    <input type="date"  name="write_funding_wdate"  style="display:inline-block;width:23.3%;margin-top:10px;margin-left:5px;" class="form-control" id="first_name" 
-                                     placeholder="시작날짜" required>
+                                    <input type="date"  id="start_date" min="" name="write_funding_wdate"  
+                                    style="display:inline-block;width:23.3%;margin-top:10px;margin-left:5px;" class="form-control"  
+                                     placeholder="시작날짜"  required>
                                  <span>~</span>
-                                 <input type="date"  name="write_funding_edate"  style="display:inline-block;width:23.3%;margin-top:10px;" class="form-control" id="first_name" 
-                                    placeholder="종료날짜" required>
+                                 <input type="date" id="end_date" min="" onclick="selectDate()" name="write_funding_edate"  
+                                    style="display:inline-block;width:23.3%;margin-top:10px;" class="form-control" 
+                                    placeholder="종료날짜"  required>
                                 </div>
                                 
                                  <div >
-                                    <input name="write_funding_subject" style="display:inline-block;width:74.5%"class="form-control" id="first_name" 
+                                    <input name="write_funding_subject" style="display:inline-block;width:74.5%"class="form-control" id="project_name" 
                                    placeholder="프로젝트명" required>
                                     <select name="funding_category_code"style="display:inline-block; width:24%; margin-left:5px;margin-top:10px; padding:5px"
                                     onChange="text.value=funding_category_code[selectedIndex].value">
@@ -111,45 +113,93 @@
 		</div>
     </div>
 
-     
+
+    <!-- 펀딩 날짜 설정 스크립트  -->
+        <script type="text/javascript">
+          var today = new Date().toISOString().split('T')[0];
+          document.getElementById("start_date").setAttribute('min', today);
+          console.log(today);
+          
+          
+          function selectDate(){
+        	  var sdate = document.getElementById("start_date").value;
+        	  
+        	  if( sdate == "" ) {
+        		  alert('시작일을 선택해주세요');
+        	  } else if( sdate != "" ) {
+                  var yyyy = sdate.substr(0,4);
+                  var mm = sdate.substr(5,2);
+                  var dd = sdate.substr(8,2);    
+                  
+                  var com_ymd = new Date(yyyy, mm-1, dd);
+                  //console.log('com_ymd: '+com_ymd);
+                  var start_date = date_to_str(com_ymd);
+                  console.log('start_date: '+start_date);
+                  
+                  //var edate = document.getElementById("end_date").setAttribute("min", start_date);
+                  document.getElementById("end_date").min=start_date;
+                 
+        	  }
+
+        }
+          
+          function date_to_str(format) {
+        	  format.setDate(format.getDate()+1);
+        	  
+        	  
+              var year = format.getFullYear();
+              var month = format.getMonth()+1;
+              if(month<10) month = '0' + month;
+              var date = format.getDate();
+              if(date<10) date = '0' + date;
+              
+              var sdate_formChange = year + "-" + month + "-" + date;
+              //alert(sdate_formChange);
+              
+              return sdate_formChange;
+          }
+
+
+         </script>
+    
       <script>
-function goWrite(frm) {
-	var write_creator = frm.write_creator.value;
-	var write_funding_goal = frm.write_funding_goal.value;
-	var write_funding_wdate = frm.write_funding_wdate.value;
-	var write_funding_edate = frm.write_funding_edate.value;
-	var write_funding_subject = frm.write_funding_subject.value;
-	var write_funding_repre_pic = frm.write_funding_repre_pic.value;
-	
-	if (write_creator.trim() == ''){
-		alert("크리에이터명을 입력해주세요");
-		return false;
-	}
-	if(write_funding_goal.trim() == ''){
-		alert("목표금액을 입력해주세요");
-		return false;
-	}
-	if(write_funding_wdate.trim() == ''){
-		alert("펀딩 시작날짜를 입력해주세요");
-		return false;
-	}
-	if(write_funding_edate.trim() == ''){
-		alert("펀딩 종료날짜를 입력해주세요");
-		return false;
-	}
-	if(write_funding_subject.trim() == ''){
-		alert("펀딩받을 프로젝트명을 입력해주세요");
-		return false;
-	}
-	if(write_funding_repre_pic.trim() == ''){
-		alert("펀딩 대표사진을 입력해주세요");
-		return false;
-	}
-	
-	
-	frm.submit();
-}
-</script>
+      function goWrite(frm) {
+      	var write_creator = frm.write_creator.value;
+      	var write_funding_goal = frm.write_funding_goal.value;
+      	var write_funding_wdate = frm.write_funding_wdate.value;
+      	var write_funding_edate = frm.write_funding_edate.value;
+      	var write_funding_subject = frm.write_funding_subject.value;
+      	var write_funding_repre_pic = frm.write_funding_repre_pic.value;
+      	
+      	if (write_creator.trim() == ''){
+      		alert("크리에이터명을 입력해주세요");
+      		return false;
+      	}
+      	if(write_funding_goal.trim() == ''){
+      		alert("목표금액을 입력해주세요");
+      		return false;
+      	}
+      	if(write_funding_wdate.trim() == ''){
+      		alert("펀딩 시작날짜를 입력해주세요");
+      		return false;
+      	}
+      	if(write_funding_edate.trim() == ''){
+      		alert("펀딩 종료날짜를 입력해주세요");
+      		return false;
+      	}
+      	if(write_funding_subject.trim() == ''){
+      		alert("펀딩받을 프로젝트명을 입력해주세요");
+      		return false;
+      	}
+      	if(write_funding_repre_pic.trim() == ''){
+      		alert("펀딩 대표사진을 입력해주세요");
+      		return false;
+      	}
+      	
+      	
+      	frm.submit();
+      }
+      </script>
   
       
     <!-- Footer Bottom Area -->

@@ -305,7 +305,7 @@
                     </thead>  
                     <tbody>
                     	
-                        <c:if test="${empty order_info}">
+                        <c:if test="${empty order_info.order_list}">
                         <tr>
                            <td colspan="6" style="border-bottom:1px solid black">
                                                                 주문 내역이 없습니다.

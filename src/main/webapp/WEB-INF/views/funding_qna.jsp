@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.LikeType"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -66,7 +66,7 @@
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
         <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>GOODS DETAILS</h2>
+            <h2>FUNDING DETAILS</h2>
         </div>
 
         <div class="container">
@@ -74,9 +74,9 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="/" ><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="funding_list.do">FUNDING</a></li>
-                            <li class="breadcrumb-item active" aria-current="funding_detail.do">Funding Details</li>
+                          <li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i> Home</li>
+                            <li class="breadcrumb-item" style="font-weight:300; color:#757575;">FUNDING</li>
+                            <li class="breadcrumb-item active" aria-current="funding_detail.do"><span style="font-weight:600; color:black;">FUNDING DETAILS</span></li>
                         </ol>
                     </nav>
                 </div>
@@ -103,11 +103,11 @@
             <div class="Container-gci8y7-0 MskhC">
                 <div class="ProjectIntroduction__ProjectIntroductionWrapper-sc-1o2ojgb-1 bnFLKn">
                     <div class="ProjectIntroduction__ProjectOutline-sc-1o2ojgb-2 jbdzfG">
-                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="/discover?category=music"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">
+                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="#"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">
                         ${funding_detail.funding_category_name}</span></a>
                             <h1 class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${funding_detail.funding_subject}</h1>
                             <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">
-                            <a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="/u/mcmp">
+                            <a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="board_page?creator_name=${funding_detail.creator_name}">
                           ${funding_detail.creator_name}</a></div>
                         </div>
                         
@@ -228,12 +228,17 @@
                         </tr>
                     </thead>
                     <tbody>
-     
+                        <c:if test="${empty funding_detail.funding_qnaVo.list}">
+                           <td colspan="5">
+                                                             문의글이 없습니다.
+                           </td>           
+                        </c:if>
+                    
                  		
                          <c:forEach items="${funding_detail.funding_qnaVo.list}" var="funding_qna">
                              <tr>
                              <td style="padding:1.5px !important;">${funding_qna.funding_qna_index}</td>
-                                  <td style="padding:1.5px !important;"><a href="funding_qna.detail?funding_qna_index=${funding_qna.funding_qna_index}&funding_index=${funding_qna.funding_index}#fix_point">${funding_qna.funding_qna_subject}</a></td>
+                                  <td style="padding:1.5px !important;"><a href="funding_qna.detail?funding_qna_index=${funding_qna.funding_qna_index}&funding_index=${funding_qna.funding_index}#fix_point" style="color:black">${funding_qna.funding_qna_subject}</a></td>
                                   
                               
                                   <td style="padding:1.5px !important;">${funding_qna.member_name}</td>
@@ -248,13 +253,29 @@
                          </c:forEach>
                       
            
-                                    
+                          <tr>
+                            <td colspan="5" align="center" style="border-bottom:0">
+                              <p style="text-align:center">
+                                <c:forEach begin="1" end="${funding_detail.funding_qnaVo.totalPageCount}" var="i">
+                                        <a href="funding_qna.do?funding_index=1&qna=1&qna_cp=${i}#fix_point" style="color:black">
+                                    <c:choose> 
+                                    <c:when test="${i==funding_detail.funding_qnaVo.currentPage}">
+                                        <strong>${i}</strong>
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${i}
+                                    </c:otherwise>
+                                    </c:choose>
+                                </a>
+                                
+                                &nbsp;
+                                </c:forEach>
+                              </p>
+                            </td>
+                         </tr>           
                         
                     </tbody>
                 </table>
-                 
-               
-                
                 
                 <p style="width:100%;text-align:center;margin-top:3%">
                  <c:if test="${!empty member}">
@@ -262,7 +283,7 @@
                       style='background-color:black; color:white; width:100px;'>
                     
                       <a href="funding_qna.writeForm?funding_index=${funding_detail.funding_index}" onclick="clickMemberCheckLogin();" style="color:white;">
-                      문의하기</a></button>
+                                                문의하기</a></button>
                       </c:if>
                 </p>
                     
@@ -270,34 +291,7 @@
                     
                     
                     <td colspan="6">
-          </td>
-       
-        <tr>
-          <td colspan="3" align="center">
-            
-
-            <c:forEach begin="1" end="${funding_detail.funding_qnaVo.totalPageCount}" var="i">
-                    <a href="funding_qna.do?funding_index=1&qna=1&qna_cp=${i}#fix_point" style="color:black">
-                <c:choose> 
-                <c:when test="${i==funding_detail.funding_qnaVo.currentPage}">
-                    <strong>${i}</strong>
-                </c:when>
-                <c:otherwise>
-                    ${i}
-                </c:otherwise>
-                </c:choose>
-            </a>
-            
-            &nbsp;
-            </c:forEach>
-     
-          
-          </td>
-         
-        </tr>  
-                    
-                    
-                    
+          </td> 
                     
             </div>
    </div>
@@ -317,7 +311,8 @@
                             <div class="Card-sc-1sgtmvk-0 iZjgMf ProjectPage__StyledCreatorCard-f3cisk-5 lfTmkG">
                                 <div class="CreatorCard__CreatorCardInner-sc-1ifohey-0 iubrbI">
                                     <div class="CreatorCard__CreatorCardLabel-sc-1ifohey-1 erXxPv">창작자 소개</div>
-                                    <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO"><span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"></span><a target="_blank" href="https://tumblbug.com/u/mcmp">
+                                    <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO"><span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"  style="background-image: url(img/community/섭이섭이얼굴.jpg);"></span>
+                                    <a target="_blank" href="#">
                                     <span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx"> ${funding_detail.creator_name}</span></a></div>
                                     <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">
                                             ${funding_detail.creator_profil_content}
@@ -342,7 +337,7 @@
 
      <script>
       function goCreator(){
-          location.href="board_page?creator_name=${creator.creator_name}";
+          location.href="board_page?creator_name=${funding_detail.creator_name}";
       }
     </script>   
 
@@ -377,11 +372,11 @@
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div>
-                            <div class="product-meta d-flex">
+                            <!-- <div class="product-meta d-flex">
                                 <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
                                 <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
                                 <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
+                            </div>  -->
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">

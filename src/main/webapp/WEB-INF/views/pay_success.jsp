@@ -41,8 +41,6 @@
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
 
-    <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
-
 </head>
 
 <body>
@@ -65,12 +63,12 @@
    
         <!-- ##### Team Area Start ##### -->
     <section class="team-area section-padding-100-0" style="margin-bottom:10%">
-        <div class="container">
+        <div class="container" style="padding-top:160px;padding-bottom:160px">
         
-            <div class="row" style="margin-bottom:100px">
+            <div class="row">
                 <div class="col-12">
                     <!-- Section Heading -->
-                    <div class="section-heading text-center" style="margin-top:10%;margin-bottom:10%">
+                    <div class="section-heading text-center">
                          <h2 style="line-height: 1.3; margin-bottom: 20px;">
                          <img src="img/goods/success-40.png" style="margin-right:5px;margin-top:-5px; margin-right:6px">주문이 완료되었습니다!</h2>
                       
@@ -95,22 +93,20 @@
     </section>
     <!-- ##### Team Area End ##### -->
     <script language='javascript'>
-
-function noEvent() {
-    if (event.keyCode == 116) {
-        event.keyCode= 2;
-        return false;
-    }
-    else if(event.ctrlKey && (event.keyCode==78 || event.keyCode == 82))
-    {
-        return false;
-    }
-}
-document.onkeydown = noEvent;
-
-</script>
-
-<body oncontextmenu="return false">
+      
+      function noEvent() {
+          if (event.keyCode == 116) {
+              event.keyCode= 2;
+              return false;
+          }
+          else if(event.ctrlKey && (event.keyCode==78 || event.keyCode == 82))
+          {
+              return false;
+          }
+      }
+      document.onkeydown = noEvent;
+      
+      </script>
 
 
 	<script>
@@ -126,18 +122,7 @@ document.onkeydown = noEvent;
 		let c_date = year+"-"+month+"-"+date;
 		
 		document.getElementById("sysdate").innerHTML = c_date;
-		
-		$.ajax({
-			url: "order_time.do",
-			data: "order_time=" + c_date,
-			type: "POST",
-			success : function(data){
-				alert("성공")
-			},
-			error : function(){
-				alert("에러")		
-			}
-		});
+
 	</script>
 
 
@@ -161,7 +146,6 @@ document.onkeydown = noEvent;
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-    <script src="js/hcbae_js.js"></script>
 
     
     <jsp:include page="Language.jsp" flush="false">
