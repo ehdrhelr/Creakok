@@ -478,10 +478,10 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                 
                  <!--  펀딩 내역   -->
                  <div id="my_funding" class="container tab-pane" style="margin-bottom:10%">
-                    <c:if test="${empty order_info}">
+                    <c:if test="${empty funding_pay_info}">
                        <h3>펀딩 내역(총  0개)</h3>              
                     </c:if>
-                    <h3>주문 내역(총 ${order_count}개)</h3>
+                    <h3>주문 내역(총 ${funding_pay_count}개)</h3>
                     <p style="margin-bottom:20px">펀딩 제목을 클릭하시면 해당 펀딩에 대한 상세내역을 확인하실 수 있습니다.</p>
                     
                     <div id="mypage_funding_area"></div>
@@ -503,7 +503,6 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                             <th style="padding:1.5px !important;">No</th>
                             <th style="padding:1.5px !important;">펀딩 제목</th>
                             <th style="padding:1.5px !important;">펀딩액</th>
-                            <th style="padding:1.5px !important;">펀딩 종료일</th>
                             <th style="padding:1.5px !important;">펀딩여부</th>
                             <th style="padding:1.5px !important;">결제예정일</th>
                             <th style="padding:1.5px !important;">결제상태</th>
@@ -511,7 +510,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                     </thead>  
                     <tbody>
                       
-                        <c:if test="${empty order_info.order_list}">
+                        <c:if test="${empty funding_pay_info.funding_pay_list}">
                             <tr>
                            <td colspan="6" style="border-bottom:1px solid black">
                                                                 펀딩 내역이 없습니다.
@@ -520,24 +519,23 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                         </c:if>
                         
                         
-                        <c:if test="${!empty order_info.order_list}">
-                         <c:forEach items="${order_info.order_list}" var="order_info">
+                        <c:if test="${!empty funding_pay_info.funding_pay_list}">
+                         <c:forEach items="${funding_pay_info.funding_pay_list}" var="funding_payinfo">
                              <tr class="order_click_tr">
-                                 <td style="padding:3px !important;">${order_info.order_index}</td>
+                                 <td style="padding:3px !important;">${funding_payinfo.funding_payinfo_index}</td>
                                  <td style="padding:3px !important;">
-                                    <a href="member_orderdetail.do?order_indexStr=${order_info.order_index}&member_email=${order_info.member_email}" style="color:black;">
-                                     ${order_info.buy_product_name}
+                                    <a href="member_orderFundingdetail.do?order_indexStr=${funding_payinfo.funding_payinfo_index}&member_email=${funding_payinfo_index.member_email}" style="color:black;">
+                                     ${funding_payinfo.funding_subject}
                                     </a>
                                  </td>
-                                 <td style="padding:3px !important;">${order_info.buyer_pay_price} 원</td>
-                                 <td style="padding:3px !important;"  class="order_click_td">${order_info.buy_date}</td>
+                                 <td style="padding:3px !important;">${funding_payinfo.funding_payinfo_amountpay} 원</td>
                                  <td style="padding:3px !important;">펀딩완료</td>
-                                 <td style="padding:3px !important;">${order_info.buy_date}</td>
+                                 <td style="padding:3px !important;">${funding_payinfo.funding_datepayment}</td>
                                  <td id="review_view" style="padding:1.5px !important;">
-                                     <c:if test="${order_info.buyer_pay_ok == 'true'}">
+                                     <c:if test="${funding_payinfo.funding_ok == 'true'}">
                                                                                     결제 완료
                                      </c:if>
-                                     <c:if test="${order_info.buyer_pay_ok == 'false'}">
+                                     <c:if test="${funding_payinfo.funding_ok == 'false'}">
                                                                                      결제 대기
                                      </c:if>
                                  </td>
@@ -547,10 +545,10 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                      
                       <tr>
                             <td colspan="6" align="center" style="border-bottom:0px">
-                             <c:forEach begin="1" end="${order_info.order_totalPageCount}" var="i">
-                                      <a href="member_order.do?order_cp=${i}&member_email=${order_info.member_email}#fix_point" style="color:black; font-size:11pt">
+                             <c:forEach begin="1" end="${funding_pay_info.funding_pay_totalPageCount}" var="i">
+                                      <a href="member_order.do?order_cp=${i}&member_email=${funding_pay_info.member_email}#fix_point" style="color:black; font-size:11pt">
                                   <c:choose> 
-                                  <c:when test="${i==order_info.order_cp}">
+                                  <c:when test="${i==funding_pay_info.funding_pay_cp}">
                                       <strong>${i}</strong>
                                   </c:when>
                                   <c:otherwise>

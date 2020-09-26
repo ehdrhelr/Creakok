@@ -257,7 +257,7 @@ public class FundingController {
 							fundingSelected.setCreator_profil_photo(creatorProfilPhoto);
 							fundingSelected.setFunding_edate_cancel(funding_edate_cancel.getDate());
 							fundingSelected.setFunding_edate_payment(funding_edate_payment.getDate());
-							fundingSelected.setFunding_edate_month(funding_edate_cancel.getMonth()+1);
+							fundingSelected.setFunding_edate_month(funding_edate_payment.getMonth()+1);
 							session.setAttribute("funding_detail", fundingSelected);
 							return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
 							
@@ -375,7 +375,6 @@ public class FundingController {
 		 
 		Funding funding = (Funding)session.getAttribute("funding_detail");
 		Funding_qna funding_qna = new Funding_qna(funding_qna_index, funding_index, null, null, null,null, funding_qna_answer, funding.getCreator_name(), null, null);
-		
 		service.answerQna(funding_qna);
 		return "redirect:funding_qna.detail?funding_index="+funding_index+"&funding_qna_index="+funding_qna_index+"#fix_point";
 	}

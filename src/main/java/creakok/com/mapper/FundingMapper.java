@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 
 import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_category;
+import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Funding_qna;
 import creakok.com.vo.FundingVo;
 import creakok.com.vo.Funding_qnaVo;
@@ -39,4 +40,5 @@ public interface FundingMapper {
 	void qnaDelete(@Param(value = "funding_qna_index")long funding_qna_index);
 	Date getFunding_edate_cancel(@Param(value = "funding_index")long funding_index);
 	Date getFunding_edate_payment(@Param(value = "funding_index")long funding_index);
+	void updateFunding_amount(Funding_payinfo funding_payinfo);
 }

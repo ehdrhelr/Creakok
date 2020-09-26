@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_category;
+import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Funding_qna;
 import creakok.com.domain.Goods;
 import creakok.com.mapper.FundingMapper;
@@ -173,6 +174,12 @@ public class FundingServiceImpl implements FundingService {
 	public Date getFunding_edate_payment(long funding_qna_index) {
 		 Date funnding_edate_payment = fundingMapper.getFunding_edate_payment(funding_qna_index);
 		return funnding_edate_payment;
+	}
+
+	@Override
+	public void updateFunding_amount(Funding_payinfo funding_payinfo) {
+		fundingMapper.updateFunding_amount(funding_payinfo);
+		
 	}
 
 }

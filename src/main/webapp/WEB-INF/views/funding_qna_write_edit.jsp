@@ -70,7 +70,7 @@
         
     
     <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
- 		<h3 style="text-align:center;margin-bottom:40px;font-size:18pt">펀딩 문의글 수정하</h3>
+ 		<h3 style="text-align:center;margin-bottom:40px;font-size:18pt">펀딩 문의글 수정하기</h3>
         
 	    <div class="submit_a_review_area mt-50" style="width: 60%; margin: auto;" >
 	    	<form method="post" action="funding_qna.edit" onsubmit="return goWrite()">

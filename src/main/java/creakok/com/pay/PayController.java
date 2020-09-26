@@ -1,5 +1,7 @@
 package creakok.com.pay;
 
+import java.sql.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Member;
+import creakok.com.service.FundingService;
 import creakok.com.service.PayService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -21,6 +24,9 @@ import lombok.extern.log4j.Log4j;
 public class PayController {
 	@Autowired
 	private PayService service;
+	
+	@Autowired
+	private FundingService fundingService;
 	
 	@RequestMapping("funding_checkout.do")
 	public ModelAndView checkout(HttpServletRequest request, HttpSession session) {
@@ -50,7 +56,7 @@ public class PayController {
 		
 		
 		Funding_payinfo funding_payinfo = new Funding_payinfo(-1, funding_payinfo_name, member_email, funding_payinfo_phonenumber, funding_payinfo_amountpay, funding_index, funding_subject,
-			null, null, null, null);
+			null, null, null, null, null, null);
 		log.info("!!!!!!!!!!!!!!!!!!!"+funding_payinfo);
 		session.setAttribute("funding_payinfo", funding_payinfo);
 		return new ModelAndView("funding_import_pay", "funding_payinfo", funding_payinfo);
@@ -91,9 +97,18 @@ public class PayController {
 		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_email: "+member_email);
 		
 		Funding_payinfo funding_pay_info_before = (Funding_payinfo) session.getAttribute("funding_payinfo");
+		java.util.Date funding_edate_payment = fundingService.getFunding_edate_payment(funding_pay_info_before.getFunding_index());
+		int yearPayment = funding_edate_payment.getYear()-100;
+		log.info(yearPayment);
 		
-		Funding_payinfo funding_pay_info = new Funding_payinfo(-1, buyer_name, member_email, buyer_phone, success_amount, funding_pay_info_before.getFunding_index(), product_name, success_num, success_id, success_card_num, success_pay);
-		
+		int monthPayment = funding_edate_payment.getMonth()+1;
+		log.info(monthPayment);
+		int datePayment = funding_edate_payment.getDate();
+		String funding_datePayment = "20"+yearPayment+"년 " + monthPayment + "월 "+ datePayment+"일 ";
+		log.info("!!!!!!!!");
+		log.info(funding_datePayment);
+		Funding_payinfo funding_pay_info = new Funding_payinfo(-1, buyer_name, member_email, buyer_phone, success_amount, funding_pay_info_before.getFunding_index(), product_name, success_num, success_id, success_card_num, success_pay, "true" ,funding_datePayment);
+		fundingService.updateFunding_amount(funding_pay_info);
 		service.insertFunding_order(funding_pay_info);
 		
 		

@@ -1,5 +1,7 @@
 package creakok.com.domain;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +21,6 @@ public class Funding_payinfo {
 	private String success_id;
 	private String success_card_num;
 	private String success_pay;
+	private String funding_ok;
+	private String funding_datepayment;
 }

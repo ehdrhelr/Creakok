@@ -21,7 +21,7 @@
       <typeAlias alias="Member_origin" type="creakok.com.domain.Member_origin"/>
       <typeAlias alias="Member" type="creakok.com.domain.Member"/>
       <typeAlias alias="Member_OrderInfoVo" type="creakok.com.vo.Member_OrderInfoVo"/>
-      
+      <typeAlias alias="Member_FundingPayInfoVo" type="creakok.com.vo.Member_FundingPayInfoVo"/>
       
    	   <typeAlias alias="Funding" type="creakok.com.domain.Funding"/>
    	   <typeAlias alias="FundingVo" type="creakok.com.vo.FundingVo"/>

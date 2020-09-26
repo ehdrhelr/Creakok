@@ -77,5 +77,8 @@
     <select id="getFunding_edate_payment" parameterType="long" resultType="date">
     	select funding_edate+1 from FUNDING where FUNDING_INDEX=${funding_index}
     </select>
+    <update id = "updateFunding_amount" parameterType="Funding_payinfo">
+    	update FUNDING set FUNDING_AMOUNT=FUNDING_AMOUNT+${funding_payinfo_amountpay}, FUNDING_PEOPLE=FUNDING_PEOPLE+1 where FUNDING_INDEX=${funding_index}
+    </update>
     
 </mapper>

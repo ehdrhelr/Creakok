@@ -79,4 +79,21 @@
   <select id="selectOneOrderInfo" parameterType="long" resultType="Order_Info">
     select * from ORDER_INFO where ORDER_INDEX=${order_index}
   </select>
+  
+  
+  <select id="selectPerPageFundingPay" resultType="Funding_payinfo" parameterType="Member_FundingPayInfoVo">
+    <![CDATA[select * from (select ROWNUM rnum, aa.* from
+      (select * from FUNDING_PAYINFO where MEMBER_EMAIL=#{member_email} order by FUNDING_PAYINFO_INDEX desc) aa)
+      where rnum>${(funding_pay_cp-1)*funding_pay_ps} and rnum<=${funding_pay_cp*funding_pay_ps}
+    ]]>
+  </select>
+   <select id="selectFundingPayCount" parameterType="String" resultType="long">
+    select COUNT(FUNDING_PAYINFO_INDEX) from FUNDING_PAYINFO where MEMBER_EMAIL=#{member_email}
+  </select> 
+  
+  
+  
+  <select id="selectFundingPayInfo" parameterType="String" resultType="Funding_payinfo">
+    select * from FUNDING_PAYINFO where MEMBER_EMAIL=#{member_email} order by FUNDING_DATEPAYMENT desc
+  </select>
 </mapper>

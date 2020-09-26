@@ -18,7 +18,9 @@
    	 #{success_num},
    	 #{success_id},
    	 #{success_card_num},
-   	 #{success_pay})
+   	 #{success_pay},
+   	 #{funding_ok},
+   	 #{funding_datepayment})
    </insert>
     
     <insert id="insertOneOrder" parameterType="Order_Info">

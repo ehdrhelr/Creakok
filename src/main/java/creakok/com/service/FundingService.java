@@ -6,6 +6,7 @@ import java.util.List;
 
 import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_category;
+import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Funding_qna;
 import creakok.com.vo.FundingVo;
 import creakok.com.vo.Funding_qnaVo;
@@ -36,4 +37,5 @@ public interface FundingService {
 	void qnaDelete(long funding_qna_index);
 	Date getFunding_edate_cancel(long funding_qna_index);
 	Date getFunding_edate_payment(long funding_qna_index);
+	void updateFunding_amount(Funding_payinfo funding_payinfo);
 }
