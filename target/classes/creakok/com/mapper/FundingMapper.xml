@@ -71,6 +71,11 @@
     <delete id="qnaDelete" parameterType="long">
    	    delete from FUNDING_QNA where FUNDING_QNA_INDEX=${funding_qna_index}
     </delete>
-    
+     <select id="getFunding_edate_cancel" parameterType="long" resultType="date">
+    	select funding_edate-1 from FUNDING where FUNDING_INDEX=${funding_index}
+    </select>
+    <select id="getFunding_edate_payment" parameterType="long" resultType="date">
+    	select funding_edate+1 from FUNDING where FUNDING_INDEX=${funding_index}
+    </select>
     
 </mapper>

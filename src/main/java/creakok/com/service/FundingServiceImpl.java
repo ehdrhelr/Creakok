@@ -1,5 +1,7 @@
 package creakok.com.service;
 
+
+import java.util.Date;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -160,6 +162,17 @@ public class FundingServiceImpl implements FundingService {
 	public void qnaDelete(long funding_qna_index) {
 		fundingMapper.qnaDelete(funding_qna_index);
 		
+	}
+
+	@Override
+	public Date getFunding_edate_cancel(long funding_qna_index) {
+		 Date funnding_edate_cancel = fundingMapper.getFunding_edate_cancel(funding_qna_index);
+		return funnding_edate_cancel;
+	}
+	@Override
+	public Date getFunding_edate_payment(long funding_qna_index) {
+		 Date funnding_edate_payment = fundingMapper.getFunding_edate_payment(funding_qna_index);
+		return funnding_edate_payment;
 	}
 
 }

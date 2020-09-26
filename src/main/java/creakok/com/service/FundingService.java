@@ -1,5 +1,7 @@
 package creakok.com.service;
 
+
+import java.util.Date;
 import java.util.List;
 
 import creakok.com.domain.Funding;
@@ -32,4 +34,6 @@ public interface FundingService {
 	String getCreatorProfilContent(String creator_name);
 	String getCreatorProfilPhoto(String creator_name);
 	void qnaDelete(long funding_qna_index);
+	Date getFunding_edate_cancel(long funding_qna_index);
+	Date getFunding_edate_payment(long funding_qna_index);
 }

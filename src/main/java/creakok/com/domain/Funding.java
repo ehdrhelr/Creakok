@@ -34,6 +34,9 @@ public class Funding {
 	private long funding_qna_totalCount;
 	private String creator_profil_content;
 	private String creator_profil_photo;
+	private int funding_edate_month;
+	private int funding_edate_cancel;
+	private int funding_edate_payment;
 	//private List<Funding_qna> funding_qna;
 	
 }

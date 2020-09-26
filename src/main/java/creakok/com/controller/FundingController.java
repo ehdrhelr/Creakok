@@ -1,6 +1,8 @@
 package creakok.com.controller;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -246,8 +248,16 @@ public class FundingController {
 							log.info(fundingSelected.getCreator_name());
 							String creatorProfilContent = service.getCreatorProfilContent(fundingSelected.getCreator_name());
 							String creatorProfilPhoto = service.getCreatorProfilPhoto(fundingSelected.getCreator_name());
+							Date funding_edate_cancel = service.getFunding_edate_cancel(fundingSelected.getFunding_index());
+							Date funding_edate_payment = service.getFunding_edate_payment(fundingSelected.getFunding_index());
+							log.info(funding_edate_cancel.getDate());
+							//Date funding_edate_cancel = cal.setTime(fundingSelected.getFunding_edate());
+							
 							fundingSelected.setCreator_profil_content(creatorProfilContent);
 							fundingSelected.setCreator_profil_photo(creatorProfilPhoto);
+							fundingSelected.setFunding_edate_cancel(funding_edate_cancel.getDate());
+							fundingSelected.setFunding_edate_payment(funding_edate_payment.getDate());
+							fundingSelected.setFunding_edate_month(funding_edate_cancel.getMonth()+1);
 							session.setAttribute("funding_detail", fundingSelected);
 							return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
 							

@@ -1,5 +1,7 @@
 package creakok.com.mapper;
 
+
+import java.util.Date;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -35,4 +37,6 @@ public interface FundingMapper {
 	String getCreatorProfilContent(@Param(value = "creator_name") String creator_name);
 	String getCreatorProfilPhoto(@Param(value = "creator_name") String creator_name);
 	void qnaDelete(@Param(value = "funding_qna_index")long funding_qna_index);
+	Date getFunding_edate_cancel(@Param(value = "funding_index")long funding_index);
+	Date getFunding_edate_payment(@Param(value = "funding_index")long funding_index);
 }

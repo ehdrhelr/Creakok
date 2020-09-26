@@ -197,11 +197,22 @@
                     <div class="ProjectPage__ProjectContentsMainColumn-f3cisk-2 hzJfoW">
                         <div class="ProjectPage__MainColumnInner-f3cisk-4 kGPPtA">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf">
-                                <div class="StoryCard__StoryCardInner-sc-6cra5i-0 giOSQG">
-                                    ${funding_detail.funding_detail_pic}
-                                </div>
-                            </div>
-                        </div>
+                                <div class="StoryCard__StoryCardInner-sc-6cra5i-0 giOSQG"
+                                style="margin:20px">
+                                    <h3>이 프로젝트의 정보 및 정책을 <br>반드시 확인하세요.</h3>
+                                    <div>
+							            
+							              <h3>펀딩 취소 및 결제 안내</h3>
+							              <p>펀딩 결제는 예약 상태로 유지되다가, 펀딩 마감일 ${funding_detail.funding_edate} <strong>다음 영업일 
+							              </strong>에 모두 함께 진행됩니다. 결제 정보 변경은 결제가 진행되기 전까지 언제나 가능합니다. 참여한 펀딩 정보 변경은 마이페이지 <a class="link" href="member_mypage.do?member_email=${member.member_email}&order_cp=1">펀딩 내역</a>에서 진행해주세요. 
+							              마감일 이후에는 해당 크리에이터에게 펀딩 모금이 전달되며, 크리에이터는 프로젝트 제작을 시작하게 됩니다. 
+							              취소는 ${funding_detail.funding_edate} 전날인 <strong>${funding_detail.funding_edate_month}월 ${funding_detail.funding_edate_cancel}일 </strong>이후로는 불가합니다.</p>
+							            
+							           </div>
+							          </div>
+						                                
+						                            </div>
+						                        </div>
                     </div>
                     <div class="ProjectPage__ProjectContentsSubColumn-f3cisk-3 egbEFv">
                         <div class="ProjectPage__SubColumnInner-f3cisk-6 qujmm">
