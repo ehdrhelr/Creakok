@@ -19,8 +19,7 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/css/font-awesome.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <!-- BOTO TEST -->
     <meta name="description" content="Boto Photo Studio HTML Template">
@@ -41,8 +40,7 @@
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
     <link rel="stylesheet" href="css/only_about_jsp_css.css">
-  
-
+	
 </head>
 
 <body>
@@ -69,14 +67,17 @@
             <!-- Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
-                <div class="bg-img" style="background-image: url(img/bg-img/1.jpg);"></div>
+                <div class="slide-img bg-img" style="background-image: url(img/bg-img/about.png);"></div>
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
                             <!-- Post Content -->
                             <div class="hero-slides-content text-center">
-                                <h2>About</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque ante nec ipsum iaculis, ac iaculis ipsum porttitor. Vivamus cursus nisl lectus, id mattis nisl lobortis eu. Duis diam augue, dapibus ut dolor at, mattis maximus dolor.</p>
+                                <h2 style="text-align:left;line-height:1.3">크리에이터, 그리고 팬덤</h2>
+                                <p style="text-align:left;margin-top:10px">
+                                	크리콕은 크리에이터와 팬의 효과적인 상호작용을 위한 온라인 플랫폼입니다. <br>
+                                	크리에이터로 나만의 브랜딩도 하고, <br>팬들과 소통하는 채널을 만들어보세요.
+								</p>
                                 
                                 <!--
                                 <div class="welcome-btn-group">
