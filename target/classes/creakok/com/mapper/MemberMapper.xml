@@ -93,7 +93,7 @@
   
   
   
-  <select id="selectFundingPayInfo" parameterType="String" resultType="Funding_payinfo">
-    select * from FUNDING_PAYINFO where MEMBER_EMAIL=#{member_email} order by FUNDING_DATEPAYMENT desc
+  <select id="selectFundingPayInfo" parameterType="long" resultType="Funding_payinfo">
+    select * from FUNDING_PAYINFO where FUNDING_PAYINFO_INDEX=${funding_payinfo_index}
   </select>
 </mapper>

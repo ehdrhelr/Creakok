@@ -74,7 +74,12 @@ public class FundingServiceImpl implements FundingService {
 	}
 	@Override
 	public Funding getFunding(long funding_index) {
-		return fundingMapper.getFunding(funding_index);
+		Funding funding = fundingMapper.getFunding(funding_index);
+		double percentageDouble = 100.0*funding.getFunding_amount()/funding.getFunding_goal();
+		int percentageInt = (int) Math.round(percentageDouble);
+		funding.setPercentage(percentageInt);	
+		funding.setRestdays((funding.getFunding_edate().getTime()-funding.getFunding_wdate().getTime())/(1000*60*60*24));
+		return funding;
 	}
 
 	@Override
@@ -165,6 +170,15 @@ public class FundingServiceImpl implements FundingService {
 	@Override
 	public String selectCategoryName(long codeUsed) {
 		return fundingMapper.selectCategoryName(codeUsed);
+	}
+	@Override
+	public void updateFunding_cancel(Funding_payinfo funding_payinfo) {
+		fundingMapper.updateFunding_cancel(funding_payinfo);
+		
+	}
+	@Override
+	public List<Funding> selectPerPageFinished() {
+		return fundingMapper.selectPerPageFinished();
 	}
 
 }

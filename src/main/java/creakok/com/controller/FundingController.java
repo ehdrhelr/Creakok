@@ -1,9 +1,13 @@
 package creakok.com.controller;
 
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Funding;
+import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Funding_qna;
 import creakok.com.service.FundingService;
+import creakok.com.service.PayService;
 import creakok.com.vo.FundingVo;
 import creakok.com.vo.Funding_qnaVo;
 import lombok.extern.log4j.Log4j;
@@ -29,10 +35,13 @@ public class FundingController {
 	@Autowired
 	private FundingService service;
 	
+	@Autowired
+	private PayService payservice;
+	
 	int cp =1;
 	int ps =3;
 	
-	//fundingVo sortin 메소드분리함
+	//fundingVo sortig 메소드분리함
 	public FundingVo fundingVo(HttpServletRequest request, HttpSession session) {
 		String cpStr = request.getParameter("funding_cp");
 	    String psStr = request.getParameter("funding_ps");
@@ -162,6 +171,25 @@ public class FundingController {
 		}else {
 			fundingVo = service.getFundingVo(cp, ps, filterBy, categoryBy);
 		}
+		//펀딩 마감일 지난 펀딩들
+		List<Funding> fundingListCheck = service.selectPerPageFinished();
+		log.info(fundingListCheck);
+		for(Funding funding : fundingListCheck) {
+			double percentageDouble = 100.0*funding.getFunding_amount()/funding.getFunding_goal();
+			int percentageInt = (int) Math.round(percentageDouble);
+			funding.setPercentage(percentageInt);	
+			funding.setRestdays((funding.getFunding_edate().getTime()-funding.getFunding_wdate().getTime())/(1000*60*60*24));
+			//목표금 도달한 펀딩 찾아서 funding_payinfo 펀딩 진행여부 변경
+			if(funding.getPercentage()>=100) {
+				long funding_index = funding.getFunding_index();
+				payservice.changeFunding_ok(funding_index);
+				List<Funding_payinfo> funding_payinfoList = payservice.selectByFundingindex(funding_index);
+				for(Funding_payinfo funding_payinfo : funding_payinfoList) {
+					funding_payinfo.setFunding_ok("true");
+				}
+			}
+		}
+		
 		session.setAttribute("funding_categoryNames", fundingVo.getListCategoryUsed());
 		session.setAttribute("fundingVo", fundingVo);
 		return fundingVo;

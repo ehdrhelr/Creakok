@@ -32,7 +32,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Order_Info;
+import creakok.com.service.FundingService;
 import creakok.com.service.GoodsService;
 import creakok.com.service.PayService;
 import creakok.com.vo.PayInfoVo;
@@ -46,6 +48,9 @@ public class PaymentController {
 	
 	@Autowired
 	private GoodsService goodsService;
+	
+	@Autowired
+	private FundingService fundingservice;
 	
 	@RequestMapping("goods_pay.do")
 	public ModelAndView goods_pay(HttpServletRequest request) {
@@ -263,6 +268,7 @@ public class PaymentController {
 		return mv;
 	}
 	
+	
 	@ResponseBody
 	@RequestMapping("goods_pay_cancel.do") //환불창 연결
 	public ModelAndView goods_pay_cancel(@RequestParam("order_index") String order_index) {    
@@ -277,6 +283,19 @@ public class PaymentController {
 		return mv;
 	}	
 	
+	@ResponseBody
+	@RequestMapping("funding_pay_cancel.do") //환불창 연결
+	public ModelAndView funding_pay_cancel(@RequestParam("funding_payinfo_index") String funding_payinfo_index) {    
+		long payinfo_index = Long.parseLong(funding_payinfo_index);
+		
+		Funding_payinfo funding_payinfo = payservice.selectByPayinfoIndex(payinfo_index);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("fundingpay_cancel");
+		mv.addObject("funding_payinfo", funding_payinfo);
+		
+		return mv;
+	}	
 	
 	@RequestMapping("goods_order_delete.do") //환불 요청, 주문내역 삭제
 	public String goods_order_delete(@RequestParam("order_index") String order_index, @RequestParam("order_number") String order_number) {
@@ -292,7 +311,28 @@ public class PaymentController {
 		
 		return "pay_cancel_ok";
 	}	
-	
+	@RequestMapping("funding_pay_delete.do") //환불 요청, 주문내역 삭제
+	public String funding_pay_delete(@RequestParam("order_index") String order_index, @RequestParam("order_number") String order_number) {
+		long order_index2 = Long.parseLong(order_index);
+		log.info("#################환불 요청할거임 order_index2: "+order_index2);
+		
+		//토큰 받아오기 & 환불요청
+		String token = getImportToken();
+		cancelPayment(token, order_number);
+		
+		// 펀딩 정보 업데이트
+		Funding_payinfo funding_payinfo = payservice.selectByPayinfoIndex(order_index2);
+		// 주문내역 삭제
+		payservice.deleteOneFundingpay(order_index2);
+		
+		
+		log.info("!!!!!!!!!!!!!!");
+		log.info("!!!!!!!!!!!!!!");
+		log.info("funding_payinfo::::::"+funding_payinfo);
+		fundingservice.updateFunding_cancel(funding_payinfo);
+		
+		return "pay_cancel_ok";
+	}	
 	public static final String IMPORT_TOKEN_URL = "https://api.iamport.kr/users/getToken"; 
 	public static final String IMPORT_PAYMENTINFO_URL = "https://api.iamport.kr/payments/find/"; 
 	public static final String IMPORT_CANCEL_URL = "https://api.iamport.kr/payments/cancel"; 

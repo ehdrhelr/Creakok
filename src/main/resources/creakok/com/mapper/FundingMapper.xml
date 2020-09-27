@@ -5,15 +5,17 @@
 <mapper namespace="creakok.com.mapper.FundingMapper">
 	<select id="selectPerPage" parameterType="FundingVo" resultType="Funding">
         <![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    (select * from FUNDING where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} desc) aa) 
+    (select * from (select * from funding where funding_edate>sysdate) where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} desc) aa) 
     where rnum>${startRow} and rnum<=${endRow}]]>
     </select>
     <select id="selectPerPageEdate" parameterType="FundingVo" resultType="Funding">
         <![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    (select * from FUNDING where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} asc) aa) 
+    (select * from (select * from funding where funding_edate>sysdate) where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} asc) aa) 
     where rnum>${startRow} and rnum<=${endRow}]]>
     </select>
-    
+    <select id="selectPerPageFinished" resultType="Funding">
+        <![CDATA[select * from funding where funding_edate<=sysdate]]>
+    </select>
     <!--    (select * from FUNDING where #{FUNDING_CATEGORY_CODE}=${} order by #{filterBy} desc) aa)  -->
    <select id="selectPerPageCategory" parameterType="Funding" resultType="String">
       select FUNDING_CATEGORY_NAME from FUNDING_CATEGORY where FUNDING_CATEGORY_CODE=${funding_category_code}
@@ -87,6 +89,9 @@
     </select>
     <update id = "updateFunding_amount" parameterType="Funding_payinfo">
     	update FUNDING set FUNDING_AMOUNT=FUNDING_AMOUNT+${funding_payinfo_amountpay}, FUNDING_PEOPLE=FUNDING_PEOPLE+1 where FUNDING_INDEX=${funding_index}
+    </update>
+     <update id = "updateFunding_cancel" parameterType="Funding_payinfo">
+    	update FUNDING set FUNDING_AMOUNT=FUNDING_AMOUNT-${funding_payinfo_amountpay}, FUNDING_PEOPLE=FUNDING_PEOPLE-1 where FUNDING_INDEX=${funding_index}
     </update>
     
 </mapper>

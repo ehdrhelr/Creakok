@@ -43,4 +43,6 @@ public interface FundingMapper {
 	Date getFunding_edate_cancel(@Param(value = "funding_index")long funding_index);
 	Date getFunding_edate_payment(@Param(value = "funding_index")long funding_index);
 	void updateFunding_amount(Funding_payinfo funding_payinfo);
+	void updateFunding_cancel(Funding_payinfo funding_payinfo);
+	List<Funding>selectPerPageFinished();
 }

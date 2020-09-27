@@ -135,9 +135,8 @@
                         <div class="FundingInformation-cjd67l-0 lZmZZ">
                             <div class="FundingInformation__FundingInformationInner-cjd67l-1 ccBEhl"><a class="move-to-helpcenter" target="_blank" href="https://help.tumblbug.com/hc/ko/categories/115001047348--%ED%9B%84%EC%9B%90%EC%9E%90-%EC%84%BC%ED%84%B0" title="후원자 센터 바로가기">후원자 센터 이동</a>
                                 <div>펀딩 진행중</div><span>목표 금액인
-                                    <!-- -->${funding_detail.funding_goal}
-                                    <!-- -->원이 모여야만 결제됩니다.<br />결제는
-                                    <!-- -->${funding_detail.funding_edate}
+                                    <!-- --><strong>${funding_detail.funding_goal}원</strong>이 모여야만 결제됩니다.<br />결제는
+                                    <!-- --><strong>${funding_detail.funding_edate}</strong>
                                     <!-- -->에 다함께 진행됩니다.</span>
                             </div>
                         </div>

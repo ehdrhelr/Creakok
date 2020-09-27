@@ -165,9 +165,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Funding_payinfo selectFundingPayInfo(long order_index) {
-		// TODO Auto-generated method stub
-		return null;
+	public Funding_payinfo selectFundingPayInfo(long funding_payinfo_index) {
+		return memberMapper.selectFundingPayInfo(funding_payinfo_index);
 	}
 
 	@Override

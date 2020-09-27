@@ -88,17 +88,17 @@
                 <div class="col-12">
                     <div class="most__search__tab">
                         <ul class="nav nav-tabs nav-pills" role="tablist">
-                            <li class="nav-item">
+                           <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
                             </li>
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#member-modify" role="tab">회원정보수정</a>
                             </li>
                             <li class="nav-item">
-                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="#my_order" role="tab">주문내역</a>
+                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#my_order" role="tab">주문내역</a>
                             </li>
                             <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#my_funding" role="tab">펀딩내역</a>
+                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="#my_funding" role="tab">펀딩내역</a>
                             </li>
                         </ul>
                     </div>
@@ -277,11 +277,8 @@
                 
                 <!--  주문 내역   -->
                  <div id="my_order" class="container tab-pane active" style="margin-bottom:10%">
-                    <c:if test="${empty order_info}">
-                       <h3>주문 내역(총  0개)</h3>              
-                    </c:if>
-                    <h3>주문 내역(총 ${order_count}개)</h3>
-                    <p style="margin-bottom:20px">주문 번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</p>
+                    <h3 style="margin-bottom:20px">주문 내역(총 ${order_count}개)</h3>
+                   
                     
                     <div id="mypage_funding_area"></div>
                     
@@ -296,80 +293,116 @@
                         <col width="15%">
                         <col width="15%">
                     </colgroup>
-                     <thead>
-                        <tr>
-                            <th style="padding:1.5px !important;">No</th>
-                            <th style="padding:1.5px !important;">주문일자</th>
-                            <th style="padding:1.5px !important;">주문번호</th>
-                            <th style="padding:1.5px !important;">상품명</th>
-                            <th style="padding:1.5px !important;">결제금액</th>
-                            <th style="padding:1.5px !important;">결제상태</th>
-                        </tr>
-                    </thead>  
+
                     <tbody>
-                    	
-                        <c:if test="${empty order_info.order_list}">
-                        <tr>
-                           <td colspan="6" style="border-bottom:1px solid black">
-                                                                주문 내역이 없습니다.
-                           </td>   
-                           </tr>            
+                    
+                        <c:if test="${empty funding_payinfo}">
+                           <td colspan="5">
+                                                                주문 내역이 없습니다.</td>
+                                        
                         </c:if>
-                        
-                        <c:if test="${!empty order_info.order_list}">
-                         <c:forEach items="${order_info.order_list}" var="order_info">
-                             <tr class="order_click_tr">
-                                 <td style="padding:3px !important;">${order_info.order_index}</td>
-                                 <td style="padding:3px !important;">${order_info.buy_date}</td>
-                                 <td style="padding:3px !important;"  class="order_click_td"><a href="member_orderdetail.do?order_indexStr=${order_info.order_index}&member_email=${order_info.member_email}" style="color:black;">${order_info.buyer_merid}</a></td>
-                                 <td style="padding:3px !important;">${order_info.buy_product_name}</td>
-                                 <td style="padding:3px !important;">${order_info.buyer_pay_price} 원</td>
-                                 <td id="review_view" style="padding:1.5px !important;">
-                                     <c:if test="${order_info.buyer_pay_ok == 'ready'}">
-                                                                                        미결제
-                                     </c:if>
-                                     <c:if test="${order_info.buyer_pay_ok == 'paid'}">
-                                                                                        결제완료
-                                     </c:if>
-                                     <c:if test="${order_info.buyer_pay_ok == 'cancelled'}">
-                                                                                        결제취소
-                                     </c:if>
-                                     <c:if test="${order_info.buyer_pay_ok == 'failed'}">
-                                                                                        결제실패
-                                     </c:if>
+                        <c:if test="${!empty funding_payinfo}">
+                            
+                              <tr class="orderInfo_detail">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">No : </span><span>${funding_payinfo.funding_payinfo_index}</span>
+                                 </td>
+                                 <input type="hidden" id="order_index" name="funding_payinfo_index" value="${funding_payinfo.funding_payinfo_index}">
+                                 
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">주문인 : </span><span>${funding_payinfo.funding_payinfo_name}</span> 
                                  </td>
                               </tr>
-                        </c:forEach>
+                              <tr class="orderInfo_detail">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">연락처 : </span><span>${funding_payinfo.funding_payinfo_phonenumber}</span>
+                                 </td>
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">이메일 : </span><span>${funding_payinfo.member_email}</span> 
+                                 </td>
+                              </tr>
+                              <tr class="orderInfo_detail"">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">결제 예정일 : </span><span>${funding_payinfo.funding_datepayment}</span>
+                                 </td>
+                              </tr>
+                              
+                              <tr class="orderInfo_detail">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">총 금액 : </span><span>${funding_payinfo.funding_payinfo_amountpay} 원</span>
+                                 </td>
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">상품명 : </span><span>${funding_payinfo.funding_subject}</span> 
+                                 </td>
+                              </tr>
+  
+                              <tr class="orderInfo_detail">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">주문번호 : </span><span>${funding_payinfo.success_id}</span>
+                                 </td>
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">결제여부 : </span> 
+                                   <span>
+                                     <c:if test="${funding_payinfo.funding_ok == 'true'}">
+                                                                                        결제완료
+                                     </c:if>
+                                     <c:if test="${funding_payinfo.funding_ok == 'false'}">
+                                                                                        결제예약
+                                     </c:if>
+                                     <c:if test="${funding_payinfo.funding_ok == 'cancelled'}">
+                                                                                        결제취소
+                                     </c:if>
+                                     <c:if test="${funding_payinfo.funding_ok == 'failed'}">
+                                                                                        결제실패
+                                     </c:if>
+                                   	</span>
+                                 </td>
+                              </tr> 
+                              
+                              <tr class="orderInfo_detail">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:2px solid black;padding:10px">
+                                   <span style="font-weight:700">카드승인번호 : </span><span>${funding_payinfo.success_card_num}</span>
+                                 </td>
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:2px solid black;border-left:1px solid #bdbdbd;padding:10px">
+                                   
+                                 </td>
+                              </tr>
 					 </c:if>
-					 
-					 	<tr>
-				          <td colspan="6" align="center" style="border-bottom:0px">
-				           <c:forEach begin="1" end="${order_info.order_totalPageCount}" var="i">
-				                    <a href="member_order.do?order_cp=${i}&member_email=${order_info.member_email}#fix_point" style="color:black; font-size:11pt">
-				                <c:choose> 
-				                <c:when test="${i==order_info.order_cp}">
-				                    <strong>${i}</strong>
-				                </c:when>
-				                <c:otherwise>
-				                    ${i}
-				                </c:otherwise>
-				                </c:choose>
-				            </a>
-				            
-				            &nbsp;
-				            </c:forEach>
-				          </td>
-				     </tr>
-					</tbody>
+
+
+
+                    </tbody>
                 </table>
+                			<p style="text-align:center;margin-top:20px">
+                                <a href="member_mypage.do?focus=funding&member_email=${funding_payinfo.member_email}&order_cp=1" style="font-size:13pt;background-color:black; color:white; width:130px; padding:3px;">목록으로</a>
+                                 <c:if test="${funding_payinfo.funding_ok == 'false'}">
+                                <a href="#" onclick="popupPost()" style="font-size:13pt;background-color:white;border:1px solid black; color:black; width:130px; padding:3px;">주문 취소</a>
+                            	</c:if>
+                            </p>
                 </div>
             </div> <!--My Page Tabs Contents-->
         </div>
     </div>
 
+    <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>   
+    <script type="text/javascript">
 
+          function popupPost(){ 
+              const popupWidth = 800;
+              const popupHeight = 450;
+              const popupX = (window.screen.width/2)-(popupWidth/2);
+              const popupY= (window.screen.height/2)-(popupHeight/2);
+              window.open('funding_pay_cancel.do?funding_payinfo_index=${funding_payinfo.funding_payinfo_index}', '환불 신청', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+            } 
 
+    </script>
 
+            
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script><!-- jQuery CDN --->
+  
 
     <!-- Footer Bottom Area -->
     <div id="footer_div">

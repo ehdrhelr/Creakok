@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Creator;
+import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
 import creakok.com.domain.Member_category;
@@ -179,6 +180,7 @@ public class MemberController {
 		String order_cp = request.getParameter("order_cp");
 		Member member = (Member)session.getAttribute("member");
 		String member_email = member.getMember_email();
+		String focus = request.getParameter("focus");
 		
 		Member_OrderInfoVo order_infoVo = (Member_OrderInfoVo)session.getAttribute("order_infoVo");
 		
@@ -218,8 +220,13 @@ public class MemberController {
 		long order_count = mService.selectOrderCount(member_email);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("mypage");
-		
+		if(focus!=null) {
+			if(focus.equals("funding")) {
+				mv.setViewName("mypage_focus_funding");
+			}
+		}else {
+			mv.setViewName("mypage");
+		}
 		if(member_email.equals(Member_category.SUPER_ACCOUNT) ) {
 			List<Creator> standby_list = cService.readAllCreatorStandby();
 			for(Creator c : standby_list) {
@@ -236,15 +243,6 @@ public class MemberController {
 			mv.addObject("CreatorStandbyExist", null);
 		}
 		//펀딩 주문내역 추가 시
-		log.info("##########");
-		log.info("##########");
-		log.info("##########");
-		log.info("##########");
-		log.info("##########");
-		log.info("##########");
-		log.info("##########");
-		log.info("##########");
-		
 		Member_FundingPayInfoVo funding_payinfoVo = mService.selectPerPageFundingPay(cp, ps, member_email);
 		long funding_pay_count = mService.selectFundingPayCount(member_email);
 		mv.addObject("funding_pay_info", funding_payinfoVo);
@@ -318,7 +316,20 @@ public class MemberController {
 			
 		return mv;
 	}
-	
+	@RequestMapping("member_fundingpayDetail.do")
+	public ModelAndView member_fundingpayDetail(String funding_payinfo_index, String member_email) {
+		long funding_payinfo_indexlong = Long.parseLong(funding_payinfo_index);
+			
+		Funding_payinfo funding_payinfo = mService.selectFundingPayInfo(funding_payinfo_indexlong);
+		long funding_paycount = mService.selectFundingPayCount(member_email);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("mypage_fundingpay_detail");
+		mv.addObject("funding_payinfo", funding_payinfo);	
+		mv.addObject("funding_paycount", funding_paycount);
+			
+		return mv;
+	}
 	@RequestMapping("member_logout.do")
 	public String logout(HttpSession session) {
 		session.removeAttribute("member");

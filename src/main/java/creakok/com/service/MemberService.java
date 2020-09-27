@@ -40,7 +40,7 @@ public interface MemberService {
 	List<Funding_payinfo>selectFundingPayInfo(String member_email);
 	
 	void updateFundingPayTime(Order_Info order_info);
-	Funding_payinfo selectFundingPayInfo(long order_index);
+	Funding_payinfo selectFundingPayInfo(long funding_payinfo_index);
 	Member_FundingPayInfoVo selectPerPageFundingPay(int order_cp, int order_ps, String member_email);
 	//펀딩 주문내역 추가 
 }

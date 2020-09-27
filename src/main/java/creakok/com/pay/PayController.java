@@ -8,11 +8,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Member;
+import creakok.com.domain.Order_Info;
 import creakok.com.service.FundingService;
 import creakok.com.service.PayService;
 import lombok.AllArgsConstructor;
@@ -87,15 +90,6 @@ public class PayController {
 		
 		//Long amount = Long.parseLong(amountStr);
 		
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&고유 ID: "+success_num);
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&상점 거래ID: "+success_id);
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&결제 금액: "+success_amount);
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&success_pay: "+success_pay);	
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_name: "+buyer_name);
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&product_name: "+product_name);
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&amount: "+amount);
-		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&buyer_email: "+member_email);
-		
 		Funding_payinfo funding_pay_info_before = (Funding_payinfo) session.getAttribute("funding_payinfo");
 		java.util.Date funding_edate_payment = fundingService.getFunding_edate_payment(funding_pay_info_before.getFunding_index());
 		int yearPayment = funding_edate_payment.getYear()-100;
@@ -136,6 +130,8 @@ public class PayController {
 		
 		return mv;
 	}
+	
+	
 }
 
 	

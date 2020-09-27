@@ -35,4 +35,6 @@ public interface FundingService {
 	void updateFunding_amount(Funding_payinfo funding_payinfo);
 	FundingVo getFundingByEdate(int currentPage, int pageSize, String filterBy, String categoryBy);
 	String selectCategoryName(long codeUsed);
+	void updateFunding_cancel(Funding_payinfo funding_payinfo);
+	List<Funding> selectPerPageFinished();
 }

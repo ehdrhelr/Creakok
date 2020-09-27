@@ -86,7 +86,7 @@
                    </div>
                    <p style="text-align:center">
                    		<a href="../" style="background-color:black; color:white; !important; font-size:13pt; padding:5px 10px;">확인</a>
-                   		<a href="member_mypage.do?order_cp=1&member_email=${member_email}#my_funding" style="background-color:black; color:white; !important; font-size:13pt; padding:5px 10px;">펀딩내역 확인</a>
+                   		<a href="member_mypage.do?focus=funding&order_cp=1&member_email=${member_email}#my_funding" style="background-color:black; color:white; !important; font-size:13pt; padding:5px 10px;">펀딩내역 확인</a>
                    </p>
                 </div>
             </div>

@@ -1,5 +1,7 @@
 package creakok.com.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +39,23 @@ public class PayServiceImpl implements PayService {
 	@Override
 	public void deleteOneOrder(long order_index) {
 		paymapper.deleteOneOrder(order_index);
+	}
+	@Override
+	public Funding_payinfo selectByPayinfoIndex(long funding_payinfo_index) {
+		return paymapper.selectByPayinfoIndex(funding_payinfo_index);
+	}
+	@Override
+	public void deleteOneFundingpay(long order_index) {
+		paymapper.deleteOneFundingpay(order_index);
+		
+	}
+	@Override
+	public List<Funding_payinfo> selectByFundingindex(long funding_index) {
+		return paymapper.selectByFundingindex(funding_index);
+	}
+	@Override
+	public void changeFunding_ok(long funding_index) {
+		paymapper.changeFunding_ok(funding_index);
+		
 	}
 }

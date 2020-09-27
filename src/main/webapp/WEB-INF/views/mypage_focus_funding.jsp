@@ -96,7 +96,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                             </c:if>
                         
                             <li class="nav-item">
-                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
+                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
                             </li>
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#member-modify" role="tab">회원정보수정</a>
@@ -105,7 +105,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#my_order" role="tab">주문내역</a>
                             </li>
                             <li class="nav-item">
-                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#my_funding" role="tab">펀딩내역</a>
+                                <a class="hcbae-nav nav-link active" data-toggle="tab" href="#my_funding" role="tab">펀딩내역</a>
                             </li>
                         </ul>
                     </div>
@@ -179,7 +179,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                 </div>
                 
                 
-                <div id="jjim-list" class="container tab-pane active">
+                <div id="jjim-list" class="container tab-pane">
                     <h3>좋아요 리스트</h3>
                     <p>리스트를 어떻게 표시할까?</p>
                     
@@ -483,7 +483,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                 
                 
                  <!--  펀딩 내역   -->
-                 <div id="my_funding" class="container tab-pane" style="margin-bottom:10%">
+                 <div id="my_funding" class="container tab-pane active" style="margin-bottom:10%">
                     <c:if test="${empty funding_pay_info}">
                        <h3>펀딩 내역(총  0개)</h3>              
                     </c:if>
@@ -546,7 +546,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                                  <td style="padding:3px !important;">${funding_payinfo.funding_datepayment}</td>
                                  <td id="review_view" style="padding:1.5px !important;">
                                      <c:if test="${funding_payinfo.success_pay == 'true'}">
-                                                                                    결제 예약 완료
+                                                                                    결제 완료
                                      </c:if>
                                      <c:if test="${funding_payinfo.success_pay == 'false'}">
                                                                                      결제 대기
