@@ -236,6 +236,7 @@
                     
                  		
                          <c:forEach items="${funding_detail.funding_qnaVo.list}" var="funding_qna">
+                         
                              <tr>
                              <td style="padding:1.5px !important;">${funding_qna.funding_qna_index}</td>
                                   <td style="padding:1.5px !important;"><a href="funding_qna.detail?funding_qna_index=${funding_qna.funding_qna_index}&funding_index=${funding_qna.funding_index}#fix_point" style="color:black">${funding_qna.funding_qna_subject}</a></td>

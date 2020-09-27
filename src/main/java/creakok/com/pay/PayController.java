@@ -107,7 +107,12 @@ public class PayController {
 		String funding_datePayment = "20"+yearPayment+"년 " + monthPayment + "월 "+ datePayment+"일 ";
 		log.info("!!!!!!!!");
 		log.info(funding_datePayment);
-		Funding_payinfo funding_pay_info = new Funding_payinfo(-1, buyer_name, member_email, buyer_phone, success_amount, funding_pay_info_before.getFunding_index(), product_name, success_num, success_id, success_card_num, success_pay, "true" ,funding_datePayment);
+		Funding funding = (Funding) session.getAttribute("funding_detail");
+		String funding_ok="false";
+		if(funding.getPercentage()>=100) {
+			funding_ok = "true";
+		}
+		Funding_payinfo funding_pay_info = new Funding_payinfo(-1, buyer_name, member_email, buyer_phone, success_amount, funding_pay_info_before.getFunding_index(), product_name, success_num, success_id, success_card_num, success_pay, funding_ok ,funding_datePayment);
 		fundingService.updateFunding_amount(funding_pay_info);
 		service.insertFunding_order(funding_pay_info);
 		

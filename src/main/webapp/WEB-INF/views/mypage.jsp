@@ -503,7 +503,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                             <th style="padding:1.5px !important;">No</th>
                             <th style="padding:1.5px !important;">펀딩 제목</th>
                             <th style="padding:1.5px !important;">펀딩액</th>
-                            <th style="padding:1.5px !important;">펀딩여부</th>
+                            <th style="padding:1.5px !important;">펀딩 진행여부</th>
                             <th style="padding:1.5px !important;">결제예정일</th>
                             <th style="padding:1.5px !important;">결제상태</th>
                         </tr>
@@ -529,13 +529,20 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                                     </a>
                                  </td>
                                  <td style="padding:3px !important;">${funding_payinfo.funding_payinfo_amountpay} 원</td>
-                                 <td style="padding:3px !important;">펀딩완료</td>
-                                 <td style="padding:3px !important;">${funding_payinfo.funding_datepayment}</td>
-                                 <td id="review_view" style="padding:1.5px !important;">
-                                     <c:if test="${funding_payinfo.funding_ok == 'true'}">
-                                                                                    결제 완료
+                                 <td style="padding:3px !important;">
+                                	 <c:if test="${funding_payinfo.funding_ok == 'true'}">
+                                                                                    확정
                                      </c:if>
                                      <c:if test="${funding_payinfo.funding_ok == 'false'}">
+                                                                                     미정
+                                     </c:if>
+                                 </td>
+                                 <td style="padding:3px !important;">${funding_payinfo.funding_datepayment}</td>
+                                 <td id="review_view" style="padding:1.5px !important;">
+                                     <c:if test="${funding_payinfo.success_pay == 'true'}">
+                                                                                    결제 예약 완료
+                                     </c:if>
+                                     <c:if test="${funding_payinfo.success_pay == 'false'}">
                                                                                      결제 대기
                                      </c:if>
                                  </td>

@@ -8,6 +8,12 @@
     (select * from FUNDING where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} desc) aa) 
     where rnum>${startRow} and rnum<=${endRow}]]>
     </select>
+    <select id="selectPerPageEdate" parameterType="FundingVo" resultType="Funding">
+        <![CDATA[select * from (select ROWNUM rnum, aa.* from 
+    (select * from FUNDING where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} asc) aa) 
+    where rnum>${startRow} and rnum<=${endRow}]]>
+    </select>
+    
     <!--    (select * from FUNDING where #{FUNDING_CATEGORY_CODE}=${} order by #{filterBy} desc) aa)  -->
    <select id="selectPerPageCategory" parameterType="Funding" resultType="String">
       select FUNDING_CATEGORY_NAME from FUNDING_CATEGORY where FUNDING_CATEGORY_CODE=${funding_category_code}
@@ -39,7 +45,9 @@
     (select * from FUNDING_QNA where FUNDING_INDEX=${funding_index} order by FUNDING_QNA_WDATE desc) aa) 
     where rnum>${startRow} and rnum<=${endRow}]]>
     </select>
-    
+    <select id="getFunding" parameterType="long" resultType="Funding">
+        select * from FUNDING where FUNDING_INDEX=${funding_index}
+    </select>
      <select id="getTotalCount_qna" parameterType="long" resultType="long">
         select COUNT(FUNDING_QNA_INDEX) from FUNDING_QNA where FUNDING_INDEX=${funding_index}
     </select>

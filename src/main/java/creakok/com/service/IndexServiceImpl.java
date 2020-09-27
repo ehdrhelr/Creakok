@@ -26,7 +26,9 @@ public class IndexServiceImpl implements IndexService {
 		for(Funding funding : funding_by_wdate) {
 			long category_code = funding.getFunding_category_code();
 			funding.setFunding_category_name(indexMapper.selectFundingCategoryN(category_code));
-			funding.setPercentage(100.0*funding.getFunding_amount()/funding.getFunding_goal());	
+			double percentageDouble = 100.0*funding.getFunding_amount()/funding.getFunding_goal();
+			int percentageInt = (int) Math.round(percentageDouble);
+			funding.setPercentage(percentageInt);	
 			funding.setRestdays((funding.getFunding_edate().getTime()-funding.getFunding_wdate().getTime())/(1000*60*60*24));
 		}	
 		return funding_by_wdate;

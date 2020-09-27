@@ -90,7 +90,7 @@
                                     placeholder="종료날짜"  required>
                                 </div>
                                 
-                                 <div >
+                                 <div>
                                     <input name="write_funding_subject" style="display:inline-block;width:74.5%"class="form-control" id="project_name" 
                                    placeholder="프로젝트명" required>
                                     <select name="funding_category_code"style="display:inline-block; width:24%; margin-left:5px;margin-top:10px; padding:5px"
@@ -98,6 +98,18 @@
 										<option value="">카테고리</option>
 										<option value="200">테크/가전</option>
 										<option value="201">패션/잡화</option>	
+										<option value="202">뷰티</option>	
+										<option value="203">홈리빙</option>	
+										<option value="204">디자인소품</option>	
+										<option value="205">여행/레저</option>	
+										<option value="206">스포츠/모빌리티</option>	
+										<option value="207">반려동물</option>	
+										<option value="208">모임</option>	
+										<option value="209">공연/컬쳐</option>	
+										<option value="210">교육/키즈</option>	
+										<option value="211">게임/취미</option>	
+										<option value="212">출판</option>	
+										<option value="213">기부/후원</option>	
 									</select>			
                                 </div>
 				<br>

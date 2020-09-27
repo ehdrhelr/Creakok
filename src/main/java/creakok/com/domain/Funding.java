@@ -27,7 +27,7 @@ public class Funding {
 	private String funding_keyword;
 	private String funding_option;
 	private String funding_category_name;
-	private double percentage;
+	private int percentage;
 	private long restdays; 
 	private List<Funding> listrelatedFunding;
 	private Funding_qnaVo funding_qnaVo;

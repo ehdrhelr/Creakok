@@ -17,11 +17,6 @@ import creakok.com.vo.Goods_SearchVo;
 public interface FundingService {
 	FundingVo getFundingVo(int currentPage, int pageSize, String filterBy, String categoryBy);
 	Funding getFunding(long funding_index);
-	FundingVo getFundingVoByFilter(String filter, int currentPage, int pageSize);
-	FundingVo getFundingVoByKeyword(String keyword, int currentPage, int pageSize);
-	void write(Funding funding);
-	void edit(Funding funding);
-	void remove(long funding_index);
 	List<Funding_category> getFunding_category();
 	List<Funding> getRelatedFunding(long categoryCode);
 	List<Funding_qna> getFunding_qna(Funding_qnaVo funding_qnaVo);
@@ -38,4 +33,6 @@ public interface FundingService {
 	Date getFunding_edate_cancel(long funding_qna_index);
 	Date getFunding_edate_payment(long funding_qna_index);
 	void updateFunding_amount(Funding_payinfo funding_payinfo);
+	FundingVo getFundingByEdate(int currentPage, int pageSize, String filterBy, String categoryBy);
+	String selectCategoryName(long codeUsed);
 }

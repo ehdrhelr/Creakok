@@ -67,6 +67,7 @@ public class IndexController {
 		// funding 프로젝트 추천(최신 프로젝트)
 		List<Funding> funding_list = indexService.selectFundingByWdate();
 		mv.addObject("funding_list", funding_list);
+		session.setAttribute("funding_list_index", funding_list);
 		
 		// 이달의 크리에이터
 		List<Creator> creator_list = indexService.selectCreator();

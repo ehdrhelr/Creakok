@@ -16,6 +16,8 @@ import creakok.com.vo.Funding_qnaVo;
 
 public interface FundingMapper {
 	List<Funding> selectPerPage(FundingVo fundingVo);
+	List<Funding> selectPerPageEdate(FundingVo fundingVo);
+	Funding getFunding(@Param(value = "funding_index")long funding_index);
 	long selectCount(@Param(value = "categoryByUsed")String categoryBy);
 	//Funding selectBySeq(long funding_index);
 	//List<Funding> selectByWriter(FundingVo fundingVo);
@@ -25,7 +27,7 @@ public interface FundingMapper {
 	List<Funding_category> getFunding_category();
 	String selectPerPageCategory(Funding funding);
 	TreeSet<Integer> selectCategoryCode();
-	String selectCategoryName(@Param(value = "codeUsed") int codeUsed);
+	String selectCategoryName(@Param(value = "codeUsed") long codeUsed);
 	List<Funding> getRelatedFunding(@Param(value = "categoryCode") long categoryCode);
 	List<Funding_qna> getFunding_qna(Funding_qnaVo funding_qnaVo);
 	long getTotalCount_qna(@Param(value = "funding_index")long funding_index);
