@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.LikeType"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
 
 </head>
 
-<body>
+<body onload="readFundingLike();">
    <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
@@ -74,9 +74,9 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="/" ><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="funding_list.do">FUNDING</a></li>
-                            <li class="breadcrumb-item active" aria-current="funding_detail.do">Funding Details</li>
+                         <li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i> Home</li>
+                            <li class="breadcrumb-item" style="font-weight:300; color:#757575;">FUNDING</li>
+                            <li class="breadcrumb-item active" aria-current="funding_detail.do"><span style="font-weight:600; color:black;">FUNDING DETAILS</span></li>
                         </ol>
                     </nav>
                 </div>
@@ -162,10 +162,11 @@
                                         </div>
                                     </div>
                                 </div> 
-                                <div class="ProjectIntroduction__TertiaryButton-sc-1o2ojgb-26 fGephg"><button type="button" class="Button-sc-1x93b2b-0 ProjectIntroduction__ShareSNSButton-sc-1o2ojgb-25 llyixJ">
-                                        <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe"><svg viewBox="0 0 44 44">
-                                                <path d="M35.4706,40.396 C32.9362,40.396 30.877,38.51 30.877,36.192 C30.877,33.874 32.9362,31.988 35.4706,31.988 C38.0028,31.988 40.0642,33.874 40.0642,36.192 C40.0642,38.512 38.0028,40.396 35.4706,40.396 M8.5316,26.204 C5.9994,26.204 3.938,24.318 3.938,22 C3.938,19.68 5.9994,17.796 8.5316,17.796 C11.0638,17.796 13.1252,19.68 13.1252,22 C13.1252,24.32 11.0638,26.204 8.5316,26.204 M35.4706,3.604 C38.0028,3.604 40.0642,5.49 40.0642,7.808 C40.0642,10.126 38.0028,12.012 35.4706,12.012 C32.9362,12.012 30.877,10.126 30.877,7.808 C30.877,5.488 32.9362,3.604 35.4706,3.604 M35.4706,28.384 C33.022,28.384 30.8198,29.334 29.2644,30.844 L16.7024,24.228 C16.9334,23.522 17.061,22.774 17.061,22 C17.061,21.226 16.9334,20.48 16.7046,19.772 L29.2644,13.156 C30.8198,14.668 33.022,15.616 35.4684,15.616 C40.183,15.616 44,12.12 44,7.808 C44,3.496 40.1808,0 35.4706,0 C30.7582,0 26.939,3.496 26.939,7.808 C26.939,8.582 27.0666,9.328 27.2954,10.036 L14.7334,16.652 C13.1802,15.142 10.978,14.192 8.5294,14.192 C3.8236,14.192 0,17.688 0,22 C0,26.312 3.8192,29.808 8.5316,29.808 C10.978,29.808 13.1802,28.86 14.7356,27.348 L27.2954,33.964 C27.0666,34.67 26.939,35.418 26.939,36.192 C26.939,40.504 30.7582,44 35.4706,44 C40.1808,44 44,40.504 44,36.192 C44,31.88 40.1808,28.384 35.4706,28.384"></path>
-                                            </svg></div>
+                                <div class="ProjectIntroduction__TertiaryButton-sc-1o2ojgb-26 fGephg">
+                                    <button type="button" class="Button-sc-1x93b2b-0 ProjectIntroduction__ShareSNSButton-sc-1o2ojgb-25 llyixJ goods_share" data-clipboard-text="1" onclick="urlClipCopy()">
+                                            <div class="Icon__SVGICON-sc-1xkf9cp-0 cVaVMe"><svg viewBox="0 0 44 44">
+                                                    <path d="M35.4706,40.396 C32.9362,40.396 30.877,38.51 30.877,36.192 C30.877,33.874 32.9362,31.988 35.4706,31.988 C38.0028,31.988 40.0642,33.874 40.0642,36.192 C40.0642,38.512 38.0028,40.396 35.4706,40.396 M8.5316,26.204 C5.9994,26.204 3.938,24.318 3.938,22 C3.938,19.68 5.9994,17.796 8.5316,17.796 C11.0638,17.796 13.1252,19.68 13.1252,22 C13.1252,24.32 11.0638,26.204 8.5316,26.204 M35.4706,3.604 C38.0028,3.604 40.0642,5.49 40.0642,7.808 C40.0642,10.126 38.0028,12.012 35.4706,12.012 C32.9362,12.012 30.877,10.126 30.877,7.808 C30.877,5.488 32.9362,3.604 35.4706,3.604 M35.4706,28.384 C33.022,28.384 30.8198,29.334 29.2644,30.844 L16.7024,24.228 C16.9334,23.522 17.061,22.774 17.061,22 C17.061,21.226 16.9334,20.48 16.7046,19.772 L29.2644,13.156 C30.8198,14.668 33.022,15.616 35.4684,15.616 C40.183,15.616 44,12.12 44,7.808 C44,3.496 40.1808,0 35.4706,0 C30.7582,0 26.939,3.496 26.939,7.808 C26.939,8.582 27.0666,9.328 27.2954,10.036 L14.7334,16.652 C13.1802,15.142 10.978,14.192 8.5294,14.192 C3.8236,14.192 0,17.688 0,22 C0,26.312 3.8192,29.808 8.5316,29.808 C10.978,29.808 13.1802,28.86 14.7356,27.348 L27.2954,33.964 C27.0666,34.67 26.939,35.418 26.939,36.192 C26.939,40.504 30.7582,44 35.4706,44 C40.1808,44 44,40.504 44,36.192 C44,31.88 40.1808,28.384 35.4706,28.384"></path>
+                                                </svg></div>
                                     </button></div>
                             </div>
                         </div>
@@ -255,13 +256,13 @@
                                                           <c:if test="${!empty funding_qna_detail.funding_qna_answer}">
                                                           <tr id="answer_is">
                                                               <td colspan="5">
-                                                                 <p style="color:black;font-size:11pt;font-weight:600;text-align:left;margin-top:2%">└ ${one_qna.creator_name} 
-                                                                     <span style="font-weight:400"> ${funding_detail.creator_name}님의 답변 :</span> 
+                                                                 <p style="color:black;font-size:11pt;font-weight:600;text-align:left;margin-top:2%">└ ${funding_detail.creator_name} 
+                                                                     <span style="font-weight:400"> 님의 답변 :</span> 
                                                                      <span id="answer_here" style="font-weight:500">${funding_qna_detail.funding_qna_answer}</span>
                                                                      <span style="font-weight:300;margin-left:5px">(${funding_qna_detail.funding_qna_adate})</span>&nbsp;&nbsp;
                                                                      
-                                                                    <c:if test="${member.member_name == funding_qna_detail.member_name}">
-                                                                     <a href="funding_qna.editForm" onclick="answerUpdate()" style="color:#858585;font-weight:300">수정</a>&nbsp;
+                                                                    <c:if test="${member.member_name == funding_detail.creator_name}">
+                                                                     <a href="#" onclick="answerUpdate()" style="color:#858585;font-weight:300">수정</a>&nbsp;
                                                                      <span style="color:#858585;font-weight:300">|</span>&nbsp;
                                                                      <a href="funding_qna.answerDelete?funding_qna_index=${funding_qna_detail.funding_qna_index}&funding_index=${funding_qna_detail.funding_index}#fix_point" style="color:#858585;font-weight:300">삭제</a>
                                                                 
@@ -271,8 +272,8 @@
                                                           </tr>
                                                           </c:if>
                                                           <!-- 크리에이터 답변이 있을 때 End -->
-                                                          <!-- 크리에이터 답변 수정 -->
                                                           
+                                                          <!-- 크리에이터 답변 수정 -->
                                                             <tr id="update" style="display:none">
                                                                 <td colspan="5" style="border:0">
                                                                     <form action="funding_qna.answerEdit#fix_point" method="post" style="position:relative;height:60px"> 
@@ -292,9 +293,9 @@
                                                                     </form>
                                                                 </tr>
                                                             </tr>
+                                                            
+                                                         
                                                           <!-- 크리에이터 답변 수정 End -->
-                                                          
-                                                          <!-- 크리에이터 답변이 없을 때 -->
                                                        <!-- 크리에이터 답변이 없을 때 -->
                                                        
                                                         <!-- 크리에이터 답변이 없을 때 -->
@@ -339,7 +340,7 @@
                                                   </table>
                                                   <p style="width:100%;text-align:center;margin-top:10px">
                                                        <a href="funding_qna.do?funding_index=${funding_qna_detail.funding_index}#fix_point" style='background-color:black; color:white; width:130px; padding:3px'>목록</a>
-                                                   <c:if test="${member.member_name == funding_qna_detail.member_name}">
+                                                                <c:if test="${member.member_name == funding_qna_detail.member_name}">
                                                                      <a href="funding_qna.editForm" style='background-color:black; color:white; width:130px; padding:3px'>수정</a>&nbsp;
                                                                      
                                                                      <a href="funding_qna.delete?funding_qna_index=${funding_qna_detail.funding_qna_index}&funding_index=${funding_qna_detail.funding_index}#fix_point"style='background-color:black; color:white; width:130px; padding:3px'>삭제</a>
@@ -457,7 +458,9 @@
                             <div class="Card-sc-1sgtmvk-0 iZjgMf ProjectPage__StyledCreatorCard-f3cisk-5 lfTmkG">
                                 <div class="CreatorCard__CreatorCardInner-sc-1ifohey-0 iubrbI">
                                     <div class="CreatorCard__CreatorCardLabel-sc-1ifohey-1 erXxPv">창작자 소개</div>
-                                    <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO"><span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"></span><a target="_blank" href="https://tumblbug.com/u/mcmp">
+                                    <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO">
+                                    <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG" style="background-image: url(${funding_detail.creator_profil_photo});"></span>
+                                    <a target="_blank" href="#">
                                     <span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx"> ${funding_detail.creator_name}</span></a></div>
                                     <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">
                                             ${funding_detail.creator_profil_content}
@@ -515,15 +518,15 @@
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div>
-                            <div class="product-meta d-flex">
+                            <!-- <div class="product-meta d-flex">
                                 <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
                                 <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
                                 <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
+                            </div>  -->
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
+                           <a href="funding_list.do?funding_index=${funding_related.funding_index}">
                                 <p>${funding_related.funding_subject}</p>
                             </a>
                             <h6>${funding_related.creator_name}</h6>
@@ -591,6 +594,62 @@
     <script src="./js/hcbae/semantic.js"></script>
     <script type="application/javascript" src="https://d2om2e6rfn032x.cloudfront.net/wpa/bundle.app.173e0183d7bc9f5995e8.js"></script>
 
+
+    <script type="text/javascript">
+    function readFundingLike(){
+        if('${member.member_email}' == '') {
+            return;
+        }
+        
+        let formData = new FormData();
+        formData.append('like_content_index','${funding_detail.funding_index}');
+        formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
+        formData.append('like_member_email','${member.member_email}');
+        
+        let xmlHttpLike = new XMLHttpRequest();
+        xmlHttpLike.open("POST", "readLike.do", true); // true for asynchronous
+        xmlHttpLike.send(formData);
+        xmlHttpLike.onreadystatechange = function() {
+            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                let obj = document.querySelector(".neDEf");
+                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
+                    obj.classList.remove('isLiked');
+                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
+                    obj.classList.add('isLiked');
+                }
+            }
+       };
+    }
+
+    function clickFundingLike(){
+        if('${member.member_email}' == '') {
+            alert('로그인해주세요.');
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append('like_content_index','${funding_detail.funding_index}');
+        formData.append('like_type_code','${LikeType.FUNDING_LIKE}');
+        formData.append('like_member_email','${member.member_email}');
+
+        let xmlHttpLike = new XMLHttpRequest();
+        xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
+        xmlHttpLike.send(formData);
+        xmlHttpLike.onreadystatechange = function() {
+            if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                let obj = document.querySelector(".neDEf");
+                if(xmlHttpLike.responseText == '${LikeType.LIKE_NOT_EXIST}'){
+                    obj.classList.add('isLiked');
+                } else if(xmlHttpLike.responseText == '${LikeType.LIKE_EXIST}') {
+                    obj.classList.remove('isLiked');
+                }
+            }
+       };
+    }
+    
+    </script>
+    
+    
     <!--hcbae 텀블벅 가져오기 end-->
     
     <jsp:include page="Language.jsp" flush="false">

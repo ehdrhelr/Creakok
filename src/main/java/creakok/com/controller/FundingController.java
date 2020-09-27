@@ -1,6 +1,8 @@
 package creakok.com.controller;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -29,21 +31,23 @@ public class FundingController {
 	
 	int cp =1;
 	int ps =3;
-	@RequestMapping("funding_list.do")
-	public ModelAndView list(HttpServletRequest request, HttpSession session) {
+	
+	//fundingVo sortin 메소드분리함
+	public FundingVo fundingVo(HttpServletRequest request, HttpSession session) {
 		String cpStr = request.getParameter("funding_cp");
 	    String psStr = request.getParameter("funding_ps");
 	    String filterBy = request.getParameter("funding_filterBy");	 
 	    String categoryName= request.getParameter("funding_categoryName");
-	    String funding_indexStr = request.getParameter("funding_index");
 	    FundingVo fundingVo = new FundingVo();
 	    //(1) cp 
 	   cp = 1;
 		if(cpStr == null) {
+			/*
 			Object cpObj = session.getAttribute("funding_cp");
 			if(cpObj != null) {
 				cp = (Integer)cpObj;
-			}
+			*/
+			cp=1;
 		}else {
 			cpStr = cpStr.trim();
 			cp = Integer.parseInt(cpStr);
@@ -153,10 +157,19 @@ public class FundingController {
 		}
 		session.setAttribute("funding_categoryBy", categoryBy);
 		session.setAttribute("funding_categoryName", categoryName);	
-		fundingVo = service.getFundingVo(cp, ps, filterBy, categoryBy);//카테고리 유즈드 리스트가 전부들어감
+		if(filterBy.equals("FUNDING_EDATE")) { //마감일순은 as 이용해야하므로 따로 분류 sorting
+			fundingVo = service.getFundingByEdate(cp, ps, filterBy, categoryBy);
+		}else {
+			fundingVo = service.getFundingVo(cp, ps, filterBy, categoryBy);
+		}
 		session.setAttribute("funding_categoryNames", fundingVo.getListCategoryUsed());
 		session.setAttribute("fundingVo", fundingVo);
-		
+		return fundingVo;
+	}
+	
+	@RequestMapping("funding_list.do")
+	public ModelAndView list(HttpServletRequest request, HttpSession session) {
+		FundingVo fundingVo = fundingVo(request, session);
 		if(fundingVo.getList().size() ==0 ) {
 			if(cp>1) {
 				return new ModelAndView("redirect:funding_list.do?funding_cp="+(cp-1));
@@ -164,95 +177,55 @@ public class FundingController {
 				return new ModelAndView("redirect:funding_list.do", "fundingVo", null);
 			}
 		}
-		
-			
 		//(3) ModelAndView
+		session.setAttribute("funding_categoryNames", fundingVo.getListCategoryUsed());
+		session.setAttribute("fundingVo", fundingVo);
 		ModelAndView mv = new ModelAndView("/funding", "fundingVo", fundingVo);
 		return mv;
 	}
-		
-		@RequestMapping("funding_detail.do")
-		public ModelAndView detail(HttpServletRequest request, HttpSession session) {
-			
-		  
-		    String funding_indexStr = request.getParameter("funding_index");
-		    String cpStr_qna = request.getParameter("qna_cp");
-			int cp_qna = 1;
-				if(cpStr_qna == null) {
-					Object cp_qnaObj = session.getAttribute("fundingQna_cp");
-					if(cp_qnaObj != null) {
-						cp_qna = (Integer)cp_qnaObj;
-					} 
-				}else {
-					cpStr_qna = cpStr_qna.trim();
-					cp_qna = Integer.parseInt(cpStr_qna);
-				}
-			session.setAttribute("fundingQna_cp", cp_qna);
-			FundingVo fundingVo = (FundingVo) session.getAttribute("fundingVo");
 	
-			if(fundingVo.getList().size() ==0 ) {
-				if(cp>1) {
-					return new ModelAndView("redirect:funding_list.do?funding_cp="+(cp-1));
-				}else {
-					return new ModelAndView("redirect:funding_list.do", "fundingVo", null);
-				}
-			}else if(funding_indexStr!=null) {
-				
+	@RequestMapping("funding_detail.do")
+	public ModelAndView detail(HttpServletRequest request, HttpSession session) {
+	    String funding_indexStr = request.getParameter("funding_index");
+		FundingVo fundingVo = (FundingVo) session.getAttribute("fundingVo");
+			if(funding_indexStr!=null) {
 				long funding_index = Long.parseLong(funding_indexStr);
-				List<Funding> AllListrelatedFunding = new ArrayList<Funding>();
-				List<Funding> ListrelatedFunding = new ArrayList<Funding>();	
-				long categoryCode = 0L;
+				Funding fundingSelected = service.getFunding(funding_index);
+				long categoryCode = fundingSelected.getFunding_category_code();
 				
-				for(Funding fundingSelected : fundingVo.getList()) {			
-					if(fundingSelected.getFunding_index()==funding_index) {
-						categoryCode = fundingSelected.getFunding_category_code();
-					
-				
-						AllListrelatedFunding = service.getRelatedFunding(categoryCode);	
-						Random r = new Random();
-						if(AllListrelatedFunding.size()>=4) {
-							int a[] = new int[AllListrelatedFunding.size()];
-							for(int i=0;i<AllListrelatedFunding.size();i++) {
-								a[i]=r.nextInt(AllListrelatedFunding.size());
-								for(int j=0; j<i; j++) {
-									if(a[i]==a[j]) {
-										i--;
-									}
-								}
-							}	
-							for(int k=0;k<4;k++) {
-								Funding fundingRelated = AllListrelatedFunding.get(a[k]);
-								ListrelatedFunding.add(fundingRelated);
+				List<Funding> AllListrelatedFunding = service.getRelatedFunding(categoryCode);
+				List<Funding> ListrelatedFunding = new ArrayList<Funding>();
+				//Related Fundings 같은 카테고리 펀딩 랜덤 추출
+				Random r = new Random();
+				if(AllListrelatedFunding.size()>=4) {
+					int a[] = new int[AllListrelatedFunding.size()];
+					for(int i=0;i<AllListrelatedFunding.size();i++) {
+						a[i]=r.nextInt(AllListrelatedFunding.size());
+						for(int j=0; j<i; j++) {
+							if(a[i]==a[j]) {
+								i--;
 							}
 						}
-						fundingSelected.setListrelatedFunding(ListrelatedFunding);
-						long funding_index_qna = fundingSelected.getFunding_index();
-						long totalCount_qna = service.getTotalCount_qna(funding_index_qna);
-						
-						Funding_qnaVo funding_qnaVo_temp = new Funding_qnaVo(funding_index_qna, cp_qna, totalCount_qna, 5, null);
-						
-						List<Funding_qna> funding_qna_list = service.getFunding_qna(funding_qnaVo_temp);
-						funding_qnaVo_temp.setList(funding_qna_list);
-						fundingSelected.setFunding_qnaVo(funding_qnaVo_temp);	
-						long qna_totalCount = service.getTotalCount_qna(funding_index);
-						fundingSelected.setFunding_qna_totalCount(qna_totalCount);
-						log.info("445454545454");
-						log.info(fundingSelected.getCreator_name());
-						String creatorProfilContent = service.getCreatorProfilContent(fundingSelected.getCreator_name());
-						fundingSelected.setCreator_profil_content(creatorProfilContent);
-						session.setAttribute("funding_detail", fundingSelected);
-						return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
-						
-				
+					}	
+					for(int k=0;k<4;k++) {
+						Funding fundingRelated = AllListrelatedFunding.get(a[k]);
+						ListrelatedFunding.add(fundingRelated);
 					}
-				}	
-			//return new ModelAndView("/funding_detail", "fundingVo", fundingVo);
-		}
-	  
+				}
+				fundingSelected.setListrelatedFunding(ListrelatedFunding);
+				//Related Fundings 셋팅완료
+				fundingSelected.setFunding_category_name(service.selectCategoryName(categoryCode));
+				fundingSelected.setCreator_profil_content(service.getCreatorProfilContent(fundingSelected.getCreator_name()));
+				session.setAttribute("funding_detail", fundingSelected);
+				return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
+			}else {
+				ModelAndView mv = new ModelAndView("/funding", "fundingVo", fundingVo);
+			}
 		ModelAndView mv = new ModelAndView("/funding", "fundingVo", fundingVo);
 		return mv;
-	    
 	}
+	
+	
 	@RequestMapping("funding_qna.do")
 	public ModelAndView list_qna(HttpServletRequest request, HttpSession session) {
 		String funding_indexStr = request.getParameter("funding_index");
@@ -275,12 +248,10 @@ public class FundingController {
 		funding.setFunding_qna_totalCount(qna_totalCount);
 		Funding_qnaVo funding_qnaVo_temp = new Funding_qnaVo(funding_index, cp_qna, qna_totalCount, 5, null);
 		List<Funding_qna> funding_qna_list = service.getFunding_qna(funding_qnaVo_temp);
-		log.info("@#@#@#@##");
-		log.info(funding_qna_list);
-		log.info(funding);
 		funding_qnaVo_temp.setList(funding_qna_list);
 		funding.setFunding_qnaVo(funding_qnaVo_temp);
 		session.setAttribute("funding_detail", funding);
+		session.setAttribute("qna_totalCount", qna_totalCount);
 		return new ModelAndView("/funding_qna", "funding_detail", funding);	
 	}
 	
@@ -355,7 +326,6 @@ public class FundingController {
 		 
 		Funding funding = (Funding)session.getAttribute("funding_detail");
 		Funding_qna funding_qna = new Funding_qna(funding_qna_index, funding_index, null, null, null,null, funding_qna_answer, funding.getCreator_name(), null, null);
-		
 		service.answerQna(funding_qna);
 		return "redirect:funding_qna.detail?funding_index="+funding_index+"&funding_qna_index="+funding_qna_index+"#fix_point";
 	}
@@ -389,7 +359,6 @@ public class FundingController {
 	public ModelAndView about(HttpServletRequest request, HttpSession session) {
 		String funding_indexStr = request.getParameter("funding_index");
 		long funding_index = Long.parseLong(funding_indexStr);
-		
 		long qna_totalCount = service.getTotalCount_qna(funding_index);
 		Funding funding = (Funding)session.getAttribute("funding_detail");
 		funding.setFunding_qna_totalCount(qna_totalCount);

@@ -2,7 +2,9 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
 <configuration>
+
     <settings>
         <setting name="jdbcTypeForNull" value="NULL" />
     </settings>
@@ -19,7 +21,7 @@
       <typeAlias alias="Member_origin" type="creakok.com.domain.Member_origin"/>
       <typeAlias alias="Member" type="creakok.com.domain.Member"/>
       <typeAlias alias="Member_OrderInfoVo" type="creakok.com.vo.Member_OrderInfoVo"/>
-      
+      <typeAlias alias="Member_FundingPayInfoVo" type="creakok.com.vo.Member_FundingPayInfoVo"/>
       
    	   <typeAlias alias="Funding" type="creakok.com.domain.Funding"/>
    	   <typeAlias alias="FundingVo" type="creakok.com.vo.FundingVo"/>
@@ -57,6 +59,5 @@
 	<!-- <mapper resource="creakok.com.mapper.DarkKnightBoardMapper"/> -->
    	  
    </mappers>
-
 </configuration>
 

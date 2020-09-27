@@ -64,13 +64,13 @@
 
    
         <!-- ##### Team Area Start ##### -->
-    <section class="team-area section-padding-100-0"  style="margin-bottom:10%">
+    <section class="team-area section-padding-100-0">
         <div class="container">
         
-            <div class="row" style="margin-bottom:100px">
+            <div class="row" style="padding-top:160px;padding-bottom:160px">
                 <div class="col-12">
                     <!-- Section Heading -->
-                    <div class="section-heading text-center" style="margin-top:10%">
+                    <div class="section-heading text-center">
                          <h2 style="line-height: 1.3; margin-bottom: 20px;">
                          <img src="img/goods/warning-30.png" style="margin-right:5px;margin-bottom:-4px;">결제에 실패하였습니다.</h2>
                       

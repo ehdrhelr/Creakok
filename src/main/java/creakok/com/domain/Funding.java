@@ -27,12 +27,16 @@ public class Funding {
 	private String funding_keyword;
 	private String funding_option;
 	private String funding_category_name;
-	private double percentage;
+	private int percentage;
 	private long restdays; 
 	private List<Funding> listrelatedFunding;
 	private Funding_qnaVo funding_qnaVo;
 	private long funding_qna_totalCount;
 	private String creator_profil_content;
+	private String creator_profil_photo;
+	private int funding_edate_month;
+	private int funding_edate_cancel;
+	private int funding_edate_payment;
 	//private List<Funding_qna> funding_qna;
 	
 }

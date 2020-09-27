@@ -73,9 +73,9 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/" ><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="funding_list.do">FUNDING</a></li>
-                            <li class="breadcrumb-item active" aria-current="funding_detail.do">Funding Details</li>
+                            <li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i> HOME</li>
+                            <li class="breadcrumb-item" style="font-weight:300; color:#757575;">FUNDING</li>
+                            <li class="breadcrumb-item active" aria-current="funding_detail.do"><span style="font-weight:600; color:black;">FUNDING DETAILS</span></li>
                         </ol>
                     </nav>
                 </div>
@@ -101,11 +101,11 @@
             <div class="Container-gci8y7-0 MskhC">
                 <div class="ProjectIntroduction__ProjectIntroductionWrapper-sc-1o2ojgb-1 bnFLKn">
                     <div class="ProjectIntroduction__ProjectOutline-sc-1o2ojgb-2 jbdzfG">
-                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="/discover?category=music"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">
+                        <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="#"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">
                         ${funding_detail.funding_category_name}</span></a>
                             <h1 class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${funding_detail.funding_subject}</h1>
                             <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">
-                            <a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="/u/mcmp">
+                            <a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="board_page?creator_name=${funding_detail.creator_name}">
                           ${funding_detail.creator_name}</a></div>
                         </div>
                         
@@ -197,18 +197,30 @@
                     <div class="ProjectPage__ProjectContentsMainColumn-f3cisk-2 hzJfoW">
                         <div class="ProjectPage__MainColumnInner-f3cisk-4 kGPPtA">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf">
-                                <div class="StoryCard__StoryCardInner-sc-6cra5i-0 giOSQG">
-                                    ${funding_detail.funding_detail_pic}
-                                </div>
-                            </div>
-                        </div>
+                                <div class="StoryCard__StoryCardInner-sc-6cra5i-0 giOSQG"
+                                style="margin:20px">
+                                    <h3>이 프로젝트의 정보 및 정책을 <br>반드시 확인하세요.</h3>
+                                    <div>
+							            
+							              <h3>펀딩 취소 및 결제 안내</h3>
+							              <p>펀딩 결제는 예약 상태로 유지되다가, 펀딩 마감일 ${funding_detail.funding_edate} <strong>다음 영업일 
+							              </strong>에 모두 함께 진행됩니다. 결제 정보 변경은 결제가 진행되기 전까지 언제나 가능합니다. 참여한 펀딩 정보 변경은 마이페이지 <a class="link" href="member_mypage.do?member_email=${member.member_email}&order_cp=1#my_funding">펀딩 내역</a>에서 진행해주세요. 
+							              마감일 이후에는 해당 크리에이터에게 펀딩 모금이 전달되며, 크리에이터는 프로젝트 제작을 시작하게 됩니다. 
+							              취소는 ${funding_detail.funding_edate} 전날인 <strong>${funding_detail.funding_edate_month}월 ${funding_detail.funding_edate_cancel}일 </strong>이후로는 불가합니다.</p>
+							            
+							           </div>
+							          </div>
+						                                
+						                            </div>
+						                        </div>
                     </div>
                     <div class="ProjectPage__ProjectContentsSubColumn-f3cisk-3 egbEFv">
                         <div class="ProjectPage__SubColumnInner-f3cisk-6 qujmm">
                             <div class="Card-sc-1sgtmvk-0 iZjgMf ProjectPage__StyledCreatorCard-f3cisk-5 lfTmkG">
                                 <div class="CreatorCard__CreatorCardInner-sc-1ifohey-0 iubrbI">
                                     <div class="CreatorCard__CreatorCardLabel-sc-1ifohey-1 erXxPv">창작자 소개</div>
-                                    <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO"><span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"></span><a target="_blank" href="https://tumblbug.com/u/mcmp">
+                                    <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO"><span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"  style="background-image: url(${funding_detail.creator_profil_photo});"></span>
+                                    <a target="_blank" href="#">
                                     <span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx"> ${funding_detail.creator_name}</span></a></div>
                                     <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">
                                             ${funding_detail.creator_profil_content}
@@ -269,15 +281,15 @@
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div>
-                            <div class="product-meta d-flex">
+                            <!-- <div class="product-meta d-flex">
                                 <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
                                 <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
                                 <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
+                            </div>  -->
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
+                           <a href="funding_list.do?funding_index=${funding_related.funding_index}">
                                 <p>${funding_related.funding_subject}</p>
                             </a>
                             <h6>${funding_related.creator_name}</h6>

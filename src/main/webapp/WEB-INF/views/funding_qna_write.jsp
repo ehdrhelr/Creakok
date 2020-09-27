@@ -102,7 +102,7 @@
 				
 				<p style="width:100%;text-align:center; margin-top:20px;">
     				<input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px;width:100px" value="작성하기" />
-    				<a href="funding_qna.write?funding_index=${funding_detail.funding_index}&qna=1#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px" value="목록으로"/></a>
+    				<a href="funding_qna.do?funding_index=${funding_detail.funding_index}&qna=1#fix_point"><input id="subBtn2" type="button"  style="padding:3px;background-color:white;color:#fc5230;border:1px solid #fc5230;border-radius:4px;width:100px" value="목록으로"/></a>
 				
                 </p>			 		
                 
@@ -120,7 +120,6 @@
       focus: true,
         toolbar: [
           ['font', ['bold', 'underline', 'clear']],
-          ['insert', ['picture']]
         ]
       });
     </script>

@@ -30,8 +30,8 @@
 	<resources mapping="/scss/**" location="/resources/scss/" />
 	<resources mapping="/img/**" location="/resources/img/" />
 
-
-	<resources mapping="/summernoteImage/**" location="file:///C:/Users/bit/git/Creakok/src/main/webapp/resources/img/funding/" />
+<resources mapping="/summernoteImage/**" location="file:///Users/joohyunann/git/Creakok/src/main/webapp/resources/img/funding/"/>
+	<!-- <resources mapping="/summernoteImage/**" location="file:///C:/Users/bit/git/Creakok/src/main/webapp/resources/img/funding/" />-->
 	<resources mapping="/summernoteImageCommunity/**" location="file:///C:/Users/bit/git/Creakok/src/main/webapp/resources/img/community/" />
 	<resources mapping="/summernoteImageGoods/**" location="file:///C:/Users/bit/git/Creakok/src/main/webapp/resources/img/goods/" />
 

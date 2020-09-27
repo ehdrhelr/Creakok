@@ -8,6 +8,12 @@
     (select * from FUNDING where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} desc) aa) 
     where rnum>${startRow} and rnum<=${endRow}]]>
     </select>
+    <select id="selectPerPageEdate" parameterType="FundingVo" resultType="Funding">
+        <![CDATA[select * from (select ROWNUM rnum, aa.* from 
+    (select * from FUNDING where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} asc) aa) 
+    where rnum>${startRow} and rnum<=${endRow}]]>
+    </select>
+    
     <!--    (select * from FUNDING where #{FUNDING_CATEGORY_CODE}=${} order by #{filterBy} desc) aa)  -->
    <select id="selectPerPageCategory" parameterType="Funding" resultType="String">
       select FUNDING_CATEGORY_NAME from FUNDING_CATEGORY where FUNDING_CATEGORY_CODE=${funding_category_code}
@@ -39,7 +45,9 @@
     (select * from FUNDING_QNA where FUNDING_INDEX=${funding_index} order by FUNDING_QNA_WDATE desc) aa) 
     where rnum>${startRow} and rnum<=${endRow}]]>
     </select>
-    
+    <select id="getFunding" parameterType="long" resultType="Funding">
+        select * from FUNDING where FUNDING_INDEX=${funding_index}
+    </select>
      <select id="getTotalCount_qna" parameterType="long" resultType="long">
         select COUNT(FUNDING_QNA_INDEX) from FUNDING_QNA where FUNDING_INDEX=${funding_index}
     </select>
@@ -62,14 +70,23 @@
  	<update id="answerDelete" parameterType="long">
     	update FUNDING_QNA set FUNDING_QNA_ANSWER=null, FUNDING_QNA_ADATE=null where FUNDING_QNA_INDEX=${funding_qna_index}
     </update>
- 
- 
     <select id="getCreatorProfilContent" parameterType="string" resultType="string">
     	select creator_profile_content from CREATOR where CREATOR_NAME=#{creator_name}
+    </select>
+    <select id="getCreatorProfilPhoto" parameterType="string" resultType="string">
+    	select CREATOR_PROFILE_PHOTO from CREATOR where CREATOR_NAME=#{creator_name}
     </select>
     <delete id="qnaDelete" parameterType="long">
    	    delete from FUNDING_QNA where FUNDING_QNA_INDEX=${funding_qna_index}
     </delete>
-    
+     <select id="getFunding_edate_cancel" parameterType="long" resultType="date">
+    	select funding_edate-1 from FUNDING where FUNDING_INDEX=${funding_index}
+    </select>
+    <select id="getFunding_edate_payment" parameterType="long" resultType="date">
+    	select funding_edate+1 from FUNDING where FUNDING_INDEX=${funding_index}
+    </select>
+    <update id = "updateFunding_amount" parameterType="Funding_payinfo">
+    	update FUNDING set FUNDING_AMOUNT=FUNDING_AMOUNT+${funding_payinfo_amountpay}, FUNDING_PEOPLE=FUNDING_PEOPLE+1 where FUNDING_INDEX=${funding_index}
+    </update>
     
 </mapper>

@@ -7,7 +7,7 @@
        select * from Funding where FUNDING_INDEX=${funding_index}
     </select>
    <insert id="insertFunding_order" parameterType="Funding_payinfo">
-   	 insert into Funding_payinfo values(
+   	 insert into FUNDING_PAYINFO values(
    	 FUNDING_PAYINFO_SEQ.nextval,
    	 #{funding_payinfo_name},
    	 #{member_email},
@@ -18,7 +18,9 @@
    	 #{success_num},
    	 #{success_id},
    	 #{success_card_num},
-   	 #{success_pay})
+   	 #{success_pay},
+   	 #{funding_ok},
+   	 #{funding_datepayment})
    </insert>
     
     <insert id="insertOneOrder" parameterType="Order_Info">

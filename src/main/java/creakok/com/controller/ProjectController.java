@@ -72,12 +72,13 @@ public class ProjectController {
 	    	}
 	    Date write_funding_wdate = Date.valueOf(write_funding_wdateStr);
 	    Date write_funding_edate = Date.valueOf(write_funding_edateStr);
+	   
 	    Long funding_category_code = Long.parseLong(funding_category_codeStr);
 	    Long write_funding_goal = Long.parseLong(write_funding_goalStr);
 	   
 	   Funding funding = new Funding(-1, write_creator, write_funding_subject, funding_category_code,
 			   url, content, write_funding_goal, 0, write_funding_wdate, write_funding_edate, 0, 0,
-			   null, null, null, -1, -1, null, null, write_funding_goal, null);
+			   null, null, null, -1, -1, null, null, write_funding_goal, null,null,-1,-1, -1);
 
 	    
 	    service.writeFundingProject(funding);

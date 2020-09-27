@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
         var IMP = window.IMP; // 생략가능
-        IMP.init('imp90966824'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+        IMP.init('imp90966824'); //   'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 			   IMP.request_pay({     
 			    pg : 'inicis', // version 1.1.0부터 지원.
 			    pay_method : 'card',
@@ -39,6 +39,7 @@
 			    } else {
 			        var msg = '결제에 실패하였습니다.';
 			        msg += '에러내용 : ' + rsp.error_msg;
+			        location.href="funding_pay_fail.do?error_msg="+rsp.error_msg;
 			    }
 			    alert(msg);
 			});

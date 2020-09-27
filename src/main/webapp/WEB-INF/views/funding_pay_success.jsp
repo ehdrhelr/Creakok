@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+    
     <!-- Title -->
     <title>CREAKOK</title>
 
@@ -19,30 +19,34 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     
-    <!-- Wadiz Css -->
-    <link rel="stylesheet" href="css/wadiz_css1.css">
-     <link rel="stylesheet" href="css/wadiz_css2.css">
-    <link rel="stylesheet" href="css/wadiz_css3.css">
-    <link rel="stylesheet" href="css/wadiz_css4.css">
-    
-    <!--  table 
-    <link rel="stylesheet" href="css/only_goods_review_board_jsp.css"> -->
-<style>
-    @font-face {
-  font-family: 'Jalnan';
-  src: url('fonts/Jalnan.ttf');
-}  
-    .wideImg{
-        max-width: 135%;!important;
-    }
- </style>    
- 
+    <!-- BOTO TEST -->
+    <meta name="description" content="Boto Photo Studio HTML Template">
+    <meta name="keywords" content="photo, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/slicknav.min.css"/>
+    <link rel="stylesheet" href="css/css_boto/fresco.css"/>
+    <link rel="stylesheet" href="css/css_boto/slick.css"/>
+  
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="css/css_boto/style.css"/>
+
+    <!-- hcbae Stylesheets -->
+    <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
+    <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
+    <link rel="stylesheet" href="css/hcbae_css.css">
+
+    <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
 
 </head>
 
 <body>
-    <!-- Preloader -->
+   <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-circle"></div>
         <div class="preloader-img">
@@ -61,28 +65,28 @@
    
         <!-- ##### Team Area Start ##### -->
     <section class="team-area section-padding-100-0">
-        <div class="container">
+        <div class="container" style="padding-top:160px;padding-bottom:160px">
         
-            <div class="row" style="margin-bottom:100px">
+            <div class="row">
                 <div class="col-12">
                     <!-- Section Heading -->
-                    <div class="section-heading text-center" style="margin-top:10%;margin-bottom:10%">
+                    <div class="section-heading text-center">
                          <h2 style="line-height: 1.3; margin-bottom: 20px;">
-                         <img src="img/goods/success-40.png" style="margin-right:5px;margin-bottom:-8px; margin-right:6px">주문이 완료되었습니다!</h2>
+                         <img src="img/goods/success-40.png" style="margin-right:5px;margin-top:-5px; margin-right:6px">펀딩이 완료되었습니다!</h2>
                       
                             
                             
  
 	                            	<p>
-	                                 		주문번호 : ${success_num}</br>
-	                                 		주문날짜 : <span id="sysdate">a</span></br>
-		                                 	자세한 정보는 주문정보 페이지에서 확인이 가능합니다.
+	                                 		펀딩번호 : ${success_num}</br>
+	                                 		펀딩날짜 : <span id="sysdate">a</span></br>
+		                                 	자세한 정보는 펀딩정보 페이지에서 확인이 가능합니다.
 	                                 </p>
 	                  
                    </div>
                    <p style="text-align:center">
                    		<a href="../" style="background-color:black; color:white; !important; font-size:13pt; padding:5px 10px;">확인</a>
-                   		<a href="member_mypage.do?order_cp=1&member_email=${member_email}" style="background-color:black; color:white; !important; font-size:13pt; padding:5px 10px;">주문내역 확인</a>
+                   		<a href="member_mypage.do?order_cp=1&member_email=${member_email}#my_funding" style="background-color:black; color:white; !important; font-size:13pt; padding:5px 10px;">펀딩내역 확인</a>
                    </p>
                 </div>
             </div>
@@ -101,17 +105,6 @@
 		
 		document.getElementById("sysdate").innerHTML = c_date;
 		
-		$.ajax({
-			url: "order_time.do",
-			data: "order_time=" + c_date,
-			type: "POST",
-			success : function(data){
-				alert("성공")
-			},
-			error : function(){
-				alert("에러")		
-			}
-		});
 	</script>
 
 
@@ -119,7 +112,21 @@
         </div>
     </section>
     <!-- ##### Team Area End ##### -->
-
+    <script language='javascript'>
+      
+      function noEvent() {
+          if (event.keyCode == 116) {
+              event.keyCode= 2;
+              return false;
+          }
+          else if(event.ctrlKey && (event.keyCode==78 || event.keyCode == 82))
+          {
+              return false;
+          }
+      }
+      document.onkeydown = noEvent;
+      
+      </script>
         
     <!-- Footer Bottom Area -->
     <div id="footer_div">
@@ -138,6 +145,8 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    <script src="js/hcbae_js.js"></script>
+
     
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>

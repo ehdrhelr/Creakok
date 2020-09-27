@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Member;
 import creakok.com.domain.Order_Info;
+import creakok.com.vo.Member_FundingPayInfoVo;
 import creakok.com.vo.Member_OrderInfoVo;
 
 public interface MemberMapper {
@@ -30,4 +32,13 @@ public interface MemberMapper {
 	Order_Info selectOneOrderInfo(@Param("order_index") long order_index);
 	List<Order_Info> selectPerPageOrder(Member_OrderInfoVo order_infoVo);
 	long selectOrderCountByEmail(String member_email);
+	//펀딩 주문내역 시작
+	List<Funding_payinfo>selectPerPageFundingPay(Member_FundingPayInfoVo member_fundingPayInfoVo);
+	List<Funding_payinfo>selectFundingPayInfo(String member_email);
+	long selectFundingPayCount(String member_email);
+	void updateFundingPayTime(Order_Info order_info);
+	Funding_payinfo selectFundingPayrInfo(long order_index);
+	Member_FundingPayInfoVo selectPerPageFundingPay(int order_cp, int order_ps, String member_email);
+
+	//펀딩 주문내역 끝
 } 

@@ -26,6 +26,7 @@ import creakok.com.kakao.KakaoLogin;
 import creakok.com.service.CreatorService;
 import creakok.com.service.MemberService;
 import creakok.com.vo.Goods_ReviewVo;
+import creakok.com.vo.Member_FundingPayInfoVo;
 import creakok.com.vo.Member_OrderInfoVo;
 import lombok.extern.log4j.Log4j;
 
@@ -234,8 +235,21 @@ public class MemberController {
 		} else {
 			mv.addObject("CreatorStandbyExist", null);
 		}
+		//펀딩 주문내역 추가 시
+		log.info("##########");
+		log.info("##########");
+		log.info("##########");
+		log.info("##########");
+		log.info("##########");
+		log.info("##########");
+		log.info("##########");
+		log.info("##########");
 		
-		
+		Member_FundingPayInfoVo funding_payinfoVo = mService.selectPerPageFundingPay(cp, ps, member_email);
+		long funding_pay_count = mService.selectFundingPayCount(member_email);
+		mv.addObject("funding_pay_info", funding_payinfoVo);
+		mv.addObject("funding_pay_count", funding_pay_count);
+		//펀딩 주문내역 추가 끝
 		mv.addObject("order_info", order_list);	
 		mv.addObject("order_count", order_count);	
 		
