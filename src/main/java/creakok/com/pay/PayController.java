@@ -93,14 +93,9 @@ public class PayController {
 		Funding_payinfo funding_pay_info_before = (Funding_payinfo) session.getAttribute("funding_payinfo");
 		java.util.Date funding_edate_payment = fundingService.getFunding_edate_payment(funding_pay_info_before.getFunding_index());
 		int yearPayment = funding_edate_payment.getYear()-100;
-		log.info(yearPayment);
-		
 		int monthPayment = funding_edate_payment.getMonth()+1;
-		log.info(monthPayment);
 		int datePayment = funding_edate_payment.getDate();
 		String funding_datePayment = "20"+yearPayment+"년 " + monthPayment + "월 "+ datePayment+"일 ";
-		log.info("!!!!!!!!");
-		log.info(funding_datePayment);
 		Funding funding = (Funding) session.getAttribute("funding_detail");
 		String funding_ok="false";
 		if(funding.getPercentage()>=100) {

@@ -187,11 +187,16 @@ public class MemberController {
 		//(1) cp 
 		int cp = 1;
 		if(order_cp == null) {
-			Object cpObj = order_infoVo.getOrder_cp();
-			if(cpObj != null) {
-				cp = (Integer)cpObj;
-			} else if(cpObj == null){
-				cp = 1;
+			//order_info 세션에 없을 시 nullpointer 오류 해결 위해 이프문 추가
+			if(order_infoVo!=null) {
+				Object cpObj = order_infoVo.getOrder_cp();
+				if(cpObj != null) {
+					cp = (Integer)cpObj;
+				} else if(cpObj == null){
+					cp = 1;
+				}
+			}else {
+				cp=1;
 			}
 		}else {
 			order_cp = order_cp.trim();
@@ -200,6 +205,7 @@ public class MemberController {
 		
 		//(2) ps 
 		int ps = 5;	
+	
 
 		Member_OrderInfoVo order_list = mService.selectPerPageOrder(cp, ps, member_email);
 		session.setAttribute("order_infoVo", order_list);
@@ -242,14 +248,36 @@ public class MemberController {
 		} else {
 			mv.addObject("CreatorStandbyExist", null);
 		}
-		
-		Member_FundingPayInfoVo funding_payinfoVo = mService.selectPerPageFundingPay(cp, ps, member_email);
-		long funding_pay_count = mService.selectFundingPayCount(member_email);
 
-		//펀딩 주문내역 추가 시
+		//펀딩 주문내역
+		String fundingpay_cp = request.getParameter("fundingpay_cp");
+		
+		long funding_pay_count = mService.selectFundingPayCount(member_email);
+		
+		//(1) cp 펀딩
+		int cp_funding = 1;
+		if(fundingpay_cp == null) {
+			Object cpObj = session.getAttribute("cp_funding");
+			if(cpObj != null) {
+				cp_funding = (Integer)cpObj;
+			} else if(cpObj == null){
+				cp_funding = 1;
+			}
+		}else {
+			fundingpay_cp = fundingpay_cp.trim();
+			cp_funding = Integer.parseInt(fundingpay_cp);
+		}
+		
+		//(2) ps 
+		int ps_funding = 5;	
+		Member_FundingPayInfoVo funding_payinfoVo = mService.selectPerPageFundingPay(cp_funding, ps_funding, member_email);
+		funding_payinfoVo.setFunding_pay_cp(cp_funding);
+		funding_payinfoVo.setFunding_pay_ps(ps_funding);
+		funding_payinfoVo.setMember_email(member_email);
+
 		session.setAttribute("funding_pay_info", funding_payinfoVo);
 		session.setAttribute("funding_pay_count", funding_pay_count);
-		//펀딩 주문내역 추가 끝
+	
 		session.setAttribute("order_info", order_list);	
 		session.setAttribute("order_count", order_count);	
 		

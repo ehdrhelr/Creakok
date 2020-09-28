@@ -39,7 +39,7 @@
     </select>
     
      <select id="getRelatedFunding" parameterType="long" resultType="Funding">
-        select * from FUNDING where FUNDING_CATEGORY_CODE=${categoryCode}
+        <![CDATA[select * from (select * from funding where funding_edate>sysdate) where FUNDING_CATEGORY_CODE=${categoryCode}]]>
     </select>
     
      <select id="getFunding_qna" parameterType="Funding_qnaVo" resultType="Funding_qna">

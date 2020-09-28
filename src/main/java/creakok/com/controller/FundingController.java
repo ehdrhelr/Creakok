@@ -1,6 +1,7 @@
 package creakok.com.controller;
 
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -244,6 +245,8 @@ public class FundingController {
 				//Related Fundings 셋팅완료
 				fundingSelected.setFunding_category_name(service.selectCategoryName(categoryCode));
 				fundingSelected.setCreator_profil_content(service.getCreatorProfilContent(fundingSelected.getCreator_name()));
+				long qna_totalCount = service.getTotalCount_qna(funding_index);
+				session.setAttribute("qna_totalCount", qna_totalCount);
 				session.setAttribute("funding_detail", fundingSelected);
 				return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
 			}else {
@@ -404,7 +407,21 @@ public class FundingController {
 		long qna_totalCount = service.getTotalCount_qna(funding_index);
 		Funding funding = (Funding)session.getAttribute("funding_detail");
 		funding.setFunding_qna_totalCount(qna_totalCount);
-	
+		
+		java.util.Date funding_edate_payment = service.getFunding_edate_payment(funding_index);
+		int yearPayment = funding_edate_payment.getYear()-100;
+		int monthPayment = funding_edate_payment.getMonth()+1;
+		int datePayment = funding_edate_payment.getDate();
+		String funding_datePayment = "20"+yearPayment+"년 " + monthPayment + "월 "+ datePayment+"일 ";
+		
+		java.util.Date funding_edate_cancel = service.getFunding_edate_cancel(funding_index);
+		int yearCancel = funding_edate_cancel.getYear()-100;
+		int monthCancel = funding_edate_cancel.getMonth()+1;
+		int dateCancel = funding_edate_cancel.getDate();
+		String funding_dateCancel = "20"+yearCancel+"년 " + monthCancel + "월 "+ dateCancel+"일 ";
+		
+		session.setAttribute("aboutpay_date", funding_datePayment);
+		session.setAttribute("aboutcancel_date", funding_dateCancel);
 		session.setAttribute("funding_detail", funding);
 		return new ModelAndView("/funding_about", "funding_detail", funding);	
 	}
