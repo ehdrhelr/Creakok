@@ -23,4 +23,5 @@ public class Funding_payinfo {
 	private String success_pay;
 	private String funding_ok;
 	private String funding_datepayment;
+	private long funding_list_number; //문의 글 번호
 }

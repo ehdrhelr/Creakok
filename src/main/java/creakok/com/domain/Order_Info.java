@@ -22,4 +22,5 @@ public class Order_Info {
 	private long buyer_pay_price; //결제금액
 	private String buyer_card_num;
 	private String buyer_pay_ok; //결제 여부
+	private long order_list_number; //문의 글 번호
 }

@@ -379,7 +379,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                             
                               <tr class="orderInfo_detail">
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
-                                   <span style="font-weight:700">No : </span><span>${order_info.order_index}</span>
+                                   <span style="font-weight:700">No : </span><span>${order_list_number}</span>
                                  </td>
                                  <input type="hidden" id="order_index" name="order_index" value="${order_info.order_index}">
                                  

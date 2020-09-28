@@ -59,7 +59,7 @@ public class PayController {
 		
 		
 		Funding_payinfo funding_payinfo = new Funding_payinfo(-1, funding_payinfo_name, member_email, funding_payinfo_phonenumber, funding_payinfo_amountpay, funding_index, funding_subject,
-			null, null, null, null, null, null);
+			null, null, null, null, null, null, -1);
 		log.info("!!!!!!!!!!!!!!!!!!!"+funding_payinfo);
 		session.setAttribute("funding_payinfo", funding_payinfo);
 		return new ModelAndView("funding_import_pay", "funding_payinfo", funding_payinfo);
@@ -106,7 +106,7 @@ public class PayController {
 		if(funding.getPercentage()>=100) {
 			funding_ok = "true";
 		}
-		Funding_payinfo funding_pay_info = new Funding_payinfo(-1, buyer_name, member_email, buyer_phone, success_amount, funding_pay_info_before.getFunding_index(), product_name, success_num, success_id, success_card_num, success_pay, funding_ok ,funding_datePayment);
+		Funding_payinfo funding_pay_info = new Funding_payinfo(-1, buyer_name, member_email, buyer_phone, success_amount, funding_pay_info_before.getFunding_index(), product_name, success_num, success_id, success_card_num, success_pay, funding_ok ,funding_datePayment, -1);
 		fundingService.updateFunding_amount(funding_pay_info);
 		service.insertFunding_order(funding_pay_info);
 		

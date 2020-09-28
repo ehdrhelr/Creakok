@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import creakok.com.domain.Contact;
 import creakok.com.domain.Creator;
 import creakok.com.domain.Funding;
 import creakok.com.domain.Goods;
@@ -19,4 +20,5 @@ public interface IndexService {
 	Funding_searchVo getSearchFundingVo(int funding_cp, int funding_ps, String keyword);
 	long selectFundingCountBySearch(String keyword);
 	List<Funding> selectFundingByAmount(); 
+	void insertOneQnA(Contact contact);
 }

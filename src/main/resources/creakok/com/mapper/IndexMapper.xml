@@ -71,4 +71,8 @@
 		select COUNT(FUNDING_INDEX) from FUNDING where FUNDING_SUBJECT like '%'||#{keyword}||'%' or 
 		CREATOR_NAME like '%'||#{keyword}||'%'
 	</select>	
+	
+	<insert id="insertOneQnA" parameterType="Contact">
+        insert into CONTACT values(CONTACT_INDEX_SEQ.nextval, #{contact_name}, #{contact_email}, #{contact_subject}, #{contact_message})
+    </insert>
 </mapper>

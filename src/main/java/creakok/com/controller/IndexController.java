@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import creakok.com.domain.Contact;
 import creakok.com.domain.Creator;
 import creakok.com.domain.Funding;
 import creakok.com.domain.Goods;
@@ -233,4 +234,22 @@ public class IndexController {
 		
 		return "search_result";
 	}
+	
+	@PostMapping("index_qna.do")
+	public String qna(HttpServletRequest request, HttpSession session) {
+		String contact_name = request.getParameter("contact-name");
+		String contact_email = request.getParameter("contact-email");
+		String contact_subject = request.getParameter("contact-subject");
+		String contact_message = request.getParameter("message");
+		
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@contact_name: "+contact_name);
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@contact_email: "+contact_email);
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@contact_subject: "+contact_subject);
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@contact_message: "+contact_message);
+		
+		Contact contact = new Contact(-1, contact_name, contact_email, contact_subject, contact_message);
+		indexService.insertOneQnA(contact);
+		
+		return "index";
+	}	
 }

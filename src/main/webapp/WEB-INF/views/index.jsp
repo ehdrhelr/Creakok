@@ -774,21 +774,21 @@
                     </div>
                     <!-- Contact Form Area -->
                     <div class="contact-form-area mb-100">
-                        <form action="#" method="post">
+                        <form action="index_qna.do" method="post">
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="contact-name" placeholder="이름">
+                                        <input type="text" class="form-control" name="contact-name" id="contact-name" placeholder="이름">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="contact-email" placeholder="이메일주소">
+                                        <input type="email" class="form-control" name="contact-email" id="contact-email" placeholder="이메일주소">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="contact-subject" placeholder="제목">
+                                        <input type="text" class="form-control" name="contact-subject" id="contact-subject" placeholder="제목">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -797,7 +797,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn alazea-btn mt-15" style="background-color:#2da498;color:white;font-size:1.2em;font-weight:700;height:40px">문의하기</button>
+                                    <button type="submit" onclick="contactPopup()" class="btn alazea-btn mt-15" style="background-color:#2da498;color:white;font-size:1.2em;font-weight:700;height:40px">문의하기</button>
                                 </div>
                             </div>
                         </form>
@@ -814,6 +814,16 @@
         </div>
     </section>
     <!-- ##### Contact Area End ##### -->
+    
+    <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>   
+    <script type="text/javascript">
+
+          function contactPopup(){ 
+        	    alert('문의글 작성이 완료되었습니다');
+            } 
+
+    </script>
+    
 
     <!-- Footer Bottom Area -->
     <div id="footer_div">

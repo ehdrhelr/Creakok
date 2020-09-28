@@ -136,13 +136,20 @@ public class MemberServiceImpl implements MemberService {
 		Member_OrderInfoVo order_infoVo = new Member_OrderInfoVo(order_cp, order_totalCount, order_ps, member_email, null);
 		List<Order_Info> order_list = memberMapper.selectPerPageOrder(order_infoVo);
 		
+		//문의 글 번호
+		long order_list_number;
+		for(int i=0; i<order_list.size(); i++) {
+			order_list_number = order_totalCount - ((order_cp-1)*order_ps)-i;
+			order_list.get(i).setOrder_list_number(order_list_number);
+		}
+		
 		Member_OrderInfoVo order_infoVo2 = new Member_OrderInfoVo(order_cp, order_totalCount, order_ps, member_email, order_list); 
 		order_infoVo2.setOrder_totalPageCount(order_infoVo2.getOrder_totalPageCount());
-
-		log.info("################# selectPerPageOrder order_cp: "+order_cp);
-		log.info("################# selectPerPageOrder order_ps: "+order_ps);
-		log.info("################# selectPerPageOrder member_email: "+member_email);
-		log.info("�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ� selectPerPageOrder order_list: "+order_list);
+		
+		//log.info("################# selectPerPageOrder order_cp: "+order_cp);
+		//log.info("################# selectPerPageOrder order_ps: "+order_ps);
+		//log.info("################# selectPerPageOrder member_email: "+member_email);
+		//log.info("�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ� selectPerPageOrder order_list: "+order_list);
 		
 		
 		return order_infoVo2;

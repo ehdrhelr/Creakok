@@ -45,6 +45,7 @@
    	   <typeAlias alias="PayInfoVo" type="creakok.com.vo.PayInfoVo"/>  
   	   <typeAlias alias="Order_Info" type="creakok.com.domain.Order_Info"/>
   	   
+  	   <typeAlias alias="Contact" type="creakok.com.domain.Contact"/>  
   	   
   	   <typeAlias alias="LikeTable" type="creakok.com.domain.LikeTable"/>  
         <typeAlias alias="Cart" type="creakok.com.domain.Cart"/>  

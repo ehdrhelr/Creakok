@@ -246,7 +246,6 @@ public class MemberController {
 		Member_FundingPayInfoVo funding_payinfoVo = mService.selectPerPageFundingPay(cp, ps, member_email);
 		long funding_pay_count = mService.selectFundingPayCount(member_email);
 
-		
 		//펀딩 주문내역 추가 시
 		session.setAttribute("funding_pay_info", funding_payinfoVo);
 		session.setAttribute("funding_pay_count", funding_pay_count);
@@ -304,11 +303,12 @@ public class MemberController {
 		mv.addObject("order_info", order_list);	
 		mv.addObject("order_count", order_count);	
 		
+		
 		return mv;
 	}
 	
 	@RequestMapping("member_orderdetail.do")
-	public ModelAndView member_orderdetail(String order_indexStr, String member_email, HttpSession session) {
+	public ModelAndView member_orderdetail(String order_indexStr, String member_email, long order_list_number, HttpSession session) {
 		long order_index = Long.parseLong(order_indexStr);
 			
 		Order_Info order_info = mService.selectOneOrderInfo(order_index);
@@ -318,6 +318,8 @@ public class MemberController {
 		mv.setViewName("mypage_order_detail");
 		mv.addObject("order_info", order_info);	
 		mv.addObject("order_count", order_count);
+		mv.addObject("order_list_number", order_list_number);
+		//mv.addObject("order_list_number", order_list_number);
 			
 		return mv;
 	}

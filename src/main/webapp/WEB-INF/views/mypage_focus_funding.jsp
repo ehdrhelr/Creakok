@@ -435,7 +435,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                              <tr class="order_click_tr">
                                  <td style="padding:3px !important;">${order_info.order_index}</td>
                                  <td style="padding:3px !important;">${order_info.buy_date}</td>
-                                 <td style="padding:3px !important;"  class="order_click_td"><a href="member_orderdetail.do?order_indexStr=${order_info.order_index}&member_email=${order_info.member_email}" style="color:black;">${order_info.buyer_buyid}</a></td>
+                                 <td style="padding:3px !important;"  class="order_click_td"><a href="member_orderdetail.do?order_indexStr=${order_info.order_index}&member_email=${order_info.member_email}&order_list_number=${order_info.order_list_number}" style="color:black;">${order_info.buyer_buyid}</a></td>
                                  <td style="padding:3px !important;">${order_info.buy_product_name}</td>
                                  <td style="padding:3px !important;">${order_info.buyer_pay_price} 원</td>
                                  <td id="review_view" style="padding:1.5px !important;">

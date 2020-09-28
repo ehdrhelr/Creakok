@@ -465,7 +465,7 @@ public class PaymentController {
 	    
 	    Order_Info order_info = new Order_Info(-1L, buyer_name, buyer_phone, member_email, 
 	    		buyer_addr, buy_date, buy_product_name, buyer_buyid, buyer_merid, 
-	    		buyer_pay_price, buyer_card_num, buyer_pay_ok);
+	    		buyer_pay_price, buyer_card_num, buyer_pay_ok, -1);
 	    
 		return order_info;
 	}

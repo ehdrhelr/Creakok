@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import creakok.com.domain.Contact;
 import creakok.com.domain.Creator;
 import creakok.com.domain.Funding;
 import creakok.com.domain.Goods;
@@ -78,5 +79,10 @@ public class IndexServiceImpl implements IndexService {
 	@Override
 	public List<Funding> selectFundingByAmount(){
 		return indexMapper.selectFundingByAmount();
+	}
+	
+	@Override
+	public void insertOneQnA(Contact contact) {
+		indexMapper.insertOneQnA(contact);
 	}
 }
