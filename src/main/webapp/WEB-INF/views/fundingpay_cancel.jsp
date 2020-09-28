@@ -59,14 +59,14 @@
         <div class="text-center">
             <form method="post" action="funding_pay_delete.do" id="frm" target="_self" onsubmit="return false">
                                  <div>
-                                    <label for="product_name" style="margin-right:5px">상품명 : </label>&nbsp;
+                                    <label for="product_name" style="margin-right:5px">펀딩 프로젝트 : </label>&nbsp;
                                     <input name="product_name" style="display:inline-block;width:60%;margin-bottom:10px"class="form-control" 
                                     placeholder="" value="${funding_payinfo.funding_subject}" readonly>
                                 </div>
                                     <input type="hidden" name="order_index" value="${funding_payinfo.funding_payinfo_index}">
                                                                
                                 <div>
-                                    <label for="order_number" style="margin-right:5px">주문번호 : </label>
+                                    <label for="order_number" style="margin-right:5px">펀딩번호 : </label>
                                     <input name="order_number" style="display:inline-block;width:60%"class="form-control" 
                                     placeholder="" value="${funding_payinfo.success_id}" readonly>
                                 </div>
@@ -82,11 +82,9 @@
                                     <select name="paycancel_reason" style="display:inline-block; width:60%; margin-left:5px;margin-top:10px; padding:5px"
                                         onChange="paycancel_reason.value=paycancel_reason[selectedIndex].value">
                                         <option value="none">환불 이유 선택</option>
-                                        <option value="11">실수로 구매함</option>
                                         <option value="22">단순 변심</option>
-                                        <option value="33">사이즈가 맞지 않음</option>  
-                                        <option value="44">제품 불량</option>
-                                        <option value="55">배송료 불만</option>  
+                                        <option value="33">해당 펀딩이 중단됨</option>  
+                                        <option value="44">해당 펀딩 기간의 지연</option>
                                         <option value="66">기타</option>
                                     </select> 
                                    </div>  

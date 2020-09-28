@@ -38,5 +38,4 @@ public class Funding {
 	private int funding_edate_cancel;
 	private int funding_edate_payment;
 	//private List<Funding_qna> funding_qna;
-	
 }

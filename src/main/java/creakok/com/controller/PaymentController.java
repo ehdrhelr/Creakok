@@ -331,7 +331,7 @@ public class PaymentController {
 		log.info("funding_payinfo::::::"+funding_payinfo);
 		fundingservice.updateFunding_cancel(funding_payinfo);
 		
-		return "pay_cancel_ok";
+		return "funding_cancel_ok";
 	}	
 	public static final String IMPORT_TOKEN_URL = "https://api.iamport.kr/users/getToken"; 
 	public static final String IMPORT_PAYMENTINFO_URL = "https://api.iamport.kr/payments/find/"; 

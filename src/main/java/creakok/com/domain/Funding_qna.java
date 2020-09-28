@@ -20,4 +20,6 @@ public class Funding_qna {
 	private String funding_qna_answer_writer;
 	private Date funding_qna_adate;
 	private String funding_qna_subject;
+
+	private long list_number; //게시판 글 번호
 }

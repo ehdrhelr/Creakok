@@ -65,16 +65,13 @@
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-<<<<<<< HEAD
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>FUNDING DETAILS</h2>
-=======
+
         <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_funding.png);">
             <h2 style="color:black;text-align:center">
             	FUNDING<br>
             	<span style="font-size:13pt;color:#828282;font-weight:400">크리에이터의 이런 컨텐츠 어때요?</span>
             </h2>
->>>>>>> refs/heads/master_jhseo6
+
         </div>
 
         <div class="container">
@@ -246,7 +243,7 @@
                          <c:forEach items="${funding_detail.funding_qnaVo.list}" var="funding_qna">
                          
                              <tr>
-                             <td style="padding:1.5px !important;">${funding_qna.funding_qna_index}</td>
+                             <td style="padding:1.5px !important;">${funding_qna.list_number}</td>
                                   <td style="padding:1.5px !important;"><a href="funding_qna.detail?funding_qna_index=${funding_qna.funding_qna_index}&funding_index=${funding_qna.funding_index}#fix_point" style="color:black">${funding_qna.funding_qna_subject}</a></td>
                                   
                               

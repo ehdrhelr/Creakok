@@ -65,8 +65,8 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>My Page</h2>
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_mypage.png);">
+            <h2 style="color:black">My Page</h2>
         </div>
 
         <div class="container"> <!--Home>My Page-->
@@ -115,9 +115,9 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
         
             <!-- Tab panes -->
             <div class="tab-content"> <!--My Page Tabs Contents-->
-                <div id="standby_creator" class="container tab-pane" >
-                    <h3>크리에이터 신청 리스트</h3>
-                      <table style="">
+                <div id="standby_creator" class="container tab-pane" style="margin-bottom:7%">
+                    <h3 style="margin-bottom:20px">크리에이터 신청 리스트</h3>
+                      <table>
                       <colgroup>
                           <col width="12%">
                           <col width="12%">
@@ -487,7 +487,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                     <c:if test="${empty funding_pay_info}">
                        <h3>펀딩 내역(총  0개)</h3>              
                     </c:if>
-                    <h3>주문 내역(총 ${funding_pay_count}개)</h3>
+                    <h3>펀딩 내역(총 ${funding_pay_count}개)</h3>
                     <p style="margin-bottom:20px">펀딩 제목을 클릭하시면 해당 펀딩에 대한 상세내역을 확인하실 수 있습니다.</p>
                     
                     <div id="mypage_funding_area"></div>

@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.Member_origin"%>
+<%@ page contentType="text/html; charset=utf-8" 
+import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, creakok.com.filesetting.Path"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -64,8 +65,8 @@
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>My Page</h2>
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_mypage.png);">
+            <h2 style="color:black">My Page</h2>
         </div>
 
         <div class="container"> <!--Home>My Page-->
@@ -88,6 +89,11 @@
                 <div class="col-12">
                     <div class="most__search__tab">
                         <ul class="nav nav-tabs nav-pills" role="tablist">
+                            <c:if test="${member.member_email == Member_category.SUPER_ACCOUNT}">
+                            <li class="nav-item">
+                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#standby_creator" role="tab">크리에이터 신청명단</a>
+                            </li>
+                            </c:if>
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
                             </li>
@@ -97,14 +103,85 @@
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link active" data-toggle="tab" href="#my_order" role="tab">주문내역</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#my_funding" role="tab">펀딩내역</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div> <!--end of My Page Tabs Headers-->
 
-        
-            <!-- Tab panes -->
+
             <div class="tab-content"> <!--My Page Tabs Contents-->
+            
+                <!-- 크리에이터 신청 리스트 -->
+            <div class="tab-content"> <!--My Page Tabs Contents-->
+                <div id="standby_creator" class="container tab-pane" style="margin-bottom:7%">
+                    <h3 style="margin-bottom:20px">크리에이터 신청 리스트</h3>
+                      <table style="">
+                      <colgroup>
+                          <col width="12%">
+                          <col width="12%">
+                          <col width="20%">
+                          <col width="20%">
+                          <col width="30%">
+                          <col width="6%">
+                      </colgroup>
+                       <thead>
+                          <tr>
+                              <th style="padding:1.5px !important;">이름</th>
+                              <th style="padding:1.5px !important;">이메일</th>
+                              <th style="padding:1.5px !important;">소개</th>
+                              <th style="padding:1.5px !important;">대표사진</th>
+                              <th style="padding:1.5px !important;">배너사진</th>
+                              <th style="padding:1.5px !important;">등록/취소</th>
+                          </tr>
+                      </thead>  
+                      <tbody>
+                        <c:if test="${empty standby_list}">
+                          <tr>
+                            <td colspan="6" style="border-bottom:1px solid black">신청 내역이 없습니다.</td>   
+                          </tr>
+                        </c:if>
+                        <c:if test="${!empty standby_list}">
+                          <c:set var="listCount" value="0"/>
+                          <c:forEach items="${standby_list}" var="creator">
+                             <tr class="order_click_tr">
+                                <td style="padding:3px !important;">${creator.creator_name}</td>
+                                <td style="padding:3px !important;">${creator.member_email}</td>
+                                <td style="padding:3px !important;">${creator.creator_profile_content}</td>
+                                <td style="padding:3px !important;"><img src="${Path.IMG_STORE_COMMUNITY_SHORT}${creator.creator_profile_photo}"></td>
+                                <td style="padding:3px !important;"><img src="${Path.IMG_STORE_COMMUNITY_SHORT}${creator.creator_banner_photo}"></td>
+                                <td style="padding:3px !important;">
+                                  <input type="button" value="등록" onclick="addCreator_standby('${creator.creator_name}')"><br/>
+                                  <input type="button" value="삭제" onclick="deleteCreator_standby('${creator.creator_name}')">
+                                  <script type="text/javascript">
+                                  function deleteCreator_standby(creator_name){
+                                      let result = confirm(creator_name+'을 크리에이터 신청 리스트에서 삭제하겠습니까?')
+                                      if(result){
+                                          location.href="deleteCreator_standby.do?creator_name="+creator_name;    
+                                      }
+                                  }
+                                  function addCreator_standby(creator_name){
+                                      let result = confirm(creator_name+'을 크리에이터로 등록하겠습니까?')
+                                      if(result){
+                                          location.href="addCreator_standby.do?creator_name="+creator_name;    
+                                      }
+                                  }
+                                  </script>
+                                  
+                                </td>
+                              </tr>
+                          <c:set var="listCount" value="${listCount + 1}"/>
+                          </c:forEach>
+                        </c:if>
+                      </tbody>
+                  </table>
+                </div>
+            <!-- Tab panes -->        
+            
+            
+            
                 <div id="jjim-list" class="container tab-pane">
                     <h3>좋아요 리스트</h3>
                     <p>리스트를 어떻게 표시할까?</p>
@@ -378,6 +455,105 @@
                                 <a href="#" onclick="popupPost()" style="font-size:13pt;background-color:white;border:1px solid black; color:black; width:130px; padding:3px;">주문 취소</a>
                             </p>
                 </div>
+                
+                <!--  펀딩 내역   -->
+                 <div id="my_funding" class="container tab-pane" style="margin-bottom:10%">
+                    <c:if test="${empty funding_pay_info}">
+                       <h3>펀딩 내역(총  0개)</h3>              
+                    </c:if>
+                    <h3>펀딩 내역(총 ${funding_pay_count}개)</h3>
+                    <p style="margin-bottom:20px">펀딩 제목을 클릭하시면 해당 펀딩에 대한 상세내역을 확인하실 수 있습니다.</p>
+                    
+                    <div id="mypage_funding_area"></div>
+                    
+                    <div id="mypage_goods_area"></div>
+                    
+                    <table style="">
+                    <colgroup>
+                        <col width="5%">
+                        <col width="25%">
+                        <col width="20%">
+                        <col width="15%">
+                        <col width="10%">
+                        <col width="15%">
+                        <col width="10%">
+                    </colgroup>
+                     <thead>
+                        <tr>
+                            <th style="padding:1.5px !important;">No</th>
+                            <th style="padding:1.5px !important;">펀딩 제목</th>
+                            <th style="padding:1.5px !important;">펀딩액</th>
+                            <th style="padding:1.5px !important;">펀딩 진행여부</th>
+                            <th style="padding:1.5px !important;">결제예정일</th>
+                            <th style="padding:1.5px !important;">결제상태</th>
+                        </tr>
+                    </thead>  
+                    <tbody>
+                      
+                        <c:if test="${empty funding_pay_info.funding_pay_list}">
+                            <tr>
+                           <td colspan="6" style="border-bottom:1px solid black">
+                                                                펀딩 내역이 없습니다.
+                           </td>  
+                           </tr>
+                        </c:if>
+                        
+                        
+                        <c:if test="${!empty funding_pay_info.funding_pay_list}">
+                         <c:forEach items="${funding_pay_info.funding_pay_list}" var="funding_payinfo">
+                             <tr class="order_click_tr">
+                                 <td style="padding:3px !important;">${funding_payinfo.funding_payinfo_index}</td>
+                                 <td style="padding:3px !important;">
+                                    <a href="member_fundingpayDetail.do?funding_payinfo_index=${funding_payinfo.funding_payinfo_index}&member_email=${funding_payinfo.member_email}" style="color:black;">
+                                     ${funding_payinfo.funding_subject}
+                                    </a>
+                                 </td>
+                                 <td style="padding:3px !important;">${funding_payinfo.funding_payinfo_amountpay} 원</td>
+                                 <td style="padding:3px !important;">
+                                     <c:if test="${funding_payinfo.funding_ok == 'true'}">
+                                                                                    확정
+                                     </c:if>
+                                     <c:if test="${funding_payinfo.funding_ok == 'false'}">
+                                                                                     미정
+                                     </c:if>
+                                 </td>
+                                 <td style="padding:3px !important;">${funding_payinfo.funding_datepayment}</td>
+                                 <td id="review_view" style="padding:1.5px !important;">
+                                     <c:if test="${funding_payinfo.success_pay == 'true'}">
+                                                                                    결제 예약 완료
+                                     </c:if>
+                                     <c:if test="${funding_payinfo.success_pay == 'false'}">
+                                                                                     결제 대기
+                                     </c:if>
+                                 </td>
+                              </tr>
+                        </c:forEach>
+                     </c:if>
+                     
+                      <tr>
+                            <td colspan="6" align="center" style="border-bottom:0px">
+                             <c:forEach begin="1" end="${funding_pay_info.funding_pay_totalPageCount}" var="i">
+                                      <a href="member_order.do?order_cp=${i}&member_email=${funding_pay_info.member_email}#fix_point" style="color:black; font-size:11pt">
+                                  <c:choose> 
+                                  <c:when test="${i==funding_pay_info.funding_pay_cp}">
+                                      <strong>${i}</strong>
+                                  </c:when>
+                                  <c:otherwise>
+                                      ${i}
+                                  </c:otherwise>
+                                  </c:choose>
+                              </a>
+                              
+                              &nbsp;
+                              </c:forEach>
+                            </td>
+                       </tr>
+                    </tbody>
+                </table>
+                </div>
+                <!--  펀딩 내역  End -->               
+                
+                
             </div> <!--My Page Tabs Contents-->
         </div>
     </div>

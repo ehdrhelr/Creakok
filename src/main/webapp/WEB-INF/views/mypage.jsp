@@ -94,7 +94,8 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#standby_creator" role="tab">크리에이터 신청명단</a>
                             </li>
                             </c:if>
-                        
+
+                            
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link active" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
                             </li>
@@ -107,6 +108,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#my_funding" role="tab">펀딩내역</a>
                             </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -115,8 +117,8 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
         
             <!-- Tab panes -->
             <div class="tab-content"> <!--My Page Tabs Contents-->
-                <div id="standby_creator" class="container tab-pane" >
-                    <h3>크리에이터 신청 리스트</h3>
+                <div id="standby_creator" class="container tab-pane" style="margin-bottom:7%">
+                    <h3 style="margin-bottom:20px">크리에이터 신청 리스트</h3>
                       <table style="">
                       <colgroup>
                           <col width="12%">
@@ -394,7 +396,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                        <h3>주문 내역(총  0개)</h3>              
                     </c:if>
                     <h3>주문 내역(총 ${order_count}개)</h3>
-                    <p style="margin-bottom:20px">주문 번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</p>
+                    <p style="margin-bottom:20px">주문 번호를 클릭하시면 주문 취소 및 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</p>
                     
                     <div id="mypage_funding_area"></div>
                     

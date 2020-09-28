@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.Member_origin"%>
+<%@ page contentType="text/html; charset=utf-8" 
+import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, creakok.com.filesetting.Path"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -64,8 +65,8 @@
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>My Page</h2>
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_mypage.png);">
+            <h2 style="color:black">My Page</h2>
         </div>
 
         <div class="container"> <!--Home>My Page-->
@@ -88,6 +89,11 @@
                 <div class="col-12">
                     <div class="most__search__tab">
                         <ul class="nav nav-tabs nav-pills" role="tablist">
+                            <c:if test="${member.member_email == Member_category.SUPER_ACCOUNT}">
+                            <li class="nav-item">
+                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#standby_creator" role="tab">크리에이터 신청명단</a>
+                            </li>
+                            </c:if>
                            <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
                             </li>
@@ -104,10 +110,76 @@
                     </div>
                 </div>
             </div> <!--end of My Page Tabs Headers-->
-
-        
+            
             <!-- Tab panes -->
             <div class="tab-content"> <!--My Page Tabs Contents-->
+            
+             <!-- 크리에이터 신청 리스트 -->
+            <div class="tab-content"> <!--My Page Tabs Contents-->
+                <div id="standby_creator" class="container tab-pane" style="margin-bottom:7%">
+                    <h3 style="margin-bottom:20px">크리에이터 신청 리스트</h3>
+                      <table style="">
+                      <colgroup>
+                          <col width="12%">
+                          <col width="12%">
+                          <col width="20%">
+                          <col width="20%">
+                          <col width="30%">
+                          <col width="6%">
+                      </colgroup>
+                       <thead>
+                          <tr>
+                              <th style="padding:1.5px !important;">이름</th>
+                              <th style="padding:1.5px !important;">이메일</th>
+                              <th style="padding:1.5px !important;">소개</th>
+                              <th style="padding:1.5px !important;">대표사진</th>
+                              <th style="padding:1.5px !important;">배너사진</th>
+                              <th style="padding:1.5px !important;">등록/취소</th>
+                          </tr>
+                      </thead>  
+                      <tbody>
+                        <c:if test="${empty standby_list}">
+                          <tr>
+                            <td colspan="6" style="border-bottom:1px solid black">신청 내역이 없습니다.</td>   
+                          </tr>
+                        </c:if>
+                        <c:if test="${!empty standby_list}">
+                          <c:set var="listCount" value="0"/>
+                          <c:forEach items="${standby_list}" var="creator">
+                             <tr class="order_click_tr">
+                                <td style="padding:3px !important;">${creator.creator_name}</td>
+                                <td style="padding:3px !important;">${creator.member_email}</td>
+                                <td style="padding:3px !important;">${creator.creator_profile_content}</td>
+                                <td style="padding:3px !important;"><img src="${Path.IMG_STORE_COMMUNITY_SHORT}${creator.creator_profile_photo}"></td>
+                                <td style="padding:3px !important;"><img src="${Path.IMG_STORE_COMMUNITY_SHORT}${creator.creator_banner_photo}"></td>
+                                <td style="padding:3px !important;">
+                                  <input type="button" value="등록" onclick="addCreator_standby('${creator.creator_name}')"><br/>
+                                  <input type="button" value="삭제" onclick="deleteCreator_standby('${creator.creator_name}')">
+                                  <script type="text/javascript">
+                                  function deleteCreator_standby(creator_name){
+                                      let result = confirm(creator_name+'을 크리에이터 신청 리스트에서 삭제하겠습니까?')
+                                      if(result){
+                                          location.href="deleteCreator_standby.do?creator_name="+creator_name;    
+                                      }
+                                  }
+                                  function addCreator_standby(creator_name){
+                                      let result = confirm(creator_name+'을 크리에이터로 등록하겠습니까?')
+                                      if(result){
+                                          location.href="addCreator_standby.do?creator_name="+creator_name;    
+                                      }
+                                  }
+                                  </script>
+                                  
+                                </td>
+                              </tr>
+                          <c:set var="listCount" value="${listCount + 1}"/>
+                          </c:forEach>
+                        </c:if>
+                      </tbody>
+                  </table>
+                </div>
+            
+            
                 <div id="jjim-list" class="container tab-pane">
                     <h3>좋아요 리스트</h3>
                     <p>리스트를 어떻게 표시할까?</p>
@@ -273,11 +345,100 @@
                     
                 </div>
                 
+                 <!--  주문 내역   -->
+                 <div id="my_order" class="container tab-pane" style="margin-bottom:10%">
+                    <c:if test="${empty order_info}">
+                       <h3>주문 내역(총  0개)</h3>              
+                    </c:if>
+                    <h3>주문 내역(총 ${order_count}개)</h3>
+                    <p style="margin-bottom:20px">주문 번호를 클릭하시면 주문 취소 및 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</p>
+                    
+                    <div id="mypage_funding_area"></div>
+                    
+                    <div id="mypage_goods_area"></div>
+                    
+                    <table style="">
+                    <colgroup>
+                        <col width="5%">
+                        <col width="15%">
+                        <col width="20%">
+                        <col width="30%">
+                        <col width="15%">
+                        <col width="15%">
+                    </colgroup>
+                     <thead>
+                        <tr>
+                            <th style="padding:1.5px !important;">No</th>
+                            <th style="padding:1.5px !important;">주문일자</th>
+                            <th style="padding:1.5px !important;">주문번호</th>
+                            <th style="padding:1.5px !important;">상품명</th>
+                            <th style="padding:1.5px !important;">결제금액</th>
+                            <th style="padding:1.5px !important;">결제상태</th>
+                        </tr>
+                    </thead>  
+                    <tbody>
+                      
+                      
+                        <c:if test="${empty order_info.order_list}">
+                            <tr>
+                           <td colspan="6" style="border-bottom:1px solid black">
+                                                                주문 내역이 없습니다.
+                           </td>   
+                           </tr>            
+                        </c:if>
+                        
+                        <c:if test="${!empty order_info.order_list}">
+                         <c:forEach items="${order_info.order_list}" var="order_info">
+                             <tr class="order_click_tr">
+                                 <td style="padding:3px !important;">${order_info.order_index}</td>
+                                 <td style="padding:3px !important;">${order_info.buy_date}</td>
+                                 <td style="padding:3px !important;"  class="order_click_td"><a href="member_orderdetail.do?order_indexStr=${order_info.order_index}&member_email=${order_info.member_email}" style="color:black;">${order_info.buyer_buyid}</a></td>
+                                 <td style="padding:3px !important;">${order_info.buy_product_name}</td>
+                                 <td style="padding:3px !important;">${order_info.buyer_pay_price} 원</td>
+                                 <td id="review_view" style="padding:1.5px !important;">
+                                    <c:if test="${order_info.buyer_pay_ok == 'ready'}">
+                                            미결제
+                                     </c:if>
+                                     <c:if test="${order_info.buyer_pay_ok == 'paid'}">
+                                            결제완료
+                                     </c:if>
+                                     <c:if test="${order_info.buyer_pay_ok == 'cancelled'}">
+                                                                                        결제취소
+                                     </c:if>
+                                     <c:if test="${order_info.buyer_pay_ok == 'failed'}">
+                                                                                        결제실패
+                                     </c:if>
+                                 </td>
+                              </tr>
+                        </c:forEach>
+                     </c:if>
+                     
+                      <tr>
+                            <td colspan="6" align="center" style="border-bottom:0px">
+                             <c:forEach begin="1" end="${order_info.order_totalPageCount}" var="i">
+                                      <a href="member_order.do?order_cp=${i}&member_email=${order_info.member_email}#fix_point" style="color:black; font-size:11pt">
+                                  <c:choose> 
+                                  <c:when test="${i==order_info.order_cp}">
+                                      <strong>${i}</strong>
+                                  </c:when>
+                                  <c:otherwise>
+                                      ${i}
+                                  </c:otherwise>
+                                  </c:choose>
+                              </a>
+                              
+                              &nbsp;
+                              </c:forEach>
+                            </td>
+                       </tr>
+                    </tbody>
+                </table>
+                </div>
+                <!--  주문 내역  End -->               
                 
-                
-                <!--  주문 내역   -->
-                 <div id="my_order" class="container tab-pane active" style="margin-bottom:10%">
-                    <h3 style="margin-bottom:20px">주문 내역(총 ${order_count}개)</h3>
+                <!--  펀딩 내역   -->
+                 <div id="my_funding" class="container tab-pane active" style="margin-bottom:10%">
+                    <h3 style="margin-bottom:20px">펀딩 내역(총 ${funding_paycount}개)</h3>
                    
                     
                     <div id="mypage_funding_area"></div>
@@ -298,7 +459,7 @@
                     
                         <c:if test="${empty funding_payinfo}">
                            <td colspan="5">
-                                                                주문 내역이 없습니다.</td>
+                                                                펀딩 내역이 없습니다.</td>
                                         
                         </c:if>
                         <c:if test="${!empty funding_payinfo}">
@@ -310,7 +471,7 @@
                                  <input type="hidden" id="order_index" name="funding_payinfo_index" value="${funding_payinfo.funding_payinfo_index}">
                                  
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
-                                   <span style="font-weight:700">주문인 : </span><span>${funding_payinfo.funding_payinfo_name}</span> 
+                                   <span style="font-weight:700">펀딩인 : </span><span>${funding_payinfo.funding_payinfo_name}</span> 
                                  </td>
                               </tr>
                               <tr class="orderInfo_detail">
@@ -329,16 +490,16 @@
                               
                               <tr class="orderInfo_detail">
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
-                                   <span style="font-weight:700">총 금액 : </span><span>${funding_payinfo.funding_payinfo_amountpay} 원</span>
+                                   <span style="font-weight:700">펀딩 금액 : </span><span>${funding_payinfo.funding_payinfo_amountpay} 원</span>
                                  </td>
-                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
-                                   <span style="font-weight:700">상품명 : </span><span>${funding_payinfo.funding_subject}</span> 
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-top:1px solid #bdbdbd;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
+                                   <span style="font-weight:700">펀딩 프로젝트 : </span><span>${funding_payinfo.funding_subject}</span> 
                                  </td>
                               </tr>
   
                               <tr class="orderInfo_detail">
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;padding:10px">
-                                   <span style="font-weight:700">주문번호 : </span><span>${funding_payinfo.success_id}</span>
+                                   <span style="font-weight:700">결제 번호 : </span><span>${funding_payinfo.success_id}</span>
                                  </td>
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:10px">
                                    <span style="font-weight:700">결제여부 : </span> 
@@ -363,7 +524,7 @@
                                  <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:2px solid black;padding:10px">
                                    <span style="font-weight:700">카드승인번호 : </span><span>${funding_payinfo.success_card_num}</span>
                                  </td>
-                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:2px solid black;border-left:1px solid #bdbdbd;padding:10px">
+                                 <td colspan="3" style="font-size:12pt;color:black;text-align:left;border-bottom:2px solid black;padding:10px">
                                    
                                  </td>
                               </tr>
@@ -380,6 +541,9 @@
                             	</c:if>
                             </p>
                 </div>
+                <!--  펀딩 내역  End  -->
+                
+                
             </div> <!--My Page Tabs Contents-->
         </div>
     </div>

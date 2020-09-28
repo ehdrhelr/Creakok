@@ -242,14 +242,17 @@ public class MemberController {
 		} else {
 			mv.addObject("CreatorStandbyExist", null);
 		}
-		//펀딩 주문내역 추가 시
+		
 		Member_FundingPayInfoVo funding_payinfoVo = mService.selectPerPageFundingPay(cp, ps, member_email);
 		long funding_pay_count = mService.selectFundingPayCount(member_email);
-		mv.addObject("funding_pay_info", funding_payinfoVo);
-		mv.addObject("funding_pay_count", funding_pay_count);
+
+		
+		//펀딩 주문내역 추가 시
+		session.setAttribute("funding_pay_info", funding_payinfoVo);
+		session.setAttribute("funding_pay_count", funding_pay_count);
 		//펀딩 주문내역 추가 끝
-		mv.addObject("order_info", order_list);	
-		mv.addObject("order_count", order_count);	
+		session.setAttribute("order_info", order_list);	
+		session.setAttribute("order_count", order_count);	
 		
 		return mv;
 	}
@@ -296,6 +299,8 @@ public class MemberController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("mypage_order");
+
+		
 		mv.addObject("order_info", order_list);	
 		mv.addObject("order_count", order_count);	
 		
@@ -303,7 +308,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("member_orderdetail.do")
-	public ModelAndView member_orderdetail(String order_indexStr, String member_email) {
+	public ModelAndView member_orderdetail(String order_indexStr, String member_email, HttpSession session) {
 		long order_index = Long.parseLong(order_indexStr);
 			
 		Order_Info order_info = mService.selectOneOrderInfo(order_index);

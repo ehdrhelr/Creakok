@@ -270,14 +270,27 @@ public class FundingController {
 					cp_qna = Integer.parseInt(cpStr_qna);
 				}
 		session.setAttribute("fundingQna_cp", cp_qna);
-				
+		
+		
 		long qna_totalCount = service.getTotalCount_qna(funding_index);
 		Funding funding = (Funding)session.getAttribute("funding_detail");
 		funding.setFunding_qna_totalCount(qna_totalCount);
 		Funding_qnaVo funding_qnaVo_temp = new Funding_qnaVo(funding_index, cp_qna, qna_totalCount, 5, null);
 		List<Funding_qna> funding_qna_list = service.getFunding_qna(funding_qnaVo_temp);
+		
+		//QnA 글 번호
+		long list_number;
+		for(int i=0; i<funding_qna_list.size(); i++) {
+			list_number = funding_qnaVo_temp.getTotalCount() - ((funding_qnaVo_temp.getCurrentPage()-1)*funding_qnaVo_temp.getPageSize())-i;
+			
+			funding_qna_list.get(i).setList_number(list_number);
+		}		
+		
 		funding_qnaVo_temp.setList(funding_qna_list);
 		funding.setFunding_qnaVo(funding_qnaVo_temp);
+		
+
+		
 		session.setAttribute("funding_detail", funding);
 		session.setAttribute("qna_totalCount", qna_totalCount);
 		return new ModelAndView("/funding_qna", "funding_detail", funding);	
@@ -298,7 +311,8 @@ public class FundingController {
 	    String review_writer = request.getParameter("!funding_qna_writer");
 	    String review_subject = request.getParameter("!funding_qna_subject");
 	    String review_content = request.getParameter("!funding_qna_content");
-	    Funding_qna funding_qna = new Funding_qna(-1, funding_index, review_writer, null, review_content, null, null, null, null, review_subject);
+	    
+	    Funding_qna funding_qna = new Funding_qna(-1, funding_index, review_writer, null, review_content, null, null, null, null, review_subject, -1);
 	    service.write_qna(funding_qna);
 	   return "redirect:funding_qna.do?funding_index="+funding_index+"#fix_point";
 	}
@@ -338,7 +352,7 @@ public class FundingController {
 		String funding_indexStr = request.getParameter("funding_index");
 		long funding_index = Long.parseLong(funding_indexStr);
 		
-		Funding_qna funding_qna = new Funding_qna(funding_qna_index, funding_index, member_name, null, funding_qna_content, null, null, null, null, funding_qna_subject);
+		Funding_qna funding_qna = new Funding_qna(funding_qna_index, funding_index, member_name, null, funding_qna_content, null, null, null, null, funding_qna_subject, -1);
 		service.editQna(funding_qna);
 		
 		return "redirect:funding_qna.do?funding_index="+funding_index+"#fix_point";
@@ -353,7 +367,7 @@ public class FundingController {
 		String funding_qna_answer = request.getParameter("funding_qna_answer");
 		 
 		Funding funding = (Funding)session.getAttribute("funding_detail");
-		Funding_qna funding_qna = new Funding_qna(funding_qna_index, funding_index, null, null, null,null, funding_qna_answer, funding.getCreator_name(), null, null);
+		Funding_qna funding_qna = new Funding_qna(funding_qna_index, funding_index, null, null, null,null, funding_qna_answer, funding.getCreator_name(), null, null, -1);
 		service.answerQna(funding_qna);
 		return "redirect:funding_qna.detail?funding_index="+funding_index+"&funding_qna_index="+funding_qna_index+"#fix_point";
 	}
@@ -366,7 +380,7 @@ public class FundingController {
 		long funding_index = Long.parseLong(funding_indexStr);
 		String creator_name = request.getParameter("creator_name");
 		String answer = request.getParameter("answer");
-		Funding_qna funding_qna = new Funding_qna(funding_qna_index, -1, null, null, null, null, answer, creator_name, null, null);
+		Funding_qna funding_qna = new Funding_qna(funding_qna_index, -1, null, null, null, null, answer, creator_name, null, null, -1);
 
 		service.answerEditQna(funding_qna);
 		return "redirect:funding_qna.detail?funding_index="+funding_index+"&funding_qna_index="+funding_qna_index+"#fix_point";

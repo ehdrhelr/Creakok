@@ -187,7 +187,7 @@
                     href="funding_detail.do?funding_index=${funding_detail.funding_index}#fix_point">스토리</a>
                      
                     <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" 
-                   href="funding_qna.do?funding_index=${funding_detail.funding_index}#fix_point">Q&A(${funding_detail.funding_qna_totalCount})</a>
+                   href="funding_qna.do?funding_index=${funding_detail.funding_index}#fix_point">Q&A(${qna_totalCount})</a>
                     <a class="ContentsNavigation__NavItem-mwsx7i-0 cjInbB" href="funding_about.do?funding_index=${funding_detail.funding_index}#fix_point">펀딩 안내</a></div>
                 </div>
             </nav>
