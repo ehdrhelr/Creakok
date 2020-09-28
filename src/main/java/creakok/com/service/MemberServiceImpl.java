@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import creakok.com.domain.Contact;
 import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Goods_Review;
 import creakok.com.domain.LoginResult;
@@ -194,15 +195,19 @@ public class MemberServiceImpl implements MemberService {
 		
 		return order_infoVo2;
 		
-		
-		
-		
-		
-		
-		
-		
 	}
 	//펀딩 주문내역 추가 
+	
+	
+	//문의 내역
+	@Override
+	public List<Contact> selectContact(){
+		return memberMapper.selectContact();
+	}
+	@Override
+	public void updateAnswer(long contact_index) {
+		memberMapper.updateAnswer(contact_index);
+	}
 }
 
 

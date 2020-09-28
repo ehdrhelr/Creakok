@@ -96,4 +96,12 @@
   <select id="selectFundingPayInfo" parameterType="long" resultType="Funding_payinfo">
     select * from FUNDING_PAYINFO where FUNDING_PAYINFO_INDEX=${funding_payinfo_index}
   </select>
+  
+  <select id="selectContact" resultType="Contact">
+    select * from CONTACT order by CONTACT_INDEX desc
+  </select> 
+  
+   <update id="updateAnswer" parameterType="long">
+       update CONTACT set CONTACT_OK = '답변완료' WHERE CONTACT_INDEX=${contact_index}
+   </update>
 </mapper>

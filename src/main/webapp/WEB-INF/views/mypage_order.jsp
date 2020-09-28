@@ -74,8 +74,8 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">My Page</li>
+                            <li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i> Home</li>
+                            <li class="breadcrumb-item active" aria-current="page"><span style="font-weight:600; color:black;">My Page</span></li>
                         </ol>
                     </nav>
                 </div>
@@ -93,7 +93,14 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#standby_creator" role="tab">크리에이터 신청명단</a>
                             </li>
+                            
+                            <!-- 인덱스 문의글 -->
+                            <li class="nav-item">
+                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#qna-list" role="tab">문의글 목록</a>
+                            </li>   
                             </c:if>
+                            
+                            
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
                             </li>
@@ -114,6 +121,130 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
             
             <!-- Tab panes -->
             <div class="tab-content"> <!--My Page Tabs Contents-->
+                           <div id="standby_creator" class="container tab-pane" style="margin-bottom:7%">
+                    <h3 style="margin-bottom:20px">크리에이터 신청 리스트</h3>
+                      <table style="">
+                      <colgroup>
+                          <col width="12%">
+                          <col width="12%">
+                          <col width="20%">
+                          <col width="20%">
+                          <col width="30%">
+                          <col width="6%">
+                      </colgroup>
+                       <thead>
+                          <tr>
+                              <th style="padding:1.5px !important;">이름</th>
+                              <th style="padding:1.5px !important;">이메일</th>
+                              <th style="padding:1.5px !important;">소개</th>
+                              <th style="padding:1.5px !important;">대표사진</th>
+                              <th style="padding:1.5px !important;">배너사진</th>
+                              <th style="padding:1.5px !important;">등록/취소</th>
+                          </tr>
+                      </thead>  
+                      <tbody>
+                        <c:if test="${empty standby_list}">
+                          <tr>
+                            <td colspan="6" style="border-bottom:1px solid black">신청 내역이 없습니다.</td>   
+                          </tr>
+                        </c:if>
+                        <c:if test="${!empty standby_list}">
+                          <c:set var="listCount" value="0"/>
+                          <c:forEach items="${standby_list}" var="creator">
+                             <tr class="order_click_tr">
+                                <td style="padding:3px !important;">${creator.creator_name}</td>
+                                <td style="padding:3px !important;">${creator.member_email}</td>
+                                <td style="padding:3px !important;">${creator.creator_profile_content}</td>
+                                <td style="padding:3px !important;"><img src="${Path.IMG_STORE_COMMUNITY_SHORT}${creator.creator_profile_photo}"></td>
+                                <td style="padding:3px !important;"><img src="${Path.IMG_STORE_COMMUNITY_SHORT}${creator.creator_banner_photo}"></td>
+                                <td style="padding:3px !important;">
+                                  <input type="button" value="등록" onclick="addCreator_standby('${creator.creator_name}')"><br/>
+                                  <input type="button" value="삭제" onclick="deleteCreator_standby('${creator.creator_name}')">
+                                  <script type="text/javascript">
+                                  function deleteCreator_standby(creator_name){
+                                      let result = confirm(creator_name+'을 크리에이터 신청 리스트에서 삭제하겠습니까?')
+                                      if(result){
+                                          location.href="deleteCreator_standby.do?creator_name="+creator_name;    
+                                      }
+                                  }
+                                  function addCreator_standby(creator_name){
+                                      let result = confirm(creator_name+'을 크리에이터로 등록하겠습니까?')
+                                      if(result){
+                                          location.href="addCreator_standby.do?creator_name="+creator_name;    
+                                      }
+                                  }
+                                  </script>
+                                  
+                                </td>
+                              </tr>
+                          <c:set var="listCount" value="${listCount + 1}"/>
+                          </c:forEach>
+                        </c:if>
+                      </tbody>
+                  </table>
+                </div>
+                
+                <!--  문의 글 목록     -->
+                <div id="qna-list" class="container tab-pane" style="margin-bottom:7%">
+                    <h3>문의 글</h3>
+                    <p>답변했을 경우 '답변 등록'을 눌러주세요</p>
+                    
+                      <table style="">
+                      <colgroup>
+                          <col width="5%">
+                          <col width="9%">
+                          <col width="15%">
+                          <col width="15%">
+                          <col width="40%">
+                          <col width="8%">
+                          <col width="8%">
+                      </colgroup>
+                       <thead>
+                          <tr>
+                              <th style="padding:1.5px !important;">No</th>
+                              <th style="padding:1.5px !important;">이름</th>
+                              <th style="padding:1.5px !important;">이메일</th>
+                              <th style="padding:1.5px !important;">제목</th>
+                              <th style="padding:1.5px !important;">내용</th>
+                              <th style="padding:1.5px !important;">답변 여부</th>
+                          </tr>
+                          
+                      </thead>  
+                      <tbody>
+                        <c:if test="${empty contact_list}">
+                          <tr>
+                            <td colspan="6" style="border-bottom:1px solid black">문의글이 없습니다.</td>   
+                          </tr>
+                        </c:if>
+                        <c:if test="${!empty contact_list}">
+                          
+                          <c:forEach items="${contact_list}" var="contact">
+                             <tr class="order_click_tr">
+                                <td style="padding:3px !important;">${contact.contact_index}</td>
+                                <td style="padding:3px !important;">${contact.contact_name}</td>
+                                <td style="padding:3px !important;">${contact.contact_email}</td>
+                                <td style="padding:3px !important;">${contact.contact_subject}</td>
+                                <td style="padding:3px !important;">${contact.contact_message}</td>
+                                <td style="padding:3px !important;">
+                                    <c:if test="${empty contact.contact_ok}">
+                                        <a href="qna_answer_ok.do?contact_index=${contact.contact_index}" style="color:white;background-color:black;padding:2px">답변 등록</a> 
+                                    </c:if>
+                                    <c:if test="${contact.contact_ok == '답변완료'}">
+                                                                                답변 완료
+                                    </c:if>
+                                </td>
+                                
+                              </tr>
+    
+                          </c:forEach>
+                        </c:if>
+                      </tbody>
+                  </table>
+                </div>
+                <!--  문의 글 목록  End   -->
+                
+                
+            
                 <div id="jjim-list" class="container tab-pane">
                     <h3>좋아요 리스트</h3>
                     <p>리스트를 어떻게 표시할까?</p>

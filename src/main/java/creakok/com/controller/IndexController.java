@@ -247,7 +247,7 @@ public class IndexController {
 		log.info("@@@@@@@@@@@@@@@@@@@@@@@@contact_subject: "+contact_subject);
 		log.info("@@@@@@@@@@@@@@@@@@@@@@@@contact_message: "+contact_message);
 		
-		Contact contact = new Contact(-1, contact_name, contact_email, contact_subject, contact_message);
+		Contact contact = new Contact(-1, contact_name, contact_email, contact_subject, contact_message, null);
 		indexService.insertOneQnA(contact);
 		
 		return "index";

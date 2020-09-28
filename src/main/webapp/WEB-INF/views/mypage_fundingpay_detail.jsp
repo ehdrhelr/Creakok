@@ -74,8 +74,8 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">My Page</li>
+                            <li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i> Home</li>
+                            <li class="breadcrumb-item active" aria-current="page"><span style="font-weight:600; color:black;">My Page</span></li>
                         </ol>
                     </nav>
                 </div>
@@ -93,7 +93,13 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                             <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#standby_creator" role="tab">크리에이터 신청명단</a>
                             </li>
+                            
+                            <!-- 인덱스 문의글 -->
+                            <li class="nav-item">
+                                <a class="hcbae-nav nav-link" data-toggle="tab" href="#qna-list" role="tab">문의글 목록</a>
+                            </li>   
                             </c:if>
+                            
                            <li class="nav-item">
                                 <a class="hcbae-nav nav-link" data-toggle="tab" href="#jjim-list" role="tab">좋아요 리스트</a>
                             </li>
@@ -115,8 +121,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
             <div class="tab-content"> <!--My Page Tabs Contents-->
             
              <!-- 크리에이터 신청 리스트 -->
-            <div class="tab-content"> <!--My Page Tabs Contents-->
-                <div id="standby_creator" class="container tab-pane" style="margin-bottom:7%">
+            <div id="standby_creator" class="container tab-pane" style="margin-bottom:7%">
                     <h3 style="margin-bottom:20px">크리에이터 신청 리스트</h3>
                       <table style="">
                       <colgroup>
@@ -178,6 +183,65 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                       </tbody>
                   </table>
                 </div>
+                
+                <!--  문의 글 목록     -->
+                <div id="qna-list" class="container tab-pane" style="margin-bottom:7%">
+                    <h3>문의 글</h3>
+                    <p>답변했을 경우 '답변 등록'을 눌러주세요</p>
+                    
+                      <table style="">
+                      <colgroup>
+                          <col width="5%">
+                          <col width="9%">
+                          <col width="15%">
+                          <col width="15%">
+                          <col width="40%">
+                          <col width="8%">
+                          <col width="8%">
+                      </colgroup>
+                       <thead>
+                          <tr>
+                              <th style="padding:1.5px !important;">No</th>
+                              <th style="padding:1.5px !important;">이름</th>
+                              <th style="padding:1.5px !important;">이메일</th>
+                              <th style="padding:1.5px !important;">제목</th>
+                              <th style="padding:1.5px !important;">내용</th>
+                              <th style="padding:1.5px !important;">답변 여부</th>
+                          </tr>
+                          
+                      </thead>  
+                      <tbody>
+                        <c:if test="${empty contact_list}">
+                          <tr>
+                            <td colspan="6" style="border-bottom:1px solid black">문의글이 없습니다.</td>   
+                          </tr>
+                        </c:if>
+                        <c:if test="${!empty contact_list}">
+                          
+                          <c:forEach items="${contact_list}" var="contact">
+                             <tr class="order_click_tr">
+                                <td style="padding:3px !important;">${contact.contact_index}</td>
+                                <td style="padding:3px !important;">${contact.contact_name}</td>
+                                <td style="padding:3px !important;">${contact.contact_email}</td>
+                                <td style="padding:3px !important;">${contact.contact_subject}</td>
+                                <td style="padding:3px !important;">${contact.contact_message}</td>
+                                <td style="padding:3px !important;">
+                                    <c:if test="${empty contact.contact_ok}">
+                                        <a href="qna_answer_ok.do?contact_index=${contact.contact_index}" style="color:white;background-color:black;padding:2px">답변 등록</a> 
+                                    </c:if>
+                                    <c:if test="${contact.contact_ok == '답변완료'}">
+                                                                                답변 완료
+                                    </c:if>
+                                </td>
+                                
+                              </tr>
+    
+                          </c:forEach>
+                        </c:if>
+                      </tbody>
+                  </table>
+                </div>
+                <!--  문의 글 목록  End   -->       
             
             
                 <div id="jjim-list" class="container tab-pane">
