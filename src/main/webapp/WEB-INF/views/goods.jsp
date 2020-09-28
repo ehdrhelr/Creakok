@@ -65,8 +65,12 @@
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>GOODS</h2>
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_goods.png);">
+            <h2 style="color:black;text-align:center">
+            	GOODS<br>
+            	<span style="font-size:13pt;color:#828282;font-weight:400">크리에이터의 특별 제작 굿즈</span>
+            </h2>
+            
         </div>
 
         <div class="container">

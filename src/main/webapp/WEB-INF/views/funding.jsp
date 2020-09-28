@@ -64,8 +64,11 @@
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>FUNDING</h2>
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_funding.png);">
+            <h2 style="color:black;text-align:center">
+            	FUNDING<br>
+            	<span style="font-size:13pt;color:#828282;font-weight:400">크리에이터의 이런 컨텐츠 어때요?</span>
+            </h2>
         </div>
 
         <div class="container">

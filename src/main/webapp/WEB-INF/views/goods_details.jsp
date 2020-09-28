@@ -65,8 +65,12 @@
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>GOODS DETAILS</h2>
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_goods.png);">
+            <h2 style="color:black;text-align:center">
+            	GOODS<br>
+            	<span style="font-size:13pt;color:#828282;font-weight:400">크리에이터의 특별 제작 굿즈</span>
+            </h2>
+            
         </div>
 
         <div class="container">
@@ -337,8 +341,8 @@
                                 <div class="CreatorCard__CreatorCardInner-sc-1ifohey-0 iubrbI">
                                     <div class="CreatorCard__CreatorCardLabel-sc-1ifohey-1 erXxPv">크리에이터 소개</div>
                                     <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO">
-                                    <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG"></span>
-                                    <a target="_blank" href="img/funding/${goods_creator.creator_profile_photo}"><span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx">${creator.creator_name}</span></a></div>
+                                    <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG" style="background-image: url(img/community/${creator.creator_profile_photo});"></span>
+                                    <a target="_blank" href="#"><span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx">${creator.creator_name}</span></a></div>
                                     <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">
                                     	</div>
                                     <div class="Divider-sc-17hnup0-0 eUqLBU"></div>
@@ -466,7 +470,7 @@
 					    
 				    
 				    
-    <!--hcbae 텀블벅 가져오기 start-->
+    <!--hcbae 텀블벅 가져오기 start
     <div id="ch-plugin">
         <div id="ch-plugin-core">
             <style data-styled="" data-styled-version="4.4.1"></style>
@@ -489,16 +493,16 @@
         <div id="ch-plugin-script" style="display:none">
             <iframe id="ch-plugin-script-iframe" style="position:relative!important;height:100%!important;width:100%!important;border:none!important;" src="./saved_resource.html"></iframe>
         </div>
-    </div>
+    </div>-->
     <script type="text/javascript" async="" src="./js/hcbae/linkid.js"></script>
     <script type="text/javascript" async="" src="./js/hcbae/gtm.js"></script>
     <script type="text/javascript" async="" src="./js/hcbae/amplitude-5.2.2-min.gz.js"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/analytics.js"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/ch-plugin-web.js" charset="UTF-8"></script>
-    <script type="text/javascript" async="" src="./js/hcbae/analytics.min.js"></script>
+    <!-- <script type="text/javascript" async="" src="./js/hcbae/analytics.js"></script>  -->
+    <!-- <script type="text/javascript" async="" src="./js/hcbae/ch-plugin-web.js" charset="UTF-8"></script>  -->
+    <!-- <script type="text/javascript" async="" src="./js/hcbae/analytics.min.js"></script>  -->
     <script src="./js/hcbae/kakao.min.js"></script>
     <script src="./js/hcbae/semantic.js"></script>
-    <script type="application/javascript" src="https://d2om2e6rfn032x.cloudfront.net/wpa/bundle.app.173e0183d7bc9f5995e8.js"></script>
+    <!-- <script type="application/javascript" src="https://d2om2e6rfn032x.cloudfront.net/wpa/bundle.app.173e0183d7bc9f5995e8.js"></script>  -->
 
     <!--hcbae 텀블벅 가져오기 end-->
     
