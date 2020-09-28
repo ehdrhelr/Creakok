@@ -2,6 +2,7 @@ package creakok.com.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,7 @@ import creakok.com.domain.Creator;
 import creakok.com.domain.Funding;
 import creakok.com.domain.Goods;
 import creakok.com.domain.Goods_Category;
+import creakok.com.domain.LikeTable;
 import creakok.com.service.CreatorBoardService;
 import creakok.com.service.FundingService;
 import creakok.com.service.GoodsService;
@@ -68,6 +70,19 @@ public class IndexController {
 		List<Funding> funding_list = indexService.selectFundingByWdate();
 		mv.addObject("funding_list", funding_list);
 		session.setAttribute("funding_list_index", funding_list);
+		
+		// funding 실시간 랭킹
+		List<Funding> temp = indexService.selectFundingByAmount();
+		
+		List<Funding> funding_ranking = new ArrayList<Funding>();
+		for(Funding list : temp) {
+	         //log.info("####:"+lt.getLike_content_index() );
+	         double percentageDouble = 100.0*list.getFunding_amount()/list.getFunding_goal();
+	         int percentageInt = (int) Math.round(percentageDouble);
+	         list.setPercentage(percentageInt);  
+	         funding_ranking.add(list);
+	    }
+		session.setAttribute("funding_ranking", funding_ranking);
 		
 		// 이달의 크리에이터
 		List<Creator> creator_list = indexService.selectCreator();
@@ -115,6 +130,23 @@ public class IndexController {
 		session.setAttribute("goods_ranking", goods_ranking);
 				
 		return goods_ranking;
+	}
+	
+	@ResponseBody
+	@RequestMapping("funding_ranking")
+	public List<Funding> funding_ranking(HttpSession session){ //굿즈 실시간랭킹
+		List<Funding> temp = indexService.selectFundingByAmount();
+		List<Funding> funding_ranking = new ArrayList<Funding>();
+		for(Funding list : temp) {
+	         //log.info("####:"+lt.getLike_content_index() );
+	         double percentageDouble = 100.0*list.getFunding_amount()/list.getFunding_goal();
+	         int percentageInt = (int) Math.round(percentageDouble);
+	         list.setPercentage(percentageInt);  
+	         funding_ranking.add(list);
+	    }
+		session.setAttribute("funding_ranking", funding_ranking);
+				
+		return funding_ranking;
 	}
 	
 	@RequestMapping("search.do")
@@ -200,13 +232,5 @@ public class IndexController {
 		session.setAttribute("goods_result", goods_searchVo);
 		
 		return "search_result";
-	}
-	
-	@ResponseBody
-	@RequestMapping("search_creator.do")
-	public List<Creator> search_creator(@RequestParam("creator_name") String creator_name) {
-		List<Creator> search_creator2 = indexService.selectCreatorBySearch(creator_name);		
-		
-		return search_creator2;		
 	}
 }

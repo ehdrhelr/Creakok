@@ -18,4 +18,5 @@ public interface IndexService {
 	
 	Funding_searchVo getSearchFundingVo(int funding_cp, int funding_ps, String keyword);
 	long selectFundingCountBySearch(String keyword);
+	List<Funding> selectFundingByAmount(); 
 }

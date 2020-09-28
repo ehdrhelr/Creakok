@@ -14,6 +14,17 @@
 		where ROWNUM <= 4]]>
 	</select>
  
+    <select id="selectFundingByAmount"  resultType="Funding">
+        <![CDATA[select *
+        from 
+         (
+          select *
+          from FUNDING
+          order by FUNDING_AMOUNT desc
+         )
+        where ROWNUM <= 5]]>
+    </select>
+    
  	<select id="selectFundingCategoryN"  resultType="String" parameterType="long">
  		select FUNDING_CATEGORY_NAME from FUNDING_CATEGORY where FUNDING_CATEGORY_CODE=${category_code}
  	</select>   

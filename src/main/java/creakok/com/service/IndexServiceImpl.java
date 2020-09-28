@@ -74,4 +74,9 @@ public class IndexServiceImpl implements IndexService {
 	public long selectFundingCountBySearch(String keyword) { //펀딩 검색결과 총갯수
 		return indexMapper.selectFundingCountBySearch(keyword);
 	}
+	
+	@Override
+	public List<Funding> selectFundingByAmount(){
+		return indexMapper.selectFundingByAmount();
+	}
 }

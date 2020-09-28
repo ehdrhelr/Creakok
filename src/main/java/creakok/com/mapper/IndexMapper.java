@@ -18,4 +18,5 @@ public interface IndexMapper {
 	List<Creator> selectCreatorBySearch(@Param("creator_name") String creator_name);
 	List<Funding> selectSearchFunding(Funding_searchVo funding_searchVo);
 	long selectFundingCountBySearch(@Param("keyword") String keyword);
+	List<Funding> selectFundingByAmount(); 
 }

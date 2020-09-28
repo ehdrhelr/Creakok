@@ -240,7 +240,7 @@
                         <h2 style="margin-bottom: 5px;">실시간 랭킹</h2>
                         
                         
-                        <button type="button" title="REWARD" class="TabButton_btnTab__K2OC3 TabButton_active__32awQ" style="font-size:13pt;font-weight:600">
+                        <button type="button" title="REWARD" class="TabButton_btnTab__K2OC3 TabButton_active__32awQ" onclick="fundingRanking()" style="font-size:13pt;font-weight:600">
                                                               펀딩
                         </button>
                         &nbsp;&nbsp;
@@ -255,141 +255,81 @@
                     </div>
                     
                    <section id="ranking" class="SectionContainerLayout_container__1f8kt RankingFundingWrap_container__2VQZB RecommendationDesktop_rankingFunding__RiDmN">
-                             
-                           
+                     
+                      <c:set var="funding_count" value="1"/>       
+                      <c:forEach items="${funding_ranking}" var="funding">
                                   <div class="TabContainer_tab__LrP70">
                                    <div class="TabContainer_tabList__1TS8l">
                                      <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
-                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309">
+                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="funding_detail.do?funding_index=${funding.funding_index}">
                                          <article>
                                              <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
                                                  <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
-                                                     1
+                                                     ${funding_count}
                                                  </p>
-                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
+                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="${funding.funding_repre_pic}" alt=""></span>
                                                  <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
+                                                        ${funding.funding_subject}     
                                                  </p>
                                                  <p class="commons_summary__2Ynez">
                                                      <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
-                                                     1,278%
+                                                        ${funding.percentage} %
                                                      </span>
-                                                     패션·잡화
+                                                        <c:if test="${funding.funding_category_code == 200}">
+                                                                                                                            테크/가전
+                                                        </c:if>
+                                                        <c:if test="${funding.funding_category_code == 201}">
+                                                                                                                            패션/잡화
+                                                        </c:if>
+                                                        <c:if test="${funding.funding_category_code == 202}">
+                                                                                                                            뷰티
+                                                        </c:if>
+                                                        <c:if test="${funding.funding_category_code == 203}">
+                                                                                                                            홈리빙
+                                                        </c:if>
+                                                        <c:if test="${funding.funding_category_code == 204}">
+                                                                                                                            디자인소품
+                                                        </c:if>
+                                                        <c:if test="${funding.funding_category_code == 205}">
+                                                                                                                            여행/레저
+                                                        </c:if>
+                                                        <c:if test="${funding.funding_category_code == 206}">
+                                                                                                                            스포츠/모빌리티
+                                                        </c:if>
+                                                        <c:if test="${funding.funding_category_code == 207}">
+                                                                                                                            반려동물
+                                                        </c:if>
+                                                        <c:if test="${funding.funding_category_code == 208}">
+                                                                                                                            모임
+                                                        </c:if>
+                                                        <c:if test="${funding.funding_category_code == 209}">
+                                                                                                                            공연/컬쳐
+                                                        </c:if>
+                                                        <c:if test="${funding.funding_category_code == 210}">
+                                                                                                                            소셜/캠페인
+                                                        </c:if>
+                                                        <c:if test="${funding.funding_category_code == 211}">
+                                                                                                                            교육/키즈
+                                                        </c:if>                                                        
+                                                        <c:if test="${funding.funding_category_code == 212}">
+                                                                                                                            게임/취미
+                                                        </c:if>
+                                                        <c:if test="${funding.funding_category_code == 213}">
+                                                                                                                            출판
+                                                        </c:if>   
+                                                        <c:if test="${funding.funding_category_code == 214}">
+                                                                                                                            기부/후원
+                                                        </c:if>   
                                                  </p>
                                              </div>
                                              </article>
                                          </a>                     
                                     </div>
                                </div>
-                            </div>      
-                            
-                            
-                                                              <div class="TabContainer_tab__LrP70">
-                                   <div class="TabContainer_tabList__1TS8l">
-                                     <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
-                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309">
-                                         <article>
-                                             <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
-                                                     1
-                                                 </p>
-                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
-                                                 <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
-                                                 </p>
-                                                 <p class="commons_summary__2Ynez">
-                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
-                                                     1,278%
-                                                     </span>
-                                                     패션·잡화
-                                                 </p>
-                                             </div>
-                                             </article>
-                                         </a>                     
-                                    </div>
-                               </div>
-                            </div> 
-                            
-                            
-                                                              <div class="TabContainer_tab__LrP70">
-                                   <div class="TabContainer_tabList__1TS8l">
-                                     <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
-                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309">
-                                         <article>
-                                             <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
-                                                     1
-                                                 </p>
-                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
-                                                 <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
-                                                 </p>
-                                                 <p class="commons_summary__2Ynez">
-                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
-                                                     1,278%
-                                                     </span>
-                                                     패션·잡화
-                                                 </p>
-                                             </div>
-                                             </article>
-                                         </a>                     
-                                    </div>
-                               </div>
-                            </div> 
-                            
-                            
-                                                              <div class="TabContainer_tab__LrP70">
-                                   <div class="TabContainer_tabList__1TS8l">
-                                     <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
-                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309">
-                                         <article>
-                                             <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
-                                                     1
-                                                 </p>
-                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
-                                                 <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
-                                                 </p>
-                                                 <p class="commons_summary__2Ynez">
-                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
-                                                     1,278%
-                                                     </span>
-                                                     패션·잡화
-                                                 </p>
-                                             </div>
-                                             </article>
-                                         </a>                     
-                                    </div>
-                               </div>
-                            </div> 
-                            
-                            
-                            <div class="TabContainer_tab__LrP70">
-                                   <div class="TabContainer_tabList__1TS8l">
-                                     <div class="TabContainer_listItem__2XDgU" style="margin-bottom:3%">
-                                         <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/75309">
-                                         <article>
-                                             <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                                 <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
-                                                     1
-                                                 </p>
-                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="img/core-img/b2.png" alt=""></span>
-                                                 <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
-                                                     마스크 혁명, '탄성 고정식 덴탈마스크 프레임, 에어리(Airy)'       
-                                                 </p>
-                                                 <p class="commons_summary__2Ynez">
-                                                     <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
-                                                     1,278%
-                                                     </span>
-                                                     패션·잡화
-                                                 </p>
-                                             </div>
-                                             </article>
-                                         </a>                     
-                                    </div>
-                               </div>
-                            </div>                                 
+                            </div>
+                            <c:set var="funding_count" value="${funding_count + 1}"/>      
+                     </c:forEach> 
+                                                
                                          
                       </section>                    
                   </div>
@@ -409,96 +349,186 @@
     
          <!--  ##### 실시간 랭킹 Ajax #####  -->
       	  <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>					                       
-               <script>
-	                        function goodsRanking(){
-								//var jsonData = JSON.stringify(value);
-								///var obj = {goods_sale_number:goods_sale_number};
-								
-								//var jsonData = JSON.stringify(obj);
-								//console.log("jsonData: "+jsonData);
-								//var jsonData = JSON.stringify(responseData);
-								//var GoodsVo = JSON.parse(jsonData);
-								
-								$.ajax({ 
-									 url: "ranking", 
-									 type: "GET",
-									 async: true,
-  								  	 dataType: "json",
-									 contentType: "application/json; charset=UTF-8", //★★ 요놈 절대 빼먹으면안됨
-									 error:function(request,status,error){
-									        alert("실패"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)   	
-									 },
-									 success: function(responseData){
-										var jsonData = JSON.stringify(responseData);
-										var ranking_goods = JSON.parse(jsonData);
-										console.log(ranking_goods);
-										//console.log("rRRRRRRRRRRRRRRRR: "+jsonData);
-										
-										
-										var html = "";
-										for(var i=0; i<ranking_goods.length; i++) {
-											html += "<div class='TabContainer_tab__LrP70'>";
-											html += "<div class='TabContainer_tabList__1TS8l'>";
-											html += "<div class='TabContainer_listItem__2XDgU' style='margin-bottom:3%'>";
-											html += "<a class='CardType_projectCard__3xhjb CardType_projectCardA__33rbP' href='/web/campaign/detail/75309'>";
-											html += "<article>";
-											html += "<div class='commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj'>";
-											html += "<p style='color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500'>"+(i+1)+"</p>";
-	                                        html += "<span style='width:60px;height:60px;float:left; margin-right:15px;'><img src='img/goods/"+ranking_goods[i].goods_repre_pic+"' alt=''>";
-	                                        html += "</span>";
-	                                        html += "<p class='commons_title__1yGWm' style='font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500'>"
-	                                        		+ranking_goods[i].goods_name+"</p>";
-	                                        html += "<p class='commons_summary__2Ynez'>";
-	                                        html += "<span class='commons_achievementRate__2J-KL' style='margin-bottom: 5px; color:#fc5230;font-weight: 600'>"+ranking_goods[i].goods_price+"원</span>";
-	                                        		if(ranking_goods[i].goods_category_code == 301) {
-	                                        			html += "&nbsp;&nbsp;&nbsp;뷰티</p>";
-	                                        		}
-	                                        		if(ranking_goods[i].goods_category_code == 302) {
-	                                        			html += "&nbsp;&nbsp;&nbsp;디자인소품</p>";
-	                                        		}
-	                                        		if(ranking_goods[i].goods_category_code == 303) {
-	                                        			html += "&nbsp;&nbsp;&nbsp;홈리빙</p>";
-	                                        		}
-	                                        		if(ranking_goods[i].goods_category_code == 304) {
-	                                        			html += "&nbsp;&nbsp;&nbsp;테크/가전</p>";
-	                                        		}
-	                                        		if(ranking_goods[i].goods_category_code == 305) {
-	                                        			html += "&nbsp;&nbsp;&nbsp;패션/잡화</p>";
-	                                        		}
-	                                        		if(ranking_goods[i].goods_category_code == 306) {
-	                                        			html += "&nbsp;&nbsp;&nbsp;푸드</p>";
-	                                        		}
-	                                        		if(ranking_goods[i].goods_category_code == 307) {
-	                                        			html += "&nbsp;&nbsp;&nbsp;여행/레저</p>";
-	                                        		}
-	                                        		if(ranking_goods[i].goods_category_code == 308) {
-	                                        			html += "&nbsp;&nbsp;&nbsp;스포츠/모빌리티</p>";
-	                                        		}
-	                                        		if(ranking_goods[i].goods_category_code == 309) {
-	                                        			html += "&nbsp;&nbsp;&nbsp;반려동물</p>";
-	                                        		}
-	                                        		if(ranking_goods[i].goods_category_code == 310) {
-	                                        			html += "&nbsp;&nbsp;&nbsp;문화/예술</p>";
-	                                        		}	                                        		
-	                                        		if(ranking_goods[i].goods_category_code == 311) {
-	                                        			html += "&nbsp;&nbsp;&nbsp;출산/육아</p>";
-	                                        		}
-	                                        		if(ranking_goods[i].goods_category_code == 312) {
-	                                        			html += "&nbsp;&nbsp;&nbsp;생활/건강</p>";
-	                                        		}	 	                                        				
-	                                        html += "</div>";
-	                                        html += "</article>";
-	                                        html += "</a>";                   
-	                                        html += "</div>";
-	                                        html += "</div>";
-	                                        html += "</div>";
-	                                        
-	                                        $("#ranking").html(html);
-										}
-											
-									}
-								})
-	                        }
+              <script>
+              function fundingRanking(){
+                  $.ajax({ 
+                      url: "funding_ranking", 
+                      type: "GET",
+                      async: true,
+                          dataType: "json",
+                      contentType: "application/json; charset=UTF-8", //★★ 요놈 절대 빼먹으면안됨
+                      error:function(request,status,error){
+                             alert("실패"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)     
+                      },
+                      success: function(responseData){
+                         var jsonData = JSON.stringify(responseData);
+                         var ranking_funding = JSON.parse(jsonData);
+                         console.log(ranking_funding);
+                         //console.log("rRRRRRRRRRRRRRRRR: "+jsonData);
+                         
+                         
+                         var html = "";
+                         for(var i=0; i<ranking_funding.length; i++) {
+                             html += "<div class='TabContainer_tab__LrP70'>";
+                             html += "<div class='TabContainer_tabList__1TS8l'>";
+                             html += "<div class='TabContainer_listItem__2XDgU' style='margin-bottom:3%'>";
+                             html += "<a class='CardType_projectCard__3xhjb CardType_projectCardA__33rbP' href='funding_detail.do?funding_index="+ranking_funding[i].funding_index+"'>";
+                             html += "<article>";
+                             html += "<div class='commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj'>";
+                             html += "<p style='color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500'>"+(i+1)+"</p>";
+                                           html += "<span style='width:60px;height:60px;float:left; margin-right:15px;'><img src='"+ranking_funding[i].funding_repre_pic+"' alt=''>";
+                                           html += "</span>";
+                                           html += "<p class='commons_title__1yGWm' style='font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500'>"
+                                                 +ranking_funding[i].funding_subject+"</p>";
+                                           html += "<p class='commons_summary__2Ynez'>";
+                                           html += "<span class='commons_achievementRate__2J-KL' style='margin-bottom: 5px; color:#fc5230;font-weight: 600'>"+ranking_funding[i].percentage+"%</span>";
+                                                 if(ranking_funding[i].goods_category_code == 200) {
+                                                     html += "&nbsp;&nbsp;&nbsp;테크/가전</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 201) {
+                                                     html += "&nbsp;&nbsp;&nbsp;패션/잡화</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 202) {
+                                                     html += "&nbsp;&nbsp;&nbsp;뷰티</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 203) {
+                                                     html += "&nbsp;&nbsp;&nbsp;홈리빙'</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 204) {
+                                                     html += "&nbsp;&nbsp;&nbsp;디자인소품</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 205) {
+                                                     html += "&nbsp;&nbsp;&nbsp;여행/레저</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 206) {
+                                                     html += "&nbsp;&nbsp;&nbsp;스포츠/모빌리티</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 207) {
+                                                     html += "&nbsp;&nbsp;&nbsp;반려동물</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 208) {
+                                                     html += "&nbsp;&nbsp;&nbsp;모임</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 209) {
+                                                     html += "&nbsp;&nbsp;&nbsp;공연/컬쳐</p>";
+                                                 }                                                   
+                                                 if(ranking_funding[i].goods_category_code == 210) {
+                                                     html += "&nbsp;&nbsp;&nbsp;소셜/캠페인</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 211) {
+                                                     html += "&nbsp;&nbsp;&nbsp;교육/키즈</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 212) {
+                                                     html += "&nbsp;&nbsp;&nbsp;게임/취미</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 213) {
+                                                     html += "&nbsp;&nbsp;&nbsp;출판</p>";
+                                                 }
+                                                 if(ranking_funding[i].goods_category_code == 214) {
+                                                     html += "&nbsp;&nbsp;&nbsp;기부/후원</p>";
+                                                 }                                                               
+                                           html += "</div>";
+                                           html += "</article>";
+                                           html += "</a>";                   
+                                           html += "</div>";
+                                           html += "</div>";
+                                           html += "</div>";
+                                           
+                                           $("#ranking").html(html);
+                         }
+                             
+                     }
+                 });            	   
+              }
+              function goodsRanking(){
+                //var jsonData = JSON.stringify(value);
+                ///var obj = {goods_sale_number:goods_sale_number};
+                
+                //var jsonData = JSON.stringify(obj);
+                //console.log("jsonData: "+jsonData);
+                //var jsonData = JSON.stringify(responseData);
+                //var GoodsVo = JSON.parse(jsonData);
+                
+                $.ajax({ 
+                	 url: "ranking", 
+                	 type: "GET",
+                	 async: true,
+                	  	 dataType: "json",
+                	 contentType: "application/json; charset=UTF-8", //★★ 요놈 절대 빼먹으면안됨
+                	 error:function(request,status,error){
+                	        alert("실패"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)   	
+                	 },
+                	 success: function(responseData){
+                		var jsonData = JSON.stringify(responseData);
+                		var ranking_goods = JSON.parse(jsonData);
+                		console.log(ranking_goods);
+                		//console.log("rRRRRRRRRRRRRRRRR: "+jsonData);
+                		
+                		
+                		var html = "";
+                		for(var i=0; i<ranking_goods.length; i++) {
+                			html += "<div class='TabContainer_tab__LrP70'>";
+                			html += "<div class='TabContainer_tabList__1TS8l'>";
+                			html += "<div class='TabContainer_listItem__2XDgU' style='margin-bottom:3%'>";
+                			html += "<a class='CardType_projectCard__3xhjb CardType_projectCardA__33rbP' href='goods_detail.do?goods_index="+ranking_goods[i].goods_index+"'>";
+                			html += "<article>";
+                			html += "<div class='commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj'>";
+                			html += "<p style='color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500'>"+(i+1)+"</p>";
+                                          html += "<span style='width:60px;height:60px;float:left; margin-right:15px;'><img src='img/goods/"+ranking_goods[i].goods_repre_pic+"' alt=''>";
+                                          html += "</span>";
+                                          html += "<p class='commons_title__1yGWm' style='font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500'>"
+                                          		+ranking_goods[i].goods_name+"</p>";
+                                          html += "<p class='commons_summary__2Ynez'>";
+                                          html += "<span class='commons_achievementRate__2J-KL' style='margin-bottom: 5px; color:#fc5230;font-weight: 600'>"+ranking_goods[i].goods_price+"원</span>";
+                                          		if(ranking_goods[i].goods_category_code == 301) {
+                                          			html += "&nbsp;&nbsp;&nbsp;뷰티</p>";
+                                          		}
+                                          		if(ranking_goods[i].goods_category_code == 302) {
+                                          			html += "&nbsp;&nbsp;&nbsp;디자인소품</p>";
+                                          		}
+                                          		if(ranking_goods[i].goods_category_code == 303) {
+                                          			html += "&nbsp;&nbsp;&nbsp;홈리빙</p>";
+                                          		}
+                                          		if(ranking_goods[i].goods_category_code == 304) {
+                                          			html += "&nbsp;&nbsp;&nbsp;테크/가전</p>";
+                                          		}
+                                          		if(ranking_goods[i].goods_category_code == 305) {
+                                          			html += "&nbsp;&nbsp;&nbsp;패션/잡화</p>";
+                                          		}
+                                          		if(ranking_goods[i].goods_category_code == 306) {
+                                          			html += "&nbsp;&nbsp;&nbsp;푸드</p>";
+                                          		}
+                                          		if(ranking_goods[i].goods_category_code == 307) {
+                                          			html += "&nbsp;&nbsp;&nbsp;여행/레저</p>";
+                                          		}
+                                          		if(ranking_goods[i].goods_category_code == 308) {
+                                          			html += "&nbsp;&nbsp;&nbsp;스포츠/모빌리티</p>";
+                                          		}
+                                          		if(ranking_goods[i].goods_category_code == 309) {
+                                          			html += "&nbsp;&nbsp;&nbsp;반려동물</p>";
+                                          		}
+                                          		if(ranking_goods[i].goods_category_code == 310) {
+                                          			html += "&nbsp;&nbsp;&nbsp;문화/예술</p>";
+                                          		}	                                        		
+                                          		if(ranking_goods[i].goods_category_code == 311) {
+                                          			html += "&nbsp;&nbsp;&nbsp;출산/육아</p>";
+                                          		}
+                                          		if(ranking_goods[i].goods_category_code == 312) {
+                                          			html += "&nbsp;&nbsp;&nbsp;생활/건강</p>";
+                                          		}	 	                                        				
+                                          html += "</div>";
+                                          html += "</article>";
+                                          html += "</a>";                   
+                                          html += "</div>";
+                                          html += "</div>";
+                                          html += "</div>";
+                                          
+                                          $("#ranking").html(html);
+                		}
+                			
+                	}
+                });
+              }
 			</script>
            <!--  #####실시간 랭킹 Ajax End #####  -->          
     

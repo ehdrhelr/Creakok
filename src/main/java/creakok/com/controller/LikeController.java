@@ -79,12 +79,15 @@ public class LikeController {
 		List<Funding> fList = new ArrayList<Funding>();
 		
 		for(LikeTable lt : list) {
-			//log.info("####:"+lt.getLike_content_index() );
-			long tempL = lt.getLike_content_index();
-			
-			Funding tempF = lts.getFundingByIndex(tempL);
-			fList.add(tempF);
-		}
+	         //log.info("####:"+lt.getLike_content_index() );
+	         long tempL = lt.getLike_content_index();
+	         
+	         Funding tempF = lts.getFundingByIndex(tempL);
+	         double percentageDouble = 100.0*tempF.getFunding_amount()/tempF.getFunding_goal();
+	         int percentageInt = (int) Math.round(percentageDouble);
+	         tempF.setPercentage(percentageInt);   
+	         fList.add(tempF);
+	   }
 		
 		FundingVo fv = new FundingVo();
 		fv.setList(fList);
