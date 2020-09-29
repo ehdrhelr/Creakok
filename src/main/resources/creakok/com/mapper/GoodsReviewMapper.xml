@@ -8,8 +8,8 @@
     </select>
     
     <select id="selectPerPageReview" resultType="Goods_Review" parameterType="Goods_ReviewVo">
-        <![CDATA[select * from (select ROWNUM rnum, aa.* from
-        (select * from GOODS_REVIEW where GOODS_INDEX=${goods_index} order by GOODS_REVIEW_DATE desc) aa)
+        <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from
+        (select * from GOODS_REVIEW where GOODS_INDEX=${goods_index} order by GOODS_REVIEW_DATE desc) aa, (SELECT @ROWNUM := 0) TMP) bb
         where rnum>${(review_cp-1)*review_ps} and rnum<=${review_cp*review_ps}
         ]]>
     </select>
@@ -27,7 +27,7 @@
     </select>     
     
     <insert id="insertOneReview" parameterType="Goods_Review">
-        <![CDATA[insert into GOODS_REVIEW values(GOODS_REVIEW_INDEX_SEQ.nextval, #{member_name}, ${goods_index}, SYSDATE, ${goods_review_rating}, null, #{goods_review_subject}, #{goods_review_content}, null, 0) ]]>
+        <![CDATA[insert into GOODS_REVIEW values((select nextval('GOODS_REVIEW_INDEX_SEQ')), #{member_name}, ${goods_index}, now(), ${goods_review_rating}, null, #{goods_review_subject}, #{goods_review_content}, null, 0) ]]>
     </insert>
 
     <delete id="deleteOneReview"  parameterType="long">

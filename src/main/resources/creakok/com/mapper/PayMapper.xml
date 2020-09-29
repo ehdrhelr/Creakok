@@ -8,7 +8,7 @@
     </select>
    <insert id="insertFunding_order" parameterType="Funding_payinfo">
    	 insert into FUNDING_PAYINFO values(
-   	 FUNDING_PAYINFO_SEQ.nextval,
+   	 (select nextval('FUNDING_PAYINFO_SEQ')),
    	 #{funding_payinfo_name},
    	 #{member_email},
    	 ${funding_payinfo_phonenumber},
@@ -23,8 +23,8 @@
    	 #{funding_datepayment})
    </insert>   
                 
-    <insert id="insertOneOrder" parameterType="Order_Info">
-	    insert into ORDER_INFO values(ORDER_INDEX_SEQ.nextval, #{buyer_name}, #{buyer_phone}, #{member_email}, #{buy_addr}, #{buy_date}, #{buy_product_name}, #{buyer_buyid}, #{buyer_merid}, ${buyer_pay_price}, #{buyer_card_num}, #{buyer_pay_ok})
+    <insert id="insertOneOrder" parameterType="Order_Info">  
+	    insert into ORDER_INFO values((select nextval('ORDER_INDEX_SEQ')), #{buyer_name}, #{buyer_phone}, #{member_email}, #{buy_addr}, #{buy_date}, #{buy_product_name}, #{buyer_buyid}, #{buyer_merid}, ${buyer_pay_price}, #{buyer_card_num}, #{buyer_pay_ok})
    </insert> 
    
    <select id="selectByOrderIndex" parameterType="long" resultType="Order_Info">

@@ -38,10 +38,10 @@
   
   <insert id="insertMember" parameterType="MEMBER">
     <selectKey keyProperty="member_index" resultType="long" order="BEFORE">
-    SELECT MEMBER_INDEX_SEQ.nextval FROM dual
+    select nextval('MEMBER_INDEX_SEQ')
     </selectKey>
     insert into MEMBER(member_category_code, member_origin_code, member_email, member_name, member_password, member_joindate, member_index) 
-      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, SYSDATE, ${member_index})
+      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, now(), ${member_index})
   </insert>
   
   <delete id="deleteMember" parameterType="String">
@@ -51,10 +51,10 @@
 
   <insert id="insertSocialMember" parameterType="MEMBER">
     <selectKey keyProperty="member_index" resultType="long" order="BEFORE">
-    SELECT MEMBER_INDEX_SEQ.nextval FROM dual
+    select nextval('MEMBER_INDEX_SEQ')
     </selectKey>
     insert into MEMBER(member_category_code, member_origin_code, member_email, member_name, member_password, member_profile_pic, member_joindate, member_index) 
-      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, #{member_profile_pic}, SYSDATE, ${member_index})
+      values(#{member_category_code}, #{member_origin_code}, #{member_email}, #{member_name}, #{member_password}, #{member_profile_pic}, now(), ${member_index})
   </insert>
 
   <select id="selectOrderInfo" parameterType="String" resultType="Order_Info">
@@ -62,8 +62,8 @@
   </select>
 
   <select id="selectPerPageOrder" resultType="Order_Info" parameterType="Member_OrderInfoVo">
-    <![CDATA[select * from (select ROWNUM rnum, aa.* from
-      (select * from ORDER_INFO where MEMBER_EMAIL=#{member_email} order by ORDER_INDEX desc) aa)
+    <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from
+      (select * from ORDER_INFO where MEMBER_EMAIL=#{member_email} order by ORDER_INDEX desc) aa, (SELECT @ROWNUM := 0) TMP) bb
       where rnum>${(order_cp-1)*order_ps} and rnum<=${order_cp*order_ps}
     ]]>
   </select>
@@ -81,17 +81,16 @@
   </select>
   
   
-  <select id="selectPerPageFundingPay" resultType="Funding_payinfo" parameterType="Member_FundingPayInfoVo">
-    <![CDATA[select * from (select ROWNUM rnum, aa.* from
-      (select * from FUNDING_PAYINFO where MEMBER_EMAIL=#{member_email} order by FUNDING_PAYINFO_INDEX desc) aa)
+  <select id="selectPerPageFundingPay" resultType="Funding_payinfo" parameterType="Member_FundingPayInfoVo">    
+    <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from
+      (select * from FUNDING_PAYINFO where MEMBER_EMAIL=#{member_email} order by FUNDING_PAYINFO_INDEX desc) aa, (SELECT @ROWNUM := 0) TMP) bb
       where rnum>${(funding_pay_cp-1)*funding_pay_ps} and rnum<=${funding_pay_cp*funding_pay_ps}
     ]]>
   </select>
+  
    <select id="selectFundingPayCount" parameterType="String" resultType="long">
     select COUNT(FUNDING_PAYINFO_INDEX) from FUNDING_PAYINFO where MEMBER_EMAIL=#{member_email}
   </select> 
-  
-  
   
   <select id="selectFundingPayInfo" parameterType="long" resultType="Funding_payinfo">
     select * from FUNDING_PAYINFO where FUNDING_PAYINFO_INDEX=${funding_payinfo_index}

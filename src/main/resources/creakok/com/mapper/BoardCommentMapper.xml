@@ -14,17 +14,18 @@
 		select * from BOARD_COMMENT where BOARD_INDEX = #{board_index} order by COMMENT_INDEX desc
 	</select>
 	
-	<!-- 댓글 작성 -->
-	<insert id="writeComment">
-	 	insert into BOARD_COMMENT values(BOARD_COMMENT_INDEX_SEQ.nextval, #{board_index}, #{member_name}, 
-	 	#{member_email}, #{comment_content}, SYSDATE, #{member_profile_pic})
-	</insert>
+   <!-- 댓글 작성 -->
+    <insert id="writeComment">
+        insert into BOARD_COMMENT values((select nextval('BOARD_COMMENT_INDEX_SEQ')), #{board_index}, #{member_name}, 
+        #{member_email}, #{comment_content}, now(), null)
+    </insert>
+    
 	
 	<!-- 특정 댓글 조회 -->
 	<select id="getSelectecComment" resultType="Comment">
 		select * from BOARD_COMMENT where COMMENT_INDEX = #{comment_index} 
 	</select>
-	
+    
 	<!-- 댓글 수정 -->
 	<update id="updateComment">
 		update BOARD_COMMENT set comment_content = #{comment_content} where comment_index = ${comment_index}

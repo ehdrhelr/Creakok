@@ -13,12 +13,12 @@
     </select>
     
 	<select id="selectByGcode" resultType="Goods" parameterType="GoodsVo">
-	    <![CDATA[
-		select * from 
-		(select ROWNUM rnum, aa.* from (select * from GOODS where GOODS_CATEGORY_CODE=${gCode} order by GOODS_INDEX desc) aa) 
-		where rnum>${(cp-1)*ps} and rnum<=${cp*ps}
-		]]>
-	</select>	
+        <![CDATA[
+        select * from 
+        (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from (select * from GOODS where GOODS_CATEGORY_CODE=${gCode} order by GOODS_INDEX desc) aa, (SELECT @ROWNUM := 0) TMP) bb 
+        where rnum>${(cp-1)*ps} and rnum<=${cp*ps}
+        ]]>
+    </select>
 	
 	<select id="selectGoodsCount" resultType="long" parameterType="long">
 		select COUNT(GOODS_INDEX) from Goods where GOODS_CATEGORY_CODE=#{gCode}

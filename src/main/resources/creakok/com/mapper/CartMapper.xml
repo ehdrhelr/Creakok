@@ -10,7 +10,7 @@
         values(#{member_email}, #{goods_index}, #{goods_category_code}, 
         #{goods_name}, #{goods_repre_pic}, #{unit_price}, #{unit_count})
 	</insert>
-
+    
     <select id="selectOneCart" parameterType="Cart" resultType="Cart">
     select * from CART 
         where MEMBER_EMAIL=#{member_email} and GOODS_INDEX=#{goods_index}

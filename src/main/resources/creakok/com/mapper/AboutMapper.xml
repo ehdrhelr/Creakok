@@ -4,37 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="creakok.com.mapper.AboutMapper">
 	<select id="selectGoodsTop3"  resultType="Goods">
-		<![CDATA[select *
-		from 
-		 (
-		  select *
-		  from GOODS
-		  order by GOODS_SALE_NUMBER desc
-		 )
-		where ROWNUM <= 3]]>
-	</select>
+        <![CDATA[select *
+        from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from
+        (select * from GOODS order by GOODS_SALE_NUMBER desc) aa, (SELECT @ROWNUM := 0) TMP) bb
+        where rnum <= 3]]>
+    </select>
+	
 
 	<select id="selectFundingTop3"  resultType="Funding">
-		<![CDATA[select *
-		from 
-		 (
-		  select *
-		  from FUNDING
-		  order by FUNDING_AMOUNT desc
-		 )
-		where ROWNUM <= 3]]>
-	</select>
+        <![CDATA[select *
+        from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from
+        (select * from FUNDING order by FUNDING_AMOUNT desc) aa, (SELECT @ROWNUM := 0) TMP) bb
+        where rnum <= 3]]>
+    </select>
+
 
 	<select id="selectCreator3"  resultType="Creator">
-		<![CDATA[select *
-		from 
-		 (
-		  select *
-		  from CREATOR
-		  order by CREATOR_NAME asc
-		 )
-		where ROWNUM <= 3]]>
-	</select>
+        <![CDATA[select *
+        from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from
+        (select * from CREATOR order by CREATOR_NAME asc) aa, (SELECT @ROWNUM := 0) TMP) bb
+        where rnum <= 3]]>
+    </select>
+
 		
 	<select id="selectFundingCount"  resultType="long">
 		select COUNT(FUNDING_INDEX) from FUNDING

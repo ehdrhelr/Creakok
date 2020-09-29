@@ -4,200 +4,111 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="creakok.com.mapper.CreatorBoardMapper">
 
- 	<select id="getListResult" resultType="Board">
-    	<![CDATA[
-    	select * from
-        	(select ROWNUM AS rnum,
-                data.* from (
-                        select BOARD_INDEX,
-                               LPAD('   ┗ ' , 20 * (LEVEL - 1), '&nbsp') || BOARD_SUBJECT AS BOARD_SUBJECT,
-                               BOARD_CONTENT,
-                               MEMBER_NAME,
-                               MEMBER_EMAIL,
-                               BOARD_WDATE,
-                               BOARD_VIEW,
-                               BOARD_LIKE,
-                               MEMBER_PROFILE_PIC,
-                               CREATOR_NAME,
-                               BOARD_REFER,
-                               BOARD_LEVEL,
-                               BOARD_SUNBUN,
-                               BOARD_PARENT,
-                               LEVEL
-                        from CREATOR_BOARD
-                       	where CREATOR_NAME = #{creator_name}
-                        START WITH BOARD_PARENT = 0
-                        CONNECT BY PRIOR BOARD_INDEX = BOARD_PARENT
-                        ORDER SIBLINGS BY ${board_filterBy} desc, BOARD_REFER
-                        )
-                data
-            )
-		where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}
-		]]>
- 	</select>
- 	
-	<select id="count" resultType="int">
-		select COUNT(BOARD_INDEX) from CREATOR_BOARD
-	</select>
-	
-	<select id="content" parameterType="long" resultType="Board">
-		select * from CREATOR_BOARD where board_index = #{board_index}
-	</select>
+    <select id="getListResult" resultType="Board">
+        <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
+        (select * from CREATOR_BOARD) aa, (SELECT @ROWNUM := 0) TMP) bb 
+        where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name} order by BOARD_INDEX desc]]>
+    </select>
+    
+    <select id="count" resultType="int">
+        select COUNT(BOARD_INDEX) from CREATOR_BOARD
+    </select>
+    
+    <select id="content" parameterType="long" resultType="Board">
+        select * from CREATOR_BOARD where board_index = #{board_index}
+    </select>
 
-	
-	<select id="selectByIndex" resultType="Board" parameterType="long">
-		select * from CREATOR_BOARD where board_index = #{board_index}
-	</select>
-	
-	<update id="update" parameterType="Board">
-  	    update CREATOR_BOARD set board_subject = #{board_subject}, board_content = #{board_content} where board_index = #{board_index}
-	</update>
-	
-	<!-- 게시판 글 insert -->
-	<insert id="insertBoard" parameterType="creakok.com.domain.Board">
-	
-		<selectKey keyProperty="board_index" order="BEFORE" resultType="int">
-			SELECT CREATOR_BOARD_INDEX_SEQ.NEXTVAL FROM DUAL
-		</selectKey>
-			INSERT INTO CREATOR_BOARD 
-					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, #{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null, #{creator_name}, #{board_index}, 0, 0, 0)
-	</insert>
-	
-	<!-- 조회수 +1 -->
-	<update id="plusView" parameterType="long">
-		update CREATOR_BOARD set board_view = board_view + 1 where board_index = #{board_index}
-	</update>
-	
-	<!-- 좋아요 +1 -->
-	<update id="plusLike" parameterType="long">
-		update CREATOR_BOARD set board_like = board_like + 1 where board_index = #{board_index}
-	</update>
-	
-	<!-- 크리에이터 정보 조회 -->
-	<select id="getCreatorName" resultType="Creator">
-		select * from CREATOR
-	</select>
-	
-	<!-- 특정 크리에이터 조회 -->
-	<select id="getCreator" resultType="Creator" parameterType="String">
-		select * from CREATOR where CREATOR_NAME = #{creator_name}
-	</select>
-	
-	<!-- 삭제 (부모글 삭제시 자식글도 삭제됨) -->
-	<delete id="deleteBoard">
-		DELETE FROM CREATOR_BOARD 
-			WHERE CREATOR_NAME = #{creator_name} and BOARD_INDEX in (
-                         			SELECT BOARD_INDEX FROM CREATOR_BOARD
-                                    START WITH BOARD_INDEX = #{board_index} 
-                                    CONNECT BY PRIOR  BOARD_INDEX = BOARD_PARENT
-                                   )
-	</delete>
-	
-	<!-- 검색 -->
-	<select id="search" resultType="Board">
-    	<![CDATA[
-    	select * from
-        	(select ROWNUM AS rnum,
-                data.* from (
-                        select BOARD_INDEX,
-                               LPAD('   ┗ ' , 20 * (LEVEL - 1), '&nbsp') || BOARD_SUBJECT AS BOARD_SUBJECT,
-                               BOARD_CONTENT,
-                               MEMBER_NAME,
-                               MEMBER_EMAIL,
-                               BOARD_WDATE,
-                               BOARD_VIEW,
-                               BOARD_LIKE,
-                               MEMBER_PROFILE_PIC,
-                               CREATOR_NAME,
-                               BOARD_REFER,
-                               BOARD_LEVEL,
-                               BOARD_SUNBUN,
-                               BOARD_PARENT,
-                               LEVEL
-                        from CREATOR_BOARD
-                       	where CREATOR_NAME = #{creator_name} and ${board_c_code} like '%'||#{board_searchName}||'%'
-                        START WITH BOARD_PARENT = 0
-                        CONNECT BY PRIOR BOARD_INDEX = BOARD_PARENT
-                        ORDER SIBLINGS BY ${board_filterBy} desc, BOARD_REFER
-                        )
-                data
-            )
-		where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}
-		]]>
-	</select>
-	
-	<!-- 검색했을 때 count -->
-	<select id="countBySearch" resultType="int">
-		select count(case when ${board_c_code} like '%'||#{board_searchName}||'%' then 1 end) from CREATOR_BOARD where CREATOR_NAME = #{creator_name}
-	</select> 
-	
-	<!-- 크리에이터별 카운트 -->
-	<select id="countByCreator" resultType="int">
-		select count(*) from CREATOR_BOARD where CREATOR_NAME = #{creator_name}
-	</select>
-	
-	<!-- 댓글 조회 -->
-	<select id="getComment" resultType="Comment">
-		select * from BOARD_COMMENT where BOARD_INDEX = #{BOARD_INDEX}
-	</select>
+    
+    <select id="selectByIndex" resultType="Board" parameterType="long">
+        select * from CREATOR_BOARD where board_index = #{board_index}
+    </select>
+    
+    <update id="update" parameterType="Board">
+        update CREATOR_BOARD set board_subject = #{board_subject}, board_content = #{board_content} where board_index = #{board_index}
+    </update>
+    
+    <!-- 게시판 글 insert -->
+    <insert id="insertBoard" parameterType="creakok.com.domain.Board">
+    
+        <selectKey keyProperty="board_index" order="BEFORE" resultType="int">
+            select nextval('CREATOR_BOARD_INDEX_SEQ')
+        </selectKey>
+            INSERT INTO CREATOR_BOARD 
+                    VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, #{member_email, jdbcType=VARCHAR}, now(), 0, 0, null, #{creator_name}, #{board_index}, 0, 0, 0)
+    </insert>
+    
+    <!-- 조회수 +1 -->
+    <update id="plusView" parameterType="long">
+        update CREATOR_BOARD set board_view = board_view + 1 where board_index = #{board_index}
+    </update>
+    
+    <!-- 좋아요 +1 -->
+    <update id="plusLike" parameterType="long">
+        update CREATOR_BOARD set board_like = board_like + 1 where board_index = #{board_index}
+    </update>
+    
+    <!-- 크리에이터 정보 조회 -->
+    <select id="getCreatorName" resultType="Creator">
+        select * from CREATOR
+    </select>
+    
+    <!-- 특정 크리에이터 조회 -->
+    <select id="getCreator" resultType="Creator" parameterType="String">
+        select * from CREATOR where CREATOR_NAME = #{creator_name}
+    </select>
+    
+    <delete id="deleteBoard" parameterType="long">
+        delete from CREATOR_BOARD where board_index = #{board_index}
+    </delete>
+    
+    <!-- 검색 -->
+    <select id="search" resultType="Board">
+        <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
+        (select * from CREATOR_BOARD where ${board_c_code} like CONCAT('%',#{board_searchName},'%')) aa, (SELECT @ROWNUM := 0) TMP) bb
+        where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name} order by ${board_filterBy} desc]]>
+    </select> 
+    
+    <!-- 검색했을 때 count -->
+    <select id="countBySearch" resultType="int">
+        select count(case when ${board_c_code} like CONCAT('%',#{board_searchName},'%') then 1 end) from CREATOR_BOARD where CREATOR_NAME = #{creator_name}
+    </select> 
+    
+    <!-- 크리에이터별 카운트 -->
+    <select id="countByCreator" resultType="int">
+        select count(*) from CREATOR_BOARD where CREATOR_NAME = #{creator_name}
+    </select>
+    
+    <!-- 댓글 조회 -->
+    <select id="getComment" resultType="Comment">
+        select * from BOARD_COMMENT where BOARD_INDEX = #{BOARD_INDEX}
+    </select>
 
-	<!-- 크리에이터 조회(굿즈에서 사용) -->
-	<select id="getContentByCreator" resultType="Creator" parameterType="String">
-		select * from CREATOR where CREATOR_NAME=#{creator_name}
-	</select>
-	
-	<!-- 현재 글보다 큰 순번을 가진 글(with the same refer)의 순번을 +1 씩 증가시킨다. -->
-	<update id="updateSunbun" parameterType="Board">
-		update CREATOR_BOARD set BOARD_SUNBUN = BOARD_SUNBUN + 1 where BOARD_REFER = ${board_refer} and BOARD_SUNBUN > ${board_sunbun}
-	</update>
-	
-	<!-- 현재 게시글의 순번에 +1을 해주고 insert한다. -->
-	<insert id="insertAnswer" parameterType="Board">
-		<selectKey keyProperty="board_index" order="BEFORE" resultType="int">
-			SELECT CREATOR_BOARD_INDEX_SEQ.NEXTVAL FROM DUAL
-		</selectKey>
-			INSERT INTO CREATOR_BOARD 
-					VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, 
-					#{member_email, jdbcType=VARCHAR}, SYSDATE, 0, 0, null, #{creator_name}, ${board_refer}, 
-					${board_level}+1, ${board_sunbun}+1, ${board_parent})
-	</insert>
-	
-	<!-- 정렬 기능 -->
- 	<select id="getListResultByFilter" resultType="Board">
-    	<![CDATA[
-    	select * from
-        	(select ROWNUM AS rnum,
-                data.* from (
-                        select BOARD_INDEX,
-                               LPAD('   ┗ ' , 20 * (LEVEL - 1), '&nbsp') || BOARD_SUBJECT AS BOARD_SUBJECT,
-                               BOARD_CONTENT,
-                               MEMBER_NAME,
-                               MEMBER_EMAIL,
-                               BOARD_WDATE,
-                               BOARD_VIEW,
-                               BOARD_LIKE,
-                               MEMBER_PROFILE_PIC,
-                               CREATOR_NAME,
-                               BOARD_REFER,
-                               BOARD_LEVEL,
-                               BOARD_SUNBUN,
-                               BOARD_PARENT,
-                               LEVEL
-                        from CREATOR_BOARD
-                       	where CREATOR_NAME = #{creator_name}
-                        START WITH BOARD_PARENT = 0
-                        CONNECT BY PRIOR BOARD_INDEX = BOARD_PARENT
-                        ORDER SIBLINGS BY ${board_filterBy} desc, BOARD_REFER
-                        )
-                data
-            )
-		where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize}
-		]]>
- 	</select>
-
-	<!-- 크리에이터로 커뮤니티 검색(index) -->
-	<select id="searchCommunity" resultType="Creator" parameterType="String">
-		select * from CREATOR where CREATOR_NAME like '%'||#{creator_name}||'%'
-	</select> 
+    <!-- 크리에이터 조회(굿즈에서 사용) -->
+    <select id="getContentByCreator" resultType="Creator" parameterType="String">
+        select * from CREATOR where CREATOR_NAME=#{creator_name}
+    </select>
+    
+    <!-- 현재 글보다 큰 순번을 가진 글(with the same refer)의 순번을 +1 씩 증가시킨다. -->
+    <update id="updateSunbun" parameterType="Board">
+        update CREATOR_BOARD set BOARD_SUNBUN = BOARD_SUNBUN + 1 where BOARD_REFER = ${board_refer} and BOARD_SUNBUN > ${board_sunbun}
+    </update>
+    
+    <!-- 현재 게시글의 순번에 +1을 해주고 insert한다. -->
+    <insert id="insertAnswer" parameterType="Board">
+        <selectKey keyProperty="board_index" order="BEFORE" resultType="int">
+            select nextval('CREATOR_BOARD_INDEX_SEQ')
+        </selectKey>
+            INSERT INTO CREATOR_BOARD 
+                    VALUES (#{board_index}, #{board_subject}, #{board_content}, #{member_name, jdbcType=VARCHAR}, 
+                    #{member_email, jdbcType=VARCHAR}, now(), 0, 0, null, #{creator_name}, ${board_refer}, 
+                    ${board_level}+1, ${board_sunbun}+1, ${board_parent})
+    </insert>
+    
+    <!-- 정렬 기능  -->
+    <select id="getListResultByFilter" resultType="Board">
+        <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
+        (select * from CREATOR_BOARD) aa, (SELECT @ROWNUM := 0) TMP) bb 
+        where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name} order by ${board_filterBy} desc]]>
+    </select>
 
 </mapper>
