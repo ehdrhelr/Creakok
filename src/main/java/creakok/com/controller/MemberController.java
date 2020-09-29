@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import creakok.com.domain.Contact;
 import creakok.com.domain.Creator;
 import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.LoginResult;
@@ -180,17 +181,23 @@ public class MemberController {
 		String order_cp = request.getParameter("order_cp");
 		Member member = (Member)session.getAttribute("member");
 		String member_email = member.getMember_email();
+		String focus = request.getParameter("focus");
 		
 		Member_OrderInfoVo order_infoVo = (Member_OrderInfoVo)session.getAttribute("order_infoVo");
 		
 		//(1) cp 
 		int cp = 1;
 		if(order_cp == null) {
-			Object cpObj = order_infoVo.getOrder_cp();
-			if(cpObj != null) {
-				cp = (Integer)cpObj;
-			} else if(cpObj == null){
-				cp = 1;
+			//order_info 세션에 없을 시 nullpointer 오류 해결 위해 이프문 추가
+			if(order_infoVo!=null) {
+				Object cpObj = order_infoVo.getOrder_cp();
+				if(cpObj != null) {
+					cp = (Integer)cpObj;
+				} else if(cpObj == null){
+					cp = 1;
+				}
+			}else {
+				cp=1;
 			}
 		}else {
 			order_cp = order_cp.trim();
@@ -199,6 +206,7 @@ public class MemberController {
 		
 		//(2) ps 
 		int ps = 5;	
+	
 
 		Member_OrderInfoVo order_list = mService.selectPerPageOrder(cp, ps, member_email);
 		session.setAttribute("order_infoVo", order_list);
@@ -219,8 +227,13 @@ public class MemberController {
 		long order_count = mService.selectOrderCount(member_email);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("mypage");
-		
+		if(focus!=null) {
+			if(focus.equals("funding")) {
+				mv.setViewName("mypage_focus_funding");
+			}
+		}else {
+			mv.setViewName("mypage");
+		}
 		if(member_email.equals(Member_category.SUPER_ACCOUNT) ) {
 			List<Creator> standby_list = cService.readAllCreatorStandby();
 			for(Creator c : standby_list) {
@@ -236,10 +249,43 @@ public class MemberController {
 		} else {
 			mv.addObject("CreatorStandbyExist", null);
 		}
+
+		//펀딩 주문내역
+		String fundingpay_cp = request.getParameter("fundingpay_cp");
 		
+		long funding_pay_count = mService.selectFundingPayCount(member_email);
 		
-		mv.addObject("order_info", order_list);	
-		mv.addObject("order_count", order_count);	
+		//(1) cp 펀딩
+		int cp_funding = 1;
+		if(fundingpay_cp == null) {
+			Object cpObj = session.getAttribute("cp_funding");
+			if(cpObj != null) {
+				cp_funding = (Integer)cpObj;
+			} else if(cpObj == null){
+				cp_funding = 1;
+			}
+		}else {
+			fundingpay_cp = fundingpay_cp.trim();
+			cp_funding = Integer.parseInt(fundingpay_cp);
+		}
+		
+		//(2) ps 
+		int ps_funding = 5;	
+		Member_FundingPayInfoVo funding_payinfoVo = mService.selectPerPageFundingPay(cp_funding, ps_funding, member_email);
+		funding_payinfoVo.setFunding_pay_cp(cp_funding);
+		funding_payinfoVo.setFunding_pay_ps(ps_funding);
+		funding_payinfoVo.setMember_email(member_email);
+
+		session.setAttribute("funding_pay_info", funding_payinfoVo);
+		session.setAttribute("funding_pay_count", funding_pay_count);
+	
+		session.setAttribute("order_info", order_list);	
+		session.setAttribute("order_count", order_count);	
+		
+		//문의 내역
+		List<Contact> contact_list = mService.selectContact();
+		log.info("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD contact_list: "+contact_list);
+		session.setAttribute("contact_list", contact_list);	
 		
 		return mv;
 	}
@@ -293,24 +339,24 @@ public class MemberController {
 	}
 	
 	@RequestMapping("member_orderdetail.do")
-	public ModelAndView member_orderdetail(String order_indexStr, String member_email) {
+	public ModelAndView member_orderdetail(String order_indexStr, String member_email, long order_list_number, HttpSession session) {
 		long order_index = Long.parseLong(order_indexStr);
 			
 		Order_Info order_info = mService.selectOneOrderInfo(order_index);
 		long order_count = mService.selectOrderCount(member_email);
+		//session.setAttribute("list_number", order_list_number);
+		
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("mypage_order_detail");
 		mv.addObject("order_info", order_info);	
 		mv.addObject("order_count", order_count);
-
 		mv.addObject("order_list_number", order_list_number);
-	
+		mv.addObject("order_list_number", order_list_number);
 		//mv.addObject("order_list_number", order_list_number);
 			
 		return mv;
 	}
-	
 	@RequestMapping("member_fundingpayDetail.do")
 	public ModelAndView member_fundingpayDetail(String funding_payinfo_index, long funding_list_number, String member_email) {
 		long funding_payinfo_indexlong = Long.parseLong(funding_payinfo_index);
@@ -576,5 +622,12 @@ public class MemberController {
 		
 		// 입력받은 3개의 컨텐츠를 '@'를 구분자 합쳐서 반환한다. 
 		return ownKeyOfContent1 + "@" + ownKeyOfContent2 + "@" + ownKeyOfContent3;
+	}
+	@RequestMapping("qna_answer_ok.do")
+	public String qna_answer_ok(String contact_index) {
+		long contact_index2 = Long.parseLong(contact_index);
+		mService.updateAnswer(contact_index2);
+		
+		return "redirect:/member_mypage.do";
 	}
 }
