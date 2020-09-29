@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import creakok.com.domain.Contact;
 import creakok.com.domain.Creator;
 import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.LoginResult;
@@ -281,6 +282,11 @@ public class MemberController {
 		session.setAttribute("order_info", order_list);	
 		session.setAttribute("order_count", order_count);	
 		
+		//문의 내역
+		List<Contact> contact_list = mService.selectContact();
+		log.info("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD contact_list: "+contact_list);
+		session.setAttribute("contact_list", contact_list);	
+		
 		return mv;
 	}
 
@@ -514,4 +520,11 @@ public class MemberController {
 		return "redirect:/member_mypage.do";
 	}
 	
+	@RequestMapping("qna_answer_ok.do")
+	public String qna_answer_ok(String contact_index) {
+		long contact_index2 = Long.parseLong(contact_index);
+		mService.updateAnswer(contact_index2);
+		
+		return "redirect:/member_mypage.do";
+	}
 }

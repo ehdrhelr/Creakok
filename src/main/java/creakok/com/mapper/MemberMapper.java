@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import creakok.com.domain.Contact;
 import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Member;
 import creakok.com.domain.Order_Info;
@@ -40,5 +41,7 @@ public interface MemberMapper {
 	Funding_payinfo selectFundingPayInfo(@Param("funding_payinfo_index")long funding_payinfo_index);
 	Member_FundingPayInfoVo selectPerPageFundingPay(int order_cp, int order_ps, String member_email);
 
-	//펀딩 주문내역 끝
+	//문의 내역
+	List<Contact> selectContact();
+	void updateAnswer(@Param("contact_index")long contact_index);
 } 

@@ -14,4 +14,5 @@ public class Contact {
 	private String contact_email;
 	private String contact_subject;
 	private String contact_message;
+	private String contact_ok;
 }

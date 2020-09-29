@@ -73,6 +73,6 @@
 	</select>	
 	
 	<insert id="insertOneQnA" parameterType="Contact">
-        insert into CONTACT values(CONTACT_INDEX_SEQ.nextval, #{contact_name}, #{contact_email}, #{contact_subject}, #{contact_message})
+        insert into CONTACT values(CONTACT_INDEX_SEQ.nextval, #{contact_name}, #{contact_email}, #{contact_subject}, #{contact_message}, null)
     </insert>
 </mapper>
