@@ -551,7 +551,9 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                     <c:if test="${empty funding_pay_info}">
                        <h3>펀딩 내역(총  0개)</h3>              
                     </c:if>
-                    <h3>펀딩 내역(총 ${funding_pay_count}개)</h3>
+                    <c:if test="${!empty funding_pay_info}">
+                        <h3>펀딩 내역(총 ${funding_pay_count}개)</h3>
+                    </c:if>
                     <p style="margin-bottom:20px">펀딩 제목을 클릭하시면 해당 펀딩에 대한 상세내역을 확인하실 수 있습니다.</p>
                     
                     <div id="mypage_funding_area"></div>
@@ -592,9 +594,9 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                         <c:if test="${!empty funding_pay_info.funding_pay_list}">
                          <c:forEach items="${funding_pay_info.funding_pay_list}" var="funding_payinfo">
                              <tr class="order_click_tr">
-                                 <td style="padding:3px !important;">${funding_payinfo.funding_payinfo_index}</td>
+                                 <td style="padding:3px !important;">${funding_payinfo.funding_list_number}</td>
                                  <td style="padding:3px !important;">
-                                    <a href="member_fundingpayDetail.do?funding_payinfo_index=${funding_payinfo.funding_payinfo_index}&member_email=${funding_payinfo.member_email}" style="color:black;">
+                                    <a href="member_fundingpayDetail.do?funding_payinfo_index=${funding_payinfo.funding_payinfo_index}&member_email=${funding_payinfo.member_email}&funding_list_number=${funding_payinfo.funding_list_number}" style="color:black;">
                                      ${funding_payinfo.funding_subject}
                                     </a>
                                  </td>

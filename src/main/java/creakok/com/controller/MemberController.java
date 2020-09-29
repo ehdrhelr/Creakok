@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import creakok.com.domain.Creator;
+import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
 import creakok.com.domain.Member_category;
@@ -26,6 +27,7 @@ import creakok.com.kakao.KakaoLogin;
 import creakok.com.service.CreatorService;
 import creakok.com.service.MemberService;
 import creakok.com.vo.Goods_ReviewVo;
+import creakok.com.vo.Member_FundingPayInfoVo;
 import creakok.com.vo.Member_OrderInfoVo;
 import lombok.extern.log4j.Log4j;
 
@@ -301,10 +303,30 @@ public class MemberController {
 		mv.setViewName("mypage_order_detail");
 		mv.addObject("order_info", order_info);	
 		mv.addObject("order_count", order_count);
+
+		mv.addObject("order_list_number", order_list_number);
+	
+		//mv.addObject("order_list_number", order_list_number);
 			
 		return mv;
 	}
 	
+	@RequestMapping("member_fundingpayDetail.do")
+	public ModelAndView member_fundingpayDetail(String funding_payinfo_index, long funding_list_number, String member_email) {
+		long funding_payinfo_indexlong = Long.parseLong(funding_payinfo_index);
+			
+		Funding_payinfo funding_payinfo = mService.selectFundingPayInfo(funding_payinfo_indexlong);
+		long funding_paycount = mService.selectFundingPayCount(member_email);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("mypage_fundingpay_detail");
+		mv.addObject("funding_payinfo", funding_payinfo);	
+		mv.addObject("funding_paycount", funding_paycount);
+		mv.addObject("funding_list_number", funding_list_number);
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@funding_list_number: "+funding_list_number);
+			
+		return mv;
+	}
 	@RequestMapping("member_logout.do")
 	public String logout(HttpSession session) {
 		session.removeAttribute("member");
