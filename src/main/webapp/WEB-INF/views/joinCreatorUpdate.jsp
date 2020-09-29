@@ -122,17 +122,17 @@ import="creakok.com.filesetting.Path"%>
 
           <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" >
               <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">유튜브 대표 컨텐츠 1</label>
-              <input id="user_fullname" type="text" name="creator_main_content" placeholder="크리에이터가 만든 유튜브 대표 컨텐츠 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="${creator.creator_main_content}">
+              <input id="user_fullname" type="text" name="creator_content1" placeholder="크리에이터가 만든 유튜브 대표 컨텐츠 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="${creator.creator_content1}">
           </div>
 
           <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" >
               <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">유튜브 대표 컨텐츠 2</label>
-              <input id="user_fullname" type="text" name="" placeholder="크리에이터가 만든 유튜브 대표 컨텐츠 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="">
+              <input id="user_fullname" type="text" name="creator_content2" placeholder="크리에이터가 만든 유튜브 대표 컨텐츠 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="${creator.creator_content2}">
           </div>
           
           <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" >
               <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">유튜브 대표 컨텐츠 3</label>
-              <input id="user_fullname" type="text" name="" placeholder="크리에이터가 만든 유튜브 대표 컨텐츠 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="">
+              <input id="user_fullname" type="text" name="creator_content3" placeholder="크리에이터가 만든 유튜브 대표 컨텐츠 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="${creator.creator_content3}">
           </div>
 
 

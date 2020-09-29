@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" 
+import="creakok.com.filesetting.Path"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -72,23 +73,23 @@
 
     <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
       <div style="width:750px;" class="Wrapper__MembershipBody-sc-140yq7-0 dgBlAy">
-        <form id="creator_joinData" name="creator_joinData" style="color:#757575" method='post' enctype="multipart/form-data" action='writeCreatorJoinData.do'>
+        <form id="creator_joinData" name="creator_joinData" style="color:#757575" method='post' enctype="multipart/form-data" action='updateCreatorCommunity.do'>
           <input type="hidden" name="member_email" value="${member.member_email}">
           <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" style="width:200px;">
               <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">크리에이터 이메일</label><br/>
-              <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">${member.member_email}</label>
+              <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">${creator.member_email}</label>
               
           </div>
         
           <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" style="width:200px;">
               <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">크리에이터 이름</label>
               <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq hcbae-member-joinwithEmail-check" id="checkName_Id"></label>
-              <input id="user_fullname" type="text" name="creator_name" placeholder="사용할 이름을 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="" onKeyUp="checkName(this)">
+              <input id="user_fullname" type="text" name="creator_name" class="Input-sc-1x48dls-0 cbPtEV" value="${creator.creator_name}" readonly>
           </div>
           
           <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" >
               <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">크리에이터 소개글</label>
-              <input id="user_fullname" type="text" name="creator_profile_content" placeholder="간단하게 자기 소개를 해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="">
+              <input id="user_fullname" type="text" name="creator_profile_content" placeholder="간단하게 자기 소개를 해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="${creator.creator_profile_content}">
           </div>
           
           <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" >
@@ -96,7 +97,7 @@
               <label for="profile_photo" class="hcbae_label">대표사진 업로드 (PNG, JPG)</label>
               <input type="file" id="profile_photo" name="creator_pics" accept=".jpg, .jpeg, .png" style="display: none;">
               <div class="profile_preview">
-                <p>업로드 된 대표사진이 없습니다.</p>
+                <img src="${Path.IMG_STORE_COMMUNITY_SHORT}${creator.creator_profile_photo}">
               </div>
           </div>
 
@@ -105,37 +106,37 @@
               <label for="banner_photo" class="hcbae_label">배너사진 업로드 (PNG, JPG)</label>
               <input type="file" id="banner_photo" name="creator_pics" accept=".jpg, .jpeg, .png" style="display: none;">
               <div class="banner_preview">
-                <p>업로드 된 배너사진이 없습니다.</p>
+                <img src="${Path.IMG_STORE_COMMUNITY_SHORT}${creator.creator_banner_photo}">
               </div>
           </div>
 
           <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" >
               <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">인스타그램 링크</label>
-              <input id="user_fullname" type="text" name="creator_link_instagram" placeholder="사용하는 인스타그램이 있다면, 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="">
+              <input id="user_fullname" type="text" name="creator_link_instagram" placeholder="사용하는 인스타그램이 있다면, 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="${creator.creator_link_instagram}">
           </div>
 
           <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" >
               <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">유튜브 링크</label>
-              <input id="user_fullname" type="text" name="creator_link_youtube" placeholder="운영하는 유튜브가 있다면, 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="">
+              <input id="user_fullname" type="text" name="creator_link_youtube" placeholder="운영하는 유튜브가 있다면, 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="${creator.creator_link_youtube}">
           </div>
 
           <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" >
               <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">유튜브 대표 컨텐츠 1</label>
-              <input id="user_fullname" type="text" name="creator_content1" placeholder="크리에이터가 만든 유튜브 대표 컨텐츠 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="">
+              <input id="user_fullname" type="text" name="creator_content1" placeholder="크리에이터가 만든 유튜브 대표 컨텐츠 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="${creator.creator_content1}">
           </div>
 
           <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" >
               <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">유튜브 대표 컨텐츠 2</label>
-              <input id="user_fullname" type="text" name="creator_content2" placeholder="크리에이터가 만든 유튜브 대표 컨텐츠 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="">
+              <input id="user_fullname" type="text" name="creator_content2" placeholder="크리에이터가 만든 유튜브 대표 컨텐츠 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="${creator.creator_content2}">
           </div>
           
           <div class="SignUp__InputDiv-k5h4n5-0 VpHEi" >
               <label for="user_fullname" class="SignUp__InputLabel-k5h4n5-1 bpYHsq">유튜브 대표 컨텐츠 3</label>
-              <input id="user_fullname" type="text" name="creator_content3" placeholder="크리에이터가 만든 유튜브 대표 컨텐츠 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="">
+              <input id="user_fullname" type="text" name="creator_content3" placeholder="크리에이터가 만든 유튜브 대표 컨텐츠 링크를 입력해주세요." class="Input-sc-1x48dls-0 cbPtEV" value="${creator.creator_content3}">
           </div>
 
 
-          <button type="button" class="Button-sc-1x93b2b-0 SignUp__SignUpButton-k5h4n5-2 cWylwi" onclick="checkCreatorJoin();">신청하기</button>
+          <button type="button" class="Button-sc-1x93b2b-0 SignUp__SignUpButton-k5h4n5-2 cWylwi" onclick="updateCreator();">내용 수정하기</button>
         </form>
       </div>
   </div>
@@ -155,12 +156,9 @@
   
   <script type="text/javascript">
   
-  function checkCreatorJoin(){
-      if(document.getElementById('checkName_Id').outerText=="이미 존재합니다."){
-          alert("이미 사용 중인 이름 입니다.");
-          return false;
-      } else {
-          alert("크리에이터로 신청합니다.");
+  function updateCreator(){
+      let result = confirm('작성된 내용으로 수정하시겠습니까?');
+      if(result){
           creator_joinData.submit();
       }
   }

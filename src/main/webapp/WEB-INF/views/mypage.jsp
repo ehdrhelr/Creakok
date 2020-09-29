@@ -413,6 +413,32 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                     </div>
                     </c:if>
                     
+                    <c:if test="${member.member_category_code == Member_category.MEMBER_CREATOR}">
+                    <div class="hcbae-member-modify-area">
+                        <h3>커뮤니티 설정</h3>
+                        <span class="hcbae-member-modify-button">
+                        <input class="btn" type="button" data-target="#craetor-join-area" data-toggle="collapse" value="수정" onclick="changeButtonText(this)">
+                        </span>
+                        
+                        <div id="craetor-join-area" class="collapse">
+                        <p>크리에이터 커뮤니티에 대한 설정을 수정할 수 있습니다.</p>
+                        
+                        <span>
+                            <script>
+                            function creatorCommunityUpdate(member_email){
+                                const popupWidth = 850;
+                                const popupHeight = 750;
+                                const popupX = (window.screen.width/2)-(popupWidth/2);
+                                const popupY= (window.screen.height/2)-(popupHeight/2);
+                                window.open('creatorCommunityUpdate.do?member_email='+member_email, '커뮤니티 맞춤설정', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+                            }
+                            </script>
+                            <input class="btn" type="button" value="수정하기" onclick="creatorCommunityUpdate('${member.member_email}');">
+                        </span>
+                        </div>   
+                    </div>
+                    </c:if>
+                    
                     <div class="hcbae-member-modify-area">
                         <h3>수정할 정보가 뭐가 더 있을까?</h3>
                         <span class="hcbae-member-modify-button">

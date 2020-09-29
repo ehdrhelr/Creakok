@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import creakok.com.domain.Contact;
 import creakok.com.domain.Creator;
-import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
 import creakok.com.domain.Member_category;
@@ -28,7 +26,6 @@ import creakok.com.kakao.KakaoLogin;
 import creakok.com.service.CreatorService;
 import creakok.com.service.MemberService;
 import creakok.com.vo.Goods_ReviewVo;
-import creakok.com.vo.Member_FundingPayInfoVo;
 import creakok.com.vo.Member_OrderInfoVo;
 import lombok.extern.log4j.Log4j;
 
@@ -181,23 +178,17 @@ public class MemberController {
 		String order_cp = request.getParameter("order_cp");
 		Member member = (Member)session.getAttribute("member");
 		String member_email = member.getMember_email();
-		String focus = request.getParameter("focus");
 		
 		Member_OrderInfoVo order_infoVo = (Member_OrderInfoVo)session.getAttribute("order_infoVo");
 		
 		//(1) cp 
 		int cp = 1;
 		if(order_cp == null) {
-			//order_info 세션에 없을 시 nullpointer 오류 해결 위해 이프문 추가
-			if(order_infoVo!=null) {
-				Object cpObj = order_infoVo.getOrder_cp();
-				if(cpObj != null) {
-					cp = (Integer)cpObj;
-				} else if(cpObj == null){
-					cp = 1;
-				}
-			}else {
-				cp=1;
+			Object cpObj = order_infoVo.getOrder_cp();
+			if(cpObj != null) {
+				cp = (Integer)cpObj;
+			} else if(cpObj == null){
+				cp = 1;
 			}
 		}else {
 			order_cp = order_cp.trim();
@@ -206,7 +197,6 @@ public class MemberController {
 		
 		//(2) ps 
 		int ps = 5;	
-	
 
 		Member_OrderInfoVo order_list = mService.selectPerPageOrder(cp, ps, member_email);
 		session.setAttribute("order_infoVo", order_list);
@@ -227,13 +217,8 @@ public class MemberController {
 		long order_count = mService.selectOrderCount(member_email);
 		
 		ModelAndView mv = new ModelAndView();
-		if(focus!=null) {
-			if(focus.equals("funding")) {
-				mv.setViewName("mypage_focus_funding");
-			}
-		}else {
-			mv.setViewName("mypage");
-		}
+		mv.setViewName("mypage");
+		
 		if(member_email.equals(Member_category.SUPER_ACCOUNT) ) {
 			List<Creator> standby_list = cService.readAllCreatorStandby();
 			for(Creator c : standby_list) {
@@ -249,43 +234,10 @@ public class MemberController {
 		} else {
 			mv.addObject("CreatorStandbyExist", null);
 		}
-
-		//펀딩 주문내역
-		String fundingpay_cp = request.getParameter("fundingpay_cp");
 		
-		long funding_pay_count = mService.selectFundingPayCount(member_email);
 		
-		//(1) cp 펀딩
-		int cp_funding = 1;
-		if(fundingpay_cp == null) {
-			Object cpObj = session.getAttribute("cp_funding");
-			if(cpObj != null) {
-				cp_funding = (Integer)cpObj;
-			} else if(cpObj == null){
-				cp_funding = 1;
-			}
-		}else {
-			fundingpay_cp = fundingpay_cp.trim();
-			cp_funding = Integer.parseInt(fundingpay_cp);
-		}
-		
-		//(2) ps 
-		int ps_funding = 5;	
-		Member_FundingPayInfoVo funding_payinfoVo = mService.selectPerPageFundingPay(cp_funding, ps_funding, member_email);
-		funding_payinfoVo.setFunding_pay_cp(cp_funding);
-		funding_payinfoVo.setFunding_pay_ps(ps_funding);
-		funding_payinfoVo.setMember_email(member_email);
-
-		session.setAttribute("funding_pay_info", funding_payinfoVo);
-		session.setAttribute("funding_pay_count", funding_pay_count);
-	
-		session.setAttribute("order_info", order_list);	
-		session.setAttribute("order_count", order_count);	
-		
-		//문의 내역
-		List<Contact> contact_list = mService.selectContact();
-		log.info("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD contact_list: "+contact_list);
-		session.setAttribute("contact_list", contact_list);	
+		mv.addObject("order_info", order_list);	
+		mv.addObject("order_count", order_count);	
 		
 		return mv;
 	}
@@ -339,36 +291,20 @@ public class MemberController {
 	}
 	
 	@RequestMapping("member_orderdetail.do")
-	public ModelAndView member_orderdetail(String order_indexStr, String member_email, long order_list_number, HttpSession session) {
+	public ModelAndView member_orderdetail(String order_indexStr, String member_email) {
 		long order_index = Long.parseLong(order_indexStr);
 			
 		Order_Info order_info = mService.selectOneOrderInfo(order_index);
 		long order_count = mService.selectOrderCount(member_email);
-		//session.setAttribute("list_number", order_list_number);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("mypage_order_detail");
 		mv.addObject("order_info", order_info);	
 		mv.addObject("order_count", order_count);
-		mv.addObject("order_list_number", order_list_number);
-		//mv.addObject("order_list_number", order_list_number);
 			
 		return mv;
 	}
-	@RequestMapping("member_fundingpayDetail.do")
-	public ModelAndView member_fundingpayDetail(String funding_payinfo_index, String member_email) {
-		long funding_payinfo_indexlong = Long.parseLong(funding_payinfo_index);
-			
-		Funding_payinfo funding_payinfo = mService.selectFundingPayInfo(funding_payinfo_indexlong);
-		long funding_paycount = mService.selectFundingPayCount(member_email);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("mypage_fundingpay_detail");
-		mv.addObject("funding_payinfo", funding_payinfo);	
-		mv.addObject("funding_paycount", funding_paycount);
-			
-		return mv;
-	}
+	
 	@RequestMapping("member_logout.do")
 	public String logout(HttpSession session) {
 		session.removeAttribute("member");
@@ -417,7 +353,7 @@ public class MemberController {
 	@RequestMapping("joinCreatorUpdate.do")
 	public ModelAndView joinCreatorUpdate(String member_email) {
 		Creator creator = cService.checkEmailExist_standby(member_email);
-		//log.info("########### creator:"+creator);
+		log.info("########### creator:"+creator.toString());
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("joinCreatorUpdate");
 		mv.addObject("creator", creator);	
@@ -429,6 +365,10 @@ public class MemberController {
 	public String writeCreatorJoinData(Creator creator, @RequestParam List<MultipartFile> creator_pics) {
 		//log.info("#########creator:"+creator);
 		String path = Path.IMG_STORE_COMMUNITY;
+		
+		// creator에 저장된 3개의 컨텐츠에서 각각의 고유키만 추출하여 '@'를 구분자로한 하나의 키로 만들어서 컬럼에 저장한다. 
+		String creator_main_content = mergeOwnKeysToMainContent(creator);
+		creator.setCreator_main_content(creator_main_content);
 		
 		int nAddResult = cService.addCreatorStandby(creator);
 		//log.info("######## nAddResult:"+nAddResult);
@@ -455,6 +395,11 @@ public class MemberController {
 		//저장된 것을 읽어온다.
 		Creator existCreator = cService.checkEmailExist_standby(creator.getMember_email() );
 		
+		
+		// creator에 저장된 3개의 컨텐츠에서 각각의 고유키만 추출하여 '@'를 구분자로한 하나의 키로 만들어서 컬럼에 저장한다. 
+		String creator_main_content = mergeOwnKeysToMainContent(creator);
+		creator.setCreator_main_content(creator_main_content);
+				
 		//일단 업데이트를 하고
 		int nAddResult = cService.updateCreator_standby(creator);
 		//log.info("######## nAddResult:"+nAddResult);
@@ -517,12 +462,97 @@ public class MemberController {
 		}
 		return "redirect:/member_mypage.do";
 	}
-	
-	@RequestMapping("qna_answer_ok.do")
-	public String qna_answer_ok(String contact_index) {
-		long contact_index2 = Long.parseLong(contact_index);
-		mService.updateAnswer(contact_index2);
+	// 크리에이터 커뮤니티 정보수정 페이지 이동 
+	@RequestMapping("creatorCommunityUpdate.do")
+	public ModelAndView creatorCommunityUpdate(String member_email) {
+		log.info("!!!!!!!!!!! member_email : " +member_email);
+		Creator creator = cService.checkEmailExist(member_email);
+		log.info("########### creator:"+creator);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("creatorCommunityUpdate");
+		mv.addObject("creator", creator);	
+		return mv;
+	}
+	// 크리에이터 커뮤니티 정보수정
+	@ResponseBody
+	@RequestMapping("updateCreatorCommunity.do")
+	public String updateCreatorCommunity(Creator creator, @RequestParam List<MultipartFile> creator_pics) {
+		//log.info("#########creator:"+creator);
+		String path = Path.IMG_STORE_COMMUNITY;
 		
-		return "redirect:/member_mypage.do";
+		//저장된 것을 읽어온다.
+		Creator existCreator = cService.checkEmailExist(creator.getMember_email() );
+		
+		
+		// creator에 저장된 3개의 컨텐츠에서 각각의 고유키만 추출하여 '@'를 구분자로한 하나의 키로 만들어서 컬럼에 저장한다. 
+		String creator_main_content = mergeOwnKeysToMainContent(creator);
+		creator.setCreator_main_content(creator_main_content);
+				
+		//일단 업데이트를 하고
+		int nUpdateResult = cService.updateCreator(creator);
+		//log.info("######## nAddResult:"+nAddResult);
+		if( nUpdateResult == 1 ) { //DB에 기록이 성공했다면. 파일을 저장하자.
+			MultipartFile profile = creator_pics.get(0);
+			if(profile.getSize() != 0) { //첨부파일이 있으면 새로 저장하자.
+				String creator_profile_photo = cService.saveImage(profile, path);
+				creator.setCreator_profile_photo(creator_profile_photo);
+			} else {
+				//첨부파일이 없으면 기존 내용을 그대로 사용하자.
+				creator.setCreator_profile_photo(existCreator.getCreator_profile_photo() );
+			}
+			cService.updateCreatorProfileImagesInCreator(creator);
+
+			MultipartFile banner = creator_pics.get(1);
+			if(banner.getSize() != 0) {
+				String creator_banner_photo = cService.saveImage(banner, path);
+				creator.setCreator_banner_photo(creator_banner_photo);
+			} else {
+				creator.setCreator_banner_photo(existCreator.getCreator_banner_photo() );
+			}
+			cService.updateCreatorBannerImagesInCreator(creator);
+		}
+		
+		log.info("@@@@@2 creator : " + creator);
+		return "<script>opener.parent.location.reload(); self.close();</script>";
+	}
+	
+	// 유튜브 동영상의 주소에서 고유키를 얻는 메소드
+	public String getOwnKeyOfContent(String content) {
+		String urlOnSearchBar = "https://www.youtube.com/watch?v=";
+		String urlOnShare = "https://youtu.be/";
+		
+		int indexOfSeperator = content.indexOf("=");
+		
+		if (content.contains(urlOnSearchBar)) {
+			log.info("%%%%%% root 1");
+			//content = content.replaceAll(urlOnSearchBar, ""); 이걸 쓰면 replace가 안되지..?
+			content = content.substring(indexOfSeperator + 1);
+			return content;
+		} else if (content.contains(urlOnShare)) {
+			log.info("%%%%%% root 2");
+			content = content.replaceAll(urlOnShare, "");
+			return content;
+		}
+		
+		return "";
+	}
+	
+	// 유튜브 동영상 3개의 고유키를 하나의 키로 합친다. 
+	public String mergeOwnKeysToMainContent(Creator creator) {
+		String con1 = creator.getCreator_content1();
+		String con2 = creator.getCreator_content2();
+		String con3 = creator.getCreator_content3();
+		log.info("@@@@@@@@@@ con1 : " + con1);
+		log.info("@@@@@@@@@@ con2 : " + con2);
+		log.info("@@@@@@@@@@ con3 : " + con3);
+		String ownKeyOfContent1 = getOwnKeyOfContent(con1);
+		String ownKeyOfContent2 = getOwnKeyOfContent(con2);
+		String ownKeyOfContent3 = getOwnKeyOfContent(con3);
+		log.info("@@@@@@@@@@ ownKeyOfContent1 : " + ownKeyOfContent1);
+		log.info("@@@@@@@@@@ ownKeyOfContent2 : " + ownKeyOfContent2);
+		log.info("@@@@@@@@@@ ownKeyOfContent3 : " + ownKeyOfContent3);
+		
+		// 입력받은 3개의 컨텐츠를 '@'를 구분자 합쳐서 반환한다. 
+		return ownKeyOfContent1 + "@" + ownKeyOfContent2 + "@" + ownKeyOfContent3;
 	}
 }

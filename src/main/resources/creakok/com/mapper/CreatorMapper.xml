@@ -5,15 +5,19 @@
 <mapper namespace="creakok.com.mapper.CreatorMapper">
 
   <select id="selectAll_standby" resultType="Creator">
-  select * from CREATOR_STANDBY
+ 	select * from CREATOR_STANDBY
   </select>
   
   <delete id="deleteCreator_standby" parameterType="Creator">
-  delete from CREATOR_STANDBY where CREATOR_NAME=#{creator_name}
+  	delete from CREATOR_STANDBY where CREATOR_NAME=#{creator_name}
   </delete>
 
   <select id="selectByName" parameterType="String" resultType="Creator">
     select * from CREATOR where CREATOR_NAME=#{creator_name}
+  </select>
+  
+  <select id="selectByEmail" parameterType="String" resultType="Creator">
+  	select * from CREATOR where MEMBER_EMAIL=#{member_email}
   </select>
   
   <select id="selectByName_standby" parameterType="String" resultType="Creator">
@@ -27,29 +31,45 @@
   <insert id="insertCreator" parameterType="Creator">
     insert into CREATOR(CREATOR_NAME, MEMBER_EMAIL, CREATOR_PROFILE_CONTENT, 
       CREATOR_PROFILE_PHOTO, CREATOR_BANNER_PHOTO, CREATOR_LINK_YOUTUBE, CREATOR_LINK_INSTAGRAM, 
-      CREATOR_GOODS_INDEX, CREATOR_FUNDING_INDEX, CREATOR_MAIN_CONTENT) 
+      CREATOR_GOODS_INDEX, CREATOR_FUNDING_INDEX, CREATOR_MAIN_CONTENT, CREATOR_CONTENT1, CREATOR_CONTENT2, CREATOR_CONTENT3) 
       values(#{creator_name}, #{member_email}, #{creator_profile_content}, 
         #{creator_profile_photo}, #{creator_banner_photo}, #{creator_link_youtube}, #{creator_link_instagram},
-        #{creator_goods_index}, #{creator_funding_index}, #{creator_main_content})
+        #{creator_goods_index}, #{creator_funding_index}, #{creator_main_content}, #{creator_content1}, #{creator_content2}, #{creator_content3})
   </insert>
+  
+  <update id="updateCreator" parameterType="Creator">
+    update CREATOR set CREATOR_PROFILE_CONTENT=#{creator_profile_content},
+                                CREATOR_PROFILE_PHOTO=#{creator_profile_photo},
+                                CREATOR_BANNER_PHOTO=#{creator_banner_photo},
+                                CREATOR_LINK_YOUTUBE=#{creator_link_youtube},
+                                CREATOR_LINK_INSTAGRAM=#{creator_link_instagram},
+                                CREATOR_MAIN_CONTENT=#{creator_main_content},
+                                CREATOR_CONTENT1=#{creator_content1},
+                                CREATOR_CONTENT2=#{creator_content2},
+                                CREATOR_CONTENT3=#{creator_content3}
+      where CREATOR_NAME=#{creator_name}
+  </update>
   
   
   <insert id="insertCreator_standby" parameterType="Creator">
     insert into CREATOR_STANDBY(CREATOR_NAME, MEMBER_EMAIL, CREATOR_PROFILE_CONTENT, 
       CREATOR_PROFILE_PHOTO, CREATOR_BANNER_PHOTO, CREATOR_LINK_YOUTUBE, CREATOR_LINK_INSTAGRAM, 
-      CREATOR_GOODS_INDEX, CREATOR_FUNDING_INDEX, CREATOR_MAIN_CONTENT) 
+      CREATOR_GOODS_INDEX, CREATOR_FUNDING_INDEX, CREATOR_MAIN_CONTENT, CREATOR_CONTENT1, CREATOR_CONTENT2, CREATOR_CONTENT3) 
       values(#{creator_name}, #{member_email}, #{creator_profile_content}, 
         #{creator_profile_photo}, #{creator_banner_photo}, #{creator_link_youtube}, #{creator_link_instagram},
-        #{creator_goods_index}, #{creator_funding_index}, #{creator_main_content})
+        #{creator_goods_index}, #{creator_funding_index}, #{creator_main_content}, #{creator_content1}, #{creator_content2}, #{creator_content3})
   </insert>
   
   <update id="updateCreator_standby" parameterType="Creator">
     update CREATOR_STANDBY set CREATOR_PROFILE_CONTENT=#{creator_profile_content},
                                 CREATOR_PROFILE_PHOTO=#{creator_profile_photo},
                                 CREATOR_BANNER_PHOTO=#{creator_banner_photo},
-                                CREATOR_LINK_YOUTUBE=#{creator_link_instagram},
+                                CREATOR_LINK_YOUTUBE=#{creator_link_youtube},
                                 CREATOR_LINK_INSTAGRAM=#{creator_link_instagram},
-                                CREATOR_MAIN_CONTENT=#{creator_main_content}
+                                CREATOR_MAIN_CONTENT=#{creator_main_content},
+                                CREATOR_CONTENT1=#{creator_content1},
+                                CREATOR_CONTENT2=#{creator_content2},
+                                CREATOR_CONTENT3=#{creator_content3}
       where CREATOR_NAME=#{creator_name}
   </update>
   
@@ -65,4 +85,11 @@
     update CREATOR_STANDBY set CREATOR_BANNER_PHOTO=#{creator_banner_photo} where MEMBER_EMAIL=#{member_email}
   </update>
 
+  <update id="updateCreatorProfileImagesInCreator" parameterType="Creator">
+    update CREATOR set CREATOR_PROFILE_PHOTO=#{creator_profile_photo} where MEMBER_EMAIL=#{member_email}
+  </update>
+
+  <update id="updateCreatorBannerImagesInCreator" parameterType="Creator">
+    update CREATOR set CREATOR_BANNER_PHOTO=#{creator_banner_photo} where MEMBER_EMAIL=#{member_email}
+  </update>
 </mapper>

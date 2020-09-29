@@ -405,19 +405,6 @@ public class CreatorBoardController {
 	// 답글 작성 backend 처리 로직
 	@PostMapping("board_answer")
 	public String boardAnswer(Board board) {
-		
-		/*	컨트롤러에서 답글 제목에 '└[답글]'을 추가하는 로직, db에서 select할때 LPAD하는 걸로 변경.
-		 
-	 	String subjectWithSeperator = board.getBoard_subject();
-		long board_level = board.getBoard_level();
-		subjectWithSeperator = "└[답글] " + subjectWithSeperator;
-		for(int i=0; i<board_level; i++) {
-			subjectWithSeperator = "&nbsp;&nbsp;&nbsp;&nbsp;" + subjectWithSeperator;
-		}
-		
-		board.setBoard_subject(subjectWithSeperator);
-		 */	
-		
 		/* 원글의 board_index를 가져와서 답글의 board_parent에 넣어준다. 
 		 * CONNECT BY 로 부모자식관계형성 
 		 */

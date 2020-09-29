@@ -58,6 +58,16 @@ public class CreatorServiceImpl implements CreatorService {
 	}
 	
 	@Override
+	public int updateCreatorProfileImagesInCreator(Creator creator){
+		return creatorMapper.updateCreatorProfileImagesInCreator(creator);
+	}
+	
+	@Override
+	public int updateCreatorBannerImagesInCreator(Creator creator) {
+		return creatorMapper.updateCreatorBannerImagesInCreator(creator);
+	}
+	
+	@Override
 	public boolean deleteImage(String path, String filename) {
 		
 		return false;
@@ -106,6 +116,12 @@ public class CreatorServiceImpl implements CreatorService {
 		return creatorMapper.selectByName(creator_name);
 	}
 	
+	// 크리에이터 테이블에서 email로 creator찾기
+	@Override
+	public Creator checkEmailExist(String member_email) {
+		return creatorMapper.selectByEmail(member_email);
+	}
+	
 	@Override
 	public Creator checkNameExist_standby(String creator_name) {
 		return creatorMapper.selectByName_standby(creator_name);
@@ -118,6 +134,12 @@ public class CreatorServiceImpl implements CreatorService {
 
 	@Override
 	public int addCreatorStandby(Creator creator) {
+		log.info("&&&&&&& creator : " + creator.toString());
 		return creatorMapper.insertCreator_standby(creator);
+	}
+	
+	@Override
+	public int updateCreator(Creator creator) {
+		return creatorMapper.updateCreator(creator);
 	}
 }
