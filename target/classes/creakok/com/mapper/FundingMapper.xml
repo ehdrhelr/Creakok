@@ -5,14 +5,14 @@
 <mapper namespace="creakok.com.mapper.FundingMapper">
 	<select id="selectPerPage" parameterType="FundingVo" resultType="Funding">
         <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
-	    (select * from (select * from FUNDING where FUNDING_EDATE>now() cc) where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} desc) aa, 
+	    (select * from (select * from FUNDING where FUNDING_EDATE>now() )cc where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} desc) aa, 
 	    (SELECT @ROWNUM := 0) TMP) bb
 	    where rnum>${startRow} and rnum<=${endRow}]]>
     </select>
     
     <select id="selectPerPageEdate" parameterType="FundingVo" resultType="Funding">
         <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
-	    (select * from (select * from FUNDING where FUNDING_EDATE>now() cc) where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} asc) aa, 
+	    (select * from (select * from FUNDING where FUNDING_EDATE>now() )cc where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} asc) aa, 
 	    (SELECT @ROWNUM := 0) TMP) bb
 	    where rnum>${startRow} and rnum<=${endRow}]]>
 	    </select>
@@ -42,7 +42,7 @@
     </select>
     
      <select id="getRelatedFunding" parameterType="long" resultType="Funding">
-        <![CDATA[select * from (select * from funding where funding_edate>sysdate) where FUNDING_CATEGORY_CODE=${categoryCode}]]>
+        <![CDATA[select * from (select * from funding where FUNDING_EDATE>now())cc where FUNDING_CATEGORY_CODE=${categoryCode}]]>
     </select>
     
      <select id="getFunding_qna" parameterType="Funding_qnaVo" resultType="Funding_qna">
@@ -85,11 +85,11 @@
     <delete id="qnaDelete" parameterType="long">
    	    delete from FUNDING_QNA where FUNDING_QNA_INDEX=${funding_qna_index}
     </delete>
-     <select id="getFunding_edate_cancel" parameterType="long" resultType="date">
-    	select funding_edate-1 from FUNDING where FUNDING_INDEX=${funding_index}
+ <select id="getFunding_edate_cancel" parameterType="long" resultType="date">
+       select ( SELECT DATE_ADD(funding_edate, INTERVAL -1 DAY) ) cc from FUNDING where FUNDING_INDEX=${funding_index}
     </select>
     <select id="getFunding_edate_payment" parameterType="long" resultType="date">
-    	select funding_edate+1 from FUNDING where FUNDING_INDEX=${funding_index}
+       select ( SELECT DATE_ADD(funding_edate, INTERVAL 1 DAY) ) cc from FUNDING where FUNDING_INDEX=${funding_index}
     </select>
     <update id = "updateFunding_amount" parameterType="Funding_payinfo">
     	update FUNDING set FUNDING_AMOUNT=FUNDING_AMOUNT+${funding_payinfo_amountpay}, FUNDING_PEOPLE=FUNDING_PEOPLE+1 where FUNDING_INDEX=${funding_index}
@@ -97,5 +97,7 @@
      <update id = "updateFunding_cancel" parameterType="Funding_payinfo">
     	update FUNDING set FUNDING_AMOUNT=FUNDING_AMOUNT-${funding_payinfo_amountpay}, FUNDING_PEOPLE=FUNDING_PEOPLE-1 where FUNDING_INDEX=${funding_index}
     </update>
+    
+    
     
 </mapper>
