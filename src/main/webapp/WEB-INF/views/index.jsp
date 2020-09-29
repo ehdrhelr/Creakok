@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
+
+    <link rel="stylesheet" href="css/progressBar.css">
         
 	<style>
 	@font-face{
@@ -195,7 +197,8 @@
                                            
                                             <div id="bar1" class="barfiller" style="border-radius:50pt">
                                                
-                                                <span class="fill" data-percentage="60" style="background: rgb(252, 82, 48); width: 126px; transition: width 1s ease-in-out 0s;border-radius:30pt;"></span>
+                                                <progress class="myBars" max="100" value="0" data-percentage="${funding.percentage}"></progress>
+                                                <!--<span class="fill" data-percentage="60" style="background: rgb(252, 82, 48); width: 126px; transition: width 1s ease-in-out 0s;border-radius:30pt;"></span>-->
                                             </div>
                                         </div>
                                           
@@ -843,6 +846,8 @@
     <!-- Active js -->
     <script src="js/active.js"></script>
     
+    <script src="js/progressBar.js"></script>
+        
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
     </jsp:include>
