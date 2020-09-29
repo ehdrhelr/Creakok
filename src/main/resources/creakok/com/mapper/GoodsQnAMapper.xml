@@ -6,7 +6,7 @@
 
     <select id="selectPerPageQnA" resultType="Goods_QnA" parameterType="Goods_QnAVo">
         <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from
-        (select * from GOODS_QNA where GOODS_INDEX=#{goods_index} order by GOODS_QNA_WDATE desc) aa, (SELECT @ROWNUM := 0) TMP) bb
+        (select * from GOODS_QNA where GOODS_INDEX=#{goods_index} order by GOODS_QNA_WDATE desc limit ${(qna_cp-1)*qna_ps}, ${qna_cp*qna_ps}) aa, (SELECT @ROWNUM := ${(qna_cp-1)*qna_ps}) TMP) bb
         where rnum>${(qna_cp-1)*qna_ps} and rnum<=${qna_cp*qna_ps}
         ]]>
     </select>

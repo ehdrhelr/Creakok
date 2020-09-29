@@ -5,20 +5,20 @@
 <mapper namespace="creakok.com.mapper.GoodsMapper">
 	<select id="selectGoodsRanking"  resultType="Goods">
 		<![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
-        (select * from GOODS order by GOODS_SALE_NUMBER desc) aa, (SELECT @ROWNUM := 0) TMP) bb 
+        (select * from GOODS order by GOODS_SALE_NUMBER desc limit 0, 5) aa, (SELECT @ROWNUM := 0) TMP) bb 
         where rnum <= 5]]>
 	</select>
 	
 	<select id="list" resultType="Goods" parameterType="GoodsVo">
 		<![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from
-        (select * from GOODS order by ${filterBy} desc) aa, (SELECT @ROWNUM := 0) TMP) bb
+        (select * from GOODS order by ${filterBy} desc limit ${(cp-1)*ps}, ${cp*ps}  ) aa, (SELECT @ROWNUM := ${(cp-1)*ps}) TMP) bb
         where rnum>${(cp-1)*ps} and rnum<=${cp*ps}
         ]]>
 	</select>
 	
 	<select id="selectPerPage" resultType="Goods" parameterType="GoodsVo">
 		<![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from
-        (select * from GOODS where GOODS_CATEGORY_CODE=${gCode} order by ${filterBy} desc) aa, (SELECT @ROWNUM := 0) TMP) bb
+        (select * from GOODS where GOODS_CATEGORY_CODE=${gCode} order by ${filterBy} desc limit ${(cp-1)*ps}, ${cp*ps}  ) aa, (SELECT @ROWNUM := ${(cp-1)*ps}) TMP) bb
         where rnum>${(cp-1)*ps} and rnum<=${cp*ps}
         ]]>
 	</select>
@@ -62,7 +62,7 @@
     <select id="selectSearchGoods" resultType="Goods" parameterType="Goods_SearchVo">
 		<![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 rnum, aa.* from
         (select * from GOODS where GOODS_NAME like '%'||#{keyword}||'%' or 
-        CREATOR_NAME like '%'||#{keyword}||'%' order by GOODS_SALE_NUMBER desc) aa, (SELECT @ROWNUM := 0) TMP) bb
+        CREATOR_NAME like '%'||#{keyword}||'%' order by GOODS_SALE_NUMBER desc limit ${(cp-1)*ps}, ${cp*ps}) aa, (SELECT @ROWNUM := ${(cp-1)*ps}) TMP) bb
         where rnum>${(cp-1)*ps} and rnum<=${cp*ps}
         ]]>
     </select>   

@@ -5,15 +5,15 @@
 <mapper namespace="creakok.com.mapper.FundingMapper">
 	<select id="selectPerPage" parameterType="FundingVo" resultType="Funding">
         <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
-	    (select * from (select * from FUNDING where FUNDING_EDATE>now() )cc where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} desc) aa, 
-	    (SELECT @ROWNUM := 0) TMP) bb
+	    (select * from (select * from FUNDING where FUNDING_EDATE>now() )cc where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} desc limit ${startRow}, ${endRow} ) aa, 
+	    (SELECT @ROWNUM := ${startRow}) TMP) bb
 	    where rnum>${startRow} and rnum<=${endRow}]]>
     </select>
     
     <select id="selectPerPageEdate" parameterType="FundingVo" resultType="Funding">
         <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
-	    (select * from (select * from FUNDING where FUNDING_EDATE>now() )cc where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} asc) aa, 
-	    (SELECT @ROWNUM := 0) TMP) bb
+	    (select * from (select * from FUNDING where FUNDING_EDATE>now() )cc where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} asc limit ${startRow}, ${endRow} ) aa,
+	    (SELECT @ROWNUM := ${startRow}) TMP) bb
 	    where rnum>${startRow} and rnum<=${endRow}]]>
 	    </select>
     <select id="selectPerPageFinished" resultType="Funding">
@@ -47,7 +47,7 @@
     
      <select id="getFunding_qna" parameterType="Funding_qnaVo" resultType="Funding_qna">
          <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
-    (select * from FUNDING_QNA where FUNDING_INDEX=${funding_index} order by FUNDING_QNA_WDATE desc) aa, (SELECT @ROWNUM := 0) TMP) bb 
+    (select * from FUNDING_QNA where FUNDING_INDEX=${funding_index} order by FUNDING_QNA_WDATE desc limit ${startRow}, ${endRow}) aa, (SELECT @ROWNUM := ${startRow}) TMP) bb 
     where rnum>${startRow} and rnum<=${endRow}]]>
     </select>
     

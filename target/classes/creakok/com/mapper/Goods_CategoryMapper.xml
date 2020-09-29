@@ -15,7 +15,7 @@
 	<select id="selectByGcode" resultType="Goods" parameterType="GoodsVo">
         <![CDATA[
         select * from 
-        (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from (select * from GOODS where GOODS_CATEGORY_CODE=${gCode} order by GOODS_INDEX desc) aa, (SELECT @ROWNUM := 0) TMP) bb 
+        (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from (select * from GOODS where GOODS_CATEGORY_CODE=${gCode} order by GOODS_INDEX desc limit ${(cp-1)*ps}, ${cp*ps} ) aa, (SELECT @ROWNUM := ${(cp-1)*ps}) TMP) bb 
         where rnum>${(cp-1)*ps} and rnum<=${cp*ps}
         ]]>
     </select>
