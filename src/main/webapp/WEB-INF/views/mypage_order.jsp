@@ -436,7 +436,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                      <thead>
                         <tr>
                             <th style="padding:1.5px !important;">No</th>
-                            <th style="padding:1.5px !important;">주문일자</th>
+                            <th style="padding:1.5px !important;">주문일</th>
                             <th style="padding:1.5px !important;">주문번호</th>
                             <th style="padding:1.5px !important;">상품명</th>
                             <th style="padding:1.5px !important;">결제금액</th>
@@ -579,7 +579,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                       <tr>
                             <td colspan="6" align="center" style="border-bottom:0px">
                              <c:forEach begin="1" end="${funding_pay_info.funding_pay_totalPageCount}" var="i">
-                                      <a href="member_order.do?order_cp=${i}&member_email=${funding_pay_info.member_email}#fix_point" style="color:black; font-size:11pt">
+                                      <a href="member_mypage.do?focus=funding&fundingpay_cp=${i}&member_email=${funding_pay_info.member_email}#fix_point" style="color:black; font-size:11pt">
                                   <c:choose> 
                                   <c:when test="${i==funding_pay_info.funding_pay_cp}">
                                       <strong>${i}</strong>

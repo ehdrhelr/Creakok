@@ -479,7 +479,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                      <thead>
                         <tr>
                             <th style="padding:1.5px !important;">No</th>
-                            <th style="padding:1.5px !important;">주문일자</th>
+                            <th style="padding:1.5px !important;">주문일</th>
                             <th style="padding:1.5px !important;">주문번호</th>
                             <th style="padding:1.5px !important;">상품명</th>
                             <th style="padding:1.5px !important;">결제금액</th>

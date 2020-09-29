@@ -433,7 +433,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                      <thead>
                         <tr>
                             <th style="padding:1.5px !important;">No</th>
-                            <th style="padding:1.5px !important;">주문일자</th>
+                            <th style="padding:1.5px !important;">주문일</th>
                             <th style="padding:1.5px !important;">주문번호</th>
                             <th style="padding:1.5px !important;">상품명</th>
                             <th style="padding:1.5px !important;">결제금액</th>
@@ -454,7 +454,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                         <c:if test="${!empty order_info.order_list}">
                          <c:forEach items="${order_info.order_list}" var="order_info">
                              <tr class="order_click_tr">
-                                 <td style="padding:3px !important;">${order_info.order_index}</td>
+                                 <td style="padding:3px !important;">${order_info.order_list_number}</td>
                                  <td style="padding:3px !important;">${order_info.buy_date}</td>
                                  <td style="padding:3px !important;"  class="order_click_td"><a href="member_orderdetail.do?order_indexStr=${order_info.order_index}&member_email=${order_info.member_email}" style="color:black;">${order_info.buyer_buyid}</a></td>
                                  <td style="padding:3px !important;">${order_info.buy_product_name}</td>

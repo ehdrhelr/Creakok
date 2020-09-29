@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import creakok.com.domain.Creator;
 import creakok.com.domain.Funding;
 import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Funding_qna;
+import creakok.com.domain.Goods;
 import creakok.com.service.FundingService;
 import creakok.com.service.PayService;
 import creakok.com.vo.FundingVo;
@@ -216,7 +218,16 @@ public class FundingController {
 	@RequestMapping("funding_detail.do")
 	public ModelAndView detail(HttpServletRequest request, HttpSession session) {
 	    String funding_indexStr = request.getParameter("funding_index");
+	    
+		//크리에이터 프로필 이미지
+	    long funding_index2 = Long.parseLong(funding_indexStr);
+	    Funding funding = service.getFunding(funding_index2);
+		String creator_name = funding.getCreator_name();
+		String creator_profile_photo = service.getCreatorProfilPhoto(creator_name);
+		session.setAttribute("creator_profile_photo", creator_profile_photo);
+		
 		FundingVo fundingVo = (FundingVo) session.getAttribute("fundingVo");
+		
 			if(funding_indexStr!=null) {
 				long funding_index = Long.parseLong(funding_indexStr);
 				Funding fundingSelected = service.getFunding(funding_index);
@@ -246,7 +257,8 @@ public class FundingController {
 				fundingSelected.setFunding_category_name(service.selectCategoryName(categoryCode));
 				fundingSelected.setCreator_profil_content(service.getCreatorProfilContent(fundingSelected.getCreator_name()));
 				long qna_totalCount = service.getTotalCount_qna(funding_index);
-				session.setAttribute("qna_totalCount", qna_totalCount);
+				fundingSelected.setFunding_qna_totalCount(qna_totalCount);
+				//session.setAttribute("qna_totalCount", qna_totalCount);
 				session.setAttribute("funding_detail", fundingSelected);
 				return new ModelAndView("/funding_detail", "funding_detail", fundingSelected);
 			}else {
@@ -278,6 +290,7 @@ public class FundingController {
 		long qna_totalCount = service.getTotalCount_qna(funding_index);
 		Funding funding = (Funding)session.getAttribute("funding_detail");
 		funding.setFunding_qna_totalCount(qna_totalCount);
+
 		Funding_qnaVo funding_qnaVo_temp = new Funding_qnaVo(funding_index, cp_qna, qna_totalCount, 5, null);
 		List<Funding_qna> funding_qna_list = service.getFunding_qna(funding_qnaVo_temp);
 		
@@ -322,7 +335,6 @@ public class FundingController {
 	
 	@RequestMapping("funding_qna.detail")
 	public ModelAndView detail_qna(HttpServletRequest request, HttpSession session) {
-
 	    String funding_qna_indexStr = request.getParameter("funding_qna_index");
 	    String funding_indexStr = request.getParameter("funding_index");
 	    long funding_qna_index = Long.parseLong(funding_qna_indexStr);
@@ -333,6 +345,10 @@ public class FundingController {
 	    session.setAttribute("funding_qna_detail", funding_qna);
 	    ModelAndView mv =  new ModelAndView("/funding_qna_detail", "funding_qna_detail", funding_qna);
 	    mv.addObject("funding_detail", funding);
+	    
+	    //문의글 번호
+	    String list_number = request.getParameter("list_number");
+	    mv.addObject("list_number", list_number);
 	    
 	   
 	    return mv;

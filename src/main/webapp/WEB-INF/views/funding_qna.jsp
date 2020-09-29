@@ -244,7 +244,7 @@
                          
                              <tr>
                              <td style="padding:1.5px !important;">${funding_qna.list_number}</td>
-                                  <td style="padding:1.5px !important;"><a href="funding_qna.detail?funding_qna_index=${funding_qna.funding_qna_index}&funding_index=${funding_qna.funding_index}#fix_point" style="color:black">${funding_qna.funding_qna_subject}</a></td>
+                                  <td style="padding:1.5px !important;"><a href="funding_qna.detail?funding_qna_index=${funding_qna.funding_qna_index}&funding_index=${funding_qna.funding_index}&list_number=${funding_qna.list_number}#fix_point" style="color:black">${funding_qna.funding_qna_subject}</a></td>
                                   
                               
                                   <td style="padding:1.5px !important;">${funding_qna.member_name}</td>
@@ -318,7 +318,7 @@
                                 <div class="CreatorCard__CreatorCardInner-sc-1ifohey-0 iubrbI">
                                     <div class="CreatorCard__CreatorCardLabel-sc-1ifohey-1 erXxPv">창작자 소개</div>
                                     <div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO"><span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG" 
-                                     style="background-image: url(${funding_detail.creator_profil_photo});"></span>
+                                     style="background-image: url(img/community/${creator_profile_photo});"></span>
                                     <a target="_blank" href="#">
                                     <span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx"> ${funding_detail.creator_name}</span></a></div>
                                     <div class="CreatorCard__CreatorBiography-sc-1ifohey-4 kTXqqU">

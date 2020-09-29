@@ -595,7 +595,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                       <tr>
                             <td colspan="6" align="center" style="border-bottom:0px">
                              <c:forEach begin="1" end="${funding_pay_info.funding_pay_totalPageCount}" var="i">
-                                      <a href="member_order.do?order_cp=${i}&member_email=${funding_pay_info.member_email}#fix_point" style="color:black; font-size:11pt">
+                                      <a href="member_mypage.do?focus=funding&fundingpay_cp=${i}&member_email=${funding_pay_info.member_email}#fix_point" style="color:black; font-size:11pt">
                                   <c:choose> 
                                   <c:when test="${i==funding_pay_info.funding_pay_cp}">
                                       <strong>${i}</strong>

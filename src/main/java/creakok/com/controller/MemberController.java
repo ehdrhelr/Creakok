@@ -332,11 +332,8 @@ public class MemberController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("mypage_order");
-
-		
 		mv.addObject("order_info", order_list);	
 		mv.addObject("order_count", order_count);	
-		
 		
 		return mv;
 	}
@@ -347,6 +344,7 @@ public class MemberController {
 			
 		Order_Info order_info = mService.selectOneOrderInfo(order_index);
 		long order_count = mService.selectOrderCount(member_email);
+		//session.setAttribute("list_number", order_list_number);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("mypage_order_detail");
