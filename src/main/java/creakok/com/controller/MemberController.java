@@ -346,17 +346,19 @@ public class MemberController {
 		long order_count = mService.selectOrderCount(member_email);
 		//session.setAttribute("list_number", order_list_number);
 		
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("mypage_order_detail");
 		mv.addObject("order_info", order_info);	
 		mv.addObject("order_count", order_count);
+		mv.addObject("order_list_number", order_list_number);
 		mv.addObject("order_list_number", order_list_number);
 		//mv.addObject("order_list_number", order_list_number);
 			
 		return mv;
 	}
 	@RequestMapping("member_fundingpayDetail.do")
-	public ModelAndView member_fundingpayDetail(String funding_payinfo_index, String member_email) {
+	public ModelAndView member_fundingpayDetail(String funding_payinfo_index, long funding_list_number, String member_email) {
 		long funding_payinfo_indexlong = Long.parseLong(funding_payinfo_index);
 			
 		Funding_payinfo funding_payinfo = mService.selectFundingPayInfo(funding_payinfo_indexlong);
@@ -366,6 +368,8 @@ public class MemberController {
 		mv.setViewName("mypage_fundingpay_detail");
 		mv.addObject("funding_payinfo", funding_payinfo);	
 		mv.addObject("funding_paycount", funding_paycount);
+		mv.addObject("funding_list_number", funding_list_number);
+		log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@funding_list_number: "+funding_list_number);
 			
 		return mv;
 	}

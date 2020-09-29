@@ -183,8 +183,18 @@ public class MemberServiceImpl implements MemberService {
 		Member_FundingPayInfoVo order_infoVo = new Member_FundingPayInfoVo(order_cp, order_totalCount, order_ps, member_email, null);
 		List<Funding_payinfo> order_list = memberMapper.selectPerPageFundingPay(order_infoVo);
 		
-		Member_FundingPayInfoVo order_infoVo2 = new Member_FundingPayInfoVo(order_cp, order_totalCount, order_ps, member_email, order_list); 
+		//펀딩내역 글 번호
+		long funding_list_number=1L;
+		for(int i=0; i<order_list.size(); i++) {
+			funding_list_number = order_infoVo.getFunding_pay_totalCount() - ((order_infoVo.getFunding_pay_cp()-1)*order_infoVo.getFunding_pay_ps())-i;
+			order_list.get(i).setFunding_list_number(funding_list_number);
+		}
+		log.info("################# funding_list_number : "+funding_list_number);
+		log.info("################# list_number - funding_cp : "+order_cp);
+		log.info("################# list_number - order_ps : "+order_ps);
 		
+	
+		Member_FundingPayInfoVo order_infoVo2 = new Member_FundingPayInfoVo(order_cp, order_totalCount, order_ps, member_email, order_list); 
 		//order_infoVo2.setOrder_totalPageCount(order_infoVo2.getOrder_totalPageCount());
 
 		log.info("################# selectPerPageOrder order_cp: "+order_cp);
