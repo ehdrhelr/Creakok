@@ -318,7 +318,7 @@
          
                 <div class="col-12 col-sm-6 col-lg-4">
                       <div class="single-benefits-area">                   
-                            해당 카테고리 상품이 없습니다.
+                            현재 진행 중인 프로젝트가 없습니다.
                             </div>
                             </div>
                           
