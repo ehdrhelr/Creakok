@@ -313,7 +313,7 @@
                             </c:forEach>   
                             </c:if> 
             </div>
-                 <c:if test="${empty fundingVo}">
+                 <c:if test="${empty fundingVo.list}">
    
          
                 <div class="col-12 col-sm-6 col-lg-4">
