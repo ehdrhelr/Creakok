@@ -82,9 +82,9 @@ public class ProjectController {
 
 	    
 	    service.writeFundingProject(funding);
-		return new ModelAndView("/index", "", null);
+		return new ModelAndView("project_write_ok", "", null);
 	}
-
+	
 	@PostMapping(value="/uploadSummernoteImageFile")
 	@ResponseBody
 	public String uploadSummernoteImageFile(@RequestParam("file_detail_pic") MultipartFile multipartFile) {
@@ -111,12 +111,6 @@ public class ProjectController {
 	
 	@RequestMapping("/goods_project_write_form.do")
 	public String goods_project_write_form(HttpSession session) {
-		//Object memberObj = session.getAttribute("member");
-		//Member member = (Member)memberObj;
-		
-		//creatorboardservice.getContentByCreator(member.getMember_name());
-		//log.info("##############################3요기요기 member_email: "+member.getMember_email());
-		
 		return "goods_project_write";
 	}
 	
@@ -132,7 +126,7 @@ public class ProjectController {
 		String ofname = write_goods_repre_pic.getOriginalFilename();
 	    String url="";
     	if(ofname.length() !=0) {
-    		url = service.saveStore(write_goods_repre_pic);
+    		url = service.saveStoreGoods(write_goods_repre_pic);
     	}
     	
 		long goods_category_code = Long.parseLong(goods_category_codeStr);

@@ -48,5 +48,7 @@
    <update id="changeFunding_ok" parameterType="long">
     	update FUNDING_PAYINFO set FUNDING_ok='true' where FUNDING_INDEX=${funding_index}
    </update>		
-				
+   <update id="plusGoodsStock" parameterType="long">
+        update GOODS set GOODS_STOCK_NUMBER = GOODS_STOCK_NUMBER+1 WHERE GOODS_INDEX=${goods_index}
+    </update>
 </mapper>

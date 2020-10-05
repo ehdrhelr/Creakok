@@ -383,14 +383,14 @@
                                     <c:choose>
                                         <c:when test="${i==goods.cp}">
                                         <li class="page-item">
-                                        <a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}" style="border-radius:0;" onclick="getCp();">
+                                        <a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}&filterBy=${goods_filterBy}" style="border-radius:0;" onclick="getCp();">
                                             <span style="color:black">${i}</span>
                                             </a>
                                             </li>
                                         </c:when>
                                         <c:otherwise>
                                         <li class="page-item">
-                                        <a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}" style="border-radius:0;" onclick="getCp();">
+                                        <a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}&filterBy=${goods_filterBy}" style="border-radius:0;" onclick="getCp();">
                                             <span>${i}</span>
                                             </a>
                                             </li>
