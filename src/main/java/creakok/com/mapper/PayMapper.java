@@ -20,5 +20,4 @@ public interface PayMapper {
 	void deleteOneFundingpay(@Param(value = "order_index") long order_index);
 	List<Funding_payinfo> selectByFundingindex(@Param(value = "funding_index") long funding_index);
 	void changeFunding_ok(@Param(value = "funding_index") long funding_index);
-	void plusGoodsStock(@Param(value = "order_index") long order_index);
 }

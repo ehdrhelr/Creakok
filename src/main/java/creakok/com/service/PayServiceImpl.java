@@ -42,11 +42,6 @@ public class PayServiceImpl implements PayService {
 	}
 	
 	@Override
-	public void plusGoodsStock(long order_index) {
-		paymapper.plusGoodsStock(order_index);
-	}
-	
-	@Override
 	public Funding_payinfo selectByPayinfoIndex(long funding_payinfo_index) {
 		return paymapper.selectByPayinfoIndex(funding_payinfo_index);
 	}

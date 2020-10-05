@@ -18,5 +18,4 @@ public interface PayService {
 	void deleteOneFundingpay(long order_index);
 	List<Funding_payinfo> selectByFundingindex(long funding_index);
 	void changeFunding_ok(long funding_index);
-	void plusGoodsStock(long order_index);
 }
