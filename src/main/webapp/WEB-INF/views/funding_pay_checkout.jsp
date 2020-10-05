@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="Payinfo_phonenumber">연락처 *</label>
-                                    <input type="number" name ="Payinfo_phonenumber"class="form-control" placeholder="숫자만 입력" onkeydown="" required>
+                                    <input type="number" id="Payinfo_phonenumber" name ="Payinfo_phonenumber"class="form-control" placeholder="숫자만 입력" onkeydown="" required>
                                 </div>                       
                               </div>
                          <h5 style="margin-top:20px;">결제 내용</h5>
@@ -182,7 +182,7 @@
                         
                          <div class="col-12 text-center" style="margin-bottom:100px;">
                             <div class="checkout-btn mt-30" style="width:60%;display:inline">
-                              <input type="button" value="펀딩하기" onclick="f.submit();" class="btn alazea-btn" style="color:white;background-color:#fc5230;border:0;display:inline-block;width:150px">
+                              <input type="button" value="펀딩하기" onclick="checkInput();" class="btn alazea-btn" style="color:white;background-color:#fc5230;border:0;display:inline-block;width:150px">
                               <input type="reset" value="펀딩 취소" class="btn alazea-btn" style="color:#fc5230; background-color:white; border:1px solid #fc5230; display:inline-block;width:150px">
                             </div>
                          </div>
@@ -196,7 +196,27 @@
        
     </div>
     <!-- ##### Checkout Area End ##### -->
-    
+
+    <script language="javascript">
+    function checkInput(){
+        let Payinfo_phonenumber_value = document.getElementById("Payinfo_phonenumber").value;
+        let amountPay_value = document.getElementById("amountPay").value;
+        
+        if(Payinfo_phonenumber_value==''){
+            alert('연락처를 입력해주세요.');
+            return false;
+        }
+        
+        if(amountPay_value==''){
+            alert('금액을 입력해주세요.');
+            return false;
+        }
+        //console.log("????:"+amountPay_value);
+        //console.log("????:"+Payinfo_phonenumber_value);
+        f.submit();
+    }
+        
+    </script>
     
     <script language="javascript">
         function deposit(){
