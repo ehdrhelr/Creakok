@@ -14,7 +14,7 @@ public class Path {
 	
 	
 	//위 리스트 중에 하나로 STORE_PATH만 바꾸면 된다.
-	public static final String STORE_PATH = CAFE24_PATH;
+	public static final String STORE_PATH = shion_path;
 	
 	
 	public static final String FUNDING_PATH = "/img/funding/";

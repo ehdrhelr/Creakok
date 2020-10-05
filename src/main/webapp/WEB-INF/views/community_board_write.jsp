@@ -1206,7 +1206,6 @@ $('#summernote').summernote({
   });
   
   function uploadSummernoteImageFileCommunity(file, editor){
-	  alert('들어왓다');
 	  data = new FormData();
 	  data.append("file_detail_pic", file);
 	  $.ajax({
