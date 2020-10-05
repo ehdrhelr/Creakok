@@ -41,7 +41,14 @@
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
   
-
+    <script>
+    function addComma(num) {
+        let regexp = /\B(?=(\d{3})+(?!\d))/g;
+        let result = num.toString().replace(regexp, ',');
+        return result;
+    }
+    </script>
+    
 </head>
 
 <body>
@@ -92,11 +99,11 @@
                 <div class="col-12">
                     <div class="checkout_details_area clearfix">
                         <h5 style="margin-bottom:5px;">주문자 정보</h5>
-                        <form action="funding_pay.do?funding_index=${funding_detail.funding_index}" method="post" name="f">
+                        <form action="funding_pay.do?funding_index=${funding_detail.funding_index}" method="post" name="f" onsubmit="return false;">
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="Payinfo_name">이름 *</label>
-                                    <input  name="Payinfo_name" class="form-control" id="first_name" onkeydown="enterCheck(this)" value="${member.member_name}" readonly>
+                                    <input  name="Payinfo_name" class="form-control" id="first_name" onkeydown="" value="${member.member_name}" readonly>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="Payinfo_email">이메일 주소</label>
@@ -104,36 +111,26 @@
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="Payinfo_phonenumber">연락처 *</label>
-                                    <input type="number" name ="Payinfo_phonenumber"class="form-control" placeholder="숫자만 입력" onkeydown="enterCheck(this)" required>
+                                    <input type="number" id="Payinfo_phonenumber" name ="Payinfo_phonenumber"class="form-control" placeholder="숫자만 입력" onkeydown="" required>
                                 </div>                       
                               </div>
                          <h5 style="margin-top:20px;">결제 내용</h5>
-						
-						<label for="amountPay">밀어주기 금액</label>
-						
-						<select id="amountPay" name="amountPay" onChange="amountPay2()" required>
-						        <option class="form-control" value="">--선택--</option>
-						        <option class="form-control" value="1000">1,000</option>
-						        <option class="form-control" value="5000">5,000</option>
-						        <option class="form-control" value="10000">10,000</option>
-						        <option class="form-control" value="50000">50,000</option>
-						</select> 
-						
-						<script language="javascript">
-						function amountPay2(){
-						
-							var a = document.getElementById("amountPay");
-							var b = a.options[a.selectedIndex].value;
-							var resultToshow = document.getElementById('amountToshow');
-							resultToshow.innerHTML=b;
-							var result = document.getElementById('amountPaygot');
-							
-							result.value=b;            
-						
-						}
-						
-						
-						</script>
+                         
+                        
+                        <label for="amountPay">밀어주기 금액</label>
+                        
+                        <input id="amountPay" name="amountPay" type="text" onChange="amountPay2();" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+
+                                    <script language="javascript">
+                                    function amountPay2(){
+                                        let b = document.getElementById("amountPay").value;
+                                        let resultToshow = document.getElementById('amountToshow');
+                                        resultToshow.innerHTML=addComma(b)+"원";
+                                        let result = document.getElementById('amountPaygot');
+                                        result.value=b;            
+                                    }
+                                    
+                                    </script>
                 <div class="col-12 mb-4">
                     <div class="checkout-content">
                     
@@ -155,7 +152,7 @@
                             <h5>${fundingCheckoutInfo.creator_name}</h5>
                         </div>
                     
-			         </div>
+                     </div>
                     </div>
                     
                     
@@ -170,9 +167,9 @@
                                             <ul class="pay-method" >    
                                             
                                              <li style="margin-bottom:10px;">
-                								<input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()" checked> 신용카드/네이버페이/카카오페이
-                								     <em><span class="op-card-dc-price fc-red"></span></em>
-                							 </li>
+                                                <input type="radio" class="chk-rdo" name="radio_paymethod"  style="height:18px;vertical-align:middle;width:18px !important;" value="C" onClick="payByCard()" checked> 신용카드/네이버페이/카카오페이
+                                                     <em><span class="op-card-dc-price fc-red"></span></em>
+                                             </li>
                                             </ul>                                       
                                         </td>
                                     </tr>
@@ -184,11 +181,11 @@
                         
                         
                          <div class="col-12 text-center" style="margin-bottom:100px;">
-	                        <div class="checkout-btn mt-30" style="width:60%;display:inline">
-	                          <input type="submit" value="펀딩하기" class="btn alazea-btn" style="color:white;background-color:#fc5230;border:0;display:inline-block;width:150px">
-	                          <input type="reset" value="펀딩 취소" class="btn alazea-btn" style="color:#fc5230; background-color:white; border:1px solid #fc5230; display:inline-block;width:150px">
-	                        </div>
-	                     </div>
+                            <div class="checkout-btn mt-30" style="width:60%;display:inline">
+                              <input type="button" value="펀딩하기" onclick="checkInput();" class="btn alazea-btn" style="color:white;background-color:#fc5230;border:0;display:inline-block;width:150px">
+                              <input type="reset" value="펀딩 취소" class="btn alazea-btn" style="color:#fc5230; background-color:white; border:1px solid #fc5230; display:inline-block;width:150px">
+                            </div>
+                         </div>
                         </form>
                     </div>
                 </div>
@@ -199,17 +196,37 @@
        
     </div>
     <!-- ##### Checkout Area End ##### -->
-    
+
+    <script language="javascript">
+    function checkInput(){
+        let Payinfo_phonenumber_value = document.getElementById("Payinfo_phonenumber").value;
+        let amountPay_value = document.getElementById("amountPay").value;
+        
+        if(Payinfo_phonenumber_value==''){
+            alert('연락처를 입력해주세요.');
+            return false;
+        }
+        
+        if(amountPay_value==''){
+            alert('금액을 입력해주세요.');
+            return false;
+        }
+        //console.log("????:"+amountPay_value);
+        //console.log("????:"+Payinfo_phonenumber_value);
+        f.submit();
+    }
+        
+    </script>
     
     <script language="javascript">
-		function deposit(){
-			document.getElementById("evidence").style.display="block";
-	
-		}
-		function payByCard(){
-			document.getElementById("evidence").style.display="none";
-		}
-		
+        function deposit(){
+            document.getElementById("evidence").style.display="block";
+    
+        }
+        function payByCard(){
+            document.getElementById("evidence").style.display="none";
+        }
+        
     </script>
     
     
@@ -279,15 +296,15 @@
 <script src="js/pay/trim.js"></script>
 <script language="javascript"> 
 
-	function enterCheck(elm){
-		if(event.keyCode == 13){
-			if(elm == f.email){
-				f.pwd.focus();
-			}else{
-				check();
-			}
-		}
-	}
+    function enterCheck(elm){
+        if(event.keyCode == 13){
+            if(elm == f.email){
+                f.pwd.focus();
+            }else{
+                check();
+            }
+        }
+    }
 </script>
 
 

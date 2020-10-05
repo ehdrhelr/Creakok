@@ -48,5 +48,4 @@
    <update id="changeFunding_ok" parameterType="long">
     	update FUNDING_PAYINFO set FUNDING_ok='true' where FUNDING_INDEX=${funding_index}
    </update>		
-				
 </mapper>
