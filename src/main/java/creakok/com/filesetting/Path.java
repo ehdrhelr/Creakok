@@ -27,6 +27,7 @@ public class Path {
 	public static final String IMG_STORE_COMMUNITY = STORE_PATH+COMMUNITY_PATH;
 	public static final String IMG_STORE_COMMUNITY_SHORT = COMMUNITY_PATH;
 	public static final String FILE_STORE_GOODS = STORE_PATH+GOODS_PATH;
+	public static final String FILE_STORE_SHORT_GOODS = GOODS_PATH;
 	
 /*	
  	//원래설정

@@ -21,4 +21,7 @@ public interface ProjectService {
 	
 	void insertOneGoods(Goods goods);
 	Goods selectByGoodsName(String goods_name);
+	
+	String saveStoreGoods(MultipartFile f);
+	boolean writeFileGoods(MultipartFile f, String saveFileName);
 }
