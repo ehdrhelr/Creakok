@@ -121,19 +121,24 @@ public class ProjectController {
 	}
 	
 	@PostMapping("/goods_project_write.do")
-	public String goods_project_write(HttpServletRequest request) {
+	public String goods_project_write(HttpServletRequest request, @RequestParam MultipartFile write_goods_repre_pic) {
 		String write_creator = request.getParameter("write_creator");
 		String write_goods_priceStr = request.getParameter("write_goods_price");
 		String write_goods_stockStr = request.getParameter("write_goods_stock");
 		String write_goods_product = request.getParameter("write_goods_product");
 		String goods_category_codeStr = request.getParameter("goods_category_code");
 		String content = request.getParameter("content");
-		String write_goods_repre_pic = request.getParameter("write_goods_repre_pic");
-		
+		//String write_goods_repre_pic = request.getParameter("write_goods_repre_pic");
+		String ofname = write_goods_repre_pic.getOriginalFilename();
+	    String url="";
+    	if(ofname.length() !=0) {
+    		url = service.saveStore(write_goods_repre_pic);
+    	}
+    	
 		long goods_category_code = Long.parseLong(goods_category_codeStr);
 		long write_goods_price = Long.parseLong(write_goods_priceStr);
 		long write_goods_stock = Long.parseLong(write_goods_stockStr);
-		Goods goods = new Goods(-1, goods_category_code, write_goods_product, write_goods_price, write_goods_repre_pic, content, write_creator, 0, 0, write_goods_stock, 0, null);
+		Goods goods = new Goods(-1, goods_category_code, write_goods_product, write_goods_price, url, content, write_creator, 0, 0, write_goods_stock, 0, null);
 	    
 		service.insertOneGoods(goods);
 		
@@ -159,8 +164,10 @@ public class ProjectController {
 		
 			e.printStackTrace();
 		}
-
+		
 		String str = "/summernoteImageGoods/"+savedFileName;
+		
+		log.info("########################str: "+str);
 		return str;
 	}
 	
