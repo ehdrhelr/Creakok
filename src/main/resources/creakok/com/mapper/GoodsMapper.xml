@@ -24,11 +24,11 @@
 	</select>
 	
 	<select id="selectGoodsCount" resultType="long">
-		select COUNT(GOODS_INDEX) from Goods
+		select COUNT(GOODS_INDEX) from GOODS
 	</select>
 
 	<select id="selectGoodsCountByCode" resultType="long" parameterType="long">
-		select COUNT(GOODS_INDEX) from Goods where GOODS_CATEGORY_CODE=${gCode}
+		select COUNT(GOODS_INDEX) from GOODS where GOODS_CATEGORY_CODE=${gCode}
 	</select>	
        
 	<select id="selectGoodsName" resultType="String" parameterType="long">
