@@ -13,13 +13,8 @@ public class Path {
 	public static final String CAFE24_PATH = "/creakok/tomcat/webapps/ROOT/resources";
 	
 	
-	//위 리스트 중에 하나로 STORE_PATH만 바꾸면 된다.
-<<<<<<< HEAD
 	public static final String STORE_PATH = shion_path;
-=======
-	public static final String STORE_PATH = jihee_path;
->>>>>>> branch 'master_maria' of https://github.com/daumhch/Creakok.git
-	
+
 	
 	public static final String FUNDING_PATH = "/img/funding/";
 	public static final String GOODS_PATH = "/img/goods/";
