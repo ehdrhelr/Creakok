@@ -23,11 +23,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
         //<resources mapping="/summernoteImageCommunity/**" location="file:///Users/shion/git/Creakok/src/main/webapp/resources/img/community/" />
         registry.addResourceHandler("/summernoteImageCommunity/**")
-        		.addResourceLocations("file:///"+Path.FILE_STORE_GOODS);
+        		.addResourceLocations("file:///"+Path.IMG_STORE_COMMUNITY);
         
         //<resources mapping="/summernoteImageGoods/**" location="file:///C:/Users/Trajanus/git/Creakok_master/src/main/webapp/resources/img/goods/" />
         registry.addResourceHandler("/summernoteImageGoods/**")
-        		.addResourceLocations("file:///"+Path.IMG_STORE_COMMUNITY);
+        		.addResourceLocations("file:///"+Path.FILE_STORE_GOODS);
         
     }
 }

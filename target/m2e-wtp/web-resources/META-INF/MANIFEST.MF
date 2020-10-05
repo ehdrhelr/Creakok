@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: Trajanus
-Build-Jdk: 1.8.0_261
-=======
-Built-By: joohyunann
-Build-Jdk: 1.8.0_265
->>>>>>> refs/heads/master
+Built-By: bit
+Build-Jdk: 1.8.0_221
 Created-By: Maven Integration for Eclipse
 

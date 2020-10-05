@@ -46,7 +46,7 @@ public class ProjectServiceImpl implements ProjectService {
 		if(flag) {
 			log.info("파일 업로드 성공");
 		}else {
-			log.info("파일 업로드 실");
+			log.info("파일 업로드 실패");
 		}
 		
 		return Path.FILE_STORE_SHORT + saveFileName;

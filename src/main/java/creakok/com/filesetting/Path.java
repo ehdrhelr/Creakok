@@ -12,8 +12,9 @@ public class Path {
 	public static final String hcbae_path = "C:/Users/Trajanus/git/Creakok_master/src/main/webapp/resources";
 	public static final String CAFE24_PATH = "/creakok/tomcat/webapps/ROOT/resources";
 	
+	
 	//위 리스트 중에 하나로 STORE_PATH만 바꾸면 된다.
-	public static final String STORE_PATH = hcbae_path;
+	public static final String STORE_PATH = CAFE24_PATH;
 	
 	
 	public static final String FUNDING_PATH = "/img/funding/";
@@ -26,6 +27,7 @@ public class Path {
 	public static final String IMG_STORE_COMMUNITY = STORE_PATH+COMMUNITY_PATH;
 	public static final String IMG_STORE_COMMUNITY_SHORT = COMMUNITY_PATH;
 	public static final String FILE_STORE_GOODS = STORE_PATH+GOODS_PATH;
+	
 /*	
  	//원래설정
 	//public static final String FILE_STORE="C:/Users/bit/git/Creakok_master/src/main/webapp/resources/img/funding/"; 
