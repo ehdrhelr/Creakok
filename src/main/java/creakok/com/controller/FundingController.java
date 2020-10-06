@@ -201,16 +201,16 @@ public class FundingController {
 	@RequestMapping("funding_list.do")
 	public ModelAndView list(HttpServletRequest request, HttpSession session) {
 		FundingVo fundingVo = fundingVo(request, session);
+		session.setAttribute("funding_categoryNames", fundingVo.getListCategoryUsed());
+		session.setAttribute("fundingVo", fundingVo);
 		if(fundingVo.getList().size() ==0 ) {
 			if(cp>1) {
 				return new ModelAndView("redirect:funding_list.do?funding_cp="+(cp-1));
 			}else {
-				return new ModelAndView("redirect:funding_list.do", "fundingVo", null);
+				ModelAndView mv = new ModelAndView("/funding", "fundingVo", fundingVo);
+				return mv;
 			}
 		}
-		//(3) ModelAndView
-		session.setAttribute("funding_categoryNames", fundingVo.getListCategoryUsed());
-		session.setAttribute("fundingVo", fundingVo);
 		ModelAndView mv = new ModelAndView("/funding", "fundingVo", fundingVo);
 		return mv;
 	}
