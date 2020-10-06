@@ -19,7 +19,7 @@ import creakok.com.filesetting.Path;
 public class NaverLoginBO {
 	private final static String CLIENT_ID = "8pFFNh6mmWd3uPiHuk0E";
 	private final static String CLIENT_SECRET = "7vKChgabRz";
-	private final static String REDIRECT_URI = Path.SOCIAL_LOGIN_ROOT+"tokenCheck.do";
+	private final static String REDIRECT_URI = Path.SOCIAL_LOGIN_ROOT+"/tokenCheck.do";
 	private final static String SESSION_STATE = "oauth_state";
 	/* 프로필 조회 API URL */
 	private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";
