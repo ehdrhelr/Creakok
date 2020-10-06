@@ -100,7 +100,7 @@ function secessionPassword(member_email){
     }
 }
 
-function secessionSocial(member_email){
+function secessionSocial(member_email, member_name){
     alert("탈퇴 되었습니다. 다시 만나요.");
     location.href="secessionMember.do?member_email="+member_email;
 }

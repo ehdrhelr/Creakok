@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import creakok.com.domain.Contact;
+import creakok.com.domain.Creator;
 import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Member;
 import creakok.com.domain.Order_Info;
@@ -44,4 +45,19 @@ public interface MemberMapper {
 	//문의 내역
 	List<Contact> selectContact();
 	void updateAnswer(@Param("contact_index")long contact_index);
+	
+	// 크리에이터 가져오기
+	Creator getCreator(String member_email);
+	
+	// 크리에이터 탈퇴를 위한 관련 참조 자료 삭제
+	void delFundingQnA(String member_name);
+	void delFunding(String creator_name);
+	void delGoodsQnA(String member_name);
+	void delGoodsReview(String member_name);
+	void delGoods(String creator_name);
+	void delBoardComment(String ember_email);
+	void delBoard(String member_email);
+	
+	// 크리에이터 삭제
+	void delCreator(String member_email);
 } 

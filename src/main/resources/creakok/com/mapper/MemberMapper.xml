@@ -103,4 +103,45 @@
    <update id="updateAnswer" parameterType="long">
        update CONTACT set CONTACT_OK = '답변완료' WHERE CONTACT_INDEX=${contact_index}
    </update>
+   	
+   	<!-- 크리에이터 가져오기 -->
+   	<select id="getCreator" parameterType="String" resultType="Creator">
+    	select * from CREATOR where MEMBER_EMAIL=#{member_email}
+ 	</select>
+ 	 
+	<!--  크리에이터 탈퇴를 위한 관련 참조 자료 삭제 start -->
+	<delete id="delFundingQnA" parameterType="String">
+   		delete from FUNDING_QNA where MEMBER_NAME=#{member_name}
+    </delete>
+    
+    <delete id="delFunding" parameterType="String">
+   		delete from FUNDING where CREATOR_NAME=#{creator_name}
+    </delete>
+    
+    <delete id="delGoodsQnA" parameterType="String">
+   		delete from GOODS_QNA where MEMBER_NAME=#{member_name}
+    </delete>
+    
+    <delete id="delGoodsReview" parameterType="String">
+   		delete from GOODS_REVIEW where MEMBER_NAME=#{member_name}
+    </delete>
+    
+    <delete id="delGoods" parameterType="String">
+   		delete from GOODS where CREATOR_NAME=#{creator_name}
+    </delete>
+    
+    <delete id="delBoardComment" parameterType="String">
+   		delete from BOARD_COMMENT where MEMBER_EMAIL=#{member_email}
+    </delete>
+    
+    <delete id="delBoard" parameterType="String">
+   		delete from CREATOR_BOARD where MEMBER_EMAIL=#{member_email}
+    </delete>
+    <!--  크리에이터 탈퇴를 위한 관련 참조 자료 삭제 end -->
+    
+    <!--  크리에이터 삭제 -->
+    <delete id="delCreator" parameterType="String">
+   		delete from CREATOR where MEMBER_EMAIL=#{member_email}
+    </delete>
+    
 </mapper>

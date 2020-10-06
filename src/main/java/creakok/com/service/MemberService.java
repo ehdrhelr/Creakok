@@ -2,9 +2,8 @@ package creakok.com.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import creakok.com.domain.Contact;
+import creakok.com.domain.Creator;
 import creakok.com.domain.Funding_payinfo;
 import creakok.com.domain.Member;
 import creakok.com.domain.Order_Info;
@@ -51,4 +50,8 @@ public interface MemberService {
 	//문의 내역
 	List<Contact> selectContact();
 	void updateAnswer(long contact_index);
+	
+	// 크리에이터 탈퇴를 위한 관련 참조 자료 삭제
+	Creator getCreator(Member member);
+	void delCreatorRefData(Member member, Creator creator); // deleteCreatorReferenceData
 }
