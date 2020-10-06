@@ -1,5 +1,6 @@
 package creakok.com.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,11 +26,19 @@ public class AboutController {
 	@RequestMapping("about.do")
 	public ModelAndView about_goods(HttpServletRequest request, HttpSession session) {
 		// Top 3 펀딩
-		List<Funding> funding_top3 = aboutservice.selectFundingTop3();
+		List<Funding> temp = aboutservice.selectFundingTop3();
+		List<Funding> funding_top3 = new ArrayList<>();
 		
+		for(Funding list : temp) {
+	         //log.info("####:"+lt.getLike_content_index() );
+	         double percentageDouble = 100.0*list.getFunding_amount()/list.getFunding_goal();
+	         int percentageInt = (int) Math.round(percentageDouble);
+	         list.setPercentage(percentageInt);  
+	         funding_top3.add(list);
+	    }
 		// Top 3 굿즈 
 		List<Goods> goods_top3 = aboutservice.selectGoodsTop3();
-		
+		log.info("###################funding_top3: "+funding_top3);
 		// 크리에이터 3
 		List<Creator> creator3 = aboutservice.selectCreator3();
 		
