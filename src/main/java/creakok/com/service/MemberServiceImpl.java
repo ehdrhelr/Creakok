@@ -6,15 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import creakok.com.domain.Contact;
+import creakok.com.domain.Creator;
 import creakok.com.domain.Funding_payinfo;
-import creakok.com.domain.Goods_Review;
 import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
 import creakok.com.domain.Member_category;
 import creakok.com.domain.Nickname;
 import creakok.com.domain.Order_Info;
 import creakok.com.mapper.MemberMapper;
-import creakok.com.vo.Goods_ReviewVo;
 import creakok.com.vo.Member_FundingPayInfoVo;
 import creakok.com.vo.Member_OrderInfoVo;
 import lombok.extern.log4j.Log4j;
@@ -217,6 +216,27 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void updateAnswer(long contact_index) {
 		memberMapper.updateAnswer(contact_index);
+	}
+	
+	// 크리에이터 가져오기 
+	@Override
+	public Creator getCreator(Member member) {
+		return memberMapper.getCreator(member.getMember_email());
+	}
+	
+	// 크리에이터 탈퇴를 위한 관련 참조 자료 삭제
+	@Override
+	public void delCreatorRefData(Member member, Creator creator) {
+		memberMapper.delFundingQnA(member.getMember_name());
+		memberMapper.delFunding(creator.getCreator_name());
+		memberMapper.delGoodsQnA(member.getMember_name());
+		memberMapper.delGoodsReview(member.getMember_name());
+		memberMapper.delGoods(creator.getCreator_name());
+		memberMapper.delBoardComment(member.getMember_email());
+		memberMapper.delBoard(member.getMember_email());
+		
+		/* CREATOR 테이블에서 삭제 */
+		memberMapper.delCreator(member.getMember_email());
 	}
 }
 
