@@ -88,16 +88,16 @@
                                         <option value="">카테고리</option>
                                         <option value="301">뷰티</option>
                                         <option value="302">디자인소품</option>  
-                                        <option value="301">홈리빙</option>
-                                        <option value="303">테크/가전</option>  
-                                        <option value="304">패션/잡화</option>
-                                        <option value="305">푸드</option>  
-                                        <option value="306">여행/레저</option>
-                                        <option value="307">스포츠/모빌리티</option>  
-                                        <option value="308">반려동물</option>
-                                        <option value="309">문화/예술</option>  
-                                        <option value="310">출산/육아</option>  
-                                        <option value="311">생활/건강</option>  
+                                        <option value="303">홈리빙</option>
+                                        <option value="304">테크/가전</option>  
+                                        <option value="305">패션/잡화</option>
+                                        <option value="306">푸드</option>  
+                                        <option value="307">여행/레저</option>
+                                        <option value="308">스포츠/모빌리티</option>  
+                                        <option value="309">반려동물</option>
+                                        <option value="310">문화/예술</option>  
+                                        <option value="311">출산/육아</option>  
+                                        <option value="312">생활/건강</option>  
                                     </select> 
                                 </div>
                                 
