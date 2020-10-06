@@ -812,4 +812,15 @@ public class GoodsController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("delete_goods.do")
+	public String delete_goods(HttpServletRequest request) {
+		String goods_indexStr = request.getParameter("goods_index");
+		long goods_index = Long.parseLong(goods_indexStr);
+		
+		goodsService.deleteOneGoods(goods_index);
+		
+		return "redirect:goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300";
+	}
+	
 }

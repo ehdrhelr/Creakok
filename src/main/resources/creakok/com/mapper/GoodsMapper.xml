@@ -72,6 +72,9 @@
         CREATOR_NAME like '%'||#{keyword}||'%'
 	</select>	
 	
+    <delete id="deleteOneGoods"  parameterType="long">
+        delete from GOODS where GOODS_INDEX=${goods_index}
+    </delete>   	
 </mapper>
 
 
