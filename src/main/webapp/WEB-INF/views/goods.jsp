@@ -364,6 +364,11 @@
                                                     <p style="color:#545454;font-weight:500;">${goods.goods_name}</p>
                                                 </a>
                                                 <h6><strong>${goods.goods_price}</strong> 원</h6>
+                                                <c:if test="${goods.goods_stock_number == 0 }">
+                                                    <c:if test="${member.member_email == 'creakok_super@cafe24.com'}">
+                                                        <p onclick="deleteGoods(${goods.goods_index})" style="margin-top:2%;color:#fc5230;font-weight:400;cursor:pointer">삭제</p>
+                                                    </c:if>
+                                                </c:if>
                                             </div>                                      
                                         </div>                         
                                     </div>
@@ -425,6 +430,11 @@
     <!-- Active js -->
     <script src="js/active.js"></script>
     
+    <script type="text/javascript">
+    function deleteGoods(goods_index){
+        location.href="delete_goods.do?goods_index="+goods_index;
+    }
+    </script>
     
     <script type="text/javascript">
     function makeGoodsLikeList(){

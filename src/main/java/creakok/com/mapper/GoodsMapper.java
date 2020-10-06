@@ -24,4 +24,5 @@ public interface GoodsMapper {
 	List<Goods> selectGoodsRanking();
 	List<Goods> selectSearchGoods(Goods_SearchVo goods_searchVo);
 	long selectGoodsCountBySearch(@Param("keyword") String keyword);
+	void deleteOneGoods(@Param("goods_index") long goods_index);
 }

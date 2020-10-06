@@ -13,7 +13,7 @@ public class Path {
 	public static final String CAFE24_PATH = "/creakok/tomcat/webapps/ROOT/resources";
 	
 	
-	public static final String STORE_PATH = shion_path;
+	public static final String STORE_PATH = jihee_path;
 
 	
 	public static final String FUNDING_PATH = "/img/funding/";
