@@ -90,7 +90,7 @@ function pay_info(rsp){
       
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'buyer_pay_price');
+      objs.setAttribute('name', 'amount');
       objs.setAttribute('value', rsp.paid_amount);
       form.appendChild(objs);
       

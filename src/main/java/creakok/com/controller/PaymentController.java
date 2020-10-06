@@ -304,12 +304,17 @@ public class PaymentController {
 		
 		//토큰 받아오기 & 환불요청
 		String token = getImportToken();
-		cancelPayment(token, order_number);
-		
-		// 주문내역 삭제
-		payservice.deleteOneOrder(order_index2);
-		
-		return "pay_cancel_ok";
+		int result_delete = cancelPayment(token, order_number);
+		if(result_delete == -1) {
+			//log.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! result_delete: "+result_delete);
+			return "pay_cancel_fail";
+		}else{
+			// 주문내역 삭제
+			payservice.deleteOneOrder(order_index2);
+			//log.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! result_delete: "+result_delete);
+
+			return "pay_cancel_ok";
+		}
 	}	
 	@RequestMapping("funding_pay_delete.do") //환불 요청, 주문내역 삭제
 	public String funding_pay_delete(@RequestParam("order_index") String order_index, @RequestParam("order_number") String order_number) {
@@ -318,28 +323,28 @@ public class PaymentController {
 		
 		//토큰 받아오기 & 환불요청
 		String token = getImportToken();
-		cancelPayment(token, order_number);
-		
-		// 펀딩 정보 업데이트
-		Funding_payinfo funding_payinfo = payservice.selectByPayinfoIndex(order_index2);
-		// 주문내역 삭제
-		payservice.deleteOneFundingpay(order_index2);
-		
-		
-		log.info("!!!!!!!!!!!!!!");
-		log.info("!!!!!!!!!!!!!!");
-		log.info("funding_payinfo::::::"+funding_payinfo);
-		fundingservice.updateFunding_cancel(funding_payinfo);
-		
-		return "funding_cancel_ok";
+		int result_delete = cancelPayment(token, order_number);
+		if(result_delete == -1) {
+			log.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! result_delete: "+result_delete);
+			return "pay_cancel_fail";
+		}else{
+			// 펀딩 정보 업데이트
+			Funding_payinfo funding_payinfo = payservice.selectByPayinfoIndex(order_index2);
+			// 주문내역 삭제
+			payservice.deleteOneFundingpay(order_index2);
+			log.info("funding_payinfo::::::"+funding_payinfo);
+			fundingservice.updateFunding_cancel(funding_payinfo);
+			
+			return "funding_cancel_ok";
+		}
 	}	
 	public static final String IMPORT_TOKEN_URL = "https://api.iamport.kr/users/getToken"; 
 	public static final String IMPORT_PAYMENTINFO_URL = "https://api.iamport.kr/payments/find/"; 
 	public static final String IMPORT_CANCEL_URL = "https://api.iamport.kr/payments/cancel"; 
 	public static final String IMPORT_PREPARE_URL = "https://api.iamport.kr/payments/prepare"; 
-	public static final String KEY = "8590091630616548"; 
-	public static final String SECRET = "lzAk6F3ZfY2gS8XfeDrR9TK7o3lHMwX75xsbdwbsueJmmGCBk3suWdBlgW22tZ9yxBKK8VcC9WYwCA7X"; 
-		
+	
+	public static final String KEY = "8590091630616548"; //지희꺼
+	public static final String SECRET = "lzAk6F3ZfY2gS8XfeDrR9TK7o3lHMwX75xsbdwbsueJmmGCBk3suWdBlgW22tZ9yxBKK8VcC9WYwCA7X"; //지희꺼		
 	// 아임포트 인증(토큰)을 받아주는 함수 
 	public String getImportToken() { 
 		String result = ""; 
@@ -410,10 +415,10 @@ public class PaymentController {
 		String amount = "";
 		String buyer_card_num = "";
 		String buyer_pay_ok = "";
-		long buyer_pay_price;
-		long paid_atLong;
-		long unixTime;
-		Date date;
+		long buyer_pay_price = 0L;
+		long paid_atLong = 0L;
+		long unixTime = 0L;
+		Date date = null;
 		
 		HttpClient client = HttpClientBuilder.create().build(); 
 		HttpGet get = new HttpGet(IMPORT_PAYMENTINFO_URL + mId + "/paid"); 
@@ -424,6 +429,7 @@ public class PaymentController {
 			String body = EntityUtils.toString(res.getEntity()); 
 			JsonNode rootNode = mapper.readTree(body); 
 			JsonNode resNode = rootNode.get("response"); 
+			log.info("wowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww resNode: "+resNode);
 			//amount = resNode.get("amount").asText(); 
 			buyer_name = resNode.get("buyer_name").asText(); 
 			buyer_phone = resNode.get("buyer_tel").asText(); 

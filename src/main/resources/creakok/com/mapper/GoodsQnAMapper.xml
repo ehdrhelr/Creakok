@@ -5,8 +5,8 @@
 <mapper namespace="creakok.com.mapper.GoodsQnAMapper">
 
     <select id="selectPerPageQnA" resultType="Goods_QnA" parameterType="Goods_QnAVo">
-        <![CDATA[select * from (select ROWNUM rnum, aa.* from
-        (select * from GOODS_QNA where GOODS_INDEX=#{goods_index} order by GOODS_QNA_WDATE desc) aa)
+        <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from
+        (select * from GOODS_QNA where GOODS_INDEX=#{goods_index} order by GOODS_QNA_WDATE desc limit ${(qna_cp-1)*qna_ps}, ${qna_cp*qna_ps}) aa, (SELECT @ROWNUM := ${(qna_cp-1)*qna_ps}) TMP) bb
         where rnum>${(qna_cp-1)*qna_ps} and rnum<=${qna_cp*qna_ps}
         ]]>
     </select>
@@ -20,11 +20,11 @@
     </select>    
         
     <insert id="insertOneQnA" parameterType="Goods_QnA">
-        insert into GOODS_QNA values(GOODS_QNA_INDEX_SEQ.nextval, ${goods_index}, #{member_name}, null, SYSDATE, #{goods_qna_subject}, #{goods_qna_content}, #{creator_name}, null, null)
-    </insert>     
+        insert into GOODS_QNA values((select nextval('GOODS_QNA_INDEX_SEQ')), ${goods_index}, #{member_name}, null, now(), #{goods_qna_subject}, #{goods_qna_content}, #{creator_name}, null, null)
+    </insert>  
 
     <update id="updateOneQnA" parameterType="Goods_QnA">
-       update GOODS_QNA set GOODS_QNA_SUBJECT=#{goods_qna_subject}, GOODS_QNA_CONTENT=#{goods_qna_content}, GOODS_QNA_WDATE=SYSDATE where GOODS_QNA_INDEX=${goods_qna_index}
+       update GOODS_QNA set GOODS_QNA_SUBJECT=#{goods_qna_subject}, GOODS_QNA_CONTENT=#{goods_qna_content}, GOODS_QNA_WDATE=now() where GOODS_QNA_INDEX=${goods_qna_index}
     </update>        
     
     <delete id="deleteOneQnA"  parameterType="long">
@@ -32,7 +32,7 @@
     </delete>      
      
     <update id="updateOneAnswer" parameterType="Goods_QnA">
-       update GOODS_QNA set GOODS_QNA_ANSWER=#{goods_qna_answer}, GOODS_QNA_ADATE=SYSDATE where GOODS_QNA_INDEX=${goods_qna_index}
+       update GOODS_QNA set GOODS_QNA_ANSWER=#{goods_qna_answer}, GOODS_QNA_ADATE= now() where GOODS_QNA_INDEX=${goods_qna_index}
     </update>   
     
     <update id="deleteOneAnswer" parameterType="Goods_QnA">

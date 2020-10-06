@@ -77,7 +77,7 @@
                             
                             
              <div  style="font-size:12pt;margin-bottom:7%">
-                	<table>
+                	<table style="width:100%">
 	                    <colgroup>
 	                        <col width="30%">
 	                        <col width="70%">

@@ -18,6 +18,8 @@ import org.apache.http.message.BasicNameValuePair;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import creakok.com.filesetting.Path;
+
 public class GoogleLogin {
 	public static JsonNode getAccessToken(String autorize_code) {
 		final String RequestUrl = "https://www.googleapis.com/oauth2/v4/token";
@@ -26,7 +28,7 @@ public class GoogleLogin {
 		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
 		postParams.add(new BasicNameValuePair("client_id", "484909926172-auk6elov1eqf9t12815jbq26eagfdko9.apps.googleusercontent.com")); // REST API KEY
         postParams.add(new BasicNameValuePair("client_secret", "wgB6L52_IdvxF3P-5mmdrSc2"));
-		postParams.add(new BasicNameValuePair("redirect_uri", "http://127.0.0.1:8090/googleTokenCheck.do")); // 리다이렉트 URI
+        postParams.add(new BasicNameValuePair("redirect_uri", Path.SOCIAL_LOGIN_ROOT+"/googleTokenCheck.do")); // 리다이렉트 URI
 		postParams.add(new BasicNameValuePair("code", autorize_code)); // 로그인 과정중 얻은 code 값
 
 		final HttpClient client = HttpClientBuilder.create().build();

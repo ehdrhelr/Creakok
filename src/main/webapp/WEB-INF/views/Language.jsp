@@ -58,8 +58,8 @@ function translatePage(pageName){
     document.getElementById("footer_company_name").innerHTML = "${Language.arrayLang[idxLang.footer_company_name][selectLanguage]}";
     document.getElementById("footer_company_address").innerHTML = "${Language.arrayLang[idxLang.footer_company_address][selectLanguage]}";
     //footer는 기본적으로 다국어 적용 끝
-
     
+    console.log("pagaName" + pageName);
     switch(pageName){
         case "/": addTranslate_index(); break; //index
         case "/funding_list.do":

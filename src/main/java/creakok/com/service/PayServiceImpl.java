@@ -40,6 +40,7 @@ public class PayServiceImpl implements PayService {
 	public void deleteOneOrder(long order_index) {
 		paymapper.deleteOneOrder(order_index);
 	}
+	
 	@Override
 	public Funding_payinfo selectByPayinfoIndex(long funding_payinfo_index) {
 		return paymapper.selectByPayinfoIndex(funding_payinfo_index);

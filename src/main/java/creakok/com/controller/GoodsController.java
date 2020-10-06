@@ -133,7 +133,7 @@ public class GoodsController {
 				}
 			}
 		}
-		session.setAttribute("goods_ps", ps);
+		 session.setAttribute("goods_ps", ps);
 	
 		 String filterBy = "goods_sale_number";
 		 if(filterByStr==null) {
@@ -157,6 +157,7 @@ public class GoodsController {
 						}
 					} 
 	     }
+		 session.setAttribute("goods_filterBy", filterBy);
 
 		
 		if( gCodeStr.equals("300") || gCodeStr == null ) { //카테고리 코드=300 (전체보기) 일때

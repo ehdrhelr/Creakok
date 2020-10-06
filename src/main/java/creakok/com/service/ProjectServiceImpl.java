@@ -46,7 +46,7 @@ public class ProjectServiceImpl implements ProjectService {
 		if(flag) {
 			log.info("파일 업로드 성공");
 		}else {
-			log.info("파일 업로드 실");
+			log.info("파일 업로드 실패");
 		}
 		
 		return Path.FILE_STORE_SHORT + saveFileName;
@@ -84,5 +84,53 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public Goods selectByGoodsName(String goods_name) {
 		return mapper.selectByGoodsName(goods_name);
+	}
+	
+	@Override
+	public String saveStoreGoods(MultipartFile f) {
+		String ofname = f.getOriginalFilename();
+		int idx = ofname.lastIndexOf(".");
+		String ofheader = ofname.substring(0,idx);
+		String ext = ofname.substring(idx);
+		long ms = System.currentTimeMillis();
+		StringBuilder sb = new StringBuilder();
+		sb.append(ofheader);
+		sb.append("_");
+		sb.append(ms);
+		sb.append(ext);
+		String saveFileName = sb.toString();
+		long fsize = f.getSize();
+		
+		boolean flag = writeFileGoods(f, saveFileName);
+		if(flag) {
+			log.info("파일 업로드 성공");
+		}else {
+			log.info("파일 업로드 실패");
+		}
+		
+		return saveFileName;
+	}
+	
+	@Override
+	public boolean writeFileGoods(MultipartFile f, String saveFileName) {
+		File dir = new File(Path.FILE_STORE_GOODS);
+		if(!dir.exists()) dir.mkdirs();
+		
+		FileOutputStream fos = null;
+		try {
+			byte data[] = f.getBytes();
+			fos = new FileOutputStream(Path.FILE_STORE_GOODS + saveFileName);
+			fos.write(data);
+			fos.flush();
+			
+			return true;		
+		}catch(IOException ie) {
+			return false;
+		}finally {
+			try {
+				fos.close();
+			}catch(IOException ie){
+			}
+		}
 	}
 }

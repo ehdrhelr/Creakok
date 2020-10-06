@@ -67,8 +67,8 @@
         <!-- Top Breadcrumb Area -->
         <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_goods.png);">
             <h2 style="color:black;text-align:center">
-            	GOODS<br>
-            	<span style="font-size:13pt;color:#828282;font-weight:400">크리에이터의 특별 제작 굿즈</span>
+                GOODS<br>
+                <span style="font-size:13pt;color:#828282;font-weight:400">크리에이터의 특별 제작 굿즈</span>
             </h2>
             
         </div>
@@ -220,7 +220,6 @@
      function getPs(){
         var psId = document.getElementById("psId");
         var ps = psId.options[psId.selectedIndex].value;
-
         //location.href="goods_list.do?ps="+ps+"&cp="+cp;
         
      /* console.log("ps: "+ps);
@@ -247,7 +246,7 @@
              if(obj[i] != chk){
                  obj[i].checked = false;
              } else {
-            	 obj[i].checked = true;
+                 obj[i].checked = true;
              }
          }
          var gCode;
@@ -257,7 +256,6 @@
             //alert("gCode: "+gCode);
             console.log("hcbae:"+gCode);
         });
-
          
          location.href="goods_list.do?gCode="+gCode;
     }
@@ -314,16 +312,16 @@
                                     <div class="single-product-area mb-50">
                                         <!-- Product Image -->
                                         <div style="z-index:1">
-                                        	
+                                            
                                         </div>
                                         <div class="product-img">
                                             <a href="goods_detail.do?goods_index=${goods.goods_index}">
-                                            	<c:if test="${goods.goods_stock_number == 0 }">
-                                            		<img src="img/goods/sold_out.png" alt="SOLD OUT IMAGE">
-                                            	</c:if>
-                                            	<c:if test="${goods.goods_stock_number != 0 }">
-                                            		<img src="img/goods/${goods.goods_repre_pic}" alt="상품 이미지">
-                                            	</c:if>
+                                                <c:if test="${goods.goods_stock_number == 0 }">
+                                                    <img src="img/goods/sold_out.png" alt="SOLD OUT IMAGE">
+                                                </c:if>
+                                                <c:if test="${goods.goods_stock_number != 0 }">
+                                                    <img src="img/goods/${goods.goods_repre_pic}" alt="상품 이미지">
+                                                </c:if>
                                             </a>
                                         
                                             <!-- Product Tag
@@ -342,11 +340,10 @@
                                                     formData.append('like_content_index',index);
                                                     formData.append('like_type_code','${LikeType.GOODS_LIKE}');
                                                     formData.append('like_member_email','${member.member_email}');
-
                                                     let xmlHttpLike = new XMLHttpRequest();
                                                     xmlHttpLike.onreadystatechange = function() {
-                                                    	if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
-                                                        	makeGoodsLikeList();
+                                                        if (xmlHttpLike.readyState == 4 && xmlHttpLike.status == 200) {
+                                                            makeGoodsLikeList();
                                                         }
                                                    };
                                                    xmlHttpLike.open("POST", "clickLike.do", true); // true for asynchronous
@@ -386,14 +383,14 @@
                                     <c:choose>
                                         <c:when test="${i==goods.cp}">
                                         <li class="page-item">
-                                        <a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}" style="border-radius:0;" onclick="getCp();">
+                                        <a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}&filterBy=${goods_filterBy}" style="border-radius:0;" onclick="getCp();">
                                             <span style="color:black">${i}</span>
                                             </a>
                                             </li>
                                         </c:when>
                                         <c:otherwise>
                                         <li class="page-item">
-                                        <a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}" style="border-radius:0;" onclick="getCp();">
+                                        <a class="page-link" href="goods_list.do?cp=${i}&gCode=${goods.GCode}&filterBy=${goods_filterBy}" style="border-radius:0;" onclick="getCp();">
                                             <span>${i}</span>
                                             </a>
                                             </li>
@@ -438,7 +435,6 @@
         let tmep_count=0;
         let formData = new FormData();
         let xmlHttpLike = new XMLHttpRequest();
-
         <c:forEach var="goods" items="${goods.list}" >
         formData = new FormData();
         formData.append('like_content_index','${goods.goods_index}');
@@ -466,17 +462,16 @@
 </script>
 <script type="text/javascript">
 function addCart(count){
-	   if('${member.member_email}' == '') {
-	        alert('로그인해주세요.');
-	        return;
-	    }
-	   
+       if('${member.member_email}' == '') {
+            alert('로그인해주세요.');
+            return;
+        }
+       
     let goods_index_list = [];
     let goods_category_code_list = [];
     let goods_name_list = [];
     let goods_repre_pic_list = [];
     let unit_price_list = [];
-
     <c:forEach var="goods" items="${goods.list}" >
         goods_index_list.push('${goods.goods_index}');
         goods_category_code_list.push('${goods.goods_category_code}');
@@ -484,7 +479,6 @@ function addCart(count){
         goods_repre_pic_list.push('${goods.goods_repre_pic}');
         unit_price_list.push('${goods.goods_price}');
     </c:forEach>
-
     let formData = new FormData();
     formData.append('member_email', '${member.member_email}');
     formData.append('goods_index', goods_index_list[count]);
@@ -493,7 +487,6 @@ function addCart(count){
     formData.append('goods_repre_pic', goods_repre_pic_list[count]);
     formData.append('unit_price', unit_price_list[count]);
     formData.append('unit_count', 1);
-
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
          if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
@@ -506,7 +499,6 @@ function addCart(count){
     xmlHttp.open("POST", "addCart.do", true); // true for asynchronous
     xmlHttp.send(formData);
 }
-
 </script>                                              
              
     <jsp:include page="Language.jsp" flush="false">

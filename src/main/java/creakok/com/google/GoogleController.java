@@ -18,6 +18,7 @@ import creakok.com.domain.LoginResult;
 import creakok.com.domain.Member;
 import creakok.com.domain.Member_category;
 import creakok.com.domain.Member_origin;
+import creakok.com.filesetting.Path;
 import creakok.com.service.MemberService;
 import lombok.extern.log4j.Log4j;
 
@@ -37,7 +38,7 @@ public class GoogleController {
                 + "&response_type=code" 
                 + "&state=security_token%3D138r5719ru3e1%26url%3Dhttps://oauth2.example.com/token" 
                 + "&client_id=" + "484909926172-auk6elov1eqf9t12815jbq26eagfdko9.apps.googleusercontent.com"
-                + "&redirect_uri=" + "http://127.0.0.1:8090/googleTokenCheck.do"
+                + "&redirect_uri=" + Path.SOCIAL_LOGIN_ROOT+"/googleTokenCheck.do"
                 + "&access_type=offline";
 
 		log.info("구글:" + url);
