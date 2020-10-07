@@ -106,10 +106,11 @@
 										<option value="207">반려동물</option>	
 										<option value="208">모임</option>	
 										<option value="209">공연/컬쳐</option>	
-										<option value="210">교육/키즈</option>	
-										<option value="211">게임/취미</option>	
-										<option value="212">출판</option>	
-										<option value="213">기부/후원</option>	
+                                        <option value="210">소셜/캠페인</option>
+										<option value="211">교육/키즈</option>	
+										<option value="212">게임/취미</option>	
+										<option value="213">출판</option>	
+										<option value="214">기부/후원</option>	
 									</select>			
                                 </div>
 				<br>
