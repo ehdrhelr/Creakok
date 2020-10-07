@@ -109,8 +109,7 @@ import="creakok.com.domain.LikeType, creakok.com.filesetting.Path"%>
                     <div class="ProjectIntroduction__ProjectOutline-sc-1o2ojgb-2 jbdzfG">
                         <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="#"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">${category_name}</span></a>
                             <h1 id="product_name" class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${one_goods.goods_name}</h1>
-                            <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">
-                            <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gOcHWp"></span>
+                            <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">                            
                             <a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="board_page?creator_name=${one_goods.creator_name}">
                             	${one_goods.creator_name}</a></div>
                         </div>
