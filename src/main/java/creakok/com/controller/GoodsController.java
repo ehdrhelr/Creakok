@@ -79,7 +79,7 @@ public class GoodsController {
 		String cpStr = request.getParameter("cp");
 		String psStr = request.getParameter("ps");
 		String gCodeStr = request.getParameter("gCode");
-		String filterByStr = request.getParameter("filterBy");
+		String filterByStr = request.getParameter("goods_filterBy");
 		
 		log.info("#######################filterBy: "+filterByStr);
 		log.info("#######################cpStr: "+cpStr);

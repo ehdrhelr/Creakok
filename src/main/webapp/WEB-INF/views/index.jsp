@@ -577,7 +577,6 @@ import="creakok.com.filesetting.Path"%>
                                             <c:if test="${!empty creator3.creator_link_instagram}">
                                                 <a href="${creator3.creator_link_instagram}" style="display:inline-block;margin-top:8px"><img src="img/community/instagram.png" style="width:35px"></a>
                                             </c:if>  
-
                                         </div>
                                     </div>
                                 </div>
