@@ -209,7 +209,7 @@ public class IndexController {
 			cpStr = cpStr.trim();
 			cp = Integer.parseInt(cpStr);
 		}
-	//	session.setAttribute("cp", cp);
+		session.setAttribute("search_goods_cp", cp);
 		
 		//(2) ps 
 		int ps = 3;		
@@ -217,6 +217,7 @@ public class IndexController {
 		goods_searchVo.setCp(cp);
 		goods_searchVo.setPs(ps);
 		goods_searchVo.setKeyword(keyword);
+		log.info("#######################goods_searchVo: "+goods_searchVo);
 	    
 		if(goods_searchVo.getResult_list().size() == 0) {
 			if(cp > 1) {	
