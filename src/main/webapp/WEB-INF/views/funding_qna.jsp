@@ -245,7 +245,13 @@ import="creakok.com.domain.LikeType, creakok.com.filesetting.Path"%>
                          
                              <tr>
                              <td style="padding:1.5px !important;">${funding_qna.list_number}</td>
-                                  <td style="padding:1.5px !important;"><a href="funding_qna.detail?funding_qna_index=${funding_qna.funding_qna_index}&funding_index=${funding_qna.funding_index}&list_number=${funding_qna.list_number}#fix_point" style="color:black">${funding_qna.funding_qna_subject}</a></td>
+                                  <td style="padding:1.5px !important;">
+                                    <a href="funding_qna.detail?funding_qna_index=${funding_qna.funding_qna_index}&funding_index=${funding_qna.funding_index}&list_number=${funding_qna.list_number}#fix_point" style="color:black">
+                                        <p style="font-size:10pt;color:black;width:200px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;margin:0;text-align:center;padding:0">
+                                            ${funding_qna.funding_qna_subject}
+                                        </p>
+                                    </a>
+                                  </td>
                                   
                               
                                   <td style="padding:1.5px !important;">${funding_qna.member_name}</td>
