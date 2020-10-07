@@ -567,7 +567,7 @@ import="creakok.com.filesetting.Path"%>
                                     
                                         <p>${creator3.creator_profile_content}</p>
                                         <div class="testimonial-author-info">
-                                             <c:if test="${!empty creator3.creator_link_youtube} or ${!empty creator3.creator_link_instagram}">
+                                             <c:if test="${!empty creator3.creator_link_youtube || !empty creator3.creator_link_instagram}">
                                                 <h6 style="font-size:1em">채널 바로가기</h6>
                                             </c:if>                                           
                                             <c:if test="${!empty creator3.creator_link_youtube}">
