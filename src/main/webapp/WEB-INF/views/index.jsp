@@ -130,7 +130,29 @@ import="creakok.com.filesetting.Path"%>
                 </div>
             </div>
         
-         
+           <!--  Single Hero Post -->
+            <div class="single-hero-post bg-overlay">
+                <!-- Post Image -->
+                <div class="slide-img bg-img" style="background-image: url(${Path.COMMON_IMG_PATH}photo_book_ad.png);"></div>
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <!-- Post Content -->
+                            <div class="hero-slides-content" style="text-align:left">
+                                <p style="font-family:Gmarket Sans Medium;color:#636363;margin-bottom:7px">크리에이터 <span style="font-family:Gmarket Sans Bold;">트레버</span> 의</p>
+                                <h2 style="font-family:Gmarket Sans Bold; color:#002776;margin-bottom:5px">유럽 여행 포토북</h2>
+                                <p style="font-family:Gmarket Sans Medium;color:#828282;font-size:1.7em">유럽감성이 듬뿍 담긴 여행사진을 구경해보세요.</p>
+                                
+                                <div class="welcome-btn-group"> 
+                                    <a href="goods_detail.do?goods_index=17" class="btn alazea-btn mr-30" style="font-family:Gmarket Sans Light;border:1px solid #828282;color:#828282;line-height:2;">구매하러 가기</a>
+                                   <!-- <a href="#" class="btn alazea-btn active">CONTACT US</a>  -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                     
         </div>
     </section>
     <!-- ##### Hero Area End ##### -->
