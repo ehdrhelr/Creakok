@@ -121,7 +121,7 @@ import="creakok.com.filesetting.Path"%>
                                 <p style="font-family:Gmarket Sans Medium;color:#fdce96;font-size:1.7em">가을맞이 <span style="font-family:Gmarket Sans Bold;">9,900원</span> 할인!</p>
                                 
                                 <div class="welcome-btn-group"> 
-                                    <a href="#" class="btn alazea-btn mr-30" style="font-family:Gmarket Sans Light;border:1px solid white;color:white;line-height:2;">구매하러 가기</a>
+                                    <a href="goods_detail.do?goods_index=19" class="btn alazea-btn mr-30" style="font-family:Gmarket Sans Light;border:1px solid white;color:white;line-height:2;">구매하러 가기</a>
                                    <!-- <a href="#" class="btn alazea-btn active">CONTACT US</a>  -->
                                 </div>
                             </div>
