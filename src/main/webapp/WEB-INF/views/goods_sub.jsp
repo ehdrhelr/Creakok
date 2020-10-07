@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8"
+import="creakok.com.filesetting.Path"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
@@ -8,7 +9,7 @@
      <div class="single-product-area mb-50">
          <!-- Product Image -->
          <div class="product-img">
-             <a href="goods-details.html"><img src="img/bg-img/${goods.goods_repre_pic}" alt=""></a>
+             <a href="goods-details.html"><img src="${Path.COMMON_IMG_PATH}${goods.goods_repre_pic}" alt=""></a>
          
              <!-- Product Tag
              <div class="product-tag">
