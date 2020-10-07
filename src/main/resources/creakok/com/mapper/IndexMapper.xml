@@ -24,8 +24,8 @@
     <select id="selectCreator"  resultType="Creator">
         <![CDATA[select *
         from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from
-        (select * from CREATOR order by CREATOR_NAME desc limit 0, 3) aa, (SELECT @RUWNUM := 0) TMP) bb
-        where rnum <= 3]]> 
+        (select * from CREATOR order by CREATOR_NAME desc limit 0, 3) aa, (SELECT @ROWNUM := 0) TMP) bb
+        where rnum <= 3]]>
     </select>
 	
     <select id="selectGoodsByReview" resultType="Goods">

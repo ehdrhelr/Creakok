@@ -547,13 +547,13 @@ import="creakok.com.filesetting.Path"%>
 		             
 			
                        
-                      <c:forEach items="${creator_list}" var="creator">
+                      <c:forEach items="${creator_list}" var="creator3">
                         <div class="single-testimonial-slide">
                             <div class="row align-items-center">
                                 <div class="col-12 col-md-6">
                                     <div class="testimonial-thumb">
                                        
-                                        <img src="img/community/${creator.creator_profile_photo}" alt="">
+                                        <img src="img/community/${creator3.creator_profile_photo}" alt="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
@@ -562,10 +562,10 @@ import="creakok.com.filesetting.Path"%>
                                         <div class="section-heading">
                                      
                                         	<p>이달의 크리에이터</p>
-                                            <h2>${creator.creator_name}</h2>
+                                            <h2>${creator3.creator_name}</h2>
                                         </div>
                                     
-                                        <p>${creator.creator_profile_content}</p>
+                                        <p>${creator3.creator_profile_content}</p>
                                         <div class="testimonial-author-info">
                                            
                                             <h6 style="font-size:1em">채널 바로가기</h6>

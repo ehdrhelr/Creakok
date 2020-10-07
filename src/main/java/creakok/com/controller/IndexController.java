@@ -87,6 +87,7 @@ public class IndexController {
 		
 		// 이달의 크리에이터
 		List<Creator> creator_list = indexService.selectCreator();
+		log.info("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 나와라 짜식아: "+creator_list);
 		mv.addObject("creator_list", creator_list);
 		
 		// 크리에이터 검색(모든 크리에이터)
