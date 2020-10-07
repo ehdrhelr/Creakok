@@ -52,7 +52,9 @@
                                            
                                             <div id="bar4" class="barfiller" style="border-radius: 5px;">
                                                
-                                                <span class="fill" data-percentage="60" style="border-radius: 5px; width: 162px; transition: width 1s ease-in-out 0s; background: rgb(252, 82, 48);"></span>
+                                                <progress class="myBars" max="100" value="0" data-percentage="${fundingVo.percentage}"></progress>
+                                                <!--<span class="fill" data-percentage="60" style="background: rgb(252, 82, 48); width: 126px; transition: width 1s ease-in-out 0s;border-radius:30pt;"></span>-->
+
                                             </div>
                                         </div>
                                           
