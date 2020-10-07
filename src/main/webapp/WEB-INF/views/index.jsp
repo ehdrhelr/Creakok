@@ -539,7 +539,7 @@ import="creakok.com.filesetting.Path"%>
 
 
     <!-- ##### Testimonial Area Start ##### -->
-    <section class="testimonial-area section-padding-100 bg-gray" style="margin-top: 0;background-color:white;">
+    <section class="testimonial-area section-padding-100 bg-gray" style="margin-top:80px">
         <div class="container">
             <div class="row">
                 <div class="col-12">
