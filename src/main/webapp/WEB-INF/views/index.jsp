@@ -44,26 +44,26 @@ import="creakok.com.filesetting.Path"%>
 
     <link rel="stylesheet" href="css/progressBar.css">
         
-	<style>
-	@font-face{
-		font-family: 'Gmarket Sans Bold'; font-style:normal; font-weight:700;
-		src: local('Gmarket Sans Bold'), local('GmarketSans-Bold'),
-		url('http://script.ebay.co.kr/fonts/GmarketSansBold.woff2') format('woff2'),
-		url('http://script.ebay.co.kr/fonts/GmarketSansBold.woff') format('woff');
-	}
-		@font-face{
-		font-family: 'Gmarket Sans Medium'; font-style:normal; font-weight:500;
-		src: local('Gmarket Sans Medium'), local('GmarketSans-Medium'),
-		url('http://script.ebay.co.kr/fonts/GmarketSansMedium.woff2') format('woff2'),
-		url('http://script.ebay.co.kr/fonts/GmarketSansMedium.woff') format('woff');
-	}
-	@font-face{
-		font-family: 'Gmarket Sans Light'; font-style:normal; font-weight:300;
-		src: local('Gmarket Sans Light'), local('GmarketSans-Light'),
-		url('http://script.ebay.co.kr/fonts/GmarketSansLight.woff2') format('woff2'),
-		url('http://script.ebay.co.kr/fonts/GmarketSansLight.woff') format('woff');
-	}
-	</style>
+    <style>
+    @font-face{
+        font-family: 'Gmarket Sans Bold'; font-style:normal; font-weight:700;
+        src: local('Gmarket Sans Bold'), local('GmarketSans-Bold'),
+        url('http://script.ebay.co.kr/fonts/GmarketSansBold.woff2') format('woff2'),
+        url('http://script.ebay.co.kr/fonts/GmarketSansBold.woff') format('woff');
+    }
+        @font-face{
+        font-family: 'Gmarket Sans Medium'; font-style:normal; font-weight:500;
+        src: local('Gmarket Sans Medium'), local('GmarketSans-Medium'),
+        url('http://script.ebay.co.kr/fonts/GmarketSansMedium.woff2') format('woff2'),
+        url('http://script.ebay.co.kr/fonts/GmarketSansMedium.woff') format('woff');
+    }
+    @font-face{
+        font-family: 'Gmarket Sans Light'; font-style:normal; font-weight:300;
+        src: local('Gmarket Sans Light'), local('GmarketSans-Light'),
+        url('http://script.ebay.co.kr/fonts/GmarketSansLight.woff2') format('woff2'),
+        url('http://script.ebay.co.kr/fonts/GmarketSansLight.woff') format('woff');
+    }
+    </style>
 </head>
 
 <body>
@@ -116,7 +116,7 @@ import="creakok.com.filesetting.Path"%>
                         <div class="col-12">
                             <!-- Post Content -->
                             <div class="hero-slides-content" style="text-align:left">
-                            	<p style="font-family:Gmarket Sans Medium;color:#fdce96;margin-bottom:7px">크리에이터 Seova 의</p>
+                                <p style="font-family:Gmarket Sans Medium;color:#fdce96;margin-bottom:7px">크리에이터 Seova 의</p>
                                 <h2 style="font-family:Gmarket Sans Bold; color:#fdce96;margin-bottom:5px">BEST3 일러스트 폰케이스</h2>
                                 <p style="font-family:Gmarket Sans Medium;color:#fdce96;font-size:1.7em">가을맞이 <span style="font-family:Gmarket Sans Bold;">9,900원</span> 할인!</p>
                                 
@@ -153,7 +153,7 @@ import="creakok.com.filesetting.Path"%>
                     </div>
                         <div class="row">
      
-							<c:forEach items="${funding_list}" var="funding"> 
+                            <c:forEach items="${funding_list}" var="funding"> 
                             <!-- Single Benefits Area -->
                             <div class="col-12 col-sm-6">
 
@@ -161,7 +161,7 @@ import="creakok.com.filesetting.Path"%>
                                     <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
                                         </a><div class="CommonCard_rect__2wpm4"><a href="funding_detail.do?funding_index=${funding.funding_index}" class="CardLink_link__1k83H CommonCard_image__vaqkf">
                                             <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
-												</span></a><a href="funding_detail.do?funding_index=${funding.funding_index}">
+                                                </span></a><a href="funding_detail.do?funding_index=${funding.funding_index}">
                                                      <img src="${funding.funding_repre_pic}" alt="">
                                                 </a>
                                             
@@ -178,10 +178,10 @@ import="creakok.com.filesetting.Path"%>
                                         </a>
                                     <div style="margin-bottom: 10px;">
                                         <span class="RewardProjectCard_category__2muXk" style="color:#90949C; font-size:13px;">
-                                        	${funding.funding_category_name}
+                                            ${funding.funding_category_name}
                                         </span>
                                         <span class="RewardProjectCard_makerName__2q4oH" style="color:#90949C; font-size:13px;">
-                                           	${funding.creator_name}
+                                            ${funding.creator_name}
                                         </span>
                                     </div>
                                     </div>
@@ -219,8 +219,8 @@ import="creakok.com.filesetting.Path"%>
                                 </div>
        
                             </div>
-						</c:forEach>
-						
+                        </c:forEach>
+                        
                         </div>
                     </div>
                 </div>
@@ -254,7 +254,7 @@ import="creakok.com.filesetting.Path"%>
                                                               굿즈
                         </button>
                         <p>
-                         	실시간 랭킹으로 현재 HOT한 펀딩/굿즈를 만나보세요.
+                            실시간 랭킹으로 현재 HOT한 펀딩/굿즈를 만나보세요.
                         </p>
                     </div>
                     
@@ -352,7 +352,7 @@ import="creakok.com.filesetting.Path"%>
     
     
          <!--  ##### 실시간 랭킹 Ajax #####  -->
-      	  <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>					                       
+          <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>                                         
               <script>
               function fundingRanking(){
                   $.ajax({ 
@@ -442,7 +442,7 @@ import="creakok.com.filesetting.Path"%>
                          }
                              
                      }
-                 });            	   
+                 });                   
               }
               function goodsRanking(){
                 //var jsonData = JSON.stringify(value);
@@ -454,72 +454,72 @@ import="creakok.com.filesetting.Path"%>
                 //var GoodsVo = JSON.parse(jsonData);
                 
                 $.ajax({ 
-                	 url: "ranking", 
-                	 type: "GET",
-                	 async: true,
-                	  	 dataType: "json",
-                	 contentType: "application/json; charset=UTF-8", //★★ 요놈 절대 빼먹으면안됨
-                	 error:function(request,status,error){
-                	        alert("실패"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)   	
-                	 },
-                	 success: function(responseData){
-                		var jsonData = JSON.stringify(responseData);
-                		var ranking_goods = JSON.parse(jsonData);
-                		console.log(ranking_goods);
-                		//console.log("rRRRRRRRRRRRRRRRR: "+jsonData);
-                		
-                		
-                		var html = "";
-                		for(var i=0; i<ranking_goods.length; i++) {
-                			html += "<div class='TabContainer_tab__LrP70'>";
-                			html += "<div class='TabContainer_tabList__1TS8l'>";
-                			html += "<div class='TabContainer_listItem__2XDgU' style='margin-bottom:3%'>";
-                			html += "<a class='CardType_projectCard__3xhjb CardType_projectCardA__33rbP' href='goods_detail.do?goods_index="+ranking_goods[i].goods_index+"'>";
-                			html += "<article>";
-                			html += "<div class='commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj'>";
-                			html += "<p style='color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500'>"+(i+1)+"</p>";
+                     url: "ranking", 
+                     type: "GET",
+                     async: true,
+                         dataType: "json",
+                     contentType: "application/json; charset=UTF-8", //★★ 요놈 절대 빼먹으면안됨
+                     error:function(request,status,error){
+                            alert("실패"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)     
+                     },
+                     success: function(responseData){
+                        var jsonData = JSON.stringify(responseData);
+                        var ranking_goods = JSON.parse(jsonData);
+                        console.log(ranking_goods);
+                        //console.log("rRRRRRRRRRRRRRRRR: "+jsonData);
+                        
+                        
+                        var html = "";
+                        for(var i=0; i<ranking_goods.length; i++) {
+                            html += "<div class='TabContainer_tab__LrP70'>";
+                            html += "<div class='TabContainer_tabList__1TS8l'>";
+                            html += "<div class='TabContainer_listItem__2XDgU' style='margin-bottom:3%'>";
+                            html += "<a class='CardType_projectCard__3xhjb CardType_projectCardA__33rbP' href='goods_detail.do?goods_index="+ranking_goods[i].goods_index+"'>";
+                            html += "<article>";
+                            html += "<div class='commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj'>";
+                            html += "<p style='color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500'>"+(i+1)+"</p>";
                                           html += "<span style='width:60px;height:60px;float:left; margin-right:15px;'><img src='img/goods/"+ranking_goods[i].goods_repre_pic+"' alt=''>";
                                           html += "</span>";
                                           html += "<p class='commons_title__1yGWm' style='font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500'>"
-                                          		+ranking_goods[i].goods_name+"</p>";
+                                                +ranking_goods[i].goods_name+"</p>";
                                           html += "<p class='commons_summary__2Ynez'>";
                                           html += "<span class='commons_achievementRate__2J-KL' style='margin-bottom: 5px; color:#fc5230;font-weight: 600'>"+ranking_goods[i].goods_price+"원</span>";
-                                          		if(ranking_goods[i].goods_category_code == 301) {
-                                          			html += "&nbsp;&nbsp;&nbsp;뷰티</p>";
-                                          		}
-                                          		if(ranking_goods[i].goods_category_code == 302) {
-                                          			html += "&nbsp;&nbsp;&nbsp;디자인소품</p>";
-                                          		}
-                                          		if(ranking_goods[i].goods_category_code == 303) {
-                                          			html += "&nbsp;&nbsp;&nbsp;홈리빙</p>";
-                                          		}
-                                          		if(ranking_goods[i].goods_category_code == 304) {
-                                          			html += "&nbsp;&nbsp;&nbsp;테크/가전</p>";
-                                          		}
-                                          		if(ranking_goods[i].goods_category_code == 305) {
-                                          			html += "&nbsp;&nbsp;&nbsp;패션/잡화</p>";
-                                          		}
-                                          		if(ranking_goods[i].goods_category_code == 306) {
-                                          			html += "&nbsp;&nbsp;&nbsp;푸드</p>";
-                                          		}
-                                          		if(ranking_goods[i].goods_category_code == 307) {
-                                          			html += "&nbsp;&nbsp;&nbsp;여행/레저</p>";
-                                          		}
-                                          		if(ranking_goods[i].goods_category_code == 308) {
-                                          			html += "&nbsp;&nbsp;&nbsp;스포츠/모빌리티</p>";
-                                          		}
-                                          		if(ranking_goods[i].goods_category_code == 309) {
-                                          			html += "&nbsp;&nbsp;&nbsp;반려동물</p>";
-                                          		}
-                                          		if(ranking_goods[i].goods_category_code == 310) {
-                                          			html += "&nbsp;&nbsp;&nbsp;문화/예술</p>";
-                                          		}	                                        		
-                                          		if(ranking_goods[i].goods_category_code == 311) {
-                                          			html += "&nbsp;&nbsp;&nbsp;출산/육아</p>";
-                                          		}
-                                          		if(ranking_goods[i].goods_category_code == 312) {
-                                          			html += "&nbsp;&nbsp;&nbsp;생활/건강</p>";
-                                          		}	 	                                        				
+                                                if(ranking_goods[i].goods_category_code == 301) {
+                                                    html += "&nbsp;&nbsp;&nbsp;뷰티</p>";
+                                                }
+                                                if(ranking_goods[i].goods_category_code == 302) {
+                                                    html += "&nbsp;&nbsp;&nbsp;디자인소품</p>";
+                                                }
+                                                if(ranking_goods[i].goods_category_code == 303) {
+                                                    html += "&nbsp;&nbsp;&nbsp;홈리빙</p>";
+                                                }
+                                                if(ranking_goods[i].goods_category_code == 304) {
+                                                    html += "&nbsp;&nbsp;&nbsp;테크/가전</p>";
+                                                }
+                                                if(ranking_goods[i].goods_category_code == 305) {
+                                                    html += "&nbsp;&nbsp;&nbsp;패션/잡화</p>";
+                                                }
+                                                if(ranking_goods[i].goods_category_code == 306) {
+                                                    html += "&nbsp;&nbsp;&nbsp;푸드</p>";
+                                                }
+                                                if(ranking_goods[i].goods_category_code == 307) {
+                                                    html += "&nbsp;&nbsp;&nbsp;여행/레저</p>";
+                                                }
+                                                if(ranking_goods[i].goods_category_code == 308) {
+                                                    html += "&nbsp;&nbsp;&nbsp;스포츠/모빌리티</p>";
+                                                }
+                                                if(ranking_goods[i].goods_category_code == 309) {
+                                                    html += "&nbsp;&nbsp;&nbsp;반려동물</p>";
+                                                }
+                                                if(ranking_goods[i].goods_category_code == 310) {
+                                                    html += "&nbsp;&nbsp;&nbsp;문화/예술</p>";
+                                                }                                                   
+                                                if(ranking_goods[i].goods_category_code == 311) {
+                                                    html += "&nbsp;&nbsp;&nbsp;출산/육아</p>";
+                                                }
+                                                if(ranking_goods[i].goods_category_code == 312) {
+                                                    html += "&nbsp;&nbsp;&nbsp;생활/건강</p>";
+                                                }                                                               
                                           html += "</div>";
                                           html += "</article>";
                                           html += "</a>";                   
@@ -528,12 +528,12 @@ import="creakok.com.filesetting.Path"%>
                                           html += "</div>";
                                           
                                           $("#ranking").html(html);
-                		}
-                			
-                	}
+                        }
+                            
+                    }
                 });
               }
-			</script>
+            </script>
            <!--  #####실시간 랭킹 Ajax End #####  -->          
     
 
@@ -544,8 +544,8 @@ import="creakok.com.filesetting.Path"%>
             <div class="row">
                 <div class="col-12">
                     <div class="testimonials-slides owl-carousel">
-		             
-			
+                     
+            
                        
                       <c:forEach items="${creator_list}" var="creator3">
                         <div class="single-testimonial-slide">
@@ -561,23 +561,27 @@ import="creakok.com.filesetting.Path"%>
                                         <!-- Section Heading -->
                                         <div class="section-heading">
                                      
-                                        	<p>이달의 크리에이터</p>
+                                            <p>이달의 크리에이터</p>
                                             <h2>${creator3.creator_name}</h2>
                                         </div>
                                     
                                         <p>${creator3.creator_profile_content}</p>
                                         <div class="testimonial-author-info">
-                                           
                                             <h6 style="font-size:1em">채널 바로가기</h6>
-                                            <a href="https://www.youtube.com/" style="display:inline-block;margin-top:10px;margin-right:5px"><img src="img/community/youtube.png" style="width:49px"></a>
-                                            <a href="https://www.instagram.com" style="display:inline-block;margin-top:8px"><img src="img/community/instagram.png" style="width:35px"></a>
+                                            <c:if test="${!empty creator3.creator_link_youtube}">
+                                                <a href="${creator3.creator_link_youtube}" style="display:inline-block;margin-top:10px;margin-right:5px"><img src="img/community/youtube.png" style="width:49px"></a>
+                                           </c:if>
+                                            
+                                            <c:if test="${!empty creator3.creator_link_instagram}">
+                                                <a href="${creator3.creator_link_instagram}" style="display:inline-block;margin-top:8px"><img src="img/community/instagram.png" style="width:35px"></a>
+                                            </c:if>   
                                         </div>
                                     </div>
                                 </div>
                           
                             </div>
                         </div>
-					   </c:forEach>
+                       </c:forEach>
 
                     </div>
                 </div>
@@ -599,7 +603,7 @@ import="creakok.com.filesetting.Path"%>
                     <div class="section-heading text-center">
                         <h2 style="color:white; ">소통하는 사회, 크리콕!</h2>
                         <p style="color:white">크리에이터와 대중이 자유롭게 "소통하는 공간", 크리콕</p>
-                      	<p class="crowdy-btn-introduction" >
+                        <p class="crowdy-btn-introduction" >
                           <a href="about.do"style="color:white; text-align:center">자세히 알아보기</a>
                         </p>
                        
@@ -611,11 +615,11 @@ import="creakok.com.filesetting.Path"%>
    </section>
     
 <!--크리에이터띠 싱단 배너끝-->
-	<!-- Hero Section -->
+    <!-- Hero Section -->
    
  
     
-	<section class="hero__section">
+    <section class="hero__section">
         <div class="section-heading text-center">
 
                         <h2 style="margin-bottom:10px">크리콕 커뮤니티</h2>
@@ -627,89 +631,89 @@ import="creakok.com.filesetting.Path"%>
         </div>
      
         
-		<div class="hero-slider" id="search_creator_result">
-			<c:forEach items="${all_creator}" var="all_creator">
-				<div class="slide-item">
-					<a class="fresco" href="#" data-fresco-group="projects" onclick="location.href='board_page?creator_name=${all_creator.creator_name}'">
-						<img src="img/community/${all_creator.creator_profile_photo}" alt="">
-					</a>
-					
-					<h2 style="text-align:center">${all_creator.creator_name}</h2>
-					<p style="text-align:center">${all_creator.creator_profile_content}</p>
-				</div>
-			</c:forEach>
-		</div>
-		
-		<div class="hero-text-slider">
-		
-			<div class="text-item">
+        <div class="hero-slider" id="search_creator_result">
+            <c:forEach items="${all_creator}" var="all_creator">
+                <div class="slide-item">
+                    <a class="fresco" href="#" data-fresco-group="projects" onclick="location.href='board_page?creator_name=${all_creator.creator_name}'">
+                        <img src="img/community/${all_creator.creator_profile_photo}" alt="">
+                    </a>
+                    
+                    <h2 style="text-align:center">${all_creator.creator_name}</h2>
+                    <p style="text-align:center">${all_creator.creator_profile_content}</p>
+                </div>
+            </c:forEach>
+        </div>
+        
+        <div class="hero-text-slider">
+        
+            <div class="text-item">
 
-			</div>
+            </div>
 
-		</div>
-		
-	</section>
-	<!-- Hero Section end -->
-	
-	
+        </div>
+        
+    </section>
+    <!-- Hero Section end -->
+    
+    
  
           <!--  ##### 크리에이터 검색 Ajax #####  -->
           <script src="js_botoTest/slick.min.js"></script>
-      	  <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>					                       
+          <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>                                         
                <script>
-	                        function searchCreator(){
-								//var jsonData = JSON.stringify(value);
-								///var obj = {goods_sale_number:goods_sale_number};
-								
-								//var jsonData = JSON.stringify(obj);
-								//console.log("jsonData: "+jsonData);
-								//var jsonData = JSON.stringify(responseData);
-								//var GoodsVo = JSON.parse(jsonData);
+                            function searchCreator(){
+                                //var jsonData = JSON.stringify(value);
+                                ///var obj = {goods_sale_number:goods_sale_number};
+                                
+                                //var jsonData = JSON.stringify(obj);
+                                //console.log("jsonData: "+jsonData);
+                                //var jsonData = JSON.stringify(responseData);
+                                //var GoodsVo = JSON.parse(jsonData);
 
-								$.ajax({ 
-									 url: "search_creator.do", 
-									 type: "GET",
-									 async: true,
-  								  	 dataType: "json",
-  								  	 data:{"creator_name" : $('#searchCreator').val()},
-									 contentType: "application/json; charset=UTF-8", //★★ 요놈 절대 빼먹으면안됨
-									 error:function(request,status,error){
-									        alert("실패"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)   	
-									 },
-									 success: function(responseData){
-										console.log(responseData);
-										var jsonData = JSON.stringify(responseData);
-										var search_creator = JSON.parse(jsonData);
-										console.log(search_creator);
-										
-										//var html2 = "";
-										//$('#search_creator_result').empty();
-										//for(var i=0; i<search_creator.length; i++) {
-										//	html2 += "<div class='slide-item'>";
-										//	html2 += "<a class='fresco' href='#' data-fresco-group='projects'>";
-										//	html2 += "<img src='img/community/"+search_creator[i].creator_profile_photo+"' alt=''>";
-										//	html2 += "</a>";
-										//	html2 += "<h2 style='text-align:center'>"+search_creator[i].creator_name+"</h2>";
-										//	html2 += "<p style='text-align:center'>"+search_creator[i].creator_profile_content+"</p>";
-										//	html2 += "</div>";
-										//}
-										
-										//$('#search_creator_result').html(html2);
-									}
-								})
-	                        }
-	                        
+                                $.ajax({ 
+                                     url: "search_creator.do", 
+                                     type: "GET",
+                                     async: true,
+                                     dataType: "json",
+                                     data:{"creator_name" : $('#searchCreator').val()},
+                                     contentType: "application/json; charset=UTF-8", //★★ 요놈 절대 빼먹으면안됨
+                                     error:function(request,status,error){
+                                            alert("실패"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)     
+                                     },
+                                     success: function(responseData){
+                                        console.log(responseData);
+                                        var jsonData = JSON.stringify(responseData);
+                                        var search_creator = JSON.parse(jsonData);
+                                        console.log(search_creator);
+                                        
+                                        //var html2 = "";
+                                        //$('#search_creator_result').empty();
+                                        //for(var i=0; i<search_creator.length; i++) {
+                                        //  html2 += "<div class='slide-item'>";
+                                        //  html2 += "<a class='fresco' href='#' data-fresco-group='projects'>";
+                                        //  html2 += "<img src='img/community/"+search_creator[i].creator_profile_photo+"' alt=''>";
+                                        //  html2 += "</a>";
+                                        //  html2 += "<h2 style='text-align:center'>"+search_creator[i].creator_name+"</h2>";
+                                        //  html2 += "<p style='text-align:center'>"+search_creator[i].creator_profile_content+"</p>";
+                                        //  html2 += "</div>";
+                                        //}
+                                        
+                                        //$('#search_creator_result').html(html2);
+                                    }
+                                })
+                            }
+                            
 
-	    				
-			</script>
+                        
+            </script>
            <!--  ##### 크리에이터 검색 End #####  -->   
  
     
-    	<!--====== Javascripts & Jquery ======-->
-	<script src="js_botoTest/vendor/jquery-3.2.1.min.js"></script>
-	<script src="js_botoTest/jquery.slicknav.min.js"></script>
-	<script src="js_botoTest/slick.min.js"></script>
-	<script src="js_botoTest/main.js"></script>
+        <!--====== Javascripts & Jquery ======-->
+    <script src="js_botoTest/vendor/jquery-3.2.1.min.js"></script>
+    <script src="js_botoTest/jquery.slicknav.min.js"></script>
+    <script src="js_botoTest/slick.min.js"></script>
+    <script src="js_botoTest/main.js"></script>
     
     
     
@@ -744,7 +748,7 @@ import="creakok.com.filesetting.Path"%>
                         </div>
                         <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
-                       	 <p style="margin-bottom:5px;text-align:left">${goods.creator_name}</p>
+                         <p style="margin-bottom:5px;text-align:left">${goods.creator_name}</p>
                             <a href="goods_detail.do?goods_index=${goods.goods_index}">
                                 <p style="text-align:left">${goods.goods_name}</p>
                             </a>
@@ -752,11 +756,11 @@ import="creakok.com.filesetting.Path"%>
                         </div>
                     </div>
               
-               	 </div>
-				</c:forEach>
-				
+                 </div>
+                </c:forEach>
+                
                 <div class="col-12 text-center">
- 	                 <a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300" class="btn alazea-btn" style="background-color:#fc5230;color:white;font-size:1.2em;font-weight:700;height:40px">더보기</a>
+                     <a href="goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300" class="btn alazea-btn" style="background-color:#fc5230;color:white;font-size:1.2em;font-weight:700;height:40px">더보기</a>
                 </div>
 
             </div>
@@ -823,7 +827,7 @@ import="creakok.com.filesetting.Path"%>
     <script type="text/javascript">
 
           function contactPopup(){ 
-        	    alert('문의글 작성이 완료되었습니다');
+                alert('문의글 작성이 완료되었습니다');
             } 
 
     </script>
