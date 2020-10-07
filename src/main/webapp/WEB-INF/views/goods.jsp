@@ -216,7 +216,7 @@ import="creakok.com.domain.LikeType, creakok.com.filesetting.Path"%>
      function getFilterBy(){
             var fbId = document.getElementById("fbId");
             var filterBy = fbId.options[fbId.selectedIndex].value;      
-            location.href="goods_list.do?filterBy="+filterBy;
+            location.href="goods_list.do?goods_filterBy="+filterBy;
      }
      function getPs(){
         var psId = document.getElementById("psId");

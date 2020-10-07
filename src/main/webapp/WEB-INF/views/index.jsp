@@ -567,6 +567,7 @@ import="creakok.com.filesetting.Path"%>
                                     
                                         <p>${creator3.creator_profile_content}</p>
                                         <div class="testimonial-author-info">
+<<<<<<< HEAD
                                              <c:if test="${!empty creator3.creator_link_youtube || !empty creator3.creator_link_instagram}">
                                                 <h6 style="font-size:1em">채널 바로가기</h6>
                                             </c:if>                                           
@@ -578,6 +579,16 @@ import="creakok.com.filesetting.Path"%>
                                                 <a href="${creator3.creator_link_instagram}" style="display:inline-block;margin-top:8px"><img src="img/community/instagram.png" style="width:35px"></a>
                                             </c:if>  
 
+=======
+                                            <h6 style="font-size:1em">채널 바로가기</h6>
+                                            <c:if test="${!empty creator3.creator_link_youtube}">
+                                                <a href="${creator3.creator_link_youtube}" style="display:inline-block;margin-top:10px;margin-right:5px"><img src="img/community/youtube.png" style="width:49px"></a>
+                                           </c:if>
+                                            
+                                            <c:if test="${!empty creator3.creator_link_instagram}">
+                                                <a href="${creator3.creator_link_instagram}" style="display:inline-block;margin-top:8px"><img src="img/community/instagram.png" style="width:35px"></a>
+                                            </c:if>   
+>>>>>>> refs/heads/master_jhseo8
                                         </div>
                                     </div>
                                 </div>
