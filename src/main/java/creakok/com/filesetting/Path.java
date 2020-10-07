@@ -2,17 +2,17 @@ package creakok.com.filesetting;
 
 public class Path {
 
-	//public static final String SOCIAL_LOGIN_ROOT = "http://127.0.0.1:8090"; //local
-	public static final String SOCIAL_LOGIN_ROOT = "http://creakok.cafe24.com"; //Cafe24
+	public static final String SOCIAL_LOGIN_ROOT = "http://127.0.0.1:8090"; //local
+	//public static final String SOCIAL_LOGIN_ROOT = "http://creakok.cafe24.com"; //Cafe24
 	
-	public static final String joohyunann_path = "/Users/joohyunann/git/Creakok/src/main/webapp/resources";
-	public static final String shion_path = "/Users/shion/git/Creakok/src/main/webapp/resources";
-	public static final String jihee_path = "C:/Users/bit/git/Creakok/src/main/webapp/resources";
+	public static final String joohyunann_path = "/Users/joohyunann/git/Creakok/src/data";
+	public static final String shion_path = "/Users/shion/git/Creakok/src/data";
+	public static final String jihee_path = "C:/Users/bit/git/Creakok/src/data";
 	public static final String hcbae_path = "C:/Users/bit/git/Creakok_master/src/data";
 	public static final String CAFE24_PATH = "/creakok/tomcat/webapps/data";
 	
 	
-	public static final String STORE_PATH = CAFE24_PATH;
+	public static final String STORE_PATH = hcbae_path;
 
 	
 	public static final String FUNDING_PATH = "/img/funding/";
