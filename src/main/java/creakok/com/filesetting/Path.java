@@ -8,8 +8,8 @@ public class Path {
 	public static final String joohyunann_path = "/Users/joohyunann/git/Creakok/src/main/webapp/resources";
 	public static final String shion_path = "/Users/shion/git/Creakok/src/main/webapp/resources";
 	public static final String jihee_path = "C:/Users/bit/git/Creakok/src/main/webapp/resources";
-	public static final String hcbae_path = "C:/Users/Trajanus/git/Creakok_master/src/main/webapp/resources";
-	public static final String CAFE24_PATH = "/creakok/tomcat/webapps/ROOT/resources";
+	public static final String hcbae_path = "C:/Users/bit/git/Creakok_master/src/data";
+	public static final String CAFE24_PATH = "/creakok/tomcat/webapps/data";
 	
 	
 	public static final String STORE_PATH = shion_path;
@@ -18,6 +18,8 @@ public class Path {
 	public static final String FUNDING_PATH = "/img/funding/";
 	public static final String GOODS_PATH = "/img/goods/";
 	public static final String COMMUNITY_PATH = "/img/community/";
+	
+	public static final String COMMON_IMG_PATH = "/img/common_img/";
 	
  	//cafe24
 	public static final String FILE_STORE = STORE_PATH+FUNDING_PATH;

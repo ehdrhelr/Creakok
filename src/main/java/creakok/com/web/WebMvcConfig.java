@@ -29,5 +29,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/summernoteImageGoods/**")
         		.addResourceLocations("file:///"+Path.FILE_STORE_GOODS);
         
+        //<resources mapping="/img/**" location="/resources/img/" />
+        registry.addResourceHandler("/img/**")
+				.addResourceLocations("file:///"+Path.STORE_PATH+"/img/");
+        
     }
 }

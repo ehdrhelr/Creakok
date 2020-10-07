@@ -28,7 +28,8 @@
 	<resources mapping="/fonts/**" location="/resources/fonts/" />
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/scss/**" location="/resources/scss/" />
-	<resources mapping="/img/**" location="/resources/img/" />
+	
+  <!-- <resources mapping="/img/**" location="/resources/img/" /> -->
     
     <!-- 마리아DB  -->
     <!-- <resources mapping="/summernoteImage/**" location="file:///Users/joohyunann/git/Creakok/src/main/webapp/resources/img/funding/"/>

@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8"
+import="creakok.com.filesetting.Path"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -69,7 +70,7 @@
             <!-- Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(img/bg-img/about.png);"></div>
+                <div class="slide-img bg-img" style="background-image: url(${Path.COMMON_IMG_PATH}about.png);"></div>
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
@@ -458,120 +459,43 @@
     </section>
 
     
-    <!-- ##### Team Area Start ##### -->
-    <section class="team-area section-padding-100-0">
+    <section class="contact-area section-padding-100-0">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-12 col-lg-6">
+                    <!-- Google Maps -->
+                    <div class="map-area mb-100">
+                        <img style="-webkit-user-select: none;" src="http://127.0.0.1:8090/img/plus/brand_identity.png">
+                    </div>
+                </div>
+                
+                  <div class="col-12 col-lg-5">
                     <!-- Section Heading -->
-                    <div class="section-heading text-center">
-                        <h2 h2 style="font-size:25pt; margin-bottom:20px;font-family:Jalnan;">
-                            <span style="color:#2da498">CREA</span><span style="color:#fc5230">KOK</span>
-                        </h2>
-                        <p>크리콕 운영진 소개</p>
+                    <div class="section-heading">
+                        <h2>Brand Identity</h2>
+                        <p>크리에이터 콕! 내가 좋아하는 크리에이터를 만나보세요</p>
+                    </div>
+                    <!-- Contact Form Area -->
+                    <div class="contact-form-area mb-100">
+                        <form action="index_qna.do" method="post">
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>
+                                                                              크리콕의 기업 아이덴티티는 쉽고 단순한 형태로, 
+                                                                              다양한 크리에이터의 개성을 톡톡 튀는 컬러에 담았습니다.
+                                                                              팬들은 좋아하는 크리에이터를 선택하고 자유롭게 소통할 수 있습니다.  
+                                                                              때로는 로고의 한 부분이 유동적으로 움직이며 확장합니다. 
+                                       1인 미디어 시대의 흐름을 만드는 크리콕의 메시지를 담아, 
+                                       ‘더 나은 소통’에 대한 영감을 주고자 합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-
-                <!-- Single Team Member Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-team-member text-center mb-100">
-                        <!-- Team Member Thumb -->
-                        <div class="team-member-thumb">
-                            <img src="img/bg-img/team1.png" alt="">
-                            
-                            <!-- Social Info
-                            <div class="team-member-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>  -->
-                        </div>
-                        <!-- Team Member Info -->
-                        <div class="team-member-info mt-30">
-                            <h5>Joseph Corbin</h5>
-                            <p>CEO &amp; Founder</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Team Member Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-team-member text-center mb-100">
-                        <!-- Team Member Thumb -->
-                        <div class="team-member-thumb">
-                            <img src="img/bg-img/team2.png" alt="">
-                            
-                            <!-- Social Info
-                            <div class="team-member-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>  -->
-                            
-                        </div>
-                        <!-- Team Member Info -->
-                        <div class="team-member-info mt-30">
-                            <h5>Tasha Deserio</h5>
-                            <p>Garden Designer</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Team Member Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-team-member text-center mb-100">
-                        <!-- Team Member Thumb -->
-                        <div class="team-member-thumb">
-                            <img src="img/bg-img/team3.png" alt="">
-                            
-                            <!-- Social Info
-                            <div class="team-member-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>  -->
-                        </div>
-                        <!-- Team Member Info -->
-                        <div class="team-member-info mt-30">
-                            <h5>Cody Baker</h5>
-                            <p>Plan Manager</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Team Member Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-team-member text-center mb-100">
-                        <!-- Team Member Thumb -->
-                        <div class="team-member-thumb">
-                            <img src="img/bg-img/team4.png" alt="">
-                            
-                            <!-- Social Info
-                            <div class="team-member-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>  -->
-                        </div>
-                        <!-- Team Member Info -->
-                        <div class="team-member-info mt-30">
-                            <h5>Pearl Kansas</h5>
-                            <p>Marketer</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
-    <!-- ##### Team Area End ##### -->
 
     <!-- Footer Bottom Area -->
     <div id="footer_div">

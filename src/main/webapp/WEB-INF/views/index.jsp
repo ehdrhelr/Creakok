@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8"
+import="creakok.com.filesetting.Path"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -91,7 +92,7 @@
             <!-- Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(img/bg-img/creakok_open_1920.png);"></div>
+                <div class="slide-img bg-img" style="background-image: url(${Path.COMMON_IMG_PATH}creakok_open_1920.png);"></div>
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
@@ -109,7 +110,7 @@
            <!--  Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(img/goods/creakok_ad_banner.png);"></div>
+                <div class="slide-img bg-img" style="background-image: url(${Path.COMMON_IMG_PATH}creakok_ad_banner.png);"></div>
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">

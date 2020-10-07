@@ -65,7 +65,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_mypage.png);">
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(${Path.COMMON_IMG_PATH}page_mypage.png);">
             <h2 style="color:black">My Page</h2>
         </div>
 
