@@ -465,7 +465,7 @@ import="creakok.com.filesetting.Path"%>
                 <div class="col-12 col-lg-6">
                     <!-- Google Maps -->
                     <div class="map-area mb-100">
-                        <img style="-webkit-user-select: none;" src="http://127.0.0.1:8090/img/plus/brand_identity.png">
+                        <img style="-webkit-user-select: none;" src="/img/plus/brand_identity.png">
                     </div>
                 </div>
                 
