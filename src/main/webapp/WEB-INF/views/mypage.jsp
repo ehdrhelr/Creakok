@@ -43,6 +43,9 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
     <link rel="stylesheet" href="css/hcbae_css.css">
     
   <link rel="stylesheet" href="css/only_goods_review_board_jsp.css">
+  
+  <link rel="stylesheet" href="css/progressBar.css">
+  
 </head>
 
 <body>
@@ -702,6 +705,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
     <script src="js/active.js"></script>
     <script src="js/hcbae_js.js"></script>
 
+    <script src="js/progressBar.js"></script>
     
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
