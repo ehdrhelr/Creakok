@@ -17,7 +17,7 @@
    <!-- 댓글 작성 -->
     <insert id="writeComment">
         insert into BOARD_COMMENT values((select nextval('BOARD_COMMENT_INDEX_SEQ')), #{board_index}, #{member_name}, 
-        #{member_email}, #{comment_content}, now(), null)
+        #{member_email}, #{comment_content}, now(), #{member_profile_pic})
     </insert>
     
 	

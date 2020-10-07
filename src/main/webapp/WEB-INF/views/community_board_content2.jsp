@@ -1148,9 +1148,10 @@
                         <!----------------------- 댓글 조회 부분 --------------------->
                         <table class="table" style="margin:0 auto;margin-bottom:10px;">         
                             <c:forEach items="${commentList}" var="repList">
-                            <div style="margin-top:40px;margin-bottom:40px">
-                                <p style="text-align:left; margin-bottom:10px"><img src="img/member_profile_pics/${repList.member_profile_pic}" style="margin-right:5px;width:50px;display:inline-block">${repList.member_name}
-                                (<fmt:formatDate value="${repList.comment_wdate}" pattern="yyyy-MM-dd" />)</p> 
+                            <div style="margin-top:40px;margin-bottom:40px">                            	
+                               	<div class="CreatorCard__CreatorProfile-sc-1ifohey-2 bnLQVO">
+                                    <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gwsafG" style="background-image: url(${repList.member_profile_pic});"></span>
+                                    <a target="_blank" href="#"><span class="CreatorCard__CreatorName-sc-1ifohey-3 ksslMx">${repList.member_name}(<fmt:formatDate value="${repList.comment_wdate}" pattern="yyyy-MM-dd" />)</span></a></div>
                                 <input type="text" class="form-control" name="comment_content" value="${repList.comment_content}" style="height:40px;width:100%" readonly>
                                 
                                 <c:if test="${!empty member}">
