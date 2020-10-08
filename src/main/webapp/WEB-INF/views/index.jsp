@@ -181,7 +181,7 @@ import="creakok.com.filesetting.Path"%>
 
                                 <div class="single-benefits-area">                   
                                     <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                                        </a><div class="CommonCard_rect__2wpm4"><a href="funding_detail.do?funding_index=${funding.funding_index}" class="CardLink_link__1k83H CommonCard_image__vaqkf">
+                                        </a><div class="CommonCard_rect__2wpm4 jhseo_img"><a href="funding_detail.do?funding_index=${funding.funding_index}" class="CardLink_link__1k83H CommonCard_image__vaqkf">
                                             <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
                                                 </span></a><a href="funding_detail.do?funding_index=${funding.funding_index}">
                                                      <img src="${funding.funding_repre_pic}" alt="">
@@ -293,7 +293,7 @@ import="creakok.com.filesetting.Path"%>
                                                  <p style="color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500">
                                                      ${funding_count}
                                                  </p>
-                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;"><img src="${funding.funding_repre_pic}" alt=""></span>
+                                                 <span style="width:60px;height:60px;float:left; margin-right:15px;margin-top:6px"><img src="${funding.funding_repre_pic}" alt=""></span>
                                                  <p class="commons_title__1yGWm" style="font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500">
                                                         ${funding.funding_subject}     
                                                  </p>
@@ -402,7 +402,7 @@ import="creakok.com.filesetting.Path"%>
                              html += "<article>";
                              html += "<div class='commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj'>";
                              html += "<p style='color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500'>"+(i+1)+"</p>";
-                                           html += "<span style='width:60px;height:60px;float:left; margin-right:15px;'><img src='"+ranking_funding[i].funding_repre_pic+"' alt=''>";
+                                           html += "<span style='width:60px;height:60px;float:left; margin-right:15px;margin-top:6px'><img src='"+ranking_funding[i].funding_repre_pic+"' alt=''>";
                                            html += "</span>";
                                            html += "<p class='commons_title__1yGWm' style='font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500'>"
                                                  +ranking_funding[i].funding_subject+"</p>";
@@ -500,7 +500,7 @@ import="creakok.com.filesetting.Path"%>
                             html += "<article>";
                             html += "<div class='commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj'>";
                             html += "<p style='color:#111111;width:15px;margin-right:5px;height:60px;float:left;font-size:20px;font-weight: 500'>"+(i+1)+"</p>";
-                                          html += "<span style='width:60px;height:60px;float:left; margin-right:15px;'><img src='img/goods/"+ranking_goods[i].goods_repre_pic+"' alt=''>";
+                                          html += "<span style='width:60px;height:60px;float:left; margin-right:15px;margin-top:6px'><img src='img/goods/"+ranking_goods[i].goods_repre_pic+"' alt=''>";
                                           html += "</span>";
                                           html += "<p class='commons_title__1yGWm' style='font-size:13pt;margin-bottom: 5px; color:#111111;font-weight: 500'>"
                                                 +ranking_goods[i].goods_name+"</p>";
@@ -762,7 +762,7 @@ import="creakok.com.filesetting.Path"%>
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Product Image -->
-                        <div class="product-img">
+                        <div class="product-img jhseo_img">
                             <a href="goods_detail.do?goods_index=${goods.goods_index}"><img src="img/goods/${goods.goods_repre_pic}" alt=""></a>
                             <!-- Product Tag -->
                             <div class="product-tag">

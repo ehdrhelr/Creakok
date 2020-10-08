@@ -115,6 +115,14 @@ img {
 .mr-50 {
   margin-right: 50px !important; }
 
+
+/* 이미지 사이즈 비율 유지 */
+.jhseo_img {
+	width:270px;
+	height:203px;
+	overflow:hidden;
+}
+
 /* :: 3.2.0 Height */
 .height-400 {
   height: 400px; }
