@@ -530,10 +530,10 @@ import ="creakok.com.filesetting.Path"%>
         var rgb = getAverageRGB(background);
         var bgcolor = rgbToHex('rgb('+rgb.r+','+rgb.g+','+rgb.b+')');
         
-        var fontcolor = '#000000';
-        if(bgcolor<'8c8c8c'){
-        	fontcolor = '#FFFFFF'
-        }
+        var fontcolor = '#FFFFFF';
+        //if(bgcolor<'8c8c8c'){
+        //	fontcolor = '#FFFFFF'
+        //}
 		
 		let temp_color = "#"+bgcolor;
         //comm_bg_head.style.backgroundColor = "#"+bgcolor;
