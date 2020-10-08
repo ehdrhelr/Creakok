@@ -313,7 +313,7 @@ import ="creakok.com.filesetting.Path"%>
 				        </c:if>
 				        <c:forEach items="${listResult.list}" var="board">
 				         <TR align='center' noshade>
-				             <TD >${board.board_index}</TD>
+				             <TD >${board.board_list_number}</TD>
 				             <TD align="left">
 				                 <a href="board_content?board_index=${board.board_index}" style="overflow:hidden;text-overflow:ellipsis;white-space: nowrap;margin:0;padding:0;color:black">
 				                 ${board.board_subject}

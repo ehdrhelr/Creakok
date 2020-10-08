@@ -118,6 +118,10 @@ public class CreatorBoardController {
 		}
 		
 		session.setAttribute("board_filterBy", board_filterBy);
+		
+		/* 게시글 번호 순서대로 일정하게 나오게 하기 */
+		listResult = setConBoardNumber(listResult);
+		
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("community");
 		mv.addObject("listResult", listResult);
@@ -345,11 +349,12 @@ public class CreatorBoardController {
 		}
 		session.setAttribute("board_searchName", board_searchName);
 		
-		// mapper에서 and CREATOR_NAME = ${creator_name} 이 안들어간다... 
-		// 시간 지나니까 됨. 단순히 변경사항이 늦게 업데이트됨.
 		ListResult listResult = creatorBoardService.getListResultBySearchS(board_cp, board_ps, board_filterBy, board_c_code, board_searchName, creator_name);
 		listResult.setBoard_searchName(board_searchName);
 		listResult.setBoard_c_code(board_c_code);
+		
+		/* 게시글 번호 순서대로 일정하게 나오게 하기 */
+		listResult = setConBoardNumber(listResult);
 
 		request.setAttribute("listResult", listResult);
 		
@@ -441,6 +446,22 @@ public class CreatorBoardController {
 	
 		String str = "/summernoteImageCommunity/"+savedFileName;
 		return str;
+	}
+	
+	/* 게시글 번호를 커뮤니티에 상관없이 일정하게 나오게 하는 기능 */
+	private ListResult setConBoardNumber(ListResult listResult) { // setContinuousBoardNumber
+		// 게시글 리스트를 매개변수로 받아와서 글번호를 일정하게 정렬한 후 리스트를 반환합니다.
+		long board_list_number;
+		List<Board> list = listResult.getList();
+		int listSize = list.size();
+		long totalCount = listResult.getTotalCount();
+		int board_cp = listResult.getCurrentPage();
+		int board_ps = listResult.getPageSize();
+		for(int i = 0; i < listSize; i++) {
+			board_list_number = totalCount - ((board_cp - 1) * board_ps) - i;
+			list.get(i).setBoard_list_number(board_list_number);
+		}
+		return listResult;
 	}
 
 }

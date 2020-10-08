@@ -6,8 +6,8 @@
 
     <select id="getListResult" resultType="Board">
         <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
-        (select * from CREATOR_BOARD) aa, (SELECT @ROWNUM := 0) TMP) bb 
-        where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name} order by BOARD_INDEX desc]]>
+        (select * from CREATOR_BOARD) aa, (SELECT @ROWNUM := 0) TMP order by BOARD_INDEX desc) bb 
+        where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name}]]>
     </select>
     
     <select id="count" resultType="int">
@@ -64,8 +64,8 @@
     <!-- 검색 -->
     <select id="search" resultType="Board">
         <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
-        (select * from CREATOR_BOARD where ${board_c_code} like CONCAT('%',#{board_searchName},'%')) aa, (SELECT @ROWNUM := 0) TMP) bb
-        where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name} order by ${board_filterBy} desc]]>
+        (select * from CREATOR_BOARD where ${board_c_code} like CONCAT('%',#{board_searchName},'%')) aa, (SELECT @ROWNUM := 0) TMP order by ${board_filterBy} desc) bb
+        where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name}]]>
     </select> 
     
     <!-- 검색했을 때 count -->
@@ -107,8 +107,8 @@
     <!-- 정렬 기능  -->
     <select id="getListResultByFilter" resultType="Board">
         <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
-        (select * from CREATOR_BOARD) aa, (SELECT @ROWNUM := 0) TMP) bb 
-        where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name} order by ${board_filterBy} desc]]>
+        (select * from CREATOR_BOARD) aa, (SELECT @ROWNUM := 0) TMP order by ${board_filterBy} desc) bb 
+        where rnum>${(currentPage-1)*pageSize} and rnum<=${currentPage*pageSize} and CREATOR_NAME = #{creator_name}]]>
     </select>
 
 </mapper>
