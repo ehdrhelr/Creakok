@@ -119,6 +119,8 @@ public class CreatorBoardController {
 		
 		session.setAttribute("board_filterBy", board_filterBy);
 		
+		listResult.setCurrentPage(board_cp);
+		listResult.setPageSize(board_ps);
 		/* 게시글 번호 순서대로 일정하게 나오게 하기 */
 		listResult = setConBoardNumber(listResult);
 		
@@ -353,6 +355,8 @@ public class CreatorBoardController {
 		listResult.setBoard_searchName(board_searchName);
 		listResult.setBoard_c_code(board_c_code);
 		
+		listResult.setCurrentPage(board_cp);
+		listResult.setPageSize(board_ps);
 		/* 게시글 번호 순서대로 일정하게 나오게 하기 */
 		listResult = setConBoardNumber(listResult);
 
@@ -457,6 +461,7 @@ public class CreatorBoardController {
 		long totalCount = listResult.getTotalCount();
 		int board_cp = listResult.getCurrentPage();
 		int board_ps = listResult.getPageSize();
+		log.info("@@@@ totalCount : " + totalCount);
 		for(int i = 0; i < listSize; i++) {
 			board_list_number = totalCount - ((board_cp - 1) * board_ps) - i;
 			list.get(i).setBoard_list_number(board_list_number);
