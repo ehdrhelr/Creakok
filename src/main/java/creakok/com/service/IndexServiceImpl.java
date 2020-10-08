@@ -65,6 +65,12 @@ public class IndexServiceImpl implements IndexService {
 		Funding_searchVo funding_searchVo = new Funding_searchVo(funding_cp, funding_totalCount, funding_ps, null, keyword);
 		List<Funding> funding_result_list = indexMapper.selectSearchFunding(funding_searchVo);
 		
+		for(Funding funding : funding_result_list) {
+			double percentageDouble = 100.0*funding.getFunding_amount()/funding.getFunding_goal();
+			int percentageInt = (int) Math.round(percentageDouble);
+			funding.setPercentage(percentageInt);
+		}
+
 		Funding_searchVo funding_searchVo2 = new Funding_searchVo(funding_cp, funding_totalCount, funding_ps, funding_result_list, keyword);
 		funding_searchVo2.setFunding_totalPageCount(funding_searchVo2.calTotalPageCount());
 		
