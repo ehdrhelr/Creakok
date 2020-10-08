@@ -41,7 +41,8 @@ import="creakok.com.filesetting.Path"%>
     <link rel="stylesheet" href="css/hcbae_tumblbug_part.css"/>
     <link rel="stylesheet" href="css/hcbae_wadiz_part.css">
     <link rel="stylesheet" href="css/hcbae_css.css">
-  
+
+    <link rel="stylesheet" href="css/progressBar.css">
 
 </head>
 
@@ -113,7 +114,7 @@ import="creakok.com.filesetting.Path"%>
               <c:if test="${!empty funding_result.funding_result_list}">
               
               <!-- Single Product Area -->
-              <c:forEach items="${funding_result.funding_result_list}" var="fundingVo">
+              <c:forEach items="${funding_result.funding_result_list}" var="fundingVo_unit">
            
                 <div class="col-12 col-sm-6 col-lg-4">
                       <div class="single-benefits-area">                   
@@ -123,9 +124,9 @@ import="creakok.com.filesetting.Path"%>
                                         <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
                                             </span></a>
                                   
-                                                 <a href="funding_detail.do?funding_index=${fundingVo.funding_index}">
+                                                 <a href="funding_detail.do?funding_index=${fundingVo_unit.funding_index}">
                                 
-                                                     <img src="${fundingVo.funding_repre_pic}" alt="">
+                                                     <img src="${fundingVo_unit.funding_repre_pic}" alt="">
                                                 </a>
            
                                     <div class="CommonCard_info__1f4kq">
@@ -133,15 +134,15 @@ import="creakok.com.filesetting.Path"%>
                                         <div class="RewardProjectCard_infoTop__3QR5w">
                                         <a href="funding_detail.do?funding_index=${fundingVo.funding_index}" class="CardLink_link__1k83H">
                                             <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
-                                                <strong>${fundingVo.funding_subject}</strong>
+                                                <strong>${fundingVo_unit.funding_subject}</strong>
                                             </p>
                                         </a>
                                     <div style="margin-bottom: 10px;">
                                         <span class="RewardProjectCard_category__2muXk" style="color:#90949C; font-size:13px;">
-                                           ${fundingVo.funding_category_name}
+                                           ${fundingVo_unit.funding_category_name}
                                         </span>
                                         <span class="RewardProjectCard_makerName__2q4oH" style="color:#90949C; font-size:13px;">
-                                            ${fundingVo.creator_name}
+                                            ${fundingVo_unit.creator_name}
                                         </span>
                                     </div>
                                     </div>
@@ -158,19 +159,20 @@ import="creakok.com.filesetting.Path"%>
                                            
                                             <div id="bar4" class="barfiller" style="border-radius: 5px;">
                                                
-                                                <span class="fill" data-percentage="60" style="border-radius: 5px; width: 162px; transition: width 1s ease-in-out 0s; background: rgb(252, 82, 48);"></span>
+                                                <progress class="myBars" max="100" value="0" data-percentage="${fundingVo_unit.percentage}"></progress>
+                                                <!--<span class="fill" data-percentage="60" style="background: rgb(252, 82, 48); width: 126px; transition: width 1s ease-in-out 0s;border-radius:30pt;"></span>-->
                                             </div>
                                         </div>
                                           
                                         <span class="RewardProjectCard_amount__2AyJF" style="color:#fc5230; font-size:18px; font-weight:bold">
-                                            ${fundingVo.percentage}%
+                                            ${fundingVo_unit.percentage}%
                                         </span>                                      
                                         
                                         <span class="RewardProjectCard_amount__2AyJF" style="color:#90949C; font-size:16px; margin-right:5%;font-weight:bold">
-                                              ${fundingVo.funding_amount}원
+                                              ${fundingVo_unit.funding_amount}원
                                         </span>
                                         <span class="RewardProjectCard_days__3eece RewardProjectCard_isAchieve__1LcUu">
-                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">${fundingVo.restdays}일</span>
+                                            <span class="RewardProjectCard_remainingDay__2TqyN" style="color:#90949C; margin-right:5px;">${fundingVo_unit.restdays}일</span>
                                             <span class="RewardProjectCard_remainingDayText__2sRLV" style="color:#90949C;"> 남음</span>
                                             <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
                                      </div>
@@ -392,6 +394,8 @@ function addCart(count){
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+    <script src="js/progressBar.js"></script>
     
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>

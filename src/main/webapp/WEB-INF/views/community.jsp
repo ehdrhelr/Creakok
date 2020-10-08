@@ -14,7 +14,7 @@ import ="creakok.com.filesetting.Path"%>
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	
 	<!-- Title -->
-    <title>COMMUNITY - CREAKOK</title>
+    <title>CREAKOK</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/creakok.ico">
@@ -102,7 +102,7 @@ import ="creakok.com.filesetting.Path"%>
             <!-- Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
-				<div class="slide-img bg-img" style="background-image: url(${Path.IMG_STORE_COMMUNITY_SHORT}${theCreator.creator_banner_photo});"></div>
+				<div id="comm_bg_img" class="slide-img bg-img" style="background-image: url(${Path.IMG_STORE_COMMUNITY_SHORT}${theCreator.creator_banner_photo});"></div>
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
@@ -125,7 +125,7 @@ import ="creakok.com.filesetting.Path"%>
 																	<div class="testimonial-content">
 																		<!-- Section Heading -->
 																		<div class="section-heading">
-																			<h2>${theCreator.creator_name}</h2>
+																			<h2 ><span id="comm_bg_head">${theCreator.creator_name}</span></h2>
 																			<p> </p>
 																			<p>${theCreator.creator_profile_content}</p>
 																		</div>
@@ -145,6 +145,7 @@ import ="creakok.com.filesetting.Path"%>
 															</div>
 														</div>       
 												</div>
+
 											</div>
 										</div>
 									</section>
@@ -415,6 +416,130 @@ import ="creakok.com.filesetting.Path"%>
 	</script>
    <!-- 게시판 영역 end -->
 
+	<div id="test_div" style="width:500px; height:500px; display:none">
+	</div>
+	
+    <script>
+  	function getAverageRGB(imgEl) {
+  		
+  		let blockSize = 5, // only visit every 5 pixels
+  			defaultRGB = {r:0,g:0,b:0}, // for non-supporting envs
+  			canvas = document.createElement('canvas'),
+  			context = canvas.getContext && canvas.getContext('2d'),
+  			data, width, height,
+  			i = -4,
+  			length,
+  			rgb = {r:0,g:0,b:0},
+  			count = 0;
+  			
+  		if (!context) {
+  			return defaultRGB;
+  		}
+  		
+  		height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
+  		width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
+  		
+  		context.drawImage(imgEl, 0, 0);
+  		
+  		try {
+  			data = context.getImageData(0, 0, width, height);
+  		} catch(e) {
+  			/* security error, img on diff domain */alert('x');
+  			return defaultRGB;
+  		}
+  		
+  		length = data.data.length;
+  		
+  		while ( (i += blockSize * 4) < length ) {
+  			++count;
+  			rgb.r += data.data[i];
+  			rgb.g += data.data[i+1];
+  			rgb.b += data.data[i+2];
+  		}
+  		
+  		// ~~ used to floor values
+  		rgb.r = ~~(rgb.r/count);
+  		rgb.g = ~~(rgb.g/count);
+  		rgb.b = ~~(rgb.b/count);
+  		
+  		return rgb;
+  	}
+  
+  	function rgbToHex ( rgbType ){ 
+  		// 컬러값과 쉼표만 남기고 삭제. 
+  		let rgb = rgbType.replace( /[^%,.\d]/g, "" ); 
+  
+  		// 쉼표(,)를 기준으로 분리해서, 배열에 담기. 
+  		rgb = rgb.split( "," ); 
+  
+  		// 컬러값이 "%"일 경우, 변환하기. 
+  		for ( var x = 0; x < 3; x++ ) { 
+  				if ( rgb[ x ].indexOf( "%" ) > -1 ) rgb[ x ] = Math.round( parseFloat( rgb[ x ] ) * 2.55 ); 
+  		} 
+  
+  		// 16진수 문자로 변환. 
+  		var toHex = function( string ){ 
+  				string = parseInt( string, 10 ).toString( 16 ); 
+  				string = ( string.length === 1 ) ? "0" + string : string; 
+  
+  				return string; 
+  		}; 
+  
+  		let r = toHex( rgb[ 0 ] ); 
+  		let g = toHex( rgb[ 1 ] ); 
+  		let b = toHex( rgb[ 2 ] ); 
+  
+  		return r + g + b; 
+  	} 
+  	
+  	let comm_bg_img = document.getElementById('comm_bg_img');
+  	let comm_bg_head = document.getElementById('comm_bg_head');
+  
+  	let test_div = document.getElementById('test_div');
+  
+  	let canvas = document.createElement('canvas'),
+  	ctx = canvas.getContext("2d");
+  	//let canvas = document.getElementById("test_div"),
+      
+  
+  	canvas.width = 300;
+  	canvas.height = 300;
+  
+  	var background = new Image();
+  	background.src = "${Path.IMG_STORE_COMMUNITY_SHORT}${theCreator.creator_banner_photo}";
+  	background.onload = function(){
+        //ctx.drawImage(background,0,0,300,300,50,50,300,300);   
+        var rgb = getAverageRGB(background);
+        var tempcolor = rgbToHex('rgb('+rgb.r+','+rgb.g+','+rgb.b+')');
+        
+        var fontcolor = '#000000';
+        if(tempcolor<'8c8c8c'){
+        	fontcolor = '#FFFFFF'
+        }
+        
+        comm_bg_head.style.backgroundColor = "#"+tempcolor;
+        comm_bg_head.style.color = fontcolor;
+  
+        test_div.style.backgroundColor = "#"+tempcolor;
+  	}
+  	
+  	background.onerror = function(){
+        console.log('????????');
+        tempcolor='FFFFFF';
+        fontcolor='#000000';
+        comm_bg_head.style.backgroundColor = "#"+tempcolor;
+        comm_bg_head.style.color = fontcolor;
+  
+        test_div.style.backgroundColor = "#"+tempcolor;
+  	}
+  
+  
+  	//test_div.appendChild(canvas);
+
+
+    </script>
+
+
   	<!-- Footer Bottom Area -->
     <div id="footer_div">
     <jsp:include page="creakok_footer.jsp" flush="true"/>
@@ -473,7 +598,9 @@ import ="creakok.com.filesetting.Path"%>
     
      <!-- Javascript pagination -->
 	<script type="text/javascript" src="../js/paging.js"></script>
-	
+    
+
+    
 </body>
 
 </html>
