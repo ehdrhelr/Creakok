@@ -63,6 +63,8 @@ import ="creakok.com.filesetting.Path"%>
         }
         a:link { color: black; text-decoration: none;}
 		a:visited { color: black; text-decoration: none;}	
+
+
 	</style>
 </head>
 
@@ -127,7 +129,7 @@ import ="creakok.com.filesetting.Path"%>
 																		<div class="section-heading">
 																			<h2 ><span id="comm_bg_head">${theCreator.creator_name}</span></h2>
 																			<p> </p>
-																			<p>${theCreator.creator_profile_content}</p>
+																			<p><span id="comm_content">${theCreator.creator_profile_content}</span></p>
 																		</div>
 																		<p> </p>
 																		<div class="testimonial-author-info">
@@ -416,7 +418,7 @@ import ="creakok.com.filesetting.Path"%>
 	</script>
    <!-- 게시판 영역 end -->
 
-	<div id="test_div" style="width:500px; height:500px; display:none">
+	<div id="test_div" style="width:500px; height:500px; display:none;">
 	</div>
 	
     <script>
@@ -493,8 +495,9 @@ import ="creakok.com.filesetting.Path"%>
   	} 
   	
   	let comm_bg_img = document.getElementById('comm_bg_img');
-  	let comm_bg_head = document.getElementById('comm_bg_head');
-  
+	let comm_bg_head = document.getElementById('comm_bg_head');
+	let comm_content = document.getElementById('comm_content');
+
   	let test_div = document.getElementById('test_div');
   
   	let canvas = document.createElement('canvas'),
@@ -508,33 +511,40 @@ import ="creakok.com.filesetting.Path"%>
   	var background = new Image();
   	background.src = "${Path.IMG_STORE_COMMUNITY_SHORT}${theCreator.creator_banner_photo}";
   	background.onload = function(){
-        //ctx.drawImage(background,0,0,300,300,50,50,300,300);   
         var rgb = getAverageRGB(background);
-        var tempcolor = rgbToHex('rgb('+rgb.r+','+rgb.g+','+rgb.b+')');
+        var bgcolor = rgbToHex('rgb('+rgb.r+','+rgb.g+','+rgb.b+')');
         
         var fontcolor = '#000000';
-        if(tempcolor<'8c8c8c'){
+        if(bgcolor<'8c8c8c'){
         	fontcolor = '#FFFFFF'
         }
-        
-        comm_bg_head.style.backgroundColor = "#"+tempcolor;
+		
+		let temp_color = "#"+bgcolor;
+        //comm_bg_head.style.backgroundColor = "#"+bgcolor;
         comm_bg_head.style.color = fontcolor;
   
-        test_div.style.backgroundColor = "#"+tempcolor;
+		test_div.style.backgroundColor = "#"+bgcolor;
+
+		//font-size: 80px;
+		//color: #fff;
+		//text-align: center;
+		//text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+		let theme = "0 0 20px #fff, 0 0 30px "+temp_color+", 0 0 40px "+temp_color+", 0 0 50px "+temp_color+", 0 0 60px "+temp_color+", 0 0 70px "+temp_color+", 0 0 80px "+temp_color;
+		comm_bg_head.style.textShadow = theme;
+		comm_content.style.textShadow = theme;
+
   	}
   	
   	background.onerror = function(){
-        console.log('????????');
-        tempcolor='FFFFFF';
+        bgcolor='FFFFFF';
         fontcolor='#000000';
-        comm_bg_head.style.backgroundColor = "#"+tempcolor;
+        comm_bg_head.style.backgroundColor = "#"+bgcolor;
         comm_bg_head.style.color = fontcolor;
   
-        test_div.style.backgroundColor = "#"+tempcolor;
+		test_div.style.backgroundColor = "#"+bgcolor;
   	}
   
   
-  	//test_div.appendChild(canvas);
 
 
     </script>
