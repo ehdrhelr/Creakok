@@ -64,7 +64,23 @@ import ="creakok.com.filesetting.Path"%>
         a:link { color: black; text-decoration: none;}
 		a:visited { color: black; text-decoration: none;}	
 
-
+  .glow {
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
 	</style>
 </head>
 
@@ -127,7 +143,7 @@ import ="creakok.com.filesetting.Path"%>
 																	<div class="testimonial-content">
 																		<!-- Section Heading -->
 																		<div class="section-heading">
-																			<h2 ><span id="comm_bg_head">${theCreator.creator_name}</span></h2>
+																			<h2 ><span id="comm_bg_head" class="glow">${theCreator.creator_name}</span></h2>
 																			<p> </p>
 																			<p><span id="comm_content">${theCreator.creator_profile_content}</span></p>
 																		</div>
@@ -494,9 +510,9 @@ import ="creakok.com.filesetting.Path"%>
   		return r + g + b; 
   	} 
   	
-  	let comm_bg_img = document.getElementById('comm_bg_img');
-	let comm_bg_head = document.getElementById('comm_bg_head');
-	let comm_content = document.getElementById('comm_content');
+    let comm_bg_img = document.getElementById('comm_bg_img');
+    let comm_bg_head = document.getElementById('comm_bg_head');
+    let comm_content = document.getElementById('comm_content');
 
   	let test_div = document.getElementById('test_div');
   
@@ -514,10 +530,10 @@ import ="creakok.com.filesetting.Path"%>
         var rgb = getAverageRGB(background);
         var bgcolor = rgbToHex('rgb('+rgb.r+','+rgb.g+','+rgb.b+')');
         
-        var fontcolor = '#000000';
-        if(bgcolor<'8c8c8c'){
-        	fontcolor = '#FFFFFF'
-        }
+        var fontcolor = '#FFFFFF';
+        //if(bgcolor<'8c8c8c'){
+        //	fontcolor = '#FFFFFF'
+        //}
 		
 		let temp_color = "#"+bgcolor;
         //comm_bg_head.style.backgroundColor = "#"+bgcolor;
@@ -530,7 +546,7 @@ import ="creakok.com.filesetting.Path"%>
 		//text-align: center;
 		//text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
 		let theme = "0 0 20px #fff, 0 0 30px "+temp_color+", 0 0 40px "+temp_color+", 0 0 50px "+temp_color+", 0 0 60px "+temp_color+", 0 0 70px "+temp_color+", 0 0 80px "+temp_color;
-		comm_bg_head.style.textShadow = theme;
+		//comm_bg_head.style.textShadow = theme;
 		comm_content.style.textShadow = theme;
 
   	}
