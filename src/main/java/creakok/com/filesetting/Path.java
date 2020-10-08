@@ -10,7 +10,7 @@ public class Path {
 	public static final String jihee_path = "C:/Users/bit/git/Creakok/src/data";
 	public static final String hcbae_path = "C:/Users/bit/git/Creakok_master/src/data";
 	public static final String CAFE24_PATH = "/creakok/tomcat/webapps/data";
-	
+
 
 	public static final String STORE_PATH = CAFE24_PATH;
 
