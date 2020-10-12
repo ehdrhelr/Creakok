@@ -68,6 +68,8 @@ public class IndexServiceImpl implements IndexService {
 		for(Funding funding : funding_result_list) {
 			double percentageDouble = 100.0*funding.getFunding_amount()/funding.getFunding_goal();
 			int percentageInt = (int) Math.round(percentageDouble);
+			funding.setPercentage(percentageInt);	
+			funding.setRestdays(((funding.getFunding_edate().getTime()-System.currentTimeMillis())/(1000*60*60*24))+1);
 			funding.setPercentage(percentageInt);
 		}
 

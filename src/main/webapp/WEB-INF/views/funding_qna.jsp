@@ -154,7 +154,7 @@ import="creakok.com.domain.LikeType, creakok.com.filesetting.Path"%>
                                 <div class="ProjectIntroduction__PrimaryButton-sc-1o2ojgb-21 knPvZB">
                                     <div class="PledgeButton__Wrapper-arwur9-0 krUjgk">
                                     
-                                    <button onclick = "location.href='funding_checkout.do?funding_index=${funding_detail.funding_index}'"
+                                    <button onclick="clickFundingSupport();"
                                     class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny">
                                     프로젝트 밀어주기</button></div>
                                 </div>
@@ -534,6 +534,15 @@ import="creakok.com.domain.LikeType, creakok.com.filesetting.Path"%>
        };
     }
     
+    function clickFundingSupport(){
+        
+        if('${member.member_email}' == '') {
+            alert('로그인해주세요.');
+            return;
+        }else{
+            location.href="funding_checkout.do?funding_index=${funding_detail.funding_index}"
+        }
+}
     </script>
     
     <jsp:include page="Language.jsp" flush="false">

@@ -67,9 +67,10 @@ public class FundingServiceImpl implements FundingService {
 			double percentageDouble = 100.0*funding.getFunding_amount()/funding.getFunding_goal();
 			int percentageInt = (int) Math.round(percentageDouble);
 			funding.setPercentage(percentageInt);	
-			funding.setRestdays((funding.getFunding_edate().getTime()-funding.getFunding_wdate().getTime())/(1000*60*60*24));
+			funding.setRestdays(((funding.getFunding_edate().getTime()-System.currentTimeMillis())/(1000*60*60*24))+1);
+			log.info("@@@@ rest : " + funding.getRestdays());
 		}	
-	
+		
 		return new FundingVo(currentPage, totalCount, pageSize, filterBy, categoryBy, list, listCategoryUsed);
 	}
 	@Override

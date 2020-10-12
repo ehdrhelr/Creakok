@@ -120,15 +120,22 @@ import="creakok.com.filesetting.Path"%>
                         
                         <label for="amountPay">밀어주기 금액</label>
                         
-                        <input id="amountPay" name="amountPay" type="text" onChange="amountPay2();" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                        <input id="amountPay" name="amountPay" type="text" onChange="amountPay2();" placeholder="100원이상 입력" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
 
                                     <script language="javascript">
                                     function amountPay2(){
                                         let b = document.getElementById("amountPay").value;
                                         let resultToshow = document.getElementById('amountToshow');
-                                        resultToshow.innerHTML=addComma(b)+"원";
                                         let result = document.getElementById('amountPaygot');
-                                        result.value=b;            
+                                        if(b < 100){
+                                        	alert('100원 이상 입력해주세요');
+                                        	document.getElementById("amountPay").value = 100;
+                                        	resultToshow.innerHTML="100원";
+                                        	result.value=100; 
+                                        }else{
+                                            resultToshow.innerHTML=addComma(b)+"원";
+                                            result.value=b;                                           	
+                                        }
                                     }
                                     
                                     </script>
