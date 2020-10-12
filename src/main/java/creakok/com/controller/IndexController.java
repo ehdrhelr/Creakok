@@ -252,6 +252,6 @@ public class IndexController {
 		Contact contact = new Contact(-1, contact_name, contact_email, contact_subject, contact_message, null);
 		indexService.insertOneQnA(contact);
 		
-		return "index";
+		return "redirect:/";
 	}	
 }

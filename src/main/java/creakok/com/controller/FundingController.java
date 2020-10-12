@@ -202,14 +202,18 @@ public class FundingController {
 		}else {
 			fundingVo = service.getFundingVo(cp, ps, filterBy, categoryBy);
 		}
+		
+		
 		//펀딩 마감일 지난 펀딩들
 		List<Funding> fundingListCheck = service.selectPerPageFinished();
 		log.info(fundingListCheck);
 		for(Funding funding : fundingListCheck) {
 			double percentageDouble = 100.0*funding.getFunding_amount()/funding.getFunding_goal();
 			int percentageInt = (int) Math.round(percentageDouble);
-			funding.setPercentage(percentageInt);	
-			funding.setRestdays((funding.getFunding_edate().getTime()-funding.getFunding_wdate().getTime())/(1000*60*60*24));
+			funding.setPercentage(percentageInt);		
+			
+			funding.setRestdays((funding.getFunding_edate().getTime()-System.currentTimeMillis())/(1000*60*60*24));
+			
 			//목표금 도달한 펀딩 찾아서 funding_payinfo 펀딩 진행여부 변경
 			if(funding.getPercentage()>=100) {
 				long funding_index = funding.getFunding_index();
