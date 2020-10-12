@@ -11,13 +11,6 @@ public class Path {
 	public static final String hcbae_path = "C:/Users/bit/git/Creakok_master/src/data";
 	public static final String CAFE24_PATH = "/creakok/tomcat/webapps/data";
 
-<<<<<<< HEAD
-=======
-    public static final String STORE_PATH = CAFE24_PATH;
-
-
->>>>>>> refs/heads/hcbae
-	
     public static final String STORE_PATH = CAFE24_PATH;
 	
     
