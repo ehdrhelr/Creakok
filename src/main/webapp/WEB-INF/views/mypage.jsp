@@ -441,7 +441,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                         </div>   
                     </div>
                     </c:if>
-                    
+                    <!-- 더 생각해봅시다.
                     <div class="hcbae-member-modify-area">
                         <h3>수정할 정보가 뭐가 더 있을까?</h3>
                         <span class="hcbae-member-modify-button">
@@ -452,7 +452,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                         <p>수정할 내용을 어떻게 수정할 지 고민해보고 추가하자.</p>
                         </div>   
                     </div>
-                    
+                     -->
                     <div class="hcbae-member-modify-area">
                         <h3>회원탈퇴</h3>
                         <span class="hcbae-member-modify-button">
