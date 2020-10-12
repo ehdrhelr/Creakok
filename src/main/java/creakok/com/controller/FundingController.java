@@ -43,6 +43,34 @@ public class FundingController {
 	
 	int cp =1;
 	int ps =3;
+
+	private List<Funding> makeRelatedFundingList(long funding_index, List<Funding> related_funding, Random r){
+		List<Funding> four_funding = new ArrayList<Funding>();
+
+		for(int j=0; j<related_funding.size(); j++) {
+			Funding f = related_funding.get(j);
+			if(f.getFunding_index() == funding_index) {
+				related_funding.remove(j);
+			}
+		}
+
+		if(related_funding.size()>=1) {
+			int a[] = new int[related_funding.size()];
+			for(int i=0;i<related_funding.size();i++) {
+				a[i]=r.nextInt(related_funding.size());
+				for(int j=0; j<i; j++) {
+					if(a[i]==a[j]) {
+						i--;
+					}
+				}
+			}	
+			for(int k=0;k<related_funding.size();k++) {
+				Funding related_funding2 = related_funding.get(a[k]);
+				four_funding.add(related_funding2);
+			}
+		}
+		return four_funding;
+	}
 	
 	//fundingVo sortig 메소드분리함
 	public FundingVo fundingVo(HttpServletRequest request, HttpSession session) {
@@ -234,24 +262,9 @@ public class FundingController {
 				long categoryCode = fundingSelected.getFunding_category_code();
 				
 				List<Funding> AllListrelatedFunding = service.getRelatedFunding(categoryCode);
-				List<Funding> ListrelatedFunding = new ArrayList<Funding>();
-				//Related Fundings 같은 카테고리 펀딩 랜덤 추출
 				Random r = new Random();
-				if(AllListrelatedFunding.size()>=4) {
-					int a[] = new int[AllListrelatedFunding.size()];
-					for(int i=0;i<AllListrelatedFunding.size();i++) {
-						a[i]=r.nextInt(AllListrelatedFunding.size());
-						for(int j=0; j<i; j++) {
-							if(a[i]==a[j]) {
-								i--;
-							}
-						}
-					}	
-					for(int k=0;k<4;k++) {
-						Funding fundingRelated = AllListrelatedFunding.get(a[k]);
-						ListrelatedFunding.add(fundingRelated);
-					}
-				}
+				List<Funding> ListrelatedFunding = makeRelatedFundingList(funding_index, AllListrelatedFunding, r);
+
 				fundingSelected.setListrelatedFunding(ListrelatedFunding);
 				//Related Fundings 셋팅완료
 				fundingSelected.setFunding_category_name(service.selectCategoryName(categoryCode));
