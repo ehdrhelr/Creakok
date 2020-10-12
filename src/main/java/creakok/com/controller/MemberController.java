@@ -109,8 +109,13 @@ public class MemberController {
 		log.info("### member_email:"+member_email);
 		
 		Member member = mService.getMemberInfoS(member_email); // member_email로 member_name까지 가져온다 
-		Creator creator = mService.getCreator(member);
-		mService.delCreatorRefData(member, creator);	// 크리에이터 탈퇴를 위한 관련 참조 자료 삭제 & 크리에이터 삭제	
+		
+		// 멤버가 크리에이터일 경우
+		if (member.getMember_category_code() == Member_category.MEMBER_CREATOR) {
+			Creator creator = mService.getCreator(member);
+			mService.delCreatorRefData(member, creator);	// 크리에이터 탈퇴를 위한 관련 참조 자료 삭제 & 크리에이터 삭제	
+		}
+		
 		session.removeAttribute("member");
 		
 		mService.secessionMemberS(member_email); // 멤버에서 삭제
