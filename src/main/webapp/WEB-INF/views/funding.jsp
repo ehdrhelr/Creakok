@@ -43,7 +43,6 @@ import="creakok.com.filesetting.Path"%>
     <link rel="stylesheet" href="css/hcbae_css.css">
   
     <link rel="stylesheet" href="css/progressBar.css">
-
 </head>
 
 <body>
@@ -248,17 +247,18 @@ import="creakok.com.filesetting.Path"%>
                 <div class="col-12 col-sm-6 col-lg-4">
                       <div class="single-benefits-area">                   
                           <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                              </a><div class="CommonCard_rect__2wpm4">
+                              </a>
+                              <div class="CommonCard_rect__2wpm4 jhseo_img370">
                                     <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
                                         <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
                                             </span></a>
                                   
-                                                 <a href="funding_detail.do?funding_index=${fundingVo.funding_index}">
+                                                 <a href="funding_detail.do?funding_index=${fundingVo.funding_index}" class="jhseo_img370">
                                 
                                                      <img src="${fundingVo.funding_repre_pic}" alt="">
                                                 </a>
-           
-                                    <div class="CommonCard_info__1f4kq">
+                              </div>
+                                                                  <div class="CommonCard_info__1f4kq">
                                     <div class="RewardProjectCard_info__3JFub">
                                         <div class="RewardProjectCard_infoTop__3QR5w">
                                         <a href="funding_detail.do?funding_index=${fundingVo.funding_index}" class="CardLink_link__1k83H">
@@ -306,7 +306,6 @@ import="creakok.com.filesetting.Path"%>
                                             <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
                                      </div>
                                     </div>  
-                                </div>
                             </div>
                             </div>
                          

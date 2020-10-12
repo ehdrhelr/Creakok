@@ -315,7 +315,7 @@ import="creakok.com.domain.LikeType, creakok.com.filesetting.Path"%>
                                         <div style="z-index:1">
                                             
                                         </div>
-                                        <div class="product-img">
+                                        <div class="product-img jhseo_img">
                                             <a href="goods_detail.do?goods_index=${goods.goods_index}">
                                                 <c:if test="${goods.goods_stock_number == 0 }">
                                                     <img src="img/goods/sold_out.png" alt="SOLD OUT IMAGE">

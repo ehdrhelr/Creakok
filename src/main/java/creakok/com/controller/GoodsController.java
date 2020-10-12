@@ -138,7 +138,7 @@ public class GoodsController {
 		 String filterBy = "goods_sale_number";
 		 if(filterByStr==null) {
 	            //Object filterByObj = tempGoods.getFilterBy();
-			 	Object filterByObj = session.getAttribute("filterBy");
+			 	Object filterByObj = session.getAttribute("goods_filterBy");
 	            if(filterByObj != null) {
 	            	filterBy = (String)filterByObj;
 	            }else {

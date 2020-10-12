@@ -514,7 +514,7 @@ import="creakok.com.domain.LikeType, creakok.com.filesetting.Path"%>
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-product-area mb-100">
                         <!-- Product Image -->
-                        <div class="product-img">
+                        <div class="product-img jhseo_img">
                             <a href="goods_detail.do?goods_index=${goods_related.goods_index}"><img src="img/goods/${goods_related.goods_repre_pic}" alt=""></a>
                             <!-- Product Tag -->
                             <div class="product-tag">

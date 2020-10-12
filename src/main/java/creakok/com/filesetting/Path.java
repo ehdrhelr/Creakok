@@ -11,10 +11,10 @@ public class Path {
 	public static final String hcbae_path = "C:/Users/bit/git/Creakok_master/src/data";
 	public static final String CAFE24_PATH = "/creakok/tomcat/webapps/data";
 
-
-	public static final String STORE_PATH = CAFE24_PATH;
-
 	
+    public static final String STORE_PATH = CAFE24_PATH;
+	
+    
 	public static final String FUNDING_PATH = "/img/funding/";
 	public static final String GOODS_PATH = "/img/goods/";
 	public static final String COMMUNITY_PATH = "/img/community/";
