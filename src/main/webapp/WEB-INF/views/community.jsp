@@ -553,7 +553,7 @@ import ="creakok.com.filesetting.Path"%>
   	
   	background.onerror = function(){
         bgcolor='FFFFFF';
-        fontcolor='#000000';
+        fontcolor='#FFFFFF';
         comm_bg_head.style.backgroundColor = "#"+bgcolor;
         comm_bg_head.style.color = fontcolor;
   
