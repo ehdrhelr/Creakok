@@ -83,8 +83,8 @@ import="creakok.com.filesetting.Path"%>
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> HOME</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">CART</li>
+                            <li class="breadcrumb-item" style="font-weight:300; color:#757575;"><i class="fa fa-home"></i> Home</li>
+                            <li class="breadcrumb-item" aria-current="page"><span style="font-weight:600; color:black;">CART</span></li>
                         </ol>
                     </nav>
                 </div>

@@ -22,6 +22,7 @@ import="creakok.com.filesetting.Path"%>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
+    <link rel="stylesheet" href="css/progressBar.css">
     
     <!-- BOTO TEST -->
     <meta name="description" content="Boto Photo Studio HTML Template">
@@ -158,7 +159,9 @@ import="creakok.com.filesetting.Path"%>
                                            
                                             <div id="bar4" class="barfiller" style="border-radius: 5px;">
                                                
-                                                <span class="fill" data-percentage="${fundingVo.percentage}" style="border-radius: 5px; width: 162px; transition: width 1s ease-in-out 0s; background: rgb(252, 82, 48);"></span>
+                                                <progress class="myBars" max="100" value="0" data-percentage="${fundingVo.percentage}"></progress>
+                                                <!--<span class="fill" data-percentage="60" style="background: rgb(252, 82, 48); width: 126px; transition: width 1s ease-in-out 0s;border-radius:30pt;"></span>-->
+
                                             </div>
                                         </div>
                                           
@@ -393,6 +396,8 @@ function addCart(count){
     <!-- Active js -->
     <script src="js/active.js"></script>
     
+    <script src="js/progressBar.js"></script>
+
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
     </jsp:include>
