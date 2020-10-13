@@ -10,19 +10,19 @@ public class Language {
 		//작성할 때에는 arrayLang배열에 사용한 이름이 있는지 꼭 확인해보고 사용하자.
 			
 		//header start
-		{"프로젝트 만들기", "Create Project", "Créer un projet"},
+		{"프로젝트 만들기", "Create Project", "Lancer mon projet"},
 		{"언어", "Language", "Langue"},
-		{"로그인", "Login", "S'identifier"},
-		{"가입", "Join", "Joindre"},
+		{"로그인", "Login", "Se connecter"},
+		{"가입", "Join", "S'inscrire"},
 		{"로그아웃","Logout","Se déconnecter"},
 		
 		{"마이페이지","My page","Ma page"},
 		{"장바구니","Cart","Panier"},
-		{"펀딩","Funding","Le financement"},
-		{"굿즈","Goods","Des biens"},
+		{"펀딩","Funding","Tous les projets"},
+		{"굿즈","Goods","Shop"},
 		{"커뮤니티","Community","Communauté"},
 		
-		{"크리콕","About","À propos"},
+		{"크리콕","About","À propos de"},
 		//header end
 		
 		//footer start
