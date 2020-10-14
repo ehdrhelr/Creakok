@@ -299,7 +299,7 @@ import="creakok.com.filesetting.Path"%>
                                                  </p>
                                                  <p class="commons_summary__2Ynez">
                                                      <span class="commons_achievementRate__2J-KL" style="margin-bottom: 5px; color:#fc5230;font-weight: 600">
-                                                        ${funding.percentage} %
+                                                        ${funding.percentage}%
                                                      </span>
                                                         <c:if test="${funding.funding_category_code == 200}">
                                                                                                                             테크/가전
@@ -409,49 +409,49 @@ import="creakok.com.filesetting.Path"%>
                                            html += "<p class='commons_summary__2Ynez'>";
                                            html += "<span class='commons_achievementRate__2J-KL' style='margin-bottom: 5px; color:#fc5230;font-weight: 600'>"+ranking_funding[i].percentage+"%</span>";
                                                  if(ranking_funding[i].funding_category_code == 200) {
-                                                     html += "&nbsp;&nbsp;&nbsp;테크/가전</p>";
+                                                     html += "테크/가전</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 201) {
-                                                     html += "&nbsp;&nbsp;&nbsp;패션/잡화</p>";
+                                                     html += "패션/잡화</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 202) {
-                                                     html += "&nbsp;&nbsp;&nbsp;뷰티</p>";
+                                                     html += "뷰티</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 203) {
-                                                     html += "&nbsp;&nbsp;&nbsp;홈리빙'</p>";
+                                                     html += "홈리빙'</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 204) {
-                                                     html += "&nbsp;&nbsp;&nbsp;디자인소품</p>";
+                                                     html += "디자인소품</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 205) {
-                                                     html += "&nbsp;&nbsp;&nbsp;여행/레저</p>";
+                                                     html += "여행/레저</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 206) {
-                                                     html += "&nbsp;&nbsp;&nbsp;스포츠/모빌리티</p>";
+                                                     html += "스포츠/모빌리티</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 207) {
-                                                     html += "&nbsp;&nbsp;&nbsp;반려동물</p>";
+                                                     html += "반려동물</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 208) {
-                                                     html += "&nbsp;&nbsp;&nbsp;모임</p>";
+                                                     html += "모임</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 209) {
-                                                     html += "&nbsp;&nbsp;&nbsp;공연/컬쳐</p>";
+                                                     html += "공연/컬쳐</p>";
                                                  }                                                   
                                                  if(ranking_funding[i].funding_category_code == 210) {
-                                                     html += "&nbsp;&nbsp;&nbsp;소셜/캠페인</p>";
+                                                     html += "소셜/캠페인</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 211) {
-                                                     html += "&nbsp;&nbsp;&nbsp;교육/키즈</p>";
+                                                     html += "교육/키즈</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 212) {
-                                                     html += "&nbsp;&nbsp;&nbsp;게임/취미</p>";
+                                                     html += "게임/취미</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 213) {
-                                                     html += "&nbsp;&nbsp;&nbsp;출판</p>";
+                                                     html += "출판</p>";
                                                  }
                                                  if(ranking_funding[i].funding_category_code == 214) {
-                                                     html += "&nbsp;&nbsp;&nbsp;기부/후원</p>";
+                                                     html += "기부/후원</p>";
                                                  }                                                               
                                            html += "</div>";
                                            html += "</article>";
