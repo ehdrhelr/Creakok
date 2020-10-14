@@ -136,7 +136,7 @@ public class IndexController {
 	
 	@ResponseBody
 	@RequestMapping("funding_ranking")
-	public List<Funding> funding_ranking(HttpSession session){ //굿즈 실시간랭킹
+	public List<Funding> funding_ranking(HttpSession session){ //펀딩 실시간랭킹
 		List<Funding> temp = indexService.selectFundingByAmount();
 		List<Funding> funding_ranking = new ArrayList<Funding>();
 		for(Funding list : temp) {

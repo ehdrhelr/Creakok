@@ -215,14 +215,17 @@ import ="creakok.com.filesetting.Path"%>
 	<!--크리에이터띠 싱단 배너-->
    <section class="subscribe-newsletter-area" style="background-image:linear-gradient(90deg,#fc5230 10%,#2da498 100%);">
         <div class="container">
-             <!-- Section Heading -->
+             <!-- Section Heading
 			<div class="section-heading text-center">
 				<h2 style="color:white; ">소통하는 사회, 크리콕!</h2>
 				<p style="color:white">채팅방에서 팬들과 함께 소통해요</p>
 				<p class="crowdy-btn-introduction" >
 				<a href="#"style="color:white; text-align:center">채팅방 입장</a>
 				</p>
-			</div>
+			</div> -->
+         <div class="section-heading text-center" style="margin-bottom: 0px;">
+            <h2 style="color:white; ">소통하는 사회, 크리콕!</h2>
+         </div>
         </div>
                
         <style>
