@@ -26,7 +26,7 @@ public class KakaoLogin {
 
 		final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
 		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
-		postParams.add(new BasicNameValuePair("client_id", "a3817011c1de6f7930c4d84eaaf6d750")); // REST API KEY
+		postParams.add(new BasicNameValuePair("client_id", "250ce854a23b5b7a358567badfd69726")); // REST API KEY
 		postParams.add(new BasicNameValuePair("redirect_uri", Path.SOCIAL_LOGIN_ROOT+"kakaoTokenCheck.do")); // 리다이렉트 URI
 		postParams.add(new BasicNameValuePair("code", autorize_code)); // 로그인 과정중 얻은 code 값
 
