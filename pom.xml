@@ -282,7 +282,20 @@
 	   <artifactId>httpclient</artifactId> 
 	   <version>4.3.5</version> 
 	</dependency>
+    
+    <!-- mariaDB -->
+    <dependency>
+        <groupId>org.mariadb.jdbc</groupId>
+        <artifactId>mariadb-java-client</artifactId>
+        <version>2.3.0</version>
+    </dependency>
 
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-dbcp2</artifactId>
+        <version>2.6.0</version>
+    </dependency>
+    
 	</dependencies>
 	
     <build>

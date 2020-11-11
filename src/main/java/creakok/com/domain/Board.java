@@ -26,4 +26,6 @@ public class Board {
 	/* 계층형을 위해 추가 */
 	private long board_parent;
 	private long level;
+	/* 게시글 번호 연속적으로 표시 */
+	private long board_list_number;
 }

@@ -34,7 +34,7 @@
 	</select>
 
     <select id="selectByGoodsIndex" parameterType="long" resultType="Goods">
-        select * from Goods where GOODS_INDEX=${goods_index}
+        select * from GOODS where GOODS_INDEX=${goods_index}
     </select>
 
   <!-- 하트 클릭시 커뮤니티 게시글에 BOARD_LIKE 컬럼 증/감 -->

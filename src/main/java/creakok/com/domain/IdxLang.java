@@ -24,6 +24,7 @@ public enum IdxLang {
     footer_working_time,
     footer_working_close,
     footer_company_name,
-    footer_company_address
+    footer_company_address,
     //footer end
+
 }

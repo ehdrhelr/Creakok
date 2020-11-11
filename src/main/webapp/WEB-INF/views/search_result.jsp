@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8"
+import="creakok.com.filesetting.Path"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -21,6 +22,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
+    <link rel="stylesheet" href="css/progressBar.css">
     
     <!-- BOTO TEST -->
     <meta name="description" content="Boto Photo Studio HTML Template">
@@ -64,7 +66,7 @@
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_search.png);">
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(${Path.COMMON_IMG_PATH}page_search.png);">
             <h2 style="color:black">Search</h2>
         </div>
 
@@ -157,7 +159,9 @@
                                            
                                             <div id="bar4" class="barfiller" style="border-radius: 5px;">
                                                
-                                                <span class="fill" data-percentage="60" style="border-radius: 5px; width: 162px; transition: width 1s ease-in-out 0s; background: rgb(252, 82, 48);"></span>
+                                                <progress class="myBars" max="100" value="0" data-percentage="${fundingVo.percentage}"></progress>
+                                                <!--<span class="fill" data-percentage="60" style="background: rgb(252, 82, 48); width: 126px; transition: width 1s ease-in-out 0s;border-radius:30pt;"></span>-->
+
                                             </div>
                                         </div>
                                           
@@ -392,6 +396,8 @@ function addCart(count){
     <!-- Active js -->
     <script src="js/active.js"></script>
     
+    <script src="js/progressBar.js"></script>
+
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>
     </jsp:include>

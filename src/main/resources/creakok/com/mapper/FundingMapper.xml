@@ -4,17 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="creakok.com.mapper.FundingMapper">
 	<select id="selectPerPage" parameterType="FundingVo" resultType="Funding">
-        <![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    (select * from (select * from funding where funding_edate>sysdate) where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} desc) aa) 
-    where rnum>${startRow} and rnum<=${endRow}]]>
+        <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
+	    (select * from (select * from FUNDING where FUNDING_EDATE>now() )cc where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} desc limit ${startRow}, ${endRow} ) aa, 
+	    (SELECT @ROWNUM := ${startRow}) TMP) bb
+	    where rnum>${startRow} and rnum<=${endRow}]]>
     </select>
+    
     <select id="selectPerPageEdate" parameterType="FundingVo" resultType="Funding">
-        <![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    (select * from (select * from funding where funding_edate>sysdate) where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} asc) aa) 
-    where rnum>${startRow} and rnum<=${endRow}]]>
-    </select>
+        <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
+	    (select * from (select * from FUNDING where FUNDING_EDATE>now() )cc where FUNDING_CATEGORY_CODE=${categoryBy} order by ${filterBy} asc limit ${startRow}, ${endRow} ) aa,
+	    (SELECT @ROWNUM := ${startRow}) TMP) bb
+	    where rnum>${startRow} and rnum<=${endRow}]]>
+	    </select>
     <select id="selectPerPageFinished" resultType="Funding">
-        <![CDATA[select * from funding where funding_edate<=sysdate]]>
+        <![CDATA[select * from FUNDING where FUNDING_EDATE<=now()]]>
     </select>
     <!--    (select * from FUNDING where #{FUNDING_CATEGORY_CODE}=${} order by #{filterBy} desc) aa)  -->
    <select id="selectPerPageCategory" parameterType="Funding" resultType="String">
@@ -39,14 +42,15 @@
     </select>
     
      <select id="getRelatedFunding" parameterType="long" resultType="Funding">
-        <![CDATA[select * from (select * from funding where funding_edate>sysdate) where FUNDING_CATEGORY_CODE=${categoryCode}]]>
+        <![CDATA[select * from (select * from FUNDING where FUNDING_EDATE>now())cc where FUNDING_CATEGORY_CODE=${categoryCode}]]>
     </select>
     
      <select id="getFunding_qna" parameterType="Funding_qnaVo" resultType="Funding_qna">
-         <![CDATA[select * from (select ROWNUM rnum, aa.* from 
-    (select * from FUNDING_QNA where FUNDING_INDEX=${funding_index} order by FUNDING_QNA_WDATE desc) aa) 
+         <![CDATA[select * from (select @ROWNUM:=@ROWNUM+1 as rnum, aa.* from 
+    (select * from FUNDING_QNA where FUNDING_INDEX=${funding_index} order by FUNDING_QNA_WDATE desc limit ${startRow}, ${endRow}) aa, (SELECT @ROWNUM := ${startRow}) TMP) bb 
     where rnum>${startRow} and rnum<=${endRow}]]>
     </select>
+    
     <select id="getFunding" parameterType="long" resultType="Funding">
         select * from FUNDING where FUNDING_INDEX=${funding_index}
     </select>
@@ -54,20 +58,20 @@
         select COUNT(FUNDING_QNA_INDEX) from FUNDING_QNA where FUNDING_INDEX=${funding_index}
     </select>
     <insert id="write_qna" parameterType="Funding_qna">
-    	insert into FUNDING_QNA values(FUNDING_QNA_INDEX.nextval, ${funding_index}, #{member_name}, null,
-    	#{funding_qna_content}, SYSDATE, null, null, null, #{funding_qna_subject})
+    	insert into FUNDING_QNA values((select nextval('FUNDING_QNA_INDEX')), ${funding_index}, #{member_name}, null,
+    	#{funding_qna_content}, now(), null, null, null, #{funding_qna_subject})
     </insert>
     <select id="getFunding_qna_detail" parameterType="long" resultType="Funding_qna">
     	select * from FUNDING_QNA where FUNDING_QNA_INDEX=${funding_qna_index}
     </select>
     <update id="editQna" parameterType="Funding_qna">
-    	update FUNDING_QNA set FUNDING_QNA_SUBJECT=#{funding_qna_subject}, FUNDING_QNA_CONTENT=#{funding_qna_content}, FUNDING_QNA_WDATE=SYSDATE where FUNDING_QNA_INDEX=${funding_qna_index}
+    	update FUNDING_QNA set FUNDING_QNA_SUBJECT=#{funding_qna_subject}, FUNDING_QNA_CONTENT=#{funding_qna_content}, FUNDING_QNA_WDATE=now() where FUNDING_QNA_INDEX=${funding_qna_index}
     </update>
   <update id="answerQna" parameterType="Funding_qna">
-    	update FUNDING_QNA set FUNDING_QNA_ANSWER=#{funding_qna_answer}, FUNDING_QNA_ADATE=SYSDATE where FUNDING_QNA_INDEX=${funding_qna_index}
+    	update FUNDING_QNA set FUNDING_QNA_ANSWER=#{funding_qna_answer}, FUNDING_QNA_ADATE=now() where FUNDING_QNA_INDEX=${funding_qna_index}
     </update>
     <update id="answerEditQna" parameterType="Funding_qna">
-    	update FUNDING_QNA set FUNDING_QNA_ANSWER=#{funding_qna_answer}, FUNDING_QNA_ADATE=SYSDATE where FUNDING_QNA_INDEX=${funding_qna_index}
+    	update FUNDING_QNA set FUNDING_QNA_ANSWER=#{funding_qna_answer}, FUNDING_QNA_ADATE=now() where FUNDING_QNA_INDEX=${funding_qna_index}
     </update>
  	<update id="answerDelete" parameterType="long">
     	update FUNDING_QNA set FUNDING_QNA_ANSWER=null, FUNDING_QNA_ADATE=null where FUNDING_QNA_INDEX=${funding_qna_index}
@@ -81,11 +85,11 @@
     <delete id="qnaDelete" parameterType="long">
    	    delete from FUNDING_QNA where FUNDING_QNA_INDEX=${funding_qna_index}
     </delete>
-     <select id="getFunding_edate_cancel" parameterType="long" resultType="date">
-    	select funding_edate-1 from FUNDING where FUNDING_INDEX=${funding_index}
+ <select id="getFunding_edate_cancel" parameterType="long" resultType="date">
+       select ( SELECT DATE_ADD(funding_edate, INTERVAL -1 DAY) ) cc from FUNDING where FUNDING_INDEX=${funding_index}
     </select>
     <select id="getFunding_edate_payment" parameterType="long" resultType="date">
-    	select funding_edate+1 from FUNDING where FUNDING_INDEX=${funding_index}
+       select ( SELECT DATE_ADD(funding_edate, INTERVAL 1 DAY) ) cc from FUNDING where FUNDING_INDEX=${funding_index}
     </select>
     <update id = "updateFunding_amount" parameterType="Funding_payinfo">
     	update FUNDING set FUNDING_AMOUNT=FUNDING_AMOUNT+${funding_payinfo_amountpay}, FUNDING_PEOPLE=FUNDING_PEOPLE+1 where FUNDING_INDEX=${funding_index}
@@ -93,5 +97,7 @@
      <update id = "updateFunding_cancel" parameterType="Funding_payinfo">
     	update FUNDING set FUNDING_AMOUNT=FUNDING_AMOUNT-${funding_payinfo_amountpay}, FUNDING_PEOPLE=FUNDING_PEOPLE-1 where FUNDING_INDEX=${funding_index}
     </update>
+    
+    
     
 </mapper>

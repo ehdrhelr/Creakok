@@ -72,7 +72,7 @@
         <div class="Membership__MembershipWrapper-o1o1he-0 irjBzn">
                     <h3 style="text-align:center;margin-bottom:40px;font-size:18pt">굿즈 판매하기</h3>
         <div style="width: 60%; margin: auto;" >
-            <form method="post" action="/goods_project_write.do" onSubmit="return false">
+            <form method="post" action="/goods_project_write.do" onSubmit="return false" enctype="multipart/form-data">
                              <div >
                                     <input name="write_creator" style="display:block;"class="form-control" id="first_name" 
                                     placeholder="크리에이터" value="${member.member_name}" readonly>
@@ -88,16 +88,16 @@
                                         <option value="">카테고리</option>
                                         <option value="301">뷰티</option>
                                         <option value="302">디자인소품</option>  
-                                        <option value="301">홈리빙</option>
-                                        <option value="303">테크/가전</option>  
-                                        <option value="304">패션/잡화</option>
-                                        <option value="305">푸드</option>  
-                                        <option value="306">여행/레저</option>
-                                        <option value="307">스포츠/모빌리티</option>  
-                                        <option value="308">반려동물</option>
-                                        <option value="309">문화/예술</option>  
-                                        <option value="310">출산/육아</option>  
-                                        <option value="311">생활/건강</option>  
+                                        <option value="303">홈리빙</option>
+                                        <option value="304">테크/가전</option>  
+                                        <option value="305">패션/잡화</option>
+                                        <option value="306">푸드</option>  
+                                        <option value="307">여행/레저</option>
+                                        <option value="308">스포츠/모빌리티</option>  
+                                        <option value="309">반려동물</option>
+                                        <option value="310">문화/예술</option>  
+                                        <option value="311">출산/육아</option>  
+                                        <option value="312">생활/건강</option>  
                                     </select> 
                                 </div>
                                 
@@ -110,7 +110,7 @@
                 <br>
                 <textarea id="summernote" name="content" id="content" required></textarea>
                 <label for="write_goods_repre_pic"style="display:inline-block;">대표 이미지 첨부 :  </label>
-                <input type="file" name="write_goods_repre_pic" id="write_goods_repre_pic" style="display:inline-block;margin-top:10px; width:85%;padding:2px;"class="form-control" id="first_name" 
+                <input type="file" name="write_goods_repre_pic" style="display:inline-block;margin-top:10px; width:85%;padding:2px;"class="form-control" id="first_name" 
                                     onkeydown="goWrite(this.form)" required>    
                 <p style="width:100%;text-align:center; margin-top:20px;">
                 <input id="subBtn" type="submit" style="padding:3px;background-color:#fc5230;color:white;border:0;border-radius:4px" value="프로젝트 만들기" onclick="goWrite(this.form)"/>
@@ -230,7 +230,7 @@
         maxHeight: null,
         callbacks: {    //여기 부분이 이미지를 첨부하는 부분
             onImageUpload : function(files) {
-                uploadSummernoteImageFile(files[0],this);
+            	uploadSummernoteImageFile(files[0],this);
             }
         },
         focus: true,

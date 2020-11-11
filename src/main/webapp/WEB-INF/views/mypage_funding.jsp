@@ -17,7 +17,7 @@
                                         <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
                                             </span></a>
                                   
-                                                 <a href="funding_list.do?funding_index=${fundingVo.funding_index}">
+                                                 <a href="funding_detail.do?funding_index=${fundingVo.funding_index}" class="jhseo_img370">
                                 
                                                      <img src="${fundingVo.funding_repre_pic}" alt="">
                                                 </a>
@@ -25,7 +25,7 @@
                                     <div class="CommonCard_info__1f4kq">
                                     <div class="RewardProjectCard_info__3JFub">
                                         <div class="RewardProjectCard_infoTop__3QR5w">
-                                        <a href="funding_list.do?funding_index=${fundingVo.funding_index}" class="CardLink_link__1k83H">
+                                        <a href="funding_detail.do?funding_index=${fundingVo.funding_index}" class="CardLink_link__1k83H">
                                             <p class="CommonCard_title__1oKJY RewardProjectCard_title__iUtvs" style="color:#111111; font-size:17px;">
                                                 <strong>${fundingVo.funding_subject}</strong>
                                             </p>
@@ -52,7 +52,9 @@
                                            
                                             <div id="bar4" class="barfiller" style="border-radius: 5px;">
                                                
-                                                <span class="fill" data-percentage="60" style="border-radius: 5px; width: 162px; transition: width 1s ease-in-out 0s; background: rgb(252, 82, 48);"></span>
+                                                <progress class="myBars" max="100" value="0" data-percentage="${fundingVo.percentage}"></progress>
+                                                <!--<span class="fill" data-percentage="60" style="background: rgb(252, 82, 48); width: 126px; transition: width 1s ease-in-out 0s;border-radius:30pt;"></span>-->
+
                                             </div>
                                         </div>
                                           

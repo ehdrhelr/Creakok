@@ -87,6 +87,7 @@ public class IndexController {
 		
 		// 이달의 크리에이터
 		List<Creator> creator_list = indexService.selectCreator();
+		log.info("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 나와라 짜식아: "+creator_list);
 		mv.addObject("creator_list", creator_list);
 		
 		// 크리에이터 검색(모든 크리에이터)
@@ -135,7 +136,7 @@ public class IndexController {
 	
 	@ResponseBody
 	@RequestMapping("funding_ranking")
-	public List<Funding> funding_ranking(HttpSession session){ //굿즈 실시간랭킹
+	public List<Funding> funding_ranking(HttpSession session){ //펀딩 실시간랭킹
 		List<Funding> temp = indexService.selectFundingByAmount();
 		List<Funding> funding_ranking = new ArrayList<Funding>();
 		for(Funding list : temp) {
@@ -209,7 +210,7 @@ public class IndexController {
 			cpStr = cpStr.trim();
 			cp = Integer.parseInt(cpStr);
 		}
-	//	session.setAttribute("cp", cp);
+		session.setAttribute("search_goods_cp", cp);
 		
 		//(2) ps 
 		int ps = 3;		
@@ -217,6 +218,7 @@ public class IndexController {
 		goods_searchVo.setCp(cp);
 		goods_searchVo.setPs(ps);
 		goods_searchVo.setKeyword(keyword);
+		log.info("#######################goods_searchVo: "+goods_searchVo);
 	    
 		if(goods_searchVo.getResult_list().size() == 0) {
 			if(cp > 1) {	
@@ -250,6 +252,6 @@ public class IndexController {
 		Contact contact = new Contact(-1, contact_name, contact_email, contact_subject, contact_message, null);
 		indexService.insertOneQnA(contact);
 		
-		return "index";
+		return "redirect:/";
 	}	
 }

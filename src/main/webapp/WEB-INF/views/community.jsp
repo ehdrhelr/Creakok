@@ -14,7 +14,7 @@ import ="creakok.com.filesetting.Path"%>
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	
 	<!-- Title -->
-    <title>COMMUNITY - CREAKOK</title>
+    <title>CREAKOK</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/creakok.ico">
@@ -63,6 +63,24 @@ import ="creakok.com.filesetting.Path"%>
         }
         a:link { color: black; text-decoration: none;}
 		a:visited { color: black; text-decoration: none;}	
+
+  .glow {
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
 	</style>
 </head>
 
@@ -102,7 +120,7 @@ import ="creakok.com.filesetting.Path"%>
             <!-- Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
-				<div class="slide-img bg-img" style="background-image: url(${Path.IMG_STORE_COMMUNITY_SHORT}${theCreator.creator_banner_photo});"></div>
+				<div id="comm_bg_img" class="slide-img bg-img" style="background-image: url(${Path.IMG_STORE_COMMUNITY_SHORT}${theCreator.creator_banner_photo});"></div>
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
@@ -125,9 +143,9 @@ import ="creakok.com.filesetting.Path"%>
 																	<div class="testimonial-content">
 																		<!-- Section Heading -->
 																		<div class="section-heading">
-																			<h2>${theCreator.creator_name}</h2>
+																			<h2 ><span id="comm_bg_head" class="glow">${theCreator.creator_name}</span></h2>
 																			<p> </p>
-																			<p>${theCreator.creator_profile_content}</p>
+																			<p><span id="comm_content">${theCreator.creator_profile_content}</span></p>
 																		</div>
 																		<p> </p>
 																		<div class="testimonial-author-info">
@@ -145,6 +163,7 @@ import ="creakok.com.filesetting.Path"%>
 															</div>
 														</div>       
 												</div>
+
 											</div>
 										</div>
 									</section>
@@ -196,14 +215,17 @@ import ="creakok.com.filesetting.Path"%>
 	<!--크리에이터띠 싱단 배너-->
    <section class="subscribe-newsletter-area" style="background-image:linear-gradient(90deg,#fc5230 10%,#2da498 100%);">
         <div class="container">
-             <!-- Section Heading -->
+             <!-- Section Heading
 			<div class="section-heading text-center">
 				<h2 style="color:white; ">소통하는 사회, 크리콕!</h2>
 				<p style="color:white">채팅방에서 팬들과 함께 소통해요</p>
 				<p class="crowdy-btn-introduction" >
 				<a href="#"style="color:white; text-align:center">채팅방 입장</a>
 				</p>
-			</div>
+			</div> -->
+         <div class="section-heading text-center" style="margin-bottom: 0px;">
+            <h2 style="color:white; ">소통하는 사회, 크리콕!</h2>
+         </div>
         </div>
                
         <style>
@@ -310,7 +332,7 @@ import ="creakok.com.filesetting.Path"%>
 				        </c:if>
 				        <c:forEach items="${listResult.list}" var="board">
 				         <TR align='center' noshade>
-				             <TD >${board.board_index}</TD>
+				             <TD >${board.board_list_number}</TD>
 				             <TD align="left">
 				                 <a href="board_content?board_index=${board.board_index}" style="overflow:hidden;text-overflow:ellipsis;white-space: nowrap;margin:0;padding:0;color:black">
 				                 ${board.board_subject}
@@ -415,6 +437,138 @@ import ="creakok.com.filesetting.Path"%>
 	</script>
    <!-- 게시판 영역 end -->
 
+	<div id="test_div" style="width:500px; height:500px; display:none;">
+	</div>
+	
+    <script>
+  	function getAverageRGB(imgEl) {
+  		
+  		let blockSize = 5, // only visit every 5 pixels
+  			defaultRGB = {r:0,g:0,b:0}, // for non-supporting envs
+  			canvas = document.createElement('canvas'),
+  			context = canvas.getContext && canvas.getContext('2d'),
+  			data, width, height,
+  			i = -4,
+  			length,
+  			rgb = {r:0,g:0,b:0},
+  			count = 0;
+  			
+  		if (!context) {
+  			return defaultRGB;
+  		}
+  		
+  		height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
+  		width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
+  		
+  		context.drawImage(imgEl, 0, 0);
+  		
+  		try {
+  			data = context.getImageData(0, 0, width, height);
+  		} catch(e) {
+  			/* security error, img on diff domain */alert('x');
+  			return defaultRGB;
+  		}
+  		
+  		length = data.data.length;
+  		
+  		while ( (i += blockSize * 4) < length ) {
+  			++count;
+  			rgb.r += data.data[i];
+  			rgb.g += data.data[i+1];
+  			rgb.b += data.data[i+2];
+  		}
+  		
+  		// ~~ used to floor values
+  		rgb.r = ~~(rgb.r/count);
+  		rgb.g = ~~(rgb.g/count);
+  		rgb.b = ~~(rgb.b/count);
+  		
+  		return rgb;
+  	}
+  
+  	function rgbToHex ( rgbType ){ 
+  		// 컬러값과 쉼표만 남기고 삭제. 
+  		let rgb = rgbType.replace( /[^%,.\d]/g, "" ); 
+  
+  		// 쉼표(,)를 기준으로 분리해서, 배열에 담기. 
+  		rgb = rgb.split( "," ); 
+  
+  		// 컬러값이 "%"일 경우, 변환하기. 
+  		for ( var x = 0; x < 3; x++ ) { 
+  				if ( rgb[ x ].indexOf( "%" ) > -1 ) rgb[ x ] = Math.round( parseFloat( rgb[ x ] ) * 2.55 ); 
+  		} 
+  
+  		// 16진수 문자로 변환. 
+  		var toHex = function( string ){ 
+  				string = parseInt( string, 10 ).toString( 16 ); 
+  				string = ( string.length === 1 ) ? "0" + string : string; 
+  
+  				return string; 
+  		}; 
+  
+  		let r = toHex( rgb[ 0 ] ); 
+  		let g = toHex( rgb[ 1 ] ); 
+  		let b = toHex( rgb[ 2 ] ); 
+  
+  		return r + g + b; 
+  	} 
+  	
+    let comm_bg_img = document.getElementById('comm_bg_img');
+    let comm_bg_head = document.getElementById('comm_bg_head');
+    let comm_content = document.getElementById('comm_content');
+
+  	let test_div = document.getElementById('test_div');
+  
+  	let canvas = document.createElement('canvas'),
+  	ctx = canvas.getContext("2d");
+  	//let canvas = document.getElementById("test_div"),
+      
+  
+  	canvas.width = 300;
+  	canvas.height = 300;
+  
+  	var background = new Image();
+  	background.src = "${Path.IMG_STORE_COMMUNITY_SHORT}${theCreator.creator_banner_photo}";
+  	background.onload = function(){
+        var rgb = getAverageRGB(background);
+        var bgcolor = rgbToHex('rgb('+rgb.r+','+rgb.g+','+rgb.b+')');
+        
+        var fontcolor = '#FFFFFF';
+        //if(bgcolor<'8c8c8c'){
+        //	fontcolor = '#FFFFFF'
+        //}
+		
+		let temp_color = "#"+bgcolor;
+        //comm_bg_head.style.backgroundColor = "#"+bgcolor;
+        comm_bg_head.style.color = fontcolor;
+  
+		test_div.style.backgroundColor = "#"+bgcolor;
+
+		//font-size: 80px;
+		//color: #fff;
+		//text-align: center;
+		//text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+		let theme = "0 0 20px #fff, 0 0 30px "+temp_color+", 0 0 40px "+temp_color+", 0 0 50px "+temp_color+", 0 0 60px "+temp_color+", 0 0 70px "+temp_color+", 0 0 80px "+temp_color;
+		//comm_bg_head.style.textShadow = theme;
+		comm_content.style.textShadow = theme;
+
+  	}
+  	
+  	background.onerror = function(){
+        bgcolor='FFFFFF';
+        fontcolor='#FFFFFF';
+        comm_bg_head.style.backgroundColor = "#"+bgcolor;
+        comm_bg_head.style.color = fontcolor;
+  
+		test_div.style.backgroundColor = "#"+bgcolor;
+  	}
+  
+  
+
+
+    </script>
+
+
   	<!-- Footer Bottom Area -->
     <div id="footer_div">
     <jsp:include page="creakok_footer.jsp" flush="true"/>
@@ -473,7 +627,9 @@ import ="creakok.com.filesetting.Path"%>
     
      <!-- Javascript pagination -->
 	<script type="text/javascript" src="../js/paging.js"></script>
-	
+    
+
+    
 </body>
 
 </html>

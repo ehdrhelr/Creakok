@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>creakok-funding pay</title>
 </head>
 <body>    
 
@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
         var IMP = window.IMP; // 생략가능
-        IMP.init('imp90966824'); // imp94223712  'iamport' 대신 부여받은 "가맹점 식별코드"를 사용  
+        IMP.init('imp94223712'); // imp90966824  'iamport' 대신 부여받은 "가맹점 식별코드"를 사용  
 			   IMP.request_pay({     
 			    pg : 'inicis', // version 1.1.0부터 지원.
 			    pay_method : 'card',

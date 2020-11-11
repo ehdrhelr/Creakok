@@ -97,7 +97,7 @@ import="creakok.com.filesetting.Path"%>
               <label for="profile_photo" class="hcbae_label">대표사진 업로드 (PNG, JPG)</label>
               <input type="file" id="profile_photo" name="creator_pics" accept=".jpg, .jpeg, .png" style="display: none;">
               <div class="profile_preview">
-                <img src="${Path.IMG_STORE_COMMUNITY_SHORT}${creator.creator_profile_photo}">
+                <img src="${Path.IMG_STORE_COMMUNITY}${creator.creator_profile_photo}">
               </div>
           </div>
 
@@ -106,7 +106,7 @@ import="creakok.com.filesetting.Path"%>
               <label for="banner_photo" class="hcbae_label">배너사진 업로드 (PNG, JPG)</label>
               <input type="file" id="banner_photo" name="creator_pics" accept=".jpg, .jpeg, .png" style="display: none;">
               <div class="banner_preview">
-                <img src="${Path.IMG_STORE_COMMUNITY_SHORT}${creator.creator_banner_photo}">
+                <img src="${Path.IMG_STORE_COMMUNITY}${creator.creator_banner_photo}">
               </div>
           </div>
 

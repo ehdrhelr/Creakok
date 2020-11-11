@@ -115,6 +115,14 @@ img {
 .mr-50 {
   margin-right: 50px !important; }
 
+
+/* 이미지 사이즈 비율 유지 */
+.jhseo_img {
+	width:270px;
+	height:203px;
+	overflow:hidden;
+}
+
 /* :: 3.2.0 Height */
 .height-400 {
   height: 400px; }
@@ -338,9 +346,6 @@ img {
         .header-area .top-header-area .top-header-content .top-header-meta a i {
           margin-right: 5px;
           color: #fc5230; }
-        @media only screen and (max-width: 767px) {
-          .header-area .top-header-area .top-header-content .top-header-meta a span {
-            display: none; } }
       .header-area .top-header-area .top-header-content .top-header-meta .language-dropdown {
         position: relative;
         z-index: 1; }

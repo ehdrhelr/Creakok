@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.LikeType"%>
+<%@ page contentType="text/html; charset=utf-8"
+import="creakok.com.domain.LikeType, creakok.com.filesetting.Path"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -65,7 +66,7 @@
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_goods.png);">
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(${Path.COMMON_IMG_PATH}page_goods.png);">
             <h2 style="color:black;text-align:center">
             	GOODS<br>
             	<span style="font-size:13pt;color:#828282;font-weight:400">크리에이터의 특별 제작 굿즈</span>
@@ -108,8 +109,7 @@
                     <div class="ProjectIntroduction__ProjectOutline-sc-1o2ojgb-2 jbdzfG">
                         <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ"><a href="#"><span class="ProjectIntroduction__ProjectCategory-sc-1o2ojgb-4 fNvuiJ">${category_name}</span></a>
                             <h1 id="product_name" class="ProjectIntroduction__ProjectTitle-sc-1o2ojgb-5 cWQlcy">${one_goods.goods_name}</h1>
-                            <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">
-                            <span class="ProfileImg__StyledProfileImg-sc-1vio56c-0 gOcHWp"></span>
+                            <div class="ProjectIntroduction__Creators-sc-1o2ojgb-6 fsPnxP">                            
                             <a target="_blank" rel="noopener noreferrer" class="ProjectIntroduction__CreatorName-sc-1o2ojgb-7 jDbkqK" href="board_page?creator_name=${one_goods.creator_name}">
                             	${one_goods.creator_name}</a></div>
                         </div>
@@ -399,7 +399,7 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-product-area mb-100">
                         <!-- Product Image -->
-                        <div class="product-img">
+                        <div class="product-img jhseo_img">
                             <a href="goods_detail.do?goods_index=${goods_related.goods_index}"><img src="img/goods/${goods_related.goods_repre_pic}" alt=""></a>
                             <!-- Product Tag -->
                             <div class="product-tag">

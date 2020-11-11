@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" import="creakok.com.domain.LikeType"%>
+<%@ page contentType="text/html; charset=utf-8"
+import="creakok.com.domain.LikeType, creakok.com.filesetting.Path"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
     <title>CREAKOK</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/creakok.ico">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
@@ -64,7 +65,7 @@
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_funding.png);">
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(${Path.COMMON_IMG_PATH}page_funding.png);">
             <h2 style="color:black;text-align:center">
             	FUNDING<br>
             	<span style="font-size:13pt;color:#828282;font-weight:400">크리에이터의 이런 컨텐츠 어때요?</span>
@@ -149,7 +150,7 @@
                                 <div class="ProjectIntroduction__PrimaryButton-sc-1o2ojgb-21 knPvZB">
                                     <div class="PledgeButton__Wrapper-arwur9-0 krUjgk">
                                     
-                                    <button onclick = "location.href='funding_checkout.do?funding_index=${funding_detail.funding_index}'"
+                                    <button onclick="clickFundingSupport();"
                                     class="Button-sc-1x93b2b-0 PledgeButton__StyledButton-arwur9-1 oNWny">
                                     프로젝트 밀어주기</button></div>
                                 </div>
@@ -434,6 +435,15 @@
        };
     }
     
+    function clickFundingSupport(){
+        
+        if('${member.member_email}' == '') {
+            alert('로그인해주세요.');
+            return;
+        }else{
+            location.href="funding_checkout.do?funding_index=${funding_detail.funding_index}"
+        }
+}
     </script>
 
     <jsp:include page="Language.jsp" flush="false">

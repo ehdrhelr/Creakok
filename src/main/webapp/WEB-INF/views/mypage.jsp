@@ -43,6 +43,9 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
     <link rel="stylesheet" href="css/hcbae_css.css">
     
   <link rel="stylesheet" href="css/only_goods_review_board_jsp.css">
+  
+  <link rel="stylesheet" href="css/progressBar.css">
+  
 </head>
 
 <body>
@@ -65,7 +68,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_mypage.png);">
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(${Path.COMMON_IMG_PATH}page_mypage.png);">
             <h2 style="color:black">My Page</h2>
         </div>
 
@@ -438,7 +441,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                         </div>   
                     </div>
                     </c:if>
-                    
+                    <!-- 더 생각해봅시다.
                     <div class="hcbae-member-modify-area">
                         <h3>수정할 정보가 뭐가 더 있을까?</h3>
                         <span class="hcbae-member-modify-button">
@@ -449,7 +452,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                         <p>수정할 내용을 어떻게 수정할 지 고민해보고 추가하자.</p>
                         </div>   
                     </div>
-                    
+                     -->
                     <div class="hcbae-member-modify-area">
                         <h3>회원탈퇴</h3>
                         <span class="hcbae-member-modify-button">
@@ -702,6 +705,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
     <script src="js/active.js"></script>
     <script src="js/hcbae_js.js"></script>
 
+    <script src="js/progressBar.js"></script>
     
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>

@@ -1199,14 +1199,12 @@ $('#summernote').summernote({
           ['font', ['bold', 'underline', 'clear']],
           ['color', ['color']],
           ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
           ['insert', ['link', 'picture', 'video']],
           ['view', ['fullscreen', 'codeview', 'help']]
         ]
   });
   
   function uploadSummernoteImageFileCommunity(file, editor){
-	  alert('들어왓다');
 	  data = new FormData();
 	  data.append("file_detail_pic", file);
 	  $.ajax({

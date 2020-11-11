@@ -73,13 +73,41 @@ public class GoodsController {
 
 	@Autowired
 	private MemberService memberservice;
+
+	private List<Goods> makeRelatedGoodsList(long goods_index, List<Goods> related_goods, Random r){
+		List<Goods> four_goods = new ArrayList<Goods>();
+
+		for(int j=0; j<related_goods.size(); j++) {
+			Goods g = related_goods.get(j);
+			if(g.getGoods_index() == goods_index) {
+				related_goods.remove(j);
+			}
+		}
+
+		if(related_goods.size()>=1) {
+			int a[] = new int[related_goods.size()];
+			for(int i=0;i<related_goods.size();i++) {
+				a[i]=r.nextInt(related_goods.size());
+				for(int j=0; j<i; j++) {
+					if(a[i]==a[j]) {
+						i--;
+					}
+				}
+			}	
+			for(int k=0;k<related_goods.size();k++) {
+				Goods related_goods2 = related_goods.get(a[k]);
+				four_goods.add(related_goods2);
+			}
+		}
+		return four_goods;
+	}
 	
 	@RequestMapping("goods_list.do")
 	public ModelAndView list(HttpServletRequest request, HttpSession session) {
 		String cpStr = request.getParameter("cp");
 		String psStr = request.getParameter("ps");
 		String gCodeStr = request.getParameter("gCode");
-		String filterByStr = request.getParameter("filterBy");
+		String filterByStr = request.getParameter("goods_filterBy");
 		
 		log.info("#######################filterBy: "+filterByStr);
 		log.info("#######################cpStr: "+cpStr);
@@ -133,12 +161,12 @@ public class GoodsController {
 				}
 			}
 		}
-		session.setAttribute("goods_ps", ps);
+		 session.setAttribute("goods_ps", ps);
 	
 		 String filterBy = "goods_sale_number";
 		 if(filterByStr==null) {
 	            //Object filterByObj = tempGoods.getFilterBy();
-			 	Object filterByObj = session.getAttribute("filterBy");
+			 	Object filterByObj = session.getAttribute("goods_filterBy");
 	            if(filterByObj != null) {
 	            	filterBy = (String)filterByObj;
 	            }else {
@@ -157,6 +185,7 @@ public class GoodsController {
 						}
 					} 
 	     }
+		 session.setAttribute("goods_filterBy", filterBy);
 
 		
 		if( gCodeStr.equals("300") || gCodeStr == null ) { //카테고리 코드=300 (전체보기) 일때
@@ -227,6 +256,8 @@ public class GoodsController {
 		
 		//굿즈 정보, 크리에이터 정보
 		Goods one_goods = goods_detailService.getGoodsDetail(goods_index);
+		log.info("??????????????????????????????????goods_index: "+goods_index);
+		log.info("???????????????????????????????????one_goods: "+one_goods);
 		String creator_name = one_goods.getCreator_name();
 		Creator goods_creator = creatorBoardService.getContentByCreator(creator_name);
 		
@@ -236,24 +267,9 @@ public class GoodsController {
 		
 		//관련 상품
 		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
-		List<Goods> four_goods = new ArrayList<Goods>();
 		Random r = new Random();
-		if(related_goods.size()>=4) {
-					int a[] = new int[related_goods.size()];
-					for(int i=0;i<related_goods.size();i++) {
-						a[i]=r.nextInt(related_goods.size());
-						for(int j=0; j<i; j++) {
-							if(a[i]==a[j]) {
-								i--;
-							}
-						}
-					}	
-					for(int k=0;k<4;k++) {
-						Goods related_goods2 = related_goods.get(a[k]);
-						four_goods.add(related_goods2);
-					}
-				}
-		
+		List<Goods> four_goods = makeRelatedGoodsList(goods_index, related_goods, r);
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("goods_details");
 		mv.addObject("one_goods", one_goods);
@@ -265,6 +281,9 @@ public class GoodsController {
 		
 		return mv;
 	}
+
+
+
 	@RequestMapping("goods_order.do")
 	public ModelAndView goods_order(@RequestParam(name="price_amount") long price_amount, @RequestParam(name="product_name") String product_name, @RequestParam(name="product_price") long product_price, @RequestParam(name="qty") long qty) {
 		
@@ -335,23 +354,9 @@ public class GoodsController {
 		
 		//연관 굿즈 추천
 		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
-		List<Goods> four_goods = new ArrayList<Goods>();
 		Random r = new Random();
-		if(related_goods.size()>=4) {
-					int a[] = new int[related_goods.size()];
-					for(int i=0;i<related_goods.size();i++) {
-						a[i]=r.nextInt(related_goods.size());
-						for(int j=0; j<i; j++) {
-							if(a[i]==a[j]) {
-								i--;
-							}
-						}
-					}	
-					for(int k=0;k<4;k++) {
-						Goods related_goods2 = related_goods.get(a[k]);
-						four_goods.add(related_goods2);
-					}
-				}
+		List<Goods> four_goods = makeRelatedGoodsList(goods_index, related_goods, r);
+
 		session.setAttribute("four_goods", four_goods);
 		
 		long review_size = goods_reviewservice.selectGoodsReviewCountByGoodsIndex(goods_index);
@@ -408,24 +413,9 @@ public class GoodsController {
 		int qna_list_size = qna_list.getQna_list().size();
 		
 		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
-		List<Goods> four_goods = new ArrayList<Goods>();
 		Random r = new Random();
-		if(related_goods.size()>=4) {
-					int a[] = new int[related_goods.size()];
-					for(int i=0;i<related_goods.size();i++) {
-						a[i]=r.nextInt(related_goods.size());
-						for(int j=0; j<i; j++) {
-							if(a[i]==a[j]) {
-								i--;
-							}
-						}
-					}	
-					for(int k=0;k<4;k++) {
-						Goods related_goods2 = related_goods.get(a[k]);
-						four_goods.add(related_goods2);
-					}
-				}
-		
+		List<Goods> four_goods = makeRelatedGoodsList(goods_index, related_goods, r);
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("goods_review_one");
 		mv.addObject("one_goods", one_goods);	
@@ -594,26 +584,11 @@ public class GoodsController {
 		long qna_list_size = goods_qnaservice.selectGoodsQnACountByGoodsIndex(goods_index);
 		session.setAttribute("qna_list_size", qna_list_size);
 		
-		
-		
+				
 		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
-		List<Goods> four_goods = new ArrayList<Goods>();
 		Random r = new Random();
-		if(related_goods.size()>=4) {
-					int a[] = new int[related_goods.size()];
-					for(int i=0;i<related_goods.size();i++) {
-						a[i]=r.nextInt(related_goods.size());
-						for(int j=0; j<i; j++) {
-							if(a[i]==a[j]) {
-								i--;
-							}
-						}
-					}	
-					for(int k=0;k<4;k++) {
-						Goods related_goods2 = related_goods.get(a[k]);
-						four_goods.add(related_goods2);
-					}
-				}
+		List<Goods> four_goods = makeRelatedGoodsList(goods_index, related_goods, r);
+
 		session.setAttribute("four_goods", four_goods);
 		
 		return "goods_qna_board";
@@ -644,23 +619,8 @@ public class GoodsController {
 		
 		//관련 굿즈 리스트
 		List<Goods> related_goods = goodsService.getRelatedGoods(category_code);
-		List<Goods> four_goods = new ArrayList<Goods>();
 		Random r = new Random();
-		if(related_goods.size()>=4) {
-					int a[] = new int[related_goods.size()];
-					for(int i=0;i<related_goods.size();i++) {
-						a[i]=r.nextInt(related_goods.size());
-						for(int j=0; j<i; j++) {
-							if(a[i]==a[j]) {
-								i--;
-							}
-						}
-					}	
-					for(int k=0;k<4;k++) {
-						Goods related_goods2 = related_goods.get(a[k]);
-						four_goods.add(related_goods2);
-					}
-				}
+		List<Goods> four_goods = makeRelatedGoodsList(goods_index, related_goods, r);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("goods_qna_one");
@@ -811,4 +771,15 @@ public class GoodsController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("delete_goods.do")
+	public String delete_goods(HttpServletRequest request) {
+		String goods_indexStr = request.getParameter("goods_index");
+		long goods_index = Long.parseLong(goods_indexStr);
+		
+		goodsService.deleteOneGoods(goods_index);
+		
+		return "redirect:goods_list.do?cp=1&ps=3&filterBy=goods_sale_number&gCode=300";
+	}
+	
 }

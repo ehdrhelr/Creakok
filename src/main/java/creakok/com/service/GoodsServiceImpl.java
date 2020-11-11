@@ -105,4 +105,11 @@ public class GoodsServiceImpl implements GoodsService {
 	public long selectGoodsCountBySearch(String keyword) {
 		return gMapper.selectGoodsCountBySearch(keyword);
 	}
+	
+	
+	@Override
+	public void deleteOneGoods(long goods_index) {
+		gMapper.deleteOneGoods(goods_index);
+	}
+	
 }

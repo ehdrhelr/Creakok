@@ -65,7 +65,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_mypage.png);">
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(${Path.COMMON_IMG_PATH}page_mypage.png);">
             <h2 style="color:black">My Page</h2>
         </div>
 
@@ -601,7 +601,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
                 			<p style="text-align:center;margin-top:20px">
                                 <a href="member_mypage.do?focus=funding&member_email=${funding_payinfo.member_email}&order_cp=1" style="font-size:13pt;background-color:black; color:white; width:130px; padding:3px;">목록으로</a>
                                  <c:if test="${funding_payinfo.funding_ok == 'false'}">
-                                <a href="#" onclick="popupPost()" style="font-size:13pt;background-color:white;border:1px solid black; color:black; width:130px; padding:3px;">주문 취소</a>
+                                <a href="#" onclick="popupPost()" style="font-size:13pt;background-color:white;border:1px solid black; color:black; width:130px; padding:3px;">펀딩 취소</a>
                             	</c:if>
                             </p>
                 </div>

@@ -28,12 +28,15 @@
 	<resources mapping="/fonts/**" location="/resources/fonts/" />
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/scss/**" location="/resources/scss/" />
-	<resources mapping="/img/**" location="/resources/img/" />
-
-    <!-- <resources mapping="/summernoteImage/**" location="file:///Users/joohyunann/git/Creakok/src/main/webapp/resources/img/funding/"/> -->
+	
+  <!-- <resources mapping="/img/**" location="/resources/img/" /> -->
+    
+    <!-- 마리아DB  -->
+    <!-- <resources mapping="/summernoteImage/**" location="file:///Users/joohyunann/git/Creakok/src/main/webapp/resources/img/funding/"/>
 	<resources mapping="/summernoteImage/**" location="file:///C:/Users/bit/git/Creakok/src/main/webapp/resources/img/funding/" />
 	<resources mapping="/summernoteImageCommunity/**" location="file:///C:/Users/bit/git/Creakok/src/main/webapp/resources/img/community/" />
-	<resources mapping="/summernoteImageGoods/**" location="file:///C:/Users/bit/git/Creakok/src/main/webapp/resources/img/goods/" />
+	<resources mapping="/summernoteImageGoods/**" location="file:///C:/Users/bit/git/Creakok/src/main/webapp/resources/img/goods/" /> 
+	-->
 	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
@@ -45,7 +48,7 @@
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="defaultEncoding" value="UTF-8" />
 		<beans:property name="maxUploadSize" value="10485760" />
-		<beans:property name="maxUploadSizePerFile" value="2097152"/>
+		<beans:property name="maxUploadSizePerFile" value="10485760"/>
 		<beans:property name="maxInMemorySize" value="10485756"/>
 	</beans:bean>
 	

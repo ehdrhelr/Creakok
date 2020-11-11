@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -101,12 +102,23 @@ public class MemberController {
 		if(member_exist | creator_exist |creator_standby_exist) return "exist";
 		else return "not_exist";
 	}
-		
+	
+	@Transactional
 	@GetMapping("secessionMember.do")
-	public String secessionMember(String member_email, HttpSession session) {
-		log.info("### member_email:"+member_email );
+	public String secessionMember(String member_email,HttpSession session) {
+		log.info("### member_email:"+member_email);
+		
+		Member member = mService.getMemberInfoS(member_email); // member_email로 member_name까지 가져온다 
+		
+		// 멤버가 크리에이터일 경우
+		if (member.getMember_category_code() == Member_category.MEMBER_CREATOR) {
+			Creator creator = mService.getCreator(member);
+			mService.delCreatorRefData(member, creator);	// 크리에이터 탈퇴를 위한 관련 참조 자료 삭제 & 크리에이터 삭제	
+		}
+		
 		session.removeAttribute("member");
-		mService.secessionMemberS(member_email);
+		
+		mService.secessionMemberS(member_email); // 멤버에서 삭제
 		return "redirect:/";
 	}
 	
@@ -610,15 +622,10 @@ public class MemberController {
 		String con1 = creator.getCreator_content1();
 		String con2 = creator.getCreator_content2();
 		String con3 = creator.getCreator_content3();
-		log.info("@@@@@@@@@@ con1 : " + con1);
-		log.info("@@@@@@@@@@ con2 : " + con2);
-		log.info("@@@@@@@@@@ con3 : " + con3);
+
 		String ownKeyOfContent1 = getOwnKeyOfContent(con1);
 		String ownKeyOfContent2 = getOwnKeyOfContent(con2);
 		String ownKeyOfContent3 = getOwnKeyOfContent(con3);
-		log.info("@@@@@@@@@@ ownKeyOfContent1 : " + ownKeyOfContent1);
-		log.info("@@@@@@@@@@ ownKeyOfContent2 : " + ownKeyOfContent2);
-		log.info("@@@@@@@@@@ ownKeyOfContent3 : " + ownKeyOfContent3);
 		
 		// 입력받은 3개의 컨텐츠를 '@'를 구분자 합쳐서 반환한다. 
 		return ownKeyOfContent1 + "@" + ownKeyOfContent2 + "@" + ownKeyOfContent3;

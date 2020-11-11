@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8"
+import="creakok.com.filesetting.Path"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -42,7 +43,6 @@
     <link rel="stylesheet" href="css/hcbae_css.css">
   
     <link rel="stylesheet" href="css/progressBar.css">
-
 </head>
 
 <body>
@@ -65,7 +65,7 @@
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_funding.png);">
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(${Path.COMMON_IMG_PATH}page_funding.png);">
             <h2 style="color:black;text-align:center">
             	FUNDING<br>
             	<span style="font-size:13pt;color:#828282;font-weight:400">크리에이터의 이런 컨텐츠 어때요?</span>
@@ -247,17 +247,18 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                       <div class="single-benefits-area">                   
                           <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
-                              </a><div class="CommonCard_rect__2wpm4">
+                              </a>
+                              <div class="CommonCard_rect__2wpm4 jhseo_img370">
                                     <a href="#" class="CardLink_link__1k83H CommonCard_image__vaqkf">
                                         <span class="CommonCard_background__3toTR CommonCard_visible__ABkYx" style="background-image:url(img/core-img/ex1.png)">
                                             </span></a>
                                   
-                                                 <a href="funding_detail.do?funding_index=${fundingVo.funding_index}">
+                                                 <a href="funding_detail.do?funding_index=${fundingVo.funding_index}" class="jhseo_img370">
                                 
                                                      <img src="${fundingVo.funding_repre_pic}" alt="">
                                                 </a>
-           
-                                    <div class="CommonCard_info__1f4kq">
+                              </div>
+                                                                  <div class="CommonCard_info__1f4kq">
                                     <div class="RewardProjectCard_info__3JFub">
                                         <div class="RewardProjectCard_infoTop__3QR5w">
                                         <a href="funding_detail.do?funding_index=${fundingVo.funding_index}" class="CardLink_link__1k83H">
@@ -305,7 +306,6 @@
                                             <span class="RewardProjectCard_isAchieve__1LcUu"></span></span>
                                      </div>
                                     </div>  
-                                </div>
                             </div>
                             </div>
                          

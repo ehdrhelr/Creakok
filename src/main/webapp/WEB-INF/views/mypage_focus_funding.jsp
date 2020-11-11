@@ -43,6 +43,9 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
     <link rel="stylesheet" href="css/hcbae_css.css">
     
   <link rel="stylesheet" href="css/only_goods_review_board_jsp.css">
+
+  <link rel="stylesheet" href="css/progressBar.css">
+
 </head>
 
 <body>
@@ -65,7 +68,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/page_mypage.png);">
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(${Path.COMMON_IMG_PATH}page_mypage.png);">
             <h2 style="color:black">My Page</h2>
         </div>
 
@@ -673,6 +676,7 @@ import="creakok.com.domain.Member_origin, creakok.com.domain.Member_category, cr
     <script src="js/active.js"></script>
     <script src="js/hcbae_js.js"></script>
 
+    <script src="js/progressBar.js"></script>
     
     <jsp:include page="Language.jsp" flush="false">
     <jsp:param name="page_name" value="${requestScope['javax.servlet.forward.request_uri']}"/>

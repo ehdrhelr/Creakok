@@ -22,4 +22,5 @@ public interface GoodsService {
 	List<Goods> selectGoodsRanking();
 	Goods_SearchVo getSearchGoodsVo(int cp, int ps, String keyword);
 	long selectGoodsCountBySearch(String keyword);
+	void deleteOneGoods(long goods_index);
 }
