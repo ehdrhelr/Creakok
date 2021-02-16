@@ -104,6 +104,7 @@ dans son compte en cliquant le boutton cœur. Il y a également un boutton à di
 &nbsp; Le lien vers le forum de discussion du créateur qui vend le produit est à disposition. De plus, en bas de la présentation du projet il existe des articles similaires afin de proposer d'autres articles qui peuvent
 intéresser les utilisateurs.
 
+![Goods3](md_imgs/goods3.gif)
 <br>
 &nbsp; L'achat de Goods demande la connexion de son compte. Vous avez la possibilité de payer avec la carte visa, mastercard, kakao, 
 et etc. La liste des commande peuvent être consulté dans son compte.
@@ -135,8 +136,12 @@ Tous les membres peuvent discuter dans n'importe quel forum. De plus, la recherc
 ---
 
 ### *My page*
-![My Page](md_imgs/mypage.gif)
+![My Page](md_imgs/mypage1.gif)
 <br>
+
+![My Page](md_imgs/mypage2.gif)
+<br>
+
 &nbsp;La page Mon Compte est différente selon le status du compte (Super, Créateur ou Membre). En générale, nous avons ces 4 fonctionnements.<br>
   1. Liste de mes favoris
   2. Modification des infos de mon compte
