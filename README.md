@@ -60,26 +60,26 @@ Enfin, pour offrir une expérience plus claire et dynamique, nous avons utilisé
 ---
 
 ### *Funding*
-![Funding1](md_imgs/Funding1.gif)
+![Funding1](md_imgs/funding1.gif)
 <br>
 &nbsp; La page Funding montre les projets qui sont en cours de Crowdfunding. 
 Vous avez la possibilité de voir selon la catégorie de projet, de changer l'ordre de présentation, et de changer le nombre de projets par page. (Popularité décroissante, 3 projets par page : par défaut)
 
 
 
-![Funding2](md_imgs/Funding2.gif)
+![Funding2](md_imgs/funding2.gif)
 <br>
 &nbsp; Chaque projet Funding possèdent un forum de Q&A, ainsi qu'une page qui présente les règles de crowdfunding. Seul les membres de Creakok peuvent mettre un poste et peuvent aussi enregistrer les projets intéressants 
 dans son compte en cliquant le boutton cœur. Il y a également un boutton à disposition qui permet de partager le lien.
 
 
-![Funding3](md_imgs/Funding3.gif)
+![Funding3](md_imgs/funding3.gif)
 <br>
 &nbsp; Participation du crowdfunding d'un projet se fait en payant le montant de son choix. Vous avez la possibilité de payer avec la carte visa, mastercard, kakao, 
 et etc. La liste des participation peuvent être consulté dans son compte.
 
 
-![Funding4](md_imgs/Funding4.gif)
+![Funding4](md_imgs/funding4.gif)
 <br>
 &nbsp; Le lien vers le forum de discussion du créateur est à disposition. De plus, en bas de la présentation du projet il existe des projets similaires qui apparait afin de proposer d'autres funding qui peuvent
 intéresser les utilisateurs.
@@ -127,13 +127,13 @@ et etc. La liste des commande peuvent être consulté dans son compte.
 
 
 ### *Community*
-![Community1](md_imgs/Community1.gif)
+![Community1](md_imgs/community1.gif)
 <br>
 &nbsp;Chaque créateurs possèdent un forum afin de discuter avec son public. Il y a un lien qui amène vers sa page Youtube avec quelques contenus de vidéo intéressante.
 Tous les membres peuvent discuter dans n'importe quel forum. De plus, la recherche d'un poste et le tirage de l'ordre différent sont à disposition.
 
 
-![Community2](md_imgs/Community2.gif)
+![Community2](md_imgs/community2.gif)
 <br>
 &nbsp;Une fois connecté, on a également la possiblité de mettre un commentaire sur un poste, ou bien modifier le poste si la créateur du poste est soi-même.
 
