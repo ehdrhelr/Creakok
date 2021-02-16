@@ -110,19 +110,6 @@ et etc. La liste des commande peuvent être consulté dans son compte.
 
 ---
 
-### *Log-in / Log-out*
-
-
- - **Se Connecter**
- 
-
- &nbsp;L'inscription se fait avec l'adresse mail. Une fois se connectée, la déconnexion est demandée afin de se reconnecter.<br>Grâce à l'API, vous avez la possibilité de s'inscrire avec le compte Gmail, Kakao, Naver ou avec un simple adresse mail.<br>
- 
- - **Comptes**
- 
-  &nbsp;Il existe trois comptes différents, **Super**(qui gère les demandes de compte créateurs et la gestion de site), **Créateur**, et **Membres**
-  
----
 
 
 ### *Community*
@@ -158,3 +145,16 @@ Tous les membres peuvent discuter dans n'importe quel forum. De plus, la recherc
   
 ---
 
+### *Log-in / Log-out*
+
+
+ - **Se Connecter**
+ 
+
+ &nbsp;L'inscription se fait avec l'adresse mail. Une fois se connectée, la déconnexion est demandée afin de se reconnecter.<br>Grâce à l'API, vous avez la possibilité de s'inscrire avec le compte Gmail, Kakao, Naver ou avec un simple adresse mail.<br>
+ 
+ - **Comptes**
+ 
+  &nbsp;Il existe trois comptes différents, **Super**(qui gère les demandes de compte créateurs et la gestion de site), **Créateur**, et **Membres**
+  
+---
