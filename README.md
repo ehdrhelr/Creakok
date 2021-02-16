@@ -36,7 +36,7 @@ internet et permettant à un ensemble de contributeurs de choisir collectivement
 
 
 ## 5. MVC Pattern
-![tech](md_imgs/mvc.png)
+![MVC Pattern](md_imgs/mvc.png)
 <br>
 &nbsp; La réalisation du projet a été basé du **MVC Pattern** dans **Spring Framework**. 
 Pour le **Model**, nous avons eu le côté **Model** et **VO** afin de faciliter la maintenance du site en divisant clairement les attributs de **DTO (Data Transfer Objet)** et **VO(Value Objet)**.
@@ -130,8 +130,9 @@ intéresser les utilisateurs.
  &nbsp;L'inscription se fait avec l'adresse mail. Une fois se connectée, la déconnexion est demandée afin de se reconnecter.<br>Grâce à l'API, vous avez la possibilité de s'inscrire avec le compte Gmail, Kakao, Naver ou avec un simple adresse mail.
  
  - **Comptes**
- ![compte](md_imgs/compte.gif)
+ ![compte](md_imgs/compte.gif) <br>
   &nbsp;Il existe trois comptes différents, **Super**(qui gère les demandes de compte créateurs et la gestion de site), **Créateur**, et **Membres**
+  
 ---
 
 
