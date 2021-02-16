@@ -55,12 +55,7 @@ Enfin, pour offrir une expérience plus claire et dynamique, nous avons utilisé
   
 ![MainPage1](md_imgs/main1.gif)
 <br>
-&nbsp;Proposition des projets à investir(Funding) & Classement des Funding et Goods  
-
-
-![MainPage2](md_imgs/main2.gif)
-<br>
-&nbsp;Présentation des Créateurs & Lien pour les Forums de Communication 
+&nbsp;Proposition des projets à investir(Funding) & Classement des Funding et Goods<br>Présentation des Créateurs & Lien pour les Forums de Communication 
 
 ---
 
@@ -84,7 +79,7 @@ dans son compte en cliquant le boutton cœur. Il y a également un boutton à di
 et etc. La liste des participation peuvent être consulté dans son compte.
 
 
-![Funding3](md_imgs/Funding4.gif)
+![Funding4](md_imgs/Funding4.gif)
 <br>
 &nbsp; Le lien vers le forum de discussion du créateur est à disposition. De plus, en bas de la présentation du projet il existe des projets similaires qui apparait afin de proposer d'autres funding qui peuvent
 intéresser les utilisateurs.
@@ -93,7 +88,7 @@ intéresser les utilisateurs.
 
 
 ### *Goods*
-![Goods1](md_imgs/Goods1.gif)
+![Goods1](md_imgs/goods1.gif)
 <br>
 &nbsp; La page Goods montre les objets en vente des créateurs.
 Vous avez la possibilité de voir ces objets selon la catégorie de projet (à gauche), de changer l'ordre de présentation, et de changer le nombre de projets par page. (Popularité décroissante, 3 projets par page : par défaut)
@@ -101,36 +96,31 @@ Lors que vous touchez l'article, il y a deux bouttons qui apparait, pour mettre 
 
 
 
-![Goods2](md_imgs/Goods2.gif)
+![Goods2](md_imgs/goods2.gif)
 <br>
 &nbsp; Chaque Goods possèdent un forum de Review (commenatire), Q&A, ainsi qu'une page qui présente les détails de l'article. 
 Seul les membres de Creakok peuvent mettre un poste et peuvent aussi enregistrer les projets dans ses favoris
 dans son compte en cliquant le boutton cœur. Il y a également un boutton à disposition qui permet de acheter de suite. 
-
-
-![Goods3](md_imgs/Goods3.gif)
-<br>
-&nbsp; L'achat de Goods demande la connexion de son compte. Vous avez la possibilité de payer avec la carte visa, mastercard, kakao, 
-et etc. La liste des commande peuvent être consulté dans son compte.
-
-
-![Funding3](md_imgs/Funding4.gif)
 <br>
 &nbsp; Le lien vers le forum de discussion du créateur qui vend le produit est à disposition. De plus, en bas de la présentation du projet il existe des articles similaires afin de proposer d'autres articles qui peuvent
 intéresser les utilisateurs.
+
+<br>
+&nbsp; L'achat de Goods demande la connexion de son compte. Vous avez la possibilité de payer avec la carte visa, mastercard, kakao, 
+et etc. La liste des commande peuvent être consulté dans son compte.
 
 ---
 
 ### *Log-in / Log-out*
 
+
  - **Se Connecter**
  
-![login](md_imgs/login.gif)
- <br>
- &nbsp;L'inscription se fait avec l'adresse mail. Une fois se connectée, la déconnexion est demandée afin de se reconnecter.<br>Grâce à l'API, vous avez la possibilité de s'inscrire avec le compte Gmail, Kakao, Naver ou avec un simple adresse mail.
+
+ &nbsp;L'inscription se fait avec l'adresse mail. Une fois se connectée, la déconnexion est demandée afin de se reconnecter.<br>Grâce à l'API, vous avez la possibilité de s'inscrire avec le compte Gmail, Kakao, Naver ou avec un simple adresse mail.<br>
  
  - **Comptes**
- ![compte](md_imgs/compte.gif) <br>
+ 
   &nbsp;Il existe trois comptes différents, **Super**(qui gère les demandes de compte créateurs et la gestion de site), **Créateur**, et **Membres**
   
 ---
