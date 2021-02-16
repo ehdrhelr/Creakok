@@ -46,8 +46,8 @@ Enfin, pour offrir une expérience plus claire et dynamique, nous avons utilisé
 
 
 ## 6. Technologie 
-![tech](md_imgs/tech.png)
-
+![tech](md_imgs/tech1.png)
+![tech](md_imgs/tech2.png)
 
 # Results
 ## 1. Résultat
