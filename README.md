@@ -1,6 +1,6 @@
 # ABOUT PROJECT
 #### [ Creakok ] Développement Site Web Crowdfunding en Java/Spring : Spring MVC Pattern, Intégration de paiement API (I'amport), Ajax, Social Log-in(API)
-<span style="font-size:15px">*( 2020.07.01 ~ 2020.07.08 )*</span>
+<span style="font-size:15px">*( 2020.04.20 ~ 2020.09.20 )*</span>
 
 
 ## 1. Membres de l'équipe
@@ -75,8 +75,7 @@ dans son compte en cliquant le boutton cœur. Il y a également un boutton à di
 
 ![Funding3](md_imgs/funding3.gif)
 <br>
-&nbsp; Participation du crowdfunding d'un projet se fait en payant le montant de son choix. Vous avez la possibilité de payer avec la carte visa, mastercard, kakao, 
-et etc. La liste des participation peuvent être consulté dans son compte.
+&nbsp; Participation du crowdfunding d'un projet se fait en payant le montant de son choix. Vous avez la possibilité de payer avec la carte samsung, hyundai, BC, Kakao, Payco et etc. La liste des participation peuvent être consulté dans son compte.
 
 
 ![Funding4](md_imgs/funding4.gif)
