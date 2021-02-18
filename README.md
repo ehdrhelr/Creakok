@@ -31,15 +31,9 @@ http://creakok.cafe24.com/
 
 ## 5. MVC Pattern
 ![MVC Pattern](md_imgs/mvc.png)
-<br>
-&nbsp; La réalisation du projet a été basé du **MVC Pattern** dans **Spring Framework**. 
-Pour le **Model**, nous avons eu le côté **Model** et **VO** afin de faciliter la maintenance du site en divisant clairement les attributs de **DTO (Data Transfer Objet)** et **VO(Value Objet)**.
-Un **Controller** a été crée par chaque service, et nous avons éssayé de simplifier le codage des controllers pour que son fonctionnement et la stransmission des datas soient clairs.
-Ainsi, c'était dans le **Service** que l'on a traité la logique et la business logic. De plus, l'utilisantd de **MyBatis** a permis d'écrire et de gérer les requêtes SQL plus simplement.
-Enfin, pour offrir une expérience plus claire et dynamique, nous avons utilisé **Bootstrap** pour construire **View**.
 
 <br>
-&nbsp; 프로젝트의 실현은 **Spring Framework** 의 **MVC 패턴** 을 기반으로했습니다 . 를 들어 **모델** , 우리는 한 **모델** 과 **VO** 측 명확의 특성 나누어 사이트 유지 보수를 용이하게하기 위해 **DTO (데이터 전송 개체)** 및 **VO (값 개체)** . **컨트롤러**는 각 서비스에 의해 만들어진, 우리는 그 작동과 데이터의 전송이 명확 있도록 컨트롤러의 코딩을 단순화하기 위해 노력했다. 따라서 우리가 로직과 비즈니스 로직을 다룬 것은 **서비스** 에서였습니다 . 또한 **MyBatis** 사용SQL 쿼리를 더 쉽게 작성하고 관리 할 수 ​​있습니다. 마지막으로 더 깨끗하고 동적 인 경험을 제공하기 위해 **Bootstrap** 을 사용하여 **View** 를 빌드했습니다 .
+&nbsp; 프로젝트의 실현은 **Spring Framework** 의 **MVC 패턴** 을 기반으로했습니다 . 를 들어 **모델** , 우리는 한 **모델** 과 **VO** 측 명확의 특성 나누어 사이트 유지 보수를 용이하게하기 위해 **DTO (데이터 전송 개체)** 및 **VO (값 개체)** . **컨트롤러**는 각 서비스에 의해 만들어진, 우리는 그 작동과 데이터의 전송이 명확 있도록 컨트롤러의 코딩을 단순화하기 위해 노력했다. 따라서 우리가 로직과 비즈니스 로직을 다룬 것은 **서비스** 에서였습니다 . 또한 **MyBatis** 사용SQL 쿼리를 더 쉽게 작성하고 관리 할 수 ​​있습니다. 마지막으로 더 깨끗하고 동적 인 경험을 제공하기 위해 **Bootstrap** 을 사용하여 **View** 를 빌드했습니다.
 
 
 ## 6. 기술
